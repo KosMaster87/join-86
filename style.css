@@ -1,5 +1,23 @@
+@import url("./fonts.css");
 @import url("./css/header.css");
 @import url("./css/menu.css");
+
+:root {
+  --lighterGray: #d1d1d1;
+  --lightGray: #2a3647;
+  --lightBlue: #29abe2;
+  --darkBlue: #091931;
+  --darkBlueHover: #19273d;
+  --organe: #ff3d00;
+  --yellow: #ffa800;
+  --pink: #fc71ff;
+  --mintGreen: #1fd7c1;
+  --whiteGray: #f6f7f8;
+  --white: #fff;
+  --wrongInput: #ff001f;
+  --fontGray: #a8a8a8;
+  --fontWhite: #cdcdcd;
+}
 
 * {
   margin: 0;
@@ -15,4 +33,3 @@ html {
 .hide {
   display: none;
 }
-
