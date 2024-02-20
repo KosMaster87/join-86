@@ -3,13 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+
     <link rel="stylesheet" href="./css/fonts.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="includeHTML.js"></script>
     <script src="script.js"></script>
-    link
+
     <title>Join Project Management Tool</title>
   </head>
   <body onload="init()">
-   
+    <div
+      w3-include-html="assets/templates/header.html"
+      id="mainHeader"
+      class="mainHeader"
+    ></div>
+    <div
+      w3-include-html="assets/templates/menu.html"
+      id="mainMenu"
+      class="mainMenu"
+    ></div>
+
+    <div class="mainContent" style="background-color: blanchedalmond;">
+        <b>Content</b>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+      consequatur perferendis fugiat eligendi sint, assumenda at asperiores eum
+      provident facere dolores porro vero iste fugit distinctio. Necessitatibus
+      accusamus laboriosam magnam!
+    </div>
   </body>
 </html>

@@ -1,3 +1,6 @@
+@import url("./css/header.css");
+@import url("./css/menu.css");
+
 * {
   margin: 0;
   padding: 0;
@@ -12,3 +15,4 @@ html {
 .hide {
   display: none;
 }
+

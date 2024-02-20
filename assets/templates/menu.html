@@ -1,49 +1,74 @@
-<div class="mainMenu">
-  <div class="mainLogoImgContainer">
-    <img class="mainLogoImg" src="assets/img/header/headerLogo.svg" />
-  </div>
+<div class="desktopMenuLogo hide">
+  <img src="./assets/img/menu/desktopFooterLogo.svg" alt="" />
+</div>
 
-  <div class="theProgramm hide">
-    <p class="theProgrammFont">Kanban Project Management Tool</p>
-  </div>
-
-  <div id="userSymbolContainer" class="userSymbolContainer">
-    <div class="userSymbolContainerHelp">
+<div class="mainMenuBox">
+  <div
+    class="menuItem activeLinkStyle"
+    id="navSummary"
+    onclick="includeContentHTML('Summary'); 
+    setActiveLink('navSummary')"
+  >
+    <div class="menuHoverBox">
       <img
-        onclick="includeContentHTML('Help')"
-        src="assets/img/header/help.png"
+        src="./assets/img/menu/summary_icon.svg"
         alt=""
+        class="menuItemImage"
       />
-    </div>
-    <div id="headerProfile" onclick="handleSubMenu()">
-      <img src="" class="userLogoImg" />
+      <p class="mobileMenuFont">Summary</p>
     </div>
   </div>
 
-  <div class="headerSubMenu hide" id="headerSubMenu">
-    <div class="headerSubMenuBoxing">
-      <div class="headerSubMenuHoverBox">
-        <a
-          onclick="includeContentHTML('LegalNotice')"
-          class="headerSubMenuHoverAnchor"
-          >Legal notice</a
-        >
-      </div>
-    </div>
-
-    <div class="headerSubMenuBoxing">
-      <div class="headerSubMenuHoverBox">
-        <a
-          onclick="includeContentHTML('PrivacyPolicy')"
-          class="headerSubMenuHoverAnchor"
-          >Privacy Police</a
-        >
-      </div>
-    </div>
-
-    <div class="headerSubMenuHoverBox" id="header-logout">
-      <div class="headerSubMenuBoxing"></div>
-      <a class="headerSubMenuHoverAnchor">Log out</a>
+  <div
+    class="menuItem"
+    id="navBoard"
+    onclick="includeContentHTML('Board');
+    setActiveLink('navBoard')"
+  >
+    <div class="menuHoverBox">
+      <img src="assets/img/menu/Vector.svg" alt="" class="menuItemImage" />
+      <p class="mobileMenuFont">Board</p>
     </div>
   </div>
+
+  <div
+    class="menuItem"
+    id="navAddTask"
+    onclick="includeContentHTML('AddTasks');
+    setActiveLink('navAddTask')"
+  >
+    <div class="menuHoverBox">
+      <img
+        src="./assets/img/menu/add_tasks_icon.svg"
+        alt=""
+        class="menuItemImage"
+      />
+      <p class="mobileMenuFont">Add Tasks</p>
+    </div>
+  </div>
+
+  <div
+    class="menuItem"
+    id="navContacts"
+    onclick="includeContentHTML('Contacts');
+    setActiveLink('navContacts')"
+  >
+    <div class="menuHoverBox">
+      <img
+        src="./assets/img/menu/contacts_icon.svg"
+        alt=""
+        class="menuItemImage"
+      />
+      <p class="mobileMenuFont">Contacts</p>
+    </div>
+  </div>
+</div>
+
+<div class="desktopMenuPolicyBox hide">
+  <a onclick="includeContentHTML('PrivacyPolicy')" class="desktopMenuPolicyFont"
+    >Privacy Policy</a
+  >
+  <a onclick="includeContentHTML('LegalNotice')" class="desktopMenuPolicyFont">
+    Legal Notice
+  </a>
 </div>
