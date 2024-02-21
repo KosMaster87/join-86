@@ -1,49 +1,65 @@
-<div class="mainMenu">
-  <div class="mainLogoImgContainer">
-    <img class="mainLogoImg" src="assets/img/header/headerLogo.svg" />
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/header.css" />
+    <script src="../../js/header.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="mainHeader">
+      <div class="logoImgContainer">
+        <img
+          class="mainHeaderLogoImg"
+          src="./assets/img/header/headerLogo.svg"
+        />
+      </div>
 
-  <div class="theProgramm hide">
-    <p class="theProgrammFont">Kanban Project Management Tool</p>
-  </div>
+      <div class="theProgramm">
+        <p class="theProgrammFont">Kanban Project Management Tool</p>
+      </div>
 
-  <div id="userSymbolContainer" class="userSymbolContainer">
-    <div class="userSymbolContainerHelp">
-      <img
-        onclick="includeContentHTML('Help')"
-        src="assets/img/header/help.png"
-        alt=""
-      />
-    </div>
-    <div id="headerProfile" onclick="handleSubMenu()">
-      <img src="" class="userLogoImg" />
-    </div>
-  </div>
+      <div id="userSymbolContainerID" class="userSymbolContainer">
+        <img
+          onclick="includeContentHTML('Help')"
+          class="userSymbolContainerHelp"
+          src="assets/img/header/help.png"
+        />
 
-  <div class="headerSubMenu hide" id="headerSubMenu">
-    <div class="headerSubMenuBoxing">
-      <div class="headerSubMenuHoverBox">
-        <a
-          onclick="includeContentHTML('LegalNotice')"
-          class="headerSubMenuHoverAnchor"
-          >Legal notice</a
-        >
+        <div onclick="handleSubMenuBtn()">
+          <img
+            id="headerProfile"
+            class="userLogoImg summaryAnimateProgramm editHeaderImage"
+            src="assets/img/header/headerCurrentGuestImage.svg"
+          />
+        </div>
+
+        <div class="headerSubMenu" id="headerSubMenu">
+          <div class="headerSubMenuBoxing">
+            <div class="headerSubMenuHoverBox">
+              <a
+                onclick="includeContentHTML('LegalNotice')"
+                class="headerSubMenuHoverAnchor"
+                >Legal notice</a
+              >
+            </div>
+          </div>
+          <div class="headerSubMenuBoxing">
+            <div class="headerSubMenuHoverBox">
+              <a
+                onclick="includeContentHTML('PrivacyPolicy')"
+                class="headerSubMenuHoverAnchor"
+                >Privacy Police</a
+              >
+            </div>
+          </div>
+          <div class="headerSubMenuHoverBox" id="headerLogout">
+            <div class="headerSubMenuBoxing"></div>
+            <a class="headerSubMenuHoverAnchor">Log out</a>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="headerSubMenuBoxing">
-      <div class="headerSubMenuHoverBox">
-        <a
-          onclick="includeContentHTML('PrivacyPolicy')"
-          class="headerSubMenuHoverAnchor"
-          >Privacy Police</a
-        >
-      </div>
-    </div>
-
-    <div class="headerSubMenuHoverBox" id="header-logout">
-      <div class="headerSubMenuBoxing"></div>
-      <a class="headerSubMenuHoverAnchor">Log out</a>
-    </div>
-  </div>
-</div>
+  </body>
+</html>

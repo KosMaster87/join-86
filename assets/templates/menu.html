@@ -1,74 +1,85 @@
-<div class="desktopMenuLogo hide">
-  <img src="./assets/img/menu/desktopFooterLogo.svg" alt="" />
-</div>
-
-<div class="mainMenuBox">
-  <div
-    class="menuItem activeLinkStyle"
-    id="navSummary"
-    onclick="includeContentHTML('Summary'); 
-    setActiveLink('navSummary')"
-  >
-    <div class="menuHoverBox">
-      <img
-        src="./assets/img/menu/summary_icon.svg"
-        alt=""
-        class="menuItemImage"
-      />
-      <p class="mobileMenuFont">Summary</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/menu.css" />
+    <script type="module" src="../../js/menu.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="desktopMenuLogo hide">
+      <img src="./assets/img/menu/desktopFooterLogo.svg" alt="" />
     </div>
-  </div>
 
-  <div
-    class="menuItem"
-    id="navBoard"
-    onclick="includeContentHTML('Board');
-    setActiveLink('navBoard')"
-  >
-    <div class="menuHoverBox">
-      <img src="assets/img/menu/Vector.svg" alt="" class="menuItemImage" />
-      <p class="mobileMenuFont">Board</p>
+    <div class="mainMenuBox">
+      <div
+        class="menuItem activeLinkStyle"
+        id="navSummary"
+        onclick="includeContentHTML('Summary'); 
+      setActiveLink('navSummary')"
+      >
+        <div class="menuHoverBox">
+          <img src="./assets/img/menu/summary_icon.svg" class="menuItemImage" />
+          <p class="mobileMenuFont">Summary</p>
+        </div>
+      </div>
+
+      <div
+        class="menuItem"
+        id="navBoard"
+        onclick="includeContentHTML('Board');
+      setActiveLink('navBoard')"
+      >
+        <div class="menuHoverBox">
+          <img src="assets/img/menu/Vector.svg" class="menuItemImage" />
+          <p class="mobileMenuFont">Board</p>
+        </div>
+      </div>
+
+      <div
+        class="menuItem"
+        id="navAddTask"
+        onclick="includeContentHTML('AddTasks');
+      setActiveLink('navAddTask')"
+      >
+        <div class="menuHoverBox">
+          <img
+            src="./assets/img/menu/add_tasks_icon.svg"
+            class="menuItemImage"
+          />
+          <p class="mobileMenuFont">Add Tasks</p>
+        </div>
+      </div>
+
+      <div
+        class="menuItem"
+        id="navContacts"
+        onclick="includeContentHTML('Contacts');
+      setActiveLink('navContacts')"
+      >
+        <div class="menuHoverBox">
+          <img
+            src="./assets/img/menu/contacts_icon.svg"
+            class="menuItemImage"
+          />
+          <p class="mobileMenuFont">Contacts</p>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div
-    class="menuItem"
-    id="navAddTask"
-    onclick="includeContentHTML('AddTasks');
-    setActiveLink('navAddTask')"
-  >
-    <div class="menuHoverBox">
-      <img
-        src="./assets/img/menu/add_tasks_icon.svg"
-        alt=""
-        class="menuItemImage"
-      />
-      <p class="mobileMenuFont">Add Tasks</p>
+    <div class="desktopMenuPolicyBox hide">
+      <a
+        onclick="includeContentHTML('PrivacyPolicy')"
+        class="desktopMenuPolicyFont"
+        >Privacy Policy</a
+      >
+      <a
+        onclick="includeContentHTML('LegalNotice')"
+        class="desktopMenuPolicyFont"
+      >
+        Legal Notice
+      </a>
     </div>
-  </div>
-
-  <div
-    class="menuItem"
-    id="navContacts"
-    onclick="includeContentHTML('Contacts');
-    setActiveLink('navContacts')"
-  >
-    <div class="menuHoverBox">
-      <img
-        src="./assets/img/menu/contacts_icon.svg"
-        alt=""
-        class="menuItemImage"
-      />
-      <p class="mobileMenuFont">Contacts</p>
-    </div>
-  </div>
-</div>
-
-<div class="desktopMenuPolicyBox hide">
-  <a onclick="includeContentHTML('PrivacyPolicy')" class="desktopMenuPolicyFont"
-    >Privacy Policy</a
-  >
-  <a onclick="includeContentHTML('LegalNotice')" class="desktopMenuPolicyFont">
-    Legal Notice
-  </a>
-</div>
+  </body>
+</html>

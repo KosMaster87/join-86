@@ -1,6 +1,5 @@
 @import url("./fonts.css");
 @import url("./css/header.css");
-@import url("./css/menu.css");
 
 :root {
   --lighterGray: #d1d1d1;
@@ -32,4 +31,9 @@ html {
 
 .hide {
   display: none;
+}
+
+.mainContent {
+  background-color: var(--whiteGray);
+  min-height: calc(100vh - 7rem);
 }
