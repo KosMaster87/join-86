@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/fonts.css" />
+    <link rel="stylesheet" href="../css/add_task.css" />
+    <script src="../script.js"></script>
+    <script src="../js/add_task.js"></script>
+    <title>Join Project Management Tool</title>
+  </head>
+  <body>
+    <header></header>
+
+    <h1>Add Task</h1>
+    <div class="taskMainContainer">
+      <div class="taskTitleContainer">
+        <p>
+          Title
+          <span class="requiredStar">*</span>
+        </p>
+        <input
+          type="text"
+          class="titleInputField"
+          placeholder="Enter a title"
+        />
+        <p class="fildIsRequiredText"></p>
+      </div>
+      <div class="taskDescriptionContainer">
+        <p>Description</p>
+        <textarea
+          placeholder="Enter a Descripton"
+          class="descriptionInputField"
+        ></textarea>
+      </div>
+      <div id="taskPrioContainer">
+        <p>Prio</p>
+        <div id="prioSelectContainer">
+          <div class="taskSelectButton">
+            Urgent
+            <img src="../assets/img/add_task/arrow_top_red.svg" />
+          </div>
+          <div class="taskSelectButton">
+            Medium
+            <img src="../assets/img/add_task/line_orange.svg" />
+          </div>
+          <div class="taskSelectButton">
+            Low
+            <img src="../assets/img/add_task/arrow_bottom_green.svg" />
+          </div>
+        </div>
+      </div>
+      <div id="taskDueDateContainer">
+        <p>
+          Due date
+          <span class="requiredStar">*</span>
+        </p>
+        <input
+          placeholder="TT.MM.JJJJ"
+          type="date"
+          class="dueDateInputField"
+        />
+        <p class="fildIsRequiredText"></p>
+      </div>
+
+
+      <div class="taskCategoryContainer">
+        <p>
+          Category
+          <span class="requiredStar">*</span>
+        </p>
+        <div class="categorySelect">
+          Select tast category<img
+            src="../assets/img/add_task/arrow_drop_down.svg"
+          />
+        </div>
+        <div class="categorySelectOptions">
+        <div class="categorySelectOption">Technical Task</div>
+        <div class="categorySelectOption">User Story</div>
+      </div>
+        <p class="fildIsRequiredText"></p>
+      </div>
+
+
+
+
+      <div id="taskAssignedContainer">
+        <p>Assigned to</p>
+        <div class="categorySelect">
+          Select to Contact<img
+            src="../assets/img/add_task/arrow_drop_down.svg"
+          />
+        </div>
+      </div>
+      <div id="taskSubtaskContainer">
+        <p>Subtasks</p>
+        <div class="subTaskInputcontainer">
+          <input
+            placeholder="Add new subtask"
+            class="subtaskInputfield"
+            type="text"
+          /><img src="../assets/img/add_task/task_add.svg" />
+        </div>
+        <div class="subTaskAddContainer">
+          <div class="firstAdd">
+            <div class="subTastText">
+              <p>•</p>
+              <p>subtask 1</p>
+            </div>
+            <div class="subMenu">
+              <img src="../assets/img/add_task/task_edit.svg" />
+              <img src="../assets/img/add_task/task_line.svg" />
+              <img src="../assets/img/add_task/task_bin.svg" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="finishTaskContainer">
+        <div class="finishTaskText"><span class="requiredStar">*</span>This field is required</div>
+        <div class="createTask">Create Task <img src="../assets/img/add_task/task_check_white.svg"></div>
+      </div>
+
+    </div>
+  </body>
+</html>

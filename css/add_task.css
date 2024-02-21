@@ -1,0 +1,236 @@
+header {
+  height: 80px;
+  background-color: black;
+}
+footer {
+  height: 80px;
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  color: white;
+  text-align: center;
+}
+body {
+  margin: 0;
+  font-family: "Inter";
+}
+h1 {
+  font-size: 47px;
+  margin-left: 16px;
+}
+p {
+  margin: 0;
+  margin-bottom: 8px;
+}
+span {
+  font-size: 16px;
+}
+
+.requiredStar {
+  color: #ff0000;
+  font-size: 20px;
+}
+
+.fildIsRequiredText {
+  margin-top: 4px;
+  color: rgba(255, 129, 144, 1);
+  font-size: 12px;
+}
+
+.taskMainContainer {
+  margin-left: 16px;
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f7f8;
+  gap: 8px;
+}
+
+.taskTitleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleInputField {
+  padding-left: 21px;
+  padding-right: 21px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: solid 1px #d1d1d1;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+input:focus {
+  outline: none;
+  border-color: #d1d1d1;
+}
+
+.taskDescriptionContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.descriptionInputField {
+  padding: 18px 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  background: #fff;
+  max-height: 175px;
+  min-height: 102px;
+  height: 84px;
+  outline: none;
+  border-color: #d1d1d1;
+}
+
+#taskPrioContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#prioSelectContainer {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.taskSelectButton {
+  width: 126px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-radius: 10px;
+  font-size: 21px;
+  justify-content: center;
+  display: flex;
+  gap: 8px;
+  border: solid 1px #d1d1d1;
+  border-radius: 10px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+.taskSelectButton:hover {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+#taskDueDateContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.dueDateInputField {
+  padding: 8px 21px 8px 21px;
+  border-radius: 10px;
+  border: solid 1px #d1d1d1;
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  color:#757575;
+}
+
+.taskCategoryContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.categorySelect {
+  padding: 12px 16px 12px 16px;
+  border-radius: 10px;
+  border: 1px;
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px #d1d1d1;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.categorySelectOptions {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.categorySelectOption {
+  padding: 12px 16px 12px 16px;
+  border-radius: 10px;
+  border: 1px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+
+#taskAssignedContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#taskSubtaskContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subTaskInputcontainer {
+  padding: 12px 16px 12px 16px;
+  border-radius: 10px;
+  border: 1px;
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px #d1d1d1;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.subtaskInputfield {
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+.subTaskAddContainer {
+  display: flex;
+  flex-direction: column;
+}
+.firstAdd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 24px;
+  padding: 4px 16px;
+  border-radius: 10px;
+}
+.subTastText {
+  display: flex;
+  gap: 8px;
+}
+.subMenu {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.finishTaskContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  padding-top:16px;
+}
+
+.finishTaskText{
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0em;
+}
+
+.createTask {
+  background-color: rgba(42, 54, 71, 1);
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+  gap: 4px;
+}
