@@ -3,16 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="../css/fonts.css" />
     <link rel="stylesheet" href="../css/add_task.css" />
     <script src="../script.js"></script>
     <script src="../js/add_task.js"></script>
     <title>Join Project Management Tool</title>
   </head>
   <body>
-    <header></header>
-
     <h1>Add Task</h1>
     <div class="taskMainContainer">
       <div class="taskTitleContainer">
@@ -70,21 +66,14 @@
           Category
           <span class="requiredStar">*</span>
         </p>
-        <div class="categorySelect">
-          Select tast category<img
-            src="../assets/img/add_task/arrow_drop_down.svg"
-          />
+        <div onclick="openCategorySelect()" class="categorySelect">
+          Select tast category<img id="categoryImage"
+            src="../assets/img/add_task/arrow_drop_down.svg"/>
         </div>
-        <div class="categorySelectOptions">
-        <div class="categorySelectOption">Technical Task</div>
-        <div class="categorySelectOption">User Story</div>
+        <div class="categorySelectOptions" id="categoryMenu">
       </div>
         <p class="fildIsRequiredText"></p>
       </div>
-
-
-
-
       <div id="taskAssignedContainer">
         <p>Assigned to</p>
         <div class="categorySelect">
@@ -93,16 +82,19 @@
           />
         </div>
       </div>
+
       <div id="taskSubtaskContainer">
         <p>Subtasks</p>
         <div class="subTaskInputcontainer">
-          <input
+          <input 
+          id="subTaskInputfieldText"
             placeholder="Add new subtask"
             class="subtaskInputfield"
             type="text"
-          /><img src="../assets/img/add_task/task_add.svg" />
+          /><img onclick="addSubtask()" src="../assets/img/add_task/task_add.svg" />
         </div>
-        <div class="subTaskAddContainer">
+
+        <div class="subTaskAddContainer" id="subTasksContainer">
           <div class="firstAdd">
             <div class="subTastText">
               <p>•</p>

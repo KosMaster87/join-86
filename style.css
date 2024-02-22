@@ -12,7 +12,8 @@
   --mintGreen: #1fd7c1;
   --whiteGray: #f6f7f8;
   --white: #fff;
-  --wrongInput: #ff001f;
+  --wrongInputBorder: #ff001f;
+  --wrongInputText: #FF8190;
   --fontGray: #a8a8a8;
   --fontWhite: #cdcdcd;
 }
@@ -35,4 +36,9 @@ html {
 .mainContent {
   background-color: var(--whiteGray);
   min-height: calc(100vh - 7rem);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--lightBlue);
 }
