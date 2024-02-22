@@ -1,0 +1,128 @@
+body {
+    margin: 0 0;
+    padding: 0 0;
+}
+
+.fakeHeader {
+    width: 100%;
+    height: 80px;
+    box-shadow:2px 2px rgba(0, 0, 0, 0.2) 
+}
+
+/** style container contacts incl. sort row **/
+
+.styleHr {
+    width: 100%;
+    height: 1px;
+    background-color: #D1D1D1;
+    margin: 8px 0;
+}
+
+.containerContacts {
+    margin: 0 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+   /** background-color: rgba(0,0,0,0.2); **/
+    padding: 24px 24px;
+}
+
+.alphabeticalRow {
+    width: 100%;
+    height: 58px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+.firstChartSort {
+    font-size: 20px;
+    padding: 17px 36px;
+
+}
+
+/** singleContact **/
+.singleContact {
+    display: flex;
+    flex-direction: row;
+    padding: 15px 24px; 
+    gap: 35px;
+    
+}
+
+
+/** contact signature icon **/
+.contactSignatureIcon {
+    background-color: #FF7A00;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 2px #FFFFFF;
+
+}
+
+.contactSignatureIconLetter {
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+}
+
+/** contact data **/
+
+.contactName {
+    color: black;
+    font-size: 20px;
+    line-height: 1.2;
+
+}
+
+.contactEmail {
+    color: #007CEE;
+    font-size: 16px;
+    line-height: 1.2;
+}
+/** btn **/
+.mobileBtnAddContact {
+    background-color: #2A3647;
+    border-radius: 50%;
+    position: absolute; 
+    width: 56px;
+    height: 56px;
+    position: fixed;
+    bottom: 12.5%;
+    right: 5%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobileBtnAddContactItem {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+/** fake-footer **/
+.fakeFooter {
+    height: 80px;
+    width: 100%; 
+    background-color: #2A3647;
+    position: fixed;
+    bottom: 0;
+    left: 0;  
+}
+
+.mobileBtnAddContact {
+    font-size: 25px;
+    line-height: 1.2;
+}
+
+.displayNone {
+    display: none;
+}
