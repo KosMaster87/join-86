@@ -100,7 +100,7 @@
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
     }
     
-    .displayNone {
+    .d-none {
         display: none;
     }
 
@@ -114,6 +114,12 @@
 @media screen and (min-width: 456px) {
     .containerContacts {
         width: 400px;
+    }
+
+    #mobileShowContact {
+        flex: 1;
+        background-color: black;
+        height: 100vh;
     }
 }
 
