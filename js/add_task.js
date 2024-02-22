@@ -1,44 +1,71 @@
-async function openCategorySelect(){
-    content = document.getElementById(`categoryMenu`);
-    content.innerHTML= `<div class="categorySelectOption">Technical Task</div>
-    <div class="categorySelectOption">User Story</div>`
-    await categoryImageUp();
+let subtaskCounter = 0;
+
+function openCategorySelect() {
+  content = document.getElementById(`categoryMenu`);
+  content.innerHTML += `<div onclick="selectCategory(this)" class="categorySelectOption">Technical Task</div>
+    <div onclick="selectCategory(this)" class="categorySelectOption">User Story</div>`;
+  addCategoryBorder();
+  categoryImageUp();
 }
 
-async function categoryImageUp(){
-    image = document.getElementById(`categoryImage`);
-    image.src = "../assets/img/add_task/arrow_drop_up.svg"
-    await image.addEventListener("click", function() {
-        closeCategoryMenu();
-    })
+function addCategoryBorder() {
+  border = document.getElementById(`categorySelectContainer`);
+  border.classList.add("bordercolor");
 }
 
-function closeCategoryMenu(){
-    content = document.getElementById(`categoryMenu`);
-    content.innerHTML= "";
-    categoryImageDown();
+function categoryImageUp() {
+  image = document.getElementById(`categoryImage`);
+  content = document.getElementById(`categorySelectContainer`);
+  image.src = "../assets/img/add_task/arrow_drop_up.svg";
+  content.onclick = closeCategoryMenu;
 }
 
-async function categoryImageDown(){
-    image = document.getElementById(`categoryImage`);
-    image.src = "../assets/img/add_task/arrow_drop_down.svg"
-    await image.addEventListener("click", function() {
-        openCategorySelect();
-    })
+function selectCategory(selectedOption) {
+  let content = document.getElementById(`categoryText`);
+  let image = document.getElementById(`categoryImage`);
+  content.innerHTML = `${selectedOption.innerText}`;
+  image.src = "../assets/img/add_task/arrow_drop_up.svg";
+  closeCategoryMenu();
 }
 
-function addSubtask(){
-    container = getElementById(`subTasksContainer`);
-    inputfield = subTaskInputfieldText.value;
-    container += `<div class="firstAdd">
+function closeCategoryMenu() {
+  div = document.getElementById(`categoryMenu`);
+  div.innerHTML = "";
+  removeCategoryBorder();
+  categoryImageDown();
+}
+
+function removeCategoryBorder() {
+  border = document.getElementById(`categorySelectContainer`);
+  border.classList.remove("bordercolor");
+}
+
+function categoryImageDown() {
+  image = document.getElementById(`categoryImage`);
+  content = document.getElementById(`categorySelectContainer`);
+  image.src = "../assets/img/add_task/arrow_drop_down.svg";
+  content.onclick = openCategorySelect;
+}
+
+function addSubtask() {
+  container = document.getElementById(`subTasksContainer`);
+  inputfield = subTaskInputfieldText.value;
+  container.innerHTML += `<div class="addedSubtask" id="createdSubTask${subtaskCounter}">
     <div class="subTastText">
       <p>•</p>
-      <p>${container}</p>
+      <p>${inputfield}</p>
     </div>
     <div class="subMenu">
       <img src="../assets/img/add_task/task_edit.svg" />
       <img src="../assets/img/add_task/task_line.svg" />
-      <img src="../assets/img/add_task/task_bin.svg" />
+      <img onclick="removeSubtask(${subtaskCounter})" src="../assets/img/add_task/task_bin.svg" />
     </div>
-  </div>`
+  </div>`;
+  subTaskInputfieldText.value = "";
+  subtaskCounter++;
+}
+
+function removeSubtask(i) {
+  deleteSubtask = document.getElementById(`createdSubTask${i}`);
+  deleteSubtask.remove();
 }
