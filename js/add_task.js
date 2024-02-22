@@ -1,4 +1,5 @@
 let subtaskCounter = 0;
+let required = 0;
 
 function openCategorySelect() {
   content = document.getElementById(`categoryMenu`);
@@ -68,4 +69,18 @@ function addSubtask() {
 function removeSubtask(i) {
   deleteSubtask = document.getElementById(`createdSubTask${i}`);
   deleteSubtask.remove();
+}
+
+
+function testfalsch(){
+  inputfield = document.getElementById(`titelInputContainer`);
+  inputRequired = document.getElementById(`inputRequiredContainer`)
+  if (inputfield.value.trim() === '') {
+    inputfield.classList.add('requiredBorder');
+    inputRequired.innerHTML = 'This field is required';
+    required++;
+  } else {
+    inputfield.value="";
+    inputRequired.innerHTML = '';
+  }
 }

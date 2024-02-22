@@ -17,11 +17,12 @@
           <span class="requiredStar">*</span>
         </p>
         <input
+        id="titelInputContainer"
           type="text"
           class="titleInputField"
           placeholder="Enter a title"
         />
-        <p class="fildIsRequiredText"></p>
+        <p id="inputRequiredContainer" class="fildIsRequiredText"></p>
       </div>
       <div class="taskDescriptionContainer">
         <p>Description</p>
@@ -104,7 +105,7 @@
         <div class="finishTaskText">
           <span class="requiredStar">*</span>This field is required
         </div>
-        <div class="createTask">
+        <div class="createTask" onclick="testfalsch()">
           Create Task <img src="../assets/img/add_task/task_check_white.svg" />
         </div>
       </div>

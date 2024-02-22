@@ -236,3 +236,8 @@ input:focus {
 .bordercolor{
   border: solid 1px var(--lightBlue) !important;
 }
+
+
+.requiredBorder{
+  border: solid 1px var(--wrongInputBorder);
+}
