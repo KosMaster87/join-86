@@ -52,26 +52,27 @@
           Due date
           <span class="requiredStar">*</span>
         </p>
-        <input
-          placeholder="TT.MM.JJJJ"
-          type="date"
-          class="dueDateInputField"
-        />
+        <input placeholder="TT.MM.JJJJ" type="date" class="dueDateInputField" />
         <p class="fildIsRequiredText"></p>
       </div>
-
 
       <div class="taskCategoryContainer">
         <p>
           Category
           <span class="requiredStar">*</span>
         </p>
-        <div onclick="openCategorySelect()" class="categorySelect">
-          Select tast category<img id="categoryImage"
-            src="../assets/img/add_task/arrow_drop_down.svg"/>
+        <div
+          id="categorySelectContainer"
+          onclick="openCategorySelect()"
+          class="categorySelect"
+        >
+          <span id="categoryText">Select tast category</span
+          ><img
+            id="categoryImage"
+            src="../assets/img/add_task/arrow_drop_down.svg"
+          />
         </div>
-        <div class="categorySelectOptions" id="categoryMenu">
-      </div>
+        <div class="categorySelectOptions" id="categoryMenu"></div>
         <p class="fildIsRequiredText"></p>
       </div>
       <div id="taskAssignedContainer">
@@ -86,34 +87,27 @@
       <div id="taskSubtaskContainer">
         <p>Subtasks</p>
         <div class="subTaskInputcontainer">
-          <input 
-          id="subTaskInputfieldText"
+          <input
+            id="subTaskInputfieldText"
             placeholder="Add new subtask"
             class="subtaskInputfield"
             type="text"
-          /><img onclick="addSubtask()" src="../assets/img/add_task/task_add.svg" />
+          /><img
+            onclick="addSubtask()"
+            src="../assets/img/add_task/task_add.svg"
+          />
         </div>
-
-        <div class="subTaskAddContainer" id="subTasksContainer">
-          <div class="firstAdd">
-            <div class="subTastText">
-              <p>•</p>
-              <p>subtask 1</p>
-            </div>
-            <div class="subMenu">
-              <img src="../assets/img/add_task/task_edit.svg" />
-              <img src="../assets/img/add_task/task_line.svg" />
-              <img src="../assets/img/add_task/task_bin.svg" />
-            </div>
-          </div>
-        </div>
+        <div class="subTaskAddContainer" id="subTasksContainer"></div>
       </div>
 
       <div class="finishTaskContainer">
-        <div class="finishTaskText"><span class="requiredStar">*</span>This field is required</div>
-        <div class="createTask">Create Task <img src="../assets/img/add_task/task_check_white.svg"></div>
+        <div class="finishTaskText">
+          <span class="requiredStar">*</span>This field is required
+        </div>
+        <div class="createTask">
+          Create Task <img src="../assets/img/add_task/task_check_white.svg" />
+        </div>
       </div>
-
     </div>
   </body>
 </html>

@@ -175,6 +175,11 @@ input:focus {
   background-color: #ffffff;
 }
 
+.subTaskInputcontainer:focus {
+  outline: none;
+  border-color: var(--lightBlue);
+}
+
 .subtaskInputfield {
   outline: none;
   border: none;
@@ -185,7 +190,8 @@ input:focus {
   display: flex;
   flex-direction: column;
 }
-.firstAdd {
+
+.addedSubtask {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -193,6 +199,7 @@ input:focus {
   padding: 4px 16px;
   border-radius: 10px;
 }
+
 .subTastText {
   display: flex;
   gap: 8px;
@@ -224,4 +231,8 @@ input:focus {
   padding: 16px;
   border-radius: 10px;
   gap: 4px;
+}
+
+.bordercolor{
+  border: solid 1px var(--lightBlue) !important;
 }
