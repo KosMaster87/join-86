@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 async function openCategorySelect(){
     content = document.getElementById(`categoryMenu`);
     content.innerHTML= `<div class="categorySelectOption">Technical Task</div>
@@ -43,6 +42,3 @@ function addSubtask(){
     </div>
   </div>`
 }
-=======
-
->>>>>>> Stashed changes
