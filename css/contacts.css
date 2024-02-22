@@ -80,7 +80,7 @@
     
     /** btn **/
     #mobileBtnAddContact {
-        background-color: var(-lightGray);
+        background-color: var(--lightGray);
         border-radius: 50%;
         position: absolute; 
         width: 56px;
