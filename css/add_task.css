@@ -1,4 +1,5 @@
 @import url("../style.css");
+@import url("../css/add_task.css");
 
 body {
   margin: 0;
@@ -102,9 +103,6 @@ input:focus {
   border-radius: 10px;
   background-color: #ffffff;
   cursor: pointer;
-}
-.taskSelectButton:hover {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 #taskDueDateContainer {
@@ -241,3 +239,31 @@ input:focus {
 .requiredBorder{
   border: solid 1px var(--wrongInputBorder);
 }
+
+
+.prioMedium{
+  background-color:var(--yellow) !important;
+  border: solid 1px var(--yellow)!important;
+  color: var(--white)!important;
+  font-weight: 700;
+}
+
+.prioUrgent{
+background-color:var(--red)!important;
+border: solid 1px var(--red)!important;
+color: var(--white)!important;
+font-weight: 700;
+}
+
+.prioLow{
+background-color:var(--green)!important;
+border: solid 1px var(--green)!important;
+color: var(--white)!important;
+font-weight: 700;
+}
+
+@media screen and (min-width: 721px){ 
+  .taskSelectButton:hover {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+} 

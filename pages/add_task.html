@@ -17,7 +17,7 @@
           <span class="requiredStar">*</span>
         </p>
         <input
-        id="titelInputContainer"
+          id="titelInputContainer"
           type="text"
           class="titleInputField"
           placeholder="Enter a title"
@@ -34,15 +34,15 @@
       <div id="taskPrioContainer">
         <p>Prio</p>
         <div id="prioSelectContainer">
-          <div class="taskSelectButton">
+          <div id="prioUrgentContainer" onclick="whatsPrio(prioUrgentContainer)" class="taskSelectButton">
             Urgent
             <img src="../assets/img/add_task/arrow_top_red.svg" />
           </div>
-          <div class="taskSelectButton">
+          <div id="prioMediumContainer" onclick="whatsPrio(prioMediumContainer)" class="taskSelectButton">
             Medium
             <img src="../assets/img/add_task/line_orange.svg" />
           </div>
-          <div class="taskSelectButton">
+          <div id="prioLowContainer" onclick="whatsPrio(prioLowContainer)" class="taskSelectButton">
             Low
             <img src="../assets/img/add_task/arrow_bottom_green.svg" />
           </div>
@@ -53,8 +53,13 @@
           Due date
           <span class="requiredStar">*</span>
         </p>
-        <input placeholder="TT.MM.JJJJ" type="date" class="dueDateInputField" />
-        <p class="fildIsRequiredText"></p>
+        <input
+          id="dueDateInputContainer"
+          placeholder="dd/mm/yyyy"
+          type="date"
+          class="dueDateInputField"
+        />
+        <p id="dueDateRequiredContainer" class="fildIsRequiredText"></p>
       </div>
 
       <div class="taskCategoryContainer">
@@ -74,7 +79,7 @@
           />
         </div>
         <div class="categorySelectOptions" id="categoryMenu"></div>
-        <p class="fildIsRequiredText"></p>
+        <p id="categoryRequiredContainer" class="fildIsRequiredText"></p>
       </div>
       <div id="taskAssignedContainer">
         <p>Assigned to</p>
@@ -93,6 +98,7 @@
             placeholder="Add new subtask"
             class="subtaskInputfield"
             type="text"
+            onkeydown="if(event.key==='Enter') addSubtask()"
           /><img
             onclick="addSubtask()"
             src="../assets/img/add_task/task_add.svg"
