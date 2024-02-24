@@ -9,9 +9,9 @@ function changeToShowCurrentPassword(passwordId, imageId) {
 
   if (hideThePassword.type == "password") {
     hideThePassword.type = "text";
-    hideThePasswordImage.src = "/assets/img/login/lock.svg";
+    hideThePasswordImage.src = "/assets/img/login/visibility_off.svg";
   } else {
     hideThePassword.type = "password";
-    hideThePasswordImage.src = "/assets/img/login/visibility_off.svg";
+    hideThePasswordImage.src = "/assets/img/login/lock.svg";
   }
 }

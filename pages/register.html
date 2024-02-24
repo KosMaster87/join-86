@@ -83,7 +83,7 @@
             style="padding-right: 3px"
             class="inpIconStyle"
             id="signUpPasswordImage"
-            src="../../../assets/img/login/visibility_off.svg"
+            src="../assets/img/register/lock.svg"
             onclick="changeToShowCurrentPassword('registerPassword', 'signUpPasswordImage')"
           />
         </div>
@@ -105,7 +105,7 @@
             style="padding-right: 3px"
             class="inpIconStyle"
             id="signUpConfirmPasswordImage"
-            src="../../../assets/img/login/visibility_off.svg"
+            src="../assets/img/register/lock.svg"
             onclick="changeToShowCurrentPassword('registerPasswordConfirm', 'signUpConfirmPasswordImage')"
           />
         </div>
@@ -118,14 +118,13 @@
             id="privacyCheck"
           />
           <label class="acceptPolicy" for="privacyCheck"
-            >I accept the Privacy policy</label
+            >I accept the<a href="#" class="acceptPolicyAnchor"> Privacy policy</a></label
           >
         </div>
 
         <div class="registerBtnBox">
-          <p id="registerError" style="color: red"></p>
-          <button class="RegisterBtn">Sign up</button>
-          <!-- <button class="RegisterBtn" onclick="registerUser()">Sign up</button> -->
+          <p class="registerError" id="registerError">Registration error</p>
+          <button class="RegisterBtn" type="button" onclick="registerUser()">Sign up</button>
         </div>
       </form>
 

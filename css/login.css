@@ -163,12 +163,12 @@
   .loginInputMail:focus {
     outline: none;
   }
-  
+
   .loginInputMail::placeholder {
     color: var(--fontGray);
   }
 
-    /* ---------------------------------------- */
+  /* ---------------------------------------- */
 
   .passwortDevision {
     display: flex;
@@ -199,17 +199,17 @@
     color: var(--fontGray);
   }
 
-    /* ---------------------------------------- */
-
   .forgotPassword {
     margin-top: 1rem;
   }
 
+  /* ---------------------------------------- */
+
   .rememberBox {
+    display: flex;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    display: flex;
-    padding-right: 6rem;
+    /* padding-right: 6rem; */
   }
 
   .rememberLabel {
