@@ -9,6 +9,7 @@ h1 {
   font-size: 47px;
   margin-left: 16px;
 }
+
 p {
   margin: 0;
   margin-bottom: 8px;
@@ -16,12 +17,27 @@ p {
 span {
   font-size: 16px;
 }
-
-.requiredStar {
-  color:var(--wrongInput);
-  font-size: 20px;
+.input {
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  color:var(--black);
 }
 
+.input::placeholder{
+  color:var(--lighterGrey)
+}
+
+.requiredStar {
+  color: var(--wrongInputText);
+  font-size: 20px;
+}
+.taskHeadline {
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: 400;
+}
 .fildIsRequiredText {
   margin-top: 4px;
   color: rgba(255, 129, 144, 1);
@@ -90,12 +106,9 @@ input:focus {
 
 .taskSelectButton {
   width: 126px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  border-radius: 10px;
-  font-size: 21px;
+  Padding: 18px 10px 18px 10px;
+  font-size: 16px;
+  font-weight: 400;
   justify-content: center;
   display: flex;
   gap: 8px;
@@ -231,39 +244,37 @@ input:focus {
   gap: 4px;
 }
 
-.bordercolor{
+.bordercolor {
   border: solid 1px var(--lightBlue) !important;
 }
 
-
-.requiredBorder{
+.requiredBorder {
   border: solid 1px var(--wrongInputBorder);
 }
 
-
-.prioMedium{
-  background-color:var(--yellow) !important;
-  border: solid 1px var(--yellow)!important;
-  color: var(--white)!important;
+.prioMedium {
+  background-color: var(--yellow) !important;
+  border: solid 1px var(--yellow) !important;
+  color: var(--white) !important;
   font-weight: 700;
 }
 
-.prioUrgent{
-background-color:var(--red)!important;
-border: solid 1px var(--red)!important;
-color: var(--white)!important;
-font-weight: 700;
+.prioUrgent {
+  background-color: var(--red) !important;
+  border: solid 1px var(--red) !important;
+  color: var(--white) !important;
+  font-weight: 700;
 }
 
-.prioLow{
-background-color:var(--green)!important;
-border: solid 1px var(--green)!important;
-color: var(--white)!important;
-font-weight: 700;
+.prioLow {
+  background-color: var(--green) !important;
+  border: solid 1px var(--green) !important;
+  color: var(--white) !important;
+  font-weight: 700;
 }
 
-@media screen and (min-width: 721px){ 
+@media screen and (min-width: 721px) {
   .taskSelectButton:hover {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
 }
-} 

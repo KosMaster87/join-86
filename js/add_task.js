@@ -82,19 +82,14 @@ function testfalsch() {
 }
 
 function inputAbfrage() {
-  inputfield = document.getElementById(`titelInputContainer`);
-  inputRequired = document.getElementById(`inputRequiredContainer`);
+  let inputfield = document.getElementById("titelInputContainer");
+  let inputRequired = document.getElementById("inputRequiredContainer");
   if (inputfield.value.trim() === "") {
     inputfield.classList.add("requiredBorder");
     inputRequired.innerHTML = "This field is required";
-    required++;
   } else {
-    if (inputfield.value) {
-    } else {
-      inputfield.value = "";
-      inputRequired.innerHTML = "";
-      inputfield.classList.remove("requiredBorder");
-    }
+    inputfield.classList.remove("requiredBorder");
+    inputRequired.innerHTML = "";
   }
 }
 
@@ -106,14 +101,11 @@ function dueDateRequired() {
     inputRequired.innerHTML = "This field is required";
     required++;
   } else {
-    if (inputfield.value) {
-    } else {
-      inputfield.value = "";
       inputRequired.innerHTML = "";
       inputfield.classList.remove("requiredBorder");
     }
   }
-}
+
 
 function categoryRequired() {
   border = document.getElementById(`categorySelectContainer`);
@@ -134,7 +126,8 @@ function categoryRequired() {
 function editSubTask(subtaskCounter) {
   let inputFieldId = `editInput${subtaskCounter}`;
   let textInElement = document.getElementById(`newSubtext${subtaskCounter}`);
-  if (subtaskTextElement) {
+  let menu = document.getElementById(`newSubMenu`);
+  if (textInElement) {
     let currentText = textInElement.textContent;
     textInElement.outerHTML = `<input type="text" id="${inputFieldId}" value="${currentText}" />`;
     menu.innerHTML = `<img onclick="removeSubtask(${subtaskCounter})" src="../assets/img/add_task/task_bin.svg" />
@@ -184,7 +177,6 @@ function removeWhiteImg(){
   imgUrgent.src="../assets/img/add_task/arrow_top_red.svg";
   imgMedium.src="../assets/img/add_task/line_orange.svg";
   imgLow.src="../assets/img/add_task/arrow_bottom_green.svg";
-
 }
 
 function changePrioColor(clickedContainerId) {

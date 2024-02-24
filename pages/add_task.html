@@ -12,7 +12,7 @@
     <h1>Add Task</h1>
     <div class="taskMainContainer">
       <div class="taskTitleContainer">
-        <p>
+        <p class="taskHeadline">
           Title
           <span class="requiredStar">*</span>
         </p>
@@ -25,31 +25,43 @@
         <p id="inputRequiredContainer" class="fildIsRequiredText"></p>
       </div>
       <div class="taskDescriptionContainer">
-        <p>Description</p>
+        <p class="taskHeadline">Description</p>
         <textarea
           placeholder="Enter a Descripton"
           class="descriptionInputField"
         ></textarea>
       </div>
       <div id="taskPrioContainer">
-        <p>Prio</p>
+        <p class="taskHeadline">Prio</p>
         <div id="prioSelectContainer">
-          <div id="prioUrgentContainer" onclick="whatsPrio(prioUrgentContainer)" class="taskSelectButton">
+          <div
+            id="prioUrgentContainer"
+            onclick="whatsPrio(prioUrgentContainer)"
+            class="taskSelectButton"
+          >
             Urgent
             <img src="../assets/img/add_task/arrow_top_red.svg" />
           </div>
-          <div id="prioMediumContainer" onclick="whatsPrio(prioMediumContainer)" class="taskSelectButton">
+          <div
+            id="prioMediumContainer"
+            onclick="whatsPrio(prioMediumContainer)"
+            class="taskSelectButton"
+          >
             Medium
             <img src="../assets/img/add_task/line_orange.svg" />
           </div>
-          <div id="prioLowContainer" onclick="whatsPrio(prioLowContainer)" class="taskSelectButton">
+          <div
+            id="prioLowContainer"
+            onclick="whatsPrio(prioLowContainer)"
+            class="taskSelectButton"
+          >
             Low
             <img src="../assets/img/add_task/arrow_bottom_green.svg" />
           </div>
         </div>
       </div>
       <div id="taskDueDateContainer">
-        <p>
+        <p class="taskHeadline">
           Due date
           <span class="requiredStar">*</span>
         </p>
@@ -63,7 +75,7 @@
       </div>
 
       <div class="taskCategoryContainer">
-        <p>
+        <p class="taskHeadline">
           Category
           <span class="requiredStar">*</span>
         </p>
@@ -82,7 +94,7 @@
         <p id="categoryRequiredContainer" class="fildIsRequiredText"></p>
       </div>
       <div id="taskAssignedContainer">
-        <p>Assigned to</p>
+        <p class="taskHeadline">Assigned to</p>
         <div class="categorySelect">
           Select to Contact<img
             src="../assets/img/add_task/arrow_drop_down.svg"
@@ -91,7 +103,7 @@
       </div>
 
       <div id="taskSubtaskContainer">
-        <p>Subtasks</p>
+        <p class="taskHeadline">Subtasks</p>
         <div class="subTaskInputcontainer">
           <input
             id="subTaskInputfieldText"
