@@ -16,9 +16,12 @@ function resetBorderColor(containerId) {
   FocusContainer.classList.remove("active");
 }
 
-function registerUser() {
-  // let RegisterBtn = document.getElementById("RegisterBtn");
-  // meinButton.disabled = true;
+/**
+ * Switch to register page.
+ */
+function redirectToRegister() {
+  // Hier den Pfad zur Ziel-HTML-Seite eintragen
+  window.location.href = "registrierungsseite.html";
 }
 
 /**

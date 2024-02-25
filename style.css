@@ -43,6 +43,10 @@ html {
   min-height: calc(100vh - 7rem);
 }
 
+.cursorPointer {
+  cursor: pointer;
+}
+
 input:focus {
   outline: none;
   border-color: var(--lightBlue);

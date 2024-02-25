@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/register.css" />
-    <script src="../js/hideShowPassword.js"></script>
+    <script src="../js/register.js"></script>
     <title>Join - Register</title>
   </head>
 
@@ -14,6 +14,8 @@
     </div>
 
     <div class="firstRegister">
+      <img class="signUpJoinLogo" src="../assets/img/register/secondLogo.svg" />
+
       <form
         class="registerLayout RegisterBoxShadow"
         onsubmit="registerUser(); return false;"
@@ -118,13 +120,17 @@
             id="privacyCheck"
           />
           <label class="acceptPolicy" for="privacyCheck"
-            >I accept the<a href="#" class="acceptPolicyAnchor"> Privacy policy</a></label
+            >I accept the<a href="#" class="acceptPolicyAnchor">
+              Privacy policy</a
+            ></label
           >
         </div>
 
         <div class="registerBtnBox">
           <p class="registerError" id="registerError">Registration error</p>
-          <button class="RegisterBtn" type="button" onclick="registerUser()">Sign up</button>
+          <button class="RegisterBtn" type="button" onclick="registerUser()">
+            Sign up
+          </button>
         </div>
       </form>
 
