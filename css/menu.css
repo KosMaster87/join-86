@@ -210,7 +210,7 @@
     justify-content: space-around;
     align-items: center;
     position: sticky;
-    top: 0;
+    top: 3.5rem;
     left: 0;
     height: 100dvh;
     width: 10rem;
@@ -219,13 +219,11 @@
 
   /* ---------------------------------------- */
 
-  .desktopMenuPolicyBox {
-    display: block;
-  }
-
   .menuItem {
+    display: flex;
+    justify-content: center;
     border: dotted 1px yellow;
-    width: 100%;
+    width: 90%;
     height: 3rem;
     margin-bottom: 15px;
   }
@@ -254,6 +252,7 @@
   /* ---------------------------------------- */
 
   .desktopMenuPolicyBox {
+    display: block;
     display: flex;
     flex-direction: column;
     gap: 1rem;

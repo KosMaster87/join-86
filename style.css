@@ -34,17 +34,36 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  background-color: var(--whiteGray);
-  display: flex;
-  flex-direction: column;
+/* ---------------------------------------- */
+
+@media only screen and (max-width: 720px) and (min-width: 250px) {
+  body {
+    background-color: var(--whiteGray);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /*  Dem zu inportierendem Kontent die Klasse geben.  */
+  .mainContent {
+    min-height: calc(100dvh - 7rem);
+  }
 }
 
-/*  Dem zu inportierendem Kontent die Klasse geben.  */
-.mainContent {
-  background-color: var(--whiteGray);
-  min-height: calc(100dvh - 7rem);
+/* ---------------------------------------- */
+
+@media only screen and (max-width: 2560px) and (min-width: 721) {
+  body {
+    background-color: var(--whiteGray);
+    display: flex;
+  }
 }
+
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
 
 /* Zurück-lagern */
 .cursorPointer {
@@ -56,3 +75,10 @@ input:focus {
   outline: none;
   border-color: var(--lightBlue);
 }
+
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */

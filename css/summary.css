@@ -305,9 +305,12 @@
 /* ---------------------------------------- */
 
 @media only screen and (max-width: 2560px) and (min-width: 721px) {
+  /* TODO */
   .summaryContent {
-    margin-top: 10rem;
+    margin-top: 5rem;
   }
+
+  /* ---------------------------------------- */
 
   .greetingUserSummary {
     display: none;
@@ -332,6 +335,8 @@
     font-weight: 800;
     color: var(--lightBlue);
   }
+
+  /* ---------------------------------------- */
 
   .summaryToDos {
     margin-top: 2rem;
@@ -389,6 +394,8 @@
     filter: drop-shadow(2px 2px 2px gray);
   }
 
+  /* ---------------------------------------- */
+
   .row1 {
     display: flex;
     flex-direction: row;
@@ -431,6 +438,8 @@
   .summaryToDoSum p {
     font-size: 0.6rem;
   }
+
+  /* ---------------------------------------- */
 
   .row2Helper {
     display: flex;
@@ -489,6 +498,8 @@
     font-size: 0.8rem !important;
     font-weight: 300;
   }
+
+  /* ---------------------------------------- */
 
   .row3 {
     display: flex;
