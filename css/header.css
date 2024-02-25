@@ -277,6 +277,11 @@
     width: 100%;
   }
 
+  /* .mainHeaderLogoImg {
+    width: 1.5rem;
+    cursor: pointer;
+  } */
+
   /* ---------------------------------------- */
 
   .headerSubMenu {
@@ -316,6 +321,18 @@
 
   /* ---------------------------------------- */
 
+  .theProgramm {
+    display: block;
+    margin-left: 4rem;
+  }
+
+  .logoImgContainer {
+    display: none;
+    margin-left: 1rem;
+  }
+
+  /* ---------------------------------------- */
+
   .userSymbolContainer {
     display: flex;
     align-items: center;
@@ -325,22 +342,9 @@
   }
 
   .userSymbolContainerHelp {
-    display: none;
+    display: block;
     width: 2rem;
     height: 2rem;
-    cursor: pointer;
-  }
-
-  .theProgramm {
-    display: none;
-  }
-
-  .logoImgContainer {
-    margin-left: 1rem;
-  }
-
-  .mainHeaderLogoImg {
-    width: 1.5rem;
     cursor: pointer;
   }
 

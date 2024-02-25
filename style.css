@@ -34,16 +34,15 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 /* ---------------------------------------- */
 
 @media only screen and (max-width: 720px) and (min-width: 250px) {
-  body {
-    background-color: var(--whiteGray);
-    display: flex;
-    flex-direction: column;
-  }
-
-  /*  Dem zu inportierendem Kontent die Klasse geben.  */
+  /*  Dem zu inportierendem Kontent diese Klasse geben.  */
   .mainContent {
     min-height: calc(100dvh - 7rem);
   }
@@ -51,11 +50,10 @@ html {
 
 /* ---------------------------------------- */
 
-@media only screen and (max-width: 2560px) and (min-width: 721) {
-  body {
-    background-color: var(--whiteGray);
-    display: flex;
-  }
+@media only screen and (max-width: 2560px) and (min-width: 721px) {
+body {
+  display: flex;
+}
 }
 
 /* ---------------------------------------- */
