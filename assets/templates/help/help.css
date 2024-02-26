@@ -1,8 +1,4 @@
-/* @media only screen and (min-device-width: 251px) and (max-device-width: 1441px) and (orientation: portrait) {
-}
-
-@media only screen and (min-device-width: 481px) and (max-device-width: 1680px) and (orientation: landscape) {
-} */
+@import url("../../../style.css");
 
 html {
   scroll-behavior: smooth;
@@ -12,24 +8,21 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #f6f7f8;
 
   a {
     text-decoration: none;
-    color: #29abe2;
+    color: var(--lightBlue);
     text-shadow: 0.5px 0px rgb(129, 200, 160);
     cursor: pointer;
   }
 }
 
 @media only screen and (min-width: 250px) {
-  /* @media only screen and (max-width: 480px) and (min-width: 250px) { */
   .helpContent {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    padding: 1rem;
-    overflow: scroll;
+    padding: 2rem;
 
     p {
       text-align: justify;
@@ -52,21 +45,3 @@ body {
     width: 100%;
   }
 }
-
-/* @media only screen and (max-width: 750px) and (min-width: 481px) {
-  }
-  
-  @media only screen and (max-width: 960px) and (min-width: 751px) {
-  }
-  
-  @media only screen and (max-width: 1024px) and (min-width: 961px) {
-  }
-  
-  @media only screen and (max-width: 1920px) and (min-width: 1025px) {
-  }
-  
-  @media only screen and (max-width: 1440px) and (min-width: 1921px) {
-  }
-  
-  @media only screen and (max-width: 1680px) and (min-width: 1441px) {
-  } */

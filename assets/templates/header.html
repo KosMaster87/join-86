@@ -21,41 +21,39 @@
       </div>
 
       <div id="userSymbolContainerID" class="userSymbolContainer">
-        <img
-          onclick="includeContentHTML('Help')"
-          class="userSymbolContainerHelp"
-          src="assets/img/header/help.png"
-        />
+        <a href="./../../assets/templates/help/help.html">
+          <img
+            class="userSymbolContainerHelp"
+            src="assets/img/header/help.png"
+          />
+        </a>
 
         <div onclick="handleSubMenuBtn()">
           <img
             id="headerProfile"
-            class="userLogoImg summaryAnimateProgramm editHeaderImage"
+            class="userLogoImg"
             src="assets/img/header/headerCurrentGuestImage.svg"
           />
         </div>
 
         <div class="headerSubMenu" id="headerSubMenu">
-          <div class="headerSubMenuBoxing">
-            <div class="headerSubMenuHoverBox">
-              <a
-                onclick="includeContentHTML('LegalNotice')"
-                class="headerSubMenuHoverAnchor"
-                >Legal notice</a
-              >
-            </div>
+          <div class="headerSubMenuHoverBox">
+            <a
+              href="./../../assets/templates/legal_notice/legal_notice_internal.html"
+              class="headerSubMenuHoverAnchor"
+              >Legal notice</a
+            >
           </div>
-          <div class="headerSubMenuBoxing">
-            <div class="headerSubMenuHoverBox">
-              <a
-                onclick="includeContentHTML('PrivacyPolicy')"
-                class="headerSubMenuHoverAnchor"
-                >Privacy Police</a
-              >
-            </div>
+
+          <div class="headerSubMenuHoverBox">
+            <a
+              href="./../../assets/templates/privacy_policy/privacy_policy_internal.html"
+              class="headerSubMenuHoverAnchor"
+              >Privacy Police</a
+            >
           </div>
+
           <div class="headerSubMenuHoverBox" id="headerLogout">
-            <div class="headerSubMenuBoxing"></div>
             <a class="headerSubMenuHoverAnchor">Log out</a>
           </div>
         </div>

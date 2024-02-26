@@ -275,30 +275,28 @@
     height: 3.5rem;
     top: 0;
     left: 10rem;
-    width: 100%;
+    right: 0;
     position: fixed;
   }
-
-  /* .mainHeaderLogoImg {
-    width: 1.5rem;
-    cursor: pointer;
-  } */
 
   /* ---------------------------------------- */
 
   .headerSubMenu {
-    display: none;
+    /* display: none; */
     position: absolute;
     right: 1rem;
-    top: 4rem;
+    top: 3rem;
     z-index: 30;
-    width: 8.5rem;
+    width: 9rem;
     height: 9rem;
     background-color: var(--lightGray);
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.8rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
   }
 
   .headerSubMenuHoverBox {
@@ -306,8 +304,8 @@
     align-items: center;
     justify-content: flex-start;
     cursor: pointer;
-    width: 7.5rem;
-    height: 2rem;
+    width: 8rem;
+    height: 2.5rem;
     border-radius: 0.5rem;
     padding-left: 0.4rem;
   }

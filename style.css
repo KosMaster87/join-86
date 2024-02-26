@@ -50,6 +50,9 @@ html {
   /*  Dem zu inportierendem Kontent diese Klasse geben.  */
   .mainContent {
     min-height: calc(100dvh - 7rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -58,10 +61,13 @@ html {
 @media only screen and (max-width: 2560px) and (min-width: 721px) {
   /*  Dem zu inportierendem Kontent diese Klasse geben.  */
   .mainContent {
-    display: flex;
+    height: calc(100dvh - 3.5rem);
     position: fixed;
     left: 10rem;
-    top: 3.5rem;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
