@@ -1,4 +1,4 @@
-@import url("../style.css");
+/* @import url("../style.css"); */
 
 /* ---------------------------------------- */
 /* Global style for login.                  */
@@ -308,6 +308,8 @@
   /* TODO */
   .summaryContent {
     margin-top: 5rem;
+    width: 100%;
+    height: calc(100dvh - 3.5rem);
   }
 
   /* ---------------------------------------- */
