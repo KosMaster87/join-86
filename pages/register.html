@@ -18,7 +18,8 @@
 
       <form
         class="registerLayout RegisterBoxShadow"
-        onsubmit="registerUser(); return false;"
+        id="registerNewUser"
+        onsubmit="registerNewUser(); return false;"
       >
         <div class="headerRegisterBox">
           <img
@@ -86,7 +87,7 @@
             class="inpIconStyle"
             id="signUpPasswordImage"
             src="../assets/img/register/lock.svg"
-            onclick="changeToShowCurrentPassword('registerPassword', 'signUpPasswordImage')"
+            onclick="changeToShowCurrentPassword('registerInputPassword', 'signUpPasswordImage')"
           />
         </div>
 
@@ -108,7 +109,7 @@
             class="inpIconStyle"
             id="signUpConfirmPasswordImage"
             src="../assets/img/register/lock.svg"
-            onclick="changeToShowCurrentPassword('registerPasswordConfirm', 'signUpConfirmPasswordImage')"
+            onclick="changeToShowCurrentPassword('registerInputPasswordConfirm', 'signUpConfirmPasswordImage')"
           />
         </div>
 
@@ -128,7 +129,7 @@
 
         <div class="registerBtnBox">
           <p class="registerError" id="registerError">Registration error</p>
-          <button class="RegisterBtn" type="button" onclick="registerUser()">
+          <button class="RegisterBtn" type="button">
             Sign up
           </button>
         </div>

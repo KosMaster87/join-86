@@ -1,8 +1,21 @@
 let users = [];
 
-function registerUser() {
-  // let RegisterBtn = document.getElementById("RegisterBtn");
-  // meinButton.disabled = true;
+// ---------------------------------------------------------------------------
+
+async function registerNewUser() {
+  meinButton.disabled = true;
+  users.push({
+    email: registerInputEmail.value,
+    password: registerInputPassword.value,
+  });
+  await setItem("users", JSON.stringify(users));
+  resetForm();
+}
+
+function resetForm() {
+  email.value = "";
+  password.value = "";
+  registerBtn.disabled = false;
 }
 
 // ---------------------------------------------------------------------------
@@ -39,13 +52,14 @@ function changeToShowCurrentPassword(passwordId, imageId) {
 
 // ---------------------------------------------------------------------------
 
+// Kann man auch für Popups benutzen. Mit
 /**
  * Change border color from parent element.
  * @param {string} containerId
  */
 function changeBorderColor(containerId) {
-  let FocusContainer = document.getElementById(containerId);
-  FocusContainer.classList.add("active");
+  let focusContainer = document.getElementById(containerId);
+  focusContainer.classList.add("active");
 }
 
 /**
@@ -53,6 +67,8 @@ function changeBorderColor(containerId) {
  * @param {string} containerId
  */
 function resetBorderColor(containerId) {
-  let FocusContainer = document.getElementById(containerId);
-  FocusContainer.classList.remove("active");
+  let focusContainer = document.getElementById(containerId);
+  focusContainer.classList.remove("active");
 }
+
+

@@ -1,6 +1,28 @@
 @import url("../style.css");
 
 /* ---------------------------------------- */
+/* TODO                                     */
+/* ---------------------------------------- */
+.descriptionInputField {
+  padding: 2rem 1.8rem;
+  border-radius: 1.2rem;
+  border: 1px solid var(--lighterGray);
+  background-color: var(--white);
+  max-height: 175px;
+  min-height: 102px;
+  height: 84px;
+  outline: none;
+  border-color: var(--lightGray);
+}
+
+.descriptionInputField:focus {
+  outline: none;
+  border-color: var(--lighBlue);
+}
+
+/* ---------------------------------------- */
+
+/* ---------------------------------------- */
 /* Global style for login.                  */
 /* ---------------------------------------- */
 
@@ -710,7 +732,7 @@
   }
 
   .backToLoginMobile {
-    width: 1.4  rem;
+    width: 1.4 rem;
   }
 
   .blancoHelper {
