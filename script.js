@@ -31,3 +31,13 @@ async function getItem(key) {
       })
   );
 }
+
+async function loadUsers() {
+  try {
+    users = JSON.parse(await getItem("users"));
+  } catch (e) {
+    console.error("Loading error:", e);
+  }
+
+
+}
