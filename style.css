@@ -4,7 +4,7 @@
   --lighterGray: #d1d1d1;
   --lightGray: #2a3647;
   --lightBlue: #29abe2;
-  --intenseBlue: #007CEE;
+  --intenseBlue: #007cee;
   --darkBlue: #091931;
   --darkBlueHover: #19273d;
   --organe: #ff3d00;
@@ -18,6 +18,9 @@
   --wrongInputText: #FF8190;
   --fontGray: #a8a8a8;
   --fontWhite: #cdcdcd;
+  --purple: #9327ff;
+  --curry: #ffbb2b;
+  --greenIcon: #1fd7c1;
 }
 
 * {
