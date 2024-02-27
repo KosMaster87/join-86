@@ -3,20 +3,23 @@ let users = [];
 // ---------------------------------------------------------------------------
 
 async function registerNewUser() {
-  let registerInputName = document.getElementById('registerInputName');
-  let registerInputEmail = document.getElementById('registerInputEmail');
-  let registerInputPassword = document.getElementById('registerInputPassword');
-  let registerInputPasswordConfirm = document.getElementById('registerInputPasswordConfirm');
+  let registerInputName = document.getElementById("registerInputName");
+  let registerInputEmail = document.getElementById("registerInputEmail");
+  let registerInputPassword = document.getElementById("registerInputPassword");
+  let registerInputPasswordConfirm = document.getElementById(
+    "registerInputPasswordConfirm"
+  );
   let registerBtn = document.getElementById("registerBtn");
   let colorCode = "#ff3d00";
 
   registerBtn.disabled = true;
   users.push({
-    'name': registerInputEmail.value,
-    'email': registerInputEmail.value,
-    'password': registerInputPassword.value
+    name: registerInputName.value,
+    email: registerInputEmail.value,
+    password: registerInputPassword.value,
+    colorCode,
   });
-  await setItem('users', JSON.stringify(users));
+  await setItem("users", JSON.stringify(users));
   resetForm();
 }
 

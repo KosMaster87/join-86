@@ -36,21 +36,6 @@ function changeToShowCurrentPassword(passwordId, imageId) {
   }
 }
 
-/**
- * Switch to index.html.
- */
-function redirectToIndex() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const msg = urlParams.get("msg");
-
-  if (msg) {
-    console.log("Weiterleitung zur index.html");
-    window.location.href = "index.html";
-  } else {
-    console.log("Keine Weiterleitung erfolgt!");
-  }
-}
-
 async function login() {
   let loginInputMail = document.getElementById("loginInputMail");
   let loginInputPassword = document.getElementById("loginInputPassword");
@@ -70,4 +55,11 @@ async function login() {
   } else {
     console.log("Benutzer nicht gefunden");
   }
+}
+
+/**
+ * Switch to index.html.
+ */
+function redirectToIndex() {
+  window.location.href = "../index.html";
 }
