@@ -1,0 +1,142 @@
+ 
+/* RESET INPUT FIELDS */
+input[type="text"],[type="email"],[type="tel"] {
+    margin: 0;
+    padding: 0;
+    
+    border: none;
+    border-radius: 0;
+    
+    /* Resetting font styles */
+    font-family: 'Inter', sans-serif;
+    font-size: inherit;
+    font-weight: 400;
+    font-style: inherit;
+    line-height: inherit;
+    
+    /* Resetting background and text color */
+    background-color: transparent;
+    color: inherit;
+    
+    /* Resetting any other relevant properties */
+    /* For instance, you might want to reset box-shadow, outline, etc. */
+    box-shadow: none;
+    outline: none;
+    
+    /* You can add more specific styling as needed */
+}
+
+
+ 
+ /* container contacts incl. sort row */
+ #containerListContacts {
+    margin: 0 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 24px;
+}
+
+#alphabeticalRow {
+    width: 100%;
+    height: 58px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.firstChartSort {
+    font-size: 20px;
+    padding: 17px 36px;
+}
+
+/* singleContact */
+.singleContact {
+    display: flex;
+    padding: 15px 24px; 
+    gap: 35px;  
+}
+
+/* contact signature icon */
+.contactSignatureIcon {
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--white);
+}
+
+.contactSignatureIconLetter {
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+}
+
+/* contact data */
+
+.contactName {
+    color: var(--black);
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.contactEmail {
+    color: var(--intenseBlue);
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.styleHr {
+    width: 100%;
+    height: 1px;
+    background-color: var(--lighterGray);
+    margin: 8px 0;
+}
+
+.d-none {
+    display: none;
+}
+@media screen and (min-width: 300px)
+{
+    
+   
+}
+
+@media screen and (min-width: 456px) {
+    /* contactFlexContainer als Seitenelement für Desktop-Ansicht */
+    .containerContacts {
+        width: 400px;
+    }
+}
+
+@media screen and (min-width: 721px) { 
+    .containerContacts {
+        width: 456px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    body {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        height: 100vh;
+    }
+    
+    #contactFlexContainer {
+        display: inline-block;
+        flex: 1;
+    }
+
+    #mobileBtnAddContact{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+
+}

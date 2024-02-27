@@ -1,0 +1,169 @@
+@import url("../../style.css");
+
+#mobileBtnAddContact {
+    background-color: var(--lightGray);
+    border-radius: 50%;
+    position: absolute; 
+    width: 56px;
+    height: 56px;
+    position: fixed;
+    bottom: 8.5%;
+    right: 5%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    line-height: 1.2;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+#addContact {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+#closeAddContact:hover {
+    cursor: pointer;
+}
+
+.addContactHeader {
+    background-color: var(--lightGray);
+    min-height: 352px;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px 24px;
+}
+
+.addContactGetBack {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.addContactHeadlines {
+    margin-top: 56px;
+}
+
+
+.addContactH1 {
+    color: var(--white);
+    font-weight: 700;
+    font-size: 47px;
+    line-height: 1.2;
+}
+
+.addContactH3 {
+    color: var(--white);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.mobileHeaderBorder {
+    height: 2px;
+    width: 90px;
+    background-color: var(--lightBlue);
+    margin-top: 8px;
+}
+
+.addContactHeaderBorder {
+    height: 2px;
+    width: 90px;
+    background-color: var(--lightBlue);
+    margin-top: 8px;
+}
+
+.addContactEmptySignature {
+    width: 120px;
+    height: 120px;
+    background-color: var(--lighterGray);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 92px;
+    left: calc(50% - 61px);
+}
+
+#addContactEntry {
+    flex: grow;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    height: calc(100vh - (352px));
+    padding: 16px;
+}
+
+.contactInputContainer {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#contactInputFieldName {
+    border: 1px solid var(--lighterGray);
+}
+
+#contactInputFieldName:focus {
+    border-color: var(--lightBlue);
+}
+
+
+#contactInputFieldEmail {
+    border: 1px solid var(--lighterGray);
+}
+
+#contactInputFieldPhone {
+    border: 1px solid var(--lighterGray);
+}
+
+.contactInputField {
+    background-color: transparent;
+    border-radius: 10px;
+    height: 41px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 21px
+}
+
+.contactInputField:hover {
+    cursor: pointer;
+}
+
+.contactBtnRow {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactBtnSave {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--white);
+    background-color: var(--lightGray);
+    border-radius: 10px;
+    padding: 18px 10px;
+}
+
+.contactBtnSave:hover {
+    cursor: pointer;
+}
+
+#contactBtnSaveIcon {
+    margin-left: 8px;
+}

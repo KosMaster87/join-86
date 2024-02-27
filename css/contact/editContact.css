@@ -1,0 +1,71 @@
+
+    @import url("../../style.css");
+    
+    /* btn mobileBtnEditContact */
+    #mobileBtnEditContact {
+        background-color: var(--lightGray);
+        border-radius: 50%;
+        position: absolute; 
+        width: 56px;
+        height: 56px;
+        position: fixed;
+        bottom: 8.5%;
+        right: 5%;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        line-height: 1.2;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    #mobileBtnEditContact:hover {
+        cursor: pointer;
+    }
+
+        /* JETZT AB HIER EDIT CONTACT */
+
+        .editContactSignature {
+            font-size: 47px;
+            line-height: 1.2;
+            color: var(--white);
+        }
+    
+        .editContactEmptySignature {        
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 92px;
+            left: calc(50% - 61px);
+            background-color: var(--orangeIcons);
+        }
+    
+        .editContactHeadlines {
+            margin-top: 80px;  
+        }
+    
+        .editContactBtnRow {
+            display: flex;
+            margin-top: 36px;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+        }
+    
+        .editContactBtnDelete {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--lightGray);
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 18px 10px; 
+            border: 1px solid var(--lightGray);
+        }

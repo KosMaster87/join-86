@@ -1,0 +1,121 @@
+@import url("../../style.css");
+    /** btn mobileBtnAddContact **/
+
+    .d-none {
+        display: none;
+    }
+
+    /* contactFlexContainer als Seitenelement für Desktop-Ansicht */
+    #showSingleContact {
+        background-color: var(--whiteGray);
+    }
+
+    /* MobileShowContact */
+    #mobileShowContact {
+        background-color: var(--whiteGray);
+        height: 100vh;
+        padding: 0 16px;
+    } 
+
+    .contactGetBack:hover {
+        cursor:pointer;
+    }
+    
+    .contactHeader {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 48px;
+    }
+
+    .headerBorder {
+        height: 2px;
+        width: 90px;
+        background-color: var(--lightBlue);
+        margin-top: 8px;
+    }
+
+    .contactH1 {
+        font-weight: 700;
+        font-size: 47px;
+        line-height: 1.2;
+    }
+
+    .contactH3 {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 1.2;
+    }
+
+    .contactDisplay {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 21px;
+        margin-top: 36px;
+    }
+
+    .contactDisplayTitle {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .contactIconXl {
+        background-color: var(--orangeIcons);
+        color: var(--white);
+        width: 80px;
+        height: 80px;
+        border: 1px solid var(--white);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 27px;
+        line-height: 1.2;
+    }
+
+    .contactIconName {
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .contactInfo {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1.2;
+
+    }
+
+    .labelDisplay {
+        font-size: 16px;
+        line-height: 1.2;
+        font-weight: 700;
+    }
+
+    .emailLink {
+        color: var(--intenseBlue)
+    }
+
+@media screen and (min-width: 320px){
+
+}
+
+@media screen and (min-width: 721px) { 
+
+}
+
+@media screen and (min-width: 1000px) {
+    #contactFlexContainer {
+        display: inline-block;
+        flex: 1;
+    }
+
+    #mobileBtnAddContact{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+
+}
