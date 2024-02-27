@@ -1,44 +1,58 @@
- /* Mock-Up Array Kontaktdaten */
- let contacts = [{
-    "name": "Anton Mayer", 
-    "email": "antom@gmail.com", 
-    "signature": "AM",
-    "bk-color": ""
-    }, 
+const mockUpUserContacts = [
     {
-        "name": "Anja Schulz", 
-        "email": "schulz@htomail.com",
-        "signature": "AZ", 
-        "bk-color": "#FF7A00" //orange
-    },
-    {
+        "userId": "user1",
+        "contactId": "33333333333333333",
         "name": "Benedikt Ziegler", 
         "email": "benedikt@gmail.com",
-        "signature": "BZ", 
-        "bk-color": "#9327FF" //violett
+        "userColor": "var(--purple)", 
+        "signature": "BZ",   
     },
     {
-        "name": "David Eisenberg", 
-        "email": "davidberg@gmail.com",
-        "signature": "DE",
-        "bk-color": "#FC71FF" //pink
-    },
-    {
-        "name": "Eva Fischer", 
-        "email": "eva@gmail.com",
-        "signature": "EF",
-        "bk-color": "#FFBB2B" //curry
-    },
-    {
-        "name": "Emmanuel Mauer", 
-        "email": "emmanuelma@gmail.com",
-        "signature": "EM",
-        "bk-color": "#1FD7C1" //green
+        "userId": "user1",
+        "contactId": "11111111111111111",
+        "name": "Anton Mayer", 
+        "email": "antom@gmail.com", 
+        "userColor": "var(--mintGreen)",
+        "signature": "AM", 
     }, 
     {
-        "name": "emil Schneck", 
+        "userId": "user1",
+        "contactId": "7777777777777777",
+        "name": "Emil Schneck", 
         "email": "eschneck@gmail.com",
-        "signature": "ES",
-        "bk-color": "#1FD7C1" //green
-    }
+        "userColor": "var(--purple)",
+        "signature": "ES", 
+    },
+    {
+        "userId": "user1",
+        "contactId": "222222222222222",
+        "name": "Anja Schulz", 
+        "email": "schulz@htomail.com",
+        "userColor": "var(--orangeIcons)",
+        "signature": "AZ",   
+    },
+    {
+        "userId": "user1",
+        "contactId": "666666666666666",
+        "name": "Emmanuel Mauer", 
+        "email": "emmanuelma@gmail.com",
+        "userColor": "var(--greenIcon)",
+        "signature": "EM",  
+    }, 
+    {
+        "userId": "user1",
+        "contactId": "4444444444444444",
+        "name": "David Eisenberg", 
+        "email": "davidberg@gmail.com",
+        "userColor": "var(--pink)", 
+        "signature": "DE",
+    },
+    {        
+        "userId": "user1",
+        "contactId": "55555555555555555",
+        "name": "Eva Fischer", 
+        "email": "eva@gmail.com",
+        "userColor": "var(--curry)",
+        "signature": "EF",
+    },
 ];
