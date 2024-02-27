@@ -4,7 +4,7 @@ let users = [];
 /**
  * The registration of a new user.
  */
-async function registerNewUser() {
+function registerNewUser() {
   let registerInputName = document.getElementById("registerInputName");
   let registerInputEmail = document.getElementById("registerInputEmail");
   let registerInputPassword = document.getElementById("registerInputPassword");
@@ -21,10 +21,15 @@ async function registerNewUser() {
     password: registerInputPassword.value,
     colorCode,
   });
-  await setItem("users", JSON.stringify(users));
-  resetForm();
+  console.log(users);
+  secondaryFunctions();
 }
 
+async function secondaryFunctions() {
+  await setItem("users", JSON.stringify(users));
+  redirectToLoin();
+  resetForm();
+}
 /**
  * Reset registration form values.
  */

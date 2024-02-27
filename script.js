@@ -1,4 +1,5 @@
-const STORAGE_TOKEN = "J4LQKS1ZDS5WC5NTX6XUA3MD2ROKE6VOP8A4QBBP";
+const STORAGE_TOKEN = "DXZFTQCTDMTN307RSV39G7QWLBSB9ZB6CEFWG1WB"; // #2
+// const STORAGE_TOKEN = "J4LQKS1ZDS5WC5NTX6XUA3MD2ROKE6VOP8A4QBBP"; // #1
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
 async function init() {
@@ -54,10 +55,43 @@ async function getItem(key) {
  * @param {Data to save as in string.} value
  * @returns The confirmation from the server as an object.
  */
+// async function setItem(key, value) {
+//   const payload = { key, value, token: STORAGE_TOKEN };
+//   return fetch(STORAGE_URL, {
+//     method: "POST",
+//     body: JSON.stringify(payload),
+//   }).then((res) => res.json());
+// }
+
+/**
+ * Push request to backend.
+ * Either it is fulfilled successfully (resolved) or it fails (rejected).
+ * @param {Remote key as string} key
+ * @param {Data to save as in string.} value
+ * @returns The confirmation from the server as an object.
+ */
 async function setItem(key, value) {
+  if (!key || !value) {
+    console.error("Missing required fields: key, value");
+    return Promise.reject("Missing required fields: key, value");
+  }
+
   const payload = { key, value, token: STORAGE_TOKEN };
-  return fetch(STORAGE_URL, {
-    method: "POST",
-    body: JSON.stringify(payload),
-  }).then((res) => res.json());
+
+  try {
+    const response = await fetch(STORAGE_URL, {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      console.error(`Server error: ${response.status}`);
+      return Promise.reject(`Server error: ${response.status}`);
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return Promise.reject("Fetch error");
+  }
 }
