@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/contact/contacts.css" />
+    <link rel="stylesheet" href="../../css/contact/editContact.css" /> 
+    <link rel="stylesheet" href="../../css/contact/contactOverlay.css" />
+    <link rel="stylesheet" href="../../css/contact/addContact.css" />
+    <title>EditContact</title>
+</head>
+<body>
+    <!-- EDIT CONTACT -->
+    <div w3-include-html="editContact.html" id="editContact">
+        <div class="addContactHeader">
+            <div class="addContactGetBack">
+                <img src="../../assets/img/addContact/close.svg" />
+            </div>
+            <div class="editContactHeadlines">
+                <h1 class="addContactH1">Edit contact</h1>
+            </div>
+            <div class="addContactHeaderBorder"></div>
+            <div class="editContactEmptySignature">
+                <span class="editContactSignature">AM</span>
+            </div>
+        </div>
+        <div id="addContactEntry">
+            <div class="contactInputContainer">                
+                <div id="contactInputFieldName" 
+                    class="contactInputField"
+                >
+                    <input id="contactInputName"
+                        placeholder="Name"
+                        class="nameInputfield"
+                        type="text"
+                    />
+                    <img
+                    onclick="addName()"
+                    src="../../assets/img/addContact/person-gray.svg"
+                    />
+                </div>
+                <div id="contactInputFieldEmail"
+                    class="contactInputField"
+                    >
+                    <input
+                    id="contactInputEmail"
+                    placeholder="Email"
+                    class="textInputfield"
+                    type="text"
+                    />
+                    <img
+                    onclick="addEmail()"
+                    src="../../assets/img/addContact/mail.svg"
+                    />
+                </div>
+                <div id="contactInputFieldPhone"
+                    class="contactInputField"
+                >
+                    <input
+                    id="contactInputPhone"
+                    placeholder="Phone"
+                    class="textInputfield"
+                    type="text"
+                    />
+                    <img
+                    onclick="addPhone()"
+                    src="../../assets/img/addContact/call.svg"
+                    />
+                </div>
+            </div>
+            <div class="editContactBtnRow">
+                <a class="editContactBtnDelete">Delete</a>
+                <a class="contactBtnSave">Save<img id="contactBtnSaveIcon" src="../../assets/img/addContact/check.svg"></a>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
