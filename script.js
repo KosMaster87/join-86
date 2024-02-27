@@ -77,8 +77,16 @@ async function setItem(key, value) {
   }
 
   const payload = { key, value, token: STORAGE_TOKEN };
+  await theAnswer(payload);
+}
 
-  try {
+/**
+ * Just request of the response.
+ * @param {All the stuff is push into remote-storage.} payload 
+ * @returns "data" as object.
+ */
+async function theAnswer(payload) {
+ try {
     const response = await fetch(STORAGE_URL, {
       method: "POST",
       body: JSON.stringify(payload),

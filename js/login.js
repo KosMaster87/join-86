@@ -36,6 +36,9 @@ function changeToShowCurrentPassword(passwordId, imageId) {
   }
 }
 
+/**
+ * The current user will be logged in.
+ */
 async function login() {
   let loginInputMail = document.getElementById("loginInputMail");
   let loginInputPassword = document.getElementById("loginInputPassword");

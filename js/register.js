@@ -1,3 +1,7 @@
+/**
+ * Durch die redirectToIndex(); wird die login.html laufzeit beendet und der Massiv "users;" gelöscht.
+ * Through the redirectToIndex(); the login.html runtime is terminated and the massive "users;" deleted.
+ */
 let users = [];
 
 // TODO validate
@@ -27,9 +31,10 @@ function registerNewUser() {
 
 async function secondaryFunctions() {
   await setItem("users", JSON.stringify(users));
-  redirectToLoin();
   resetForm();
+  redirectToLoin();
 }
+
 /**
  * Reset registration form values.
  */
