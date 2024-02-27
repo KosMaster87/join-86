@@ -44,11 +44,11 @@ function redirectToRegister() {
   window.location.href = "registrierungsseite.html";
 }
 
-function login() {
+async function login() {
   let loginInputMail = document.getElementById("loginInputMail");
   let loginInputPassword = document.getElementById("loginInputPassword");
 
-  loadUsers();
+  await loadUsers();
 
   user = users.find(
     (userIndex) =>
@@ -58,8 +58,9 @@ function login() {
   console.log(user);
 
   if (user) {
-    console.log("user gefunden");
-
+    console.log("Benutzer gefunden");
     redirectToRegister();
+  } else {
+    console.log("Benutzer nicht gefunden");
   }
 }
