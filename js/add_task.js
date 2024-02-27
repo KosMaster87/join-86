@@ -151,12 +151,15 @@ function categoryImageDown() {
 function openContacts(){
   let contactList = document.getElementById("contactList");
   let border = document.getElementById(`contactSelectContainer`);
+  let to = document.getElementById(`assignedToContainer`);
   if (contactList.style.display === "none" || contactList.style.display === "") {
     contactList.style.display = "block";
     border.classList.add("bordercolor");
+    to.innerHTML="An";
   } else {
     contactList.style.display = "none";
     border.classList.remove("bordercolor");
+    to.innerHTML="Select to Contact";
   }
 }
 
