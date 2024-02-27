@@ -1,9 +1,17 @@
-let users = [];
+let users = []; // users ist das Array mit den Objekten(jeder einzelne Regestierte Benutzer.)
 
 // ---------------------------------------------------------------------------
 
 async function registerNewUser() {
-  meinButton.disabled = true;
+  let registerInputName = document.getElementById("registerInputName");
+  let registerInputEmail = document.getElementById("registerInputEmail");
+  let registerInputPassword = document.getElementById("registerInputPassword");
+  let registerInputPasswordConfirm = document.getElementById(
+    "registerInputPasswordConfirm"
+  );
+  let registerBtn = document.getElementById("registerBtn");
+
+  registerBtn.disabled = true;
   users.push({
     email: registerInputEmail.value,
     password: registerInputPassword.value,
@@ -13,8 +21,10 @@ async function registerNewUser() {
 }
 
 function resetForm() {
-  email.value = "";
-  password.value = "";
+  registerInputName.value = "";
+  registerInputEmail.value = "";
+  registerInputPassword.value = "";
+  registerInputPasswordConfirm.value = "";
   registerBtn.disabled = false;
 }
 
@@ -70,5 +80,3 @@ function resetBorderColor(containerId) {
   let focusContainer = document.getElementById(containerId);
   focusContainer.classList.remove("active");
 }
-
-
