@@ -58,8 +58,15 @@ async function login() {
 }
 
 /**
- * Switch to index.html.
+ * If user login, then switch to index.html.
  */
 function redirectToIndex() {
   window.location.href = "../index.html";
+}
+
+/**
+ * Switch back from login page to register page.
+ */
+function redirectToRegister() {
+  window.location.assign("../pages/register.html");
 }

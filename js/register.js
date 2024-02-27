@@ -1,7 +1,9 @@
 let users = [];
 
-// ---------------------------------------------------------------------------
-
+// TODO validate
+/**
+ * The registration of a new user.
+ */
 async function registerNewUser() {
   let registerInputName = document.getElementById("registerInputName");
   let registerInputEmail = document.getElementById("registerInputEmail");
@@ -23,6 +25,9 @@ async function registerNewUser() {
   resetForm();
 }
 
+/**
+ * Reset registration form values.
+ */
 function resetForm() {
   registerInputName.value = "";
   registerInputEmail.value = "";
@@ -31,9 +36,16 @@ function resetForm() {
   registerBtn.disabled = false;
 }
 
+/**
+ * Switch back from register page to login page.
+ */
+function redirectToLoin() {
+  window.location.assign("../pages/login.html");
+}
+
 // ---------------------------------------------------------------------------
 
-// Aus dem Call !!!
+// TODO
 function getRandomColor(color) {
   var letters = "123456789ABCDE";
   var color = "#";
@@ -83,3 +95,5 @@ function resetBorderColor(containerId) {
   let focusContainer = document.getElementById(containerId);
   focusContainer.classList.remove("active");
 }
+
+// ---------------------------------------------------------------------------
