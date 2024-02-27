@@ -2,53 +2,6 @@ let subtaskCounter = 0;
 let required = 0;
 let prio = "";
 
-function openCategorySelect() {
-  content = document.getElementById(`categoryMenu`);
-  content.innerHTML += `<div onclick="selectCategory(this)" class="categorySelectOption">Technical Task</div>
-    <div onclick="selectCategory(this)" class="categorySelectOption">User Story</div>`;
-  addCategoryBorder();
-  categoryImageUp();
-}
-
-function addCategoryBorder() {
-  border = document.getElementById(`categorySelectContainer`);
-  border.classList.add("bordercolor");
-}
-
-function categoryImageUp() {
-  image = document.getElementById(`categoryImage`);
-  content = document.getElementById(`categorySelectContainer`);
-  image.src = "../assets/img/add_task/arrow_drop_up.svg";
-  content.onclick = closeCategoryMenu;
-}
-
-function selectCategory(selectedOption) {
-  let content = document.getElementById(`categoryText`);
-  let image = document.getElementById(`categoryImage`);
-  content.innerHTML = `${selectedOption.innerText}`;
-  image.src = "../assets/img/add_task/arrow_drop_up.svg";
-  closeCategoryMenu();
-}
-
-function closeCategoryMenu() {
-  div = document.getElementById(`categoryMenu`);
-  div.innerHTML = "";
-  removeCategoryBorder();
-  categoryImageDown();
-}
-
-function removeCategoryBorder() {
-  border = document.getElementById(`categorySelectContainer`);
-  border.classList.remove("bordercolor");
-}
-
-function categoryImageDown() {
-  image = document.getElementById(`categoryImage`);
-  content = document.getElementById(`categorySelectContainer`);
-  image.src = "../assets/img/add_task/arrow_drop_down.svg";
-  content.onclick = openCategorySelect;
-}
-
 function testfalsch() {
   inputAbfrage();
   dueDateRequired();
@@ -138,6 +91,95 @@ function changePrioColor(clickedContainerId) {
   }
 }
 
+function setMinDate() {
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, "0");
+  let mm = String(today.getMonth() + 1).padStart(2, "0");
+  let yyyy = today.getFullYear();
+
+  today = yyyy + "-" + mm + "-" + dd;
+  document.getElementById("dueDateInputContainer").min = today;
+}
+
+function openCategorySelect() {
+  content = document.getElementById(`categoryMenu`);
+  content.innerHTML += `<div onclick="selectCategory(this)" class="categorySelectOption">Technical Task</div>
+    <div onclick="selectCategory(this)" class="categorySelectOption">User Story</div>`;
+  addCategoryBorder();
+  categoryImageUp();
+}
+
+function addCategoryBorder() {
+  border = document.getElementById(`categorySelectContainer`);
+  border.classList.add("bordercolor");
+}
+
+function categoryImageUp() {
+  image = document.getElementById(`categoryImage`);
+  content = document.getElementById(`categorySelectContainer`);
+  image.src = "../assets/img/add_task/arrow_drop_up.svg";
+  content.onclick = closeCategoryMenu;
+}
+
+function selectCategory(selectedOption) {
+  let content = document.getElementById(`categoryText`);
+  let image = document.getElementById(`categoryImage`);
+  content.innerHTML = `${selectedOption.innerText}`;
+  image.src = "../assets/img/add_task/arrow_drop_up.svg";
+  closeCategoryMenu();
+}
+
+function closeCategoryMenu() {
+  div = document.getElementById(`categoryMenu`);
+  div.innerHTML = "";
+  removeCategoryBorder();
+  categoryImageDown();
+}
+
+function removeCategoryBorder() {
+  border = document.getElementById(`categorySelectContainer`);
+  border.classList.remove("bordercolor");
+}
+
+function categoryImageDown() {
+  image = document.getElementById(`categoryImage`);
+  content = document.getElementById(`categorySelectContainer`);
+  image.src = "../assets/img/add_task/arrow_drop_down.svg";
+  content.onclick = openCategorySelect;
+}
+
+function openContacts(){
+  let contactList = document.getElementById("contactList");
+  let border = document.getElementById(`contactSelectContainer`);
+  let to = document.getElementById(`assignedToContainer`);
+  if (contactList.style.display === "none" || contactList.style.display === "") {
+    contactList.style.display = "block";
+    border.classList.add("bordercolor");
+    to.innerHTML="An";
+  } else {
+    contactList.style.display = "none";
+    border.classList.remove("bordercolor");
+    to.innerHTML="Select to Contact";
+  }
+}
+
+function assignedtoContactBg(){
+  let container = document.getElementById(`assignedContactContainer`);
+  container.classList.add("assignedContainerBlack");
+  let image = document.getElementById(`assignedContactImage`);
+  image.src = "../assets/img/add_task/task_box_check.svg";
+  container.onclick = removeassignedtoContactBg;
+}
+
+function removeassignedtoContactBg(){
+  let container = document.getElementById(`assignedContactContainer`);
+  container.classList.remove("assignedContainerBlack");
+  let image = document.getElementById(`assignedContactImage`);
+  image.src = src="../assets/img/add_task/task_box.svg";
+  container.onclick = assignedtoContactBg;
+}
+
+
 function subtastwindow() {
   let container = document.getElementById(`subTaskInputcontainer`);
   let img = document.getElementById(`addSubtaskImg`);
@@ -146,6 +188,7 @@ function subtastwindow() {
   container.innerHTML += `<img src="../assets/img/add_task/task_line.svg" />
   <img onclick="back()" src="../assets/img/add_task/task_check.svg" />`;
 }
+
 
 function addSubtask() {
   container = document.getElementById(`subTasksContainer`);
@@ -165,7 +208,12 @@ function addSubtask() {
   </div>`;
   }
   subTaskInputfieldText.value = "";
+  menu = document.getElementById(`subTaskInputfieldMenu`);
+  menu.innerHTML = `
+  <img src="../assets/img/add_task/task_add.svg" />`
   subtaskCounter++;
+  let border = document.getElementById(`subTaskInputcontainer`);
+  border.classList.remove("bordercolor");
 }
 
 function editSubTask(subtaskCounter) {
@@ -177,7 +225,7 @@ function editSubTask(subtaskCounter) {
     textInElement.outerHTML = `<input type="text" id="${inputFieldId}" value="${currentText}" />`;
     menu.innerHTML = `<img onclick="removeSubtask(${subtaskCounter})" src="../assets/img/add_task/task_bin.svg" />
     <img src="../assets/img/add_task/task_line.svg" />
-    <img onclick="back()" src="../assets/img/add_task/task_check.svg" />`;
+    <img onclick="" src="../assets/img/add_task/task_check.svg" />`;
     const inputFieldElement = document.getElementById(inputFieldId);
     function cancelEdit(subtaskCounter) {
       const newTextElement = document.createElement("p");
@@ -201,4 +249,24 @@ function editSubTask(subtaskCounter) {
 function removeSubtask(i) {
   deleteSubtask = document.getElementById(`createdSubTask${i}`);
   deleteSubtask.remove();
+}
+
+function changemenu() {
+  container = document.getElementById(`subTaskInputfieldMenu`);
+  container.innerHTML = `
+  <img src="../assets/img/add_task/task_cross.svg" onclick="clearSubtaskInputfield()"/>
+  <img src="../assets/img/add_task/task_line.svg"/>
+  <img onclick="addSubtask()" src="../assets/img/add_task/task_check.svg"/>`;
+  let border = document.getElementById(`subTaskInputcontainer`);
+  border.classList.add("bordercolor");
+}
+
+function clearSubtaskInputfield(){
+  let input = document.getElementById(`subTaskInputfieldText`)
+  input.value = "";
+  container = document.getElementById(`subTaskInputfieldMenu`);
+  container.innerHTML = `
+  <img src="../assets/img/add_task/task_add.svg" />`
+  let border = document.getElementById(`subTaskInputcontainer`);
+  border.classList.remove("bordercolor");
 }

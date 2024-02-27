@@ -14,19 +14,21 @@ p {
   margin: 0;
   margin-bottom: 8px;
 }
+
 span {
   font-size: 16px;
 }
+
 .input {
   font-family: "Inter";
   font-size: 16px;
   font-weight: 400;
   line-height: 19px;
-  color:var(--black);
+  color: var(--black);
 }
 
-.input::placeholder{
-  color:var(--lighterGrey)
+.input::placeholder {
+  color: var(--lighterGrey);
 }
 
 .requiredStar {
@@ -106,7 +108,7 @@ input:focus {
 
 .taskSelectButton {
   width: 126px;
-  Padding: 18px 10px 18px 10px;
+  padding: 18px 10px 18px 10px;
   font-size: 16px;
   font-weight: 400;
   justify-content: center;
@@ -175,7 +177,50 @@ input:focus {
   gap: 8px;
 }
 
-.subTaskInputcontainer {
+#contactList{
+  display: none;
+}
+
+.assignedContactContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.assignedContainerBlack{
+  background-color: var(--black) !important;
+  color:var(--white) !important;
+}
+
+.assignedContactLeftSide {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.assignedContactLeftSideIcon{
+display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    background-color: #ff7a00;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    color: #fff;
+}
+
+.assignedContactNameClass{
+margin:0;
+}
+
+.subTaskInputcontainerClass {
   padding: 12px 16px 12px 16px;
   border-radius: 10px;
   border: 1px;
@@ -186,15 +231,9 @@ input:focus {
   background-color: #ffffff;
 }
 
-.subTaskInputcontainer:focus {
-  outline: none;
-  border-color: var(--lightBlue);
-}
-
 .subtaskInputfield {
   outline: none;
   border: none;
-  width: 100%;
 }
 
 .subTaskAddContainer {
@@ -219,6 +258,12 @@ input:focus {
   display: flex;
   gap: 5px;
   align-items: center;
+}
+
+.subTaskInputfieldMenuClass {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .finishTaskContainer {

@@ -1,4 +1,4 @@
-let users = []; // users ist das Array mit den Objekten(jeder einzelne Regestierte Benutzer.)
+let users = [];
 
 // ---------------------------------------------------------------------------
 
@@ -8,6 +8,7 @@ async function registerNewUser() {
   let registerInputPassword = document.getElementById('registerInputPassword');
   let registerInputPasswordConfirm = document.getElementById('registerInputPasswordConfirm');
   let registerBtn = document.getElementById("registerBtn");
+  let colorCode = "#ff3d00";
 
   registerBtn.disabled = true;
   users.push({

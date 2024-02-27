@@ -70,6 +70,7 @@
           placeholder="dd/mm/yyyy"
           type="date"
           class="dueDateInputField"
+          onfocus="setMinDate()"
         />
         <p id="dueDateRequiredContainer" class="fildIsRequiredText"></p>
       </div>
@@ -95,27 +96,38 @@
       </div>
       <div id="taskAssignedContainer">
         <p class="taskHeadline">Assigned to</p>
-        <div class="categorySelect">
-          Select to Contact<img
+        <div id="contactSelectContainer" onclick="openContacts()" class="categorySelect">
+          <span id="assignedToContainer">Select to Contact</span><img
             src="../assets/img/add_task/arrow_drop_down.svg"
           />
         </div>
-      </div>
+        <div id="contactList">
+        <div id="assignedContactContainer" onclick="assignedtoContactBg()" class="assignedContactContainer">
+          <div class="assignedContactLeftSide">
+            <div class="assignedContactLeftSideIcon">SB</div>
+            <p class="assignedContactNameClass">Sebastien Buhl</p>
+            </div>
+            <img id="assignedContactImage" src="../assets/img/add_task/task_box.svg">
+          </div>
+        </div>
+        </div>
 
       <div id="taskSubtaskContainer">
         <p class="taskHeadline">Subtasks</p>
-        <div class="subTaskInputcontainer" id="subTaskInputcontainer">
+        <div class="subTaskInputcontainerClass" id="subTaskInputcontainer">
           <input
             id="subTaskInputfieldText"
             placeholder="Add new subtask"
             class="subtaskInputfield"
             type="text"
             onkeydown="if(event.key==='Enter') addSubtask()"
-          /><img
-            onclick="addSubtask()"
-            id="addSubtaskImg"
-            src="../assets/img/add_task/task_add.svg"
+            onkeyup="changemenu()"
           />
+          <div class="subTaskInputfieldMenuClass" id="subTaskInputfieldMenu">
+            <img
+              src="../assets/img/add_task/task_add.svg"
+            />
+          </div>
         </div>
         <div class="subTaskAddContainer" id="subTasksContainer"></div>
       </div>
