@@ -181,6 +181,16 @@ input:focus {
   display: none;
 }
 
+#contactListIcons{
+  display:block;
+  flex-direction: row;
+  gap:4px;
+}
+
+#contactListIconsLine{
+  display: flex;
+}
+
 .assignedContactContainer {
   display: flex;
   justify-content: space-between;

@@ -150,14 +150,17 @@ function categoryImageDown() {
 
 function openContacts(){
   let contactList = document.getElementById("contactList");
+  let contactListIcons = document.getElementById("contactListIcons");
   let border = document.getElementById(`contactSelectContainer`);
   let to = document.getElementById(`assignedToContainer`);
   if (contactList.style.display === "none" || contactList.style.display === "") {
     contactList.style.display = "block";
+    contactListIcons.style.display = "none";
     border.classList.add("bordercolor");
     to.innerHTML="An";
   } else {
     contactList.style.display = "none";
+    contactListIcons.style.display = "block";
     border.classList.remove("bordercolor");
     to.innerHTML="Select to Contact";
   }
@@ -165,9 +168,11 @@ function openContacts(){
 
 function assignedtoContactBg(){
   let container = document.getElementById(`assignedContactContainer`);
+  let contactListIcons = document.getElementById("contactListIconsLine");
   container.classList.add("assignedContainerBlack");
   let image = document.getElementById(`assignedContactImage`);
   image.src = "../assets/img/add_task/task_box_check.svg";
+  contactListIcons.innerHTML+=`<div id="contactIconNumber" class="assignedContactLeftSideIcon">SB</div>`
   container.onclick = removeassignedtoContactBg;
 }
 
@@ -176,6 +181,8 @@ function removeassignedtoContactBg(){
   container.classList.remove("assignedContainerBlack");
   let image = document.getElementById(`assignedContactImage`);
   image.src = src="../assets/img/add_task/task_box.svg";
+  let contactListIcons = document.getElementById("contactListIconsLine");
+  contactListIcons.innerHTML = "";
   container.onclick = assignedtoContactBg;
 }
 
