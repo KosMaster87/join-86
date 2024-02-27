@@ -3,18 +3,32 @@ let users = [];
 // ---------------------------------------------------------------------------
 
 async function registerNewUser() {
-  meinButton.disabled = true;
+  let registerInputName = document.getElementById("registerInputName");
+  let registerInputEmail = document.getElementById("registerInputEmail");
+  let registerInputPassword = document.getElementById("registerInputPassword");
+  let registerInputPasswordConfirm = document.getElementById(
+    "registerInputPasswordConfirm"
+  );
+  let registerBtn = document.getElementById("registerBtn");
+  let colorCode = "#ff3d00";
+
+  registerBtn.disabled = true;
   users.push({
+    name: registerInputName.value,
     email: registerInputEmail.value,
     password: registerInputPassword.value,
+    colorCode,
   });
+  console.log(users);
   await setItem("users", JSON.stringify(users));
   resetForm();
 }
 
 function resetForm() {
-  email.value = "";
-  password.value = "";
+  registerInputName.value = "";
+  registerInputEmail.value = "";
+  registerInputPassword.value = "";
+  registerInputPasswordConfirm.value = "";
   registerBtn.disabled = false;
 }
 
@@ -70,5 +84,3 @@ function resetBorderColor(containerId) {
   let focusContainer = document.getElementById(containerId);
   focusContainer.classList.remove("active");
 }
-
-

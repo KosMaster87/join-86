@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/register.css" />
     <script src="../js/register.js"></script>
+    <script src="../script.js"></script>
     <title>Join - Register</title>
   </head>
 
@@ -42,6 +43,7 @@
             minlength="2"
             type="text"
             placeholder="Name"
+            value="Der Benutzer"
             autocomplete="username"
             onfocus="changeBorderColor('nameRegistDevision')"
             onblur="resetBorderColor('nameRegistDevision')"
@@ -61,6 +63,7 @@
             minlength="2"
             type="email"
             placeholder="Email"
+            value="test@mail.de"
             autocomplete="email"
             onfocus="changeBorderColor('emailDevision')"
             onblur="resetBorderColor('emailDevision')"
@@ -77,6 +80,7 @@
             minlength="2"
             type="password"
             placeholder="Password"
+            value="test"
             autocomplete="current-password"
             onfocus="changeBorderColor('passwortDevision')"
             onblur="resetBorderColor('passwortDevision')"
@@ -99,6 +103,7 @@
             minlength="2"
             type="password"
             placeholder="Confirm Password"
+            value="test"
             autocomplete="current-password"
             onfocus="changeBorderColor('confirmPasswortDevision')"
             onblur="resetBorderColor('confirmPasswortDevision')"
@@ -129,9 +134,7 @@
 
         <div class="registerBtnBox">
           <p class="registerError" id="registerError">Registration error</p>
-          <button class="RegisterBtn" type="button">
-            Sign up
-          </button>
+          <button class="registerBtn" id="registerBtn">Sign up</button>
         </div>
       </form>
 

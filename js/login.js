@@ -1,3 +1,5 @@
+let user;
+
 /**
  * Change border color from parent element.
  * @param {string} containerId
@@ -17,14 +19,6 @@ function resetBorderColor(containerId) {
 }
 
 /**
- * Switch to register page.
- */
-function redirectToRegister() {
-  // Hier den Pfad zur Ziel-HTML-Seite eintragen
-  window.location.href = "registrierungsseite.html";
-}
-
-/**
  * To hide or show currentpassword in any fild.
  * @param {each input from origin HTML-element} passwordId
  * @param {each inputImage from origin HTML-element} imageId
@@ -39,5 +33,34 @@ function changeToShowCurrentPassword(passwordId, imageId) {
   } else {
     hideThePassword.type = "password";
     hideThePasswordImage.src = "/assets/img/login/lock.svg";
+  }
+}
+
+/**
+ * Switch to register page.
+ */
+function redirectToRegister() {
+  // Hier den Pfad zur Ziel-HTML-Seite eintragen
+  window.location.href = "registrierungsseite.html";
+}
+
+async function login() {
+  let loginInputMail = document.getElementById("loginInputMail");
+  let loginInputPassword = document.getElementById("loginInputPassword");
+
+  await loadUsers();
+
+  user = users.find(
+    (userIndex) =>
+      userIndex.email === loginInputMail.value &&
+      userIndex.password === loginInputPassword.value
+  );
+  console.log(user);
+
+  if (user) {
+    console.log("Benutzer gefunden");
+    redirectToRegister();
+  } else {
+    console.log("Benutzer nicht gefunden");
   }
 }
