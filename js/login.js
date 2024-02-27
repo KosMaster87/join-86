@@ -37,11 +37,18 @@ function changeToShowCurrentPassword(passwordId, imageId) {
 }
 
 /**
- * Switch to register page.
+ * Switch to index.html.
  */
-function redirectToRegister() {
-  // Hier den Pfad zur Ziel-HTML-Seite eintragen
-  window.location.href = "registrierungsseite.html";
+function redirectToIndex() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const msg = urlParams.get("msg");
+
+  if (msg) {
+    console.log("Weiterleitung zur index.html");
+    window.location.href = "index.html";
+  } else {
+    console.log("Keine Weiterleitung erfolgt!");
+  }
 }
 
 async function login() {
@@ -59,7 +66,7 @@ async function login() {
 
   if (user) {
     console.log("Benutzer gefunden");
-    redirectToRegister();
+    redirectToIndex();
   } else {
     console.log("Benutzer nicht gefunden");
   }
