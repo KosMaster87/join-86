@@ -26,10 +26,10 @@ async function loadUsers() {
  * @returns The answer to the query.
  */
 async function getItem(key) {
-  const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+  const urlKeyToken = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(urlKeyToken);
 
     if (response.ok) {
       const dataX = await response.json();
