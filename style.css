@@ -7,17 +7,20 @@
   --intenseBlue: #007cee;
   --darkBlue: #091931;
   --darkBlueHover: #19273d;
+  --green: #7ae229;
   --organe: #ff3d00;
   --orangeIcons: #ff7a00;
+  --red: #ff3d00;
   --yellow: #ffa800;
   --pink: #fc71ff;
   --mintGreen: #1fd7c1;
   --whiteGray: #f6f7f8;
   --white: #fff;
   --wrongInputBorder: #ff001f;
-  --wrongInputText: #FF8190;
+  --wrongInputText: #ff8190;
   --fontGray: #a8a8a8;
   --fontWhite: #cdcdcd;
+  --black: #000000;
   --purple: #9327ff;
   --curry: #ffbb2b;
   --greenIcon: #1fd7c1;
@@ -34,16 +37,64 @@ html {
   scroll-behavior: smooth;
 }
 
-.hide {
-  display: none;
+/* body {
+  display: flex;
+  flex-direction: column;
+} */
+
+/* ---------------------------------------- */
+
+@media only screen and (max-width: 720px) and (min-width: 250px) {
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /*  Dem zu inportierendem Kontent diese Klasse geben.  */
+  .mainContent {
+    min-height: calc(100dvh - 7rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-.mainContent {
-  background-color: var(--whiteGray);
-  min-height: calc(100vh - 7rem);
+/* ---------------------------------------- */
+
+@media only screen and (max-width: 2560px) and (min-width: 721px) {
+  /*  Dem zu inportierendem Kontent diese Klasse geben.  */
+  .mainContent {
+    height: calc(100dvh - 3.5rem);
+    position: fixed;
+    left: 10rem;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
 }
 
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+
+/* Zurück-lagern */
+.cursorPointer {
+  cursor: pointer;
+}
+
+/* Zurück-lagern */
 input:focus {
   outline: none;
   border-color: var(--lightBlue);
 }
+
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */

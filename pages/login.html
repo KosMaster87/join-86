@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/login.css" />
-    <script src="../js/hideShowPassword.js"></script>
+    <script src="../js/login.js"></script>
     <title>Join - Login</title>
   </head>
 
@@ -61,10 +61,6 @@
           />
         </div>
 
-        <div class="forgotPassword" style="display: none">
-          Forgot my password
-        </div>
-
         <div class="rememberBox">
           <input
             id="rememberMe"
@@ -77,7 +73,7 @@
         </div>
 
         <div class="loginBtnBox">
-          <p id="loginError" style="display: block;"></p>
+          <p id="loginError" style="display: block"></p>
           <div class="justBtn">
             <button
               class="confirmLogInBtn"
@@ -108,21 +104,17 @@
         </button>
       </div>
 
-      <div class="logInExtraBox">
-        <div class="mobilePoliceLegal" id="mobilePoliceLegal">
-          <a
-            class="mobilePoliceLegalAnchor"
-            href="./../../../assets/templates/privacy_policy/privacy_policy_internal.html"
-            target="_blank"
-            >Privacy Police</a
-          >
-          <a
-            class="mobilePoliceLegalAnchor"
-            href="./../../../assets/templates/legal_notice/legal_notice_internal.html"
-            target="_blank"
-            >Legal notice</a
-          >
-        </div>
+      <div class="mobilePoliceLegal" id="mobilePoliceLegal">
+        <a
+          href="./../../../assets/templates/privacy_policy/privacy_policy_internal.html"
+          target="_blank"
+          >Privacy Police</a
+        >
+        <a
+          href="./../../../assets/templates/legal_notice/legal_notice_internal.html"
+          target="_blank"
+          >Legal notice</a
+        >
       </div>
     </div>
   </body>

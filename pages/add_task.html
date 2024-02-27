@@ -12,52 +12,70 @@
     <h1>Add Task</h1>
     <div class="taskMainContainer">
       <div class="taskTitleContainer">
-        <p>
+        <p class="taskHeadline">
           Title
           <span class="requiredStar">*</span>
         </p>
         <input
+          id="titelInputContainer"
           type="text"
           class="titleInputField"
           placeholder="Enter a title"
         />
-        <p class="fildIsRequiredText"></p>
+        <p id="inputRequiredContainer" class="fildIsRequiredText"></p>
       </div>
       <div class="taskDescriptionContainer">
-        <p>Description</p>
+        <p class="taskHeadline">Description</p>
         <textarea
           placeholder="Enter a Descripton"
           class="descriptionInputField"
         ></textarea>
       </div>
       <div id="taskPrioContainer">
-        <p>Prio</p>
+        <p class="taskHeadline">Prio</p>
         <div id="prioSelectContainer">
-          <div class="taskSelectButton">
+          <div
+            id="prioUrgentContainer"
+            onclick="whatsPrio(prioUrgentContainer)"
+            class="taskSelectButton"
+          >
             Urgent
             <img src="../assets/img/add_task/arrow_top_red.svg" />
           </div>
-          <div class="taskSelectButton">
+          <div
+            id="prioMediumContainer"
+            onclick="whatsPrio(prioMediumContainer)"
+            class="taskSelectButton"
+          >
             Medium
             <img src="../assets/img/add_task/line_orange.svg" />
           </div>
-          <div class="taskSelectButton">
+          <div
+            id="prioLowContainer"
+            onclick="whatsPrio(prioLowContainer)"
+            class="taskSelectButton"
+          >
             Low
             <img src="../assets/img/add_task/arrow_bottom_green.svg" />
           </div>
         </div>
       </div>
       <div id="taskDueDateContainer">
-        <p>
+        <p class="taskHeadline">
           Due date
           <span class="requiredStar">*</span>
         </p>
-        <input placeholder="TT.MM.JJJJ" type="date" class="dueDateInputField" />
-        <p class="fildIsRequiredText"></p>
+        <input
+          id="dueDateInputContainer"
+          placeholder="dd/mm/yyyy"
+          type="date"
+          class="dueDateInputField"
+        />
+        <p id="dueDateRequiredContainer" class="fildIsRequiredText"></p>
       </div>
 
       <div class="taskCategoryContainer">
-        <p>
+        <p class="taskHeadline">
           Category
           <span class="requiredStar">*</span>
         </p>
@@ -73,10 +91,10 @@
           />
         </div>
         <div class="categorySelectOptions" id="categoryMenu"></div>
-        <p class="fildIsRequiredText"></p>
+        <p id="categoryRequiredContainer" class="fildIsRequiredText"></p>
       </div>
       <div id="taskAssignedContainer">
-        <p>Assigned to</p>
+        <p class="taskHeadline">Assigned to</p>
         <div class="categorySelect">
           Select to Contact<img
             src="../assets/img/add_task/arrow_drop_down.svg"
@@ -85,13 +103,14 @@
       </div>
 
       <div id="taskSubtaskContainer">
-        <p>Subtasks</p>
+        <p class="taskHeadline">Subtasks</p>
         <div class="subTaskInputcontainer">
           <input
             id="subTaskInputfieldText"
             placeholder="Add new subtask"
             class="subtaskInputfield"
             type="text"
+            onkeydown="if(event.key==='Enter') addSubtask()"
           /><img
             onclick="addSubtask()"
             src="../assets/img/add_task/task_add.svg"
@@ -104,7 +123,7 @@
         <div class="finishTaskText">
           <span class="requiredStar">*</span>This field is required
         </div>
-        <div class="createTask">
+        <div class="createTask" onclick="testfalsch()">
           Create Task <img src="../assets/img/add_task/task_check_white.svg" />
         </div>
       </div>

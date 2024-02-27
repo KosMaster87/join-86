@@ -4,23 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/register.css" />
-    <script src="../js/hideShowPassword.js"></script>
+    <script src="../js/register.js"></script>
     <title>Join - Register</title>
   </head>
 
   <body>
-    <div class="joinLogoAnimationLogin">
-      <img src="../../img/login/firstLogo.svg" alt="" id="login-second-img" />
-      <img src="../../img/login/secondLogo.svg" alt="" id="login-primary-img" />
-    </div>
     <div class="signedUpSuccessfully" id="signedUpSuccessfully">
       <p class="signedUpSuccessfullyPara">You Signed Up successfully</p>
     </div>
 
     <div class="firstRegister">
+      <img class="signUpJoinLogo" src="../assets/img/register/secondLogo.svg" />
+
       <form
         class="registerLayout RegisterBoxShadow"
-        onsubmit="registerUser(); return false;"
+        id="registerNewUser"
+        onsubmit="registerNewUser(); return false;"
       >
         <div class="headerRegisterBox">
           <img
@@ -35,10 +34,10 @@
           <div class="blancoHelper"></div>
         </div>
 
-        <div class="nameRegistDevision cursor" id="nameRegistDevision">
+        <div class="nameRegistDevision" id="nameRegistDevision">
           <input
-            class="nameRegist"
-            id="registerName"
+            class="registerInputName"
+            id="registerInputName"
             required
             minlength="2"
             type="text"
@@ -54,10 +53,10 @@
           />
         </div>
 
-        <div class="emailDevision cursor" id="emailDevision">
+        <div class="emailDevision" id="emailDevision">
           <input
-            class="registerInpMail"
-            id="registerEmail"
+            class="registerInputMail"
+            id="registerInputEmail"
             required
             minlength="2"
             type="email"
@@ -70,10 +69,10 @@
           <img class="inpIconStyle" src="../../../assets/img/login/mail.svg" />
         </div>
 
-        <div class="passwortDevision cursor" id="passwortDevision">
+        <div class="passwortDevision" id="passwortDevision">
           <input
             class="registerInpPass"
-            id="registerPassword"
+            id="registerInputPassword"
             required
             minlength="2"
             type="password"
@@ -87,18 +86,15 @@
             style="padding-right: 3px"
             class="inpIconStyle"
             id="signUpPasswordImage"
-            src="../../../assets/img/login/visibility_off.svg"
-            onclick="changeToShowCurrentPassword('registerPassword', 'signUpPasswordImage')"
+            src="../assets/img/register/lock.svg"
+            onclick="changeToShowCurrentPassword('registerInputPassword', 'signUpPasswordImage')"
           />
         </div>
 
-        <div
-          class="confirmPasswortDevision cursor"
-          id="confirmPasswortDevision"
-        >
+        <div class="confirmPasswortDevision" id="confirmPasswortDevision">
           <input
             class="confirmPasswort"
-            id="registerPasswordConfirm"
+            id="registerInputPasswordConfirm"
             required
             minlength="2"
             type="password"
@@ -112,8 +108,8 @@
             style="padding-right: 3px"
             class="inpIconStyle"
             id="signUpConfirmPasswordImage"
-            src="../../../assets/img/login/visibility_off.svg"
-            onclick="changeToShowCurrentPassword('registerPasswordConfirm', 'signUpConfirmPasswordImage')"
+            src="../assets/img/register/lock.svg"
+            onclick="changeToShowCurrentPassword('registerInputPasswordConfirm', 'signUpConfirmPasswordImage')"
           />
         </div>
 
@@ -125,18 +121,21 @@
             id="privacyCheck"
           />
           <label class="acceptPolicy" for="privacyCheck"
-            >I accept the Privacy policy</label
+            >I accept the<a href="#" class="acceptPolicyAnchor">
+              Privacy policy</a
+            ></label
           >
         </div>
 
         <div class="registerBtnBox">
-          <p id="registerError" style="color: red"></p>
-          <button class="RegisterBtn">Sign up</button>
-          <!-- <button class="RegisterBtn" onclick="registerUser()">Sign up</button> -->
+          <p class="registerError" id="registerError">Registration error</p>
+          <button class="RegisterBtn" type="button">
+            Sign up
+          </button>
         </div>
       </form>
 
-      <div class="mobilePoliceLegalSignUp mobilePoliceLegal">
+      <div class="mobilePoliceLegal" id="mobilePoliceLegal">
         <a
           href="./../../../assets/templates/privacy_policy/privacy_policy_internal.html"
           target="_blank"

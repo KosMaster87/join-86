@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="style.css" />
-    
+    <link rel="stylesheet" href="../css/summary.css" />
+    <script src="../js/summary.js"></script>
     <script src="includeHTML.js"></script>
     <script src="script.js"></script>
 
@@ -18,14 +19,135 @@
       class="mainHeader"
     ></div>
 
-    <!-- HIER WIRD DER KONTENT GERENDERT -->
-    <div class="mainContent">
-      <b>Content</b>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-      consequatur perferendis fugiat eligendi sint, assumenda at asperiores eum
-      provident facere dolores porro vero iste fugit distinctio. Necessitatibus
-      accusamus laboriosam magnam!
+    <div class="summaryContent mainContent" id="summaryContent">
+      <div class="greetingUserSummary" id="summaryGreetUserScreen">
+        <p class="greetingUserSummaryParagraf">Good morning</p>
+        <p class="greetingUserSummaryName summeryGreetX">Placeholder</p>
+      </div>
 
+      <div class="summaryToDos" id="summaryToDos">
+        <div class="summaryRowContent">
+          <div class="summaryHeaderHelper">
+            <h1 class="summaryHeadline1">Join 360</h1>
+            <br />
+            <p class="headlinePara">Key Metrics at a Glance</p>
+            <div class="verticalLine"></div>
+          </div>
+
+          <div class="row1">
+            <div
+              class="reactangle borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+              onmouseover="changeImage(this)"
+              onmouseout="changeImageBack(this)"
+              onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+            >
+              <img
+                src="../assets/img/summary/summaryGrayEdit.svg"
+                class="todoSpecial summaryAnimateProgramm editImage"
+              />
+
+              <div
+                class="summaryToDoSum"
+                onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+              >
+                <p class="sammarySumNumber" id="summeryTodoTodos">0</p>
+                <p>To-do</p>
+              </div>
+            </div>
+
+            <div
+              class="reactangle borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+              onmouseover="changeImage(this)"
+              onmouseout="changeImageBack(this)"
+              onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+            >
+              <img
+                src="../assets/img/summary/summaryCheckGray.svg"
+                class="doneSpecial summaryAnimateProgramm checkImage"
+              />
+              <div class="summaryToDoSum" onclick="includeContentHTML('Board')">
+                <p class="sammarySumNumber" id="summeryDoneTodos">0</p>
+                <p>Done</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="row2Helper borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+          >
+            <div class="row2summary">
+              <img src="./../assets/img/summary/Frame59_urgent.svg" />
+
+              <div
+                class="summaryToDoSum"
+                onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+              >
+                <p class="sammarySumNumber" id="summeryUpcomingTasks"></p>
+                <p>Urgent</p>
+              </div>
+            </div>
+
+            <div
+              class="urgentDater"
+              onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+            >
+              <div class="prioVerticalLine"></div>
+              <div class="summaryDeadlineBox">
+                <p class="summaryDeadDater" id="summeryUrgentDate">
+                  Oktober 16, 2022
+                </p>
+                <p class="summaryDeadUpcoming">Upcoming Deadline</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row3">
+            <div
+              class="squareButton borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+            >
+              <div
+                class="summaryToDoSum"
+                onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+              >
+                <p class="sammarySumNumber" data-todos>0</p>
+                <p>Tasks in</p>
+                <p>Board</p>
+              </div>
+            </div>
+
+            <div
+              class="squareButton borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+            >
+              <div
+                class="summaryToDoSum"
+                onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+              >
+                <p class="sammarySumNumber" id="summeryProcessTasks">0</p>
+                <p>Tasks in</p>
+                <p>Prozess</p>
+              </div>
+            </div>
+
+            <div
+              class="squareButton borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+            >
+              <div
+                class="summaryToDoSum"
+                onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+              >
+                <p class="sammarySumNumber" id="summeryAwaitingTask">0</p>
+                <p>Awaiting</p>
+                <p>feedback</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="greetingBoxShow">
+          <h1>Good morning</h1>
+          <p class="summeryGreetX" id="summeryGreet">Placeholder</p>
+        </div>
+      </div>
     </div>
 
     <div
