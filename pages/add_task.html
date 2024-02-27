@@ -104,7 +104,7 @@
 
       <div id="taskSubtaskContainer">
         <p class="taskHeadline">Subtasks</p>
-        <div class="subTaskInputcontainer">
+        <div class="subTaskInputcontainer" id="subTaskInputcontainer">
           <input
             id="subTaskInputfieldText"
             placeholder="Add new subtask"
@@ -113,6 +113,7 @@
             onkeydown="if(event.key==='Enter') addSubtask()"
           /><img
             onclick="addSubtask()"
+            id="addSubtaskImg"
             src="../assets/img/add_task/task_add.svg"
           />
         </div>
