@@ -3,20 +3,19 @@ let users = []; // users ist das Array mit den Objekten(jeder einzelne Regestier
 // ---------------------------------------------------------------------------
 
 async function registerNewUser() {
-  let registerInputName = document.getElementById("registerInputName");
-  let registerInputEmail = document.getElementById("registerInputEmail");
-  let registerInputPassword = document.getElementById("registerInputPassword");
-  let registerInputPasswordConfirm = document.getElementById(
-    "registerInputPasswordConfirm"
-  );
+  let registerInputName = document.getElementById('registerInputName');
+  let registerInputEmail = document.getElementById('registerInputEmail');
+  let registerInputPassword = document.getElementById('registerInputPassword');
+  let registerInputPasswordConfirm = document.getElementById('registerInputPasswordConfirm');
   let registerBtn = document.getElementById("registerBtn");
 
   registerBtn.disabled = true;
   users.push({
-    email: registerInputEmail.value,
-    password: registerInputPassword.value,
+    'name': registerInputEmail.value,
+    'email': registerInputEmail.value,
+    'password': registerInputPassword.value
   });
-  await setItem("users", JSON.stringify(users));
+  await setItem('users', JSON.stringify(users));
   resetForm();
 }
 
