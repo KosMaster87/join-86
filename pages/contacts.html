@@ -2,141 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/contacts.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/contacts/contacts.css" />
+    <script src="../includeHTML.js"></script>
+    <script src="../script.js"></script>
+
     <title>Contacts</title>
 </head>
-<body>
+<body onload="init()">
    <!-- CONTAINER CONTACTS -->
-    <div w3-include-html="contacts.html" >
-        <div class="containerContacts">
-            <div class="alphabeticalRow">
-                <span class="firstChartSort">
-                    A
-                </span>
-            </div>
-            <div class="styleHr"></div>
-            <div class="singleContact">
-                <div class="contactSignatureIcon">
-                    <span class="contactSignatureIconLetter">
-                        AM
-                    </span>
-                </div>
-                <div class="contactData">
-                    <div class="contactName">
-                        Anton Mayer
-                    </div>
-                    <div class="contactEmail">
-                        antom@gmail.com
-                    </div>
-                </div>
-            </div>
-            <div class="singleContact">
-                <div class="contactSignatureIcon">
-                    <span class="contactSignatureIconLetter">
-                        AS
-                    </span>
-                </div>
-                <div class="contactData">
-                    <div class="contactName">
-                        Anja Schulz
-                    </div>
-                    <div class="contactEmail">
-                        schulz@hotmail.com
-                    </div>
-                </div>
-            </div>
-            <div class="alphabeticalRow">
-                <span class="firstChartSort">
-                    B
-                </span>
-            </div>
-            <div class="styleHr"></div>
-            <div class="singleContact">
-                <div class="contactSignatureIcon">
-                    <span class="contactSignatureIconLetter">
-                        BZ
-                    </span>
-                </div>
-                <div class="contactData">
-                    <div class="contactName">
-                        Benedikt Ziegler
-                    </div>
-                    <div class="contactEmail">
-                        benedikt@gmail.com
-                    </div>
-                </div>
-            </div>
-            <div class="alphabeticalRow">
-                <span class="firstChartSort">
-                    D
-                </span>
-            </div>
-            <div class="styleHr"></div>
-            <div class="singleContact">
-                <div class="contactSignatureIcon">
-                    <span class="contactSignatureIconLetter">
-                        DE
-                    </span>
-                </div>
-                <div class="contactData">
-                    <div class="contactName">
-                        David Eisenberg
-                    </div>
-                    <div class="contactEmail">
-                        davidberg@gmail.com
-                    </div>
-                </div>
-            </div>
-            <div class="alphabeticalRow">
-                <span class="firstChartSort">
-                    E
-                </span>
-            </div>
-            <div class="styleHr"></div>
-            <div class="singleContact">
-                <div class="contactSignatureIcon">
-                    <span class="contactSignatureIconLetter">
-                        EF
-                    </span>
-                </div>
-                <div class="contactData">
-                    <div class="contactName">
-                        Eva Fischer
-                    </div>
-                    <div class="contactEmail">
-                        eva@gmail.com
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- contactFlexibleContainer-->
-    <div id="contactFlexContainer">
-        CONTACT-FLEX-CONTAINER
-    </div>
-    <!-- ErsatzModal zum ersten Check -->
-    <div id="mobileAddContact">
-
+   <div w3-include-html="contacts.html" >
+        <!-- <div w3-include-html="../assets/templates/listContact"></div> -->
+        <!-- <div w3-include-html="../assets/templates/addContact"></div> -->
+        <!-- <div w3-include-html="../assets/templates/editContact"></div> -->
+        <div w3-include-html="../assets/templates/showSingleContact"></div>
+        <!-- Mobile Ansicht - Button zum Öffnen des Templates AddContact-->
+        <!-- <div id="mobileBtnAddContact"
+            class="d-none"
+            onclick="includeContentHTML('AddContact')"
+        >
+            <img class="mobileBtnAddContactItem"
+            src="../assets/img/other/person_add.svg "
+            /> -->
     </div>
 
-    <div id="mobileShowContact">
-
-    </div>
-      
-    <!-- Mobile Ansicht - Button zum Öffnen des Modals -->
-    <div id="mobileBtnAddContact"
-        onclick="includeContentHTML('AddContact')"
+    <!-- Mobile Ansicht - Button zum Öffnen des Templates EditContact-->
+    <!-- <a id="mobileBtnEditContact"
+        onclick="includeContentHTML('ShowContact')"
     >
-        <img class="mobileBtnAddContactItem"
-        src="../assets/img/other/person_add.svg "
+        <img class="mobileBtnEditContactItem"
+        src="../assets/img/other/more_vert.svg"
         />
-    </div>
-    <script>
+    </a> -->
+    <!-- <script>
         let modal = document.getElementById('overlayAddContact');
 
         let btn = document.getElementById('');   
-    </script>
+    </script> -->
+        
+        <!-- <script src="../js/contacts/listContact.js"></script> -->
 </body>
 </html>
