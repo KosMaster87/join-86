@@ -1,6 +1,5 @@
-let subtaskCounter = 0;
-let required = 0;
 let prio = "";
+let subtasks = [];
 
 function testfalsch() {
   inputAbfrage();
@@ -48,8 +47,6 @@ function categoryRequired() {
     required++;
   }
 }
-
-function prioSelectet() {}
 
 function whatsPrio(clickedContainerId) {
   removeWhiteImg();
@@ -103,8 +100,7 @@ function setMinDate() {
 
 function openCategorySelect() {
   content = document.getElementById(`categoryMenu`);
-  content.innerHTML += `<div onclick="selectCategory(this)" class="categorySelectOption">Technical Task</div>
-    <div onclick="selectCategory(this)" class="categorySelectOption">User Story</div>`;
+  content.innerHTML += openCategorySelectReturn();
   addCategoryBorder();
   categoryImageUp();
 }
@@ -148,132 +144,103 @@ function categoryImageDown() {
   content.onclick = openCategorySelect;
 }
 
-function openContacts(){
+function openContacts() {
   let contactList = document.getElementById("contactList");
   let contactListIcons = document.getElementById("contactListIcons");
   let border = document.getElementById(`contactSelectContainer`);
   let to = document.getElementById(`assignedToContainer`);
-  if (contactList.style.display === "none" || contactList.style.display === "") {
+  if (
+    contactList.style.display === "none" ||
+    contactList.style.display === ""
+  ) {
     contactList.style.display = "block";
     contactListIcons.style.display = "none";
     border.classList.add("bordercolor");
-    to.innerHTML="An";
+    to.innerHTML = "An";
   } else {
     contactList.style.display = "none";
     contactListIcons.style.display = "block";
     border.classList.remove("bordercolor");
-    to.innerHTML="Select to Contact";
+    to.innerHTML = "Select to Contact";
   }
 }
 
-function assignedtoContactBg(){
+function assignedtoContactBg() {
   let container = document.getElementById(`assignedContactContainer`);
   let contactListIcons = document.getElementById("contactListIconsLine");
   container.classList.add("assignedContainerBlack");
   let image = document.getElementById(`assignedContactImage`);
   image.src = "../assets/img/add_task/task_box_check.svg";
-  contactListIcons.innerHTML+=`<div id="contactIconNumber" class="assignedContactLeftSideIcon">SB</div>`
+  contactListIcons.innerHTML += `<div id="contactIconNumber" class="assignedContactLeftSideIcon">SB</div>`;
   container.onclick = removeassignedtoContactBg;
 }
 
-function removeassignedtoContactBg(){
+function removeassignedtoContactBg() {
   let container = document.getElementById(`assignedContactContainer`);
   container.classList.remove("assignedContainerBlack");
   let image = document.getElementById(`assignedContactImage`);
-  image.src = src="../assets/img/add_task/task_box.svg";
+  image.src = src = "../assets/img/add_task/task_box.svg";
   let contactListIcons = document.getElementById("contactListIconsLine");
   contactListIcons.innerHTML = "";
   container.onclick = assignedtoContactBg;
 }
-
 
 function subtastwindow() {
   let container = document.getElementById(`subTaskInputcontainer`);
   let img = document.getElementById(`addSubtaskImg`);
   img.src = "../assets/img/add_task/task_bin.svg";
   img.onclick = "removeSubtask()";
-  container.innerHTML += `<img src="../assets/img/add_task/task_line.svg" />
-  <img onclick="back()" src="../assets/img/add_task/task_check.svg" />`;
-}
-
-
-function addSubtask() {
-  container = document.getElementById(`subTasksContainer`);
-  inputfield = subTaskInputfieldText.value;
-  if (subTaskInputfieldText.value.trim() === "") {
-  } else {
-    container.innerHTML += `<div class="addedSubtask" id="createdSubTask${subtaskCounter}">
-    <div class="subTastText">
-      <p>•</p>
-      <p id="newSubtext${subtaskCounter}">${inputfield}</p>
-    </div>
-    <div id="newSubMenu" class="subMenu">
-      <img onclick="editSubTask(${subtaskCounter})" src="../assets/img/add_task/task_edit.svg" />
-      <img src="../assets/img/add_task/task_line.svg" />
-      <img onclick="removeSubtask(${subtaskCounter})" src="../assets/img/add_task/task_bin.svg" />
-    </div>
-  </div>`;
-  }
-  subTaskInputfieldText.value = "";
-  menu = document.getElementById(`subTaskInputfieldMenu`);
-  menu.innerHTML = `
-  <img src="../assets/img/add_task/task_add.svg" />`
-  subtaskCounter++;
-  let border = document.getElementById(`subTaskInputcontainer`);
-  border.classList.remove("bordercolor");
-}
-
-function editSubTask(subtaskCounter) {
-  let inputFieldId = `editInput${subtaskCounter}`;
-  let textInElement = document.getElementById(`newSubtext${subtaskCounter}`);
-  let menu = document.getElementById(`newSubMenu`);
-  if (textInElement) {
-    let currentText = textInElement.textContent;
-    textInElement.outerHTML = `<input type="text" id="${inputFieldId}" value="${currentText}" />`;
-    menu.innerHTML = `<img onclick="removeSubtask(${subtaskCounter})" src="../assets/img/add_task/task_bin.svg" />
-    <img src="../assets/img/add_task/task_line.svg" />
-    <img onclick="" src="../assets/img/add_task/task_check.svg" />`;
-    const inputFieldElement = document.getElementById(inputFieldId);
-    function cancelEdit(subtaskCounter) {
-      const newTextElement = document.createElement("p");
-      newTextElement.id = `newSubtext${subtaskCounter}`;
-      newTextElement.textContent = inputFieldElement.value;
-      inputFieldElement.replaceWith(newTextElement);
-    }
-    inputFieldElement.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        textInElement.textContent = inputFieldElement.value;
-        inputFieldElement.outerHTML = `<p id="newSubtext${subtaskCounter}">${inputFieldElement.value}</p>`;
-      } else if (event.key === "Escape") {
-        cancelEdit();
-      }
-    });
-    inputFieldElement.focus();
-    inputFieldElement.setSelectionRange(currentText.length, currentText.length);
-  }
-}
-
-function removeSubtask(i) {
-  deleteSubtask = document.getElementById(`createdSubTask${i}`);
-  deleteSubtask.remove();
+  container.innerHTML += subtastwindowReturn();
 }
 
 function changemenu() {
   container = document.getElementById(`subTaskInputfieldMenu`);
-  container.innerHTML = `
-  <img src="../assets/img/add_task/task_cross.svg" onclick="clearSubtaskInputfield()"/>
-  <img src="../assets/img/add_task/task_line.svg"/>
-  <img onclick="addSubtask()" src="../assets/img/add_task/task_check.svg"/>`;
+  container.innerHTML = changemenuReturn();
   let border = document.getElementById(`subTaskInputcontainer`);
   border.classList.add("bordercolor");
 }
 
-function clearSubtaskInputfield(){
-  let input = document.getElementById(`subTaskInputfieldText`)
+function addSubtask() {
+  let subtasksInput = document.getElementById("subTaskInputfieldText");
+  subtasks.push(subtasksInput.value);
+  renderSubtasks();
+  clearSubtaskInputfield();
+}
+
+function renderSubtasks() {
+  let subtasksList = document.getElementById("subTasksContainer");
+  subtasksList.innerHTML = "";
+  for (let i = 0; i < subtasks.length; i++) {
+    subtasksList.innerHTML += renderSubtasksReturn(subtasks, i);
+  }
+}
+
+function editSubtask(i) {
+  let content = document.getElementById("subtask" + i);
+  content.innerHTML = editSubtaskReturn(subtasks, i);
+}
+
+function editSubtaskDone(i) {
+  let content = document.getElementById("editSubtask" + i).value;
+  if (content.length > 0) {
+    subtasks[i] = content;
+    renderSubtasks();
+  } else {
+    deleteSubtask(i);
+  }
+}
+
+function deleteSubtask(i) {
+  subtasks.splice(i, 1);
+  renderSubtasks();
+}
+
+function clearSubtaskInputfield() {
+  let input = document.getElementById(`subTaskInputfieldText`);
   input.value = "";
   container = document.getElementById(`subTaskInputfieldMenu`);
   container.innerHTML = `
-  <img src="../assets/img/add_task/task_add.svg" />`
+  <img src="../assets/img/add_task/task_add.svg" />`;
   let border = document.getElementById(`subTaskInputcontainer`);
   border.classList.remove("bordercolor");
 }

@@ -4,46 +4,13 @@
 body {
   margin: 0;
   font-family: "Inter";
+  font-size: 16px;
+  font-weight: 400;
+  background-color: var(--whiteGray);
 }
 h1 {
   font-size: 47px;
   margin-left: 16px;
-}
-
-p {
-  margin: 0;
-  margin-bottom: 8px;
-}
-
-span {
-  font-size: 16px;
-}
-
-.input {
-  font-family: "Inter";
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 19px;
-  color: var(--black);
-}
-
-.input::placeholder {
-  color: var(--lighterGrey);
-}
-
-.requiredStar {
-  color: var(--wrongInputText);
-  font-size: 20px;
-}
-.taskHeadline {
-  font-family: "Inter";
-  font-size: 16px;
-  font-weight: 400;
-}
-.fildIsRequiredText {
-  margin-top: 4px;
-  color: rgba(255, 129, 144, 1);
-  font-size: 12px;
 }
 
 .taskMainContainer {
@@ -51,11 +18,18 @@ span {
   margin-right: 16px;
   display: flex;
   flex-direction: column;
-  background-color: #f6f7f8;
+  background-color: var(--whiteGray);
   gap: 8px;
 }
 
-.taskTitleContainer {
+.taskHeadline {
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+/* ---------------------------------------- */
+
+#taskTitleContainer {
   display: flex;
   flex-direction: column;
 }
@@ -65,17 +39,16 @@ span {
   padding-right: 21px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border: solid 1px #d1d1d1;
+  border: solid 1px var(--lighterGrey);
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: var(--white);
+  font-size: 16px;
+  font-weight: 400;
 }
 
-input:focus {
-  outline: none;
-  border-color: var(--lightBlue);
-}
+/* ---------------------------------------- */
 
-.taskDescriptionContainer {
+#taskDescriptionContainer {
   display: flex;
   flex-direction: column;
 }
@@ -83,21 +56,25 @@ input:focus {
 .descriptionInputField {
   padding: 18px 16px;
   border-radius: 10px;
-  border: 1px solid #d1d1d1;
-  background: #fff;
+  border: 1px solid var(--lighterGrey);
+  background: var(--white);
   max-height: 175px;
   min-height: 102px;
   height: 84px;
   outline: none;
-  border-color: #d1d1d1;
+  font-size: 16px;
+  font-weight: 400;
 }
 .descriptionInputField:focus {
   border-color: var(--lightBlue);
 }
 
+/* ---------------------------------------- */
+
 #taskPrioContainer {
   display: flex;
   flex-direction: column;
+  margin-bottom: 16px;
 }
 
 #prioSelectContainer {
@@ -109,202 +86,13 @@ input:focus {
 .taskSelectButton {
   width: 126px;
   padding: 18px 10px 18px 10px;
-  font-size: 16px;
-  font-weight: 400;
   justify-content: center;
   display: flex;
   gap: 8px;
-  border: solid 1px #d1d1d1;
+  border: solid 1px var(--lighterGrey);
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: var(--white);
   cursor: pointer;
-}
-
-#taskDueDateContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-.dueDateInputField {
-  padding: 8px 21px 8px 21px;
-  border-radius: 10px;
-  border: solid 1px #d1d1d1;
-  border-radius: 10px;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  font-size: 20px;
-  color: #757575;
-}
-
-.taskCategoryContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-.categorySelect {
-  padding: 12px 16px 12px 16px;
-  border-radius: 10px;
-  border: 1px;
-  display: flex;
-  justify-content: space-between;
-  border: solid 1px #d1d1d1;
-  border-radius: 10px;
-  background-color: #ffffff;
-}
-
-.categorySelectOptions {
-  background-color: #ffffff;
-  border-radius: 10px;
-}
-.categorySelectOption {
-  padding: 12px 16px 12px 16px;
-  border-radius: 10px;
-  border: 1px;
-  display: flex;
-  justify-content: space-between;
-  background-color: #ffffff;
-}
-
-#taskAssignedContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-#taskSubtaskContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-#contactList{
-  display: none;
-}
-
-#contactListIcons{
-  display:block;
-  flex-direction: row;
-  gap:4px;
-}
-
-#contactListIconsLine{
-  display: flex;
-}
-
-.assignedContactContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 7px 16px;
-  cursor: pointer;
-  border-radius: 10px;
-  background-color: #ffffff;
-}
-
-.assignedContainerBlack{
-  background-color: var(--black) !important;
-  color:var(--white) !important;
-}
-
-.assignedContactLeftSide {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-.assignedContactLeftSideIcon{
-display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 38px;
-    height: 38px;
-    background-color: #ff7a00;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    color: #fff;
-}
-
-.assignedContactNameClass{
-margin:0;
-}
-
-.subTaskInputcontainerClass {
-  padding: 12px 16px 12px 16px;
-  border-radius: 10px;
-  border: 1px;
-  display: flex;
-  justify-content: space-between;
-  border: solid 1px #d1d1d1;
-  border-radius: 10px;
-  background-color: #ffffff;
-}
-
-.subtaskInputfield {
-  outline: none;
-  border: none;
-}
-
-.subTaskAddContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-.addedSubtask {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 24px;
-  padding: 4px 16px;
-  border-radius: 10px;
-}
-
-.subTastText {
-  display: flex;
-  gap: 8px;
-}
-.subMenu {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
-.subTaskInputfieldMenuClass {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.finishTaskContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 16px;
-  padding-top: 16px;
-}
-
-.finishTaskText {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0em;
-}
-
-.createTask {
-  background-color: rgba(42, 54, 71, 1);
-  color: #ffffff;
-  padding: 16px;
-  border-radius: 10px;
-  gap: 4px;
-}
-
-.bordercolor {
-  border: solid 1px var(--lightBlue) !important;
-}
-
-.requiredBorder {
-  border: solid 1px var(--wrongInputBorder);
 }
 
 .prioMedium {
@@ -327,6 +115,281 @@ margin:0;
   color: var(--white) !important;
   font-weight: 700;
 }
+
+/* ---------------------------------------- */
+
+#taskDueDateContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#dueDateRequiredContainer {
+  margin-bottom: 16px;
+}
+
+.dueDateInputField {
+  padding: 8px 21px 8px 21px;
+  border-radius: 10px;
+  border: solid 1px var(--lighterGrey);
+  background-color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: 400;
+  flex: 1;
+}
+
+/* ---------------------------------------- */
+
+#taskCategoryContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.categorySelect {
+  padding: 12px 16px 12px 16px;
+  border-radius: 10px;
+  border: 1px;
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px var(--lighterGrey);
+  border-radius: 10px;
+  background-color: var(--white);
+}
+
+.categorySelectOptions {
+  background-color: var(--white);
+  border-radius: 10px;
+}
+.categorySelectOption {
+  padding: 12px 16px 12px 16px;
+  border-radius: 10px;
+  border: 1px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--white);
+}
+
+/* ---------------------------------------- */
+
+#contactList {
+  display: none;
+}
+
+#contactListIcons {
+  display: block;
+  flex-direction: row;
+  gap: 4px;
+}
+
+#contactListIconsLine {
+  display: flex;
+}
+
+/* ---------------------------------------- */
+
+#taskAssignedContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.assignedContactContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: var(--white);
+}
+
+.assignedContainerBlack {
+  background-color: var(--black) !important;
+  color: var(--white) !important;
+}
+
+.assignedContactLeftSide {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.assignedContactLeftSideIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  background-color: var(--yellow);
+  border-radius: 50%;
+  border: 2px solid var(--white);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--white);
+}
+
+.assignedContactNameClass {
+  margin: 0;
+}
+
+/* ---------------------------------------- */
+
+#taskSubtaskContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subTaskInputcontainerClass {
+  padding: 12px 16px 12px 16px;
+  border-radius: 10px;
+  border: 1px;
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px var(--lighterGrey);
+  border-radius: 10px;
+  background-color: var(--white);
+  flex: 1;
+}
+
+.subtaskInputfield {
+  outline: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.subTaskAddContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.addedSubtask {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 24px;
+  padding: 4px 16px;
+  border-radius: 10px;
+}
+
+.subTastText {
+  display: flex;
+  gap: 8px;
+}
+
+.subMenu {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.subTaskInputfieldMenuClass {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.subtaskEdit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 16px;
+  border-bottom: 1px solid var(--lightBlue);
+  background-color: var(--white);
+}
+.subtaskEdit img {
+  cursor: pointer;
+}
+.subtaskEdit input {
+  font-size: 16px;
+  border: 0;
+  flex: 1;
+}
+.subtaskEdit input:focus {
+  outline: none;
+}
+
+.subtastEditMenu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ---------------------------------------- */
+
+#finishTaskContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  padding-top: 16px;
+}
+
+.finishTaskText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+}
+
+.createTask {
+  background-color: var(--lightGray);
+  color: var(--white);
+  padding: 16px;
+  border-radius: 10px;
+  gap: 4px;
+}
+
+/* ---------------------------------------- */
+
+.bordercolor {
+  border: solid 1px var(--lightBlue) !important;
+}
+
+.requiredStar {
+  color: var(--wrongInputText);
+  font-size: 20px;
+}
+
+.fildIsRequiredText {
+  margin-top: 4px;
+  color: var(--wrongInputText);
+  font-size: 12px;
+}
+
+.requiredBorder {
+  border: solid 1px var(--wrongInputBorder);
+}
+
+
+@media (min-width: 434px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .taskMainContainer {
+    max-width: 450px;
+  }
+  h1 {
+    margin-left: 32px;
+    width: 434px;
+  }
+
+  #taskTitleContainer { order: 1; }
+  #taskDescriptionContainer { order: 2; }
+  #taskAssignedContainer { order: 3; }
+  #taskDueDateContainer { order: 4; }
+  #taskPrioContainer { order: 5; }
+  #taskCategoryContainer { order: 6; }
+  #taskSubtaskContainer { order: 7; }
+  #finishTaskContainer { order: 8; }
+}
+
+
 
 @media screen and (min-width: 721px) {
   .taskSelectButton:hover {

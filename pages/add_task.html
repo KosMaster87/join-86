@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="../css/add_task.css" />
     <script src="../script.js"></script>
     <script src="../js/add_task.js"></script>
+    <script src="../js/add_taskHTML.js"></script>
     <title>Join Project Management Tool</title>
   </head>
   <body>
     <h1>Add Task</h1>
     <div class="taskMainContainer">
-      <div class="taskTitleContainer">
+      <div id="taskTitleContainer">
         <p class="taskHeadline">
           Title
           <span class="requiredStar">*</span>
@@ -24,7 +25,7 @@
         />
         <p id="inputRequiredContainer" class="fildIsRequiredText"></p>
       </div>
-      <div class="taskDescriptionContainer">
+      <div id="taskDescriptionContainer">
         <p class="taskHeadline">Description</p>
         <textarea
           placeholder="Enter a Descripton"
@@ -75,7 +76,7 @@
         <p id="dueDateRequiredContainer" class="fildIsRequiredText"></p>
       </div>
 
-      <div class="taskCategoryContainer">
+      <div id="taskCategoryContainer">
         <p class="taskHeadline">
           Category
           <span class="requiredStar">*</span>
@@ -135,7 +136,7 @@
         <div class="subTaskAddContainer" id="subTasksContainer"></div>
       </div>
 
-      <div class="finishTaskContainer">
+      <div id="finishTaskContainer">
         <div class="finishTaskText">
           <span class="requiredStar">*</span>This field is required
         </div>
