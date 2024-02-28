@@ -46,7 +46,7 @@ html {
 }
 
 .registerMain {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
 }
 
@@ -55,13 +55,13 @@ html {
   flex-direction: column;
 }
 
-#mainHeader {
+/* #mainHeader {
   display: none;
-}
+} */
 
-#mainMenu {
+/* #mainMenu {
   display: none;
-}
+} */
 
 /* #mainContent {
   display: none;
@@ -75,7 +75,7 @@ html {
     flex-direction: column;
   }
 
-  /*  Dem zu inportierendem Kontent diese Klasse geben.  */
+  /* Add .mainContent to your mainContentDIV*/
   .mainContent {
     min-height: calc(100dvh - 7rem);
     display: flex;
@@ -87,14 +87,17 @@ html {
 /* ---------------------------------------- */
 
 @media only screen and (max-width: 2560px) and (min-width: 721px) {
-  /*  Dem zu inportierendem Kontent diese Klasse geben.  */
+  /* body {
+    display: flex;
+    flex-flow: column;
+  } */
+
+  /* Add .mainContent to your mainContentDIV */
   .mainContent {
     height: calc(100dvh - 3.5rem);
-    position: fixed;
-    left: 10rem;
+    /* left: 9rem; */
     bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
   }
 }

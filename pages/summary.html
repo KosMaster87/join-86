@@ -12,153 +12,148 @@
     <script src="./../script.js"></script>
     <title>Summary</title>
   </head>
-  <body onload="summaryInit(); includeHTML();">
+  <body onload="includeHTML();">
     <div
       w3-include-html="../assets/templates/header.html"
       id="mainHeader"
       class="mainHeader"
     ></div>
-    <!-- Bereich für eingeloggte Benutzer. So auch Header und Menüleiste. -->
-    <div class="mainSummaryContent" id="mainSummaryContent">
-      <div class="summaryContent mainContent" id="summaryContent">
-        <div class="greetingUserSummary" id="summaryGreetUserScreen">
-          <p class="greetingUserSummaryParagraf">Good morning</p>
-          <p class="greetingUserSummaryName summeryGreetX">Placeholder</p>
-        </div>
 
-        <div class="summaryToDos" id="summaryToDos">
-          <div class="summaryRowContent">
-            <div class="summaryHeaderHelper">
-              <h1 class="summaryHeadline1">Join 360</h1>
-              <br />
-              <p class="headlinePara">Key Metrics at a Glance</p>
-              <div class="verticalLine"></div>
-            </div>
+    <div class="summaryContent mainContent" id="summaryContent">
+      <div class="greetingUserSummary" id="summaryGreetUserScreen">
+        <p class="greetingUserSummaryParagraf">Good morning</p>
+        <p class="greetingUserSummaryName summeryGreetX">Placeholder</p>
+      </div>
 
-            <div class="row1">
-              <div
-                class="reactangle borderRadius backgroundColor reactangelBoxShadow cursorPointer"
-                onmouseover="changeImage(this)"
-                onmouseout="changeImageBack(this)"
-                onclick="includeContentHTML('board'); setActiveLink('navBoard')"
-              >
-                <img
-                  src="../assets/img/summary/summaryGrayEdit.svg"
-                  class="todoSpecial summaryAnimateProgramm editImage"
-                />
+      <div class="summaryToDos" id="summaryToDos">
+        <div class="summaryRowContent">
+          <div class="summaryHeaderHelper">
+            <h1 class="summaryHeadline1">Join 360</h1>
+            <br />
+            <p class="headlinePara">Key Metrics at a Glance</p>
+            <div class="verticalLine"></div>
+          </div>
 
-                <div
-                  class="summaryToDoSum"
-                  onclick="includeContentHTML('board'); setActiveLink('navBoard')"
-                >
-                  <p class="sammarySumNumber" id="summeryTodoTodos">0</p>
-                  <p>To-do</p>
-                </div>
-              </div>
+          <div class="row1">
+            <div
+              class="reactangle borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+              onmouseover="changeImage(this)"
+              onmouseout="changeImageBack(this)"
+              onclick="includeContentHTML('board'); setActiveLink('navBoard')"
+            >
+              <img
+                src="../assets/img/summary/summaryGrayEdit.svg"
+                class="todoSpecial summaryAnimateProgramm editImage"
+              />
 
               <div
-                class="reactangle borderRadius backgroundColor reactangelBoxShadow cursorPointer"
-                onmouseover="changeImage(this)"
-                onmouseout="changeImageBack(this)"
+                class="summaryToDoSum"
                 onclick="includeContentHTML('board'); setActiveLink('navBoard')"
               >
-                <img
-                  src="../assets/img/summary/summaryCheckGray.svg"
-                  class="doneSpecial summaryAnimateProgramm checkImage"
-                />
-                <div
-                  class="summaryToDoSum"
-                  onclick="includeContentHTML('board')"
-                >
-                  <p class="sammarySumNumber" id="summeryDoneTodos">0</p>
-                  <p>Done</p>
-                </div>
+                <p class="sammarySumNumber" id="summeryTodoTodos">0</p>
+                <p>To-do</p>
               </div>
             </div>
 
             <div
-              class="row2Helper borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+              class="reactangle borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+              onmouseover="changeImage(this)"
+              onmouseout="changeImageBack(this)"
+              onclick="includeContentHTML('board'); setActiveLink('navBoard')"
             >
-              <div class="row2summary">
-                <img src="./../assets/img/summary/Frame59_urgent.svg" />
-
-                <div
-                  class="summaryToDoSum"
-                  onclick="includeContentHTML('board'); setActiveLink('navBoard')"
-                >
-                  <p class="sammarySumNumber" id="summeryUpcomingTasks"></p>
-                  <p>Urgent</p>
-                </div>
+              <img
+                src="../assets/img/summary/summaryCheckGray.svg"
+                class="doneSpecial summaryAnimateProgramm checkImage"
+              />
+              <div class="summaryToDoSum" onclick="includeContentHTML('board')">
+                <p class="sammarySumNumber" id="summeryDoneTodos">0</p>
+                <p>Done</p>
               </div>
+            </div>
+          </div>
+
+          <div
+            class="row2Helper borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+          >
+            <div class="row2summary">
+              <img src="./../assets/img/summary/Frame59Urgent.svg" />
 
               <div
-                class="urgentDater"
+                class="summaryToDoSum"
                 onclick="includeContentHTML('board'); setActiveLink('navBoard')"
               >
-                <div class="prioVerticalLine"></div>
-                <div class="summaryDeadlineBox">
-                  <p class="summaryDeadDater" id="summeryUrgentDate">
-                    Oktober 16, 2022
-                  </p>
-                  <p class="summaryDeadUpcoming">Upcoming Deadline</p>
-                </div>
+                <p class="sammarySumNumber" id="summeryUpcomingTasks"></p>
+                <p>Urgent</p>
               </div>
             </div>
 
-            <div class="row3">
-              <div
-                class="squareButton borderRadius backgroundColor reactangelBoxShadow cursorPointer"
-              >
-                <div
-                  class="summaryToDoSum"
-                  onclick="includeContentHTML('board'); setActiveLink('navBoard')"
-                >
-                  <p class="sammarySumNumber" data-todos>0</p>
-                  <p>Tasks in</p>
-                  <p>Board</p>
-                </div>
-              </div>
-
-              <div
-                class="squareButton borderRadius backgroundColor reactangelBoxShadow cursorPointer"
-              >
-                <div
-                  class="summaryToDoSum"
-                  onclick="includeContentHTML('board'); setActiveLink('navBoard')"
-                >
-                  <p class="sammarySumNumber" id="summeryProcessTasks">0</p>
-                  <p>Tasks in</p>
-                  <p>Prozess</p>
-                </div>
-              </div>
-
-              <div
-                class="squareButton borderRadius backgroundColor reactangelBoxShadow cursorPointer"
-              >
-                <div
-                  class="summaryToDoSum"
-                  onclick="includeContentHTML('board'); setActiveLink('navBoard')"
-                >
-                  <p class="sammarySumNumber" id="summeryAwaitingTask">0</p>
-                  <p>Awaiting</p>
-                  <p>feedback</p>
-                </div>
+            <div
+              class="urgentDater"
+              onclick="includeContentHTML('board'); setActiveLink('navBoard')"
+            >
+              <div class="prioVerticalLine"></div>
+              <div class="summaryDeadlineBox">
+                <p class="summaryDeadDater" id="summeryUrgentDate">
+                  Oktober 16, 2022
+                </p>
+                <p class="summaryDeadUpcoming">Upcoming Deadline</p>
               </div>
             </div>
           </div>
 
-          <div class="greetingBoxShow">
-            <h1>Good morning</h1>
-            <p class="summeryGreetX" id="summeryGreet">Placeholder</p>
+          <div class="row3">
+            <div
+              class="squareButton borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+            >
+              <div
+                class="summaryToDoSum"
+                onclick="includeContentHTML('board'); setActiveLink('navBoard')"
+              >
+                <p class="sammarySumNumber" data-todos>0</p>
+                <p>Tasks in</p>
+                <p>Board</p>
+              </div>
+            </div>
+
+            <div
+              class="squareButton borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+            >
+              <div
+                class="summaryToDoSum"
+                onclick="includeContentHTML('board'); setActiveLink('navBoard')"
+              >
+                <p class="sammarySumNumber" id="summeryProcessTasks">0</p>
+                <p>Tasks in</p>
+                <p>Prozess</p>
+              </div>
+            </div>
+
+            <div
+              class="squareButton borderRadius backgroundColor reactangelBoxShadow cursorPointer"
+            >
+              <div
+                class="summaryToDoSum"
+                onclick="includeContentHTML('board'); setActiveLink('navBoard')"
+              >
+                <p class="sammarySumNumber" id="summeryAwaitingTask">0</p>
+                <p>Awaiting</p>
+                <p>feedback</p>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div class="greetingBoxShow">
+          <h1>Good morning</h1>
+          <p class="summeryGreetX" id="summeryGreet">Placeholder</p>
         </div>
       </div>
     </div>
 
     <div
       w3-include-html="../assets/templates/menu.html"
-      id="mainMenu"
-      class="mainMenu"
+      id="afterLoginMainMenu"
+      class="afterLoginMainMenu"
     ></div>
   </body>
 </html>

@@ -30,7 +30,7 @@ function changeToShowCurrentPassword(passwordId, imageId) {
 
   if (hideThePassword.type == "password") {
     hideThePassword.type = "text";
-    hideThePasswordImage.src = "/assets/img/login/visibility_off.svg";
+    hideThePasswordImage.src = "/assets/img/login/visibilityOff.svg";
   } else {
     hideThePassword.type = "password";
     hideThePasswordImage.src = "/assets/img/login/lock.svg";
@@ -55,78 +55,44 @@ async function login() {
 
   if (user) {
     console.log("Benutzer gefunden");
-
-    // redirectToIndex();
-    // redirectToSummary();
     window.location.assign("pages/summary.html");
-    summaryInit();
+    // summaryInit();
+    // showHeaderAndFooter();
   } else {
     console.log("Benutzer nicht gefunden");
   }
 }
 
 /**
- * If user login, then switch to loin area. show/hide
- */
-// function redirectToIndex() {
-//   // window.location.href = "../index.html";
-//   let loginMain = document.getElementById("loginMain");
-//   let mainHeader = document.getElementById("mainHeader");
-//   let mainMenu = document.getElementById("mainMenu");
-//   let mainContent = document.getElementById("mainContent");
-
-//   loginMain.classList.remove("show");
-//   loginMain.classList.add("hide");
-
-//   mainHeader.style.display = "flex";
-//   mainMenu.style.display = "flex";
-//   mainContent.style.display = "flex";
-// }
-
-/**
  * Switch back from login page to register page. (Into index.html)
  */
 function redirectToRegister() {
-  // window.location.assign("../pages/register.html"); // Alte version.
   let registerMain = document.getElementById("registerMain");
   let loginMain = document.getElementById("loginMain");
 
-  loginMain.classList.remove("show");
-  loginMain.classList.add("hide");
+  // loginMain.classList.remove("show");
+  // loginMain.classList.add("hide");
+  loginMain.style.display = "none";
 
-  registerMain.classList.remove("hide");
-  registerMain.classList.add("show");
+  // registerMain.classList.remove("hide");
+  registerMain.style.display = "flex";
+  // registerMain.classList.add("show");
 }
 
-function redirectToSummary() {
-  window.location.assign("../pages/summary.html");
+// async function summaryInit() {
+//   showHeaderAndFooter();
+// }
 
-  let mainHeader = document.getElementById("mainHeader");
-  let mainMenu = document.getElementById("mainMenu");
+// function showHeaderAndFooter() {
+//   let mainHeader = document.getElementById("mainHeader");
+//   let afterLoginMainMenu = document.getElementById("afterLoginMainMenu");
+//   mainHeader.style.display = "flex";
+//   afterLoginMainMenu.style.display = "flex";
+// }
 
-  loginMain.classList.remove("hide");
-  loginMain.classList.add("show");
-
-  registerMain.classList.remove("hide");
-  registerMain.classList.add("show");
-}
-
-async function summaryInit() {
-  // await includeHTML();
-  showHeaderAndFooter();
-  // hideHeaderAndFooter()
-}
-
-function showHeaderAndFooter() {
-  let mainHeader = document.getElementById("mainHeader");
-  let mainMenu = document.getElementById("mainMenu");
-  mainHeader.style.display = "flex";
-  mainMenu.style.display = "flex";
-}
-
-function hideHeaderAndFooter() {
-  let mainHeader = document.getElementById("mainHeader");
-  let mainMenu = document.getElementById("mainMenu");
-  mainHeader.style.display = "none";
-  mainMenu.style.display = "none";
-}
+// function hideHeaderAndFooter() {
+//   let mainHeader = document.getElementById("mainHeader");
+//   let afterLoginMainMenu = document.getElementById("afterLoginMainMenu");
+//   mainHeader.style.display = "none";
+//   afterLoginMainMenu.style.display = "none";
+// }

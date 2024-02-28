@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="../css/login.css" />
-    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="./css/register.css" />
     <link rel="stylesheet" href="./style.css" />
 
     <script src="./js/header.js"></script>
@@ -17,27 +17,25 @@
 
     <title>Join Project Management Tool</title>
   </head>
-  <body onload="init()">
-    <div
+  <body>
+    <!-- <body onload="init()"> -->
+    <!-- <div
       w3-include-html="assets/templates/header.html"
       id="mainHeader"
       class="mainHeader"
     ></div>
 
-    <!-- Bereich für eingeloggte Benutzer. So auch Header und Menüleiste. -->
-    <div class="mainContent hideAny" id="mainContent"></div>
-
     <div
       w3-include-html="assets/templates/menu.html"
       id="mainMenu"
       class="mainMenu"
-    ></div>
+    ></div> -->
 
     <!--------------- LOGIN HTML START -------------------->
-    <div class="loginMain" id="loginMain">
+    <div class="loginMain" id="loginMain" style="display: flex;">
       <div class="joinLogoAnimationLogin">
-        <img src="../assets/img/login/firstLogo.svg" class="loginSecondImg" />
-        <img src="../assets/img/login/secondLogo.svg" class="loginPrimaryImg" />
+        <img src="./assets/img/login/firstLogo.svg" class="loginSecondImg" />
+        <img src="./assets/img/login/secondLogo.svg" class="loginPrimaryImg" />
       </div>
 
       <div class="firstLogin">
@@ -65,7 +63,7 @@
               onblur="resetBorderColor('loginEmailDevision')"
               data-login
             />
-            <img class="inpIconStyle" src="../assets/img/login/mail.svg" />
+            <img class="inpIconStyle" src="./assets/img/login/mail.svg" />
           </div>
 
           <div class="loginPasswortDevision" id="loginPasswortDevision">
@@ -87,7 +85,7 @@
               style="padding-right: 3px"
               class="inpIconStyle"
               id="logInPasswordImage"
-              src="../assets/img/login/lock.svg"
+              src="./assets/img/login/lock.svg"
               onclick="changeToShowCurrentPassword('loginInputPassword', 'logInPasswordImage')"
             />
           </div>
@@ -108,12 +106,12 @@
             <div class="justBtn">
               <button class="confirmLogInBtn" id="loginBtn">Log in</button>
 
-              <!-- <button
-            class="guestLogInBtn"
-            onclick="loginAsGuest(); return false;"
-          >
-            Guest Log in
-          </button> -->
+              <button
+                class="guestLogInBtn"
+                onclick="loginAsGuest(); return false;"
+              >
+                Guest Log in
+              </button>
             </div>
           </div>
         </form>
@@ -131,12 +129,12 @@
 
         <div class="mobilePoliceLegal" id="mobilePoliceLegal">
           <a
-            href="./../../../assets/templates/privacy_policy/privacy_policy_internal.html"
+            href="./assets/templates/privacy_policy/privacy_policy_internal.html"
             target="_blank"
             >Privacy Police</a
           >
           <a
-            href="./../../../assets/templates/legal_notice/legal_notice_internal.html"
+            href="./assets/templates/legal_notice/legal_notice_internal.html"
             target="_blank"
             >Legal notice</a
           >
@@ -144,8 +142,11 @@
       </div>
     </div>
     <!-- LOGIN HTML END -->
+    <!-- --------------------------------------------------------------------- -->
+    <!-- --------------------------------------------------------------------- -->
+    <!-- --------------------------------------------------------------------- -->
     <!-- REGISTER HTML START -->
-    <div class="registerMain hide" id="registerMain">
+    <div class="registerMain" id="registerMain" style="display: none">
       <div class="signedUpSuccessfully hide" id="signedUpSuccessfully">
         <p class="signedUpSuccessfullyPara">You Signed Up successfully</p>
       </div>
@@ -164,7 +165,7 @@
           <div class="headerRegisterBox">
             <img
               class="backToLoginMobile"
-              src="../../../assets/img/register/arrow-left-line.svg"
+              src="./assets/img/register/arrowLeftLine.svg"
               onclick="redirectToLoin()"
             />
             <div class="headerRegister">
@@ -188,10 +189,7 @@
               onblur="resetBorderColor('nameRegistDevision')"
               data-Register
             />
-            <img
-              class="inpIconStyle"
-              src="../../../assets/img/register/person.svg"
-            />
+            <img class="inpIconStyle" src="./assets/img/register/person.svg" />
           </div>
 
           <div class="registerEmailDevision" id="registerEmailDevision">
@@ -208,10 +206,7 @@
               onblur="resetBorderColor('registerEmailDevision')"
               data-Register
             />
-            <img
-              class="inpIconStyle"
-              src="../../../assets/img/login/mail.svg"
-            />
+            <img class="inpIconStyle" src="./assets/img/login/mail.svg" />
           </div>
 
           <div class="registerPasswortDevision" id="registerPasswortDevision">
@@ -232,7 +227,7 @@
               style="padding-right: 3px"
               class="inpIconStyle"
               id="signUpPasswordImage"
-              src="../assets/img/register/lock.svg"
+              src="./assets/img/register/lock.svg"
               onclick="changeToShowCurrentPassword('registerInputPassword', 'signUpPasswordImage')"
             />
           </div>
@@ -258,7 +253,7 @@
               style="padding-right: 3px"
               class="inpIconStyle"
               id="signUpConfirmPasswordImage"
-              src="../assets/img/register/lock.svg"
+              src="./assets/img/register/lock.svg"
               onclick="changeToShowCurrentPassword('registerInputPasswordConfirm', 'signUpConfirmPasswordImage')"
             />
           </div>
@@ -285,12 +280,12 @@
 
         <div class="mobilePoliceLegal" id="mobilePoliceLegal">
           <a
-            href="./../../../assets/templates/privacy_policy/privacy_policy_internal.html"
+            href="./assets/templates/privacy_policy/privacy_policy_internal.html"
             target="_blank"
             >Privacy Police</a
           >
           <a
-            href="./../../../assets/templates/legal_notice/legal_notice_internal.html"
+            href="./assets/templates/legal_notice/legal_notice_internal.html"
             target="_blank"
             >Legal notice</a
           >

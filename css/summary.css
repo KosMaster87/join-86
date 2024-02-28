@@ -55,10 +55,7 @@
 
   /* ---------------------------------------- */
 
-  /* .summaryContent {
-  } */
-
-  .greetingGuestSummary {
+   .greetingGuestSummary {
     display: none;
     align-items: center;
     justify-content: center;
@@ -293,7 +290,8 @@
 
 @media only screen and (max-width: 2560px) and (min-width: 721px) {
   .summaryContent {
-    width: 100%;
+    position: absolute;
+    right: 10rem;
   }
 
   /* ---------------------------------------- */

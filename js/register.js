@@ -54,11 +54,13 @@ function redirectToLoin() {
   let registerMain = document.getElementById("registerMain");
   let loginMain = document.getElementById("loginMain");
 
-  registerMain.classList.remove("show");
-  registerMain.classList.add("hide");
+  // registerMain.classList.remove("show");
+  // registerMain.classList.add("hide");
+  loginMain.style.display = "flex";
 
-  loginMain.classList.remove("hide");
-  loginMain.classList.add("show");
+  // loginMain.classList.remove("hide");
+  // loginMain.classList.add("show");
+  registerMain.style.display = "none";
 }
 
 // ---------------------------------------------------------------------------
@@ -86,7 +88,7 @@ function changeToShowCurrentPassword(passwordId, imageId) {
 
   if (hideThePassword.type == "password") {
     hideThePassword.type = "text";
-    hideThePasswordImage.src = "/assets/img/login/visibility_off.svg";
+    hideThePasswordImage.src = "/assets/img/login/visibilityOff.svg";
   } else {
     hideThePassword.type = "password";
     hideThePasswordImage.src = "/assets/img/login/lock.svg";

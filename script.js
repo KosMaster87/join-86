@@ -2,9 +2,9 @@ const STORAGE_TOKEN = "DXZFTQCTDMTN307RSV39G7QWLBSB9ZB6CEFWG1WB"; // #2
 // const STORAGE_TOKEN = "J4LQKS1ZDS5WC5NTX6XUA3MD2ROKE6VOP8A4QBBP"; // #1
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
-async function init() {
-  await includeHTML();
-}
+// async function init() {
+//   await includeHTML();
+// }
 
 /**
  * The instruction to load from remote storage.
