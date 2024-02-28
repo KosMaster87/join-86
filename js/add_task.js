@@ -1,19 +1,28 @@
-let prio = "";
+let selectedTitle = "";
+let selectedDescription = "";
+let selectedAssignedto = "";
+let selectedDueDate = "";
+let selectedPrio = "";
+let selectedCategory = "";
 let subtasks = [];
 
-function testfalsch() {
+function requiredFields() {
   inputAbfrage();
   dueDateRequired();
   categoryRequired();
+  let description = document.getElementById(`descriptionInput`);
+  selectedDescription = description.value;
 }
 
 function inputAbfrage() {
   let inputfield = document.getElementById("titelInputContainer");
   let inputRequired = document.getElementById("inputRequiredContainer");
+  let text = document.getElementById("titelInputContainer");
   if (inputfield.value.trim() === "") {
     inputfield.classList.add("requiredBorder");
     inputRequired.innerHTML = "This field is required";
   } else {
+    selectedTitle = text.value;
     inputfield.classList.remove("requiredBorder");
     inputRequired.innerHTML = "";
   }
@@ -22,11 +31,12 @@ function inputAbfrage() {
 function dueDateRequired() {
   inputfield = document.getElementById(`dueDateInputContainer`);
   inputRequired = document.getElementById(`dueDateRequiredContainer`);
+  let date = document.getElementById(`dueDateInputContainer`);
   if (inputfield.value.trim() === "") {
     inputfield.classList.add("requiredBorder");
     inputRequired.innerHTML = "This field is required";
-    required++;
   } else {
+    selectedDueDate = date.value;
     inputRequired.innerHTML = "";
     inputfield.classList.remove("requiredBorder");
   }
@@ -44,14 +54,14 @@ function categoryRequired() {
   } else {
     border.classList.add("requiredBorder");
     inputRequired.innerHTML = "This field is required";
-    required++;
   }
 }
 
-function whatsPrio(clickedContainerId) {
+function whatsPrio(clickedContainerId, SelectedPrio) {
   removeWhiteImg();
   removePrio();
   changePrioColor(clickedContainerId);
+  prio = SelectedPrio;
 }
 
 function removePrio() {
@@ -78,12 +88,15 @@ function changePrioColor(clickedContainerId) {
   let imgLow = prioLowContainer.querySelector("img");
   if (clickedContainerId === prioLowContainer) {
     prioLowContainer.classList.add("prioLow");
+    selectedPrio = "Low";
     imgLow.src = "../assets/img/add_task/arrow_bottom_white.svg";
   } else if (clickedContainerId === prioMediumContainer) {
     prioMediumContainer.classList.add("prioMedium");
+    selectedPrio = "Medium";
     imgMedium.src = "../assets/img/add_task/line_white.svg";
   } else if (clickedContainerId === prioUrgentContainer) {
     prioUrgentContainer.classList.add("prioUrgent");
+    selectedPrio = "Urgent";
     imgUrgent.src = "../assets/img/add_task/arrow_top_white.svg";
   }
 }
@@ -121,6 +134,7 @@ function selectCategory(selectedOption) {
   let content = document.getElementById(`categoryText`);
   let image = document.getElementById(`categoryImage`);
   content.innerHTML = `${selectedOption.innerText}`;
+  selectedCategory = content.innerText;
   image.src = "../assets/img/add_task/arrow_drop_up.svg";
   closeCategoryMenu();
 }

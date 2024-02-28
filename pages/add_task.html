@@ -28,6 +28,7 @@
       <div id="taskDescriptionContainer">
         <p class="taskHeadline">Description</p>
         <textarea
+          id="descriptionInput"
           placeholder="Enter a Descripton"
           class="descriptionInputField"
         ></textarea>
@@ -140,7 +141,7 @@
         <div class="finishTaskText">
           <span class="requiredStar">*</span>This field is required
         </div>
-        <div class="createTask" onclick="testfalsch()">
+        <div class="createTask" onclick="requiredFields()">
           Create Task <img src="../assets/img/add_task/task_check_white.svg" />
         </div>
       </div>
