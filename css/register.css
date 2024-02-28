@@ -38,11 +38,11 @@
   color: var(--wrongInput);
 }
 
-.emailDevision.active {
+.registerEmailDevision.active {
   border-color: var(--lightBlue);
 }
 
-.passwortDevision.active {
+.registerPasswortDevision.active {
   border-color: var(--lightBlue);
 }
 
@@ -50,7 +50,7 @@
   border-color: var(--lightBlue);
 }
 
-.confirmPasswortDevision.active {
+.registerConfirmPasswortDevision.active {
   border-color: var(--lightBlue);
 }
 
@@ -183,7 +183,7 @@
 
   /* ---------------------------------------- */
 
-  .emailDevision {
+  .registerEmailDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -214,7 +214,7 @@
 
   /* ---------------------------------------- */
 
-  .passwortDevision {
+  .registerPasswortDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -245,7 +245,7 @@
 
   /* ---------------------------------------- */
 
-  .confirmPasswortDevision {
+  .registerConfirmPasswortDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -482,7 +482,7 @@
 
   /* ---------------------------------------- */
 
-  .emailDevision {
+  .registerEmailDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -513,7 +513,7 @@
 
   /* ---------------------------------------- */
 
-  .passwortDevision {
+  .registerPasswortDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -544,7 +544,7 @@
 
   /* ---------------------------------------- */
 
-  .confirmPasswortDevision {
+  .registerConfirmPasswortDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -779,7 +779,7 @@
 
   /* ---------------------------------------- */
 
-  .emailDevision {
+  .registerEmailDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -810,7 +810,7 @@
 
   /* ---------------------------------------- */
 
-  .passwortDevision {
+  .registerPasswortDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -841,7 +841,7 @@
 
   /* ---------------------------------------- */
 
-  .confirmPasswortDevision {
+  .registerConfirmPasswortDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1079,7 +1079,7 @@
 
   /* ---------------------------------------- */
 
-  .emailDevision {
+  .registerEmailDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1110,7 +1110,7 @@
 
   /* ---------------------------------------- */
 
-  .passwortDevision {
+  .registerPasswortDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1141,7 +1141,7 @@
 
   /* ---------------------------------------- */
 
-  .confirmPasswortDevision {
+  .registerConfirmPasswortDevision {
     display: flex;
     flex-direction: row;
     align-items: center;

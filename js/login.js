@@ -71,5 +71,15 @@ function redirectToIndex() {
  * Switch back from login page to register page.
  */
 function redirectToRegister() {
-  window.location.assign("../pages/register.html");
+  // window.location.assign("../pages/register.html");
+  let registerHTML = document.getElementById("registerMAIN");
+  let loginHTML = document.getElementById("loginMain");
+
+  if (loginHTML.classList.contains("show")) {
+    loginHTML.classList.remove("show");
+    loginHTML.classList.add("hide");
+
+    registerHTML.classList.remove("hide");
+    registerHTML.classList.add("show");
+  }
 }
