@@ -1,13 +1,14 @@
 let user;
-let currentlyLastPageAndPosition = wert;
-  /**
-   * Change border color from parent element.
-   * @param {string} containerId
-   */
-  function changeBorderColor(containerId) {
-    let FocusContainer = document.getElementById(containerId);
-    FocusContainer.classList.add("active");
-  };
+let currentlyLastPageAndPosition = "summary";
+// "summary" später durch eine Variable austauschen um benso auf die position auf der page zu sichern.
+/**
+ * Change border color from parent element.
+ * @param {string} containerId
+ */
+function changeBorderColor(containerId) {
+  let FocusContainer = document.getElementById(containerId);
+  FocusContainer.classList.add("active");
+}
 
 /**
  * Change border color from parent element.
@@ -78,7 +79,7 @@ function redirectToIndex() {
   mainMenu.style.display = "flex";
   mainContent.style.display = "flex";
 
-  thanLoadCurrentlyPage();
+  // setTimeout(thanLoadCurrentlyPage(), 5000);
 }
 
 /**

@@ -9,14 +9,17 @@
   </head>
   <body>
     <div class="desktopMenuLogo hide">
-      <img class="desktopMenuLogoImage" src="./assets/img/menu/desktopFooterLogo.svg" />
+      <img
+        class="desktopMenuLogoImage"
+        src="./assets/img/menu/desktopFooterLogo.svg"
+      />
     </div>
 
     <div class="mainMenuBox">
       <div
         class="menuItem activeLinkStyle"
         id="navSummary"
-        onclick="includeContentHTML('Summary'); 
+        onclick="includeContentHTML('summary'); 
       setActiveLink('navSummary')"
       >
         <div class="menuHoverBox">
@@ -28,7 +31,7 @@
       <div
         class="menuItem"
         id="navBoard"
-        onclick="includeContentHTML('Board');
+        onclick="includeContentHTML('board');
       setActiveLink('navBoard')"
       >
         <div class="menuHoverBox">
@@ -40,7 +43,7 @@
       <div
         class="menuItem"
         id="navAddTask"
-        onclick="includeContentHTML('AddTasks');
+        onclick="includeContentHTML('add_task');
       setActiveLink('navAddTask')"
       >
         <div class="menuHoverBox">
@@ -55,7 +58,7 @@
       <div
         class="menuItem"
         id="navContacts"
-        onclick="includeContentHTML('Contacts');
+        onclick="includeContentHTML('contacts');
         setActiveLink('navContacts')"
       >
         <div class="menuHoverBox">
@@ -69,15 +72,10 @@
     </div>
 
     <div class="desktopMenuPolicyBox hide">
-      <a
-        onclick="includeContentHTML('PrivacyPolicy')"
-        class="desktopMenuPolicyFont"
+      <a onclick="includeContentHTML('policy')" class="desktopMenuPolicyFont"
         >Privacy Policy</a
       >
-      <a
-        onclick="includeContentHTML('LegalNotice')"
-        class="desktopMenuPolicyFont"
-      >
+      <a onclick="includeContentHTML('legality')" class="desktopMenuPolicyFont">
         Legal Notice
       </a>
     </div>
