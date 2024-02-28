@@ -55,32 +55,33 @@ async function login() {
 
   if (user) {
     console.log("Benutzer gefunden");
-    redirectToIndex();
+
+    // redirectToIndex();
+    // redirectToSummary();
+    window.location.assign("pages/summary.html");
+    summaryInit();
   } else {
     console.log("Benutzer nicht gefunden");
   }
 }
 
-// TODO register login hidden; und 2x w3 und mainContent show.
 /**
  * If user login, then switch to loin area. show/hide
  */
-function redirectToIndex() {
-  // window.location.href = "../index.html";
-  let loginMain = document.getElementById("loginMain");
-  let mainHeader = document.getElementById("mainHeader");
-  let mainMenu = document.getElementById("mainMenu");
-  let mainContent = document.getElementById("mainContent");
+// function redirectToIndex() {
+//   // window.location.href = "../index.html";
+//   let loginMain = document.getElementById("loginMain");
+//   let mainHeader = document.getElementById("mainHeader");
+//   let mainMenu = document.getElementById("mainMenu");
+//   let mainContent = document.getElementById("mainContent");
 
-  loginMain.classList.remove("show");
-  loginMain.classList.add("hide");
+//   loginMain.classList.remove("show");
+//   loginMain.classList.add("hide");
 
-  mainHeader.style.display = "flex";
-  mainMenu.style.display = "flex";
-  mainContent.style.display = "flex";
-
-  // setTimeout(thanLoadCurrentlyPage(), 5000);
-}
+//   mainHeader.style.display = "flex";
+//   mainMenu.style.display = "flex";
+//   mainContent.style.display = "flex";
+// }
 
 /**
  * Switch back from login page to register page. (Into index.html)
@@ -97,7 +98,35 @@ function redirectToRegister() {
   registerMain.classList.add("show");
 }
 
-function thanLoadCurrentlyPage() {
-  if (currentlyLastPageAndPosition) {
-  }
+function redirectToSummary() {
+  window.location.assign("../pages/summary.html");
+
+  let mainHeader = document.getElementById("mainHeader");
+  let mainMenu = document.getElementById("mainMenu");
+
+  loginMain.classList.remove("hide");
+  loginMain.classList.add("show");
+
+  registerMain.classList.remove("hide");
+  registerMain.classList.add("show");
+}
+
+async function summaryInit() {
+  // await includeHTML();
+  showHeaderAndFooter();
+  // hideHeaderAndFooter()
+}
+
+function showHeaderAndFooter() {
+  let mainHeader = document.getElementById("mainHeader");
+  let mainMenu = document.getElementById("mainMenu");
+  mainHeader.style.display = "flex";
+  mainMenu.style.display = "flex";
+}
+
+function hideHeaderAndFooter() {
+  let mainHeader = document.getElementById("mainHeader");
+  let mainMenu = document.getElementById("mainMenu");
+  mainHeader.style.display = "none";
+  mainMenu.style.display = "none";
 }

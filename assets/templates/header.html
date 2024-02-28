@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../css/header.css" />
+    <!-- <link rel="stylesheet" href="../../style.css"> -->
     <script src="../../js/header.js"></script>
     <title>Document</title>
   </head>
@@ -12,7 +13,7 @@
       <div class="logoImgContainer">
         <img
           class="mainHeaderLogoImg"
-          src="./assets/img/header/headerLogo.svg"
+          src="../assets/img/header/headerLogo.svg"
         />
       </div>
 
@@ -21,10 +22,10 @@
       </div>
 
       <div id="userSymbolContainerID" class="userSymbolContainer">
-        <a href="./../../assets/templates/help/help.html">
+        <a onclick="includeContentHTML('help')">
           <img
             class="userSymbolContainerHelp"
-            src="assets/img/header/help.png"
+            src="../assets/img/header/help.png"
           />
         </a>
 
@@ -32,14 +33,14 @@
           <img
             id="headerProfile"
             class="userLogoImg"
-            src="assets/img/header/headerCurrentGuestImage.svg"
+            src="../assets/img/header/headerCurrentGuestImage.svg"
           />
         </div>
 
         <div class="headerSubMenu hide" id="headerSubMenu">
           <div class="headerSubMenuHoverBox">
             <a
-              href="./../../assets/templates/legal_notice/legal_notice_internal.html"
+              onclick="includeContentHTML('legality')"
               class="headerSubMenuHoverAnchor"
               >Legal notice</a
             >
@@ -47,7 +48,7 @@
 
           <div class="headerSubMenuHoverBox">
             <a
-              href="./../../assets/templates/privacy_policy/privacy_policy_internal.html"
+              onclick="includeContentHTML('policy')"
               class="headerSubMenuHoverAnchor"
               >Privacy Police</a
             >
@@ -59,6 +60,5 @@
         </div>
       </div>
     </div>
-
   </body>
 </html>
