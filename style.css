@@ -50,6 +50,28 @@ html {
   display: flex;
 }
 
+.registerMain {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginMain {
+  display: flex;
+  flex-direction: column;
+}
+
+#mainHeader {
+  display: none;
+}
+
+#mainMenu {
+  display: none;
+}
+
+#mainContent {
+  display: none;
+}
+
 /* ---------------------------------------- */
 
 @media only screen and (max-width: 720px) and (min-width: 250px) {

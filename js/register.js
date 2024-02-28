@@ -50,7 +50,15 @@ function resetForm() {
  * Switch back from register page to login page.
  */
 function redirectToLoin() {
-  window.location.assign("../pages/login.html");
+  // window.location.assign("../pages/login.html"); // Alte version.
+  let registerMain = document.getElementById("registerMain");
+  let loginMain = document.getElementById("loginMain");
+
+  registerMain.classList.remove("show");
+  registerMain.classList.add("hide");
+
+  loginMain.classList.remove("hide");
+  loginMain.classList.add("show");
 }
 
 // ---------------------------------------------------------------------------

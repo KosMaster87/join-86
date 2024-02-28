@@ -1,13 +1,13 @@
 let user;
-
-/**
- * Change border color from parent element.
- * @param {string} containerId
- */
-function changeBorderColor(containerId) {
-  let FocusContainer = document.getElementById(containerId);
-  FocusContainer.classList.add("active");
-}
+let currentlyLastPageAndPosition = wert;
+  /**
+   * Change border color from parent element.
+   * @param {string} containerId
+   */
+  function changeBorderColor(containerId) {
+    let FocusContainer = document.getElementById(containerId);
+    FocusContainer.classList.add("active");
+  };
 
 /**
  * Change border color from parent element.
@@ -60,26 +60,43 @@ async function login() {
   }
 }
 
+// TODO register login hidden; und 2x w3 und mainContent show.
 /**
- * If user login, then switch to index.html.
+ * If user login, then switch to loin area. show/hide
  */
 function redirectToIndex() {
-  window.location.href = "../index.html";
+  // window.location.href = "../index.html";
+  let loginMain = document.getElementById("loginMain");
+  let mainHeader = document.getElementById("mainHeader");
+  let mainMenu = document.getElementById("mainMenu");
+  let mainContent = document.getElementById("mainContent");
+
+  loginMain.classList.remove("show");
+  loginMain.classList.add("hide");
+
+  mainHeader.style.display = "flex";
+  mainMenu.style.display = "flex";
+  mainContent.style.display = "flex";
+
+  thanLoadCurrentlyPage();
 }
 
 /**
- * Switch back from login page to register page.
+ * Switch back from login page to register page. (Into index.html)
  */
 function redirectToRegister() {
-  // window.location.assign("../pages/register.html");
-  let registerHTML = document.getElementById("registerMAIN");
-  let loginHTML = document.getElementById("loginMain");
+  // window.location.assign("../pages/register.html"); // Alte version.
+  let registerMain = document.getElementById("registerMain");
+  let loginMain = document.getElementById("loginMain");
 
-  if (loginHTML.classList.contains("show")) {
-    loginHTML.classList.remove("show");
-    loginHTML.classList.add("hide");
+  loginMain.classList.remove("show");
+  loginMain.classList.add("hide");
 
-    registerHTML.classList.remove("hide");
-    registerHTML.classList.add("show");
+  registerMain.classList.remove("hide");
+  registerMain.classList.add("show");
+}
+
+function thanLoadCurrentlyPage() {
+  if (currentlyLastPageAndPosition) {
   }
 }

@@ -8,26 +8,12 @@
     <link rel="stylesheet" href="../css/register.css" />
     <link rel="stylesheet" href="./style.css" />
 
-    <script src="./js/login.js"></script>
     <script src="./js/register.js"></script>
+    <script src="./js/login.js"></script>
     <script src="includeHTML.js"></script>
     <script src="script.js"></script>
 
     <title>Join Project Management Tool</title>
-
-    <style>
-      #mainHeader {
-        display: none;
-      }
-
-      #mainMenu {
-        display: none;
-      }
-
-      #mainContent {
-        display: none;
-      }
-    </style>
   </head>
   <body onload="init()">
     <div
@@ -36,6 +22,7 @@
       class="mainHeader"
     ></div>
 
+    <!-- Bereich für eingeloggte Benutzer. So auch Header und Menüleiste. -->
     <div class="mainContent hideAny" id="mainContent"></div>
 
     <div
@@ -44,7 +31,7 @@
       class="mainMenu"
     ></div>
 
-    <!-- LOGIN HTML START -->
+    <!--------------- LOGIN HTML START -------------------->
     <div class="loginMain" id="loginMain">
       <div class="joinLogoAnimationLogin">
         <img src="../assets/img/login/firstLogo.svg" class="loginSecondImg" />
@@ -156,7 +143,7 @@
     </div>
     <!-- LOGIN HTML END -->
     <!-- REGISTER HTML START -->
-    <div class="registerMAIN hide" id="registerMAIN">
+    <div class="registerMain hide" id="registerMain">
       <div class="signedUpSuccessfully" id="signedUpSuccessfully">
         <p class="signedUpSuccessfullyPara">You Signed Up successfully</p>
       </div>
@@ -248,7 +235,10 @@
             />
           </div>
 
-          <div class="registerConfirmPasswortDevision" id="registerConfirmPasswortDevision">
+          <div
+            class="registerConfirmPasswortDevision"
+            id="registerConfirmPasswortDevision"
+          >
             <input
               class="confirmPasswort"
               id="registerInputPasswordConfirm"
