@@ -1,21 +1,34 @@
+//mockUpUserContacts sind als Kontante in contacts.js angelegt
 const userId = 'user1'
 let contactId = "7777777777777777";
 
-//userId ist als Kontante in addContact.js ('user1 angelegt)
-//mockUpUserContacts sind als Kontante in contacts.js angelegt
 
-function showCurrentContactInfos(userId, contactId, mockUpUserContacts) {
+function loadShowSingleContact() {
+    getAllInformations(userId, contactId, mockUpUserContacts);
+}
+
+
+function getAllInfos(userId, contactId, mockUpUserContacts) {
     let allContactsFromCurrentUser = getAllContactsFromCurrentUser(userId, mockUpUserContacts);
-    let currentContact = renderCurrentContact(contactId, allContactsFromCurrentUser) {
+    let currentContact = getCurrentContact(contactId, allContactsFromCurrentUser);
+    
+    fillAllVariables(currentContact);
+}
 
+
+function getCurrentContact(selectedId, allContactsFromCurrentUser) {
+    let contactId = selectedId;
+    let currenContact = [];
+    for (let i = 0; i < allContactsFromCurrentUser.length; i++) {
+        let contact = allContactsFromCurrentUser[i]
+        if (contactId == contact['contactId']) {
+            currenContact = contact; 
+        }    
     }
 
-    return currentContact;
+    return currenContact;
 }
 
-function renderCurrentContact(contactId) {
-
-}
 
 function getAllContactsFromCurrentUser(userId, mockUpUserContacts) {
     let currentUserId = userId;
@@ -25,10 +38,16 @@ function getAllContactsFromCurrentUser(userId, mockUpUserContacts) {
         const contact = allContacts[i];
         if (contact['userId'] == currentUserId) {
             allContactsFromCurrentUser.push(contact);
-        }
-
-        return allContactsFromCurrentUser;
+        }        
     }
     
+    return allContactsFromCurrentUser;
+}
 
+
+function fillAllVariables(currentContact) {
+    document.getElementById('nameContact').innerText = currentContact['name'];
+    document.getElementById('emailContact').innerText = currentContact['email'];
+    document.getElementById('phoneContact').innerText = currentContact['phone'];
+    document.getElementById('signatureContact').innerText = currentContact['signature'];
 }
