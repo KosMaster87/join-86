@@ -4,7 +4,7 @@ let contactId = "7777777777777777";
 
 
 function loadShowSingleContact() {
-    getAllInformations(userId, contactId, mockUpUserContacts);
+    getAllInfos(userId, contactId, mockUpUserContacts);
 }
 
 
