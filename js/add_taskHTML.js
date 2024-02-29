@@ -1,5 +1,7 @@
 function renderAddTaskMobileHTML() {
   return `
+  <div class="divColumn">
+  <h1>Add Task</h1>
   <div id="taskTitleContainer">
         <p class="taskHeadline">
           Title
@@ -133,10 +135,15 @@ function renderAddTaskMobileHTML() {
           Create Task <img src="../assets/img/add_task/task_check_white.svg" />
         </div>
       </div>
+      </div>
   `;}
 
 function renderAddTaskHTML(){
-  return `<div id="leftTaskContainer">
+  return `
+  <div class="divColumn">
+  <h1>Add Task</h1>
+  <div class="leftAndRightMainContainer">
+  <div id="leftTaskContainer">
   <div id="taskTitleContainer">
     <p class="taskHeadline">
       Title
@@ -273,6 +280,8 @@ function renderAddTaskHTML(){
   </div>
 </div>
 </div>
+</div>
+<div>
 `
 }
 

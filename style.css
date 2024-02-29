@@ -103,9 +103,8 @@ html {
     height: 100dvh;
     bottom: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
     padding-left: 160px;
     padding-top: 56px;
+    background-color: var(--whiteGray);
   }
 }
