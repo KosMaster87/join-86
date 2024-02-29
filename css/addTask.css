@@ -1,9 +1,7 @@
-@import url("../style.css");
-@import url("../css/add_task.css");
-
 .divColumn {
   display: flex;
   flex-direction: column;
+  font-style: normal;
 }
 h1 {
   font-size: 47px;
@@ -23,6 +21,7 @@ span {
 .font {
   font-size: 16px;
   font-weight: 400;
+  font-family: "Inter";
 }
 
 .taskHeadline {
@@ -63,6 +62,7 @@ span {
   background: var(--white);
   max-height: 175px;
   min-height: 102px;
+  max-width: 444px;
   height: 84px;
   outline: none;
 }
@@ -76,7 +76,6 @@ span {
 #taskPrioContainer {
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
 }
 
 #prioSelectContainer {
@@ -379,6 +378,7 @@ span {
 
   .font {
     font-size: 20px;
+    font-family: "Inter";
   }
 
   span {
@@ -400,7 +400,7 @@ span {
 }
 
 /*-DESKTOP-*/
-@media (width: 1250px){
+@media (min-width: 1250px){
 .seperatorContainer {
   margin-left: 32px;
   margin-right: 32px;
@@ -429,12 +429,10 @@ span {
 
   #leftTaskContainer {
     width: 440px;
-    height: 416px;
   }
 
   #rightTaskContainer {
     width: 440px;
-    height: 416px;
   }
 
   .seperatorContainer {
@@ -449,5 +447,9 @@ span {
     margin-right: 0px;
     display: flex;
     justify-content: space-between;
+  }
+  .fildIsRequiredText {
+    height:12px;
+    margin-bottom: 16px;
   }
 }

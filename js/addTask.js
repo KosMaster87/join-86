@@ -32,7 +32,6 @@ function loadContent() {
   if (screenWidth > 1220 && mobilVersion == true) {
     mobilVersion = false;
     content.innerHTML = renderAddTaskHTML();
-    document.body.innerHTML += renderAddTaskFinishHTML()
   }
 }
 

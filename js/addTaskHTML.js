@@ -22,6 +22,7 @@ function renderAddTaskMobileHTML() {
           placeholder="Enter a Descripton"
           class="descriptionInputField font"
         ></textarea>
+        <p class="fildIsRequiredText"></p>
       </div>
       <div id="taskPrioContainer">
         <p class="taskHeadline">Prio</p>
@@ -51,6 +52,7 @@ function renderAddTaskMobileHTML() {
             <img src="../assets/img/add_task/arrow_bottom_green.svg" />
           </div>
         </div>
+        <p class="fildIsRequiredText"></p>
       </div>
       <div id="taskDueDateContainer">
         <p class="taskHeadline">
@@ -105,6 +107,7 @@ function renderAddTaskMobileHTML() {
         <div id="contactListIcons">
           <div id="contactListIconsLine"></div>
         </div>
+        <p class="fildIsRequiredText"></p>
         </div>
 
       <div id="taskSubtaskContainer">
@@ -124,7 +127,9 @@ function renderAddTaskMobileHTML() {
             />
           </div>
         </div>
-        <div class="subTaskAddContainer" id="subTasksContainer"></div>
+        <div class="subTaskAddContainer" id="subTasksContainer">
+        <p class="fildIsRequiredText"></p>
+        </div>
         <div id="finishTaskContainer">
         <div class="finishTaskText">
           <span class="requiredStar">*</span>This field is required
@@ -164,6 +169,7 @@ function renderAddTaskHTML() {
       placeholder="Enter a Descripton"
       class="descriptionInputField font"
     ></textarea>
+    <p class="fildIsRequiredText"></p>
   </div>
   <div id="taskAssignedContainer">
     <p class="taskHeadline">Assigned to</p>
@@ -194,6 +200,7 @@ function renderAddTaskHTML() {
     <div id="contactListIcons">
       <div id="contactListIconsLine"></div>
     </div>
+    <p class="fildIsRequiredText"></p>
   </div>
 </div>
 <div class="seperatorContainer"></div>
@@ -240,6 +247,7 @@ function renderAddTaskHTML() {
         <img src="../assets/img/add_task/arrow_bottom_green.svg" />
       </div>
     </div>
+    <p class="fildIsRequiredText"></p>
   </div>
   <div id="taskCategoryContainer">
     <p class="taskHeadline">
