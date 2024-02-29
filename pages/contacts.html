@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="../css/contacts/contacts.css" />
-    <link rel="stylesheet" href="./../style.css" />
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/menu.css" />
+    <link rel="stylesheet" href="./../style.css" />
 
     <script src="./../../includeHTML.js"></script>
     <script src="./../script.js"></script>
@@ -17,17 +17,12 @@
     <script src="../js/add_task.js"></script>
     <script src="../js/add_taskHTML.js"></script>
 
-    <script src="../includeHTML.js"></script>
-    <script src="../script.js"></script>
+    <script src="../js/contact/contacts.js"></script>
 
     <title>Contacts</title>
   </head>
 
-  <!-- 
-    async function initContacts() {
-    await includeHTML();
-  } 
--->
+  <!-- initContacts() ist in der contacts.js deklariert. Da die weiteren Anweisungen initialisieren. -->
   <body onload="initContacts()">
     <div
       w3-include-html="../assets/templates/header.html"
