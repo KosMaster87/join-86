@@ -231,7 +231,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    position: sticky;
+    position: fixed;
+    /* position: sticky; */
     top: 0;
     left: 0;
     bottom: 0;
