@@ -38,3 +38,7 @@ async function greetUser() {
     ele.innerHTML = userName;
   });
 }
+
+async function initSummary() {
+  await includeHTML();
+}
