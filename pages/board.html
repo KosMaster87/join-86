@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/board.css" />
     <link rel="stylesheet" href="./../style.css" />
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/menu.css" />
 
     <script src="./../../includeHTML.js"></script>
     <script src="./../script.js"></script>
     <script src="../js/register.js"></script>
     <script src="../js/login.js"></script>
 
+    <script src="./../js/board.js"></script>
+    <script src="../js/add_task.js"></script>
+
     <title>Board Kanban</title>
   </head>
-  <body onload="includeHTML();">
+  <body onload="initBoard()">
     <div
       w3-include-html="../assets/templates/header.html"
       id="mainHeader"
@@ -23,7 +26,7 @@
     ></div>
 
     <div class="mainContent">
-      <h1 style="width: 400px; height: 20px; background-color: blue;">TEST</h1>
+      <h1>Bord Kontent</h1>
     </div>
 
     <div
