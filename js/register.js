@@ -1,7 +1,3 @@
-/**
- * Durch die redirectToIndex(); wird die login.html laufzeit beendet und der Massiv "users;" gelöscht.
- * Through the redirectToIndex(); the login.html runtime is terminated and the massive "users;" deleted.
- */
 let users = [];
 
 // TODO validate
@@ -50,32 +46,11 @@ function resetForm() {
  * Switch back from register page to login page.
  */
 function redirectToLoin() {
-  // window.location.assign("../pages/login.html"); // Alte version.
   let registerMain = document.getElementById("registerMain");
   let loginMain = document.getElementById("loginMain");
-
-  // registerMain.classList.remove("show");
-  // registerMain.classList.add("hide");
   loginMain.style.display = "flex";
-
-  // loginMain.classList.remove("hide");
-  // loginMain.classList.add("show");
   registerMain.style.display = "none";
 }
-
-// ---------------------------------------------------------------------------
-
-// TODO
-function getRandomColor(color) {
-  var letters = "123456789ABCDE";
-  var color = "#";
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 14)];
-  }
-  return color;
-}
-
-// ---------------------------------------------------------------------------
 
 /**
  * To hide or show currentpassword in any fild.
@@ -95,9 +70,6 @@ function changeToShowCurrentPassword(passwordId, imageId) {
   }
 }
 
-// ---------------------------------------------------------------------------
-
-// Kann man auch für Popups benutzen. Mit
 /**
  * Change border color from parent element.
  * @param {string} containerId
@@ -115,5 +87,3 @@ function resetBorderColor(containerId) {
   let focusContainer = document.getElementById(containerId);
   focusContainer.classList.remove("active");
 }
-
-// ---------------------------------------------------------------------------

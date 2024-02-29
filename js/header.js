@@ -1,8 +1,8 @@
-// ---------------------------------------------------------------------------
-
-function toggleDesktopPopup() {
-  let focusContainer = document.getElementById("headerSubMenu");
-  focusContainer.classList.toggle("show");
+function toggleHeaderSubMenu() {
+  let headerSubMenu = document.getElementById("headerSubMenu");
+  headerSubMenu.style.display = "flex";
 }
 
-// ---------------------------------------------------------------------------
+function logOut() {
+  
+}

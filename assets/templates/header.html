@@ -29,7 +29,7 @@
           />
         </a>
 
-        <div onclick="toggleDesktopPopup()">
+        <div onclick="toggleHeaderSubMenu()">
           <img
             id="headerProfile"
             class="userLogoImg"
@@ -37,7 +37,7 @@
           />
         </div>
 
-        <div class="headerSubMenu hide" id="headerSubMenu">
+        <div class="headerSubMenu" id="headerSubMenu" style="display: none;">
           <div class="headerSubMenuHoverBox">
             <a
               onclick="includeContentHTML('legality')"
@@ -55,7 +55,7 @@
           </div>
 
           <div class="headerSubMenuHoverBox" id="headerLogout">
-            <a class="headerSubMenuHoverAnchor">Log out</a>
+            <a class="headerSubMenuHoverAnchor" onclick="logOut()">Log out</a>
           </div>
         </div>
       </div>
