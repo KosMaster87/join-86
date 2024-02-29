@@ -7,7 +7,8 @@ let selectedCategory = "";
 let subtasks = [];
 let mobilVersion;
 
-function initAddTask(){
+async function initAddTask(){
+  await includeHTML();
   checkWidth();
   loadContent();
 }
