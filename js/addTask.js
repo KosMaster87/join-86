@@ -7,14 +7,18 @@ let selectedCategory = "";
 let subtasks = [];
 let mobilVersion;
 
-async function initAddTask(){
+async function initAddTask() {
   await includeHTML();
   checkWidth();
   loadContent();
+  loadContacts();
 }
 
 function checkWidth() {
-  let screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  let screenWidth =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
   if (screenWidth <= 1220) {
     mobilVersion = false;
   } else {
@@ -23,7 +27,10 @@ function checkWidth() {
 }
 
 function loadContent() {
-  let screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  let screenWidth =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
   let content = document.getElementById("taskMainContainer");
   if (screenWidth <= 1220 && mobilVersion == false) {
     mobilVersion = true;
@@ -208,24 +215,29 @@ function openContacts() {
   }
 }
 
-function assignedtoContactBg() {
-  let container = document.getElementById(`assignedContactContainer`);
+function assignedtoContactBg(i) {
+  let container = document.getElementById(`assignedContactContainer${i}`);
   let contactListIcons = document.getElementById("contactListIconsLine");
   container.classList.add("assignedContainerBlack");
-  let image = document.getElementById(`assignedContactImage`);
+  let image = document.getElementById(`assignedContactImage${i}`);
   image.src = "../assets/img/add_task/task_box_check.svg";
-  contactListIcons.innerHTML += `<div id="contactIconNumber" class="assignedContactLeftSideIcon">SB</div>`;
-  container.onclick = removeassignedtoContactBg;
+  let signature = document.getElementById(`ContactSignatureIcon${i}`).innerHTML;
+  contactListIcons.innerHTML += `<div id="contactIconNumber${i}" class="assignedContactLeftSideIcon">${signature}</div>`;
+  container.onclick = function () {
+    removeassignedtoContactBg(i);
+  };
 }
 
-function removeassignedtoContactBg() {
-  let container = document.getElementById(`assignedContactContainer`);
+function removeassignedtoContactBg(i) {
+  let container = document.getElementById(`assignedContactContainer${i}`);
   container.classList.remove("assignedContainerBlack");
-  let image = document.getElementById(`assignedContactImage`);
-  image.src = src = "../assets/img/add_task/task_box.svg";
-  let contactListIcons = document.getElementById("contactListIconsLine");
-  contactListIcons.innerHTML = "";
-  container.onclick = assignedtoContactBg;
+  let image = document.getElementById(`assignedContactImage${i}`);
+  image.src = "../assets/img/add_task/task_box.svg";
+  let iconId = document.getElementById(`contactIconNumber${i}`);
+  iconId.remove();
+  container.onclick = function () {
+    assignedtoContactBg(i);
+  };
 }
 
 function subtastwindow() {
@@ -286,4 +298,18 @@ function clearSubtaskInputfield() {
   <img src="../assets/img/add_task/task_add.svg" />`;
   let border = document.getElementById(`subTaskInputcontainer`);
   border.classList.remove("bordercolor");
+}
+
+function loadContacts() {
+  let mainDiv = document.getElementById(`contactList`);
+  let totalHeight = Math.min(mockUpUserContacts.length * 52, 260);
+  mainDiv.style.height = `${totalHeight}px`;
+  for (let i = 0; i < Math.min(mockUpUserContacts.length, 5); i++) {
+    contactSignature = mockUpUserContacts[i].signature;
+    contactName = mockUpUserContacts[i].name;
+    mainDiv.innerHTML +=  loadContactsReturn(i);
+  }
+  if (mockUpUserContacts.length > 5) {
+    mainDiv.style.overflowY = 'scroll';
+  }
 }

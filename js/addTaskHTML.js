@@ -182,20 +182,6 @@ function renderAddTaskHTML() {
       ><img src="../assets/img/add_task/arrow_drop_down.svg" />
     </div>
     <div id="contactList">
-      <div
-        id="assignedContactContainer"
-        onclick="assignedtoContactBg()"
-        class="assignedContactContainer"
-      >
-        <div class="assignedContactLeftSide">
-          <div class="assignedContactLeftSideIcon">SB</div>
-          <p class="assignedContactNameClass">Sebastien Buhl</p>
-        </div>
-        <img
-          id="assignedContactImage"
-          src="../assets/img/add_task/task_box.svg"
-        />
-      </div>
     </div>
     <div id="contactListIcons">
       <div id="contactListIconsLine"></div>
@@ -342,4 +328,23 @@ function editSubtaskReturn(subtasks, i) {
       <img src="../assets/img/add_task/task_check.svg" onclick="editSubtaskDone(${i})" alt="done_icon">
     </div>
   </div>`;
+}
+
+function loadContactsReturn(i){
+  return `
+  <div
+      id="assignedContactContainer${i}"
+      onclick="assignedtoContactBg(${i})"
+      class="assignedContactContainer"
+    >
+      <div class="assignedContactLeftSide">
+        <div id="ContactSignatureIcon${i}" class="assignedContactLeftSideIcon">${contactSignature}</div>
+        <p class="assignedContactNameClass">${contactName}</p>
+      </div>
+      <img
+        id="assignedContactImage${i}"
+        src="../assets/img/add_task/task_box.svg"
+      />
+    </div>
+  `
 }
