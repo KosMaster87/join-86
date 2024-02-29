@@ -9,7 +9,6 @@ async function includeHTML() {
     let resp = await fetch(file);
     if (resp.ok) {
       element.innerHTML = await resp.text();
-      console.log("includeHTML erfolgreich geladen.");
     } else {
       element.innerHTML = "Page not found";
     }
@@ -18,7 +17,7 @@ async function includeHTML() {
 
 /**
  * Easy to change pages.
- * @param {Der String den ich in menu.html vergeben habe: onclick="includeContentHTML('summary und andere');} changePage
+ * @param {page as stringname} changePage
  */
 function includeContentHTML(changePage) {
   window.location.assign(changePage + ".html");

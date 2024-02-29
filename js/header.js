@@ -4,5 +4,6 @@ function toggleHeaderSubMenu() {
 }
 
 function logOut() {
-  
+  localStorage.clear();
+  window.location.assign("../index.html");
 }

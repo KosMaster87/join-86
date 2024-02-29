@@ -32,10 +32,10 @@ async function login() {
       userIndex.email === loginInputMail.value &&
       userIndex.password === loginInputPassword.value
   );
-  console.log(user);
 
   if (user) {
-    console.log("Benutzer gefunden");
+    console.log("Benutzer gefunden:");
+    console.log(user);
     window.location.assign("pages/summary.html");
   } else {
     console.log("Benutzer nicht gefunden");

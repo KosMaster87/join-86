@@ -83,13 +83,13 @@
           <div
             class="row2Helper borderRadius backgroundColor reactangelBoxShadow cursorPointer"
           >
-            <div class="row2summary">
+            <div
+              class="row2summary"
+              onclick="includeContentHTML('board'); setActiveLink('navBoard')"
+            >
               <img src="./../assets/img/summary/Frame59Urgent.svg" />
 
-              <div
-                class="summaryToDoSum"
-                onclick="includeContentHTML('board'); setActiveLink('navBoard')"
-              >
+              <div class="summaryToDoSum">
                 <p class="sammarySumNumber" id="summeryUpcomingTasks"></p>
                 <p>Urgent</p>
               </div>
