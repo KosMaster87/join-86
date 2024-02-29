@@ -125,9 +125,7 @@ function renderAddTaskMobileHTML() {
           </div>
         </div>
         <div class="subTaskAddContainer" id="subTasksContainer"></div>
-      </div>
-
-      <div id="finishTaskContainer">
+        <div id="finishTaskContainer">
         <div class="finishTaskText">
           <span class="requiredStar">*</span>This field is required
         </div>
@@ -136,9 +134,11 @@ function renderAddTaskMobileHTML() {
         </div>
       </div>
       </div>
-  `;}
+      </div>
+  `;
+}
 
-function renderAddTaskHTML(){
+function renderAddTaskHTML() {
   return `
   <div class="divColumn">
   <h1>Add Task</h1>
@@ -280,21 +280,16 @@ function renderAddTaskHTML(){
   </div>
 </div>
 </div>
-</div>
-<div>
-`
-}
-
-function renderAddTaskFinishHTML(){
-  return `
-  
-  <div id="finishTaskContainer">
+<div id="finishTaskContainer">
   <div class="finishTaskText">
     <span class="requiredStar">*</span>This field is required
   </div>
   <div class="createTask  font" onclick="requiredFields()">
     Create Task <img src="../assets/img/add_task/task_check_white.svg" />
-  </div>`
+  </div>
+</div>
+<div>
+`;
 }
 
 function openCategorySelectReturn() {
