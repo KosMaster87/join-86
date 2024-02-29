@@ -4,14 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/add_task.css" />
-    <script src="../script.js"></script>
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/menu.css" />
+
+    <script src="./../../includeHTML.js"></script>
+    <script src="./../script.js"></script>
+    <script src="../js/register.js"></script>
+    <script src="../js/login.js"></script>
+
     <script src="../js/add_task.js"></script>
     <script src="../js/add_taskHTML.js"></script>
     <title>Join Project Management Tool</title>
   </head>
   <body onload="initAddTask()">
+    <div
+      w3-include-html="../assets/templates/header.html"
+      id="mainHeader"
+      class="mainHeader"
+    ></div>
+
     <h1>Add Task</h1>
-    <div id="taskMainContainer">
-    </div>
+    <div id="taskMainContainer" class="mainContent"></div>
+
+    <div
+      w3-include-html="../assets/templates/menu.html"
+      id="afterLoginMainMenu"
+      class="afterLoginMainMenu"
+    ></div>
   </body>
 </html>

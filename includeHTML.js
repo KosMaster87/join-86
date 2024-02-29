@@ -18,7 +18,7 @@ async function includeHTML() {
  * @param {Der String den ich in menu.html vergeben habe: onclick="includeContentHTML('board');} changePage 
  */
 function includeContentHTML(changePage) {
-  window.location.assign("board.html");
+  window.location.assign(changePage + ".html");
 }
 
 
