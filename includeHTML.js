@@ -12,6 +12,16 @@ async function includeHTML() {
   }
 }
 
+
+/**
+ * 
+ * @param {Der String den ich in menu.html vergeben habe: onclick="includeContentHTML('board');} changePage 
+ */
+function includeContentHTML(changePage) {
+  window.location.assign("board.html");
+}
+
+
 // async function includeContentHTML(pageName) {
 //   // Hier laden Sie den Inhalt der Seite in das Hauptdiv
 //   let mainContent = document.getElementById("mainContent");
