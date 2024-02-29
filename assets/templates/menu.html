@@ -3,10 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="module" async rel="stylesheet" href="../../css/menu.css" />
-    <script type="module" src="../../js/menu.js"></script>
-    <script async src="./../../includeHTML.js"></script>
-    <title>Document</title>
+
+    <link rel="stylesheet" href="../../css/menu.css" />
+
+    <script src="../../js/menu.js"></script>
+    <script src="./../../includeHTML.js"></script>
+
+    <title>Menü-Leiste</title>
   </head>
   <body>
     <div class="desktopMenuLogo hide">
@@ -16,13 +19,13 @@
       />
     </div>
 
-    <!-- <div class="afterLoginMainMenu"> -->
     <div class="menuItemBox">
       <div
         class="menuItem activeLinkStyle"
         id="navSummary"
-        onclick="includeContentHTML('summary'); 
-      setActiveLink('navSummary')"
+        onclick="includeContentHTML('summary')
+        setActiveLink('navSummary')"
+        data-href="/pages/summary.html"
       >
         <div class="menuHoverBox">
           <img src="../assets/img/menu/summaryIcon.svg" class="menuItemImage" />
@@ -33,8 +36,9 @@
       <div
         class="menuItem"
         id="navBoard"
-        onclick="includeContentHTML('board');
-      setActiveLink('navBoard')"
+        onclick="includeContentHTML('board')
+        setActiveLink('navBoard')"
+        data-href="/pages/board.html"
       >
         <div class="menuHoverBox">
           <img src="../assets/img/menu/Vector.svg" class="menuItemImage" />
@@ -45,8 +49,9 @@
       <div
         class="menuItem"
         id="navAddTask"
-        onclick="includeContentHTML('addTask');
-      setActiveLink('navAddTask')"
+        onclick="includeContentHTML('addTask')
+        setActiveLink('navAddTask')"
+        data-href="/pages/addTask.html"
       >
         <div class="menuHoverBox">
           <img
@@ -60,8 +65,9 @@
       <div
         class="menuItem"
         id="navContacts"
-        onclick="includeContentHTML('contacts');
+        onclick="includeContentHTML('contacts')
         setActiveLink('navContacts')"
+        data-href="/pages/contacts.html"
       >
         <div class="menuHoverBox">
           <img
@@ -72,7 +78,6 @@
         </div>
       </div>
     </div>
-    <!-- </div> -->
 
     <div class="desktopMenuPolicyBox hide">
       <a onclick="includeContentHTML('policy')" class="desktopMenuPolicyFont"
