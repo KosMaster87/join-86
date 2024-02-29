@@ -5,6 +5,35 @@ let selectedDueDate = "";
 let selectedPrio = "";
 let selectedCategory = "";
 let subtasks = [];
+let mobilVersion;
+
+function initAddTask(){
+  checkWidth();
+  loadContent();
+}
+
+function checkWidth() {
+  let screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  if (screenWidth <= 1220) {
+    mobilVersion = false;
+  } else {
+    mobilVersion = true;
+  }
+}
+
+function loadContent() {
+  let screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  let content = document.getElementById("taskMainContainer");
+  if (screenWidth <= 1220 && mobilVersion == false) {
+    mobilVersion = true;
+    content.innerHTML = renderAddTaskMobileHTML();
+  }
+  if (screenWidth > 1220 && mobilVersion == true) {
+    mobilVersion = false;
+    content.innerHTML = renderAddTaskHTML();
+    document.body.innerHTML += renderAddTaskFinishHTML()
+  }
+}
 
 function requiredFields() {
   inputAbfrage();

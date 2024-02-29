@@ -12,8 +12,10 @@ h1 {
   font-size: 47px;
   margin-left: 16px;
 }
-
-.taskMainContainer {
+span {
+  font-size: 16px;
+}
+#taskMainContainer {
   margin-left: 16px;
   margin-right: 16px;
   display: flex;
@@ -22,9 +24,16 @@ h1 {
   gap: 8px;
 }
 
+.font {
+  font-size: 16px;
+  font-weight: 400;
+}
+
 .taskHeadline {
   margin: 0;
   margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 /* ---------------------------------------- */
@@ -42,8 +51,6 @@ h1 {
   border: solid 1px var(--lighterGrey);
   border-radius: 10px;
   background-color: var(--white);
-  font-size: 16px;
-  font-weight: 400;
 }
 
 /* ---------------------------------------- */
@@ -62,9 +69,8 @@ h1 {
   min-height: 102px;
   height: 84px;
   outline: none;
-  font-size: 16px;
-  font-weight: 400;
 }
+
 .descriptionInputField:focus {
   border-color: var(--lightBlue);
 }
@@ -84,6 +90,8 @@ h1 {
 }
 
 .taskSelectButton {
+  font-size: 16px;
+  font-weight: 400;
   width: 126px;
   padding: 18px 10px 18px 10px;
   justify-content: center;
@@ -135,8 +143,6 @@ h1 {
   display: flex;
   justify-content: space-between;
   font-family: "Inter";
-  font-size: 16px;
-  font-weight: 400;
   flex: 1;
 }
 
@@ -257,8 +263,6 @@ h1 {
 .subtaskInputfield {
   outline: none;
   border: none;
-  font-size: 16px;
-  font-weight: 400;
 }
 
 .subTaskAddContainer {
@@ -364,7 +368,6 @@ h1 {
   border: solid 1px var(--wrongInputBorder);
 }
 
-
 @media (min-width: 434px) {
   body {
     display: flex;
@@ -378,21 +381,73 @@ h1 {
     margin-left: 32px;
     width: 434px;
   }
-
-  #taskTitleContainer { order: 1; }
-  #taskDescriptionContainer { order: 2; }
-  #taskAssignedContainer { order: 3; }
-  #taskDueDateContainer { order: 4; }
-  #taskPrioContainer { order: 5; }
-  #taskCategoryContainer { order: 6; }
-  #taskSubtaskContainer { order: 7; }
-  #finishTaskContainer { order: 8; }
 }
-
-
 
 @media screen and (min-width: 721px) {
   .taskSelectButton:hover {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .font {
+    font-size: 20px;
+  }
+
+  span {
+    font-size: 20px;
+  }
+
+  h1 {
+    font-size: 61px;
+  }
+
+  .taskHeadline {
+    font-size: 20px;
+  }
+
+  .taskSelectButton {
+    font-size: 20px;
+    font-weight: 400;
+  }
+}
+
+/*-DESKTOP-*/
+@media (min-width: 1220px) {
+  h1 {
+    width: 962px;
+    margin-top: 110px;
+    margin-bottom: 48px;
+    margin-left: 96px;
+  }
+
+  #taskMainContainer {
+    display: flex;
+    flex-direction: row;
+    margin-left: 96px;
+    margin-right: 0px;
+  }
+
+  #leftTaskContainer {
+    width: 440px;
+    height: 416px;
+  }
+
+  #rightTaskContainer {
+    width: 440px;
+    height: 416px;
+  }
+
+  .seperatorContainer {
+    margin-left: 32px;
+    margin-right: 32px;
+    width: 2px;
+    background-color: var(--lighterGray);
+  }
+
+  #finishTaskContainer {
+    width: 962px;
+    margin-left: 96px;
+    margin-right: 0px;
+    display: flex;
+    justify-content: space-between;
   }
 }
