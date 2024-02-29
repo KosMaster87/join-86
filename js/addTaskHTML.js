@@ -259,7 +259,7 @@ function renderAddTaskHTML() {
       onclick="openCategorySelect()"
       class="categorySelect"
     >
-      <span id="categoryText font">Select tast category</span
+      <span id="categoryText">Select task category</span
       ><img
         id="categoryImage"
         src="../assets/img/add_task/arrow_drop_down.svg"
@@ -301,8 +301,8 @@ function renderAddTaskHTML() {
 }
 
 function openCategorySelectReturn() {
-  return `<div onclick="selectCategory(this)" class="categorySelectOption">Technical Task</div>
-    <div onclick="selectCategory(this)" class="categorySelectOption">User Story</div>`;
+  return `<div onclick="selectCategory('Technical Task')" class="categorySelectOption">Technical Task</div>
+    <div onclick="selectCategory('User Story')" class="categorySelectOption">User Story</div>`;
 }
 
 function subtastwindowReturn() {

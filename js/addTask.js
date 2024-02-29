@@ -162,7 +162,7 @@ function categoryImageUp() {
 function selectCategory(selectedOption) {
   let content = document.getElementById(`categoryText`);
   let image = document.getElementById(`categoryImage`);
-  content.innerHTML = `${selectedOption.innerText}`;
+  content.innerHTML = `${selectedOption}`;
   selectedCategory = content.innerText;
   image.src = "../assets/img/add_task/arrow_drop_up.svg";
   closeCategoryMenu();

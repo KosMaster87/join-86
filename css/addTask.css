@@ -48,6 +48,9 @@ span {
   background-color: var(--white);
 }
 
+.titleInputField:focus {
+  border-color: var(--lightBlue) !important;
+}
 /* ---------------------------------------- */
 
 #taskDescriptionContainer {
@@ -68,7 +71,7 @@ span {
 }
 
 .descriptionInputField:focus {
-  border-color: var(--lightBlue);
+  border-color: var(--lightBlue) !important;
 }
 
 /* ---------------------------------------- */
@@ -139,6 +142,10 @@ span {
   justify-content: space-between;
   font-family: "Inter";
   flex: 1;
+}
+
+.dueDateInputField:focus{
+  border: solid 1px var(--lightBlue) !important;
 }
 
 /* ---------------------------------------- */
@@ -408,6 +415,10 @@ span {
 }
 
 @media (min-width: 1220px) {
+  span{
+    font-size: 20px;
+    font-weight: 400;
+  }
   h1 {
     font-size: 61px;
     font-weight: 700;
@@ -439,7 +450,7 @@ span {
     margin-left: 48px;
     margin-right: 48px;
     width: 2px;
-    background-color: var(--lighterGray);
+    background-color: var(--lighterGrey);
   }
 
   #finishTaskContainer {
