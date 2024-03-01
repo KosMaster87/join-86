@@ -21,6 +21,7 @@
     top: 0;
     width: 100%;
     height: 3.5rem;
+    z-index: 5;
   }
 
   .headerSubMenu {
@@ -105,6 +106,7 @@
     top: 0;
     width: 100%;
     height: 3.5rem;
+    z-index: 5;
   }
 
   .headerSubMenu {
@@ -190,6 +192,7 @@
     top: 0;
     width: 100%;
     height: 3.5rem;
+    z-index: 5;
   }
 
   /* ---------------------------------------- */
@@ -280,6 +283,7 @@
     left: 10rem;
     right: 0;
     position: fixed;
+    z-index: 5;
   }
 
   /* ---------------------------------------- */

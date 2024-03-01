@@ -1,24 +1,6 @@
 let user;
 
 /**
- * Change border color from parent element.
- * @param {string} containerId
- */
-function changeBorderColor(containerId) {
-  let FocusContainer = document.getElementById(containerId);
-  FocusContainer.classList.add("active");
-}
-
-/**
- * Change border color from parent element.
- * @param {string} containerId
- */
-function resetBorderColor(containerId) {
-  let FocusContainer = document.getElementById(containerId);
-  FocusContainer.classList.remove("active");
-}
-
-/**
  * To hide or show currentpassword in any fild.
  * @param {each input from origin HTML-element} passwordId
  * @param {each inputImage from origin HTML-element} imageId
@@ -29,7 +11,7 @@ function changeToShowCurrentPassword(passwordId, imageId) {
 
   if (hideThePassword.type == "password") {
     hideThePassword.type = "text";
-    hideThePasswordImage.src = "/assets/img/login/visibility_off.svg";
+    hideThePasswordImage.src = "/assets/img/login/visibilityOff.svg";
   } else {
     hideThePassword.type = "password";
     hideThePasswordImage.src = "/assets/img/login/lock.svg";
@@ -50,26 +32,22 @@ async function login() {
       userIndex.email === loginInputMail.value &&
       userIndex.password === loginInputPassword.value
   );
-  console.log(user);
 
   if (user) {
-    console.log("Benutzer gefunden");
-    redirectToIndex();
+    console.log("Benutzer gefunden:");
+    console.log(user);
+    window.location.assign("pages/summary.html");
   } else {
     console.log("Benutzer nicht gefunden");
   }
 }
 
 /**
- * If user login, then switch to index.html.
- */
-function redirectToIndex() {
-  window.location.href = "../index.html";
-}
-
-/**
- * Switch back from login page to register page.
+ * Switch back from login page to register page. (Into index.html)
  */
 function redirectToRegister() {
-  window.location.assign("../pages/register.html");
+  let registerMain = document.getElementById("registerMain");
+  let loginMain = document.getElementById("loginMain");
+  loginMain.style.display = "none";
+  registerMain.style.display = "flex";
 }

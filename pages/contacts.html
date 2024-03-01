@@ -1,46 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../style.css" />
+
     <link rel="stylesheet" href="../css/contacts/contacts.css" />
-    <script src="../includeHTML.js"></script>
-    <script src="../script.js"></script>
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/menu.css" />
+    <link rel="stylesheet" href="./../style.css" />
+
+    <script src="../js/header.js"></script>
+    <script src="./../../includeHTML.js"></script>
+    <script src="./../script.js"></script>
+    <script src="../js/register.js"></script>
+    <script src="../js/login.js"></script>
+
+    <script src="../js/add_task.js"></script>
+    <script src="../js/add_taskHTML.js"></script>
+
+    <script src="../js/contact/contacts.js"></script>
 
     <title>Contacts</title>
-</head>
-<body onload="init()">
-   <!-- CONTAINER CONTACTS -->
-   <div w3-include-html="contacts.html" >
-        <!-- <div w3-include-html="../assets/templates/listContact"></div> -->
-        <!-- <div w3-include-html="../assets/templates/addContact"></div> -->
-        <!-- <div w3-include-html="../assets/templates/editContact"></div> -->
-        <div w3-include-html="../assets/templates/showSingleContact"></div>
-        <!-- Mobile Ansicht - Button zum Öffnen des Templates AddContact-->
-        <!-- <div id="mobileBtnAddContact"
-            class="d-none"
-            onclick="includeContentHTML('AddContact')"
-        >
-            <img class="mobileBtnAddContactItem"
-            src="../assets/img/other/person_add.svg "
-            /> -->
+  </head>
+
+  <!-- initContacts() ist in der contacts.js deklariert. Da die weiteren Anweisungen initialisieren. -->
+  <body onload="initContacts()">
+    <div
+      w3-include-html="../assets/templates/header.html"
+      id="mainHeader"
+      class="mainHeader"
+    ></div>
+
+    <div class="mainContent">
+      <h1>Kontankte Kontent</h1>
     </div>
 
-    <!-- Mobile Ansicht - Button zum Öffnen des Templates EditContact-->
-    <!-- <a id="mobileBtnEditContact"
-        onclick="includeContentHTML('ShowContact')"
-    >
-        <img class="mobileBtnEditContactItem"
-        src="../assets/img/other/more_vert.svg"
-        />
-    </a> -->
-    <!-- <script>
-        let modal = document.getElementById('overlayAddContact');
-
-        let btn = document.getElementById('');   
-    </script> -->
-        
-        <!-- <script src="../js/contacts/listContact.js"></script> -->
-</body>
+    <div
+      w3-include-html="../assets/templates/menu.html"
+      id="afterLoginMainMenu"
+      class="afterLoginMainMenu"
+    ></div>
+  </body>
 </html>
+
+<!-- CONTAINER CONTACTS -->
+<!-- <div w3-include-html="contacts.html"> -->
+<!-- <div w3-include-html="../assets/templates/listContact"></div> -->
+<!-- <div w3-include-html="../assets/templates/addContact"></div> -->
+<!-- <div w3-include-html="../assets/templates/editContact"></div> -->
+<!-- <div w3-include-html="../assets/templates/showSingleContact"></div> -->
+<!-- Mobile Ansicht - Button zum Öffnen des Templates AddContact-->
+<!-- <div id="mobileBtnAddContact"
+        class="d-none"
+        onclick="includeContentHTML('AddContact')"
+    >
+        <img class="mobileBtnAddContactItem"
+        src="../assets/img/other/person_add.svg "
+        /> -->
+<!-- </div> -->
+
+<!-- Mobile Ansicht - Button zum Öffnen des Templates EditContact-->
+<!-- <a id="mobileBtnEditContact"
+    onclick="includeContentHTML('ShowContact')"
+>
+    <img class="mobileBtnEditContactItem"
+    src="../assets/img/other/more_vert.svg"
+    />
+</a> -->
+<!-- <script>
+    let modal = document.getElementById('overlayAddContact');
+
+    let btn = document.getElementById('');   
+</script> -->
+
+<!-- <script src="../js/contacts/listContact.js"></script> -->

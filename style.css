@@ -2,6 +2,7 @@
 
 :root {
   --lighterGray: #d1d1d1;
+  --lighterGrey: #d1d1d1;
   --lightGray: #2a3647;
   --lightBlue: #29abe2;
   --intenseBlue: #007cee;
@@ -37,12 +38,22 @@ html {
   scroll-behavior: smooth;
 }
 
-/* body {
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
+.registerMain {
+  flex-direction: column;
+}
+
+.loginMain {
   display: flex;
   flex-direction: column;
-} */
-
-/* ---------------------------------------- */
+}
 
 @media only screen and (max-width: 720px) and (min-width: 250px) {
   body {
@@ -50,51 +61,22 @@ html {
     flex-direction: column;
   }
 
-  /*  Dem zu inportierendem Kontent diese Klasse geben.  */
   .mainContent {
     min-height: calc(100dvh - 7rem);
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--whiteGray);
   }
 }
-
-/* ---------------------------------------- */
 
 @media only screen and (max-width: 2560px) and (min-width: 721px) {
-  /*  Dem zu inportierendem Kontent diese Klasse geben.  */
   .mainContent {
-    height: calc(100dvh - 3.5rem);
-    position: fixed;
-    left: 10rem;
+    height: 100dvh;
     bottom: 0;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    padding-left: 160px;
+    padding-top: 56px;
+    background-color: var(--whiteGray);
   }
 }
-
-/* ---------------------------------------- */
-/* ---------------------------------------- */
-/* ---------------------------------------- */
-/* ---------------------------------------- */
-/* ---------------------------------------- */
-/* ---------------------------------------- */
-
-/* Zurück-lagern */
-.cursorPointer {
-  cursor: pointer;
-}
-
-/* Zurück-lagern */
-input:focus {
-  outline: none;
-  border-color: var(--lightBlue);
-}
-
-/* ---------------------------------------- */
-/* ---------------------------------------- */
-/* ---------------------------------------- */
-/* ---------------------------------------- */
-/* ---------------------------------------- */
-/* ---------------------------------------- */

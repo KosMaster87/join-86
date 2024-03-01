@@ -1,35 +1,34 @@
-<!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/board.css" />
+    <link rel="stylesheet" href="../css/addTask.css" />
     <link rel="stylesheet" href="./../style.css" />
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/menu.css" />
+    <link rel="stylesheet" href="../css/fonts.css" />
 
     <script src="../js/header.js"></script>
     <script src="./../../includeHTML.js"></script>
     <script src="./../script.js"></script>
     <script src="../js/register.js"></script>
     <script src="../js/login.js"></script>
+    <script src="../js/contact/contacts.js"></script>
+    <script src="../js/addTask.js"></script>
+    <script src="../js/addTaskHTML.js"></script>
 
-    <script src="./../js/board.js"></script>
-    <script src="../js/add_task.js"></script>
-
-    <title>Board Kanban</title>
+    <title>Join Project Management Tool</title>
   </head>
-  <body onload="initBoard()">
+  <body onload="initAddTask()">
     <div
       w3-include-html="../assets/templates/header.html"
       id="mainHeader"
       class="mainHeader"
     ></div>
-
     <div class="mainContent">
-      <h1>Bord Kontent</h1>
+      <div id="taskMainContainer">
+      </div>
     </div>
-
     <div
       w3-include-html="../assets/templates/menu.html"
       id="afterLoginMainMenu"

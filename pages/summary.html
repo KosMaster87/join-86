@@ -3,12 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="../css/summary.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/menu.css" />
+    <link rel="stylesheet" href="./../style.css" />
+
+    <script src="../js/header.js"></script>
+    <script src="../../js/menu.js"></script>
+    <script src="./../includeHTML.js"></script>
+    <script src="./../script.js"></script>
+    <script src="../js/register.js"></script>
+    <script src="../js/login.js"></script>
+
     <script src="../js/summary.js"></script>
+
     <title>Summary</title>
   </head>
-  <body>
-    <div class="HeaderAtrape">HEADER</div>
+  <body onload="initSummary()">
+    <div
+      w3-include-html="../assets/templates/header.html"
+      id="mainHeader"
+      class="mainHeader"
+    ></div>
 
     <div class="summaryContent mainContent" id="summaryContent">
       <div class="greetingUserSummary" id="summaryGreetUserScreen">
@@ -30,7 +47,7 @@
               class="reactangle borderRadius backgroundColor reactangelBoxShadow cursorPointer"
               onmouseover="changeImage(this)"
               onmouseout="changeImageBack(this)"
-              onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+              onclick="includeContentHTML('board'); setActiveLink('navBoard')"
             >
               <img
                 src="../assets/img/summary/summaryGrayEdit.svg"
@@ -39,7 +56,7 @@
 
               <div
                 class="summaryToDoSum"
-                onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+                onclick="includeContentHTML('board'); setActiveLink('navBoard')"
               >
                 <p class="sammarySumNumber" id="summeryTodoTodos">0</p>
                 <p>To-do</p>
@@ -50,13 +67,13 @@
               class="reactangle borderRadius backgroundColor reactangelBoxShadow cursorPointer"
               onmouseover="changeImage(this)"
               onmouseout="changeImageBack(this)"
-              onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+              onclick="includeContentHTML('board'); setActiveLink('navBoard')"
             >
               <img
                 src="../assets/img/summary/summaryCheckGray.svg"
                 class="doneSpecial summaryAnimateProgramm checkImage"
               />
-              <div class="summaryToDoSum" onclick="includeContentHTML('Board')">
+              <div class="summaryToDoSum" onclick="includeContentHTML('board')">
                 <p class="sammarySumNumber" id="summeryDoneTodos">0</p>
                 <p>Done</p>
               </div>
@@ -66,13 +83,13 @@
           <div
             class="row2Helper borderRadius backgroundColor reactangelBoxShadow cursorPointer"
           >
-            <div class="row2summary">
-              <img src="./../assets/img/summary/Frame59_urgent.svg" />
+            <div
+              class="row2summary"
+              onclick="includeContentHTML('board'); setActiveLink('navBoard')"
+            >
+              <img src="./../assets/img/summary/Frame59Urgent.svg" />
 
-              <div
-                class="summaryToDoSum"
-                onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
-              >
+              <div class="summaryToDoSum">
                 <p class="sammarySumNumber" id="summeryUpcomingTasks"></p>
                 <p>Urgent</p>
               </div>
@@ -80,7 +97,7 @@
 
             <div
               class="urgentDater"
-              onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+              onclick="includeContentHTML('board'); setActiveLink('navBoard')"
             >
               <div class="prioVerticalLine"></div>
               <div class="summaryDeadlineBox">
@@ -98,7 +115,7 @@
             >
               <div
                 class="summaryToDoSum"
-                onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+                onclick="includeContentHTML('board'); setActiveLink('navBoard')"
               >
                 <p class="sammarySumNumber" data-todos>0</p>
                 <p>Tasks in</p>
@@ -111,7 +128,7 @@
             >
               <div
                 class="summaryToDoSum"
-                onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+                onclick="includeContentHTML('board'); setActiveLink('navBoard')"
               >
                 <p class="sammarySumNumber" id="summeryProcessTasks">0</p>
                 <p>Tasks in</p>
@@ -124,7 +141,7 @@
             >
               <div
                 class="summaryToDoSum"
-                onclick="includeContentHTML('Board'); setActiveLink('navBoard')"
+                onclick="includeContentHTML('board'); setActiveLink('navBoard')"
               >
                 <p class="sammarySumNumber" id="summeryAwaitingTask">0</p>
                 <p>Awaiting</p>
@@ -141,6 +158,10 @@
       </div>
     </div>
 
-    <div class="FooterAtrappe">FOOTER</div>
+    <div
+      w3-include-html="../assets/templates/menu.html"
+      id="afterLoginMainMenu"
+      class="afterLoginMainMenu"
+    ></div>
   </body>
 </html>

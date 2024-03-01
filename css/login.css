@@ -11,11 +11,11 @@
   color: var(--wrongInput);
 }
 
-.emailDevision.active {
+.loginEmailDevision.active {
   border-color: var(--lightBlue);
 }
 
-.passwortDevision.active {
+.loginPasswortDevision.active {
   border-color: var(--lightBlue);
 }
 
@@ -139,7 +139,7 @@
 
   /* ---------------------------------------- */
 
-  .emailDevision {
+  .loginEmailDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -170,7 +170,7 @@
 
   /* ---------------------------------------- */
 
-  .passwortDevision {
+  .loginPasswortDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -362,7 +362,7 @@
 
   /* ----------------------------------------- */
 
-  .emailDevision {
+  .loginEmailDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -387,7 +387,7 @@
     outline: none;
   }
 
-  .passwortDevision {
+  .loginPasswortDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -580,7 +580,7 @@
 
   /* ----------------------------------------- */
 
-  .emailDevision {
+  .loginEmailDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -605,7 +605,7 @@
     outline: none;
   }
 
-  .passwortDevision {
+  .loginPasswortDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -867,7 +867,7 @@
 
   /* ---------------------------------------- */
 
-  .emailDevision {
+  .loginEmailDevision {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -892,7 +892,7 @@
     outline: none;
   }
 
-  .passwortDevision {
+  .loginPasswortDevision {
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -1,4 +1,6 @@
-
+/**
+ * Just include header and menu content in current page.
+ */
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
   for (let i = 0; i < includeElements.length; i++) {
@@ -11,4 +13,12 @@ async function includeHTML() {
       element.innerHTML = "Page not found";
     }
   }
+}
+
+/**
+ * Easy to change pages.
+ * @param {page as stringname} changePage
+ */
+function includeContentHTML(changePage) {
+  window.location.assign(changePage + ".html");
 }
