@@ -6,8 +6,8 @@
 
     <link rel="stylesheet" href="../../css/menu.css" />
 
-    <script src="../../js/menu.js"></script>
     <script src="./../../includeHTML.js"></script>
+    <script src="../../js/menu.js"></script>
 
     <title>Menü-Leiste</title>
   </head>
@@ -23,8 +23,7 @@
       <div
         class="menuItem activeLinkStyle"
         id="navSummary"
-        onclick="includeContentHTML('summary');
-        setActiveLink('navSummary')"
+        onclick="includeContentHTML('summary', 'navSummary')"
       >
         <div class="menuHoverBox">
           <img src="../assets/img/menu/summaryIcon.svg" class="menuItemImage" />
@@ -35,8 +34,7 @@
       <div
         class="menuItem"
         id="navBoard"
-        onclick="includeContentHTML('board');
-        setActiveLink('navBoard')"
+        onclick="includeContentHTML('board', 'navBoard')"
       >
         <div class="menuHoverBox">
           <img src="../assets/img/menu/Vector.svg" class="menuItemImage" />
@@ -47,8 +45,7 @@
       <div
         class="menuItem"
         id="navAddTask"
-        onclick="includeContentHTML('addTask');
-        setActiveLink('navAddTask')"
+        onclick="includeContentHTML('addTask', 'navAddTask')"
       >
         <div class="menuHoverBox">
           <img
@@ -62,8 +59,7 @@
       <div
         class="menuItem"
         id="navContacts"
-        onclick="includeContentHTML('contacts');
-        setActiveLink('navContacts')"
+        onclick="includeContentHTML('contacts', 'navContacts')"
       >
         <div class="menuHoverBox">
           <img

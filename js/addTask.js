@@ -341,40 +341,9 @@ function loadContacts() {
   for (let i = 0; i < Math.min(mockUpUserContacts.length); i++) {
     contactSignature = mockUpUserContacts[i].signature;
     contactName = mockUpUserContacts[i].name;
-    mainDiv.innerHTML += loadContactsReturn(i);
+    mainDiv.innerHTML +=  loadContactsReturn(i);
   }
   if (mockUpUserContacts.length > 5) {
-    mainDiv.style.overflowY = "scroll";
-  }
-}
-
-function footer() {
-  main = document.getElementById(`taskMainContainer`);
-  main.innerHTML += footerReturn();
-}
-
-function checkCategory() {
-  inputfield = document.getElementById(`categoryText`);
-  content = inputfield.textContent || inputfield.innerText;
-  if (content.trim() === "Technical Task" || content.trim() === "User Story") {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function checkInputs() {
-  let dueDateValue = document.getElementById("dueDateInputContainer").value;
-  let titleValue = document.getElementById("titelInputContainer").value;
-  let isCategoryValid = checkCategory();
-  let createTaskButton = document.getElementById("createTaskButton");
-  if (
-    dueDateValue.trim() !== "" &&
-    titleValue.trim() !== "" &&
-    isCategoryValid
-  ) {
-    createTaskButton.style.display = "block";
-  } else {
-    createTaskButton.style.display = "none";
+    mainDiv.style.overflowY = 'scroll';
   }
 }
