@@ -28,11 +28,14 @@ async function initAddTask() {
   footer();
 }
 
+window.addEventListener('resize', function () {
+  if (window.innerWidth === 1219 || window.innerWidth === 1220) {
+      checkWidth();
+  }
+});
+
 function checkWidth() {
-  let screenWidth =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
+  let screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
   if (screenWidth <= 1220) {
     mobilVersion = false;
   } else {
