@@ -1,8 +1,11 @@
 /*
- * Body - Onload.
+ * Start -> body onload
+ * include header and munu.
+ * Than add navigation style as active.
  */
 async function initSummary() {
   await includeHTML();
+  setActiveLink("navSummary");
 }
 
 /**
