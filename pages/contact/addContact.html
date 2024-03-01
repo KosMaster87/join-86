@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="../../css/contact/addContact.css" />
     <link rel="stylesheet" href="../../css/contact/contactOverlay.css" />
     <link rel="stylesheet" href="../../css/contact/contacts.css" /> 
+    <script src="../../js/contact/contacts.js"></script>
     <script src="../../js/contact/addContact.js"></script>
+    <script src="../../script.js"></script>
+    
 </head>
 <body>
     <!-- ADD CONTACT -->
@@ -28,7 +31,8 @@
             </div>
         </div>
         <div id="addContactEntry">
-            <div class="contactInputContainer">                
+            <div class="contactInputContainer">
+        
                 <div id="contactInputFieldName" class="contactInputField" >
                     <input id="contactInputName"
                         placeholder="Name"
@@ -60,8 +64,9 @@
                     </div>
                 </div>
                 <div class="contactBtnRow">
-                <a onclick="startSaveProcess(1)" class="contactBtnSave">Create contact<img id="contactBtnSaveIcon"src="../../assets/img/addContact/check.svg"></a>
-            </div>
+                    <a onclick="startSaveProcess(1)" class="contactBtnSave">Create contact<img id="contactBtnSaveIcon"src="../../assets/img/addContact/check.svg"></a>
+                </div>
+      
             </div>
         </div>
     </div>
