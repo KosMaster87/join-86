@@ -9,6 +9,7 @@ let mobilVersion;
 
 async function initAddTask() {
   await includeHTML();
+  afterPageSwitchLoadActiveLink("navAddTask");
   checkWidth();
   loadContent();
   loadContacts();
@@ -307,9 +308,9 @@ function loadContacts() {
   for (let i = 0; i < Math.min(mockUpUserContacts.length, 5); i++) {
     contactSignature = mockUpUserContacts[i].signature;
     contactName = mockUpUserContacts[i].name;
-    mainDiv.innerHTML +=  loadContactsReturn(i);
+    mainDiv.innerHTML += loadContactsReturn(i);
   }
   if (mockUpUserContacts.length > 5) {
-    mainDiv.style.overflowY = 'scroll';
+    mainDiv.style.overflowY = "scroll";
   }
 }

@@ -17,8 +17,11 @@ async function includeHTML() {
 
 /**
  * Easy to change pages.
- * @param {page as stringname} changePage
+ * And use the URL as a transport for the active link to be marked.s
+ * @param {page as stringname} page
+ * @param {activeLinkId as string} activeLinkId
  */
-function includeContentHTML(changePage) {
-  window.location.assign(changePage + ".html");
+function includeContentHTML(page, activeLinkId) {
+  const url = `${page}.html?activeLinkId=${activeLinkId}`;
+  window.location.assign(url);
 }
