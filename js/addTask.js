@@ -92,6 +92,12 @@ function dueDateRequired() {
   }
 }
 
+function checkCategory(){
+  var inputfield = document.getElementById('categoryText');
+  var content = inputfield.textContent || inputfield.innerText;
+  return content.trim() === 'Technical Task' || content.trim() === 'User Story';
+}
+
 function categoryRequired() {
   border = document.getElementById(`categorySelectContainer`);
   inputfield = document.getElementById(`categoryText`);
@@ -339,6 +345,18 @@ function loadContacts() {
   }
   if (testContactArray.length > 5) {
     mainDiv.style.overflowY = "scroll";
+  }
+}
+
+function checkInputs() {
+  var dueDateValue = document.getElementById("dueDateInputContainer").value;
+  var titleValue = document.getElementById("titelInputContainer").value;
+  var isCategoryValid = checkCategory();
+  var createTaskButton = document.getElementById("createTaskButton");
+  if (dueDateValue.trim() !== '' && titleValue.trim() !== '' && isCategoryValid) {
+    createTaskButton.style.display = "block";
+  } else {
+    createTaskButton.style.display = "none";
   }
 }
 
