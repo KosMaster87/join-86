@@ -7,6 +7,8 @@ let selectedCategory = "";
 let subtasks = [];
 let mobilVersion;
 
+const mockUpUserContacts = []
+
 async function initAddTask() {
   await includeHTML();
   afterPageSwitchLoadActiveLink("navAddTask");
@@ -16,7 +18,6 @@ async function initAddTask() {
   footer();
 }
 
-window.addEventListener("resize", checkScreenWidth);
 function checkWidth() {
   let screenWidth =
     window.innerWidth ||
@@ -26,26 +27,6 @@ function checkWidth() {
     mobilVersion = false;
   } else {
     mobilVersion = true;
-  }
-}
-
-function checkScreenWidth() {
-  let screenWidth =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
-  let content = document.getElementById("taskMainContainer");
-  if (screenWidth <= 1220 && mobilVersion == false) {
-    window.removeEventListener("click", handleWindowClick);
-    mobilVersion = true;
-    content.innerHTML = renderAddTaskMobileHTML();
-    loadContent();
-  }
-  if (screenWidth > 1220 && mobilVersion == true) {
-    window.removeEventListener("click", handleWindowClick);
-    mobilVersion = false;
-    content.innerHTML = renderAddTaskHTML();
-    loadContent();
   }
 }
 
@@ -346,4 +327,9 @@ function loadContacts() {
   if (mockUpUserContacts.length > 5) {
     mainDiv.style.overflowY = 'scroll';
   }
+}
+
+function footer(){
+  let content = document.getElementById(`taskMainContainer`);
+  content.innerHTML += footerReturn();
 }
