@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="../../css/contact/editContact.css" /> 
     <link rel="stylesheet" href="../../css/contact/contactOverlay.css" />
     <link rel="stylesheet" href="../../css/contact/addContact.css" />
+    <script src="../../js/contact/contacts.js"></script>
+    <script src="../../js/contact/editContact.js"></script>
+    <script src="../../script.js"></script>
+
     <title>EditContact</title>
 </head>
-<body>
+<body onload="initEditContact()">
     <!-- EDIT CONTACT -->
     <div w3-include-html="editContact.html" id="editContact">
         <div class="addContactHeader">
@@ -21,7 +25,7 @@
             </div>
             <div class="addContactHeaderBorder"></div>
             <div class="editContactEmptySignature">
-                <span class="editContactSignature">AM</span>
+                <span id="contactSignature" class="editContactSignature"></span>
             </div>
         </div>
         <div id="addContactEntry">
@@ -69,12 +73,13 @@
                 </div>
             </div>
             <div class="editContactBtnRow">
-                <a class="editContactBtnDelete">Delete</a>
-                <a class="contactBtnSave">Save<img id="contactBtnSaveIcon" src="../../assets/img/addContact/check.svg"></a>
+                <a class="editContactBtnDelete" onclick="deleteContact(userId, contactId)">Delete</a>
+                <a onclick="saveChanges()" class="contactBtnSave">Save<img id="contactBtnSaveIcon" src="../../assets/img/addContact/check.svg"></a>
             </div>
             </div>
         </div>
     </div>
+   
     
 </body>
 </html>
