@@ -7,7 +7,17 @@ let selectedCategory = "";
 let subtasks = [];
 let mobilVersion;
 
-const mockUpUserContacts = []
+const testContactArray = [
+{ name: "Sebastian Behl", signature: "SB" },
+{ name: "Benutzer2", signature: "B2" },
+{ name: "Benutzer3", signature: "B3" },
+{ name: "Benutzer4", signature: "B4" },
+{ name: "Benutzer5", signature: "B5" },
+{ name: "Benutzer6", signature: "B6" },
+{ name: "Benutzer7", signature: "B7" },
+{ name: "Benutzer8", signature: "B8" },
+{ name: "Benutzer9", signature: "B9" },
+{ name: "Benutzer10", signature: "B10" }];
 
 async function initAddTask() {
   await includeHTML();
@@ -215,7 +225,10 @@ function openContacts() {
   let border = document.getElementById(`contactSelectContainer`);
   let to = document.getElementById(`assignedToContainer`);
   let place = document.getElementById(`contacRequired`);
-  if ( contactList.style.display === "none" || contactList.style.display === "") {
+  if (
+    contactList.style.display === "none" ||
+    contactList.style.display === ""
+  ) {
     contactList.style.display = "block";
     contactListIcons.style.display = "none";
     border.classList.add("bordercolor");
@@ -317,19 +330,19 @@ function clearSubtaskInputfield() {
 
 function loadContacts() {
   let mainDiv = document.getElementById(`contactList`);
-  let totalHeight = Math.min(mockUpUserContacts.length * 52, 260);
+  let totalHeight = Math.min(testContactArray.length * 52, 260);
   mainDiv.style.height = `${totalHeight}px`;
-  for (let i = 0; i < Math.min(mockUpUserContacts.length); i++) {
-    contactSignature = mockUpUserContacts[i].signature;
-    contactName = mockUpUserContacts[i].name;
-    mainDiv.innerHTML +=  loadContactsReturn(i);
+  for (let i = 0; i < Math.min(testContactArray.length); i++) {
+    contactSignature = testContactArray[i].signature;
+    contactName = testContactArray[i].name;
+    mainDiv.innerHTML += loadContactsReturn(i);
   }
-  if (mockUpUserContacts.length > 5) {
-    mainDiv.style.overflowY = 'scroll';
+  if (testContactArray.length > 5) {
+    mainDiv.style.overflowY = "scroll";
   }
 }
 
-function footer(){
+function footer() {
   let content = document.getElementById(`taskMainContainer`);
   content.innerHTML += footerReturn();
 }
