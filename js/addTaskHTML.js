@@ -320,7 +320,7 @@ function editSubtaskReturn(subtasks, i) {
   </div>`;
 }
 
-function loadContactsReturn(i){
+function loadContactsReturn(i) {
   return `
   <div
       id="assignedContactContainer${i}"
@@ -336,18 +336,19 @@ function loadContactsReturn(i){
         src="../assets/img/add_task/task_box.svg"
       />
     </div>
-  `
+  `;
 }
 
-function footerReturn(){
+function footerReturn() {
   return `
   <footer>
   <div id="finishTaskContainer">
     <div class="finishTaskText">
-      <span class="requiredStar">*</span>This field is required
+      <span class="requiredStar">*</span>
+      <span>This field is required</span>
     </div>
     <div id="createTaskButton" class="createTask  font" onclick="requiredFields()">
       Create Task <img src="../assets/img/add_task/task_check_white.svg" />
     </div>
-    </footer>`
+    </footer>`;
 }

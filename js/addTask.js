@@ -8,52 +8,52 @@ let subtasks = [];
 let mobilVersion;
 
 const testContactArray = [
-{ name: "Sebastian Behl", signature: "SB" },
-{ name: "Benutzer2", signature: "B2" },
-{ name: "Benutzer3", signature: "B3" },
-{ name: "Benutzer4", signature: "B4" },
-{ name: "Benutzer5", signature: "B5" },
-{ name: "Benutzer6", signature: "B6" },
-{ name: "Benutzer7", signature: "B7" },
-{ name: "Benutzer8", signature: "B8" },
-{ name: "Benutzer9", signature: "B9" },
-{ name: "Benutzer10", signature: "B10" }];
+  { name: "Sebastian Behl", signature: "SB" },
+  { name: "Benutzer2", signature: "B2" },
+  { name: "Benutzer3", signature: "B3" },
+  { name: "Benutzer4", signature: "B4" },
+  { name: "Benutzer5", signature: "B5" },
+  { name: "Benutzer6", signature: "B6" },
+  { name: "Benutzer7", signature: "B7" },
+  { name: "Benutzer8", signature: "B8" },
+  { name: "Benutzer9", signature: "B9" },
+  { name: "Benutzer10", signature: "B10" },
+];
 
 async function initAddTask() {
   await includeHTML();
   setActiveLink("navAddTask");
   checkWidth();
-  loadContent();
   loadContacts();
   footer();
 }
 
-window.addEventListener('resize', function () {
-  if (window.innerWidth === 1219 || window.innerWidth === 1220) {
-      checkWidth();
-  }
+window.addEventListener("resize", function () {
+  checkWidth();
+  footer();
 });
 
 function checkWidth() {
-  let screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  if (screenWidth <= 1220) {
+  let screenWidth =
+    window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  if (screenWidth <= 1219) {
     mobilVersion = false;
   } else {
     mobilVersion = true;
   }
+  loadContent();
 }
 
 function loadContent() {
   let screenWidth =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
-  let content = document.getElementById("taskMainContainer");
-  if (screenWidth <= 1220 && mobilVersion == false) {
+    window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  let content = document.getElementById(`taskMainContainer`);
+  content.innerHTML = "";
+  if (screenWidth <= 1219 && mobilVersion == false) {
     mobilVersion = true;
     content.innerHTML = renderAddTaskMobileHTML();
   }
-  if (screenWidth > 1220 && mobilVersion == true) {
+  if (screenWidth > 1219 && mobilVersion == true) {
     mobilVersion = false;
     content.innerHTML = renderAddTaskHTML();
   }
@@ -95,10 +95,10 @@ function dueDateRequired() {
   }
 }
 
-function checkCategory(){
-  var inputfield = document.getElementById('categoryText');
+function checkCategory() {
+  var inputfield = document.getElementById("categoryText");
   var content = inputfield.textContent || inputfield.innerText;
-  return content.trim() === 'Technical Task' || content.trim() === 'User Story';
+  return content.trim() === "Technical Task" || content.trim() === "User Story";
 }
 
 function categoryRequired() {
@@ -153,6 +153,7 @@ function changePrioColor(clickedContainerId) {
     changePrioColorUrgent(imgUrgent);
   }
 }
+
 function changePrioColorLow(imgLow) {
   prioLowContainer.classList.add("prioLow");
   selectedPrio = "Low";
@@ -170,12 +171,12 @@ function changePrioColorUrgent(imgUrgent) {
   selectedPrio = "Urgent";
   imgUrgent.src = "../assets/img/add_task/arrow_top_white.svg";
 }
+
 function setMinDate() {
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, "0");
   let mm = String(today.getMonth() + 1).padStart(2, "0");
   let yyyy = today.getFullYear();
-
   today = yyyy + "-" + mm + "-" + dd;
   document.getElementById("dueDateInputContainer").min = today;
 }
@@ -233,24 +234,16 @@ function openContacts() {
   let contactListIcons = document.getElementById("contactListIcons");
   let border = document.getElementById(`contactSelectContainer`);
   let to = document.getElementById(`assignedToContainer`);
-  let place = document.getElementById(`contacRequired`);
-  if (
-    contactList.style.display === "none" ||
-    contactList.style.display === ""
-  ) {
+  if (contactList.style.display === "none" || contactList.style.display === "") {
     contactList.style.display = "block";
     contactListIcons.style.display = "none";
     border.classList.add("bordercolor");
     to.innerHTML = "An";
-    place.style.display = "none";
   } else {
     contactList.style.display = "none";
     contactListIcons.style.display = "block";
     border.classList.remove("bordercolor");
-    to.innerHTML = "Select to Contact";
-    place.style.display = "block";
-  }
-}
+    to.innerHTML = "Select to Contact"; }}
 
 function assignedtoContactBg(i) {
   let container = document.getElementById(`assignedContactContainer${i}`);
@@ -356,7 +349,7 @@ function checkInputs() {
   var titleValue = document.getElementById("titelInputContainer").value;
   var isCategoryValid = checkCategory();
   var createTaskButton = document.getElementById("createTaskButton");
-  if (dueDateValue.trim() !== '' && titleValue.trim() !== '' && isCategoryValid) {
+  if (dueDateValue.trim() !== "" && titleValue.trim() !== "" && isCategoryValid) {
     createTaskButton.style.display = "block";
   } else {
     createTaskButton.style.display = "none";

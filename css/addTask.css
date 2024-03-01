@@ -340,6 +340,7 @@ span {
   align-items: flex-end;
   padding-bottom: 16px;
   padding-top: 16px;
+  width: 394px;
 }
 
 .finishTaskText {
@@ -379,14 +380,6 @@ span {
   border: solid 1px var(--wrongInputBorder);
 }
 
-@media (min-width: 434px) {
-  .taskMainContainer {
-    max-width: 450px;
-  }
-  h1 {
-  }
-}
-
 @media screen and (min-width: 721px) {
   .taskSelectButton:hover {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -416,11 +409,14 @@ span {
 }
 
 /*-DESKTOP-*/
-@media (min-width: 1250px){
-.seperatorContainer {
-  margin-left: 32px;
-  margin-right: 32px;
-}
+@media only screen and (max-width: 1219px) and (min-width: 721px){
+  .mainContent{
+    display: flex;
+    justify-content: center;
+  }
+  #taskMainContainer{
+    align-items: center;
+  }
 }
 
 @media (min-width: 1220px) {
@@ -456,14 +452,14 @@ span {
   }
 
   .seperatorContainer {
-    margin-left: 48px;
-    margin-right: 48px;
+    margin-left: 32px;
+    margin-right: 32px;
     width: 2px;
     background-color: var(--lighterGray);
   }
 
   #finishTaskContainer {
-    width: 978px;
+    width: 944px;
     margin-right: 0px;
     display: flex;
     justify-content: space-between;
@@ -476,7 +472,10 @@ span {
     height:12px;
     margin-bottom: 16px;
   }
-
+  footer{
+    position: absolute;
+    bottom:30px;
+  }
 
 }
 
@@ -489,10 +488,32 @@ span {
   border-radius: 10px;
 }
 
-footer{
-  position: absolute;
-  bottom:60px;
-  text-align: end;
-  max-width: 393px;
-  width: 100%;
+
+.mainContent{
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width:440px){
+  #taskMainContainer{
+    max-width: 360px;
+  }
+  #finishTaskContainer{
+    max-width: 360px
+  }
+}
+
+@media (max-width:380px){
+  .finishTaskText{
+    text-align: start;
+  }
+  #taskMainContainer{
+    max-width: 300px;
+  }
+  #finishTaskContainer{
+    max-width: 300px;
+  }
+  .createTask{
+    width: 155px;
+  }
 }
