@@ -1,5 +1,6 @@
 async function initBoard() {
   await includeHTML();
+  setActiveLink("navBoard");
 
   // document.addEventListener("DOMContentLoaded", function () {
   //   const urlParams = new URLSearchParams(window.location.search);

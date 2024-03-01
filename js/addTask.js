@@ -21,7 +21,7 @@ const testContactArray = [
 
 async function initAddTask() {
   await includeHTML();
-  afterPageSwitchLoadActiveLink("navAddTask");
+  setActiveLink("navAddTask");
   checkWidth();
   loadContent();
   loadContacts();

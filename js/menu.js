@@ -39,7 +39,7 @@ function setActiveLink(activeLinkId) {
     navContacts.classList.remove("activeLinkStyle");
 
     // Hier das entsprechende Element abrufen
-    let currentMenuItem = activeLinkId;
+    let currentMenuItem = document.getElementById(`${activeLinkId}`);
 
     if (currentMenuItem) {
       currentMenuItem.classList.add("activeLinkStyle");
