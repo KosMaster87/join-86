@@ -1,29 +1,30 @@
 const contactColors = ["var(--red)", "var(--yellow)", "var(--orangeIcons)", "var(--green)", "var(--pink)", "var(--mintGreen)"];
-const userContacts = [];
+let allContactsFromAllUsers = [];
+//TODO: delete mockUpAllUserContacts after testing at remote-storage and change all functions 
+
 const userId = "user1"; //vorübergehend als Konstante angelegt
 
 
-function startSaveProcess() {
+async function startSaveProcess() {
     let name = (document.getElementById('contactInputName').value).trim();
     let email = (document.getElementById('contactInputEmail').value).trim();
     let phone = (document.getElementById('contactInputPhone').value).trim();
 
     if (checkAllInputFields(name, email, phone) == true) {
-        saveContact(name, email, phone);
+        await saveContact(name, email, phone);
         resetInputFields();
     } else {
         console.log('Speichervorgang ist aufgrund eines Fehler abgebrochen worden.')
-    }
+    }   
 }
 
 
-function saveContact(name, email, phone) {
-    let contact = [];
+async function saveContact(name, email, phone) {
     let contactId = generateRandomId();
     let userColor = getRandomColor(contactColors);
     let signature = getSignature(name);
 
-    contact.push({
+    let contact = {
         "userId": userId, 
         "contactId": contactId, 
         "name": name, 
@@ -31,10 +32,11 @@ function saveContact(name, email, phone) {
         "phone": phone, 
         "userColor": userColor, 
         "signature": signature
-    });
+    };
     console.log(contact);
-    userContacts.push(contact);
-    console.log(userContacts);
+    allContactsFromAllUsers.push(contact);
+    console.log(allContactsFromAllUsers);
+    await setItem('mockUpAllUserContacts', JSON.stringify(allContactsFromAllUsers));
 }
 
 
@@ -109,7 +111,7 @@ function checkInputName(input) {
     let name = input;
     let result = checkIfInputFieldIsEmpty(name) == true ? true : false;
     if (result == false) {
-        sendErrorMessage('contactInputName', 'Name erforderlich');
+        console.log('Fehler inputName: Name erforderlich');
     } else {
         return result;
     }   
@@ -168,11 +170,4 @@ function checkInputPhone(phone) {
 }
 
 
-function sendErrorMessage(idColor, message) {
-    document.getElementById(idColor).value = message;
-}
 
-
-function resetErrorMessage(string) {
-
-}
