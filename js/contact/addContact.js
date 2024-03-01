@@ -20,6 +20,7 @@ async function startSaveProcess() {
 
 
 async function saveContact(name, email, phone) {
+    let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
     let contactId = generateRandomId();
     let userColor = getRandomColor(contactColors);
     let signature = getSignature(name);
@@ -36,7 +37,15 @@ async function saveContact(name, email, phone) {
     console.log(contact);
     allContactsFromAllUsers.push(contact);
     console.log(allContactsFromAllUsers);
+
     await setItem('mockUpAllUserContacts', JSON.stringify(allContactsFromAllUsers));
+}
+
+
+async function loadAllContactsFromAllUsers() {
+    let allContactsFromAllUsers = await getItem('mockUpAllUserContacts');
+
+    return JSON.parse(allContactsFromAllUsers);
 }
 
 
@@ -47,7 +56,7 @@ function resetInputFields() {
 }    
 
 
-function getRandomColor (userColors) {
+function getRandomColor(userColors) {
     let randomIndex = Math.floor(Math.random() * userColors.length);
     let randomColor = userColors[randomIndex];
     
