@@ -1,25 +1,42 @@
+//LIST CONTACT JS
+//TODO: userId muss mittels setter übernommen werden aus dem Login Protokoll
+//TODO: 
+const userId = 'user1';
 
-let currentUserContacts = [];
+async function renderContacts() {
+    let currentUserContacts = [];
+    let allUserContacts = await loadAllUsersContacts(); //funktioniert
 
-function renderContacts() {
-    currentUserContacts = getAllContactsFromCurrentUser('user1');
-    let sortedContacts = sortAllContactsFromCurrentUserAlphabetical(currentUserContacts);
+    currentUserContacts = await getAllContactsFromCurrentUser(allUserContacts, 'user1');
+    let sortedContacts = await sortAllContactsFromCurrentUserAlphabetical(currentUserContacts);
     let listChars = getListFirstChars(sortedContacts);
+    
     renderContainerList(sortedContacts, listChars);
 }
 
-function getAllContactsFromCurrentUser(currentUserId) {
-    for (let i = 0; i < mockUpUserContacts.length; i++) {
-        if (mockUpUserContacts[i]['userId'] == currentUserId) {
-            currentUserContacts.push(mockUpUserContacts[i]);
+
+async function loadAllUsersContacts() {
+    let allUserContacts = await getItem('mockUpAllUserContacts');
+
+    return JSON.parse(allUserContacts);
+}
+
+
+async function getAllContactsFromCurrentUser(allUserContacts, currentUserId) {
+    let allContacts = allUserContacts;
+    let currentUserContacts = [];
+    for (let i = 0; i < allContacts.length; i++) {
+        if (allContacts[i]['userId'] === currentUserId) {
+            currentUserContacts.push(allContacts[i]);
         }
     }
+
     return currentUserContacts;
 }
 
 
-function sortAllContactsFromCurrentUserAlphabetical(currentUserContacts) {
-    let sortedContacts = currentUserContacts;
+async function sortAllContactsFromCurrentUserAlphabetical(currentUserContacts) {
+    let sortedContacts = await currentUserContacts;
     sortedContacts.sort((a, b) => {
         //Alphabetisch nach Namen sortieren/         
         const nameA = a.name.toUpperCase(); // Groß-/Kleinschreibung ignorieren
@@ -76,9 +93,10 @@ function renderContactCards(char, currentContacts, charRow) {
     let contacts = currentContacts;
     let sign = char;
     let contactCard = charRow;
+
     for (let i = 0; i < contacts.length;i++) {
         let contact = contacts[i];
-        if (contact['name'].charAt(0) === sign) {
+        if (contact['name'].charAt(0).toUpperCase() === sign) {
             contactCard.innerHTML += `
             <div class="singleContact">
                 <div class="contactSignatureIcon" style="background-color:  ${contact['userColor']}">
