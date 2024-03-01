@@ -69,3 +69,9 @@
             padding: 18px 10px; 
             border: 1px solid var(--lightGray);
         }
+
+        .editContactBtnDelete:hover {
+            cursor: pointer;
+        } 
+
+        
