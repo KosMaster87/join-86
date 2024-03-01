@@ -1,29 +1,27 @@
 //LIST CONTACT JS
 //TODO: userId muss mittels setter übernommen werden aus dem Login Protokoll
-//TODO: 
 const userId = 'user1';
 
-async function renderContacts() {
-    let currentUserContacts = [];
-    let allUserContacts = await loadAllUsersContacts(); //funktioniert
+async function initListContact() {
+    let allContactsFromAllUsers = await loadAllContactsFromAllUsers(); //funktioniert
 
-    currentUserContacts = await getAllContactsFromCurrentUser(allUserContacts, 'user1');
-    let sortedContacts = await sortAllContactsFromCurrentUserAlphabetical(currentUserContacts);
+    let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(allContactsFromAllUsers, 'user1');
+    let sortedContacts = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser);
     let listChars = getListFirstChars(sortedContacts);
     
     renderContainerList(sortedContacts, listChars);
 }
 
 
-async function loadAllUsersContacts() {
-    let allUserContacts = await getItem('mockUpAllUserContacts');
+async function loadAllContactsFromAllUsers() {
+    let allContactsFromCurrentUser = await getItem('mockUpAllUserContacts');
 
-    return JSON.parse(allUserContacts);
+    return JSON.parse(allContactsFromCurrentUser);
 }
 
 
-async function getAllContactsFromCurrentUser(allUserContacts, currentUserId) {
-    let allContacts = allUserContacts;
+async function getAllContactsFromCurrentUser(allContactsFromAllUsers, currentUserId) {
+    let allContacts = allContactsFromAllUsers;
     let currentUserContacts = [];
     for (let i = 0; i < allContacts.length; i++) {
         if (allContacts[i]['userId'] === currentUserId) {
@@ -35,8 +33,8 @@ async function getAllContactsFromCurrentUser(allUserContacts, currentUserId) {
 }
 
 
-async function sortAllContactsFromCurrentUserAlphabetical(currentUserContacts) {
-    let sortedContacts = await currentUserContacts;
+async function sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser) {
+    let sortedContacts = await allContactsFromCurrentUser;
     sortedContacts.sort((a, b) => {
         //Alphabetisch nach Namen sortieren/         
         const nameA = a.name.toUpperCase(); // Groß-/Kleinschreibung ignorieren
@@ -49,6 +47,7 @@ async function sortAllContactsFromCurrentUserAlphabetical(currentUserContacts) {
         }
         return 0;
     });
+    
     return sortedContacts;
 }
 
