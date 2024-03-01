@@ -9,11 +9,14 @@ let mobilVersion;
 
 async function initAddTask() {
   await includeHTML();
+  afterPageSwitchLoadActiveLink("navAddTask");
   checkWidth();
   loadContent();
   loadContacts();
+  footer();
 }
 
+window.addEventListener("resize", checkScreenWidth);
 function checkWidth() {
   let screenWidth =
     window.innerWidth ||
@@ -23,6 +26,26 @@ function checkWidth() {
     mobilVersion = false;
   } else {
     mobilVersion = true;
+  }
+}
+
+function checkScreenWidth() {
+  let screenWidth =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+  let content = document.getElementById("taskMainContainer");
+  if (screenWidth <= 1220 && mobilVersion == false) {
+    window.removeEventListener("click", handleWindowClick);
+    mobilVersion = true;
+    content.innerHTML = renderAddTaskMobileHTML();
+    loadContent();
+  }
+  if (screenWidth > 1220 && mobilVersion == true) {
+    window.removeEventListener("click", handleWindowClick);
+    mobilVersion = false;
+    content.innerHTML = renderAddTaskHTML();
+    loadContent();
   }
 }
 
@@ -81,9 +104,9 @@ function dueDateRequired() {
 function categoryRequired() {
   border = document.getElementById(`categorySelectContainer`);
   inputfield = document.getElementById(`categoryText`);
-  content = inputfield.textContent || inputfield.innerText;
   inputRequired = document.getElementById(`categoryRequiredContainer`);
-  if (content.trim() === "Technical Task" || content.trim() === "User Story") {
+  var isCategoryValid = checkCategory();
+  if (isCategoryValid) {
     inputfield.value = "";
     inputRequired.innerHTML = "";
     border.classList.remove("requiredBorder");
@@ -123,20 +146,30 @@ function changePrioColor(clickedContainerId) {
   let imgMedium = prioMediumContainer.querySelector("img");
   let imgLow = prioLowContainer.querySelector("img");
   if (clickedContainerId === prioLowContainer) {
-    prioLowContainer.classList.add("prioLow");
-    selectedPrio = "Low";
-    imgLow.src = "../assets/img/add_task/arrow_bottom_white.svg";
+    changePrioColorLow(imgLow);
   } else if (clickedContainerId === prioMediumContainer) {
-    prioMediumContainer.classList.add("prioMedium");
-    selectedPrio = "Medium";
-    imgMedium.src = "../assets/img/add_task/line_white.svg";
+    changePrioColorMedium(imgMedium);
   } else if (clickedContainerId === prioUrgentContainer) {
-    prioUrgentContainer.classList.add("prioUrgent");
-    selectedPrio = "Urgent";
-    imgUrgent.src = "../assets/img/add_task/arrow_top_white.svg";
+    changePrioColorUrgent(imgUrgent);
   }
 }
+function changePrioColorLow(imgLow) {
+  prioLowContainer.classList.add("prioLow");
+  selectedPrio = "Low";
+  imgLow.src = "../assets/img/add_task/arrow_bottom_white.svg";
+}
 
+function changePrioColorMedium(imgMedium) {
+  prioMediumContainer.classList.add("prioMedium");
+  selectedPrio = "Medium";
+  imgMedium.src = "../assets/img/add_task/line_white.svg";
+}
+
+function changePrioColorUrgent(imgUrgent) {
+  prioUrgentContainer.classList.add("prioUrgent");
+  selectedPrio = "Urgent";
+  imgUrgent.src = "../assets/img/add_task/arrow_top_white.svg";
+}
 function setMinDate() {
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, "0");
@@ -173,6 +206,7 @@ function selectCategory(selectedOption) {
   selectedCategory = content.innerText;
   image.src = "../assets/img/add_task/arrow_drop_up.svg";
   closeCategoryMenu();
+  checkInputs();
 }
 
 function closeCategoryMenu() {
@@ -199,19 +233,19 @@ function openContacts() {
   let contactListIcons = document.getElementById("contactListIcons");
   let border = document.getElementById(`contactSelectContainer`);
   let to = document.getElementById(`assignedToContainer`);
-  if (
-    contactList.style.display === "none" ||
-    contactList.style.display === ""
-  ) {
+  let place = document.getElementById(`contacRequired`);
+  if ( contactList.style.display === "none" || contactList.style.display === "") {
     contactList.style.display = "block";
     contactListIcons.style.display = "none";
     border.classList.add("bordercolor");
     to.innerHTML = "An";
+    place.style.display = "none";
   } else {
     contactList.style.display = "none";
     contactListIcons.style.display = "block";
     border.classList.remove("bordercolor");
     to.innerHTML = "Select to Contact";
+    place.style.display = "block";
   }
 }
 
@@ -304,12 +338,43 @@ function loadContacts() {
   let mainDiv = document.getElementById(`contactList`);
   let totalHeight = Math.min(mockUpUserContacts.length * 52, 260);
   mainDiv.style.height = `${totalHeight}px`;
-  for (let i = 0; i < Math.min(mockUpUserContacts.length, 5); i++) {
+  for (let i = 0; i < Math.min(mockUpUserContacts.length); i++) {
     contactSignature = mockUpUserContacts[i].signature;
     contactName = mockUpUserContacts[i].name;
-    mainDiv.innerHTML +=  loadContactsReturn(i);
+    mainDiv.innerHTML += loadContactsReturn(i);
   }
   if (mockUpUserContacts.length > 5) {
-    mainDiv.style.overflowY = 'scroll';
+    mainDiv.style.overflowY = "scroll";
+  }
+}
+
+function footer() {
+  main = document.getElementById(`taskMainContainer`);
+  main.innerHTML += footerReturn();
+}
+
+function checkCategory() {
+  inputfield = document.getElementById(`categoryText`);
+  content = inputfield.textContent || inputfield.innerText;
+  if (content.trim() === "Technical Task" || content.trim() === "User Story") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkInputs() {
+  let dueDateValue = document.getElementById("dueDateInputContainer").value;
+  let titleValue = document.getElementById("titelInputContainer").value;
+  let isCategoryValid = checkCategory();
+  let createTaskButton = document.getElementById("createTaskButton");
+  if (
+    dueDateValue.trim() !== "" &&
+    titleValue.trim() !== "" &&
+    isCategoryValid
+  ) {
+    createTaskButton.style.display = "block";
+  } else {
+    createTaskButton.style.display = "none";
   }
 }

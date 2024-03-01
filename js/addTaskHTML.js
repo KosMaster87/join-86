@@ -12,6 +12,7 @@ function renderAddTaskMobileHTML() {
           type="text"
           class="titleInputField font"
           placeholder="Enter a title"
+          oninput="checkInputs()"
         />
         <p id="inputRequiredContainer" class="fildIsRequiredText"></p>
       </div>
@@ -65,6 +66,7 @@ function renderAddTaskMobileHTML() {
           type="date"
           class="dueDateInputField font"
           onfocus="setMinDate()"
+          oninput="checkInputs()"
         />
         <p id="dueDateRequiredContainer" class="fildIsRequiredText"></p>
       </div>
@@ -130,14 +132,6 @@ function renderAddTaskMobileHTML() {
         <div class="subTaskAddContainer" id="subTasksContainer">
         <p class="fildIsRequiredText"></p>
         </div>
-        <div id="finishTaskContainer">
-        <div class="finishTaskText">
-          <span class="requiredStar">*</span>This field is required
-        </div>
-        <div class="createTask  font" onclick="requiredFields()">
-          Create Task <img src="../assets/img/add_task/task_check_white.svg" />
-        </div>
-      </div>
       </div>
       </div>
   `;
@@ -159,6 +153,7 @@ function renderAddTaskHTML() {
       type="text"
       class="titleInputField font"
       placeholder="Enter a title"
+      oninput="checkInputs()"
     />
     <p id="inputRequiredContainer" class="fildIsRequiredText"></p>
   </div>
@@ -186,7 +181,7 @@ function renderAddTaskHTML() {
     <div id="contactListIcons">
       <div id="contactListIconsLine"></div>
     </div>
-    <p class="fildIsRequiredText"></p>
+    <p id="contacRequired" class="fildIsRequiredText"></p>
   </div>
 </div>
 <div class="seperatorContainer"></div>
@@ -202,6 +197,7 @@ function renderAddTaskHTML() {
       type="date"
       class="dueDateInputField font"
       onfocus="setMinDate()"
+      oninput="checkInputs()"
     />
     <p id="dueDateRequiredContainer" class="fildIsRequiredText"></p>
   </div>
@@ -243,9 +239,10 @@ function renderAddTaskHTML() {
     <div
       id="categorySelectContainer"
       onclick="openCategorySelect()"
+
       class="categorySelect"
     >
-      <span id="categoryText">Select task category</span
+      <span  id="categoryText">Select task category</span
       ><img
         id="categoryImage"
         src="../assets/img/add_task/arrow_drop_down.svg"
@@ -274,13 +271,6 @@ function renderAddTaskHTML() {
   </div>
 </div>
 </div>
-<div id="finishTaskContainer">
-  <div class="finishTaskText">
-    <span class="requiredStar">*</span>This field is required
-  </div>
-  <div class="createTask  font" onclick="requiredFields()">
-    Create Task <img src="../assets/img/add_task/task_check_white.svg" />
-  </div>
 </div>
 <div>
 `;
@@ -347,4 +337,17 @@ function loadContactsReturn(i){
       />
     </div>
   `
+}
+
+function footerReturn(){
+  return `
+  <footer>
+  <div id="finishTaskContainer">
+    <div class="finishTaskText">
+      <span class="requiredStar">*</span>This field is required
+    </div>
+    <div id="createTaskButton" class="createTask  font" onclick="requiredFields()">
+      Create Task <img src="../assets/img/add_task/task_check_white.svg" />
+    </div>
+    </footer>`
 }

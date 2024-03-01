@@ -1,3 +1,5 @@
+@import url('../style.css');
+
 .divColumn {
   display: flex;
   flex-direction: column;
@@ -40,6 +42,7 @@ span {
 }
 
 .titleInputField {
+  border:unset;
   padding-left: 21px;
   padding-right: 21px;
   padding-top: 10px;
@@ -50,6 +53,7 @@ span {
 }
 
 .titleInputField:focus {
+  outline:none;
   border-color: var(--lightBlue) !important;
 }
 /* ---------------------------------------- */
@@ -64,7 +68,7 @@ span {
   border-radius: 10px;
   border: 1px solid var(--lighterGrey);
   background: var(--white);
-  max-height: 175px;
+  max-height: 170px;
   min-height: 102px;
   max-width: 444px;
   height: 84px;
@@ -139,13 +143,11 @@ span {
   border-radius: 10px;
   border: solid 1px var(--lighterGrey);
   background-color: var(--white);
-  display: flex;
-  justify-content: space-between;
-  font-family: "Inter";
-  flex: 1;
+  width: 100%;
 }
 
 .dueDateInputField:focus{
+  outline:none;
   border: solid 1px var(--lightBlue) !important;
 }
 
@@ -184,9 +186,14 @@ span {
 
 #contactList {
   display: none;
+  z-index: 2;
+  margin:0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 #contactListIcons {
+  margin-top: 8px;
   display: block;
   flex-direction: row;
   gap: 4px;
@@ -201,7 +208,6 @@ span {
 #taskAssignedContainer {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .assignedContactContainer {
@@ -210,7 +216,6 @@ span {
   align-items: center;
   padding: 7px 16px;
   cursor: pointer;
-  border-radius: 10px;
   background-color: var(--white);
 }
 
@@ -253,8 +258,6 @@ span {
 
 .subTaskInputcontainerClass {
   padding: 12px 16px 12px 16px;
-  border-radius: 10px;
-  border: 1px;
   display: flex;
   justify-content: space-between;
   border: solid 1px var(--lighterGrey);
@@ -262,10 +265,14 @@ span {
   background-color: var(--white);
   flex: 1;
 }
+.subTaskInputcontainerClass:focus {
+  border: solid 1px var(--lightBlue) !important;
+}
 
 .subtaskInputfield {
   outline: none;
   border: none;
+  width: 85%;
 }
 
 .subTaskAddContainer {
@@ -330,8 +337,8 @@ span {
 #finishTaskContainer {
   z-index: 1;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: flex-end;
   padding-bottom: 16px;
   padding-top: 16px;
 }
@@ -349,6 +356,7 @@ span {
   padding: 16px;
   border-radius: 10px;
   gap: 4px;
+
 }
 
 /* ---------------------------------------- */
@@ -461,8 +469,31 @@ span {
     display: flex;
     justify-content: space-between;
   }
+  .createTask {
+    display:none;
+  }
+
   .fildIsRequiredText {
     height:12px;
     margin-bottom: 16px;
   }
+
+
+}
+
+/* SCROLLBAR DESIGN*/
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background : var(--lighterGrey);
+  border-radius: 10px;
+}
+
+footer{
+  position: absolute;
+  bottom:60px;
+  text-align: end;
+  max-width: 393px;
+  width: 100%;
 }
