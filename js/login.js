@@ -36,6 +36,8 @@ async function login() {
   if (user) {
     console.log("Benutzer gefunden:");
     console.log(user);
+    const globalUserId = user.email;
+    console.log('Res globalUserId: ', globalUserId);
     window.location.assign("pages/summary.html");
   } else {
     console.log("Benutzer nicht gefunden");
@@ -51,3 +53,5 @@ function redirectToRegister() {
   loginMain.style.display = "none";
   registerMain.style.display = "flex";
 }
+
+
