@@ -16,7 +16,9 @@ function registerNewUser() {
   let registerTasks = [];
 
   registerBtn.disabled = true;
-  users.push({
+  let user = [];
+
+  user.push({
     name: registerInputName.value,
     email: registerInputEmail.value,
     password: registerInputPassword.value,
@@ -24,11 +26,14 @@ function registerNewUser() {
     tasks: registerTasks
   });
 
-  console.log(users);
-  secondaryFunctions();
+  users.push(user);
+
+
+  secondaryFunctions(users);
 }
 
-async function secondaryFunctions() {
+
+async function secondaryFunctions(users) {
   await setItem("users", JSON.stringify(users));
   resetForm();
   redirectToLoin();
