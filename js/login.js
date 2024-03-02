@@ -1,4 +1,5 @@
 let user;
+//globalUserId mittels user.email festgelegt zwecks testing
 
 /**
  * To hide or show currentpassword in any fild.
