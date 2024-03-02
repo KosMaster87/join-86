@@ -34,8 +34,6 @@ async function login() {
       userIndex.password === loginInputPassword.value
   );
 
-  await idSearchByUser();
-
   if (user) {
     console.log("Benutzer gefunden:");
     console.log(user);
@@ -60,8 +58,4 @@ function redirectToRegister() {
   let loginMain = document.getElementById("loginMain");
   loginMain.style.display = "none";
   registerMain.style.display = "flex";
-}
-
-async function idSearchByUser() {
-  userId = user.userId;
 }
