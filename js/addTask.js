@@ -11,11 +11,9 @@ let testContactArray = [];
 
 async function getAllContactsFromCurrentUserSorted() {
   let allContactsFromAllUsers = await loadAllContactsFromAllUsers(); //Zugriff auf alle Kontakte aller USER
-  console.log(allContactsFromAllUsers);
   let userId = await getGlobalUserId();
   let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(allContactsFromAllUsers, userId);
-  let sortedContacts = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser); 
-  let testContactArray = sortedContacts;
+  let testContactArray = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser); 
   
   return testContactArray;
 }
