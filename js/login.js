@@ -37,12 +37,18 @@ async function login() {
   if (user) {
     console.log("Benutzer gefunden:");
     console.log(user);
-    const globalUserId = user.email;
+    let globalUserId = user.email;
+    setGlobalUserId('currentUserId', globalUserId)
     console.log('Res globalUserId: ', globalUserId);
+    debugger;
     window.location.assign("pages/summary.html");
   } else {
     console.log("Benutzer nicht gefunden");
   }
+}
+
+async function setGlobalUserId(currentUserId, globalUserId) {
+  setItem(currentUserId, globalUserId);
 }
 
 /**
