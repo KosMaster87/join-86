@@ -1,7 +1,7 @@
 
 //TODO: implement getter und setterItem
 //TODO: connection to storage
-const userId = 'user1';
+
 
 
 async function setItem(key, value) {
