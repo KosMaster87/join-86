@@ -1,26 +1,11 @@
+// --------------------------------------------------------
+
+// --------------------------------------------------------
+
 /*
  * include header and munu.
  * Than add navigation style as active.
  */
-// async function initSummary() {
-//   await includeHTML();
-//   setActiveLink("navSummary");
-//   await loadCurrentUserAsObject();
-
-//   await getGlobalUserId();
-// }
-
-// async function getGlobalUserId() {
-//   return await getItem("currentUserId");
-// }
-
-// async function loadCurrentUserAsObject() {
-//   console.log(user);
-// }
-
-// --------------------------------------------------------
-
-
 async function initSummary() {
   await includeHTML();
   setActiveLink("navSummary");
@@ -29,12 +14,11 @@ async function initSummary() {
 
 async function loadCurrentUserAsObject() {
   const users = JSON.parse(await getItem("users")) || [];
-  const currentIndex = await getItem("currentIndex");
+  const currentEmail = await getItem("currentUserId");
 
-  if (currentIndex) {
+  if (currentEmail) {
     // Lade den Benutzer anhand des Index aus dem `users`-Array
-    user = users.find((userIndex) => userIndex.index === parseInt(currentIndex));
-    console.log("Benutzer als load-Current-User-As-Object geladen:");
+    user = users.find((userIndex) => userIndex.email === currentEmail);
     console.log(user);
   } else {
     console.log("Benutzer nicht gefunden");
@@ -68,3 +52,5 @@ function changeImageBack(element) {
     img.src = "../assets/img/summary/summaryCheckGray.svg";
   }
 }
+
+// --------------------------------------------------------
