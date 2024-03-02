@@ -1,6 +1,6 @@
 let selectedTitle = "test Title";
 let selectedDescription = "test Description";
-let selectedAssignedto = [];
+let selectedAssignedto = ['Sebastian Behl', 'Benutzer2', 'Benutzer3'];
 let selectedDueDate = '2024-03-02';
 let selectedPrio = "Medium";
 let selectedCategory = "Technical Task";
