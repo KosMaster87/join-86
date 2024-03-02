@@ -2,9 +2,6 @@ const contactColors = ["var(--red)", "var(--yellow)", "var(--orangeIcons)", "var
 let allContactsFromAllUsers = [];
 //TODO: delete mockUpAllUserContacts after testing at remote-storage and change all functions 
 
-const userId = "user1"; //vorübergehend als Konstante angelegt
-
-
 async function startSaveProcess() {
     let name = (document.getElementById('contactInputName').value).trim();
     let email = (document.getElementById('contactInputEmail').value).trim();
@@ -39,6 +36,8 @@ async function saveContact(name, email, phone) {
     console.log(allContactsFromAllUsers);
 
     await setItem('mockUpAllUserContacts', JSON.stringify(allContactsFromAllUsers));
+
+    openShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor); 
 }
 
 
@@ -178,5 +177,28 @@ function checkInputPhone(phone) {
     }
 }
 
+// function goToListContact(contactId, userId) {
+//     window.location.href = `listContact.html?contactId=${contactId}&userId=${userId}`;
+// }
+
+async function closeAddContactContainerWithoutAddingNewContact() {
+    document.getElementById("addContactContainer").style.display = "none";
+    document.getElementById("mobileBtnAddContact").style.display = "block";
+    await initListContact();
+}
+
+async function closeAddContactContainer() {
+    document.getElementById("addContactContainer").style.display = "none";
+    document.getElementById("mobileBtnAddContact").style.display = "block";
+    await initListContact();
+    console.log('Close Add Contact Container');
+}
+
+async function closeAddContactContainer() {
+    document.getElementById("addContactContainer").style.display = "none";
+    document.getElementById("mobileBtnAddContact").style.display = "block";
+    await initListContact();
+    console.log('Close Add Contact Container');
+}
 
 
