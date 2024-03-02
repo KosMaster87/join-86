@@ -1,10 +1,10 @@
-let selectedTitle = "";
-let selectedDescription = "";
-let selectedAssignedto = "";
-let selectedDueDate = "";
-let selectedPrio = "";
-let selectedCategory = "";
-let subtasks = [];
+let selectedTitle = "test Title";
+let selectedDescription = "test Description";
+let selectedAssignedto = [];
+let selectedDueDate = '2024-03-02';
+let selectedPrio = "Medium";
+let selectedCategory = "Technical Task";
+let subtasks = ['test Subtask1', 'test Subtask2', 'test Subtask3'];
 let mobilVersion;
 
 const testContactArray = [
@@ -245,7 +245,8 @@ function openContacts() {
     border.classList.remove("bordercolor");
     to.innerHTML = "Select to Contact"; }}
 
-function assignedtoContactBg(i) {
+function assignedtoContactBg(i, name) {
+  selectedAssignedto.push(name);
   let container = document.getElementById(`assignedContactContainer${i}`);
   let contactListIcons = document.getElementById("contactListIconsLine");
   container.classList.add("assignedContainerBlack");
