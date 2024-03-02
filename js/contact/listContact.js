@@ -4,13 +4,20 @@
 async function initListContact() {
     await includeHTML();
     let allContactsFromAllUsers = await loadAllContactsFromAllUsers(); //funktioniert
+    let userId = await getGlobalUserId();
+    
+    console.log(userId);
 
-    let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(allContactsFromAllUsers, 'user1');
+    let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(allContactsFromAllUsers, userId);
     let sortedContacts = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser);
     let listChars = getListFirstChars(sortedContacts);
     console.log('Initialisierung List Contact erfolgt!')
     
     renderContainerList(sortedContacts, listChars, 'user1');
+}
+
+async function getGlobalUserId() {   
+    return await getItem('currentUserId');
 }
 
 
