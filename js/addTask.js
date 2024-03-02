@@ -30,7 +30,6 @@ async function getAllContactsFromCurrentUserSorted() {
 
 function createTask() {
 
-
   let taskXY = {
     selectedTitle: "",
     selectedDescription: "",
@@ -38,7 +37,6 @@ function createTask() {
     selectedPrio: "",
     selectedCategory: "",
     subtasks: [""],
-    selectedTo: selectedAssignedto;
   };
 }
 
