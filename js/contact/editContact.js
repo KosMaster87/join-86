@@ -3,13 +3,18 @@
 //TODO:form einbinden
 //TODO: implement form validation
 
-let currentUserId = userId;
 
-async function initEditContact(currentUserId, currentContactId) {
+async function initEditContact(currentContactId) {
+    let currentUserId = await getCurrentUserId();
     let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
     let currenContact = getCurrentContactArray(currentUserId, currentContactId, allContactsFromAllUsers);
     
     initializeAllVariables(currenContact, currentUserId);
+}
+
+async function getCurrentUserId() {
+    let currentUserId = await globalUserId;
+    console.log(currentUserId);
 }
 
 
