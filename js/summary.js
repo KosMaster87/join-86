@@ -48,3 +48,28 @@ async function greetUser() {
     ele.innerHTML = userName;
   });
 }
+
+// -----------------------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const userId = urlParams.get("userId");
+  console.log(userId);
+  getUserIDfromURL(userId);
+});
+
+async function getUserIDfromURL(userId) {
+  const response = await fetch(`${userId}`);
+  const userURLid = await response.json();
+  console.log("Benutzerdaten erhalten:");
+  console.log(userURLid);
+  // Füge den Code hinzu, um die Benutzerdaten auf der Seite anzuzeigen oder zu verwenden
+
+  if (userURLid) {
+    await loadUsers();
+
+    user = users.find((userID) => userID.userID);
+  }
+}
+
+// -----------------------------------------------------------------

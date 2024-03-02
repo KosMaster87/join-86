@@ -20,6 +20,8 @@ function registerNewUser() {
     email: registerInputEmail.value,
     password: registerInputPassword.value,
     colorCode,
+    // id: rendomUUID(),
+    userId: testID001,
   });
   console.log(users);
   secondaryFunctions();
