@@ -1,6 +1,9 @@
 let users = [];
 
-// TODO validate
+// --------------------------------------------------------
+
+// --------------------------------------------------------
+
 /**
  * The registration of a new user.
  */
@@ -16,28 +19,29 @@ function registerNewUser() {
   let registerTasks = [];
 
   registerBtn.disabled = true;
-  let user = [];
 
-  user.push({
+  users.push({
     name: registerInputName.value,
     email: registerInputEmail.value,
     password: registerInputPassword.value,
     colorCode,
-    tasks: registerTasks
+    tasks: registerTasks,
   });
-
-  users.push(user);
-
-
+  console.log(users);
   secondaryFunctions(users);
 }
 
-
+/**
+ * Im backand mit dem Schlüssel das Array speichern.
+ * @param {object} users 
+ */
 async function secondaryFunctions(users) {
   await setItem("users", JSON.stringify(users));
   resetForm();
   redirectToLoin();
 }
+
+// --------------------------------------------------------
 
 /**
  * Reset registration form values.
@@ -59,6 +63,8 @@ function redirectToLoin() {
   loginMain.style.display = "flex";
   registerMain.style.display = "none";
 }
+
+// --------------------------------------------------------
 
 /**
  * To hide or show currentpassword in any fild.
