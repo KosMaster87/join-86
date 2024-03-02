@@ -13,6 +13,7 @@ function registerNewUser() {
   );
   let registerBtn = document.getElementById("registerBtn");
   let colorCode = "#ff3d00";
+  let registerTasks = [];
 
   registerBtn.disabled = true;
   users.push({
@@ -20,8 +21,9 @@ function registerNewUser() {
     email: registerInputEmail.value,
     password: registerInputPassword.value,
     colorCode,
-    tasks:[],
+    tasks: registerTasks
   });
+
   console.log(users);
   secondaryFunctions();
 }
