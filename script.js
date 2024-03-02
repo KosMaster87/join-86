@@ -2,6 +2,8 @@
 const STORAGE_TOKEN = "DXZFTQCTDMTN307RSV39G7QWLBSB9ZB6CEFWG1WB"; // #2
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
+let users;
+
 /**
  * The instruction to load from remote storage.
  */
