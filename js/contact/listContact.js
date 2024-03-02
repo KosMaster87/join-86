@@ -3,22 +3,23 @@
 
 async function initListContact() {
     await includeHTML();
-   
-    let sortedContacts = getAllContactsFromCurrentUser(); 
+    console.log('Response Start initListContact()');
+    
+    let sortedContacts = await getAllContactsFromCurrentUserSorted(); 
     
     //Das hier ist außen vor für addTask
     let listChars = getListFirstChars(sortedContacts);
-    console.log('Initialisierung List Contact erfolgt!')
-    //Bleibt außen vor für addContactTask
     
+    //Bleibt außen vor für addContactTask
     renderContainerList(sortedContacts, listChars, 'user1');
 }
+
 
 async function getGlobalUserId() {   
     return await getItem('currentUserId');
 }//UserID bereitstellen und aus Storage lesen, damit die passenden Kontakte selektiert werden können. 
 
-//Funktion in addTask übernehmen
+
 async function loadAllContactsFromAllUsers() {
     let allContactsFromCurrentUser = await getItem('mockUpAllUserContacts');
 
@@ -26,10 +27,11 @@ async function loadAllContactsFromAllUsers() {
 }
 
 async function getAllContactsFromCurrentUserSorted() {
-    let allContactsFromAllUsers = await loadAllContactsFromAllUsers(); //Zugriff auf alle Kontakte aller USER
+    let allContactsFromAllUsers = await loadAllContactsFromAllUsers(); 
     let userId = await getGlobalUserId(); //setzen der aktuellen UserId
     let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(allContactsFromAllUsers, userId); //Zugriff auf Kontakte des aktuellen Users
     let sortedContacts = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser); // Kontakte alphabetisch sortieren 
+    
     return sortedContacts;
 }
 
@@ -46,6 +48,7 @@ async function getAllContactsFromCurrentUser(allContactsFromAllUsers, currentUse
 
     return currentUserContacts;
 }
+
 
 //Kontakte alphabetisch sortieren
 async function sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser) {
