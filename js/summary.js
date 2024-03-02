@@ -1,12 +1,26 @@
 /*
- * Start -> body onload
  * include header and munu.
  * Than add navigation style as active.
  */
 async function initSummary() {
   await includeHTML();
   setActiveLink("navSummary");
+  await loadCurrentUserAsObject();
+
+  await getGlobalUserId();
 }
+
+async function getGlobalUserId() {
+  return await getItem("currentUserId");
+}
+
+async function loadCurrentUserAsObject() {
+  console.log(user);
+}
+
+// --------------------------------------------------------
+
+// --------------------------------------------------------
 
 /**
  * Symmary content animate images.
@@ -32,19 +46,4 @@ function changeImageBack(element) {
   } else if (img.classList.contains("checkImage")) {
     img.src = "../assets/img/summary/summaryCheckGray.svg";
   }
-}
-
-/**
- * TODO NUR DEKLARIERT
- * Selects the two division folders in the summary HTML. And renders the HTML greeting or not.
- */
-async function greetUser() {
-  let greetingEles = document.getElementsByClassName("summeryGreetX");
-  let userName = await currentUser.name;
-  if (userName.match("Guest Master")) {
-    userName = "";
-  }
-  Array.from(greetingEles).forEach((ele) => {
-    ele.innerHTML = userName;
-  });
 }

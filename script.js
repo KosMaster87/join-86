@@ -30,11 +30,13 @@ async function getItem(key) {
 
   try {
     const response = await fetch(urlKeyToken);
-
+// console.log(response);
     if (response.ok) {
       const dataX = await response.json();
 
       if (dataX && dataX.data && dataX.data.value) {
+        console.log(dataX.data);
+        console.log(dataX.data.value);
         return dataX.data.value;
       } else {
         throw `Could not find data with key "${key}".`;

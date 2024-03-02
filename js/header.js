@@ -1,15 +1,15 @@
+/**
+ * Just open a popup menu.
+ */
 function toggleHeaderSubMenu() {
   let headerSubMenu = document.getElementById("headerSubMenu");
   headerSubMenu.style.display = "flex";
 }
 
+/**
+ * When you log out, the value of the remote key is deleted.
+ */
 async function logOut() {
-  await setGlobalUserId('currentUserId', []);
-  await getGlobalUserId('currentUserId');
+  await setGlobalUserId("currentUserId", []);
   window.location.assign("../index.html");
-
-}
-
-async function getGlobalUserId() {   
-  return await getItem('currentUserId');
 }
