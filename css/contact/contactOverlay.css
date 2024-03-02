@@ -1,5 +1,27 @@
-@import url("../../style.css");
+
     /** btn mobileBtnAddContact **/
+    #mobileBtnAddContact {
+        background-color: var(--lightBlue);
+        border-radius: 50%;
+        position: absolute;
+        bottom: 100px;
+        right: 20px;
+        width: 46px;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-self: center;
+    }
+
+    #mobileBtnAddContact:hover {
+        background-color: var(--lightGray);
+        cursor: pointer;
+    }
+
+    .mobileBtnAddContactItem {
+        width: 29.33px; 
+        height: auto;  
+    }
 
     .d-none {
         display: none;
