@@ -16,27 +16,28 @@ function registerNewUser() {
   );
   let registerBtn = document.getElementById("registerBtn");
   let colorCode = "#ff3d00";
-  let registerTasks = [];
-
+  const IndexForUser = users.length + 1; // Die Array-Stelle stimmt dann halt nicht. Aber wir machen ja ehe mit der eMail-Adresse als die UUID.
   registerBtn.disabled = true;
 
   users.push({
+    index: IndexForUser,
     name: registerInputName.value,
     email: registerInputEmail.value,
     password: registerInputPassword.value,
     colorCode,
-    tasks: registerTasks,
+    tasks: [],
   });
   console.log(users);
-  secondaryFunctions(users);
+  secondaryFunctions(IndexForUser);
 }
 
 /**
  * Im backand mit dem Schlüssel das Array speichern.
- * @param {object} users 
+ * @param {object} users
  */
-async function secondaryFunctions(users) {
+async function secondaryFunctions(IndexForUser) {
   await setItem("users", JSON.stringify(users));
+  await setItem("currentIndex", IndexForUser);
   resetForm();
   redirectToLoin();
 }

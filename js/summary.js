@@ -2,23 +2,44 @@
  * include header and munu.
  * Than add navigation style as active.
  */
+// async function initSummary() {
+//   await includeHTML();
+//   setActiveLink("navSummary");
+//   await loadCurrentUserAsObject();
+
+//   await getGlobalUserId();
+// }
+
+// async function getGlobalUserId() {
+//   return await getItem("currentUserId");
+// }
+
+// async function loadCurrentUserAsObject() {
+//   console.log(user);
+// }
+
+// --------------------------------------------------------
+
+
 async function initSummary() {
   await includeHTML();
   setActiveLink("navSummary");
   await loadCurrentUserAsObject();
-
-  await getGlobalUserId();
-}
-
-async function getGlobalUserId() {
-  return await getItem("currentUserId");
 }
 
 async function loadCurrentUserAsObject() {
-  console.log(user);
-}
+  const users = JSON.parse(await getItem("users")) || [];
+  const currentIndex = await getItem("currentIndex");
 
-// --------------------------------------------------------
+  if (currentIndex) {
+    // Lade den Benutzer anhand des Index aus dem `users`-Array
+    user = users.find((userIndex) => userIndex.index === parseInt(currentIndex));
+    console.log("Benutzer als load-Current-User-As-Object geladen:");
+    console.log(user);
+  } else {
+    console.log("Benutzer nicht gefunden");
+  }
+}
 
 // --------------------------------------------------------
 
