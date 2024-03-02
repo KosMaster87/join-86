@@ -15,15 +15,19 @@ async function startSaveProcess() {
     }   
 }
 
+async function getGlobalUserId() {   
+    return await getItem('currentUserId');
+}
 
 async function saveContact(name, email, phone) {
     let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
     let contactId = generateRandomId();
     let userColor = getRandomColor(contactColors);
     let signature = getSignature(name);
+    let userId = await getGlobalUserId();
 
     let contact = {
-        "userId": userId, 
+        "userId": await getGlobalUserId(), 
         "contactId": contactId, 
         "name": name, 
         "email": email, 
@@ -37,7 +41,7 @@ async function saveContact(name, email, phone) {
 
     await setItem('mockUpAllUserContacts', JSON.stringify(allContactsFromAllUsers));
 
-    openShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor); 
+    await openShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor); 
 }
 
 
