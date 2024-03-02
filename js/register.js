@@ -20,6 +20,7 @@ function registerNewUser() {
     email: registerInputEmail.value,
     password: registerInputPassword.value,
     colorCode,
+    tasks:[],
   });
   console.log(users);
   secondaryFunctions();

@@ -98,13 +98,6 @@ function renderAddTaskMobileHTML() {
           />
         </div>
         <div id="contactList">
-        <div id="assignedContactContainer" onclick="assignedtoContactBg()" class="assignedContactContainer">
-          <div class="assignedContactLeftSide">
-            <div class="assignedContactLeftSideIcon">SB</div>
-            <p class="assignedContactNameClass">Sebastien Buhl</p>
-            </div>
-            <img id="assignedContactImage" src="../assets/img/add_task/task_box.svg">
-          </div>
         </div>
         <div id="contactListIcons">
           <div id="contactListIconsLine"></div>

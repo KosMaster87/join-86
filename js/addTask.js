@@ -1,34 +1,54 @@
 let selectedTitle = "test Title";
 let selectedDescription = "test Description";
-let selectedAssignedto = ['Sebastian Behl', 'Benutzer2', 'Benutzer3'];
-let selectedDueDate = '2024-03-02';
+let selectedAssignedto = [];
+let selectedDueDate = "2024-03-02";
 let selectedPrio = "Medium";
 let selectedCategory = "Technical Task";
-let subtasks = ['test Subtask1', 'test Subtask2', 'test Subtask3'];
+let subtasks = ["test Subtask1", "test Subtask2", "test Subtask3"];
 let mobilVersion;
 
-let testContactArray = [];
+let contacts = [];
+
+function getAllUsers() {
+  let allUser = getItem('users')
+  console.log(allUser);
+}
+
+
+let currentUserId = getItem("currentUserId");
 
 async function getAllContactsFromCurrentUserSorted() {
   let allContactsFromAllUsers = await loadAllContactsFromAllUsers(); //Zugriff auf alle Kontakte aller USER
   let userId = await getGlobalUserId();
-  let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(allContactsFromAllUsers, userId);
-  let testContactArray = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser); 
-  
-  return testContactArray;
+  let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(
+    allContactsFromAllUsers,
+    userId
+  );
+  let testarray = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser);
+  contacts = testarray.slice();
 }
 
-async function getGlobalUserId() {   
-  return await getItem('currentUserId');
+function createTask() {
+
+
+  let taskXY = {
+    selectedTitle: "",
+    selectedDescription: "",
+    selectedDueDate: "",
+    selectedPrio: "",
+    selectedCategory: "",
+    subtasks: [""],
+    selectedTo: selectedAssignedto;
+  };
 }
+
 
 
 async function initAddTask() {
   await includeHTML();
   setActiveLink("navAddTask");
   checkWidth();
-  getAllContactsFromCurrentUserSorted();
-  debugger;
+  await getAllContactsFromCurrentUserSorted();
   loadContacts();
   footer();
 }
@@ -248,7 +268,9 @@ function openContacts() {
     contactList.style.display = "none";
     contactListIcons.style.display = "block";
     border.classList.remove("bordercolor");
-    to.innerHTML = "Select to Contact"; }}
+    to.innerHTML = "Select to Contact";
+  }
+}
 
 function assignedtoContactBg(i, name) {
   selectedAssignedto.push(name);
@@ -258,7 +280,8 @@ function assignedtoContactBg(i, name) {
   let image = document.getElementById(`assignedContactImage${i}`);
   image.src = "../assets/img/add_task/task_box_check.svg";
   let signature = document.getElementById(`ContactSignatureIcon${i}`).innerHTML;
-  contactListIcons.innerHTML += `<div id="contactIconNumber${i}" class="assignedContactLeftSideIcon">${signature}</div>`;
+  let userColor = contacts[i].userColor;
+  contactListIcons.innerHTML += `<div id="contactIconNumber${i}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
   container.onclick = function () {
     removeassignedtoContactBg(i);
   };
@@ -338,14 +361,16 @@ function clearSubtaskInputfield() {
 
 function loadContacts() {
   let mainDiv = document.getElementById(`contactList`);
-  let totalHeight = Math.min(testContactArray.length * 52, 260);
+  let totalHeight = Math.min(contacts.length * 52, 260);
   mainDiv.style.height = `${totalHeight}px`;
-  for (let i = 0; i < Math.min(testContactArray.length); i++) {
-    contactSignature = testContactArray[i].signature;
-    contactName = testContactArray[i].name;
+  for (let i = 0; i < Math.min(contacts.length); i++) {
+    contactSignature = contacts[i].signature;
+    contactName = contacts[i].name;
     mainDiv.innerHTML += loadContactsReturn(i);
+    iconid = document.getElementById(`ContactSignatureIcon${i}`);
+    iconid.style.backgroundColor = contacts[i].userColor;
   }
-  if (testContactArray.length > 5) {
+  if (contacts.length > 5) {
     mainDiv.style.overflowY = "scroll";
   }
 }
