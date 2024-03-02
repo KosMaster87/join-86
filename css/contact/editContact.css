@@ -1,6 +1,4 @@
 
-    @import url("../../style.css");
-    
     /* btn mobileBtnEditContact */
     #mobileBtnEditContact {
         background-color: var(--lightGray);
@@ -25,6 +23,18 @@
     }
 
         /* JETZT AB HIER EDIT CONTACT */
+
+        #editContactContainer {
+            display: none;
+            position: fixed;
+            min-height: 100vh;
+            width: 100%;
+            top: 60px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 22;
+        }
 
         .editContactSignature {
             font-size: 47px;
