@@ -28,7 +28,6 @@ async function initAddTask() {
   setActiveLink("navAddTask");
   checkWidth();
   getAllContactsFromCurrentUserSorted();
-  debugger;
   loadContacts();
   footer();
 }
