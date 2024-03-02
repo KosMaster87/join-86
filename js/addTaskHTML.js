@@ -324,7 +324,7 @@ function loadContactsReturn(i) {
   return `
   <div
       id="assignedContactContainer${i}"
-      onclick="assignedtoContactBg(${i})"
+      onclick="assignedtoContactBg(${i}, '${contactName}')"
       class="assignedContactContainer"
     >
       <div class="assignedContactLeftSide">
