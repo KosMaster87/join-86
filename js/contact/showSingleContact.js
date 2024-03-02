@@ -1,53 +1,39 @@
-//mockUpUserContacts sind als Kontante in contacts.js angelegt
-const userId = 'user1'
-let contactId = "7777777777777777";
+/* Show Single Contact JS */
 
 
-function loadShowSingleContact() {
-    getAllInfos(userId, contactId, mockUpUserContacts);
+async function loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor) {
+    fillAllVariables(name, email, phone, signature, userColor);
 }
 
 
-function getAllInfos(userId, contactId, mockUpUserContacts) {
-    let allContactsFromCurrentUser = getAllContactsFromCurrentUser(userId, mockUpUserContacts);
-    let currentContact = getCurrentContact(contactId, allContactsFromCurrentUser);
-    
-    fillAllVariables(currentContact);
+function fillAllVariables(name, email, phone, signature, userColor) {
+    document.getElementById('nameContact').innerText = name;
+    document.getElementById('emailContact').innerText = email;
+    document.getElementById('phoneContact').innerText = phone;
+    document.getElementById('signatureContact').innerText = signature;
+    document.getElementById('signatureContact').style.backgroundColor = userColor;
 }
 
 
-function getCurrentContact(selectedId, allContactsFromCurrentUser) {
-    let contactId = selectedId;
-    let currenContact = [];
-    for (let i = 0; i < allContactsFromCurrentUser.length; i++) {
-        let contact = allContactsFromCurrentUser[i]
-        if (contactId == contact['contactId']) {
-            currenContact = contact; 
-        }    
-    }
-
-    return currenContact;
+function openShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor) {
+    document.getElementById("showSingleContactContainer").style.display = "block";
+    document.getElementById("mobileBtnAddContact").style.display = "none";
+    console.log('Open Show Single Contact Container');
+    loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
 }
 
 
-function getAllContactsFromCurrentUser(userId, mockUpUserContacts) {
-    let currentUserId = userId;
-    let allContacts = mockUpUserContacts;
-    let allContactsFromCurrentUser = [];
-    for (let i = 0; i < allContacts.length; i++) {
-        const contact = allContacts[i];
-        if (contact['userId'] == currentUserId) {
-            allContactsFromCurrentUser.push(contact);
-        }        
-    }
-    
-    return allContactsFromCurrentUser;
+function goToListContactContainer() {
+    document.getElementById("showSingleContactContainer").style.display = "none";
+    document.getElementById("containerListContacts").style.display = "block";
+    document.getElementById("mobileBtnAddContact").style.display = "block";
+    console.log('Close Single Contact Container and open list Contact Container!');
+    initListContact()
 }
 
 
-function fillAllVariables(currentContact) {
-    document.getElementById('nameContact').innerText = currentContact['name'];
-    document.getElementById('emailContact').innerText = currentContact['email'];
-    document.getElementById('phoneContact').innerText = currentContact['phone'];
-    document.getElementById('signatureContact').innerText = currentContact['signature'];
+function closeShowSingleContactContainer() {
+    document.getElementById("showSingleContactContainer").style.display = "none";
+    document.getElementById("mobileBtnAddContact").style.display = "block";
+    console.log('Close Show Single Contact Container');
 }
