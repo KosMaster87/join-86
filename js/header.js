@@ -3,7 +3,15 @@ function toggleHeaderSubMenu() {
   headerSubMenu.style.display = "flex";
 }
 
-function logOut() {
+async function logOut() {
+  await setGlobalUserId('currentUserId', []);
+  await getGlobalUserId('currentUserId');
+  debugger;
   localStorage.clear();
   window.location.assign("../index.html");
+
+}
+
+async function getGlobalUserId() {   
+  return await getItem('currentUserId');
 }
