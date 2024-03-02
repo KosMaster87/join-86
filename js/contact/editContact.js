@@ -3,16 +3,24 @@
 //TODO:form einbinden
 //TODO: implement form validation
 
+let currentUserId = userId;
 
-const userId = 'user1'
-let contactId = 'pxH7pRGVgaML/xHP';
-
-
-async function initEditContact() {
+async function initEditContact(currentUserId, currentContactId) {
     let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
-    let currenContact = getCurrentContactArray(userId, contactId, allContactsFromAllUsers);
+    let currenContact = getCurrentContactArray(currentUserId, currentContactId, allContactsFromAllUsers);
     
-    initializeAllVariables(currenContact);
+    initializeAllVariables(currenContact, currentUserId);
+}
+
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
 
@@ -73,8 +81,8 @@ gearbeitet wird */
 
 
 async function saveChanges() {
-    let currentUserId = userId;
-    let currentContactId = contactId;
+    let currentContactId = getParameterByName('contactId');
+    let currentUserId = getParameterByName('userId');
     let mockUpAllUserContacts = await loadAllContactsFromAllUsers();//zur Überprüfung vorerst mit Zwischenspeicher gearbeitet
     let inputName = (document.getElementById('contactInputName').value).trim();
     let inputEmail = (document.getElementById('contactInputEmail').value).trim();
@@ -83,7 +91,7 @@ async function saveChanges() {
     for (let i = 0; i < mockUpAllUserContacts.length; i++) {
         const singleContact = mockUpAllUserContacts[i];
         if ( singleContact['userId'] == currentUserId && singleContact['contactId'] == currentContactId) {
-            console.log('Es hat geklappt', userId, contactId, inputName, inputPhone, inputEmail);
+            console.log('Es hat geklappt', currentUserId, currentContactId, inputName, inputPhone, inputEmail);
             singleContact['name'] = inputName;
             singleContact['email'] = inputEmail;
             singleContact['phone'] = inputPhone;
@@ -92,7 +100,7 @@ async function saveChanges() {
     }
 
     await setItem('mockUpAllUserContacts', JSON.stringify(mockUpAllUserContacts));
-    initEditContact();
+    goToListContactPageAfterAddContact(currentContactId, currentUserId);
 }
 
 
@@ -123,9 +131,9 @@ function getFirstChars(arrayName) {
 }  
 
 
-async function deleteContact(userId, contactId) {
-    console.log('Delete contact from userID: ', userId);
-    console.log('Delete contactId: ', contactId );
+async function deleteContact() {
+    let contactId = getParameterByName('contactId');
+    let userId = getParameterByName('userId');
     let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
     for (let i = 0; i < allContactsFromAllUsers.length; i++) {
         const currentUserConctact = allContactsFromAllUsers[i];
@@ -137,14 +145,24 @@ async function deleteContact(userId, contactId) {
     console.log(allContactsFromAllUsers);
 
     await saveReducedContactArrayBackend(allContactsFromAllUsers);
-    initEditContact();
-    
+    goToListContactPageAfterDeleteContact(userId);   
 }
 
 
 async function saveReducedContactArrayBackend(allContactsFromAllUsers) {
     await setItem('mockUpAllUserContacts', JSON.stringify(allContactsFromAllUsers));
 }
+
+
+function goToListContactPageAfterAddContact(contactId, userId) {
+   window.location.href = `listContact.html?contactId=${contactId}&userId=${userId}`;
+}
+
+
+function goToListContactPageAfterDeleteContact(userId) {
+    window.location.href = `listContact.html?contactId=userId=${userId}`;
+ }
+
 
 
 
