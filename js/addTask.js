@@ -7,23 +7,30 @@ let selectedCategory = "Technical Task";
 let subtasks = ['test Subtask1', 'test Subtask2', 'test Subtask3'];
 let mobilVersion;
 
-const testContactArray = [
-  { name: "Sebastian Behl", signature: "SB" },
-  { name: "Benutzer2", signature: "B2" },
-  { name: "Benutzer3", signature: "B3" },
-  { name: "Benutzer4", signature: "B4" },
-  { name: "Benutzer5", signature: "B5" },
-  { name: "Benutzer6", signature: "B6" },
-  { name: "Benutzer7", signature: "B7" },
-  { name: "Benutzer8", signature: "B8" },
-  { name: "Benutzer9", signature: "B9" },
-  { name: "Benutzer10", signature: "B10" },
-];
+let testContactArray = [];
+
+async function getAllContactsFromCurrentUserSorted() {
+  let allContactsFromAllUsers = await loadAllContactsFromAllUsers(); //Zugriff auf alle Kontakte aller USER
+  console.log(allContactsFromAllUsers);
+  let userId = await getGlobalUserId();
+  let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(allContactsFromAllUsers, userId);
+  let sortedContacts = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser); 
+  let testContactArray = sortedContacts;
+  
+  return testContactArray;
+}
+
+async function getGlobalUserId() {   
+  return await getItem('currentUserId');
+}
+
 
 async function initAddTask() {
   await includeHTML();
   setActiveLink("navAddTask");
   checkWidth();
+  getAllContactsFromCurrentUserSorted();
+  debugger;
   loadContacts();
   footer();
 }

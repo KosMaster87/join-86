@@ -41,6 +41,7 @@ async function login() {
     console.log(user);
     let globalUserId = user.email;
     setGlobalUserId('currentUserId', globalUserId)
+    //key -> Name ist freigewählt: currentUserId / globalUserId -> Variable für die Email
     console.log('Res globalUserId: ', globalUserId);
     debugger;
     window.location.assign("pages/summary.html");
@@ -51,7 +52,7 @@ async function login() {
 
 async function setGlobalUserId(currentUserId, globalUserId) {
   setItem(currentUserId, globalUserId);
-}
+} // globaluserId wird erstellt mit dem key currentUserId
 
 /**
  * Switch back from login page to register page. (Into index.html)
