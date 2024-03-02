@@ -17,7 +17,7 @@ async function includeHTML() {
 
 /**
  * Easy to change pages.
- * @param {page as stringname} changePage
+ * @param {page as stringname} page
  */
 function includeContentHTML(changePage) {
   window.location.assign(changePage + ".html");

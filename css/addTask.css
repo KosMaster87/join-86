@@ -1,3 +1,5 @@
+@import url('../style.css');
+
 .divColumn {
   display: flex;
   flex-direction: column;
@@ -40,16 +42,18 @@ span {
 }
 
 .titleInputField {
+  border:unset;
   padding-left: 21px;
   padding-right: 21px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border: solid 1px var(--lighterGrey);
+  border: solid 1px var(--lighterGray);
   border-radius: 10px;
   background-color: var(--white);
 }
 
 .titleInputField:focus {
+  outline:none;
   border-color: var(--lightBlue) !important;
 }
 /* ---------------------------------------- */
@@ -62,9 +66,9 @@ span {
 .descriptionInputField {
   padding: 18px 16px;
   border-radius: 10px;
-  border: 1px solid var(--lighterGrey);
+  border: 1px solid var(--lighterGray);
   background: var(--white);
-  max-height: 175px;
+  max-height: 170px;
   min-height: 102px;
   max-width: 444px;
   height: 84px;
@@ -96,7 +100,7 @@ span {
   justify-content: center;
   display: flex;
   gap: 8px;
-  border: solid 1px var(--lighterGrey);
+  border: solid 1px var(--lighterGray);
   border-radius: 10px;
   background-color: var(--white);
   cursor: pointer;
@@ -137,15 +141,13 @@ span {
 .dueDateInputField {
   padding: 8px 21px 8px 21px;
   border-radius: 10px;
-  border: solid 1px var(--lighterGrey);
+  border: solid 1px var(--lighterGray);
   background-color: var(--white);
-  display: flex;
-  justify-content: space-between;
-  font-family: "Inter";
-  flex: 1;
+  width: 100%;
 }
 
 .dueDateInputField:focus{
+  outline:none;
   border: solid 1px var(--lightBlue) !important;
 }
 
@@ -162,7 +164,7 @@ span {
   border: 1px;
   display: flex;
   justify-content: space-between;
-  border: solid 1px var(--lighterGrey);
+  border: solid 1px var(--lighterGray);
   border-radius: 10px;
   background-color: var(--white);
 }
@@ -184,9 +186,13 @@ span {
 
 #contactList {
   display: none;
+  z-index: 2;
+  margin:0;
+  border-radius: 10px;
 }
 
 #contactListIcons {
+  margin-top: 8px;
   display: block;
   flex-direction: row;
   gap: 4px;
@@ -201,7 +207,6 @@ span {
 #taskAssignedContainer {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .assignedContactContainer {
@@ -210,7 +215,6 @@ span {
   align-items: center;
   padding: 7px 16px;
   cursor: pointer;
-  border-radius: 10px;
   background-color: var(--white);
 }
 
@@ -253,19 +257,21 @@ span {
 
 .subTaskInputcontainerClass {
   padding: 12px 16px 12px 16px;
-  border-radius: 10px;
-  border: 1px;
   display: flex;
   justify-content: space-between;
-  border: solid 1px var(--lighterGrey);
+  border: solid 1px var(--lighterGray);
   border-radius: 10px;
   background-color: var(--white);
   flex: 1;
+}
+.subTaskInputcontainerClass:focus {
+  border: solid 1px var(--lightBlue) !important;
 }
 
 .subtaskInputfield {
   outline: none;
   border: none;
+  width: 85%;
 }
 
 .subTaskAddContainer {
@@ -330,10 +336,11 @@ span {
 #finishTaskContainer {
   z-index: 1;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: flex-end;
   padding-bottom: 16px;
   padding-top: 16px;
+  width: 394px;
 }
 
 .finishTaskText {
@@ -349,6 +356,7 @@ span {
   padding: 16px;
   border-radius: 10px;
   gap: 4px;
+
 }
 
 /* ---------------------------------------- */
@@ -370,14 +378,6 @@ span {
 
 .requiredBorder {
   border: solid 1px var(--wrongInputBorder);
-}
-
-@media (min-width: 434px) {
-  .taskMainContainer {
-    max-width: 450px;
-  }
-  h1 {
-  }
 }
 
 @media screen and (min-width: 721px) {
@@ -409,11 +409,14 @@ span {
 }
 
 /*-DESKTOP-*/
-@media (min-width: 1250px){
-.seperatorContainer {
-  margin-left: 32px;
-  margin-right: 32px;
-}
+@media only screen and (max-width: 1219px) and (min-width: 721px){
+  .mainContent{
+    display: flex;
+    justify-content: center;
+  }
+  #taskMainContainer{
+    align-items: center;
+  }
 }
 
 @media (min-width: 1220px) {
@@ -449,20 +452,68 @@ span {
   }
 
   .seperatorContainer {
-    margin-left: 48px;
-    margin-right: 48px;
+    margin-left: 32px;
+    margin-right: 32px;
     width: 2px;
-    background-color: var(--lighterGrey);
+    background-color: var(--lighterGray);
   }
 
   #finishTaskContainer {
-    width: 978px;
+    width: 944px;
     margin-right: 0px;
     display: flex;
     justify-content: space-between;
   }
+  .createTask {
+    display:none;
+  }
+
   .fildIsRequiredText {
     height:12px;
     margin-bottom: 16px;
+  }
+  footer{
+    position: absolute;
+    bottom:30px;
+  }
+
+}
+
+/* SCROLLBAR DESIGN*/
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background : var(--lighterGray);
+  border-radius: 10px;
+}
+
+
+.mainContent{
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width:440px){
+  #taskMainContainer{
+    max-width: 360px;
+  }
+  #finishTaskContainer{
+    max-width: 360px
+  }
+}
+
+@media (max-width:380px){
+  .finishTaskText{
+    text-align: start;
+  }
+  #taskMainContainer{
+    max-width: 300px;
+  }
+  #finishTaskContainer{
+    max-width: 300px;
+  }
+  .createTask{
+    width: 155px;
   }
 }

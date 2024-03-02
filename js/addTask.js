@@ -7,36 +7,53 @@ let selectedCategory = "";
 let subtasks = [];
 let mobilVersion;
 
+const testContactArray = [
+  { name: "Sebastian Behl", signature: "SB" },
+  { name: "Benutzer2", signature: "B2" },
+  { name: "Benutzer3", signature: "B3" },
+  { name: "Benutzer4", signature: "B4" },
+  { name: "Benutzer5", signature: "B5" },
+  { name: "Benutzer6", signature: "B6" },
+  { name: "Benutzer7", signature: "B7" },
+  { name: "Benutzer8", signature: "B8" },
+  { name: "Benutzer9", signature: "B9" },
+  { name: "Benutzer10", signature: "B10" },
+];
+
 async function initAddTask() {
   await includeHTML();
+  setActiveLink("navAddTask");
   checkWidth();
-  loadContent();
   loadContacts();
+  footer();
 }
+
+window.addEventListener("resize", function () {
+  checkWidth();
+  footer();
+});
 
 function checkWidth() {
   let screenWidth =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
-  if (screenWidth <= 1220) {
+    window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  if (screenWidth <= 1219) {
     mobilVersion = false;
   } else {
     mobilVersion = true;
   }
+  loadContent();
 }
 
 function loadContent() {
   let screenWidth =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
-  let content = document.getElementById("taskMainContainer");
-  if (screenWidth <= 1220 && mobilVersion == false) {
+    window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  let content = document.getElementById(`taskMainContainer`);
+  content.innerHTML = "";
+  if (screenWidth <= 1219 && mobilVersion == false) {
     mobilVersion = true;
     content.innerHTML = renderAddTaskMobileHTML();
   }
-  if (screenWidth > 1220 && mobilVersion == true) {
+  if (screenWidth > 1219 && mobilVersion == true) {
     mobilVersion = false;
     content.innerHTML = renderAddTaskHTML();
   }
@@ -78,12 +95,18 @@ function dueDateRequired() {
   }
 }
 
+function checkCategory() {
+  var inputfield = document.getElementById("categoryText");
+  var content = inputfield.textContent || inputfield.innerText;
+  return content.trim() === "Technical Task" || content.trim() === "User Story";
+}
+
 function categoryRequired() {
   border = document.getElementById(`categorySelectContainer`);
   inputfield = document.getElementById(`categoryText`);
-  content = inputfield.textContent || inputfield.innerText;
   inputRequired = document.getElementById(`categoryRequiredContainer`);
-  if (content.trim() === "Technical Task" || content.trim() === "User Story") {
+  var isCategoryValid = checkCategory();
+  if (isCategoryValid) {
     inputfield.value = "";
     inputRequired.innerHTML = "";
     border.classList.remove("requiredBorder");
@@ -123,18 +146,30 @@ function changePrioColor(clickedContainerId) {
   let imgMedium = prioMediumContainer.querySelector("img");
   let imgLow = prioLowContainer.querySelector("img");
   if (clickedContainerId === prioLowContainer) {
-    prioLowContainer.classList.add("prioLow");
-    selectedPrio = "Low";
-    imgLow.src = "../assets/img/add_task/arrow_bottom_white.svg";
+    changePrioColorLow(imgLow);
   } else if (clickedContainerId === prioMediumContainer) {
-    prioMediumContainer.classList.add("prioMedium");
-    selectedPrio = "Medium";
-    imgMedium.src = "../assets/img/add_task/line_white.svg";
+    changePrioColorMedium(imgMedium);
   } else if (clickedContainerId === prioUrgentContainer) {
-    prioUrgentContainer.classList.add("prioUrgent");
-    selectedPrio = "Urgent";
-    imgUrgent.src = "../assets/img/add_task/arrow_top_white.svg";
+    changePrioColorUrgent(imgUrgent);
   }
+}
+
+function changePrioColorLow(imgLow) {
+  prioLowContainer.classList.add("prioLow");
+  selectedPrio = "Low";
+  imgLow.src = "../assets/img/add_task/arrow_bottom_white.svg";
+}
+
+function changePrioColorMedium(imgMedium) {
+  prioMediumContainer.classList.add("prioMedium");
+  selectedPrio = "Medium";
+  imgMedium.src = "../assets/img/add_task/line_white.svg";
+}
+
+function changePrioColorUrgent(imgUrgent) {
+  prioUrgentContainer.classList.add("prioUrgent");
+  selectedPrio = "Urgent";
+  imgUrgent.src = "../assets/img/add_task/arrow_top_white.svg";
 }
 
 function setMinDate() {
@@ -142,7 +177,6 @@ function setMinDate() {
   let dd = String(today.getDate()).padStart(2, "0");
   let mm = String(today.getMonth() + 1).padStart(2, "0");
   let yyyy = today.getFullYear();
-
   today = yyyy + "-" + mm + "-" + dd;
   document.getElementById("dueDateInputContainer").min = today;
 }
@@ -173,6 +207,7 @@ function selectCategory(selectedOption) {
   selectedCategory = content.innerText;
   image.src = "../assets/img/add_task/arrow_drop_up.svg";
   closeCategoryMenu();
+  checkInputs();
 }
 
 function closeCategoryMenu() {
@@ -199,10 +234,7 @@ function openContacts() {
   let contactListIcons = document.getElementById("contactListIcons");
   let border = document.getElementById(`contactSelectContainer`);
   let to = document.getElementById(`assignedToContainer`);
-  if (
-    contactList.style.display === "none" ||
-    contactList.style.display === ""
-  ) {
+  if (contactList.style.display === "none" || contactList.style.display === "") {
     contactList.style.display = "block";
     contactListIcons.style.display = "none";
     border.classList.add("bordercolor");
@@ -211,9 +243,7 @@ function openContacts() {
     contactList.style.display = "none";
     contactListIcons.style.display = "block";
     border.classList.remove("bordercolor");
-    to.innerHTML = "Select to Contact";
-  }
-}
+    to.innerHTML = "Select to Contact"; }}
 
 function assignedtoContactBg(i) {
   let container = document.getElementById(`assignedContactContainer${i}`);
@@ -302,14 +332,31 @@ function clearSubtaskInputfield() {
 
 function loadContacts() {
   let mainDiv = document.getElementById(`contactList`);
-  let totalHeight = Math.min(mockUpUserContacts.length * 52, 260);
+  let totalHeight = Math.min(testContactArray.length * 52, 260);
   mainDiv.style.height = `${totalHeight}px`;
-  for (let i = 0; i < Math.min(mockUpUserContacts.length, 5); i++) {
-    contactSignature = mockUpUserContacts[i].signature;
-    contactName = mockUpUserContacts[i].name;
-    mainDiv.innerHTML +=  loadContactsReturn(i);
+  for (let i = 0; i < Math.min(testContactArray.length); i++) {
+    contactSignature = testContactArray[i].signature;
+    contactName = testContactArray[i].name;
+    mainDiv.innerHTML += loadContactsReturn(i);
   }
-  if (mockUpUserContacts.length > 5) {
-    mainDiv.style.overflowY = 'scroll';
+  if (testContactArray.length > 5) {
+    mainDiv.style.overflowY = "scroll";
   }
+}
+
+function checkInputs() {
+  var dueDateValue = document.getElementById("dueDateInputContainer").value;
+  var titleValue = document.getElementById("titelInputContainer").value;
+  var isCategoryValid = checkCategory();
+  var createTaskButton = document.getElementById("createTaskButton");
+  if (dueDateValue.trim() !== "" && titleValue.trim() !== "" && isCategoryValid) {
+    createTaskButton.style.display = "block";
+  } else {
+    createTaskButton.style.display = "none";
+  }
+}
+
+function footer() {
+  let content = document.getElementById(`taskMainContainer`);
+  content.innerHTML += footerReturn();
 }

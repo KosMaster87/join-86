@@ -1,3 +1,13 @@
+/*
+ * Start -> body onload
+ * include header and munu.
+ * Than add navigation style as active.
+ */
+async function initSummary() {
+  await includeHTML();
+  setActiveLink("navSummary");
+}
+
 /**
  * Symmary content animate images.
  * @param {Image to animate whit hover} element
@@ -25,7 +35,7 @@ function changeImageBack(element) {
 }
 
 /**
- * NUR DEKLARIERT
+ * TODO NUR DEKLARIERT
  * Selects the two division folders in the summary HTML. And renders the HTML greeting or not.
  */
 async function greetUser() {
@@ -37,8 +47,4 @@ async function greetUser() {
   Array.from(greetingEles).forEach((ele) => {
     ele.innerHTML = userName;
   });
-}
-
-async function initSummary() {
-  await includeHTML();
 }
