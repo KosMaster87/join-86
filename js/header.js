@@ -6,8 +6,6 @@ function toggleHeaderSubMenu() {
 async function logOut() {
   await setGlobalUserId('currentUserId', []);
   await getGlobalUserId('currentUserId');
-  debugger;
-  localStorage.clear();
   window.location.assign("../index.html");
 
 }

@@ -48,7 +48,7 @@ async function initAddTask() {
   await includeHTML();
   setActiveLink("navAddTask");
   checkWidth();
-  await getAllContactsFromCurrentUserSorted();
+  getAllContactsFromCurrentUserSorted();
   loadContacts();
   footer();
 }

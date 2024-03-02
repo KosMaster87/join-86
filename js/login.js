@@ -42,8 +42,6 @@ async function login() {
     let globalUserId = user.email;
     setGlobalUserId('currentUserId', globalUserId)
     //key -> Name ist freigewählt: currentUserId / globalUserId -> Variable für die Email
-    console.log('Res globalUserId: ', globalUserId);
-    debugger;
     window.location.assign("pages/summary.html");
   } else {
     console.log("Benutzer nicht gefunden");
