@@ -1,15 +1,16 @@
 //LIST CONTACT JS
 //TODO: userId muss mittels setter übernommen werden aus dem Login Protokoll
-const userId = 'user1';
 
 async function initListContact() {
+    await includeHTML();
     let allContactsFromAllUsers = await loadAllContactsFromAllUsers(); //funktioniert
 
     let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(allContactsFromAllUsers, 'user1');
     let sortedContacts = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser);
     let listChars = getListFirstChars(sortedContacts);
+    console.log('Initialisierung List Contact erfolgt!')
     
-    renderContainerList(sortedContacts, listChars);
+    renderContainerList(sortedContacts, listChars, 'user1');
 }
 
 
@@ -21,7 +22,7 @@ async function loadAllContactsFromAllUsers() {
 
 
 async function getAllContactsFromCurrentUser(allContactsFromAllUsers, currentUserId) {
-    let allContacts = allContactsFromAllUsers;
+    let allContacts = await allContactsFromAllUsers;
     let currentUserContacts = [];
     for (let i = 0; i < allContacts.length; i++) {
         if (allContacts[i]['userId'] === currentUserId) {
@@ -47,7 +48,7 @@ async function sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrent
         }
         return 0;
     });
-    
+
     return sortedContacts;
 }
 
@@ -66,10 +67,11 @@ function getListFirstChars(currentUserContacts) {
 }
 
 
-function renderContainerList(sortedContacts, listChars) {
+function renderContainerList(sortedContacts, listChars, userId) {
     let chars = listChars;
     let contacts = sortedContacts;
     let charRow = document.getElementById('containerListContacts');
+    let currentUserId = userId;
     charRow.innerHTML = '';
     
     for (let i = 0; i < chars.length; i++) {
@@ -82,22 +84,23 @@ function renderContainerList(sortedContacts, listChars) {
             </div>
             <div class="styleHr"></div>
          `;
-        renderContactCards(char, contacts, charRow);
+        renderContactCards(char, contacts, charRow, currentUserId);
 
         }
 }
 
 
-function renderContactCards(char, currentContacts, charRow) {
+function renderContactCards(char, currentContacts, charRow, currentUserId) {
     let contacts = currentContacts;
     let sign = char;
     let contactCard = charRow;
+    let userId = currentUserId;
 
     for (let i = 0; i < contacts.length;i++) {
         let contact = contacts[i];
         if (contact['name'].charAt(0).toUpperCase() === sign) {
             contactCard.innerHTML += `
-            <div class="singleContact">
+            <a class="singleContact" onclick="openShowSingleContactContainer('${userId}', '${contact['contactId']}', '${contact['name']}', '${contact['email']}', '${contact['phone']}', '${contact['signature']}','${contact['userColor']}')">
                 <div class="contactSignatureIcon" style="background-color:  ${contact['userColor']}">
                     <span class="contactSignatureIconLetter">
                         ${contact['signature']}
@@ -116,6 +119,42 @@ function renderContactCards(char, currentContacts, charRow) {
         }
     }
 }
+
+
+function openEditContactContainer() {
+    document.getElementById("editContactContainer").style.display = "block";
+    document.getElementById("mobileBtnAddContact").style.display = "none";
+    console.log('Open Edit Contact Container ist erfolgt!')
+}
+
+
+function closeEditContactContainer() {
+    document.getElementById("editContactContainer").style.display = "none";
+    document.getElementById("mobileBtnAddContact").style.display = "inline-block";
+    console.log('Open Edit Contact Container ist erfolgt!')
+}
+  
+
+function saveEditContact() {
+    document.getElementById("editContactContainer").style.display = "none";
+}
+
+
+function saveEditContact() {
+    document.getElementById("editContact").style.display = "none";
+}
+
+
+function openAddContactContainer() {
+    document.getElementById("addContactContainer").style.display = "block";
+    document.getElementById("mobileBtnAddContact").style.display = "none";
+    console.log('Open Add Contact Container');
+}
+
+
+
+
+
 
 
 
