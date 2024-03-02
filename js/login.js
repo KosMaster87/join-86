@@ -1,5 +1,5 @@
 let user;
-//globalUserId mittels user.email festgelegt zwecks testing
+let userId;
 
 /**
  * To hide or show currentpassword in any fild.
@@ -34,6 +34,8 @@ async function login() {
       userIndex.password === loginInputPassword.value
   );
 
+  await idSearchByUser();
+
   if (user) {
     console.log("Benutzer gefunden:");
     console.log(user);
@@ -61,4 +63,6 @@ function redirectToRegister() {
   registerMain.style.display = "flex";
 }
 
-
+async function idSearchByUser() {
+  userId = user.userId;
+}
