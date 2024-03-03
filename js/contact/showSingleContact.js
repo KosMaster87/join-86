@@ -25,6 +25,7 @@ function openShowSingleContactContainer(userId, contactId, name, email, phone, s
 
 function goToListContactContainer() {
     document.getElementById("showSingleContactContainer").style.display = "none";
+    document.getElementById("addContactContainer").style.display = "none";
     document.getElementById("containerListContacts").style.display = "block";
     document.getElementById("mobileBtnAddContact").style.display = "block";
     console.log('Close Single Contact Container and open list Contact Container!');
