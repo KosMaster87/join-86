@@ -10,10 +10,9 @@ let mobilVersion;
 let contacts = [];
 
 function getAllUsers() {
-  let allUser = getItem('users')
+  let allUser = getItem("users");
   console.log(allUser);
 }
-
 
 let currentUserId = getItem("currentUserId");
 
@@ -26,27 +25,14 @@ async function getAllContactsFromCurrentUserSorted() {
   );
   let testarray = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser);
   contacts = testarray.slice();
+  return contacts;
 }
-
-function createTask() {
-
-  let taskXY = {
-    selectedTitle: "",
-    selectedDescription: "",
-    selectedDueDate: "",
-    selectedPrio: "",
-    selectedCategory: "",
-    subtasks: [""],
-  };
-}
-
-
 
 async function initAddTask() {
   await includeHTML();
   setActiveLink("navAddTask");
   checkWidth();
-  getAllContactsFromCurrentUserSorted();
+  await getAllContactsFromCurrentUserSorted();
   loadContacts();
   footer();
 }
