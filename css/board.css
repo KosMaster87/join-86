@@ -7,17 +7,17 @@ h1 {
 h2 {
   font-size: 27px;
 }
-.font12400{
-    font-size: 12px;
-    font-weight: 400;
+.font12400 {
+  font-size: 12px;
+  font-weight: 400;
 }
-.font16400{
-    font-size: 16px;
-    font-weight: 400;
+.font16400 {
+  font-size: 16px;
+  font-weight: 400;
 }
-.font16700{
-    font-size: 16px;
-    font-weight: 700;
+.font16700 {
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .boardMainContainer {
@@ -30,15 +30,22 @@ h2 {
   gap: 26px;
 }
 
-.boxesContainer{
+.boxesContainer {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
   box-sizing: border-box !important;
 }
-.boxSize{
+.boxSize {
   flex: 0 0 250px;
-  background-color: rebeccapurple;
+}
+
+.headlineFromTask {
+  padding: 4px 16px 4px 16px;
+  border-radius: 8px;
+  background-color: #0038FF;
+  color:var(--white);
+  display: inline-block;
 }
 
 .searchTaskInputField {
@@ -64,7 +71,7 @@ h2 {
 .headContainer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   margin-bottom: 16px;
 }
 
