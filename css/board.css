@@ -30,8 +30,15 @@ h2 {
   gap: 26px;
 }
 
-.selectionContainer {
-
+.boxesContainer{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  box-sizing: border-box !important;
+}
+.boxSize{
+  flex: 0 0 250px;
+  background-color: rebeccapurple;
 }
 
 .searchTaskInputField {
