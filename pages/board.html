@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/board.css" />
-    <link rel="stylesheet" href="./../style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/menu.css" />
 
@@ -20,16 +20,74 @@
     <title>Board Kanban</title>
   </head>
   <body onload="initBoard()">
-    <div
-      w3-include-html="../assets/templates/header.html"
-      id="mainHeader"
-      class="mainHeader"
-    ></div>
+    <div w3-include-html="../assets/templates/header.html" id="mainHeader" class="mainHeader"></div>
 
     <div class="mainContent">
-      <h1>Bord Kontent</h1>
-    </div>
+      <div class="boardMainContainer">
+        <div class="headContainer">
+          <div>
+            <h1>Board</h1>
+          </div>
+          <div>
+            <img src="../assets/img/board/add_mobile.svg" />
+          </div>
+        </div>
+        <div class="searchTaskInputField">
+          <input placeholder="Find Task" />
+          <img src="../assets/img/board/search.svg" />
+        </div>
 
+        <div class="selectionContainer">
+          <div class="headContainer">
+            <div>
+              <h2>To do</h2>
+            </div>
+            <div>
+              <img src="../assets/img/board/add_mobile.svg" />
+            </div>
+          </div>
+          <div>
+            <span>Field for divs of to dos</span>
+          </div>
+        </div>
+        <div class="selectionContainer">
+          <div class="headContainer">
+            <div>
+              <h2>In progress</h2>
+            </div>
+            <div>
+              <img src="../assets/img/board/add_mobile.svg" />
+            </div>
+          </div>
+          <div>
+            <span>Field for divs of in progress</span>
+          </div>
+        </div>
+        <div class="selectionContainer">
+          <div class="headContainer">
+            <div>
+              <h2>await for feedback</h2>
+            </div>
+            <div>
+              <img src="../assets/img/board/add_mobile.svg" />
+            </div>
+          </div>
+          <div>
+            <span>Field for divs of await for feedback</span>
+          </div>
+        </div>
+        <div class="selectionContainer">
+          <div class="headContainer">
+            <div>
+              <h2>Done</h2>
+            </div>
+          </div>
+          <div>
+            <span>Field for divs Done</span>
+          </div>
+        </div>
+      </div>
+    </div>
     <div
       w3-include-html="../assets/templates/menu.html"
       id="afterLoginMainMenu"

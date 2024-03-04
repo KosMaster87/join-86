@@ -6,7 +6,6 @@ let selectedPrio = "Medium";
 let selectedCategory = "Technical Task";
 let subtasks = ["test Subtask1", "test Subtask2", "test Subtask3"];
 let mobilVersion;
-
 let contacts = [];
 
 function getAllUsers() {

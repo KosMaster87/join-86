@@ -1,0 +1,51 @@
+@import url("../style.css");
+
+h1{
+    font-size: 47px;
+}
+
+h2{
+    font-size: 27px;
+}
+
+.boardMainContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    gap:26px;
+}
+
+.selectionContainer{
+    gap:16px;
+}
+
+.searchTaskInputField{
+    display: flex;
+    justify-content: center;
+    top: 224px;
+    left: 16px;
+    padding: 8px 16px 8px 16px;
+    border-radius: 10px;
+    border: 1px solid #2a3647; 
+    gap: 10px;
+    background-color: #FFFFFF;
+    margin-top: 40px;
+}
+
+.searchTaskInputField input{
+    width: 100%;
+    border:none;
+    font-size:20px;
+}
+
+.searchTaskInputField input:focus{
+    outline:none;
+}
+
+.headContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
