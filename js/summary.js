@@ -8,9 +8,6 @@ let awaits=0;
  * The current open tasks.
  */
 function howManyTasks(){
-counterContainer = document.getElementById(`dataTodos`);
-tasksInBoard = user.tasks.length;
-counterContainer.innerHTML = tasksInBoard;
 for (let i = 0; i < user.tasks.length; i++) {
   if (user.tasks[i].status === "to-do") {
     todos++;
@@ -21,6 +18,7 @@ for (let i = 0; i < user.tasks.length; i++) {
   }   else if (user.tasks[i].status === "await") {
     awaits++;
   } 
+
   todoContainer = document.getElementById(`summeryTodoTodos`);
   todoContainer.innerHTML= todos;
 
@@ -32,6 +30,10 @@ for (let i = 0; i < user.tasks.length; i++) {
   
   awaitContainer = document.getElementById(`summeryAwaitingTask`)
   awaitContainer.innerHTML= awaits;
+
+  tasksInBoard = user.tasks.length;
+  counterContainer = document.getElementById(`dataTodos`);
+  counterContainer.innerHTML = tasksInBoard;
 }
 }
 
