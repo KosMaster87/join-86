@@ -1,4 +1,3 @@
-
 // --------------------------------------------------------
 
 // --------------------------------------------------------
@@ -6,7 +5,10 @@
 /**
  * The registration of a new user.
  */
-function registerNewUser() {
+/**
+ * The registration of a new user.
+ */
+async function registerNewUser() {
   let registerInputName = document.getElementById("registerInputName");
   let registerInputEmail = document.getElementById("registerInputEmail");
   let registerInputPassword = document.getElementById("registerInputPassword");
@@ -15,19 +17,30 @@ function registerNewUser() {
   );
   let registerBtn = document.getElementById("registerBtn");
   let colorCode = "#ff3d00";
-  const IndexForUser = users.length + 1; // Die Array-Stelle stimmt dann halt nicht. Aber wir machen ja ehe mit der eMail-Adresse als die UUID.
-  registerBtn.disabled = true;
 
-  users.push({
-    index: IndexForUser,
-    name: registerInputName.value,
-    email: registerInputEmail.value,
-    password: registerInputPassword.value,
-    colorCode,
-    tasks: [],
-  });
-  console.log(users);
-  secondaryFunctions(IndexForUser);
+  try {
+    // Laden Sie zuerst die Benutzerdaten, bevor Sie auf die Länge von "users" zugreifen.
+    await loadUsers();
+
+    const IndexForUser = users.length + 1; // +1 ist Optional.
+
+    registerBtn.disabled = true;
+
+    users.push({
+      index: IndexForUser,
+      name: registerInputName.value,
+      email: registerInputEmail.value,
+      password: registerInputPassword.value,
+      colorCode,
+      tasks: [],
+    });
+
+    console.log(users);
+    await secondaryFunctions(IndexForUser);
+  } catch (error) {
+    console.error("Fehler bei der Registrierung:", error);
+    // Fügen Sie hier ggf. eine entsprechende Fehlerbehandlung hinzu.
+  }
 }
 
 /**

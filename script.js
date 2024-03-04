@@ -96,6 +96,7 @@ async function theAnswer(payload) {
 // ------------------------------------------------------------------
 
 /**
+
  * Provide the user globally as an object and the other users in a separate array.
  */
 async function loadCurrentUserAlsoUsersAsObject() {
@@ -112,5 +113,25 @@ async function loadCurrentUserAlsoUsersAsObject() {
   }
 }
 
-// ------------------------------------------------------------------
+/**
+ * Lösche einen Benutzer aus dem Array anhand der Index-Position und aktualisiere den Remote-Speicher.
+ * @param {number} index - Die Position des zu löschenden Benutzers im Array.
+ */
+async function deleteUserAtIndexAndUpdateStorage(index) {
+  await loadUsers();
+  if (index >= 0 && index < users.length) {
+    users.splice(index, 1);
+    try {
+      await setItem("users", JSON.stringify(users));
+      console.log(
+        `Benutzer an Position ${index} wurde erfolgreich gelöscht und Remote-Speicher aktualisiert.`
+      );
+    } catch (error) {
+      console.error("Fehler beim Aktualisieren des Remote-Speichers:", error);
+    }
+  } else {
+    console.error("Ungültiger Index für das Löschen des Benutzers.");
+  }
+}
 
+// ------------------------------------------------------------------

@@ -1,63 +1,51 @@
-let dummyTask = {
-  title: "",
-  description: "",
-  prio: "",
-  dueDate: "",
-  category: "",
-  assignedTo: "",
-  subtasks: [],
-  id: "",
-  status: "Open",
-  from: "",
-};
-
-// let dummyTask = {
-//   selectedTitle: "",
-//   selectedDescription: "",
-//   selectedDueDate: "",
-//   selectedPrio: "",
-//   selectedCategory: "",
-//   subtasks: [""],
-// };
+// --------------------------------------------------------
 
 // --------------------------------------------------------
 
 /**
  * Gets the current tasks.
  */
-async function initSummeryCountings() {
-  getTodosCounting(); // row1
+function initSummeryCountings(userTasks) {
+  getTodosCounting(); // row3 OK
   getUrgentTask(); // row2
-  getTodoStatusCounting("summeryTodoTodos", "Open"); // row
-  getTodoStatusCounting("summeryDoneTodos", "done"); // row1
-  getTodoStatusCounting("summeryProcessTasks", "in progress"); // row3
-  getTodoStatusCounting("summeryAwaitingTask", "await feedback"); // row3
-}
 
-/**
- * The current open tasks.
- */
-function getTodosCounting() {
-  let summeryTodoSize = document.querySelectorAll("[data-todos]");
-  let count = user.tasks.length;
-
-  summeryTodoSize.forEach((ele) => {
-    ele.innerHTML = "" + count;
-  });
+  getTodoStatusCounting("summeryTodoTodos"); // row1
+  getTodoStatusCounting("summeryProcessTasks"); // row3
+  getTodoStatusCounting("summeryAwaitingTask"); // row3
+  getTodoStatusCounting("summeryDoneTodos"); // row1; erst mit Board möglich done zu setzen.
 }
 
 /**
  * Status function. From the three importances to choose from.
  * The parameter Status: Open is first declared in the dummy and is itself automatically set with a switch.
- * @param {IDs of each reactangle} eleId
- * @param {The status when setting the tasks} status
+ * @param {IDs of each reactangle} elementId
  */
-function getTodoStatusCounting(eleId, status) {
-  let doneTodosEle = document.getElementById(eleId);
+function getTodoStatusCounting(elementId) {
+  let doneTodosEle = document.getElementById(elementId);
   if (doneTodosEle) {
-    let count = dummyTask.status;
-    // let count = user.filter((a) => a.status.match(status));
+    let count = userTasks.filter((a) => a.status.match(status));
     doneTodosEle.innerHTML = count.length;
+  }
+}
+
+/** OK
+ * ROW 3 -> Tasks in Board.
+ * The current open tasks.
+ * @param {Array of user tasks} userTasks
+ */
+function getTodosCounting(userTasks) {
+  let summeryTodoSize = document.querySelectorAll("[data-todos]");
+  let count = userTasks.length;
+
+  summeryTodoSize.forEach((ele) => {
+    ele.innerHTML = "" + count;
+  });
+
+
+  if (user.status === "to-do") {
+    todoCounter ++;
+  } else if (user.status === done) {
+    doneCounter++;
   }
 }
 
@@ -65,26 +53,25 @@ function getTodoStatusCounting(eleId, status) {
  * Get the current urgent task and next nearest date.
  */
 function getUrgentTask() {
-  try {
-    let summerUrgentDateEle = document.getElementById("summery-urgent-date");
-    let tasks = currentUser.tasks;
-    let firstDate = new Date();
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    tasks.forEach((task) => {
-      let dueDate = new Date(task.dueDate);
-      let today = new Date();
-      if (firstDate <= dueDate) {
-        if (today >= dueDate) {
-          firstDate = dueDate;
-        }
-      }
-    });
-    summerUrgentDateEle.innerHTML = firstDate.toLocaleDateString(
-      "en-US",
-      options
-    );
-    getTasksonDate(firstDate);
-  } catch (error) {}
+
+}
+
+/**
+ * Format the nearest date in en-US.
+ * @param {nearest date} date
+ */
+function getTasksonDate(date) {
+  let upcomingTasksElement = document.getElementById("summeryUpcomingTasks");
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  let dateToString = new Date(date).toLocaleDateString("en-US", options);
+  let tasksForDay = [];
+  user.tasks.forEach((task) => {
+    let taskDate = new Date(task.dueDate).toLocaleDateString("en-US", options);
+    if (taskDate.match(dateToString)) {
+      tasksForDay.push(task);
+    }
+  });
+  upcomingTasksElement.innerHTML = tasksForDay.length;
 }
 // --------------------------------------------------------
 
@@ -98,7 +85,7 @@ async function initSummary() {
   await includeHTML();
   setActiveLink("navSummary");
   await loadCurrentUserAlsoUsersAsObject();
-  initSummeryCountings();
+  initSummeryCountings(user.tasks);
 }
 
 // --------------------------------------------------------
