@@ -115,6 +115,95 @@ a.singleContact:hover {
     margin: 8px 0;
 }
 
+/* Styling Mobile Buttons */
+
+.mobileBtnRound {
+    background-color: var(--lightGray);
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    justify-items: center;
+    z-index: 999;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.mobileBtnRound:hover {
+    cursor: pointer;
+    background-color: var(--lightBlue);  
+}
+
+
+.positionAbsolute {
+    position: absolute;
+    bottom: 100px;
+    right: 20px;
+}
+
+.d-none {
+    display: none;
+}
+
+/* Mobile Button Three Points */
+
+#mobileBtnThreePoints {
+    display: none;
+}
+
+.mobileBtnThreePointsIcon {
+    height: 21.33px;
+    position: relative;
+    left: 20px;
+    top: 12px;
+}
+
+/* Mobile Button Select Options */
+#mobileBtnSelectOptions {
+    width: 116px;
+    height: 116px;
+    display: none;
+}
+
+.mobileBtnSquare {
+    background-color: var(--white);
+    color: var(--black);
+    border-radius: 20px 20px 0 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+}
+
+.internBtnSquare {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+}
+
+.mobileBtnIconDelete {
+    height: 18px;
+}
+
+.mobileBtnIconEdit {
+    height: 18.25px;
+}
+
+.internBtnSquareLink {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+/* Übergreifendes Styling */
+
 .d-none {
     display: none;
 }

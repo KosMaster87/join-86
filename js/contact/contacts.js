@@ -24,6 +24,12 @@ async function getItem(key) {
         .then(res => {
             if (res.data) {
                 return res.data.value;
-            } throw `Could not find data with key "${key}".`;
+            } else {
+                throw new Error(`Could not find data with key "${key}".`)
+            };
+        })
+        .catch(error => {
+            console.log('Error fetching data:', error);
+            throw error;
         });
 }
