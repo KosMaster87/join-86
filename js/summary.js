@@ -86,21 +86,19 @@ function setSummaryLetter(){
   todoContainer = document.getElementById(`summeryTodoTodos`);
   todoContainer.innerHTML= todos;
 
-  doneContainer = document.getElementById(`summeryDoneTodos`)
-  doneContainer.innerHTML= dones;
+    doneContainer = document.getElementById(`summeryDoneTodos`);
+    doneContainer.innerHTML = dones;
 
-  progressContainer = document.getElementById(`summeryProcessTasks`)
-  progressContainer.innerHTML= progresses;
-  
-  awaitContainer = document.getElementById(`summeryAwaitingTask`)
-  awaitContainer.innerHTML= awaits;
+    progressContainer = document.getElementById(`summeryProcessTasks`);
+    progressContainer.innerHTML = progresses;
+
+    awaitContainer = document.getElementById(`summeryAwaitingTask`);
+    awaitContainer.innerHTML = awaits;
 
   tasksInBoard = user.tasks.length;
   counterContainer = document.getElementById(`dataTodos`);
   counterContainer.innerHTML = tasksInBoard;
-
-  upcomingDateContainer = document.getElementById(`summeryUrgentDate`);
-  upcomingDateContainer.innerHTML = upcomingDate;
+}
 }
 
 /**
@@ -108,15 +106,7 @@ function setSummaryLetter(){
  */
 async function initSummeryCountings() {
   howManyTasks();
-  // getUrgentTask();
-  // getTodoStatusCounting("summeryTodoTodos");
-  // getTodoStatusCounting("summeryDoneTodos");
-  // getTodoStatusCounting("summeryProcessTasks");
-  // getTodoStatusCounting("summeryAwaitingTask");
 }
-
-
-
 
 /**
  * Get the current urgent task and next nearest date.
@@ -133,7 +123,6 @@ function getUrgentTask() {
  */
 function getTodoStatusCounting() {
   let summeryTodoTodos = document.getElementById("summeryTodoTodos");
- 
 }
 
 // --------------------------------------------------------
@@ -149,7 +138,6 @@ async function initSummary() {
   setActiveLink("navSummary");
   await loadCurrentUserAlsoUsersAsObject();
   initSummeryCountings();
-
 }
 
 // --------------------------------------------------------

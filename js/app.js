@@ -1,18 +1,31 @@
-/**
- * Format the nearest date in en-US.
- * @param {nearest date} date
- */
-function getTasksonDate(date) {
-  let upcomingTasksEle = document.getElementById("summery-upcoming-tasks");
-  let arr = currentUser.tasks;
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  let dateToString = new Date(date).toLocaleDateString("en-US", options);
-  let tasksForDay = [];
-  arr.forEach((task) => {
-    let taskDate = new Date(task.dueDate).toLocaleDateString("en-US", options);
-    if (taskDate.match(dateToString)) {
-      tasksForDay.push(task);
+function howManyTasks() {
+  const taskStatusCounts = {
+    "to-do": 0,
+    done: 0,
+    progress: 0,
+    await: 0,
+  };
+
+  // Zähle die Aufgaben nach ihrem Status
+  user.tasks.forEach((task) => {
+    taskStatusCounts[task.status]++;
+  });
+
+  // Aktualisiere die HTML-Elemente mit den jeweiligen Zählungen
+  Object.keys(taskStatusCounts).forEach((status) => {
+    const containerId = `summery${
+      status.charAt(0).toUpperCase() + status.slice(1)
+    }Todos`;
+    const container = document.getElementById(containerId);
+
+    if (container) {
+      container.innerHTML = taskStatusCounts[status];
     }
   });
-  upcomingTasksEle.innerHTML = tasksForDay.length;
+
+  // Zeige die Gesamtanzahl der Aufgaben an
+  const counterContainer = document.getElementById("dataTodos");
+  if (counterContainer) {
+    counterContainer.innerHTML = user.tasks.length;
+  }
 }

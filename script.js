@@ -134,4 +134,24 @@ async function deleteUserAtIndexAndUpdateStorage(index) {
   }
 }
 
+/**
+ * Change user's task status.
+ * @param {The index of the tasks in the user object. As Number.} taskIndex
+ * @param {Write the status in string format.} newStatus
+ */
+function changeTaskStatus(taskIndex, newStatus) {
+  if (user && user.tasks && user.tasks[taskIndex]) {
+    // Überprüfen Sie, ob die Aufgabe und der gewünschte Index vorhanden sind
+    user.tasks[taskIndex].status = newStatus;
+
+    // Aktualisieren Sie den Remote Storage oder die lokale Speicherung
+    setItem("users", users);
+
+    // Rufen Sie die Funktion auf, um die Anzeige zu aktualisieren (falls erforderlich)
+    howManyTasks();
+  } else {
+    console.error("Ungültiger Task-Index oder fehlende Benutzerdaten.");
+  }
+}
+
 // ------------------------------------------------------------------
