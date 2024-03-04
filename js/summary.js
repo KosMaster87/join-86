@@ -7,10 +7,23 @@ let heutigesDatum = 0;
 let upcomingDate = 0;
 let urgentCounter = 0;
 let finaleDate;
-
+let greetigText;
 /**
+ *
  * The current open tasks.
  */
+function greeting() {
+  uhr = new Date();
+  testzeit = uhr.getHours();
+  if (testzeit < 12) {
+    greetigText = `Good morning`;
+  } else if (testzeit < 18) {
+    greetigText = `Good afternoon`;
+  } else if (testzeit < 24) {
+    greetigText = `Good evening`;
+  }
+}
+
 function howManyTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
     if (user.tasks[i].status === "to-do") {
@@ -34,6 +47,7 @@ async function setzeHeutigesDatum() {
   heutigesDatum = `${jahr}-${monat}-${tag}`;
   testeDatum();
   setSummaryLetter();
+  greeting();
 }
 
 function testeDatum() {
@@ -113,6 +127,17 @@ function setSummaryLetter() {
 
   upcomingDateContainer = document.getElementById(`summeryUrgentDate`);
   upcomingDateContainer.innerHTML = finaleDate;
+
+  greetingContainer = document.getElementById(`greetingsContainer`);
+  greetingTwoContainer = document.getElementById(`greetingUserSummaryGreet`);
+  greetingContainer.innerHTM = greetigText;
+  greetingTwoContainer.innerHTM = greetigText;
+
+  greetingNameContainer = document.getElementById(`greetingName`);
+  greetingNametwoContainer = document.getElementById(`greetingUserSummaryNameId`);
+  greetingNametwoContainer.innerHTML = user.name;
+
+  greetingNameContainer.innerHTML = user.name;
 }
 
 /**
