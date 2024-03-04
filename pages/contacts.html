@@ -147,7 +147,7 @@
           </div>
           <div class="addContactHeaderBorder"></div>
           <div class="editContactEmptySignature">
-            <span id="contactSignature" class="editContactSignature"></span>
+            <span id="editContactSignature" class="editContactSignature"></span>
           </div>
         </div> <!-- ENDE ADD CONTACT HEADER-->
         <div id="addContactEntry">
@@ -155,7 +155,7 @@
             <div id="contactInputFieldName" 
                 class="contactInputField"
             >
-              <input id="contactInputName"
+              <input id="editContactInputName"
                   placeholder="Name"
                   class="nameInputfield"
                   type="text"
@@ -169,7 +169,7 @@
               class="contactInputField"
               >
               <input
-              id="contactInputEmail"
+              id="editContactInputEmail"
               placeholder="Email"
               class="textInputfield"
               type="text"
@@ -183,7 +183,7 @@
               class="contactInputField"
             >
               <input
-              id="contactInputPhone"
+              id="editContactInputPhone"
               placeholder="Phone"
               class="textInputfield"
               type="text"
@@ -216,7 +216,8 @@
 
     <!-- Mobile Button Add Contact-->
     <div id="mobileBtnAddContact"
-        onclick="openAddContactContainer()"
+      class="mobileBtnRound positionAbsolute"
+      onclick="openAddContactContainer()"
     >
         <img class="mobileBtnAddContactItem"
         src="../assets/img/addContact/person_add.svg"
@@ -224,6 +225,38 @@
     </div> <!-- ENDE MOBILE BUTTON ADD CONTACT-->
 
 
+    <!-- MOBILE BUTTON THREE POINTS -->
+    <div id="mobileBtnThreePoints"
+      class="mobileBtnRound positionAbsolute"
+      onclick="showMobileSelectBtns()"
+    >
+      <img class="mobileBtnThreePointsIcon" 
+        src="../assets/img/contact/more_vert.svg"
+      />
+    </div> <!-- ENDE MOBILE BUTTON SELECT OPTIONS -->
+
+
+    <!-- MOBILE BUTTON SELECT OPTIONS -->
+    <div id="mobileBtnSelectOptions"
+      class="mobileBtnSquare positionAbsolute"
+    >
+      <div class="internBtnSquare">
+        <a class="internBtnSquareLink" onclick="goFromShowSingleContactToEditContact()">
+          <img class="mobileBtnIconEdit" 
+            src="../assets/img/contact/edit.svg"
+          />
+          <span>Edit</span>
+        </a>
+        <a class="internBtnSquareLink" onclick="goFromDeleteContactToListContact()">      
+          <img class="mobileBtnIconDelete"
+            src="../assets/img/contact/delete.svg">
+          <span>Delete</span>
+        </a>
+      </div>
+      
+      
+
+    </div> <!-- ENDE MOBILE BUTTON SELECT OPTIONS -->
 
   </body>
 </html>
