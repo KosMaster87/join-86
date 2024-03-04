@@ -11,8 +11,6 @@ let finaleDate;
 /**
  * The current open tasks.
  */
-function howManyTasks(){
-for (let i = 0; i < user.tasks.length; i++) {
 function howManyTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
     if (user.tasks[i].status === "to-do") {
