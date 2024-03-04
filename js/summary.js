@@ -5,6 +5,8 @@ let progresses=0;
 let awaits=0;
 let heutigesDatum=0;
 let upcomingDate = 0;
+let urgentCounter=0;
+let finaleDate;
 
 /**
  * The current open tasks.
@@ -45,7 +47,15 @@ function testeDatum(){
   }
 }
 upcomingDate=actuelldate;
+howManyUrgent();
 FinalUpcomingDate();
+}
+
+function howManyUrgent(){
+ for (let i = 0; i < user.tasks.length; i++) {
+  if(upcomingDate == user.tasks[i].dueDate)
+  urgentCounter++
+ }
 }
 
 function FinalUpcomingDate() {
@@ -79,7 +89,7 @@ function FinalUpcomingDate() {
     finalMonth = "December";
   } 
   let day = parseInt(dateComponents[2]);
-  upcomingDate = `${finalMonth} ${day}, ${year}`;
+  finaleDate = `${finalMonth} ${day}, ${year}`;
 }
 
 function setSummaryLetter(){
@@ -99,8 +109,11 @@ function setSummaryLetter(){
   counterContainer = document.getElementById(`dataTodos`);
   counterContainer.innerHTML = tasksInBoard;
 
+  urgentContainer= document.getElementById(`summeryUpcomingTasks`);
+  urgentContainer.innerHTML = urgentCounter;
+
   upcomingDateContainer = document.getElementById(`summeryUrgentDate`);
-  upcomingDateContainer.innerHTML = upcomingDate;
+  upcomingDateContainer.innerHTML = finaleDate;
 }
 
 /**
