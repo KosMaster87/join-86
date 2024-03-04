@@ -4,20 +4,15 @@ let selectedAssignedto = [];
 let selectedDueDate = "";
 let selectedPrio = "";
 let selectedCategory = "";
-let subtasks = [""];
+let subtasks = [];
 
 let mobilVersion;
 let contacts = [];
 
-async function assignTaskToUser(
-  selectedTitle,
-  selectedDescription,
-  selectedAssignedto,
-  selectedDueDate,
-  selectedPrio,
-  selectedCategory,
-  subtasks
-) {
+/**
+ * Create a user task and save it to remote storage.
+ */
+async function assignTaskToUser() {
   user.tasks.push({
     title: selectedTitle,
     description: selectedDescription,
@@ -28,6 +23,19 @@ async function assignTaskToUser(
     subtasks: subtasks,
   });
   setItem("users", users);
+}
+
+/**
+ * 
+ */
+async function initAddTask() {
+  await includeHTML();
+  setActiveLink("navAddTask");
+  checkWidth();
+  await loadCurrentUserAlsoUsersAsObject();
+  await getAllContactsFromCurrentUserSorted();
+  loadContacts();
+  footer();
 }
 
 async function getAllContactsFromCurrentUserSorted() {
@@ -42,15 +50,7 @@ async function getAllContactsFromCurrentUserSorted() {
   return contacts;
 }
 
-async function initAddTask() {
-  await includeHTML();
-  setActiveLink("navAddTask");
-  checkWidth();
-  await loadCurrentUserAlsoUsersAsObject();
-  await getAllContactsFromCurrentUserSorted();
-  loadContacts();
-  footer();
-}
+
 
 window.addEventListener("resize", function () {
   checkWidth();
@@ -63,16 +63,7 @@ async function requiredFields() {
   categoryRequired();
   let description = document.getElementById(`descriptionInput`);
   selectedDescription = description.value;
-
-  await assignTaskToUser(
-    selectedTitle,
-    selectedDescription,
-    selectedAssignedto,
-    selectedDueDate,
-    selectedPrio,
-    selectedCategory,
-    subtasks
-  );
+  await assignTaskToUser();
 }
 
 function checkWidth() {
