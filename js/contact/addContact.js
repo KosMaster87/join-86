@@ -15,10 +15,6 @@ async function startSaveProcess() {
     }   
 }
 
-async function getGlobalUserId() {   
-    return await getItem('currentUserId');
-}
-
 async function saveContact(name, email, phone) {
     let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
     let contactId = generateRandomId();

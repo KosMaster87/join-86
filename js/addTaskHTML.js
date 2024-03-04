@@ -81,7 +81,7 @@ function renderAddTaskMobileHTML() {
           onclick="openCategorySelect()"
           class="categorySelect"
         >
-          <span id="categoryText">Select tast category</span
+          <span id="categoryText">Select task category.</span
           ><img
             id="categoryImage"
             src="../assets/img/add_task/arrow_drop_down.svg"
