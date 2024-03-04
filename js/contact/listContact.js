@@ -15,8 +15,6 @@ async function initListContact() {
 }
 
 
-
-
 async function getGlobalUserId() {   
     return await getItem('currentUserId');
 }//UserID bereitstellen und aus Storage lesen, damit die passenden Kontakte selektiert werden können. 
@@ -104,7 +102,6 @@ function renderContainerList(sortedContacts, listChars, userId) {
             <div class="styleHr"></div>
          `;
         renderContactCards(char, contacts, charRow, currentUserId);
-
         }
 }
 
