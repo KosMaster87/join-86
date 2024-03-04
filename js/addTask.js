@@ -5,6 +5,7 @@ let selectedDueDate = "";
 let selectedPrio = "";
 let selectedCategory = "";
 let subtasks = [];
+let statusInfo = 'to-do';
 
 let mobilVersion;
 let contacts = [];
@@ -14,6 +15,7 @@ let contacts = [];
  */
 async function assignTaskToUser() {
   user.tasks.push({
+    status: statusInfo,
     title: selectedTitle,
     description: selectedDescription,
     assignedTo: selectedAssignedto,
