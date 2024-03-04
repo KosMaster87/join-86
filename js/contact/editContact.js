@@ -143,7 +143,7 @@ function getFirstChars(arrayName) {
     return firstChars;
 }  
 
-//bearbeiten
+
 async function deleteContact() {
     let contactId = await getCurrentContactId();
     console.log('Res contactId: ', contactId);
@@ -176,25 +176,25 @@ async function goToShowSingleContactAfterEditContact(currentContactId) {
     let phone = currentContact.phone;
     let signature = currentContact.signature;
     let userColor = currentContact.userColor;
-
+    
+    await loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor )
+    
     document.getElementById('editContactContainer').style.display = "none";
     document.getElementById("showSingleContactContainer").style.display = "block";
     document.getElementById("mobileBtnSelectOptions").style.display = "none";
-    document.getElementById("mobileBtnThreePoints").style.display = "block";
-    console.log('Close Edit Contact Container and open Show Single Contact!');
-    loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor )
+    document.getElementById("mobileBtnThreePoints").style.display = "block"; 
  }
 
 
 async function goFromDeleteContactToListContact() {
     await deleteContact();
     await initListContact();
+
     document.getElementById('editContactContainer').style.display = "none";
     document.getElementById('showSingleContactContainer').style.display = "none";
     document.getElementById('containerListContacts').style.display = "block";
     document.getElementById('mobileBtnSelectOptions').style.display = "none";
     document.getElementById('mobileBtnAddContact').style.display = "block";
-    console.log('Close Edit Contact Container and open List Contact!');
  }
 
 
