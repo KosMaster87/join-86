@@ -81,12 +81,18 @@ function getListFirstChars(currentUserContacts) {
   return listFirstChars;
 }
 
+
+
 function renderContainerList(sortedContacts, listChars, userId) {
   let chars = listChars;
   let contacts = sortedContacts;
   let charRow = document.getElementById("containerListContacts");
   let currentUserId = userId;
   charRow.innerHTML = "";
+
+  
+
+
 
   for (let i = 0; i < chars.length; i++) {
     let char = chars[i];
@@ -129,6 +135,8 @@ function renderContactCards(char, currentContacts, charRow, currentUserId) {
         </div>`;
     }
   }
+
+  
 }
 
 function openEditContactContainer() {
