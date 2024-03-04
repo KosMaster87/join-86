@@ -136,7 +136,6 @@ function setSummaryLetter() {
   greetingNameContainer = document.getElementById(`greetingName`);
   greetingNametwoContainer = document.getElementById(`greetingUserSummaryNameId`);
   greetingNametwoContainer.innerHTML = user.name;
-
   greetingNameContainer.innerHTML = user.name;
 }
 

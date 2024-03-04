@@ -25,6 +25,7 @@ async function assignTaskToUser() {
     subtasks: subtasks,
   });
   setItem("users", users);
+  includeContentHTML('board');
 }
 
 /**
