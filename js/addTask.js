@@ -1,19 +1,61 @@
-let selectedTitle = "test Title";
-let selectedDescription = "test Description";
+let selectedTitle = "";
+let selectedDescription = "";
 let selectedAssignedto = [];
-let selectedDueDate = "2024-03-02";
-let selectedPrio = "Medium";
-let selectedCategory = "Technical Task";
-let subtasks = ["test Subtask1", "test Subtask2", "test Subtask3"];
+let selectedDueDate = "";
+let selectedPrio = "";
+let selectedCategory = "";
+let subtasks = [""];
 let mobilVersion;
-
 let contacts = [];
 
-function getAllUsers() {
-  let allUser = getItem('users')
-  console.log(allUser);
+async function assignTaskToUser(
+  userId,
+  selectedTitle,
+  selectedDescription,
+  selectedAssignedto,
+  selectedDueDate,
+  selectedPrio,
+  selectedCategory,
+  subtasks
+) {
+  try {
+    // Lade alle Benutzerdaten
+    await loadUsers();
+
+    // Finde den Benutzer mit der entsprechenden ID
+    const user = users.find((user) => user.index === userId);
+
+    const IndexForTasks = user.tasks.length;
+
+    if (user) {
+      // Füge die Aufgabe zum Benutzer hinzu
+      user.tasks.push({
+        title: selectedTitle,
+        description: selectedDescription,
+        assignedTo: selectedAssignedto,
+        dueDate: selectedDueDate,
+        prio: selectedPrio,
+        category: selectedCategory,
+        subtasks: subtasks,
+      });
+
+      // Speichere die aktualisierten Benutzerdaten
+      await setItem("users", JSON.stringify(users));
+
+      console.log("Aufgabe erfolgreich zugewiesen:", user);
+    } else {
+      console.error("Benutzer nicht gefunden.");
+    }
+  } catch (error) {
+    console.error("Fehler beim Zuweisen der Aufgabe:", error);
+    // Fügen Sie hier ggf. eine entsprechende Fehlerbehandlung hinzu.
+  }
 }
 
+function getAllUsers() {
+  let allUser = getItem("users");
+  console.log(allUser);
+}
 
 let currentUserId = getItem("currentUserId");
 
@@ -26,27 +68,14 @@ async function getAllContactsFromCurrentUserSorted() {
   );
   let testarray = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser);
   contacts = testarray.slice();
+  return contacts;
 }
-
-function createTask() {
-
-  let taskXY = {
-    selectedTitle: "",
-    selectedDescription: "",
-    selectedDueDate: "",
-    selectedPrio: "",
-    selectedCategory: "",
-    subtasks: [""],
-  };
-}
-
-
 
 async function initAddTask() {
   await includeHTML();
   setActiveLink("navAddTask");
   checkWidth();
-  getAllContactsFromCurrentUserSorted();
+  await getAllContactsFromCurrentUserSorted();
   loadContacts();
   footer();
 }
@@ -82,12 +111,22 @@ function loadContent() {
   }
 }
 
-function requiredFields() {
+async function requiredFields() {
   inputAbfrage();
   dueDateRequired();
   categoryRequired();
   let description = document.getElementById(`descriptionInput`);
   selectedDescription = description.value;
+
+  await assignTaskToUser(
+    selectedTitle,
+    selectedDescription,
+    selectedAssignedto,
+    selectedDueDate,
+    selectedPrio,
+    selectedCategory,
+    subtasks
+  );
 }
 
 function inputAbfrage() {

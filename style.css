@@ -63,7 +63,6 @@ html {
   .mainContent {
     min-height: calc(100dvh - 7rem);
     display: flex;
-    align-items: center;
     justify-content: center;
     background-color: var(--whiteGray);
   }
