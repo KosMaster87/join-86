@@ -5,8 +5,6 @@ let progresses = 0;
 let awaits = 0;
 let heutigesDatum = 0;
 let upcomingDate = 0;
-let urgentCounter = 0;
-let finaleDate;
 
 /**
  * The current open tasks.
@@ -40,21 +38,14 @@ function testeDatum() {
   let actuelldate = heutigesDatum;
   for (let i = 0; i < user.tasks.length; i++) {
     date = user.tasks[i].dueDate;
-    if (user.tasks[0].dueDate < date) {
-      actuelldate = actuelldate;
-    } else {
-      actuelldate = date;
-    }
+    if(user.tasks[0].dueDate<date){
+      actuelldate=actuelldate;
+    } else{
+      actuelldate=date;
   }
-  upcomingDate = actuelldate;
-  howManyUrgent();
-  FinalUpcomingDate();
 }
-
-function howManyUrgent() {
-  for (let i = 0; i < user.tasks.length; i++) {
-    if (upcomingDate == user.tasks[i].dueDate) urgentCounter++;
-  }
+upcomingDate=actuelldate;
+FinalUpcomingDate();
 }
 
 function FinalUpcomingDate() {
@@ -107,12 +98,7 @@ function setSummaryLetter() {
   tasksInBoard = user.tasks.length;
   counterContainer = document.getElementById(`dataTodos`);
   counterContainer.innerHTML = tasksInBoard;
-
-  urgentContainer = document.getElementById(`summeryUpcomingTasks`);
-  urgentContainer.innerHTML = urgentCounter;
-
-  upcomingDateContainer = document.getElementById(`summeryUrgentDate`);
-  upcomingDateContainer.innerHTML = finaleDate;
+}
 }
 
 /**
