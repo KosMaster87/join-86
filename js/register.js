@@ -5,9 +5,6 @@
 /**
  * The registration of a new user.
  */
-/**
- * The registration of a new user.
- */
 async function registerNewUser() {
   let registerInputName = document.getElementById("registerInputName");
   let registerInputEmail = document.getElementById("registerInputEmail");
@@ -19,10 +16,9 @@ async function registerNewUser() {
   let colorCode = "#ff3d00";
 
   try {
-    // Laden Sie zuerst die Benutzerdaten, bevor Sie auf die Länge von "users" zugreifen.
     await loadUsers();
 
-    const IndexForUser = users.length + 1; // +1 ist Optional.
+    const IndexForUser = users.length + 1;
 
     registerBtn.disabled = true;
 
@@ -39,7 +35,6 @@ async function registerNewUser() {
     await secondaryFunctions(IndexForUser);
   } catch (error) {
     console.error("Fehler bei der Registrierung:", error);
-    // Fügen Sie hier ggf. eine entsprechende Fehlerbehandlung hinzu.
   }
 }
 

@@ -3,6 +3,9 @@ const STORAGE_TOKEN = "DXZFTQCTDMTN307RSV39G7QWLBSB9ZB6CEFWG1WB"; // #2
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
 let users;
+let user;
+
+// ------------------------------------------------------------------
 
 /**
  * The instruction to load from remote storage.
@@ -17,8 +20,6 @@ async function loadUsers() {
     console.error("loadUsers: Loading error:", e);
   }
 }
-
-// ------------------------------------------------------------------
 
 /**
  * Load data from backend.
@@ -96,7 +97,6 @@ async function theAnswer(payload) {
 // ------------------------------------------------------------------
 
 /**
-
  * Provide the user globally as an object and the other users in a separate array.
  */
 async function loadCurrentUserAlsoUsersAsObject() {
