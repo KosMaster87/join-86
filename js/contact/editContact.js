@@ -2,31 +2,48 @@
 //Edit Contact JS
 //TODO:form einbinden
 //TODO: implement form validation
+    //let globalUserId = getCurrentUserId();
+    //let globalContactId = getCurrentContactId();
 
-
-async function initEditContact(currentContactId) {
-    let currentUserId = await getCurrentUserId();
+ 
+async function initEditContact() {
+    let contactId = await getCurrentContactId(); 
     let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
-    let currenContact = getCurrentContactArray(currentUserId, currentContactId, allContactsFromAllUsers);
-    
-    initializeAllVariables(currenContact, currentUserId);
+    console.log(allContactsFromAllUsers);
+    let currentContact = await getCurrentContact(contactId, allContactsFromAllUsers);//leer
+    console.log('currentContact', currentContact);
+    initializeAllVariables(currentContact);
 }
+
+async function setCurrentContactIdAndUpdate(contactId) {
+    await setCurrentContactId(contactId);
+    globalContactId = contactId;
+    await initEditContact();
+}
+
 
 async function getCurrentUserId() {
-    let currentUserId = await globalUserId;
-    console.log(currentUserId);
+    let currentUserId = await getItem('currentUserId');
+
+    return currentUserId;
 }
+    
+
+// async function getCurrentContactInfos() {
+//     let contactArrays = await getItem('currentContactInfos');
+    
+//     return contactArrays;
+// }
 
 
-function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
+// async function setCurrentContactId(contactId) {
+//     await setItem('currentContactId', contactId);
+// } 
+
+
+async function getCurrentContactId() {
+    return await getItem('currentContactId');
+} 
 
 
 async function loadAllContactsFromAllUsers() {
@@ -36,67 +53,57 @@ async function loadAllContactsFromAllUsers() {
 }
 
 
-function getCurrentContactArray(userId, contactId, allContactsFromAllUsers) {
-    let allContactsFromCurrentUser = getAllContactsFromCurrentUser(userId, allContactsFromAllUsers);
-    let currentContact = getCurrentContact(contactId, allContactsFromCurrentUser);
-    
-    return currentContact;
-}
-
-
-function getCurrentContact(selectedId, allContactsFromCurrentUser) {
-    let contactId = selectedId;
-    let currenContact = [];
-    for (let i = 0; i < allContactsFromCurrentUser.length; i++) {
-        let contact = allContactsFromCurrentUser[i]
-        if (contactId == contact['contactId']) {
-            currenContact = contact; 
+async function getCurrentContact(selectedId, allContactsFromAllUsers) {
+    let contactId = await selectedId;
+    console.log('Response: contactId', contactId);
+    let allContacts = await allContactsFromAllUsers;
+    console.log('contactId: ', contactId);
+    let currentContact = [];
+    for (let i = 0; i < allContacts.length; i++) {
+        let contact = allContacts[i];
+        if (contact['contactId'] == contactId) {
+            currentContact = contact; 
         }    
     }
 
-    return currenContact;
+    return await currentContact;
 }
 
 
 function getAllContactsFromCurrentUser(userId, allUserContacts) {
     let currentUserId = userId;
-    // let allContacts = allUserContacts;
-    // let allContactsFromCurrentUser = [];
-    // for (let i = 0; i < allContacts.length; i++) {
-    //     const contact = allContacts[i];
-    //     if (contact['userId'] == currentUserId) {
-    //         allContactsFromCurrentUser.push(contact);
-    //     }        
-    // }
+    let allContacts = allUserContacts;
+    let allContactsFromCurrentUser = [];
+    for (let i = 0; i < allContacts.length; i++) {
+        const contact = allContacts[i];
+        if (contact['userId'] == currentUserId) {
+            allContactsFromCurrentUser.push(contact);
+        }        
+    }
     
-    // return allContactsFromCurrentUser;
+    return allContactsFromCurrentUser;
 }
 
 
-function initializeAllVariables(currentContact) {
-    document.getElementById('contactInputName').value = currentContact['name'];
-    document.getElementById('contactInputEmail').value = currentContact['email'];
-    document.getElementById('contactInputPhone').value = currentContact['phone'];
-    document.getElementById('contactSignature').innerText = currentContact['signature'];
+function initializeAllVariables(currentContactInfos) {
+    let currentContact = currentContactInfos;
+    document.getElementById('editContactInputName').value = currentContact.name;
+    document.getElementById('editContactInputEmail').value = currentContact.email;
+    document.getElementById('editContactInputPhone').value = currentContact.phone;
+    document.getElementById('editContactSignature').innerText = currentContact.signature;
 }
-
-
-/* TODO: userId und contactId müssen als Paramater übergeben werden - aktuell noch nicht notwendig, da mittels mockUpDaten
-gearbeitet wird */
 
 
 async function saveChanges() {
-    let currentContactId = getParameterByName('contactId');
-    let currentUserId = getParameterByName('userId');
+    let currentContactId = await getCurrentContactId();
     let mockUpAllUserContacts = await loadAllContactsFromAllUsers();//zur Überprüfung vorerst mit Zwischenspeicher gearbeitet
-    let inputName = (document.getElementById('contactInputName').value).trim();
-    let inputEmail = (document.getElementById('contactInputEmail').value).trim();
-    let inputPhone = (document.getElementById('contactInputPhone').value).trim();
-
+    let inputName = (document.getElementById('editContactInputName').value).trim();
+    let inputEmail = (document.getElementById('editContactInputEmail').value).trim();
+    let inputPhone = (document.getElementById('editContactInputPhone').value).trim();
     for (let i = 0; i < mockUpAllUserContacts.length; i++) {
         const singleContact = mockUpAllUserContacts[i];
-        if ( singleContact['userId'] == currentUserId && singleContact['contactId'] == currentContactId) {
-            console.log('Es hat geklappt', currentUserId, currentContactId, inputName, inputPhone, inputEmail);
+        console.log('singleContact:', singleContact);
+        if (singleContact['contactId'] == currentContactId) {
             singleContact['name'] = inputName;
             singleContact['email'] = inputEmail;
             singleContact['phone'] = inputPhone;
@@ -105,7 +112,7 @@ async function saveChanges() {
     }
 
     await setItem('mockUpAllUserContacts', JSON.stringify(mockUpAllUserContacts));
-    goToListContactPageAfterAddContact(currentContactId, currentUserId);
+    await goToShowSingleContactAfterEditContact(currentContactId);
 }
 
 
@@ -135,22 +142,22 @@ function getFirstChars(arrayName) {
     return firstChars;
 }  
 
-
+//bearbeiten
 async function deleteContact() {
-    let contactId = getParameterByName('contactId');
-    let userId = getParameterByName('userId');
+    let contactId = await getCurrentContactId();
+    console.log('Res contactId: ', contactId);
     let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
     for (let i = 0; i < allContactsFromAllUsers.length; i++) {
         const currentUserConctact = allContactsFromAllUsers[i];
-        if (currentUserConctact['userId'] == userId && currentUserConctact['contactId'] == contactId) {
+        if (currentUserConctact['contactId'] == contactId) {
             console.log('Resp currentUserContact:', currentUserConctact['name']);
             allContactsFromAllUsers.splice(i, 1);
         }
     }
-    console.log(allContactsFromAllUsers);
 
     await saveReducedContactArrayBackend(allContactsFromAllUsers);
-    goToListContactPageAfterDeleteContact(userId);   
+    goFromDeleteContactToListContact();  
+    await setItem('currentContactId', JSON.stringify(''));
 }
 
 
@@ -159,13 +166,33 @@ async function saveReducedContactArrayBackend(allContactsFromAllUsers) {
 }
 
 
-function goToListContactPageAfterAddContact(contactId, userId) {
-   window.location.href = `listContact.html?contactId=${contactId}&userId=${userId}`;
-}
+async function goToShowSingleContactAfterEditContact(currentContactId) {
+    let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
+    let contactId = await currentContactId;
+    let userId = await currentContactId;
+    let currentContact = await getCurrentContact(contactId, allContactsFromAllUsers);
+    let name = currentContact.name;
+    let email = currentContact.email;
+    let phone = currentContact.phone;
+    let signature = currentContact.signature;
+    let userColor = currentContact.userColor;
 
+    document.getElementById('editContactContainer').style.display = "none";
+    document.getElementById("showSingleContactContainer").style.display = "block";
+    document.getElementById("mobileBtnSelectOptions").style.display = "none";
+    document.getElementById("mobileBtnThreePoints").style.display = "block";
+    console.log('Close Edit Contact Container and open Show Single Contact!');
+    loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor )
+ }
 
-function goToListContactPageAfterDeleteContact(userId) {
-    window.location.href = `listContact.html?contactId=userId=${userId}`;
+function goFromDeleteContactToListContact() {
+    document.getElementById('editContactContainer').style.display = "none";
+    document.getElementById('showSingleContactContainer').style.display = "none";
+    document.getElementById('containerListContacts').style.display = "block";
+    document.getElementById('mobileBtnSelectOptions').style.display = "none";
+    document.getElementById('mobileBtnAddContact').style.display = "block";
+    console.log('Close Edit Contact Container and open List Contact!');
+    initListContact()
  }
 
 
