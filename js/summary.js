@@ -1,8 +1,10 @@
 let todos=0;
 let dones=0;
-// let tasksInBoard= 0;
+let tasksInBoard= 0;
 let progresses=0;
 let awaits=0;
+let heutigesDatum=0;
+let upcomingDate = 0;
 
 /**
  * The current open tasks.
@@ -18,7 +20,69 @@ for (let i = 0; i < user.tasks.length; i++) {
   }   else if (user.tasks[i].status === "await") {
     awaits++;
   } 
+}
+setzeHeutigesDatum();
+}
 
+async function setzeHeutigesDatum() {
+  const heute = new Date();
+  const jahr = heute.getFullYear();
+  const monat = (heute.getMonth() + 1).toString().padStart(2, '0');
+  const tag = heute.getDate().toString().padStart(2, '0');
+  heutigesDatum= `${jahr}-${monat}-${tag}`;
+  testeDatum();
+  setSummaryLetter();
+}
+
+function testeDatum(){
+  let actuelldate = heutigesDatum; 
+  for (let i = 0; i < user.tasks.length; i++) {
+    date = user.tasks[i].dueDate;
+    if(user.tasks[0].dueDate<date){
+      actuelldate=actuelldate;
+    } else{
+      actuelldate=date;
+  }
+}
+upcomingDate=actuelldate;
+FinalUpcomingDate();
+}
+
+function FinalUpcomingDate() {
+  let dateComponents = upcomingDate.split('-');
+  let year = parseInt(dateComponents[0]);
+  let month = parseInt(dateComponents[1]);
+  let finalMonth;
+  if (month === 1) {
+    finalMonth = "January";
+  } else if (month === 2) {
+    finalMonth = "February";
+  } else if (month === 3) {
+    finalMonth = "March";
+  } else if (month === 4) {
+    finalMonth = "April";
+  } else if (month === 5) {
+    finalMonth = "May";
+  } else if (month === 6) {
+    finalMonth = "June";
+  } else if (month === 7) {
+    finalMonth = "July";
+  } else if (month === 8) {
+    finalMonth = "August";
+  } else if (month === 9) {
+    finalMonth = "September";
+  } else if (month === 10) {
+    finalMonth = "October";
+  } else if (month === 11) {
+    finalMonth = "November";
+  } else if (month === 12) {
+    finalMonth = "December";
+  } 
+  let day = parseInt(dateComponents[2]);
+  upcomingDate = `${finalMonth} ${day}, ${year}`;
+}
+
+function setSummaryLetter(){
   todoContainer = document.getElementById(`summeryTodoTodos`);
   todoContainer.innerHTML= todos;
 
@@ -34,9 +98,10 @@ for (let i = 0; i < user.tasks.length; i++) {
   tasksInBoard = user.tasks.length;
   counterContainer = document.getElementById(`dataTodos`);
   counterContainer.innerHTML = tasksInBoard;
-}
-}
 
+  upcomingDateContainer = document.getElementById(`summeryUrgentDate`);
+  upcomingDateContainer.innerHTML = upcomingDate;
+}
 
 /**
  * Gets the current tasks.
