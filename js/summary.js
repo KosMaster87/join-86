@@ -1,11 +1,11 @@
-let todos=0;
-let dones=0;
-let tasksInBoard= 0;
-let progresses=0;
-let awaits=0;
-let heutigesDatum=0;
+let todos = 0;
+let dones = 0;
+let tasksInBoard = 0;
+let progresses = 0;
+let awaits = 0;
+let heutigesDatum = 0;
 let upcomingDate = 0;
-let urgentCounter=0;
+let urgentCounter = 0;
 let finaleDate;
 
 /**
@@ -13,53 +13,54 @@ let finaleDate;
  */
 function howManyTasks(){
 for (let i = 0; i < user.tasks.length; i++) {
-  if (user.tasks[i].status === "to-do") {
-    todos++;
-  }  else if (user.tasks[i].status === "done") {
-    dones++;
-  }  else if (user.tasks[i].status === "progress") {
-    progresses++;
-  }   else if (user.tasks[i].status === "await") {
-    awaits++;
-  } 
-}
-setzeHeutigesDatum();
+function howManyTasks() {
+  for (let i = 0; i < user.tasks.length; i++) {
+    if (user.tasks[i].status === "to-do") {
+      todos++;
+    } else if (user.tasks[i].status === "done") {
+      dones++;
+    } else if (user.tasks[i].status === "progress") {
+      progresses++;
+    } else if (user.tasks[i].status === "await") {
+      awaits++;
+    }
+  }
+  setzeHeutigesDatum();
 }
 
 async function setzeHeutigesDatum() {
   const heute = new Date();
   const jahr = heute.getFullYear();
-  const monat = (heute.getMonth() + 1).toString().padStart(2, '0');
-  const tag = heute.getDate().toString().padStart(2, '0');
-  heutigesDatum= `${jahr}-${monat}-${tag}`;
+  const monat = (heute.getMonth() + 1).toString().padStart(2, "0");
+  const tag = heute.getDate().toString().padStart(2, "0");
+  heutigesDatum = `${jahr}-${monat}-${tag}`;
   testeDatum();
   setSummaryLetter();
 }
 
-function testeDatum(){
-  let actuelldate = heutigesDatum; 
+function testeDatum() {
+  let actuelldate = heutigesDatum;
   for (let i = 0; i < user.tasks.length; i++) {
     date = user.tasks[i].dueDate;
-    if(user.tasks[0].dueDate<date){
-      actuelldate=actuelldate;
-    } else{
-      actuelldate=date;
+    if (user.tasks[0].dueDate < date) {
+      actuelldate = actuelldate;
+    } else {
+      actuelldate = date;
+    }
   }
-}
-upcomingDate=actuelldate;
-howManyUrgent();
-FinalUpcomingDate();
+  upcomingDate = actuelldate;
+  howManyUrgent();
+  FinalUpcomingDate();
 }
 
-function howManyUrgent(){
- for (let i = 0; i < user.tasks.length; i++) {
-  if(upcomingDate == user.tasks[i].dueDate)
-  urgentCounter++
- }
+function howManyUrgent() {
+  for (let i = 0; i < user.tasks.length; i++) {
+    if (upcomingDate == user.tasks[i].dueDate) urgentCounter++;
+  }
 }
 
 function FinalUpcomingDate() {
-  let dateComponents = upcomingDate.split('-');
+  let dateComponents = upcomingDate.split("-");
   let year = parseInt(dateComponents[0]);
   let month = parseInt(dateComponents[1]);
   let finalMonth;
@@ -87,29 +88,29 @@ function FinalUpcomingDate() {
     finalMonth = "November";
   } else if (month === 12) {
     finalMonth = "December";
-  } 
+  }
   let day = parseInt(dateComponents[2]);
   finaleDate = `${finalMonth} ${day}, ${year}`;
 }
 
-function setSummaryLetter(){
+function setSummaryLetter() {
   todoContainer = document.getElementById(`summeryTodoTodos`);
-  todoContainer.innerHTML= todos;
+  todoContainer.innerHTML = todos;
 
-    doneContainer = document.getElementById(`summeryDoneTodos`);
-    doneContainer.innerHTML = dones;
+  doneContainer = document.getElementById(`summeryDoneTodos`);
+  doneContainer.innerHTML = dones;
 
-    progressContainer = document.getElementById(`summeryProcessTasks`);
-    progressContainer.innerHTML = progresses;
+  progressContainer = document.getElementById(`summeryProcessTasks`);
+  progressContainer.innerHTML = progresses;
 
-    awaitContainer = document.getElementById(`summeryAwaitingTask`);
-    awaitContainer.innerHTML = awaits;
+  awaitContainer = document.getElementById(`summeryAwaitingTask`);
+  awaitContainer.innerHTML = awaits;
 
   tasksInBoard = user.tasks.length;
   counterContainer = document.getElementById(`dataTodos`);
   counterContainer.innerHTML = tasksInBoard;
 
-  urgentContainer= document.getElementById(`summeryUpcomingTasks`);
+  urgentContainer = document.getElementById(`summeryUpcomingTasks`);
   urgentContainer.innerHTML = urgentCounter;
 
   upcomingDateContainer = document.getElementById(`summeryUrgentDate`);
