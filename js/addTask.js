@@ -5,11 +5,11 @@ let selectedDueDate = "";
 let selectedPrio = "";
 let selectedCategory = "";
 let subtasks = [""];
+
 let mobilVersion;
 let contacts = [];
 
 async function assignTaskToUser(
-  userId,
   selectedTitle,
   selectedDescription,
   selectedAssignedto,
@@ -18,46 +18,17 @@ async function assignTaskToUser(
   selectedCategory,
   subtasks
 ) {
-  try {
-    // Lade alle Benutzerdaten
-    await loadUsers();
-
-    // Finde den Benutzer mit der entsprechenden ID
-    const user = users.find((user) => user.index === userId);
-
-    const IndexForTasks = user.tasks.length;
-
-    if (user) {
-      // Füge die Aufgabe zum Benutzer hinzu
-      user.tasks.push({
-        title: selectedTitle,
-        description: selectedDescription,
-        assignedTo: selectedAssignedto,
-        dueDate: selectedDueDate,
-        prio: selectedPrio,
-        category: selectedCategory,
-        subtasks: subtasks,
-      });
-
-      // Speichere die aktualisierten Benutzerdaten
-      await setItem("users", JSON.stringify(users));
-
-      console.log("Aufgabe erfolgreich zugewiesen:", user);
-    } else {
-      console.error("Benutzer nicht gefunden.");
-    }
-  } catch (error) {
-    console.error("Fehler beim Zuweisen der Aufgabe:", error);
-    // Fügen Sie hier ggf. eine entsprechende Fehlerbehandlung hinzu.
-  }
+  user.tasks.push({
+    title: selectedTitle,
+    description: selectedDescription,
+    assignedTo: selectedAssignedto,
+    dueDate: selectedDueDate,
+    prio: selectedPrio,
+    category: selectedCategory,
+    subtasks: subtasks,
+  });
+  setItem("users", users);
 }
-
-function getAllUsers() {
-  let allUser = getItem("users");
-  console.log(allUser);
-}
-
-let currentUserId = getItem("currentUserId");
 
 async function getAllContactsFromCurrentUserSorted() {
   let allContactsFromAllUsers = await loadAllContactsFromAllUsers(); //Zugriff auf alle Kontakte aller USER
@@ -75,6 +46,7 @@ async function initAddTask() {
   await includeHTML();
   setActiveLink("navAddTask");
   checkWidth();
+  await loadCurrentUserAlsoUsersAsObject();
   await getAllContactsFromCurrentUserSorted();
   loadContacts();
   footer();
@@ -84,6 +56,24 @@ window.addEventListener("resize", function () {
   checkWidth();
   footer();
 });
+
+async function requiredFields() {
+  inputAbfrage();
+  dueDateRequired();
+  categoryRequired();
+  let description = document.getElementById(`descriptionInput`);
+  selectedDescription = description.value;
+
+  await assignTaskToUser(
+    selectedTitle,
+    selectedDescription,
+    selectedAssignedto,
+    selectedDueDate,
+    selectedPrio,
+    selectedCategory,
+    subtasks
+  );
+}
 
 function checkWidth() {
   let screenWidth =
@@ -109,24 +99,6 @@ function loadContent() {
     mobilVersion = false;
     content.innerHTML = renderAddTaskHTML();
   }
-}
-
-async function requiredFields() {
-  inputAbfrage();
-  dueDateRequired();
-  categoryRequired();
-  let description = document.getElementById(`descriptionInput`);
-  selectedDescription = description.value;
-
-  await assignTaskToUser(
-    selectedTitle,
-    selectedDescription,
-    selectedAssignedto,
-    selectedDueDate,
-    selectedPrio,
-    selectedCategory,
-    subtasks
-  );
 }
 
 function inputAbfrage() {

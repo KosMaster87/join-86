@@ -10,6 +10,7 @@ function renderAddTaskMobileHTML() {
         <input
           id="titelInputContainer"
           type="text"
+          value="test"
           class="titleInputField font"
           placeholder="Enter a title"
           oninput="checkInputs()"
@@ -63,6 +64,7 @@ function renderAddTaskMobileHTML() {
         <input
           id="dueDateInputContainer"
           placeholder="dd/mm/yyyy"
+          value="20/11/2024"
           type="date"
           class="dueDateInputField font"
           onfocus="setMinDate()"
@@ -81,7 +83,7 @@ function renderAddTaskMobileHTML() {
           onclick="openCategorySelect()"
           class="categorySelect"
         >
-          <span id="categoryText">Select tast category</span
+          <span id="categoryText">User Story</span
           ><img
             id="categoryImage"
             src="../assets/img/add_task/arrow_drop_down.svg"
