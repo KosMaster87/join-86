@@ -415,10 +415,13 @@ function checkInputs() {
   var titleValue = document.getElementById("titelInputContainer").value;
   var isCategoryValid = checkCategory();
   var createTaskButton = document.getElementById("createTaskButton");
+  let placeholder=document.getElementById(`placeholder`);
   if (dueDateValue.trim() !== "" && titleValue.trim() !== "" && isCategoryValid) {
     createTaskButton.style.display = "block";
+    placeholder.style.display = "none";
   } else {
     createTaskButton.style.display = "none";
+    placeholder.style.display = "block";
   }
 }
 
