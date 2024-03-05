@@ -5,7 +5,7 @@ let selectedDueDate = "";
 let selectedPrio = "";
 let selectedCategory = "";
 let subtasks = [];
-let statusInfo = "to-do";
+let statusInfo = 'to-do';
 
 let mobilVersion;
 let contacts = [];
@@ -24,12 +24,12 @@ async function assignTaskToUser() {
     category: selectedCategory,
     subtasks: subtasks,
   });
-  await setItem("users", users);
-  includeContentHTML("board");
+  setItem("users", users);
+  includeContentHTML('board');
 }
 
 /**
- *
+ * 
  */
 async function initAddTask() {
   await includeHTML();
@@ -52,6 +52,8 @@ async function getAllContactsFromCurrentUserSorted() {
   contacts = testarray.slice();
   return contacts;
 }
+
+
 
 window.addEventListener("resize", function () {
   checkWidth();
@@ -272,19 +274,6 @@ function openContacts() {
     to.innerHTML = "Select to Contact";
   }
 }
-
-window.addEventListener("mouseup", function (event) {
-  let contactList = document.getElementById("contactList");
-  let contactListIcons = document.getElementById("contactListIcons");
-  let border = document.getElementById(`contactSelectContainer`);
-  let to = document.getElementById(`assignedToContainer`);
-  if (event.target != contactList && event.target.parentNode != contactList) {
-    contactList.style.display = "none";
-    contactListIcons.style.display = "block";
-    border.classList.remove("bordercolor");
-    to.innerHTML = "Select to Contact";
-  }
-});
 
 function assignedtoContactBg(i, name) {
   selectedAssignedto.push(name);
