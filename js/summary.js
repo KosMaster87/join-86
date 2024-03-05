@@ -8,23 +8,25 @@ let upcomingDate = 0;
 let urgentCounter = 0;
 let finaleDate;
 let greetigText;
-/**
- *
- * The current open tasks.
+
+// --------------------------------------------------------
+
+/*
+ * Include header and munu.
+ * Than add navigation style as active.
+ * Set Users array and user as global.
+ * Set the countings from the user.
  */
-function greeting() {
-  uhr = new Date();
-  testzeit = uhr.getHours();
-  if (testzeit < 12) {
-    greetigText = `Good morning`;
-  } else if (testzeit < 18) {
-    greetigText = `Good afternoon`;
-  } else if (testzeit < 24) {
-    greetigText = `Good evening`;
-  }
+async function initSummary() {
+  await includeHTML();
+  setActiveLink("navSummary");
+  await loadCurrentUserAlsoUsersAsObject();
+  await howManyTasks();
 }
 
-function howManyTasks() {
+// --------------------------------------------------------
+
+async function howManyTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
     if (user.tasks[i].status === "to-do") {
       todos++;
@@ -36,7 +38,7 @@ function howManyTasks() {
       awaits++;
     }
   }
-  setzeHeutigesDatum();
+  await setzeHeutigesDatum();
 }
 
 async function setzeHeutigesDatum() {
@@ -45,12 +47,12 @@ async function setzeHeutigesDatum() {
   const monat = (heute.getMonth() + 1).toString().padStart(2, "0");
   const tag = heute.getDate().toString().padStart(2, "0");
   heutigesDatum = `${jahr}-${monat}-${tag}`;
-  testeDatum();
+  await testeDatum();
   setSummaryLetter();
   greeting();
 }
 
-function testeDatum() {
+async function testeDatum() {
   let actuelldate = heutigesDatum;
   for (let i = 0; i < user.tasks.length; i++) {
     date = user.tasks[i].dueDate;
@@ -134,48 +136,23 @@ function setSummaryLetter() {
   greetingTwoContainer.innerHTM = greetigText;
 
   greetingNameContainer = document.getElementById(`greetingName`);
-  greetingNametwoContainer = document.getElementById(`greetingUserSummaryNameId`);
+  greetingNametwoContainer = document.getElementById(
+    `greetingUserSummaryNameId`
+  );
   greetingNametwoContainer.innerHTML = user.name;
   greetingNameContainer.innerHTML = user.name;
 }
 
-/**
- * Gets the current tasks.
- */
-async function initSummeryCountings() {
-  howManyTasks();
-}
-
-/**
- * Get the current urgent task and next nearest date.
- */
-function getUrgentTask() {
-  let summeryUpcomingTasks = document.getElementById("summeryUpcomingTasks");
-}
-
-/**
- * Status function. From the three importances to choose from.
- * The parameter Status: Open is first declared in the dummy and is itself automatically set with a switch.
- * @param {IDs of each reactangle} eleId
- * @param {The status when setting the tasks} status
- */
-function getTodoStatusCounting() {
-  let summeryTodoTodos = document.getElementById("summeryTodoTodos");
-}
-
-// --------------------------------------------------------
-
-/*
- * Include header and munu.
- * Than add navigation style as active.
- * Set Users array and user as global.
- * Set the countings from the user.
- */
-async function initSummary() {
-  await includeHTML();
-  setActiveLink("navSummary");
-  await loadCurrentUserAlsoUsersAsObject();
-  initSummeryCountings();
+function greeting() {
+  uhr = new Date();
+  testzeit = uhr.getHours();
+  if (testzeit < 12) {
+    greetigText = `Good morning`;
+  } else if (testzeit < 18) {
+    greetigText = `Good afternoon`;
+  } else if (testzeit < 24) {
+    greetigText = `Good evening`;
+  }
 }
 
 // --------------------------------------------------------
