@@ -10,7 +10,7 @@ let mobilVersion;
 let contacts = [];
 
 /**
- * This function load the currentuser in the backend
+ * This function load the currentuser in the backend.
  */
 async function assignTaskToUser() {
   user.tasks.push({
@@ -26,6 +26,7 @@ async function assignTaskToUser() {
   setItem("users", users);
   includeContentHTML("board");
 }
+
 /**
  * This function is the first function when open the page
  */
@@ -38,6 +39,7 @@ async function initAddTask() {
   loadContacts();
   footer();
 }
+
 /**
  * This function load the contactnames from the user in an array
  *
@@ -50,10 +52,13 @@ async function getAllContactsFromCurrentUserSorted() {
     allContactsFromAllUsers,
     userId
   );
-  let testarray = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser);
+  let testarray = await sortAllContactsFromCurrentUserAlphabetical(
+    allContactsFromCurrentUser
+  );
   contacts = testarray.slice();
   return contacts;
 }
+
 /**
  * This function start check when width changed
  */
@@ -61,6 +66,7 @@ window.addEventListener("resize", function () {
   checkWidth();
   footer();
 });
+
 /**
  * This function checked the required field
  */
@@ -72,12 +78,15 @@ async function requiredFields() {
   selectedDescription = description.value;
   await assignTaskToUser();
 }
+
 /**
  * This function check the witdh for over 1219 or lower
  */
 function checkWidth() {
   let screenWidth =
-    window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
   if (screenWidth <= 1219) {
     mobilVersion = false;
   } else {
@@ -85,12 +94,15 @@ function checkWidth() {
   }
   loadContent();
 }
+
 /**
  * This function load html for the width
  */
 function loadContent() {
   let screenWidth =
-    window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
   let content = document.getElementById(`taskMainContainer`);
   content.innerHTML = "";
   if (screenWidth <= 1219 && mobilVersion == false) {
@@ -102,6 +114,7 @@ function loadContent() {
     content.innerHTML = renderAddTaskHTML();
   }
 }
+
 /**
  * This function checked the required of the title container
  */
@@ -118,6 +131,7 @@ function inputAbfrage() {
     inputRequired.innerHTML = "";
   }
 }
+
 /**
  * This function checked the required of the dueDate container
  */
@@ -134,6 +148,7 @@ function dueDateRequired() {
     inputfield.classList.remove("requiredBorder");
   }
 }
+
 /**
  * This function check the right input of the category container
  */
@@ -142,6 +157,7 @@ function checkCategory() {
   var content = inputfield.textContent || inputfield.innerText;
   return content.trim() === "Technical Task" || content.trim() === "User Story";
 }
+
 /**
  * This function checked the required of the category container
  */
@@ -159,6 +175,7 @@ function categoryRequired() {
     inputRequired.innerHTML = "This field is required";
   }
 }
+
 /**
  * This function edit the color of the clicked prio container
  *
@@ -169,6 +186,7 @@ function whatsPrio(clickedContainerId) {
   removePrio();
   changePrioColor(clickedContainerId);
 }
+
 /**
  * This function remove the background color of prio container
  */
@@ -180,6 +198,7 @@ function removePrio() {
   prioMediumContainer.classList.remove("prioMedium");
   prioUrgentContainer.classList.remove("prioUrgent");
 }
+
 /**
  * This function remove the images to images non used prio
  */
@@ -191,6 +210,7 @@ function removeWhiteImg() {
   imgMedium.src = "../assets/img/add_task/line_orange.svg";
   imgLow.src = "../assets/img/add_task/arrow_bottom_green.svg";
 }
+
 /**
  * This function change the color of the clicked prio container
  *
@@ -209,6 +229,7 @@ function changePrioColor(clickedContainerId) {
     changePrioColorUrgent(imgUrgent);
   }
 }
+
 /**
  * This function change the background color of the low container
  *
@@ -219,6 +240,7 @@ function changePrioColorLow(imgLow) {
   selectedPrio = "Low";
   imgLow.src = "../assets/img/add_task/arrow_bottom_white.svg";
 }
+
 /**
  * This function change the background color of the medium container
  *
@@ -229,6 +251,7 @@ function changePrioColorMedium(imgMedium) {
   selectedPrio = "Medium";
   imgMedium.src = "../assets/img/add_task/line_white.svg";
 }
+
 /**
  * This function change the background color of the urgent container
  *
@@ -239,6 +262,7 @@ function changePrioColorUrgent(imgUrgent) {
   selectedPrio = "Urgent";
   imgUrgent.src = "../assets/img/add_task/arrow_top_white.svg";
 }
+
 /**
  * This function is for that tha task cant use a date in the past
  */
@@ -250,6 +274,7 @@ function setMinDate() {
   today = yyyy + "-" + mm + "-" + dd;
   document.getElementById("dueDateInputContainer").min = today;
 }
+
 /**
  * This function open the category
  */
@@ -260,6 +285,7 @@ function openCategorySelect() {
   border.classList.add("bordercolor");
   categoryImageUp();
 }
+
 /**
  * This function change the image when the category menu opened
  */
@@ -269,6 +295,7 @@ function categoryImageUp() {
   image.src = "../assets/img/add_task/arrow_drop_up.svg";
   content.onclick = closeCategoryMenu;
 }
+
 /**
  * This function change the name from the choosed category to the required field
  *
@@ -283,6 +310,7 @@ function selectCategory(selectedOption) {
   closeCategoryMenu();
   checkInputs();
 }
+
 /**
  * This function close the category menu
  */
@@ -293,6 +321,7 @@ function closeCategoryMenu() {
   border.classList.remove("bordercolor");
   categoryImageDown();
 }
+
 /**
  * this function chance the image when the category choose menu and switch the onclick for close the menu
  */
@@ -302,6 +331,7 @@ function categoryImageDown() {
   image.src = "../assets/img/add_task/arrow_drop_down.svg";
   content.onclick = openCategorySelect;
 }
+
 /**
  * This function open the concat menu
  */
@@ -310,7 +340,10 @@ function openContacts() {
   let contactListIcons = document.getElementById("contactListIcons");
   let border = document.getElementById(`contactSelectContainer`);
   let to = document.getElementById(`assignedToContainer`);
-  if (contactList.style.display === "none" || contactList.style.display === "") {
+  if (
+    contactList.style.display === "none" ||
+    contactList.style.display === ""
+  ) {
     contactList.style.display = "block";
     contactListIcons.style.display = "none";
     border.classList.add("bordercolor");
@@ -322,6 +355,7 @@ function openContacts() {
     to.innerHTML = "Select to Contact";
   }
 }
+
 /**
  * This eventlistener close the contactwindow when click with the mouse outside of this window
  */
@@ -337,6 +371,7 @@ window.addEventListener("mouseup", function (event) {
     to.innerHTML = "Select to Contact";
   }
 });
+
 /**
  * This function changed the background-color of the selected contact and creat a icon for the selecdet icon to the icon box
  *
@@ -357,6 +392,7 @@ function assignedtoContactBg(i, name) {
     removeassignedtoContactBg(i);
   };
 }
+
 /**
  * This function remove the backgroundcolor and checked img of selected contacts
  *
@@ -373,6 +409,7 @@ function removeassignedtoContactBg(i) {
     assignedtoContactBg(i);
   };
 }
+
 /**
  * This function change the menufield of the inputfield
  */
@@ -382,6 +419,7 @@ function changemenu() {
   let border = document.getElementById(`subTaskInputcontainer`);
   border.classList.add("bordercolor");
 }
+
 /**
  * This function creat a subtask
  */
@@ -391,6 +429,7 @@ function addSubtask() {
   renderSubtasks();
   clearSubtaskInputfield();
 }
+
 /**
  * This function filled the created subtask Container
  */
@@ -401,6 +440,7 @@ function renderSubtasks() {
     subtasksList.innerHTML += renderSubtasksReturn(subtasks, i);
   }
 }
+
 /**
  * This function change the subtask from div to inputfield
  *
@@ -410,6 +450,7 @@ function editSubtask(i) {
   let content = document.getElementById("subtask" + i);
   content.innerHTML = editSubtaskReturn(subtasks, i);
 }
+
 /**
  * This function finish the edit of a creat subtask
  *
@@ -424,6 +465,7 @@ function editSubtaskDone(i) {
     deleteSubtask(i);
   }
 }
+
 /**
  * This function delete the current subtask
  *
@@ -433,6 +475,7 @@ function deleteSubtask(i) {
   subtasks.splice(i, 1);
   renderSubtasks();
 }
+
 /**
  * This function clear the value from the subtask input field
  */
@@ -445,6 +488,7 @@ function clearSubtaskInputfield() {
   let border = document.getElementById(`subTaskInputcontainer`);
   border.classList.remove("bordercolor");
 }
+
 /**
  * This function load all contacts from current user
  */
@@ -463,6 +507,7 @@ function loadContacts() {
     mainDiv.style.overflowY = "scroll";
   }
 }
+
 /**
  * This function checked if the required field have a value
  */
@@ -471,12 +516,17 @@ function checkInputs() {
   var titleValue = document.getElementById("titelInputContainer").value;
   var isCategoryValid = checkCategory();
   var createTaskButton = document.getElementById("createTaskButton");
-  if (dueDateValue.trim() !== "" && titleValue.trim() !== "" && isCategoryValid) {
+  if (
+    dueDateValue.trim() !== "" &&
+    titleValue.trim() !== "" &&
+    isCategoryValid
+  ) {
     createTaskButton.style.display = "block";
   } else {
     createTaskButton.style.display = "none";
   }
 }
+
 /**
  * This function is used to creat the footer
  */
