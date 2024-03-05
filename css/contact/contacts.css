@@ -42,13 +42,13 @@ input[type="text"],[type="email"],[type="tel"] {
  /* container contacts incl. sort row */
  #containerListContacts {
     margin: 0 14px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    display: inline;
+    /*flex-direction: column */
+    /*justify-content: center; */
+    /* align-items: flex-start; */
     padding: 24px 24px;
     position: relative;
-    top: -55px;
+    top: -60px;
 
 }
 
