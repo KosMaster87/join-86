@@ -51,9 +51,7 @@ async function getAllContactsFromCurrentUserSorted() {
     allContactsFromAllUsers,
     userId
   );
-  let testarray = await sortAllContactsFromCurrentUserAlphabetical(
-    allContactsFromCurrentUser
-  );
+  let testarray = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser);
   contacts = testarray.slice();
   return contacts;
 }
@@ -77,7 +75,7 @@ async function requiredFields() {
   selectedDescription = description.value;
   if (selectedCategory !== "" && selectedDueDate !== "" && selectedTitle !== "") {
     await assignTaskToUser();
-}
+  }
 }
 
 /**
@@ -85,9 +83,7 @@ async function requiredFields() {
  */
 function checkWidth() {
   let screenWidth =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
+    window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
   if (screenWidth <= 1219) {
     mobilVersion = false;
   } else {
@@ -101,9 +97,7 @@ function checkWidth() {
  */
 function loadContent() {
   let screenWidth =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
+    window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
   let content = document.getElementById(`taskMainContainer`);
   content.innerHTML = "";
   if (screenWidth <= 1219 && mobilVersion == false) {
@@ -421,11 +415,7 @@ function checkInputs() {
   var titleValue = document.getElementById("titelInputContainer").value;
   var isCategoryValid = checkCategory();
   var createTaskButton = document.getElementById("createTaskButton");
-  if (
-    dueDateValue.trim() !== "" &&
-    titleValue.trim() !== "" &&
-    isCategoryValid
-  ) {
+  if (dueDateValue.trim() !== "" && titleValue.trim() !== "" && isCategoryValid) {
     createTaskButton.style.display = "block";
   } else {
     createTaskButton.style.display = "none";

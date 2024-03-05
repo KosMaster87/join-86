@@ -91,10 +91,15 @@ function filterNamesforAssignedTo() {
     }
   }
 }
+
+/**
+ * This function make a blue Border around the assigned to inputfield
+ */
 function onclickInputBorder(){
   let border = document.getElementById(`contactSelectContainer`);
   border.classList.add("bordercolor");
 }
+
 /**
  * This function changed the background-color of the selected contact and creat a icon for the selecdet icon to the icon box
  *

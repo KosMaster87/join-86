@@ -349,8 +349,8 @@ function footerReturn() {
     </footer>`;
 }
 
-function filterNamesforAssignedToReturn(i){
-  return`
+function filterNamesforAssignedToReturn(i) {
+  return `
   <div id="assignedContactContainer${i}" onclick="assignedtoContactBg(${i}, '${contacts[i].name}')" class="assignedContactContainer">
       <div class="assignedContactLeftSide">
           <div id="ContactSignatureIcon${i}" class="assignedContactLeftSideIcon">${contacts[i].signature}</div>
@@ -358,5 +358,5 @@ function filterNamesforAssignedToReturn(i){
       </div>
       <img id="assignedContactImage${i}" src="../assets/img/add_task/task_box.svg"/>
   </div>
-`
+`;
 }
