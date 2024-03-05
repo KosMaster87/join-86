@@ -36,7 +36,6 @@ async function initAddTask() {
   checkWidth();
   await loadCurrentUserAlsoUsersAsObject();
   await getAllContactsFromCurrentUserSorted();
-  loadContacts();
   footer();
 }
 
@@ -76,7 +75,9 @@ async function requiredFields() {
   categoryRequired();
   let description = document.getElementById(`descriptionInput`);
   selectedDescription = description.value;
-  await assignTaskToUser();
+  if (selectedCategory !== "" && selectedDueDate !== "" && selectedTitle !== "") {
+    await assignTaskToUser();
+}
 }
 
 /**
@@ -333,84 +334,6 @@ function categoryImageDown() {
 }
 
 /**
- * This function open the contact menu
- */
-function openContacts() {
-  let contactList = document.getElementById("contactList");
-  let contactListIcons = document.getElementById("contactListIcons");
-  let border = document.getElementById(`contactSelectContainer`);
-  let to = document.getElementById(`assignedToContainer`);
-  if (
-    contactList.style.display === "none" ||
-    contactList.style.display === ""
-  ) {
-    contactList.style.display = "block";
-    contactListIcons.style.display = "none";
-    border.classList.add("bordercolor");
-    to.innerHTML = "An";
-  } else {
-    contactList.style.display = "none";
-    contactListIcons.style.display = "block";
-    border.classList.remove("bordercolor");
-    to.innerHTML = "Select to Contact";
-  }
-}
-
-/**
- * This eventlistener close the contactwindow when click with the mouse outside of this window
- */
-window.addEventListener("mouseup", function (event) {
-  let contactList = document.getElementById("contactList");
-  let contactListIcons = document.getElementById("contactListIcons");
-  let border = document.getElementById(`contactSelectContainer`);
-  let to = document.getElementById(`assignedToContainer`);
-  if (event.target != contactList && event.target.parentNode != contactList) {
-    contactList.style.display = "none";
-    contactListIcons.style.display = "block";
-    border.classList.remove("bordercolor");
-    to.innerHTML = "Select to Contact";
-  }
-});
-
-/**
- * This function changed the background-color of the selected contact and creat a icon for the selecdet icon to the icon box
- *
- * @param {*} i - this is the number of the seleced contact
- * @param {*} name - This is the name of the contact
- */
-function assignedtoContactBg(i, name) {
-  selectedAssignedto.push(name);
-  let container = document.getElementById(`assignedContactContainer${i}`);
-  let contactListIcons = document.getElementById("contactListIconsLine");
-  container.classList.add("assignedContainerBlack");
-  let image = document.getElementById(`assignedContactImage${i}`);
-  image.src = "../assets/img/add_task/task_box_check.svg";
-  let signature = document.getElementById(`ContactSignatureIcon${i}`).innerHTML;
-  let userColor = contacts[i].userColor;
-  contactListIcons.innerHTML += `<div id="contactIconNumber${i}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
-  container.onclick = function () {
-    removeassignedtoContactBg(i);
-  };
-}
-
-/**
- * This function remove the backgroundcolor and checked img of selected contacts
- *
- * @param {int} i - This is the number of the contact
- */
-function removeassignedtoContactBg(i) {
-  let container = document.getElementById(`assignedContactContainer${i}`);
-  container.classList.remove("assignedContainerBlack");
-  let image = document.getElementById(`assignedContactImage${i}`);
-  image.src = "../assets/img/add_task/task_box.svg";
-  let iconId = document.getElementById(`contactIconNumber${i}`);
-  iconId.remove();
-  container.onclick = function () {
-    assignedtoContactBg(i);
-  };
-}
-
-/**
  * This function change the menufield of the subtaks inputfield
  */
 function changemenu() {
@@ -487,25 +410,6 @@ function clearSubtaskInputfield() {
   <img src="../assets/img/add_task/task_add.svg" />`;
   let border = document.getElementById(`subTaskInputcontainer`);
   border.classList.remove("bordercolor");
-}
-
-/**
- * This function load all contacts from current user
- */
-function loadContacts() {
-  let mainDiv = document.getElementById(`contactList`);
-  let totalHeight = Math.min(contacts.length * 52, 260);
-  mainDiv.style.height = `${totalHeight}px`;
-  for (let i = 0; i < Math.min(contacts.length); i++) {
-    contactSignature = contacts[i].signature;
-    contactName = contacts[i].name;
-    mainDiv.innerHTML += loadContactsReturn(i);
-    iconid = document.getElementById(`ContactSignatureIcon${i}`);
-    iconid.style.backgroundColor = contacts[i].userColor;
-  }
-  if (contacts.length > 5) {
-    mainDiv.style.overflowY = "scroll";
-  }
 }
 
 /**

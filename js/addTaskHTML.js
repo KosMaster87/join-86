@@ -83,6 +83,7 @@ function renderAddTaskMobileHTML() {
         >
           <span id="categoryText">Select task category</span
           ><img
+          class="arrow"
             id="categoryImage"
             src="../assets/img/add_task/arrow_drop_down.svg"
           />
@@ -91,19 +92,21 @@ function renderAddTaskMobileHTML() {
         <p id="categoryRequiredContainer" class="fildIsRequiredText"></p>
       </div>
       <div id="taskAssignedContainer">
-        <p class="taskHeadline">Assigned to</p>
-        <div id="contactSelectContainer" onclick="openContacts()" class="categorySelect">
-          <span id="assignedToContainer">Select to Contact</span><img
-            src="../assets/img/add_task/arrow_drop_down.svg"
-          />
-        </div>
-        <div id="contactList">
-        </div>
-        <div id="contactListIcons">
-          <div id="contactListIconsLine"></div>
-        </div>
-        <p class="fildIsRequiredText"></p>
-        </div>
+    <p class="taskHeadline">Assigned to</p>
+    <div
+      id="contactSelectContainer"
+      class="categorySelect"
+    >
+    <input class="assignToInput font" type="text" id="assignedToContainer" onclick="onclickInputBorder()" onkeyup="filterNamesforAssignedTo()" placeholder="Add a Contact">
+      <img id="openerAssignedTo" onclick="loadContacts()" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
+    </div>
+    <div id="contactList">
+    </div>
+    <div id="contactListIcons">
+      <div id="contactListIconsLine"></div>
+    </div>
+    <p id="contacRequired" class="fildIsRequiredText"></p>
+  </div>
 
       <div id="taskSubtaskContainer">
         <p class="taskHeadline">Subtasks</p>
@@ -117,7 +120,7 @@ function renderAddTaskMobileHTML() {
             onkeyup="changemenu()"
           />
           <div class="subTaskInputfieldMenuClass" id="subTaskInputfieldMenu">
-            <img
+            <img class="arrow"
               src="../assets/img/add_task/task_add.svg"
             />
           </div>
@@ -163,11 +166,10 @@ function renderAddTaskHTML() {
     <p class="taskHeadline">Assigned to</p>
     <div
       id="contactSelectContainer"
-      onclick="openContacts()"
       class="categorySelect"
     >
-      <span id="assignedToContainer">Select to Contact</span
-      ><img class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
+    <input class="assignToInput font" type="text" id="assignedToContainer" onclick="onclickInputBorder()" onkeyup="filterNamesforAssignedTo()" placeholder="Add a Contact">
+      <img id="openerAssignedTo" onclick="loadContacts()" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
     </div>
     <div id="contactList">
     </div>
@@ -345,4 +347,16 @@ function footerReturn() {
       Create Task <img src="../assets/img/add_task/task_check_white.svg" />
     </div>
     </footer>`;
+}
+
+function filterNamesforAssignedToReturn(i){
+  return`
+  <div id="assignedContactContainer${i}" onclick="assignedtoContactBg(${i}, '${contacts[i].name}')" class="assignedContactContainer">
+      <div class="assignedContactLeftSide">
+          <div id="ContactSignatureIcon${i}" class="assignedContactLeftSideIcon">${contacts[i].signature}</div>
+          <p class="assignedContactNameClass">${contacts[i].name}</p>
+      </div>
+      <img id="assignedContactImage${i}" src="../assets/img/add_task/task_box.svg"/>
+  </div>
+`
 }

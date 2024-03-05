@@ -249,6 +249,15 @@ span {
   margin: 0;
 }
 
+.assignToInput {
+  cursor: pointer;
+  border: unset;
+  width: 100%;
+}
+.assignToInput:focus {
+  outline: none;
+}
+
 /* ---------------------------------------- */
 
 #taskSubtaskContainer {
@@ -273,7 +282,7 @@ span {
 .subtaskInputfield {
   outline: none;
   border: none;
-  width: 85%;
+  width: 100%;
 }
 
 .subTaskAddContainer {
@@ -365,6 +374,12 @@ span {
   padding: 16px;
   border-radius: 10px;
   gap: 4px;
+}
+.createTask:hover {
+  cursor: pointer;
+  background-color: var(--lightBlue);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: 0.1s ease-in-out
 }
 
 /* ---------------------------------------- */
