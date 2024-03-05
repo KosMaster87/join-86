@@ -40,7 +40,7 @@ async function initAddTask() {
 }
 /**
  * This function load the contactnames from the user in an array
- * 
+ *
  * @returns - return the contact in the array
  */
 async function getAllContactsFromCurrentUserSorted() {
@@ -161,7 +161,7 @@ function categoryRequired() {
 }
 /**
  * This function edit the color of the clicked prio container
- * 
+ *
  * @param {string} clickedContainerId - This is the number von the container that was clicked
  */
 function whatsPrio(clickedContainerId) {
@@ -193,7 +193,7 @@ function removeWhiteImg() {
 }
 /**
  * This function change the color of the clicked prio container
- * 
+ *
  * @param {string} clickedContainerId - is the id from the clicken container
  */
 
@@ -211,8 +211,8 @@ function changePrioColor(clickedContainerId) {
 }
 /**
  * This function change the background color of the low container
- * 
- * @param {string} imgLow - - Is the id from the image 
+ *
+ * @param {string} imgLow - - Is the id from the image
  */
 function changePrioColorLow(imgLow) {
   prioLowContainer.classList.add("prioLow");
@@ -221,8 +221,8 @@ function changePrioColorLow(imgLow) {
 }
 /**
  * This function change the background color of the medium container
- * 
- * @param {string} imgMedium - Is the id from the image 
+ *
+ * @param {string} imgMedium - Is the id from the image
  */
 function changePrioColorMedium(imgMedium) {
   prioMediumContainer.classList.add("prioMedium");
@@ -231,8 +231,8 @@ function changePrioColorMedium(imgMedium) {
 }
 /**
  * This function change the background color of the urgent container
- * 
- * @param string imgUrgent - Is the id from the image 
+ *
+ * @param string imgUrgent - Is the id from the image
  */
 function changePrioColorUrgent(imgUrgent) {
   prioUrgentContainer.classList.add("prioUrgent");
