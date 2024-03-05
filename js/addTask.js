@@ -10,7 +10,7 @@ let mobilVersion;
 let contacts = [];
 
 /**
- * This function load the currentuser in the backend.
+ * This function load task in the user backend.
  */
 async function assignTaskToUser() {
   user.tasks.push({
@@ -23,7 +23,7 @@ async function assignTaskToUser() {
     category: selectedCategory,
     subtasks: subtasks,
   });
-  setItem("users", users);
+  await setItem("users", users);
   includeContentHTML("board");
 }
 
@@ -96,7 +96,7 @@ function checkWidth() {
 }
 
 /**
- * This function load html for the width
+ * This function load html for the desktop inner width
  */
 function loadContent() {
   let screenWidth =
@@ -179,7 +179,7 @@ function categoryRequired() {
 /**
  * This function edit the color of the clicked prio container
  *
- * @param {string} clickedContainerId - This is the number von the container that was clicked
+ * @param {string} clickedContainerId - This is the number of the container that was clicked
  */
 function whatsPrio(clickedContainerId) {
   removeWhiteImg();
@@ -264,7 +264,7 @@ function changePrioColorUrgent(imgUrgent) {
 }
 
 /**
- * This function is for that tha task cant use a date in the past
+ * This function is for that the task cant use a date in the past
  */
 function setMinDate() {
   let today = new Date();
@@ -333,7 +333,7 @@ function categoryImageDown() {
 }
 
 /**
- * This function open the concat menu
+ * This function open the contact menu
  */
 function openContacts() {
   let contactList = document.getElementById("contactList");
@@ -411,7 +411,7 @@ function removeassignedtoContactBg(i) {
 }
 
 /**
- * This function change the menufield of the inputfield
+ * This function change the menufield of the subtaks inputfield
  */
 function changemenu() {
   container = document.getElementById(`subTaskInputfieldMenu`);
@@ -510,6 +510,7 @@ function loadContacts() {
 
 /**
  * This function checked if the required field have a value
+ * after this the create task butten is showed
  */
 function checkInputs() {
   var dueDateValue = document.getElementById("dueDateInputContainer").value;
