@@ -24,7 +24,7 @@ async function assignTaskToUser() {
     category: selectedCategory,
     subtasks: subtasks,
   });
-  setItem("users", users);
+  await setItem("users", users);
   includeContentHTML('board');
 }
 
