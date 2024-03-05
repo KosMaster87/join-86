@@ -3,7 +3,7 @@ let dones = 0;
 let tasksInBoard = 0;
 let progresses = 0;
 let awaits = 0;
-let heutigesDatum;
+let heutigesDatum = 0;
 let upcomingDate = 0;
 let urgentCounter = 0;
 let finaleDate;
@@ -21,8 +21,7 @@ async function initSummary() {
   await includeHTML();
   setActiveLink("navSummary");
   await loadCurrentUserAlsoUsersAsObject();
-  await setzeHeutigesDatum();
-  howManyTasks();
+  await howManyTasks();
 }
 
 // --------------------------------------------------------
@@ -39,10 +38,7 @@ async function howManyTasks() {
       awaits++;
     }
   }
-
-  await testeDatum();
-  setSummaryLetter();
-  greeting();
+  await setzeHeutigesDatum();
 }
 
 async function setzeHeutigesDatum() {
@@ -51,6 +47,9 @@ async function setzeHeutigesDatum() {
   const monat = (heute.getMonth() + 1).toString().padStart(2, "0");
   const tag = heute.getDate().toString().padStart(2, "0");
   heutigesDatum = `${jahr}-${monat}-${tag}`;
+  await testeDatum();
+  setSummaryLetter();
+  greeting();
 }
 
 async function testeDatum() {
