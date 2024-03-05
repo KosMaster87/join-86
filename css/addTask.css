@@ -218,6 +218,9 @@ span {
   background-color: var(--white);
 }
 
+.assignedContactContainer:hover{
+  background-color: var(--lighterGray);
+}
 .assignedContainerBlack {
   background-color: var(--black) !important;
   color: var(--white) !important;
@@ -305,6 +308,11 @@ span {
   gap: 4px;
 }
 
+.subtaskClass{
+padding: 4px 16px 4px 16px;
+border-radius: 10px;
+}
+
 .subtaskEdit {
   display: flex;
   justify-content: space-between;
@@ -378,6 +386,11 @@ span {
 
 .requiredBorder {
   border: solid 1px var(--wrongInputBorder);
+}
+.arrow:hover{
+  border-radius: 50%;
+  background-color: #eee;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 721px) {

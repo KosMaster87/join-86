@@ -167,7 +167,7 @@ function renderAddTaskHTML() {
       class="categorySelect"
     >
       <span id="assignedToContainer">Select to Contact</span
-      ><img src="../assets/img/add_task/arrow_drop_down.svg" />
+      ><img class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
     </div>
     <div id="contactList">
     </div>
@@ -237,6 +237,7 @@ function renderAddTaskHTML() {
     >
       <span  id="categoryText">Select task category</span
       ><img
+      class="arrow"
         id="categoryImage"
         src="../assets/img/add_task/arrow_drop_down.svg"
       />
@@ -257,7 +258,7 @@ function renderAddTaskHTML() {
         onkeyup="changemenu()"
       />
       <div class="subTaskInputfieldMenuClass" id="subTaskInputfieldMenu">
-        <img src="../assets/img/add_task/task_add.svg" />
+        <img class="arrow" src="../assets/img/add_task/task_add.svg" />
       </div>
     </div>
     <div class="subTaskAddContainer" id="subTasksContainer"></div>
@@ -287,7 +288,7 @@ function changemenuReturn() {
 }
 
 function renderSubtasksReturn(subtasks, i) {
-  return `<div id="subtask${i}" ondblclick="editSubtask(${i})">
+  return `<div id="subtask${i}" class="subtaskClass" ondblclick="editSubtask(${i})">
     <div class="addedSubtask">
       <div class="subTastText">
         <p>&bull;</p>
