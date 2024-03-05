@@ -53,7 +53,7 @@ async function setzeHeutigesDatum() {
 }
 
 async function testeDatum() {
-  let actuelldate = heutigesDatum;
+  let date = heutigesDatum;
   for (let i = 0; i < user.tasks.length; i++) {
     date = user.tasks[i].dueDate;
     if (user.tasks[0].dueDate < date) {
