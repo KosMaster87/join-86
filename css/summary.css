@@ -300,6 +300,7 @@
   .greetingUserSummary {
     display: none;
   }
+  
   .greetingBoxShow {
     display: block;
     margin-top: 7rem;
