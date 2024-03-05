@@ -6,12 +6,11 @@ let selectedPrio = "";
 let selectedCategory = "";
 let subtasks = [];
 let statusInfo = "to-do";
-
 let mobilVersion;
 let contacts = [];
 
 /**
- * Create a user task and save it to remote storage.
+ * This function load the currentuser in the backend
  */
 async function assignTaskToUser() {
   user.tasks.push({
@@ -27,9 +26,8 @@ async function assignTaskToUser() {
   setItem("users", users);
   includeContentHTML("board");
 }
-
 /**
- *
+ * This function is the first function when open the page
  */
 async function initAddTask() {
   await includeHTML();
@@ -40,9 +38,13 @@ async function initAddTask() {
   loadContacts();
   footer();
 }
-
+/**
+ * This function load the contactnames from the user in an array
+ * 
+ * @returns - return the contact in the array
+ */
 async function getAllContactsFromCurrentUserSorted() {
-  let allContactsFromAllUsers = await loadAllContactsFromAllUsers(); //Zugriff auf alle Kontakte aller USER
+  let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
   let userId = await getGlobalUserId();
   let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(
     allContactsFromAllUsers,
@@ -52,12 +54,16 @@ async function getAllContactsFromCurrentUserSorted() {
   contacts = testarray.slice();
   return contacts;
 }
-
+/**
+ * This function start check when width changed
+ */
 window.addEventListener("resize", function () {
   checkWidth();
   footer();
 });
-
+/**
+ * This function checked the required field
+ */
 async function requiredFields() {
   inputAbfrage();
   dueDateRequired();
@@ -66,7 +72,9 @@ async function requiredFields() {
   selectedDescription = description.value;
   await assignTaskToUser();
 }
-
+/**
+ * This function check the witdh for over 1219 or lower
+ */
 function checkWidth() {
   let screenWidth =
     window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
@@ -77,7 +85,9 @@ function checkWidth() {
   }
   loadContent();
 }
-
+/**
+ * This function load html for the width
+ */
 function loadContent() {
   let screenWidth =
     window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
@@ -92,7 +102,9 @@ function loadContent() {
     content.innerHTML = renderAddTaskHTML();
   }
 }
-
+/**
+ * This function checked the required of the title container
+ */
 function inputAbfrage() {
   let inputfield = document.getElementById("titelInputContainer");
   let inputRequired = document.getElementById("inputRequiredContainer");
@@ -106,7 +118,9 @@ function inputAbfrage() {
     inputRequired.innerHTML = "";
   }
 }
-
+/**
+ * This function checked the required of the dueDate container
+ */
 function dueDateRequired() {
   inputfield = document.getElementById(`dueDateInputContainer`);
   inputRequired = document.getElementById(`dueDateRequiredContainer`);
@@ -120,13 +134,17 @@ function dueDateRequired() {
     inputfield.classList.remove("requiredBorder");
   }
 }
-
+/**
+ * This function check the right input of the category container
+ */
 function checkCategory() {
   var inputfield = document.getElementById("categoryText");
   var content = inputfield.textContent || inputfield.innerText;
   return content.trim() === "Technical Task" || content.trim() === "User Story";
 }
-
+/**
+ * This function checked the required of the category container
+ */
 function categoryRequired() {
   border = document.getElementById(`categorySelectContainer`);
   inputfield = document.getElementById(`categoryText`);
@@ -141,14 +159,19 @@ function categoryRequired() {
     inputRequired.innerHTML = "This field is required";
   }
 }
-
-function whatsPrio(clickedContainerId, SelectedPrio) {
+/**
+ * This function edit the color of the clicked prio container
+ * 
+ * @param {string} clickedContainerId - This is the number von the container that was clicked
+ */
+function whatsPrio(clickedContainerId) {
   removeWhiteImg();
   removePrio();
   changePrioColor(clickedContainerId);
-  prio = SelectedPrio;
 }
-
+/**
+ * This function remove the background color of prio container
+ */
 function removePrio() {
   let prioLowContainer = document.getElementById("prioLowContainer");
   let prioMediumContainer = document.getElementById("prioMediumContainer");
@@ -157,7 +180,9 @@ function removePrio() {
   prioMediumContainer.classList.remove("prioMedium");
   prioUrgentContainer.classList.remove("prioUrgent");
 }
-
+/**
+ * This function remove the images to images non used prio
+ */
 function removeWhiteImg() {
   let imgUrgent = prioUrgentContainer.querySelector("img");
   let imgMedium = prioMediumContainer.querySelector("img");
@@ -166,6 +191,11 @@ function removeWhiteImg() {
   imgMedium.src = "../assets/img/add_task/line_orange.svg";
   imgLow.src = "../assets/img/add_task/arrow_bottom_green.svg";
 }
+/**
+ * This function change the color of the clicked prio container
+ * 
+ * @param {string} clickedContainerId - is the id from the clicken container
+ */
 
 function changePrioColor(clickedContainerId) {
   let imgUrgent = prioUrgentContainer.querySelector("img");
@@ -179,25 +209,39 @@ function changePrioColor(clickedContainerId) {
     changePrioColorUrgent(imgUrgent);
   }
 }
-
+/**
+ * This function change the background color of the low container
+ * 
+ * @param {string} imgLow - - Is the id from the image 
+ */
 function changePrioColorLow(imgLow) {
   prioLowContainer.classList.add("prioLow");
   selectedPrio = "Low";
   imgLow.src = "../assets/img/add_task/arrow_bottom_white.svg";
 }
-
+/**
+ * This function change the background color of the medium container
+ * 
+ * @param {string} imgMedium - Is the id from the image 
+ */
 function changePrioColorMedium(imgMedium) {
   prioMediumContainer.classList.add("prioMedium");
   selectedPrio = "Medium";
   imgMedium.src = "../assets/img/add_task/line_white.svg";
 }
-
+/**
+ * This function change the background color of the urgent container
+ * 
+ * @param string imgUrgent - Is the id from the image 
+ */
 function changePrioColorUrgent(imgUrgent) {
   prioUrgentContainer.classList.add("prioUrgent");
   selectedPrio = "Urgent";
   imgUrgent.src = "../assets/img/add_task/arrow_top_white.svg";
 }
-
+/**
+ * This function is for that tha task cant use a date in the past
+ */
 function setMinDate() {
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, "0");
@@ -206,26 +250,30 @@ function setMinDate() {
   today = yyyy + "-" + mm + "-" + dd;
   document.getElementById("dueDateInputContainer").min = today;
 }
-
+/**
+ * This function open the category
+ */
 function openCategorySelect() {
   content = document.getElementById(`categoryMenu`);
   content.innerHTML += openCategorySelectReturn();
-  addCategoryBorder();
-  categoryImageUp();
-}
-
-function addCategoryBorder() {
   border = document.getElementById(`categorySelectContainer`);
   border.classList.add("bordercolor");
+  categoryImageUp();
 }
-
+/**
+ * This function change the image when the category menu opened
+ */
 function categoryImageUp() {
   image = document.getElementById(`categoryImage`);
   content = document.getElementById(`categorySelectContainer`);
   image.src = "../assets/img/add_task/arrow_drop_up.svg";
   content.onclick = closeCategoryMenu;
 }
-
+/**
+ * This function change the name from the choosed category to the required field
+ *
+ * @param {string} selectedOption - This string change the name of the category
+ */
 function selectCategory(selectedOption) {
   let content = document.getElementById(`categoryText`);
   let image = document.getElementById(`categoryImage`);
@@ -235,26 +283,28 @@ function selectCategory(selectedOption) {
   closeCategoryMenu();
   checkInputs();
 }
-
+/**
+ * This function close the category menu
+ */
 function closeCategoryMenu() {
   div = document.getElementById(`categoryMenu`);
   div.innerHTML = "";
-  removeCategoryBorder();
-  categoryImageDown();
-}
-
-function removeCategoryBorder() {
   border = document.getElementById(`categorySelectContainer`);
   border.classList.remove("bordercolor");
+  categoryImageDown();
 }
-
+/**
+ * this function chance the image when the category choose menu and switch the onclick for close the menu
+ */
 function categoryImageDown() {
   image = document.getElementById(`categoryImage`);
   content = document.getElementById(`categorySelectContainer`);
   image.src = "../assets/img/add_task/arrow_drop_down.svg";
   content.onclick = openCategorySelect;
 }
-
+/**
+ * This function open the concat menu
+ */
 function openContacts() {
   let contactList = document.getElementById("contactList");
   let contactListIcons = document.getElementById("contactListIcons");
@@ -272,7 +322,9 @@ function openContacts() {
     to.innerHTML = "Select to Contact";
   }
 }
-
+/**
+ * This eventlistener close the contactwindow when click with the mouse outside of this window
+ */
 window.addEventListener("mouseup", function (event) {
   let contactList = document.getElementById("contactList");
   let contactListIcons = document.getElementById("contactListIcons");
@@ -285,7 +337,12 @@ window.addEventListener("mouseup", function (event) {
     to.innerHTML = "Select to Contact";
   }
 });
-
+/**
+ * This function changed the background-color of the selected contact and creat a icon for the selecdet icon to the icon box
+ *
+ * @param {*} i - this is the number of the seleced contact
+ * @param {*} name - This is the name of the contact
+ */
 function assignedtoContactBg(i, name) {
   selectedAssignedto.push(name);
   let container = document.getElementById(`assignedContactContainer${i}`);
@@ -300,7 +357,11 @@ function assignedtoContactBg(i, name) {
     removeassignedtoContactBg(i);
   };
 }
-
+/**
+ * This function remove the backgroundcolor and checked img of selected contacts
+ *
+ * @param {int} i - This is the number of the contact
+ */
 function removeassignedtoContactBg(i) {
   let container = document.getElementById(`assignedContactContainer${i}`);
   container.classList.remove("assignedContainerBlack");
@@ -312,29 +373,27 @@ function removeassignedtoContactBg(i) {
     assignedtoContactBg(i);
   };
 }
-
-function subtastwindow() {
-  let container = document.getElementById(`subTaskInputcontainer`);
-  let img = document.getElementById(`addSubtaskImg`);
-  img.src = "../assets/img/add_task/task_bin.svg";
-  img.onclick = "removeSubtask()";
-  container.innerHTML += subtastwindowReturn();
-}
-
+/**
+ * This function change the menufield of the inputfield
+ */
 function changemenu() {
   container = document.getElementById(`subTaskInputfieldMenu`);
   container.innerHTML = changemenuReturn();
   let border = document.getElementById(`subTaskInputcontainer`);
   border.classList.add("bordercolor");
 }
-
+/**
+ * This function creat a subtask
+ */
 function addSubtask() {
   let subtasksInput = document.getElementById("subTaskInputfieldText");
   subtasks.push(subtasksInput.value);
   renderSubtasks();
   clearSubtaskInputfield();
 }
-
+/**
+ * This function filled the created subtask Container
+ */
 function renderSubtasks() {
   let subtasksList = document.getElementById("subTasksContainer");
   subtasksList.innerHTML = "";
@@ -342,12 +401,20 @@ function renderSubtasks() {
     subtasksList.innerHTML += renderSubtasksReturn(subtasks, i);
   }
 }
-
+/**
+ * This function change the subtask from div to inputfield
+ *
+ * @param {int} i - This is the number of subtask
+ */
 function editSubtask(i) {
   let content = document.getElementById("subtask" + i);
   content.innerHTML = editSubtaskReturn(subtasks, i);
 }
-
+/**
+ * This function finish the edit of a creat subtask
+ *
+ * @param {int} i - This is the number ob subtask
+ */
 function editSubtaskDone(i) {
   let content = document.getElementById("editSubtask" + i).value;
   if (content.length > 0) {
@@ -357,12 +424,18 @@ function editSubtaskDone(i) {
     deleteSubtask(i);
   }
 }
-
+/**
+ * This function delete the current subtask
+ *
+ * @param {int} i - This is the number of the subtask
+ */
 function deleteSubtask(i) {
   subtasks.splice(i, 1);
   renderSubtasks();
 }
-
+/**
+ * This function clear the value from the subtask input field
+ */
 function clearSubtaskInputfield() {
   let input = document.getElementById(`subTaskInputfieldText`);
   input.value = "";
@@ -372,7 +445,9 @@ function clearSubtaskInputfield() {
   let border = document.getElementById(`subTaskInputcontainer`);
   border.classList.remove("bordercolor");
 }
-
+/**
+ * This function load all contacts from current user
+ */
 function loadContacts() {
   let mainDiv = document.getElementById(`contactList`);
   let totalHeight = Math.min(contacts.length * 52, 260);
@@ -388,7 +463,9 @@ function loadContacts() {
     mainDiv.style.overflowY = "scroll";
   }
 }
-
+/**
+ * This function checked if the required field have a value
+ */
 function checkInputs() {
   var dueDateValue = document.getElementById("dueDateInputContainer").value;
   var titleValue = document.getElementById("titelInputContainer").value;
@@ -400,7 +477,9 @@ function checkInputs() {
     createTaskButton.style.display = "none";
   }
 }
-
+/**
+ * This function is used to creat the footer
+ */
 function footer() {
   let content = document.getElementById(`taskMainContainer`);
   content.innerHTML += footerReturn();
