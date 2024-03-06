@@ -1,26 +1,26 @@
 /**
  * This eventlistener close the contactwindow when click with the mouse outside of this window
  */
-document.addEventListener('click', function (event) {
+document.addEventListener("click", function (event) {
   if (userClicksOutsideOfInputField(event)) {
-  let contactList = document.getElementById("contactList");
-  let contactListIcons = document.getElementById("contactListIcons");
-  let border = document.getElementById(`contactSelectContainer`);
-  let image = document.getElementById(`openerAssignedTo`);
-  if (event.target != contactList && event.target.parentNode != contactList) {
-    contactList.style.display = "none";
-    contactListIcons.style.display = "block";
-    border.classList.remove("bordercolor");
-    image.src = "../assets/img/add_task/arrow_drop_down.svg";
-  }}
+    let contactList = document.getElementById("contactList");
+    let contactListIcons = document.getElementById("contactListIcons");
+    let border = document.getElementById(`contactSelectContainer`);
+    let image = document.getElementById(`openerAssignedTo`);
+    if (event.target != contactList && event.target.parentNode != contactList) {
+      contactList.style.display = "none";
+      contactListIcons.style.display = "block";
+      border.classList.remove("bordercolor");
+      image.src = "../assets/img/add_task/arrow_drop_down.svg";
+    }
+  }
 });
 
 /**
  * This function close the contactwindow when click with the mouse outside of this window
  */
 function userClicksOutsideOfInputField(event) {
-  return !contactSelectContainer.contains(event.target) &&
-      !contactList.contains(event.target)
+  return !contactSelectContainer.contains(event.target) && !contactList.contains(event.target);
 }
 
 /**
@@ -50,6 +50,9 @@ function closeContacts() {
   border.classList.remove("bordercolor");
   let image = document.getElementById(`openerAssignedTo`);
   image.src = "../assets/img/add_task/arrow_drop_down.svg";
+  setTimeout(function () {
+    document.body.click();
+  }, 0);
   image.onclick = function () {
     loadContacts();
   };
@@ -68,7 +71,8 @@ function loadContacts() {
     mainDiv.innerHTML += loadContactsReturn(i);
     iconid = document.getElementById(`ContactSignatureIcon${i}`);
     iconid.style.backgroundColor = contacts[i].userColor;
-  }if (contacts.length > 5) {
+  }
+  if (contacts.length > 5) {
     mainDiv.style.overflowY = "scroll";
   }
   openContacts();
@@ -95,7 +99,7 @@ function filterNamesforAssignedTo() {
 /**
  * This function make a blue Border around the assigned to inputfield
  */
-function onclickInputBorder(){
+function onclickInputBorder() {
   let border = document.getElementById(`contactSelectContainer`);
   border.classList.add("bordercolor");
 }
@@ -136,4 +140,20 @@ function removeassignedtoContactBg(i) {
   container.onclick = function () {
     assignedtoContactBg(i);
   };
+}
+
+function clearInputs() {
+  document.getElementById("titelInputContainer").value = "";
+  document.getElementById("descriptionInput").value = "";
+  document.getElementById("dueDateInputContainer").value = "";
+  document.getElementById("contactListIcons").innerHTML = "";
+  document.getElementById("subTasksContainer").innerHTML = "";
+  document.getElementById("categoryText").innerHTML = `Select task category`;
+  selectedTitle = "";
+  selectedDescription = "";
+  selectedAssignedto = [];
+  selectedDueDate = "";
+  selectedPrio = "";
+  selectedCategory = "";
+  subtasks = [];
 }

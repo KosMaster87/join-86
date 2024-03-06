@@ -145,7 +145,6 @@ function renderAddTaskHTML() {
       <span class="requiredStar">*</span>
     </p>
     <input
-    value="2024-03-09"
       id="titelInputContainer"
       type="text"
       class="titleInputField font"
@@ -192,7 +191,6 @@ function renderAddTaskHTML() {
       placeholder="dd/mm/yyyy"
       type="date"
       class="dueDateInputField font"
-      value="2024-03-09"
       onfocus="setMinDate()"
       oninput="checkInputs()"
     />
@@ -239,7 +237,7 @@ function renderAddTaskHTML() {
 
       class="categorySelect"
     >
-      <span  id="categoryText">User Story</span
+      <span  id="categoryText">Select task category</span
       ><img
       class="arrow"
         id="categoryImage"
@@ -346,7 +344,7 @@ function footerReturn() {
       <span>This field is required</span>
     </div>
     <div class="footerFlex">
-    <div class="clearAll font">
+    <div class="clearAll font" onclick="clearInputs()">
       Clear
       <img class="clearImage" src="../assets/img/add_task/task_cross.svg" />
     </div>
@@ -355,6 +353,21 @@ function footerReturn() {
       Create Task
       <img src="../assets/img/add_task/task_check_white.svg" />
     </div>
+    </div>
+    </footer>`;
+}
+
+function footerMobileReturn() {
+  return `
+  <footer>
+  <div id="finishTaskContainer">
+    <div class="finishTaskText">
+      <span class="requiredStar">*</span>
+      <span>This field is required</span>
+    </div>
+    <div id="createTaskButton" class="createTask  font" onclick="requiredFields()">
+      Create Task
+      <img src="../assets/img/add_task/task_check_white.svg" />
     </div>
     </footer>`;
 }

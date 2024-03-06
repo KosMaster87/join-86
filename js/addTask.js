@@ -36,7 +36,6 @@ async function initAddTask() {
   checkWidth();
   await loadCurrentUserAlsoUsersAsObject();
   await getAllContactsFromCurrentUserSorted();
-  footer();
 }
 
 /**
@@ -61,7 +60,6 @@ async function getAllContactsFromCurrentUserSorted() {
  */
 window.addEventListener("resize", function () {
   checkWidth();
-  footer();
 });
 
 /**
@@ -85,9 +83,9 @@ function checkWidth() {
   let screenWidth =
     window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
   if (screenWidth <= 1219) {
-    mobilVersion = false;
-  } else {
     mobilVersion = true;
+  } else {
+    mobilVersion = false;
   }
   loadContent();
 }
@@ -100,13 +98,15 @@ function loadContent() {
     window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
   let content = document.getElementById(`taskMainContainer`);
   content.innerHTML = "";
-  if (screenWidth <= 1219 && mobilVersion == false) {
+  if (screenWidth <= 1219 && mobilVersion == true) {
     mobilVersion = true;
     content.innerHTML = renderAddTaskMobileHTML();
+    footerMobile();
   }
-  if (screenWidth > 1219 && mobilVersion == true) {
+  if (screenWidth > 1219 && mobilVersion == false) {
     mobilVersion = false;
     content.innerHTML = renderAddTaskHTML();
+    footer();
   }
 }
 
@@ -415,7 +415,7 @@ function checkInputs() {
   var titleValue = document.getElementById("titelInputContainer").value;
   var isCategoryValid = checkCategory();
   var createTaskButton = document.getElementById("createTaskButton");
-  let placeholder=document.getElementById(`placeholder`);
+  let placeholder = document.getElementById(`placeholder`);
   if (dueDateValue.trim() !== "" && titleValue.trim() !== "" && isCategoryValid) {
     createTaskButton.style.display = "block";
     placeholder.style.display = "none";
@@ -425,10 +425,20 @@ function checkInputs() {
   }
 }
 
+
 /**
- * This function is used to creat the footer
+ * This function is create the footer for desktopversion
  */
 function footer() {
   let content = document.getElementById(`taskMainContainer`);
+  footer.remove;
   content.innerHTML += footerReturn();
+}
+/**
+ * This function is create the footer for mobileversion
+ */
+function footerMobile() {
+  let content = document.getElementById(`taskMainContainer`);
+  footer.remove;
+  content.innerHTML += footerMobileReturn();
 }
