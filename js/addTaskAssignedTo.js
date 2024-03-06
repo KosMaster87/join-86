@@ -141,14 +141,24 @@ function removeassignedtoContactBg(i) {
     assignedtoContactBg(i);
   };
 }
-
+/**
+ * Clear the inputfields
+ */
 function clearInputs() {
   document.getElementById("titelInputContainer").value = "";
   document.getElementById("descriptionInput").value = "";
   document.getElementById("dueDateInputContainer").value = "";
+  document.getElementById("assignedToContainer").value = "";
   document.getElementById("contactListIcons").innerHTML = "";
   document.getElementById("subTasksContainer").innerHTML = "";
   document.getElementById("categoryText").innerHTML = `Select task category`;
+  clearVariables();
+}
+
+/**
+ * Clear the Variables and remove the prio selectfield colors
+ */
+function clearVariables() {
   selectedTitle = "";
   selectedDescription = "";
   selectedAssignedto = [];
@@ -156,4 +166,6 @@ function clearInputs() {
   selectedPrio = "";
   selectedCategory = "";
   subtasks = [];
+  removePrio();
+  removeWhiteImg();
 }

@@ -425,7 +425,6 @@ function checkInputs() {
   }
 }
 
-
 /**
  * This function is create the footer for desktopversion
  */
