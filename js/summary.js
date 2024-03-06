@@ -140,12 +140,28 @@ async function searchUpcomingDate() {
   }
 
   console.log(`Earliest Upcoming Date: ${earliestUpcomingDate}`);
-
-  if (earliestUpcomingDate) {
-    howManyUrgent(earliestUpcomingDate);
+   datecounterdate = earliestUpcomingDate;
+  // if (earliestUpcomingDate) {
+  //   howManyUrgent(earliestUpcomingDate);
+  testdatum();
     FinalUpcomingDate(earliestUpcomingDate);
     // setSummaryLetter();
-  }
+  // }
+}
+
+let datecounterdate;
+
+function testdatum() {
+  // Ein Date-Objekt erstellen
+  let myDate = new Date(datecounterdate);
+
+  let year = myDate.getFullYear();
+  let month = (myDate.getMonth() + 1).toString().padStart(2, '0'); // Monat ist 0-basiert
+  let day = myDate.getDate().toString().padStart(2, '0');
+
+  let formattedDate = `${year}-${month}-${day}`;
+  datecounterdate= formattedDate;
+  howManyUrgent(datecounterdate);
 }
 
 /**
@@ -155,7 +171,7 @@ function howManyUrgent(upcomingDate) {
   console.log(`Checking for urgent tasks with due date: ${upcomingDate}`);
   for (let i = 0; i < user.tasks.length; i++) {
     console.log(`Task ${i + 1} Due Date: ${user.tasks[i].dueDate}`);
-    if (upcomingDate == user.tasks[i].dueDate) {
+    if (datecounterdate == user.tasks[i].dueDate) {
       console.log("Task is urgent!");
       urgentCounter++;
     }
