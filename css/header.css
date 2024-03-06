@@ -12,6 +12,7 @@
 
 @media only screen and (max-width: 319px) and (min-width: 250px) {
   .mainHeader {
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -97,6 +98,7 @@
 
 @media only screen and (max-width: 480px) and (min-width: 320px) {
   .mainHeader {
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -183,6 +185,7 @@
 
 @media only screen and (max-width: 720px) and (min-width: 481px) {
   .mainHeader {
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
