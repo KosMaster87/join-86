@@ -1,3 +1,4 @@
+let showedLoginGreeting = false;
 let todos = 0;
 let dones = 0;
 let progresses = 0;
@@ -16,9 +17,39 @@ let greetigText;
  */
 async function initSummary() {
   await includeHTML();
+  await initGreeting();
   setActiveLink("navSummary");
   await loadCurrentUserAlsoUsersAsObject();
   TaskDisplayFields();
+}
+
+/**
+ * Show your greeting after login.
+ */
+async function initGreeting() {
+  // Check if the greeting has been shown before
+  showedLoginGreeting = localStorage.getItem("showedLoginGreeting") === "true";
+
+  if (!showedLoginGreeting) {
+    await showGreetScreen();
+    showedLoginGreeting = true;
+    localStorage.setItem("showedLoginGreeting", showedLoginGreeting);
+  }
+
+  document.getElementById("summaryToDos").style.display = "flex";
+}
+
+/**
+ * Your greeting / you are welcome as a guest.
+ */
+async function showGreetScreen() {
+  let GreetingsMobile = document.getElementById("GreetingsMobile");
+  GreetingsMobile.classList.remove("hide");
+  GreetingsMobile.classList.add("show");
+  setTimeout(() => {
+    GreetingsMobile.classList.remove("show");
+    GreetingsMobile.classList.add("hide");
+  }, 2500);
 }
 
 /**
@@ -28,8 +59,23 @@ async function TaskDisplayFields() {
   await howManyTasks();
   await determineTodaysDate();
   await searchUpcomingDate();
-  greeting();
+  await greeting();
   setSummaryLetter();
+}
+
+/**
+ * Greet the user depending on the time of day.
+ */
+async function greeting() {
+  DateConstructor = new Date();
+  timeOfDate = DateConstructor.getHours();
+  if (timeOfDate < 12) {
+    greetigText = `Good morning`;
+  } else if (timeOfDate < 18) {
+    greetigText = `Good afternoon`;
+  } else if (timeOfDate < 24) {
+    greetigText = `Good evening`;
+  }
 }
 
 /**
@@ -63,37 +109,78 @@ async function determineTodaysDate() {
 /**
  * Search tasks by creation date. To find the upcoming date of the next task.
  */
+// async function searchUpcomingDate() {
+//   let date = todaysDate;
+//   for (let i = 0; i < user.tasks.length; i++) {
+//     date = user.tasks[i].dueDate;
+
+//     if (user.tasks[0].dueDate < date) {
+//       actuelldate = actuelldate;
+//     } else {
+//       upcomingDate = date;
+//     }
+//   }
+//   howManyUrgent(upcomingDate);
+//   FinalUpcomingDate(upcomingDate);
+// }
+/**
+ *
+ * Search tasks by creation date. To find the upcoming date of the next task.
+ * Früheste bevorstehende Datum.
+ */
 async function searchUpcomingDate() {
-  let date = todaysDate;
+  let earliestUpcomingDate = null;
+
   for (let i = 0; i < user.tasks.length; i++) {
-    date = user.tasks[i].dueDate;
-    if (user.tasks[0].dueDate < date) {
-      actuelldate = actuelldate;
-    } else {
-      upcomingDate = date;
+    const taskDueDate = new Date(user.tasks[i].dueDate);
+
+    if (!earliestUpcomingDate || taskDueDate < earliestUpcomingDate) {
+      earliestUpcomingDate = taskDueDate;
     }
   }
-  howManyUrgent(upcomingDate);
-  FinalUpcomingDate(upcomingDate);
+
+  console.log(`Earliest Upcoming Date: ${earliestUpcomingDate}`);
+
+  if (earliestUpcomingDate) {
+    howManyUrgent(earliestUpcomingDate);
+    FinalUpcomingDate(earliestUpcomingDate);
+    // setSummaryLetter();
+  }
 }
 
 /**
  * Just urgent counter.
  */
 function howManyUrgent(upcomingDate) {
+  console.log(`Checking for urgent tasks with due date: ${upcomingDate}`);
   for (let i = 0; i < user.tasks.length; i++) {
-    if (upcomingDate == user.tasks[i].dueDate) urgentCounter++;
+    console.log(`Task ${i + 1} Due Date: ${user.tasks[i].dueDate}`);
+    if (upcomingDate == user.tasks[i].dueDate) {
+      console.log("Task is urgent!");
+      urgentCounter++;
+    }
   }
+  console.log(`Urgent Counter: ${urgentCounter}`);
 }
+
+// function howManyUrgent(upcomingDate) {
+//   for (let i = 0; i < user.tasks.length; i++) {
+//     if (upcomingDate == user.tasks[i].dueDate) urgentCounter++;
+//   }
+// }
 
 /**
  * Find the month for the upcoming urgent deadline.
  */
 function FinalUpcomingDate(upcomingDate) {
-  const dateComponents = upcomingDate.split("-");
-  const formattedDate = formatDateString(upcomingDate);
-  finaleDate = formattedDate;
+  finaleDate = formatDateString(upcomingDate);
 }
+
+// function FinalUpcomingDate(upcomingDate) {
+//   const dateComponents = upcomingDate.split("-");
+//   const formattedDate = formatDateString(upcomingDate);
+//   finaleDate = formattedDate;
+// }
 
 /**
  * Helper function to get the month name.
@@ -121,14 +208,20 @@ function getMonthName(month) {
  * Helper function to format the date string.
  */
 function formatDateString(date) {
-  const dateComponents = date.split("-");
-  const year = parseInt(dateComponents[0]);
-  const month = parseInt(dateComponents[1]);
-  const day = parseInt(dateComponents[2]);
-
-  const monthName = getMonthName(month);
-  return `${monthName} ${day}, ${year}`;
+  const dateObject = new Date(date);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return dateObject.toLocaleDateString("en-US", options);
 }
+
+// function formatDateString(date) {
+//   const dateComponents = date.split("-");
+//   const year = parseInt(dateComponents[0]);
+//   const month = parseInt(dateComponents[1]);
+//   const day = parseInt(dateComponents[2]);
+
+//   const monthName = getMonthName(month);
+//   return `${monthName} ${day}, ${year}`;
+// }
 
 /**
  * Render the user's data into the placeholders.
@@ -181,31 +274,18 @@ function updateUpcomingDateContainer() {
 }
 
 function updateGreetingContainer() {
-  greetingContainer = document.getElementById(`greetingsContainer`);
-  greetingTwoContainer = document.getElementById(`greetingUserSummaryGreet`);
-  greetingContainer.innerHTM = greetigText;
-  greetingTwoContainer.innerHTM = greetigText;
+  greetingsDesktop = document.getElementById(`greetingsDesktop`);
+  greetingNameDesktop = document.getElementById(`greetingNameDesktop`);
+  greetingMobile = document.getElementById(`greetingMobile`);
 
-  greetingNameContainer = document.getElementById(`greetingName`);
-  greetingNametwoContainer = document.getElementById(
-    `greetingUserSummaryNameId`
-  );
-  greetingNametwoContainer.innerHTML = user.name;
-  greetingNameContainer.innerHTML = user.name;
-}
-
-/**
- * Greet the user depending on the time of day.
- */
-function greeting() {
-  DateConstructor = new Date();
-  timeOfDate = DateConstructor.getHours();
-  if (timeOfDate < 12) {
-    greetigText = `Good morning`;
-  } else if (timeOfDate < 18) {
-    greetigText = `Good afternoon`;
-  } else if (timeOfDate < 24) {
-    greetigText = `Good evening`;
+  if (window.innerWidth <= 721) {
+    greetingsDesktop.innerHTML = greetigText;
+    greetingNameDesktop.innerHTML = user.name;
+    greetingMobile.innerHTML = greetigText;
+  } else {
+    greetingsDesktop.innerHTML = greetigText;
+    greetingNameDesktop.innerHTML = user.name;
+    greetingMobile.innerHTML = greetigText;
   }
 }
 

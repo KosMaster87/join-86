@@ -11,5 +11,6 @@ function toggleHeaderSubMenu() {
  */
 async function logOut() {
   await setGlobalUserId("currentUserId", []);
+  localStorage.removeItem('showedLoginGreeting');
   window.location.assign("../index.html");
 }
