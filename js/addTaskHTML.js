@@ -363,8 +363,9 @@ function footerMobileReturn() {
   <div id="finishTaskContainer">
     <div class="finishTaskText">
       <span class="requiredStar">*</span>
-      <span>This field is required</span>
+      <span class="requiredStarText">This field is required</span>
     </div>
+    <div id="placeholder"></div>
     <div id="createTaskButton" class="createTask  font" onclick="requiredFields()">
       Create Task
       <img src="../assets/img/add_task/task_check_white.svg" />

@@ -148,8 +148,8 @@ function dueDateRequired() {
  * This function check the right input of the category container
  */
 function checkCategory() {
-  var inputfield = document.getElementById("categoryText");
-  var content = inputfield.textContent || inputfield.innerText;
+  let inputfield = document.getElementById("categoryText");
+  let content = inputfield.textContent || inputfield.innerText;
   return content.trim() === "Technical Task" || content.trim() === "User Story";
 }
 
@@ -160,7 +160,7 @@ function categoryRequired() {
   border = document.getElementById(`categorySelectContainer`);
   inputfield = document.getElementById(`categoryText`);
   inputRequired = document.getElementById(`categoryRequiredContainer`);
-  var isCategoryValid = checkCategory();
+  let isCategoryValid = checkCategory();
   if (isCategoryValid) {
     inputfield.value = "";
     inputRequired.innerHTML = "";
@@ -411,17 +411,19 @@ function clearSubtaskInputfield() {
  * after this the create task butten is showed
  */
 function checkInputs() {
-  var dueDateValue = document.getElementById("dueDateInputContainer").value;
-  var titleValue = document.getElementById("titelInputContainer").value;
-  var isCategoryValid = checkCategory();
-  var createTaskButton = document.getElementById("createTaskButton");
-  let placeholder = document.getElementById(`placeholder`);
-  if (dueDateValue.trim() !== "" && titleValue.trim() !== "" && isCategoryValid) {
-    createTaskButton.style.display = "block";
-    placeholder.style.display = "none";
-  } else {
-    createTaskButton.style.display = "none";
-    placeholder.style.display = "block";
+  if (mobilVersion == false) {
+    let dueDateValue = document.getElementById("dueDateInputContainer").value;
+    let titleValue = document.getElementById("titelInputContainer").value;
+    let isCategoryValid = checkCategory();
+    let createTaskButton = document.getElementById("createTaskButton");
+    let placeholder = document.getElementById(`placeholder`);
+    if (dueDateValue.trim() !== "" && titleValue.trim() !== "" && isCategoryValid) {
+      createTaskButton.style.display = "block";
+      placeholder.style.display = "none";
+    } else {
+      createTaskButton.style.display = "none";
+      placeholder.style.display = "block";
+    }
   }
 }
 

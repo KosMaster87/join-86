@@ -94,7 +94,7 @@ span {
 .taskSelectButton {
   font-size: 16px;
   font-weight: 400;
-  width: 126px;
+  min-width: 33%;
   padding: 18px 10px 18px 10px;
   justify-content: center;
   display: flex;
@@ -576,8 +576,13 @@ span {
 }
 
 @media (max-width: 380px) {
+  .requiredStarText{
+    font-size:14px !important;
+    margin-top: -15px;
+  }
   .finishTaskText {
-    text-align: start;
+    display: flex;
+    flex-direction: column;
   }
   #taskMainContainer {
     max-width: 300px;
