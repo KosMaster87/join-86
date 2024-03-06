@@ -553,9 +553,16 @@ span {
   .mainContent {
     align-items: center !important;
   }
+  .divColumn{
+    padding-top:60px;
+  }
+  footer{
+    padding-bottom: 60px;
+  }
 }
 
 @media (max-width: 440px) {
+  
   .mainContent {
     align-items: center !important;
   }
