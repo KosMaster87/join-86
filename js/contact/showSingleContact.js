@@ -14,7 +14,8 @@ async function setCurrentContactEmail(email) {
 } 
 
 async function getCurrentContactEmail(email) {
-    return await JSON.parse(getItem('currentContactEmail', email));
+    
+    return await (getItem('currentContactEmail'));
 } 
 
 async function getCurrentContactId() {
