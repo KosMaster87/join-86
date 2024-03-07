@@ -183,5 +183,32 @@ function checkInputPhone(phone) {
 }
 
 
+/* ADD CONTACT BUTTONS */
+async function closeAddContactAndGoToShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor) {
+    goToTopOfSite();
+    loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor)
+    document.getElementById("addContactContainer").style.display = "none";
+    document.getElementById("listContactContainer").style.display = "none";
+    document.getElementById("mobileBtnAddContact").style.display = "none";
+    document.getElementById("mobileBtnThreePoints").style.display = "block";
+    document.getElementById("showSingleContactContainer").style.display = "block";
+  } //final
+  
+  async function closeAddContactContainerWithoutAddingNewContact() {
+    await initListContact();
+    goToTopOfSite();
+    document.getElementById("addContactContainer").style.display = "none";
+    document.getElementById("mobileBtnAddContact").style.display = "block";
+    
+  } //final
+  
+  async function closeAddContactContainer() {
+    await initListContact();
+    goToTopOfSite();
+    document.getElementById("addContactContainer").style.display = "none";
+    document.getElementById("mobileBtnAddContact").style.display = "block";
+    
+    console.log('Close Add Contact Container');
+  }
 
 
