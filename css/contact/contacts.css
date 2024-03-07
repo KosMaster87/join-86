@@ -37,78 +37,7 @@ input[type="text"],[type="email"],[type="tel"] {
     /* You can add more specific styling as needed */
 }
 
- /* container contacts incl. sort row */
- #listContactContainer {
-    margin: 0 14px;
-    display: none;
-    background-color: white;
-    padding: 24px 24px;
-    position: relative;
-    top: -70px;
-}
-
-#alphabeticalRow {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.firstChartSort {
-    font-size: 20px;
-    padding: 17px 36px;
-}
-
-/* singleContact */
-.singleContact {
-    display: flex;
-    padding: 15px 24px; 
-    gap: 35px;  
-}
-
-a.singleContact:hover {
-    cursor: pointer;
-}
-
-/* contact signature icon */
-.contactSignatureIcon {
-    border-radius: 50%;
-    width: 42px;
-    height: 42px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid var(--white);
-}
-
-.contactSignatureIconLetter {
-    color: var(--white);
-    font-size: 12px;
-    font-weight: 400;
-    text-align: center;
-}
-
-/* contact data */
-
-.contactName {
-    color: var(--black);
-    font-size: 20px;
-    line-height: 1.2;
-}
-
-.contactEmail {
-    color: var(--intenseBlue);
-    font-size: 16px;
-    line-height: 1.2;
-}
-
-.styleHr {
-    width: 100%;
-    height: 1px;
-    background-color: var(--lighterGray);
-    margin: 8px 0;
-}
+ 
 
 
 /* Übergreifendes Styling */
@@ -161,7 +90,7 @@ a.singleContact:hover {
     }
 
     #listContactContainer {
-        top: 100px;
+        top: 200px;
         width: 456px;
     }
 }
