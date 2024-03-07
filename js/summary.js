@@ -8,6 +8,7 @@ let tasksInBoard = 0;
 let urgentCounter = 0;
 let finaleDate;
 let greetigText;
+let datecounterdate;
 
 /*
  * Include header and munu.
@@ -20,17 +21,17 @@ async function initSummary() {
   await initGreeting();
   setActiveLink("navSummary");
   await loadCurrentUserAlsoUsersAsObject();
-  TaskDisplayFields();
+  await TaskDisplayFields();
+  preparePopupEvent(); // BOARD; ADDTASK; CONTACTS; ++
 }
 
 /**
  * Show your greeting after login.
  */
 async function initGreeting() {
-  // Check if the greeting has been shown before
   showedLoginGreeting = localStorage.getItem("showedLoginGreeting") === "true";
 
-  if (!showedLoginGreeting) {
+  if (!showedLoginGreeting && window.innerWidth <= 720) {
     await showGreetScreen();
     showedLoginGreeting = true;
     localStorage.setItem("showedLoginGreeting", showedLoginGreeting);
@@ -109,25 +110,6 @@ async function determineTodaysDate() {
 /**
  * Search tasks by creation date. To find the upcoming date of the next task.
  */
-// async function searchUpcomingDate() {
-//   let date = todaysDate;
-//   for (let i = 0; i < user.tasks.length; i++) {
-//     date = user.tasks[i].dueDate;
-
-//     if (user.tasks[0].dueDate < date) {
-//       actuelldate = actuelldate;
-//     } else {
-//       upcomingDate = date;
-//     }
-//   }
-//   howManyUrgent(upcomingDate);
-//   FinalUpcomingDate(upcomingDate);
-// }
-/**
- *
- * Search tasks by creation date. To find the upcoming date of the next task.
- * Früheste bevorstehende Datum.
- */
 async function searchUpcomingDate() {
   let earliestUpcomingDate = null;
 
@@ -139,28 +121,23 @@ async function searchUpcomingDate() {
     }
   }
 
-  console.log(`Earliest Upcoming Date: ${earliestUpcomingDate}`);
-   datecounterdate = earliestUpcomingDate;
-  // if (earliestUpcomingDate) {
-  //   howManyUrgent(earliestUpcomingDate);
-  testdatum();
-    FinalUpcomingDate(earliestUpcomingDate);
-    // setSummaryLetter();
-  // }
+  datecounterdate = earliestUpcomingDate;
+  adjustDate();
+  FinalUpcomingDate(earliestUpcomingDate);
 }
 
-let datecounterdate;
-
-function testdatum() {
-  // Ein Date-Objekt erstellen
+/**
+ * Adjust date for upcomingDate.
+ */
+function adjustDate() {
   let myDate = new Date(datecounterdate);
 
   let year = myDate.getFullYear();
-  let month = (myDate.getMonth() + 1).toString().padStart(2, '0'); // Monat ist 0-basiert
-  let day = myDate.getDate().toString().padStart(2, '0');
+  let month = (myDate.getMonth() + 1).toString().padStart(2, "0"); // Monat ist 0-basiert
+  let day = myDate.getDate().toString().padStart(2, "0");
 
   let formattedDate = `${year}-${month}-${day}`;
-  datecounterdate= formattedDate;
+  datecounterdate = formattedDate;
   howManyUrgent(datecounterdate);
 }
 
@@ -168,22 +145,12 @@ function testdatum() {
  * Just urgent counter.
  */
 function howManyUrgent(upcomingDate) {
-  console.log(`Checking for urgent tasks with due date: ${upcomingDate}`);
   for (let i = 0; i < user.tasks.length; i++) {
-    console.log(`Task ${i + 1} Due Date: ${user.tasks[i].dueDate}`);
     if (datecounterdate == user.tasks[i].dueDate) {
-      console.log("Task is urgent!");
       urgentCounter++;
     }
   }
-  console.log(`Urgent Counter: ${urgentCounter}`);
 }
-
-// function howManyUrgent(upcomingDate) {
-//   for (let i = 0; i < user.tasks.length; i++) {
-//     if (upcomingDate == user.tasks[i].dueDate) urgentCounter++;
-//   }
-// }
 
 /**
  * Find the month for the upcoming urgent deadline.
@@ -191,12 +158,6 @@ function howManyUrgent(upcomingDate) {
 function FinalUpcomingDate(upcomingDate) {
   finaleDate = formatDateString(upcomingDate);
 }
-
-// function FinalUpcomingDate(upcomingDate) {
-//   const dateComponents = upcomingDate.split("-");
-//   const formattedDate = formatDateString(upcomingDate);
-//   finaleDate = formattedDate;
-// }
 
 /**
  * Helper function to get the month name.
@@ -228,16 +189,6 @@ function formatDateString(date) {
   const options = { year: "numeric", month: "long", day: "numeric" };
   return dateObject.toLocaleDateString("en-US", options);
 }
-
-// function formatDateString(date) {
-//   const dateComponents = date.split("-");
-//   const year = parseInt(dateComponents[0]);
-//   const month = parseInt(dateComponents[1]);
-//   const day = parseInt(dateComponents[2]);
-
-//   const monthName = getMonthName(month);
-//   return `${monthName} ${day}, ${year}`;
-// }
 
 /**
  * Render the user's data into the placeholders.
@@ -286,7 +237,12 @@ function updateUrgentContainer() {
 
 function updateUpcomingDateContainer() {
   upcomingDateContainer = document.getElementById(`summeryUrgentDate`);
-  upcomingDateContainer.innerHTML = finaleDate;
+
+  if (urgentCounter > 0) {
+    upcomingDateContainer.innerHTML = finaleDate;
+  } else {
+    upcomingDateContainer.innerHTML = "none";
+  }
 }
 
 function updateGreetingContainer() {

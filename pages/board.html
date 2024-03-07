@@ -16,6 +16,7 @@
     <script src="../js/header.js"></script>
 
     <script src="./../js/board.js"></script>
+    <script src="./../js/boardHTML.js"></script>
 
     <title>Board Kanban</title>
   </head>
@@ -39,45 +40,18 @@
 
         <div class="selectionContainer">
           <div class="headContainer">
-            <div>
-              <h2>To do</h2>
-            </div>
-            <div class="boxesContainer">
-              <img src="../assets/img/board/add_mobile.svg" />
-            </div>
+            <h2>To do</h2>
+            <img src="../assets/img/board/add_mobile.svg" />
           </div>
-          <div>
-            <div class="noTasksInThisSelection font16400">No tasks To do</div>
-          </div>
+          <div id="TodoMainContainer" class="boxesContainer"></div>
         </div>
+
         <div class="selectionContainer">
           <div class="headContainer">
-              <h2>In progress</h2>
-              <img src="../assets/img/board/add_mobile.svg" />
+            <h2>In progress</h2>
+            <img src="../assets/img/board/add_mobile.svg" />
           </div>
-          <div class="boxesContainer">
-            <div class="boxSize">
-              <div class="headContainer">
-                <span class="headlineFromTask font16400">Catergory</span>
-                <div>
-                  <img src="../assets/img/board/mobile_switch.svg">
-                </div>
-              </div>
-              <div id="titleid">Title</div>
-              <div>Description</div>
-              <div>
-                <div>progressBar</diV>
-                  <div>subtasks</div>
-              </div>
-              <div>
-              <div>assignedto icons</div>
-              <div></div>
-            </div>
-            </div>
-            <div class="boxSize" style="background-color: red;"></div>
-            <div class="boxSize"style="background-color: green;"></div>
-            <div class="boxSize"style="background-color: blue;"></div>
-          </div>
+          <div id="progressMainContainer" class="boxesContainer"></div>
         </div>
         <div class="selectionContainer">
           <div class="headContainer">
@@ -88,19 +62,16 @@
               <img src="../assets/img/board/add_mobile.svg" />
             </div>
           </div>
-          <div>
-            <div class="noTasksInThisSelection font16400">No tasks feedback</div>
-          </div>
+          <div id="awaitMainContainer" class="boxesContainer"></div>
         </div>
+
         <div class="selectionContainer">
           <div class="headContainer">
             <div>
               <h2>Done</h2>
             </div>
           </div>
-          <div class="boxesContainer">
-            <div class="noTasksInThisSelection font16400">No tasks done</div>
-          </div>
+          <div id="doneMainContainer" class="boxesContainer"></div>
         </div>
       </div>
     </div>
