@@ -1,5 +1,9 @@
 @import url("../style.css");
 
+body {
+  background-color: var(--whiteGray);
+}
+
 h1 {
   font-size: 47px;
 }
@@ -20,8 +24,6 @@ h2 {
   font-weight: 700;
 }
 
-
-
 .boardMainContainer {
   display: flex;
   margin-top: 48px;
@@ -40,7 +42,6 @@ h2 {
   overflow-x: auto;
   box-sizing: border-box !important;
 }
-
 
 .headlineFromTask {
   padding: 4px 16px 4px 16px;
@@ -74,7 +75,6 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: start;
-  margin-top:
 }
 
 .noTasksInThisSelection {
@@ -90,7 +90,6 @@ h2 {
   width: 100%;
 }
 
-
 /*--In Progress--*/
 
 .boxSizeProgress {
@@ -98,30 +97,30 @@ h2 {
   background-color: var(--white);
   padding: 16px;
   border-radius: 24px;
-  margin-right:16px;
+  margin-right: 16px;
   display: flex;
   flex-direction: column;
-  gap:24px;
+  gap: 24px;
 }
 
-.titleText{
-  color:var(--lightGray);
+.titleText {
+  color: var(--lightGray);
 }
 
-.descriptionText{
-color:var(--fontGray);
+.descriptionText {
+  color: var(--fontGray);
 }
 
-.inProgressText{
+.inProgressText {
   display: flex;
-    flex-direction: column;
-    gap: 8px;
+  flex-direction: column;
+  gap: 8px;
 }
-.progressMainContainer{
+.progressMainContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top:4px;
+  margin-top: 4px;
   margin-bottom: 4px;
 }
 
@@ -142,17 +141,18 @@ color:var(--fontGray);
   border-radius: 8px;
 }
 
-.progressFooter{
+.progressFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.IconBarClass{
-  margin-left:10px;
+.IconBarClass {
+  margin-left: 10px;
+  max-width: 140px;
   display: flex;
 }
 
-.iconstlye{
+.iconstlye {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -175,10 +175,10 @@ color:var(--fontGray);
   background-color: var(--white);
   padding: 16px;
   border-radius: 24px;
-  margin-right:16px;
+  margin-right: 16px;
   display: flex;
   flex-direction: column;
-  gap:20px;
+  gap: 20px;
 }
 
 /*--done--*/
@@ -188,10 +188,10 @@ color:var(--fontGray);
   background-color: var(--white);
   padding: 16px;
   border-radius: 24px;
-  margin-right:16px;
+  margin-right: 16px;
   display: flex;
   flex-direction: column;
-  gap:24px;
+  gap: 24px;
 }
 
 /*--done--*/
@@ -201,10 +201,23 @@ color:var(--fontGray);
   background-color: var(--white);
   padding: 16px;
   border-radius: 24px;
-  margin-right:16px;
+  margin-right: 16px;
   display: flex;
   flex-direction: column;
-  gap:24px;
+  gap: 24px;
 }
 
 
+/*-- open task window--*/
+
+
+.openwindow{
+  display:none;
+  z-index: 800;
+  background-color: white;
+  border-radius:10px;
+  top:10vh;
+  height:80vh;
+  width:90vw;
+  position: absolute;
+}

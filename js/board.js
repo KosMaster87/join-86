@@ -13,7 +13,7 @@ async function initBoard() {
   loadTasks();
 }
 
-//  for (let i = 0; i < user.tasks.length; i++) {
+
 function loadTasks() {
   title = document.getElementById(`titleid`);
   titletext = user.tasks[1].title;
@@ -208,4 +208,11 @@ if (awaitMainContainer.innerHTML.trim() === '') {
 if (doneMainContainer.innerHTML.trim() === '') {
   doneMainContainer.innerHTML = '<div class="noTasksInThisSelection font16400">No tasks done</div>';
 }
+}
+
+
+let currentDraggedElement;
+
+function startDragging(id){
+  currentDraggedElement = id;
 }
