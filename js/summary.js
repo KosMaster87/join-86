@@ -1,30 +1,87 @@
+let showedLoginGreeting = false;
 let todos = 0;
 let dones = 0;
-let tasksInBoard = 0;
 let progresses = 0;
 let awaits = 0;
-let heutigesDatum = 0;
-let upcomingDate = 0;
+let todaysDate = 0;
+let tasksInBoard = 0;
 let urgentCounter = 0;
 let finaleDate;
 let greetigText;
-/**
- *
- * The current open tasks.
+
+/*
+ * Include header and munu.
+ * Add navigation style as active-link.
+ * Set Users array and user as global.
+ * Set the countings from the user.
  */
-function greeting() {
-  uhr = new Date();
-  testzeit = uhr.getHours();
-  if (testzeit < 12) {
+async function initSummary() {
+  await includeHTML();
+  await initGreeting();
+  setActiveLink("navSummary");
+  await loadCurrentUserAlsoUsersAsObject();
+  TaskDisplayFields();
+}
+
+/**
+ * Show your greeting after login.
+ */
+async function initGreeting() {
+  // Check if the greeting has been shown before
+  showedLoginGreeting = localStorage.getItem("showedLoginGreeting") === "true";
+
+  if (!showedLoginGreeting) {
+    await showGreetScreen();
+    showedLoginGreeting = true;
+    localStorage.setItem("showedLoginGreeting", showedLoginGreeting);
+  }
+
+  document.getElementById("summaryToDos").style.display = "flex";
+}
+
+/**
+ * Your greeting / you are welcome as a guest.
+ */
+async function showGreetScreen() {
+  let GreetingsMobile = document.getElementById("GreetingsMobile");
+  GreetingsMobile.classList.remove("hide");
+  GreetingsMobile.classList.add("show");
+  setTimeout(() => {
+    GreetingsMobile.classList.remove("show");
+    GreetingsMobile.classList.add("hide");
+  }, 2500);
+}
+
+/**
+ * Initialize all data from the user into the task fields.
+ */
+async function TaskDisplayFields() {
+  await howManyTasks();
+  await determineTodaysDate();
+  await searchUpcomingDate();
+  await greeting();
+  setSummaryLetter();
+}
+
+/**
+ * Greet the user depending on the time of day.
+ */
+async function greeting() {
+  DateConstructor = new Date();
+  timeOfDate = DateConstructor.getHours();
+  if (timeOfDate < 12) {
     greetigText = `Good morning`;
-  } else if (testzeit < 18) {
+  } else if (timeOfDate < 18) {
     greetigText = `Good afternoon`;
-  } else if (testzeit < 24) {
+  } else if (timeOfDate < 24) {
     greetigText = `Good evening`;
   }
 }
 
-function howManyTasks() {
+/**
+ * The user's total number of tasks.
+ */
+async function howManyTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
     if (user.tasks[i].status === "to-do") {
       todos++;
@@ -36,149 +93,217 @@ function howManyTasks() {
       awaits++;
     }
   }
-  setzeHeutigesDatum();
 }
 
-async function setzeHeutigesDatum() {
-  const heute = new Date();
-  const jahr = heute.getFullYear();
-  const monat = (heute.getMonth() + 1).toString().padStart(2, "0");
-  const tag = heute.getDate().toString().padStart(2, "0");
-  heutigesDatum = `${jahr}-${monat}-${tag}`;
-  testeDatum();
-  setSummaryLetter();
-  greeting();
+/**
+ * Determine today's date.
+ */
+async function determineTodaysDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, "0");
+  const day = today.getDate().toString().padStart(2, "0");
+  todaysDate = `${year}-${month}-${day}`;
 }
 
-function testeDatum() {
-  let actuelldate = heutigesDatum;
+/**
+ * Search tasks by creation date. To find the upcoming date of the next task.
+ */
+// async function searchUpcomingDate() {
+//   let date = todaysDate;
+//   for (let i = 0; i < user.tasks.length; i++) {
+//     date = user.tasks[i].dueDate;
+
+//     if (user.tasks[0].dueDate < date) {
+//       actuelldate = actuelldate;
+//     } else {
+//       upcomingDate = date;
+//     }
+//   }
+//   howManyUrgent(upcomingDate);
+//   FinalUpcomingDate(upcomingDate);
+// }
+/**
+ *
+ * Search tasks by creation date. To find the upcoming date of the next task.
+ * Früheste bevorstehende Datum.
+ */
+async function searchUpcomingDate() {
+  let earliestUpcomingDate = null;
+
   for (let i = 0; i < user.tasks.length; i++) {
-    date = user.tasks[i].dueDate;
-    if (user.tasks[0].dueDate < date) {
-      actuelldate = actuelldate;
-    } else {
-      actuelldate = date;
+    const taskDueDate = new Date(user.tasks[i].dueDate);
+
+    if (!earliestUpcomingDate || taskDueDate < earliestUpcomingDate) {
+      earliestUpcomingDate = taskDueDate;
     }
   }
-  upcomingDate = actuelldate;
-  howManyUrgent();
-  FinalUpcomingDate();
+
+  console.log(`Earliest Upcoming Date: ${earliestUpcomingDate}`);
+   datecounterdate = earliestUpcomingDate;
+  // if (earliestUpcomingDate) {
+  //   howManyUrgent(earliestUpcomingDate);
+  testdatum();
+    FinalUpcomingDate(earliestUpcomingDate);
+    // setSummaryLetter();
+  // }
 }
 
-function howManyUrgent() {
+let datecounterdate;
+
+function testdatum() {
+  // Ein Date-Objekt erstellen
+  let myDate = new Date(datecounterdate);
+
+  let year = myDate.getFullYear();
+  let month = (myDate.getMonth() + 1).toString().padStart(2, '0'); // Monat ist 0-basiert
+  let day = myDate.getDate().toString().padStart(2, '0');
+
+  let formattedDate = `${year}-${month}-${day}`;
+  datecounterdate= formattedDate;
+  howManyUrgent(datecounterdate);
+}
+
+/**
+ * Just urgent counter.
+ */
+function howManyUrgent(upcomingDate) {
+  console.log(`Checking for urgent tasks with due date: ${upcomingDate}`);
   for (let i = 0; i < user.tasks.length; i++) {
-    if (upcomingDate == user.tasks[i].dueDate) urgentCounter++;
+    console.log(`Task ${i + 1} Due Date: ${user.tasks[i].dueDate}`);
+    if (datecounterdate == user.tasks[i].dueDate) {
+      console.log("Task is urgent!");
+      urgentCounter++;
+    }
   }
+  console.log(`Urgent Counter: ${urgentCounter}`);
 }
 
-function FinalUpcomingDate() {
-  let dateComponents = upcomingDate.split("-");
-  let year = parseInt(dateComponents[0]);
-  let month = parseInt(dateComponents[1]);
-  let finalMonth;
-  if (month === 1) {
-    finalMonth = "January";
-  } else if (month === 2) {
-    finalMonth = "February";
-  } else if (month === 3) {
-    finalMonth = "March";
-  } else if (month === 4) {
-    finalMonth = "April";
-  } else if (month === 5) {
-    finalMonth = "May";
-  } else if (month === 6) {
-    finalMonth = "June";
-  } else if (month === 7) {
-    finalMonth = "July";
-  } else if (month === 8) {
-    finalMonth = "August";
-  } else if (month === 9) {
-    finalMonth = "September";
-  } else if (month === 10) {
-    finalMonth = "October";
-  } else if (month === 11) {
-    finalMonth = "November";
-  } else if (month === 12) {
-    finalMonth = "December";
-  }
-  let day = parseInt(dateComponents[2]);
-  finaleDate = `${finalMonth} ${day}, ${year}`;
+// function howManyUrgent(upcomingDate) {
+//   for (let i = 0; i < user.tasks.length; i++) {
+//     if (upcomingDate == user.tasks[i].dueDate) urgentCounter++;
+//   }
+// }
+
+/**
+ * Find the month for the upcoming urgent deadline.
+ */
+function FinalUpcomingDate(upcomingDate) {
+  finaleDate = formatDateString(upcomingDate);
 }
 
+// function FinalUpcomingDate(upcomingDate) {
+//   const dateComponents = upcomingDate.split("-");
+//   const formattedDate = formatDateString(upcomingDate);
+//   finaleDate = formattedDate;
+// }
+
+/**
+ * Helper function to get the month name.
+ */
+function getMonthName(month) {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  return months[month - 1];
+}
+
+/**
+ * Helper function to format the date string.
+ */
+function formatDateString(date) {
+  const dateObject = new Date(date);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return dateObject.toLocaleDateString("en-US", options);
+}
+
+// function formatDateString(date) {
+//   const dateComponents = date.split("-");
+//   const year = parseInt(dateComponents[0]);
+//   const month = parseInt(dateComponents[1]);
+//   const day = parseInt(dateComponents[2]);
+
+//   const monthName = getMonthName(month);
+//   return `${monthName} ${day}, ${year}`;
+// }
+
+/**
+ * Render the user's data into the placeholders.
+ */
 function setSummaryLetter() {
+  updateTodoContainer();
+  updateDoneContainer();
+  updateProgressContainer();
+  updateAwaitContainer();
+  updateCounterContainer();
+  updateUrgentContainer();
+  updateUpcomingDateContainer();
+  updateGreetingContainer();
+}
+
+function updateTodoContainer() {
   todoContainer = document.getElementById(`summeryTodoTodos`);
   todoContainer.innerHTML = todos;
+}
 
+function updateDoneContainer() {
   doneContainer = document.getElementById(`summeryDoneTodos`);
   doneContainer.innerHTML = dones;
+}
 
+function updateProgressContainer() {
   progressContainer = document.getElementById(`summeryProcessTasks`);
   progressContainer.innerHTML = progresses;
+}
 
+function updateAwaitContainer() {
   awaitContainer = document.getElementById(`summeryAwaitingTask`);
   awaitContainer.innerHTML = awaits;
+}
 
+function updateCounterContainer() {
   tasksInBoard = user.tasks.length;
   counterContainer = document.getElementById(`dataTodos`);
   counterContainer.innerHTML = tasksInBoard;
+}
 
+function updateUrgentContainer() {
   urgentContainer = document.getElementById(`summeryUpcomingTasks`);
   urgentContainer.innerHTML = urgentCounter;
+}
 
+function updateUpcomingDateContainer() {
   upcomingDateContainer = document.getElementById(`summeryUrgentDate`);
   upcomingDateContainer.innerHTML = finaleDate;
-
-  greetingContainer = document.getElementById(`greetingsContainer`);
-  greetingTwoContainer = document.getElementById(`greetingUserSummaryGreet`);
-  greetingContainer.innerHTM = greetigText;
-  greetingTwoContainer.innerHTM = greetigText;
-
-  greetingNameContainer = document.getElementById(`greetingName`);
-  greetingNametwoContainer = document.getElementById(`greetingUserSummaryNameId`);
-  greetingNametwoContainer.innerHTML = user.name;
-  greetingNameContainer.innerHTML = user.name;
 }
 
-/**
- * Gets the current tasks.
- */
-async function initSummeryCountings() {
-  howManyTasks();
+function updateGreetingContainer() {
+  greetingsDesktop = document.getElementById(`greetingsDesktop`);
+  greetingNameDesktop = document.getElementById(`greetingNameDesktop`);
+  greetingMobile = document.getElementById(`greetingMobile`);
+
+  if (window.innerWidth <= 721) {
+    greetingsDesktop.innerHTML = greetigText;
+    greetingNameDesktop.innerHTML = user.name;
+    greetingMobile.innerHTML = greetigText;
+  } else {
+    greetingsDesktop.innerHTML = greetigText;
+    greetingNameDesktop.innerHTML = user.name;
+    greetingMobile.innerHTML = greetigText;
+  }
 }
-
-/**
- * Get the current urgent task and next nearest date.
- */
-function getUrgentTask() {
-  let summeryUpcomingTasks = document.getElementById("summeryUpcomingTasks");
-}
-
-/**
- * Status function. From the three importances to choose from.
- * The parameter Status: Open is first declared in the dummy and is itself automatically set with a switch.
- * @param {IDs of each reactangle} eleId
- * @param {The status when setting the tasks} status
- */
-function getTodoStatusCounting() {
-  let summeryTodoTodos = document.getElementById("summeryTodoTodos");
-}
-
-// --------------------------------------------------------
-
-/*
- * Include header and munu.
- * Than add navigation style as active.
- * Set Users array and user as global.
- * Set the countings from the user.
- */
-async function initSummary() {
-  await includeHTML();
-  setActiveLink("navSummary");
-  await loadCurrentUserAlsoUsersAsObject();
-  initSummeryCountings();
-}
-
-// --------------------------------------------------------
 
 /**
  * Symmary content animate images.
@@ -205,5 +330,3 @@ function changeImageBack(element) {
     img.src = "../assets/img/summary/summaryCheckGray.svg";
   }
 }
-
-// --------------------------------------------------------

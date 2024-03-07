@@ -5,13 +5,12 @@ let selectedDueDate = "";
 let selectedPrio = "";
 let selectedCategory = "";
 let subtasks = [];
-let statusInfo = 'to-do';
-
+let statusInfo = "to-do";
 let mobilVersion;
 let contacts = [];
 
 /**
- * Create a user task and save it to remote storage.
+ * This function load task in the user backend.
  */
 async function assignTaskToUser() {
   user.tasks.push({
@@ -25,11 +24,11 @@ async function assignTaskToUser() {
     subtasks: subtasks,
   });
   await setItem("users", users);
-  includeContentHTML('board');
+  includeContentHTML("board");
 }
 
 /**
- * 
+ * This function is the first function when open the page
  */
 async function initAddTask() {
   await includeHTML();
@@ -37,12 +36,15 @@ async function initAddTask() {
   checkWidth();
   await loadCurrentUserAlsoUsersAsObject();
   await getAllContactsFromCurrentUserSorted();
-  loadContacts();
-  footer();
 }
 
+/**
+ * This function load the contactnames from the user in an array
+ *
+ * @returns - return the contact in the array
+ */
 async function getAllContactsFromCurrentUserSorted() {
-  let allContactsFromAllUsers = await loadAllContactsFromAllUsers(); //Zugriff auf alle Kontakte aller USER
+  let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
   let userId = await getGlobalUserId();
   let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(
     allContactsFromAllUsers,
@@ -53,48 +55,64 @@ async function getAllContactsFromCurrentUserSorted() {
   return contacts;
 }
 
-
-
+/**
+ * This function start check when width changed
+ */
 window.addEventListener("resize", function () {
   checkWidth();
-  footer();
 });
 
+/**
+ * This function checked the required field
+ */
 async function requiredFields() {
   inputAbfrage();
   dueDateRequired();
   categoryRequired();
   let description = document.getElementById(`descriptionInput`);
   selectedDescription = description.value;
-  await assignTaskToUser();
+  if (selectedCategory !== "" && selectedDueDate !== "" && selectedTitle !== "") {
+    await assignTaskToUser();
+  }
 }
 
+/**
+ * This function check the witdh for over 1219 or lower
+ */
 function checkWidth() {
   let screenWidth =
     window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
   if (screenWidth <= 1219) {
-    mobilVersion = false;
-  } else {
     mobilVersion = true;
+  } else {
+    mobilVersion = false;
   }
   loadContent();
 }
 
+/**
+ * This function load html for the desktop inner width
+ */
 function loadContent() {
   let screenWidth =
     window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
   let content = document.getElementById(`taskMainContainer`);
   content.innerHTML = "";
-  if (screenWidth <= 1219 && mobilVersion == false) {
+  if (screenWidth <= 1219 && mobilVersion == true) {
     mobilVersion = true;
     content.innerHTML = renderAddTaskMobileHTML();
+    footerMobile();
   }
-  if (screenWidth > 1219 && mobilVersion == true) {
+  if (screenWidth > 1219 && mobilVersion == false) {
     mobilVersion = false;
     content.innerHTML = renderAddTaskHTML();
+    footer();
   }
 }
 
+/**
+ * This function checked the required of the title container
+ */
 function inputAbfrage() {
   let inputfield = document.getElementById("titelInputContainer");
   let inputRequired = document.getElementById("inputRequiredContainer");
@@ -109,6 +127,9 @@ function inputAbfrage() {
   }
 }
 
+/**
+ * This function checked the required of the dueDate container
+ */
 function dueDateRequired() {
   inputfield = document.getElementById(`dueDateInputContainer`);
   inputRequired = document.getElementById(`dueDateRequiredContainer`);
@@ -123,17 +144,23 @@ function dueDateRequired() {
   }
 }
 
+/**
+ * This function check the right input of the category container
+ */
 function checkCategory() {
-  var inputfield = document.getElementById("categoryText");
-  var content = inputfield.textContent || inputfield.innerText;
+  let inputfield = document.getElementById("categoryText");
+  let content = inputfield.textContent || inputfield.innerText;
   return content.trim() === "Technical Task" || content.trim() === "User Story";
 }
 
+/**
+ * This function checked the required of the category container
+ */
 function categoryRequired() {
   border = document.getElementById(`categorySelectContainer`);
   inputfield = document.getElementById(`categoryText`);
   inputRequired = document.getElementById(`categoryRequiredContainer`);
-  var isCategoryValid = checkCategory();
+  let isCategoryValid = checkCategory();
   if (isCategoryValid) {
     inputfield.value = "";
     inputRequired.innerHTML = "";
@@ -144,13 +171,20 @@ function categoryRequired() {
   }
 }
 
-function whatsPrio(clickedContainerId, SelectedPrio) {
+/**
+ * This function edit the color of the clicked prio container
+ *
+ * @param {string} clickedContainerId - This is the number of the container that was clicked
+ */
+function whatsPrio(clickedContainerId) {
   removeWhiteImg();
   removePrio();
   changePrioColor(clickedContainerId);
-  prio = SelectedPrio;
 }
 
+/**
+ * This function remove the background color of prio container
+ */
 function removePrio() {
   let prioLowContainer = document.getElementById("prioLowContainer");
   let prioMediumContainer = document.getElementById("prioMediumContainer");
@@ -160,6 +194,9 @@ function removePrio() {
   prioUrgentContainer.classList.remove("prioUrgent");
 }
 
+/**
+ * This function remove the images to images non used prio
+ */
 function removeWhiteImg() {
   let imgUrgent = prioUrgentContainer.querySelector("img");
   let imgMedium = prioMediumContainer.querySelector("img");
@@ -168,6 +205,12 @@ function removeWhiteImg() {
   imgMedium.src = "../assets/img/add_task/line_orange.svg";
   imgLow.src = "../assets/img/add_task/arrow_bottom_green.svg";
 }
+
+/**
+ * This function change the color of the clicked prio container
+ *
+ * @param {string} clickedContainerId - is the id from the clicken container
+ */
 
 function changePrioColor(clickedContainerId) {
   let imgUrgent = prioUrgentContainer.querySelector("img");
@@ -182,24 +225,42 @@ function changePrioColor(clickedContainerId) {
   }
 }
 
+/**
+ * This function change the background color of the low container
+ *
+ * @param {string} imgLow - - Is the id from the image
+ */
 function changePrioColorLow(imgLow) {
   prioLowContainer.classList.add("prioLow");
   selectedPrio = "Low";
   imgLow.src = "../assets/img/add_task/arrow_bottom_white.svg";
 }
 
+/**
+ * This function change the background color of the medium container
+ *
+ * @param {string} imgMedium - Is the id from the image
+ */
 function changePrioColorMedium(imgMedium) {
   prioMediumContainer.classList.add("prioMedium");
   selectedPrio = "Medium";
   imgMedium.src = "../assets/img/add_task/line_white.svg";
 }
 
+/**
+ * This function change the background color of the urgent container
+ *
+ * @param string imgUrgent - Is the id from the image
+ */
 function changePrioColorUrgent(imgUrgent) {
   prioUrgentContainer.classList.add("prioUrgent");
   selectedPrio = "Urgent";
   imgUrgent.src = "../assets/img/add_task/arrow_top_white.svg";
 }
 
+/**
+ * This function is for that the task cant use a date in the past
+ */
 function setMinDate() {
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, "0");
@@ -209,18 +270,20 @@ function setMinDate() {
   document.getElementById("dueDateInputContainer").min = today;
 }
 
+/**
+ * This function open the category
+ */
 function openCategorySelect() {
   content = document.getElementById(`categoryMenu`);
   content.innerHTML += openCategorySelectReturn();
-  addCategoryBorder();
+  border = document.getElementById(`categorySelectContainer`);
+  border.classList.add("bordercolor");
   categoryImageUp();
 }
 
-function addCategoryBorder() {
-  border = document.getElementById(`categorySelectContainer`);
-  border.classList.add("bordercolor");
-}
-
+/**
+ * This function change the image when the category menu opened
+ */
 function categoryImageUp() {
   image = document.getElementById(`categoryImage`);
   content = document.getElementById(`categorySelectContainer`);
@@ -228,6 +291,11 @@ function categoryImageUp() {
   content.onclick = closeCategoryMenu;
 }
 
+/**
+ * This function change the name from the choosed category to the required field
+ *
+ * @param {string} selectedOption - This string change the name of the category
+ */
 function selectCategory(selectedOption) {
   let content = document.getElementById(`categoryText`);
   let image = document.getElementById(`categoryImage`);
@@ -238,18 +306,20 @@ function selectCategory(selectedOption) {
   checkInputs();
 }
 
+/**
+ * This function close the category menu
+ */
 function closeCategoryMenu() {
   div = document.getElementById(`categoryMenu`);
   div.innerHTML = "";
-  removeCategoryBorder();
+  border = document.getElementById(`categorySelectContainer`);
+  border.classList.remove("bordercolor");
   categoryImageDown();
 }
 
-function removeCategoryBorder() {
-  border = document.getElementById(`categorySelectContainer`);
-  border.classList.remove("bordercolor");
-}
-
+/**
+ * this function chance the image when the category choose menu and switch the onclick for close the menu
+ */
 function categoryImageDown() {
   image = document.getElementById(`categoryImage`);
   content = document.getElementById(`categorySelectContainer`);
@@ -257,59 +327,9 @@ function categoryImageDown() {
   content.onclick = openCategorySelect;
 }
 
-function openContacts() {
-  let contactList = document.getElementById("contactList");
-  let contactListIcons = document.getElementById("contactListIcons");
-  let border = document.getElementById(`contactSelectContainer`);
-  let to = document.getElementById(`assignedToContainer`);
-  if (contactList.style.display === "none" || contactList.style.display === "") {
-    contactList.style.display = "block";
-    contactListIcons.style.display = "none";
-    border.classList.add("bordercolor");
-    to.innerHTML = "An";
-  } else {
-    contactList.style.display = "none";
-    contactListIcons.style.display = "block";
-    border.classList.remove("bordercolor");
-    to.innerHTML = "Select to Contact";
-  }
-}
-
-function assignedtoContactBg(i, name) {
-  selectedAssignedto.push(name);
-  let container = document.getElementById(`assignedContactContainer${i}`);
-  let contactListIcons = document.getElementById("contactListIconsLine");
-  container.classList.add("assignedContainerBlack");
-  let image = document.getElementById(`assignedContactImage${i}`);
-  image.src = "../assets/img/add_task/task_box_check.svg";
-  let signature = document.getElementById(`ContactSignatureIcon${i}`).innerHTML;
-  let userColor = contacts[i].userColor;
-  contactListIcons.innerHTML += `<div id="contactIconNumber${i}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
-  container.onclick = function () {
-    removeassignedtoContactBg(i);
-  };
-}
-
-function removeassignedtoContactBg(i) {
-  let container = document.getElementById(`assignedContactContainer${i}`);
-  container.classList.remove("assignedContainerBlack");
-  let image = document.getElementById(`assignedContactImage${i}`);
-  image.src = "../assets/img/add_task/task_box.svg";
-  let iconId = document.getElementById(`contactIconNumber${i}`);
-  iconId.remove();
-  container.onclick = function () {
-    assignedtoContactBg(i);
-  };
-}
-
-function subtastwindow() {
-  let container = document.getElementById(`subTaskInputcontainer`);
-  let img = document.getElementById(`addSubtaskImg`);
-  img.src = "../assets/img/add_task/task_bin.svg";
-  img.onclick = "removeSubtask()";
-  container.innerHTML += subtastwindowReturn();
-}
-
+/**
+ * This function change the menufield of the subtaks inputfield
+ */
 function changemenu() {
   container = document.getElementById(`subTaskInputfieldMenu`);
   container.innerHTML = changemenuReturn();
@@ -317,6 +337,9 @@ function changemenu() {
   border.classList.add("bordercolor");
 }
 
+/**
+ * This function creat a subtask
+ */
 function addSubtask() {
   let subtasksInput = document.getElementById("subTaskInputfieldText");
   subtasks.push(subtasksInput.value);
@@ -324,6 +347,9 @@ function addSubtask() {
   clearSubtaskInputfield();
 }
 
+/**
+ * This function filled the created subtask Container
+ */
 function renderSubtasks() {
   let subtasksList = document.getElementById("subTasksContainer");
   subtasksList.innerHTML = "";
@@ -332,11 +358,21 @@ function renderSubtasks() {
   }
 }
 
+/**
+ * This function change the subtask from div to inputfield
+ *
+ * @param {int} i - This is the number of subtask
+ */
 function editSubtask(i) {
   let content = document.getElementById("subtask" + i);
   content.innerHTML = editSubtaskReturn(subtasks, i);
 }
 
+/**
+ * This function finish the edit of a creat subtask
+ *
+ * @param {int} i - This is the number ob subtask
+ */
 function editSubtaskDone(i) {
   let content = document.getElementById("editSubtask" + i).value;
   if (content.length > 0) {
@@ -347,11 +383,19 @@ function editSubtaskDone(i) {
   }
 }
 
+/**
+ * This function delete the current subtask
+ *
+ * @param {int} i - This is the number of the subtask
+ */
 function deleteSubtask(i) {
   subtasks.splice(i, 1);
   renderSubtasks();
 }
 
+/**
+ * This function clear the value from the subtask input field
+ */
 function clearSubtaskInputfield() {
   let input = document.getElementById(`subTaskInputfieldText`);
   input.value = "";
@@ -362,35 +406,40 @@ function clearSubtaskInputfield() {
   border.classList.remove("bordercolor");
 }
 
-function loadContacts() {
-  let mainDiv = document.getElementById(`contactList`);
-  let totalHeight = Math.min(contacts.length * 52, 260);
-  mainDiv.style.height = `${totalHeight}px`;
-  for (let i = 0; i < Math.min(contacts.length); i++) {
-    contactSignature = contacts[i].signature;
-    contactName = contacts[i].name;
-    mainDiv.innerHTML += loadContactsReturn(i);
-    iconid = document.getElementById(`ContactSignatureIcon${i}`);
-    iconid.style.backgroundColor = contacts[i].userColor;
-  }
-  if (contacts.length > 5) {
-    mainDiv.style.overflowY = "scroll";
-  }
-}
-
+/**
+ * This function checked if the required field have a value
+ * after this the create task butten is showed
+ */
 function checkInputs() {
-  var dueDateValue = document.getElementById("dueDateInputContainer").value;
-  var titleValue = document.getElementById("titelInputContainer").value;
-  var isCategoryValid = checkCategory();
-  var createTaskButton = document.getElementById("createTaskButton");
-  if (dueDateValue.trim() !== "" && titleValue.trim() !== "" && isCategoryValid) {
-    createTaskButton.style.display = "block";
-  } else {
-    createTaskButton.style.display = "none";
+  if (mobilVersion == false) {
+    let dueDateValue = document.getElementById("dueDateInputContainer").value;
+    let titleValue = document.getElementById("titelInputContainer").value;
+    let isCategoryValid = checkCategory();
+    let createTaskButton = document.getElementById("createTaskButton");
+    let placeholder = document.getElementById(`placeholder`);
+    if (dueDateValue.trim() !== "" && titleValue.trim() !== "" && isCategoryValid) {
+      createTaskButton.style.display = "block";
+      placeholder.style.display = "none";
+    } else {
+      createTaskButton.style.display = "none";
+      placeholder.style.display = "block";
+    }
   }
 }
 
+/**
+ * This function is create the footer for desktopversion
+ */
 function footer() {
   let content = document.getElementById(`taskMainContainer`);
+  footer.remove;
   content.innerHTML += footerReturn();
+}
+/**
+ * This function is create the footer for mobileversion
+ */
+function footerMobile() {
+  let content = document.getElementById(`taskMainContainer`);
+  footer.remove;
+  content.innerHTML += footerMobileReturn();
 }
