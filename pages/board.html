@@ -16,6 +16,7 @@
     <script src="../js/header.js"></script>
 
     <script src="./../js/board.js"></script>
+    <script src="./../js/boardHTML.js"></script>
 
     <title>Board Kanban</title>
   </head>
@@ -36,47 +37,57 @@
           <input placeholder="Find Task" />
           <img src="../assets/img/board/search.svg" />
         </div>
-
+        
         <div class="selectionContainer">
           <div class="headContainer">
-            <div>
-              <h2>To do</h2>
-            </div>
-            <div class="boxesContainer">
-              <img src="../assets/img/board/add_mobile.svg" />
-            </div>
+            <h2>To do</h2>
+            <img src="../assets/img/board/add_mobile.svg" />
           </div>
           <div>
             <div class="noTasksInThisSelection font16400">No tasks To do</div>
           </div>
+          <div id="TodoMainContainer" class="boxesContainer">
+            </div>
         </div>
         <div class="selectionContainer">
           <div class="headContainer">
-              <h2>In progress</h2>
-              <img src="../assets/img/board/add_mobile.svg" />
+            <h2>In progress</h2>
+            <img src="../assets/img/board/add_mobile.svg" />
           </div>
           <div class="boxesContainer">
-            <div class="boxSize">
+            <div class="boxSizeProgress">
               <div class="headContainer">
                 <span class="headlineFromTask font16400">Catergory</span>
                 <div>
-                  <img src="../assets/img/board/mobile_switch.svg">
+                  <img src="../assets/img/board/mobile_switch.svg" />
                 </div>
               </div>
-              <div id="titleid">Title</div>
-              <div>Description</div>
-              <div>
-                <div>progressBar</diV>
-                  <div>subtasks</div>
+              <div class="inProgressText">
+                <p class="titleText font16700" id="titleId">Kochwelt Page & Recipe Recommender</p>
+                <p class="descriptionText font16400" id="descriptionID">
+                  Build start page with recipe recommendation...
+                </p>
               </div>
-              <div>
-              <div>assignedto icons</div>
-              <div></div>
+              <div class="progressMainContainer">
+                <div class="progress-container">
+                  <div class="progress-bar" id="myProgressBar"></div>
+                </div>
+                <p class="font12400">1/2 Subtasks</p>
+              </div>
+              <div class="progressFooter">
+                <div class="IconBar">
+                  <div class="iconstlye">SL</div>
+                  <div class="iconstlye" style="background-color: red; margin-left: -10px">AM</div>
+                  <div class="iconstlye" style="background-color: green; margin-left: -10px">
+                    BM
+                  </div>
+                </div>
+                <div><img src="../assets/img/board/board_low.svg" /></div>
+              </div>
             </div>
-            </div>
-            <div class="boxSize" style="background-color: red;"></div>
-            <div class="boxSize"style="background-color: green;"></div>
-            <div class="boxSize"style="background-color: blue;"></div>
+            <div class="boxSizeProgress" style="background-color: red"></div>
+            <div class="boxSizeProgress" style="background-color: green"></div>
+            <div class="boxSizeProgress" style="background-color: blue"></div>
           </div>
         </div>
         <div class="selectionContainer">
@@ -88,8 +99,36 @@
               <img src="../assets/img/board/add_mobile.svg" />
             </div>
           </div>
-          <div>
-            <div class="noTasksInThisSelection font16400">No tasks feedback</div>
+          <div class="boxesContainer">
+            <div class="boxSizeFeedback">
+              <div class="headContainer">
+                <span class="headlineFromTask font16400" style="background-color: #1fd7c1"
+                  >Technical Task</span
+                >
+                <div>
+                  <img src="../assets/img/board/mobile_switch.svg" />
+                </div>
+              </div>
+              <div class="inProgressText">
+                <p class="titleText font16700" id="titleId">Kochwelt Page & Recipe Recommender</p>
+                <p class="descriptionText font16400" id="descriptionID">
+                  Build start page with recipe recommendation...
+                </p>
+              </div>
+              <div class="progressFooter">
+                <div class="IconBar">
+                  <div class="iconstlye">SL</div>
+                  <div class="iconstlye" style="background-color: red; margin-left: -10px">AM</div>
+                  <div class="iconstlye" style="background-color: green; margin-left: -10px">
+                    BM
+                  </div>
+                </div>
+                <div><img src="../assets/img/board/board_medium.svg" /></div>
+              </div>
+            </div>
+            <div class="boxSizeFeedback" style="background-color: red"></div>
+            <div class="boxSizeFeedback" style="background-color: green"></div>
+            <div class="boxSizeFeedback" style="background-color: blue"></div>
           </div>
         </div>
         <div class="selectionContainer">
@@ -99,7 +138,39 @@
             </div>
           </div>
           <div class="boxesContainer">
-            <div class="noTasksInThisSelection font16400">No tasks done</div>
+            <div class="boxSizeDone">
+              <div class="headContainer">
+                <span class="headlineFromTask font16400">Catergory</span>
+                <div>
+                  <img src="../assets/img/board/mobile_switch.svg" />
+                </div>
+              </div>
+              <div class="inProgressText">
+                <p class="titleText font16700" id="titleId">Kochwelt Page & Recipe Recommender</p>
+                <p class="descriptionText font16400" id="descriptionID">
+                  Build start page with recipe recommendation...
+                </p>
+              </div>
+              <div class="progressMainContainer">
+                <div class="progress-container">
+                  <div class="progress-bar" id="myProgressBar"></div>
+                </div>
+                <p class="font12400">1/2 Subtasks</p>
+              </div>
+              <div class="progressFooter">
+                <div class="IconBar">
+                  <div class="iconstlye">SL</div>
+                  <div class="iconstlye" style="background-color: red; margin-left: -10px">AM</div>
+                  <div class="iconstlye" style="background-color: green; margin-left: -10px">
+                    BM
+                  </div>
+                </div>
+                <div><img src="../assets/img/board/board_low.svg" /></div>
+              </div>
+            </div>
+            <div class="boxSizeDone" style="background-color: red"></div>
+            <div class="boxSizeDone" style="background-color: green"></div>
+            <div class="boxSizeDone" style="background-color: blue"></div>
           </div>
         </div>
       </div>
