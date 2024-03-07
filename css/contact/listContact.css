@@ -75,14 +75,6 @@ a.singleContact:hover {
     display: none;
 }
 
-@media screen and (min-width: 300px)
-{
-    
-   
-}
-
-
-
 @media screen and (min-width: 456px) {
 
 }
@@ -95,14 +87,5 @@ a.singleContact:hover {
 }
 
 @media screen and (min-width: 1000px) {
-    body {
-        display: flex;
-        flex-direction: row;
-        flex: 1;
-        height: 100vh;
-    }
-    
-    #contactFlexContainer {
-        display: inline-block;
-        flex: 1;
-    }
+
+}

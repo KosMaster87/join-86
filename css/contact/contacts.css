@@ -1,7 +1,7 @@
  /* CONTACTS.CSS */
 .mainContent {
-    padding-top: 80px; 
-    padding-bottom: 80px; 
+    padding-top: 100px; 
+    padding-bottom: 100px; 
     overflow-y: auto; 
     height: calc(100vh - 160px); 
   }
@@ -18,41 +18,24 @@ input[type="text"],[type="email"],[type="tel"] {
     border: none;
     border-radius: 0;
     
-    /* Resetting font styles */
     font-family: 'Inter', sans-serif;
     font-size: inherit;
     font-weight: 400;
     font-style: inherit;
     line-height: inherit;
     
-    /* Resetting background and text color */
     background-color: transparent;
     color: inherit;
     
-    /* Resetting any other relevant properties */
-    /* For instance, you might want to reset box-shadow, outline, etc. */
     box-shadow: none;
     outline: none;
-    
-    /* You can add more specific styling as needed */
 }
-
- 
-
 
 /* Übergreifendes Styling */
 
 .d-none {
     display: none;
 }
-
-@media screen and (min-width: 300px)
-{
-    
-   
-}
-
-
 
 @media screen and (min-width: 456px) {
     /* contactFlexContainer als Seitenelement für Desktop-Ansicht */
@@ -63,11 +46,6 @@ input[type="text"],[type="email"],[type="tel"] {
 
 @media screen and (min-width: 721px) { 
     .containerContacts {
-        width: 456px;
-    }
-
-    #listContactContainer {
-        top: 40px;
         width: 456px;
     }
 }
@@ -87,11 +65,6 @@ input[type="text"],[type="email"],[type="tel"] {
 
     #mobileBtnAddContact{
         display: none;
-    }
-
-    #listContactContainer {
-        top: 200px;
-        width: 456px;
     }
 }
 

@@ -1,8 +1,138 @@
 #showSingleContactContainer {
     display: none;
-    width: 100%;
-    top: -80px; 
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
     left: 0;
     right: 0;
     bottom: 0;
+    background-color: var(--whiteGray);
+}
+
+#singleContact {
+   position: relative;
+   top: 80px;
+   padding: 16px;
+   display: flex;
+   flex-direction: column;
+   gap: 21px;
+}
+
+#mobileShowContact {
+    background-color: var(--whiteGray);
+    height: 100vh;
+    padding: 0 16px;
+} 
+
+.singleContactHeader {
+
+}
+
+.singleContactNav {
+    position: absolute;
+    right: 16px;
+    top: 97px;
+
+}
+
+.singleContactNav:hover {
+    cursor: pointer;
+
+}
+
+.singleContactHeaderBorder {
+    height: 2px;
+    width: 90px;
+    background-color: var(--lightBlue);
+    margin-top: 8px;
+}
+
+.singleContactH1 {
+    color: var(--black);
+    font-weight: 700;
+    font-size: 47px;
+    line-height: 1.2;
+}
+
+.singleContactH3 {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.singleContactCol {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 21px;
+    margin-top: 36px;
+}
+
+.singleContactDisplayIdentidy {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.singleContactName {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+
+}
+
+.singleContactIconXl {
+    background-color: var(--orangeIcons);
+    color: var(--white);
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 27px;
+    line-height: 1.2;
+    box-shadow: 0, 0, 4, 0, rgba(0, 0, 0, 0.1);
+}
+
+.singleContactIconName {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.2;
+}
+
+.singleContactDescription {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+
+}
+
+.singleContactLabel {
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.singleContactEmailLink {
+    color: var(--intenseBlue)
+}
+
+.singleContactEmailLink:hover {
+    cursor: pointer;
+}
+
+@media screen and (min-width: 721px) { 
+
+}
+
+@media screen and (min-width: 1000px) {
+    .singleContactHeader {
+        display: flex;
+    } 
+}
+
+@media screen and (min-width: 1440px) {
+
 }

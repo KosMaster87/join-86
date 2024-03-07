@@ -129,33 +129,31 @@
         </div> <!-- Ende addContactEntry -->
       <!-- ENDE Add Contact Container -->
 
-      
-
       <!-- ANFANG SHOW SINGLE CONTACT CONTAINER -->
       <div id="showSingleContactContainer">
-        <div id="mobileShowContact">
-          <div class="contactHeader">
-            <div class="contactHeadlines">
-              <h1 class="contactH1">Contacts</h1>
-              <h3 class="contactH3">Better with a team</h3>
-            </div>
-            <a class="contactGetBack" onclick="desktopGoFromSingleContactToListContactContainer()">
-                <img src="../../assets/img/other/Vektor.svg" />
-            </a>
-          </div> <!-- Ende contact Header-->
-          <div class="headerBorder"></div>
-          <div class="contactDisplay">
-            <div class="contactDisplayTitle">
-              <div id="signatureContact" class="contactIconXl"></div>
-              <span id="nameContact" class="contactIconName">Anton Mayer</span>
-            </div>
-            <h4 class="contactInfo">Contact Information</h4>
-            <div class="labelDisplay">Email</div>
-            <a id="emailContact" class="emailLink">antom@gmail.com</a>
-            <div class="labelDisplay">Phone</div>
-            <div id="phoneContact" class="phone">+49 1111 111 11 1</div>
-          </div> <!-- Ende contact Display -->
-        </div> <!-- Ende mobile Show Contact -->
+          <div id="singleContact">
+            <div class="singleContactHeader">
+              <div class="singleContactHeadlines">
+                <h1 class="singleContactH1">Contacts</h1>
+                <h3 class="singleContactH3">Better with a team</h3>
+              </div>
+              <div class="singleContactHeaderBorder"></div>
+            </div> <!-- Ende contact Header-->  
+            <div class="singleContactCol">
+              <div class="singleContactDisplayIdentidy">
+                <div id="singleContactSignature" class="singleContactIconXl"></div>
+                <span id="singleContactName" class="singleContactName">Anton Mayer</span>
+              </div>
+              <h4 class="singleContactDescription">Contact Information</h4>
+              <div class="singleContactLabel">Email</div>
+              <a id="singleContactEmail" class="singleContactEmailLink" onclick="openEmailProgram()"></a>
+              <div class="singleContactLabel">Phone</div>
+              <div id="singleContactPhone" class="phone"></div>
+            </div> <!-- Ende contact Display -->
+          </div> <!-- Ende mobile Show Contact -->
+          <a class="singleContactNav" onclick="desktopGoFromSingleContactToListContactContainer()">
+            <img src="../../assets/img/other/Vektor.svg" />
+          </a>
       </div>  
       <!-- ENDE Show Single Contact Container-->
   

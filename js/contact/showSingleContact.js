@@ -10,6 +10,14 @@ async function setCurrentContactId(contactId) {
     await setItem('currentContactId', contactId);
 } 
 
+async function setCurrentContactEmail(email) {
+    await setItem('currentContactEmail', email);
+} 
+
+async function getCurrentContactEmail(email) {
+    return await JSON.parse(getItem('currentContactEmail', email));
+} 
+
 async function getCurrentContactId() {
     return await getItem('currentContactId');
 } 
@@ -27,23 +35,31 @@ async function setCurrentContactInfos(userId, contactId, name, email, phone, sig
         userColor: userColor
     })
 
+    
     setItem('currentContactInfos', contactArray);
 }
 
 async function getCurrentContactInfos() {
-    getItem('currentContactInfos');
+    return getItem('currentContactInfos');
 }
  
 let currentContactId = getCurrentContactId();
 
-let currentContactInfos = getCurrentContactInfos
+/*let currentContactInfos = getCurrentContactInfos */
 
 function fillAllVariables(name, email, phone, signature, userColor) {
-    document.getElementById('nameContact').innerText = name;
-    document.getElementById('emailContact').innerText = email;
-    document.getElementById('phoneContact').innerText = phone;
-    document.getElementById('signatureContact').innerText = signature;
-    document.getElementById('signatureContact').style.backgroundColor = userColor;
+    document.getElementById('singleContactName').innerText = name;
+    document.getElementById('singleContactEmail').innerText = email;
+    document.getElementById('singleContactPhone').innerText = phone;
+    document.getElementById('singleContactSignature').innerText = signature;
+    document.getElementById('singleContactSignature').style.backgroundColor = userColor;
+
+    setCurrentContactEmail(email);
+}
+
+async function openEmailProgram() {
+    let email = await getCurrentContactEmail();
+    window.open('mailto: ' + email);
 }
 
 
