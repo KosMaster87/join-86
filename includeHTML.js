@@ -22,3 +22,7 @@ async function includeHTML() {
 function includeContentHTML(changePage) {
   window.location.assign(changePage + ".html");
 }
+
+function includeTamplatetHTML(changePage) {
+  window.location.assign("./assets/templates/help/" + changePage + ".html")
+}
