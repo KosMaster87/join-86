@@ -1,5 +1,4 @@
 /* SHOW SINGLE CONTACT JS */
-let userId = getCurrentContactId;
 
 async function loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor) {
     fillAllVariables(name, email, phone, signature, userColor);
@@ -22,6 +21,7 @@ async function getCurrentContactId() {
     return await getItem('currentContactId');
 } 
 
+
 async function setCurrentContactInfos(userId, contactId, name, email, phone, signature, userColor) {
     let contactArray = []
     
@@ -34,7 +34,6 @@ async function setCurrentContactInfos(userId, contactId, name, email, phone, sig
         signature: signature,
         userColor: userColor
     })
-
     
     setItem('currentContactInfos', contactArray);
 }

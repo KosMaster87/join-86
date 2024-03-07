@@ -1,8 +1,9 @@
 const contactColors = ["var(--red)", "var(--yellow)", "var(--orangeIcons)", "var(--green)", "var(--pink)", "var(--mintGreen)"];
 let allContactsFromAllUsers = [];
-//TODO: delete mockUpAllUserContacts after testing at remote-storage and change all functions 
+let userId = getGlobalUserId();
 
 async function startSaveProcess() {
+    await loadCurrentUserAlsoUsersAsObject();
     let name = (document.getElementById('addContactInputName').value).trim();
     let email = (document.getElementById('addContactInputEmail').value).trim();
     let phone = (document.getElementById('addContactInputPhone').value).trim();
@@ -15,6 +16,7 @@ async function startSaveProcess() {
     }   
 }
 
+
 async function getGlobalUserId() {
     let currentUserId = await getItem('currentUserId');
 
@@ -22,78 +24,49 @@ async function getGlobalUserId() {
 }
 
 
-async function getCurrentUserId() {
-    let currentUserId = await getItem('currentUserId');
-
-    return currentUserId;
-}
-
-
 async function saveContact(name, email, phone) {
-    let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
+    /*let allContactsFromAllUsers = await loadAllContactsFromAllUsers();  muss überall ersetzt werden*/
     let contactId = generateRandomId();
     let userColor = getRandomColor(contactColors);
     let signature = getSignature(name);
     let userId = await getCurrentUserId();
 
     let contact = {
-        "userId": await getGlobalUserId(), 
-        "contactId": contactId, 
-        "name": name, 
-        "email": email, 
-        "phone": phone, 
-        "userColor": userColor, 
-        "signature": signature
+        userId: userId, 
+        contactId: contactId, 
+        name: name, 
+        email: email, 
+        phone: phone, 
+        userColor: userColor, 
+        signature: signature
     };
 
-    let users = JSON.parse(await getItem('users'));
-
-    /* let currentUser = users.find(user => user.email == userId); */
-
-    let contacts = [];
-    for (let i = 0; i < users.length; i++) {
-        const user = user[i];
-        if (user.email == await userId) {
-            contacts == user.contacts;
-            contacts.push(contact);
-        }
-    }
-
-    
-
-    /* if (currentUser ) {
-        if (!currentUser.contacts) {
-            currentUser.contacts = [];
-        }
-    } */
-    
-    /* currentUser.contacts.push(contact); */
-
-    await setItem('users', JSON.string('users'));
- 
-
-    /*allContactsFromAllUsers.push(contact);
-    await setItem('mockUpAllUserContacts', JSON.stringify(allContactsFromAllUsers));
-    await closeAddContactAndGoToShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor);*/ 
+    user.contacts.push(contact);
+    setItem("users", users);
 }
 
-
-async function loadAllContactsFromAllUsers() {
-    let currentUserId = await getGlobalUserId();
-    let allContactsFromAllUsers = await getItem('users');
-
-    let users = JSON.parse(allContactsFromAllUsers);
-    let contactArray = []
-    for(let i = 0; i <users.length; i++) {
-        const user = users[i];
-       
-        if(user.email == currentUserId) {
-            contactArray == user.contacts
-        } else {
-            contactArray = [];
+async function getAllContactsFromCurrentUser() {
+    
+    return await getAllContactsFromCurrentUserSorted();
+}
+  
+    
+async function getAllContactsFromCurrentUser() {
+    let currentUserId = await userId;
+    let users = await getAllContactsFromAllUsers();
+    const contactsArray = [];
+    for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    if (user.email == currentUserId) {
+        for (let j = 0; j < user.contacts.length; j++) {
+        const contact = user.contacts[j];
+        if (contact.userId == currentUserId) {
+            contactsArray.push(contact);
         }
-        return contactArray;
     }
+    break; 
+    }}
+    return contactsArray; 
 }
 
 
