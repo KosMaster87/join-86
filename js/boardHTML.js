@@ -34,6 +34,7 @@ function HtmlReturn(i) {
     </div>
   </div>`;
 }
+
 function awaitHtmlReturn(i) {
   return`
   <div draggable="true" ondragstart="startDragging(waitContainer${i})" id="waitContainer${i}" class="boxSizeFeedback">

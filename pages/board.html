@@ -71,17 +71,70 @@
               <h2>Done</h2>
             </div>
           </div>
-          <div id="doneMainContainer" class="boxesContainer">
+          <div id="doneMainContainer" class="boxesContainer"></div>
+        </div>
+      </div>
 
+      <!-- Pop up window then open task  -->
+      <div class="openwindow">
+        <div id="toDoContainer${i}" class="boxSizePopUp">
+          <div class="headContainer">
+            <span id="TaskCategory${i}" class="headlineFromTask font16400"> Catergory </span>
+            <div>
+              <img src="../assets/img/board/board_cross.svg" />
+            </div>
+          </div>
+
+          <div class="inProgressText">
+            <p class="bordPopUptitleText font16700" id="titleId${i}">
+              Kochwelt Page & Recipe Recommender
+            </p>
+            <p class="font16400" id="descriptionID${i}">
+              Build start page with recipe recommendation...
+            </p>
+          </div>
+          <div class="task-info">
+            <div>
+              <span class="label popUpHeadline">Due date:</span>
+              <span class="value">2024-03-01</span>
+            </div>
+            <div>
+              <span class="label popUpHeadline">Priority:</span>
+              <span class="value">low</span>
+              <img id="prio-img-detail2" src="../assets/img/board/board_low.svg" />
+            </div>
+          </div>
+          <div>
+            <p class="font16400 popUpHeadline">Assigned To:</p>
+          </div>
+          <div style="display: flex; flex-direction: column">
+            <p class="font16400 popUpHeadline" style="margin-bottom: 8px">Subtasks</p>
+            <div class="boardPopUpSubContainer">
+              <div class="subtaskDetail">
+                <img src="../assets/img/board/board_box.svg" />
+                <span>Test</span>
+              </div>
+              <div class="subtaskDetail">
+                <img src="../assets/img/board/board_box.svg" />
+                <span>Test</span>
+              </div>
+            </div>
           </div>
         </div>
-
-        
-
+        <div class="popUpFooter">
+          <div class="footerBox">
+            <img src="../assets/img/board/board_delete.svg" />
+            <p class="font16400">Delete</p>
+          </div>
+          <div class="popUpLine"></div>
+          <div class="footerBox">
+            <img src="../assets/img/board/board_edit.svg" />
+            <p class="font16400">Edit</p>
+          </div>
+        </div>
       </div>
-      <div class="openwindow">
-
-      </div>
+      
+      <!-- Pop up window then open task end -->
     </div>
     <div
       w3-include-html="../assets/templates/menu.html"
