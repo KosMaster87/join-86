@@ -37,6 +37,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
   }
 
   .headerSubMenuHoverBox {
@@ -124,6 +127,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
   }
 
   .headerSubMenuHoverBox {
@@ -213,6 +219,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
   }
 
   .headerSubMenuHoverBox {

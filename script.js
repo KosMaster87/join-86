@@ -1,7 +1,6 @@
 // const STORAGE_TOKEN = "J4LQKS1ZDS5WC5NTX6XUA3MD2ROKE6VOP8A4QBBP"; // #1
 const STORAGE_TOKEN = "DXZFTQCTDMTN307RSV39G7QWLBSB9ZB6CEFWG1WB"; // #2 aktueller Gruppe
 
-
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
 let users;
@@ -154,6 +153,31 @@ function changeTaskStatus(taskIndex, newStatus) {
   } else {
     console.error("Ungültiger Task-Index oder fehlende Benutzerdaten.");
   }
+}
+
+// ------------------------------------------------------------------
+
+/**
+ * Fügt dem Kontaktarray des Benutzers einen neuen Kontakt hinzu.
+ * @param {string} contactName - Der Name des Kontakts.
+ * @param {string} contactEmail - Die E-Mail des Kontakts.
+ */
+async function addContact(contactName, contactEmail) {
+  await loadCurrentUserAlsoUsersAsObject();
+
+  // Füge den Kontakt dem Kontaktarray des Benutzers hinzu
+  user.contacts.push({
+    userId: "",
+    contactId: "",
+    name: contactName,
+    email: contactEmail,
+    phone: "",
+    userColor: "",
+    signature: "",
+  });
+
+  // Speichere den aktualisierten Benutzer im Remote-Speicher
+  await setItem("users", JSON.stringify(users));
 }
 
 // ------------------------------------------------------------------

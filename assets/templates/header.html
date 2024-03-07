@@ -29,33 +29,34 @@
           />
         </a>
 
-        <div onclick="toggleHeaderSubMenu()">
+        <div id="headerProfile" onclick="toggleHeaderSubMenu()">
           <img
-            id="headerProfile"
             class="userLogoImg"
             src="../assets/img/header/headerCurrentGuestImage.svg"
           />
         </div>
 
-        <div class="headerSubMenu" id="headerSubMenu" style="display: none;">
-          <div class="headerSubMenuHoverBox">
-            <a
-              onclick="includeContentHTML('legality')"
-              class="headerSubMenuHoverAnchor"
-              >Legal notice</a
-            >
+        <div class="headerSubMenu" id="headerSubMenu" style="display: none">
+          <div
+            class="headerSubMenuHoverBox"
+            onclick="includeContentHTML('legality')"
+          >
+            <a class="headerSubMenuHoverAnchor">Legal notice</a>
           </div>
 
-          <div class="headerSubMenuHoverBox">
-            <a
-              onclick="includeContentHTML('policy')"
-              class="headerSubMenuHoverAnchor"
-              >Privacy Police</a
-            >
+          <div
+            class="headerSubMenuHoverBox"
+            onclick="includeContentHTML('policy')"
+          >
+            <a class="headerSubMenuHoverAnchor">Privacy Police</a>
           </div>
 
-          <div class="headerSubMenuHoverBox" id="headerLogout">
-            <a class="headerSubMenuHoverAnchor" onclick="logOut()">Log out</a>
+          <div
+            class="headerSubMenuHoverBox"
+            id="headerLogout"
+            onclick="logOut()"
+          >
+            <a class="headerSubMenuHoverAnchor">Log out</a>
           </div>
         </div>
       </div>
