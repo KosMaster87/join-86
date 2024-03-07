@@ -3,9 +3,9 @@ let allContactsFromAllUsers = [];
 //TODO: delete mockUpAllUserContacts after testing at remote-storage and change all functions 
 
 async function startSaveProcess() {
-    let name = (document.getElementById('contactInputName').value).trim();
-    let email = (document.getElementById('contactInputEmail').value).trim();
-    let phone = (document.getElementById('contactInputPhone').value).trim();
+    let name = (document.getElementById('addContactInputName').value).trim();
+    let email = (document.getElementById('addContactInputEmail').value).trim();
+    let phone = (document.getElementById('addContactInputPhone').value).trim();
 
     if (checkAllInputFields(name, email, phone) == true) {
         await saveContact(name, email, phone);
@@ -15,15 +15,23 @@ async function startSaveProcess() {
     }   
 }
 
+
+async function getCurrentUserId() {
+    let currentUserId = await getItem('currentUserId');
+
+    return currentUserId;
+}
+
+
 async function saveContact(name, email, phone) {
     let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
     let contactId = generateRandomId();
     let userColor = getRandomColor(contactColors);
     let signature = getSignature(name);
-    let userId = await getGlobalUserId();
+    let userId = await getCurrentUserId();
 
     let contact = {
-        "userId": await getGlobalUserId(), 
+        "userId": await getCurrentUserId(), 
         "contactId": contactId, 
         "name": name, 
         "email": email, 
@@ -31,13 +39,10 @@ async function saveContact(name, email, phone) {
         "userColor": userColor, 
         "signature": signature
     };
-    console.log(contact);
+
     allContactsFromAllUsers.push(contact);
-    console.log(allContactsFromAllUsers);
-
     await setItem('mockUpAllUserContacts', JSON.stringify(allContactsFromAllUsers));
-
-    await openShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor); 
+    await closeAddContactAndGoToShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor); 
 }
 
 
@@ -49,9 +54,9 @@ async function loadAllContactsFromAllUsers() {
 
 
 function resetInputFields() {
-    document.getElementById('contactInputName').value = '';
-    document.getElementById('contactInputEmail').value = '';
-    document.getElementById('contactInputPhone').value = '';
+    document.getElementById('addContactInputName').value = '';
+    document.getElementById('addContactInputEmail').value = '';
+    document.getElementById('addContactInputPhone').value = '';
 }    
 
 
@@ -177,28 +182,6 @@ function checkInputPhone(phone) {
     }
 }
 
-// function goToListContact(contactId, userId) {
-//     window.location.href = `listContact.html?contactId=${contactId}&userId=${userId}`;
-// }
 
-async function closeAddContactContainerWithoutAddingNewContact() {
-    document.getElementById("addContactContainer").style.display = "none";
-    document.getElementById("mobileBtnAddContact").style.display = "block";
-    await initListContact();
-}
-
-async function closeAddContactContainer() {
-    document.getElementById("addContactContainer").style.display = "none";
-    document.getElementById("mobileBtnAddContact").style.display = "block";
-    await initListContact();
-    console.log('Close Add Contact Container');
-}
-
-async function closeAddContactContainer() {
-    document.getElementById("addContactContainer").style.display = "none";
-    document.getElementById("mobileBtnAddContact").style.display = "block";
-    await initListContact();
-    console.log('Close Add Contact Container');
-}
 
 

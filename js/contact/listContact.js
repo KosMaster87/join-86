@@ -2,21 +2,20 @@
 //TODO: userId muss mittels setter übernommen werden aus dem Login Protokoll
 
 async function initListContact() {
+  updateBackgroundColorMain(isListContactActive);
+  document.getElementById("listContactContainer").style.display = "inline";
   await includeHTML();
-  console.log("Response Start initListContact()");
-
   let sortedContacts = await getAllContactsFromCurrentUserSorted();
-
-  //Das hier ist außen vor für addTask
   let listChars = getListFirstChars(sortedContacts);
 
-  //Bleibt außen vor für addContactTask
   renderContainerList(sortedContacts, listChars, "user1");
 }
 
+
 async function getGlobalUserId() {
   return await getItem("currentUserId");
-} //UserID bereitstellen und aus Storage lesen, damit die passenden Kontakte selektiert werden können.
+} 
+
 
 async function loadAllContactsFromAllUsers() {
   let allContactsFromCurrentUser = await getItem("mockUpAllUserContacts");
@@ -24,19 +23,20 @@ async function loadAllContactsFromAllUsers() {
   return JSON.parse(allContactsFromCurrentUser);
 }
 
+
 async function getAllContactsFromCurrentUserSorted() {
   let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
-  let userId = await getGlobalUserId(); //setzen der aktuellen UserId
+  let userId = await getGlobalUserId(); 
   let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(
     allContactsFromAllUsers,
     userId
-  ); //Zugriff auf Kontakte des aktuellen Users
+  ); 
   let sortedContacts = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser); // Kontakte alphabetisch sortieren
 
   return sortedContacts;
 }
 
-//Funktion in addTask übernehmen
+
 async function getAllContactsFromCurrentUser(allContactsFromAllUsers, currentUserId) {
   let allContacts = await allContactsFromAllUsers;
   let currentUserContacts = [];
@@ -49,12 +49,12 @@ async function getAllContactsFromCurrentUser(allContactsFromAllUsers, currentUse
   return currentUserContacts;
 }
 
-//Kontakte alphabetisch sortieren
+
+
 async function sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser) {
   let sortedContacts = await allContactsFromCurrentUser;
   sortedContacts.sort((a, b) => {
-    //Alphabetisch nach Namen sortieren/
-    const nameA = a.name.toUpperCase(); // Groß-/Kleinschreibung ignorieren
+    const nameA = a.name.toUpperCase();
     const nameB = b.name.toUpperCase();
     if (nameA < nameB) {
       return -1;
@@ -67,6 +67,7 @@ async function sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrent
 
   return sortedContacts;
 }
+
 
 function getListFirstChars(currentUserContacts) {
   let setFirstChars = new Set();
@@ -82,25 +83,20 @@ function getListFirstChars(currentUserContacts) {
 }
 
 
-
 function renderContainerList(sortedContacts, listChars, userId) {
   let chars = listChars;
   let contacts = sortedContacts;
-  let charRow = document.getElementById("containerListContacts");
+  let charRow = document.getElementById("listContactContainer");
   let currentUserId = userId;
   charRow.innerHTML = "";
-
-  
-
-
 
   for (let i = 0; i < chars.length; i++) {
     let char = chars[i];
     charRow.innerHTML += `
             <div class="alphabeticalRow">
-                <span class="firstChartSort">
+                <div class="firstChartSort">
                     ${char}
-                </span>
+                </div>
             </div>
             <div class="styleHr"></div>
          `;
@@ -118,7 +114,7 @@ function renderContactCards(char, currentContacts, charRow, currentUserId) {
     let contact = contacts[i];
     if (contact["name"].charAt(0).toUpperCase() === sign) {
       contactCard.innerHTML += `
-            <a class="singleContact" onclick="openShowSingleContactContainer('${userId}', '${contact["contactId"]}', '${contact["name"]}', '${contact["email"]}', '${contact["phone"]}', '${contact["signature"]}','${contact["userColor"]}')">
+            <a class="singleContact" onclick="goFromListContactToShowSingleContact('${userId}', '${contact["contactId"]}', '${contact["name"]}', '${contact["email"]}', '${contact["phone"]}', '${contact["signature"]}','${contact["userColor"]}')">
                 <div class="contactSignatureIcon" style="background-color:  ${contact["userColor"]}">
                     <span class="contactSignatureIconLetter">
                         ${contact["signature"]}
@@ -139,28 +135,24 @@ function renderContactCards(char, currentContacts, charRow, currentUserId) {
   
 }
 
-function openEditContactContainer() {
-  document.getElementById("editContactContainer").style.display = "block";
+let isListContactActive = true;
+
+function updateBackgroundColorMain() {
+  let mainContainer = document.getElementById('main');
+
+  if (isListContactActive) {
+    mainContainer.classList.add('white-background');
+  } else {
+    mainContainer.classList.remove('white-background');
+  }
+}
+
+/* FUNKTIONEN AUF LIST CONTACT */
+function goFromListContactToShowSingleContact(userId, contactId, name, email, phone, signature, userColor) {
+  document.getElementById("showSingleContactContainer").style.display = "block";
   document.getElementById("mobileBtnAddContact").style.display = "none";
-  console.log("Open Edit Contact Container ist erfolgt!");
-}
-
-function closeEditContactContainer() {
-  document.getElementById("editContactContainer").style.display = "none";
-  document.getElementById("mobileBtnAddContact").style.display = "inline-block";
-  console.log("Open Edit Contact Container ist erfolgt!");
-}
-
-function saveEditContact() {
-  document.getElementById("editContactContainer").style.display = "none";
-}
-
-function saveEditContact() {
-  document.getElementById("editContact").style.display = "none";
-}
-
-function openAddContactContainer() {
-  document.getElementById("addContactContainer").style.display = "block";
-  document.getElementById("mobileBtnAddContact").style.display = "none";
-  console.log("Open Add Contact Container");
-}
+  document.getElementById("listContactContainer").style.display = "none";
+  document.getElementById("mobileBtnThreePoints").style.display = "block";
+  console.log('Open Show Single Contact Container');
+  loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
+} 

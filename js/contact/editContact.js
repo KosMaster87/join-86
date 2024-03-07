@@ -13,7 +13,7 @@ async function initEditContact() {
     let currentContact = await getCurrentContact(contactId, allContactsFromAllUsers);//leer
     console.log('currentContact', currentContact);
     initializeAllVariables(currentContact);
-    await searchName();
+    //await searchName();
 }
 
 async function setCurrentContactIdAndUpdate(contactId) {
@@ -37,9 +37,9 @@ async function getCurrentUserId() {
 // }
 
 
-// async function setCurrentContactId(contactId) {
-//     await setItem('currentContactId', contactId);
-// } 
+async function setCurrentContactId(contactId) {
+    await setItem('currentContactId', contactId);
+} 
 
 
 async function getCurrentContactId() {
@@ -186,13 +186,15 @@ async function goToShowSingleContactAfterEditContact(currentContactId) {
  }
 
 
+ /* MOBILE BUTTON SELECT OPTIONS */
+
 async function goFromDeleteContactToListContact() {
     await deleteContact();
     await initListContact();
 
     document.getElementById('editContactContainer').style.display = "none";
     document.getElementById('showSingleContactContainer').style.display = "none";
-    document.getElementById('containerListContacts').style.display = "block";
+    document.getElementById('listContactContainer').style.display = "block";
     document.getElementById('mobileBtnSelectOptions').style.display = "none";
     document.getElementById('mobileBtnAddContact').style.display = "block";
  }
