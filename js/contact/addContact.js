@@ -2,7 +2,7 @@ const contactColors = ["var(--red)", "var(--yellow)", "var(--orangeIcons)", "var
 let allContactsFromAllUsers = [];
 let userId = getGlobalUserId();
 
-async function startSaveProcess() {
+async function initSaveProcess() {
     await loadCurrentUserAlsoUsersAsObject();
     let name = (document.getElementById('addContactInputName').value).trim();
     let email = (document.getElementById('addContactInputEmail').value).trim();
@@ -10,7 +10,7 @@ async function startSaveProcess() {
 
     if (checkAllInputFields(name, email, phone) == true) {
         await saveContact(name, email, phone);
-        resetInputFields();
+        resetInputFields();   
     } else {
         console.log('Speichervorgang ist aufgrund eines Fehler abgebrochen worden.')
     }   
@@ -43,7 +43,9 @@ async function saveContact(name, email, phone) {
 
     user.contacts.push(contact);
     setItem("users", users);
+    closeAddContactAndGoToShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor); 
 }
+
 
 async function getAllContactsFromCurrentUser() {
     
@@ -209,23 +211,22 @@ async function closeAddContactAndGoToShowSingleContactContainer(userId, contactI
     document.getElementById("mobileBtnAddContact").style.display = "none";
     document.getElementById("mobileBtnThreePoints").style.display = "block";
     document.getElementById("showSingleContactContainer").style.display = "block";
-  } //final
+  } 
   
+
   async function closeAddContactContainerWithoutAddingNewContact() {
     await initListContact();
     goToTopOfSite();
     document.getElementById("addContactContainer").style.display = "none";
-    document.getElementById("mobileBtnAddContact").style.display = "block";
-    
-  } //final
+    document.getElementById("mobileBtnAddContact").style.display = "block"; 
+  }
   
+
   async function closeAddContactContainer() {
     await initListContact();
     goToTopOfSite();
     document.getElementById("addContactContainer").style.display = "none";
     document.getElementById("mobileBtnAddContact").style.display = "block";
-    
-    console.log('Close Add Contact Container');
   }
 
 
