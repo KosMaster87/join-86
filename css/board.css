@@ -206,3 +206,18 @@ h2 {
   flex-direction: column;
   gap: 24px;
 }
+
+
+/*-- open task window--*/
+
+
+.openwindow{
+  display:none;
+  z-index: 800;
+  background-color: white;
+  border-radius:10px;
+  top:10vh;
+  height:80vh;
+  width:90vw;
+  position: absolute;
+}
