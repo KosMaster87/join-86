@@ -75,7 +75,6 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: start;
-  margin-top: ;
 }
 
 .noTasksInThisSelection {
@@ -149,6 +148,7 @@ h2 {
 }
 .IconBarClass {
   margin-left: 10px;
+  max-width: 140px;
   display: flex;
 }
 

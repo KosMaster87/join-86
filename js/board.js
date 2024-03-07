@@ -13,7 +13,7 @@ async function initBoard() {
   loadTasks();
 }
 
-//  for (let i = 0; i < user.tasks.length; i++) {
+
 function loadTasks() {
   title = document.getElementById(`titleid`);
   titletext = user.tasks[1].title;
