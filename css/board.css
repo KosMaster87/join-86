@@ -207,17 +207,83 @@ h2 {
   gap: 24px;
 }
 
+/*-- open task window popup--*/
 
-/*-- open task window--*/
-
-
-.openwindow{
-  display:none;
+.openwindow {
   z-index: 800;
   background-color: white;
-  border-radius:10px;
-  top:10vh;
-  height:80vh;
-  width:90vw;
+  border-radius: 30px;
+  top: 10vh;
+  height: 81vh;
+  width: 100vw;
   position: absolute;
+  overflow: hidden;
+  padding: 32px 24px 32px 24px;
+}
+
+.boxSizePopUp {
+  flex: 0 0 250px;
+  background-color: var(--white);
+  padding: 16px;
+  border-radius: 24px;
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.popUpHeadline {
+  color: #42526e;
+}
+
+.bordPopUptitleText {
+  font-size: 36px !important;
+}
+.popUpFooter {
+  margin-right: 4px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.footerBox {
+  display: flex;
+}
+.footerBox img {
+  margin-right: 8px;
+}
+.task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.task-info div {
+  display: flex;
+  align-items: center;
+}
+.label {
+  font-size: 18px;
+  color: #2a3647;
+  margin-right: 8px;
+  min-width: 100px;
+}
+.value {
+  margin-right: 8px;
+}
+.subtaskDetail {
+  display: flex;
+  align-items: center;
+}
+.subtaskDetail img {
+  margin-right: 16px;
+}
+.boardPopUpSubContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.popUpLine {
+  border: 1px solid #d1d1d1;
+  height: 24px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
