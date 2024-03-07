@@ -1,6 +1,7 @@
 // const STORAGE_TOKEN = "J4LQKS1ZDS5WC5NTX6XUA3MD2ROKE6VOP8A4QBBP"; // #1
 const STORAGE_TOKEN = "DXZFTQCTDMTN307RSV39G7QWLBSB9ZB6CEFWG1WB"; // #2 aktueller Gruppe
 
+
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
 let users;
@@ -25,7 +26,7 @@ async function loadUsers() {
 /**
  * Load data from backend.
  * @param {Remote key as string} key
- * @returns The answer to the query.
+ * @returns The answer to the query.″
  */
 async function getItem(key) {
   const urlKeyToken = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
