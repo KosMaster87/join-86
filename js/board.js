@@ -209,3 +209,10 @@ if (doneMainContainer.innerHTML.trim() === '') {
   doneMainContainer.innerHTML = '<div class="noTasksInThisSelection font16400">No tasks done</div>';
 }
 }
+
+
+let currentDraggedElement;
+
+function startDragging(id){
+  currentDraggedElement = id;
+}

@@ -1,6 +1,6 @@
 function HtmlReturn(i) {
   return `
-  <div id="toDoContainer${i}" class="boxSizeProgress">
+  <div draggable="true" ondragstart="startDragging(toDoContainer${i})" id="toDoContainer${i}" class="boxSizeProgress">
     <div class="headContainer">
       <span id="TaskCategory${i}" class="headlineFromTask font16400">
         Catergory
@@ -36,7 +36,7 @@ function HtmlReturn(i) {
 }
 function awaitHtmlReturn(i) {
   return`
-  <div id="waitContainer${i}" class="boxSizeFeedback">
+  <div draggable="true" ondragstart="startDragging(waitContainer${i})" id="waitContainer${i}" class="boxSizeFeedback">
     <div class="headContainer">
       <span id="TaskCategory${i}" class="headlineFromTask font16400">
         Catergory
