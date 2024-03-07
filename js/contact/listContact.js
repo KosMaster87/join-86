@@ -2,9 +2,9 @@
 //TODO: userId muss mittels setter übernommen werden aus dem Login Protokoll
 
 async function initListContact() {
-  updateBackgroundColorMain(isListContactActive);
-  document.getElementById("listContactContainer").style.display = "inline";
   await includeHTML();
+  updateBackgroundColorMain(isListContactActive);
+  document.getElementById("listContactContainer").style.display = "block";
   let sortedContacts = await getAllContactsFromCurrentUserSorted();
   let listChars = getListFirstChars(sortedContacts);
 
