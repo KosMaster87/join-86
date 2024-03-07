@@ -15,6 +15,12 @@ async function startSaveProcess() {
     }   
 }
 
+async function getGlobalUserId() {
+    let currentUserId = await getItem('currentUserId');
+
+    return currentUserId;
+}
+
 
 async function getCurrentUserId() {
     let currentUserId = await getItem('currentUserId');
@@ -31,7 +37,7 @@ async function saveContact(name, email, phone) {
     let userId = await getCurrentUserId();
 
     let contact = {
-        "userId": await getCurrentUserId(), 
+        "userId": await getGlobalUserId(), 
         "contactId": contactId, 
         "name": name, 
         "email": email, 
@@ -40,16 +46,54 @@ async function saveContact(name, email, phone) {
         "signature": signature
     };
 
-    allContactsFromAllUsers.push(contact);
+    let users = JSON.parse(await getItem('users'));
+
+    /* let currentUser = users.find(user => user.email == userId); */
+
+    let contacts = [];
+    for (let i = 0; i < users.length; i++) {
+        const user = user[i];
+        if (user.email == await userId) {
+            contacts == user.contacts;
+            contacts.push(contact);
+        }
+    }
+
+    
+
+    /* if (currentUser ) {
+        if (!currentUser.contacts) {
+            currentUser.contacts = [];
+        }
+    } */
+    
+    /* currentUser.contacts.push(contact); */
+
+    await setItem('users', JSON.string('users'));
+ 
+
+    /*allContactsFromAllUsers.push(contact);
     await setItem('mockUpAllUserContacts', JSON.stringify(allContactsFromAllUsers));
-    await closeAddContactAndGoToShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor); 
+    await closeAddContactAndGoToShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor);*/ 
 }
 
 
 async function loadAllContactsFromAllUsers() {
-    let allContactsFromAllUsers = await getItem('mockUpAllUserContacts');
+    let currentUserId = await getGlobalUserId();
+    let allContactsFromAllUsers = await getItem('users');
 
-    return JSON.parse(allContactsFromAllUsers);
+    let users = JSON.parse(allContactsFromAllUsers);
+    let contactArray = []
+    for(let i = 0; i <users.length; i++) {
+        const user = users[i];
+       
+        if(user.email == currentUserId) {
+            contactArray == user.contacts
+        } else {
+            contactArray = [];
+        }
+        return contactArray;
+    }
 }
 
 

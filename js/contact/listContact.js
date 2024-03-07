@@ -2,21 +2,72 @@
 //TODO: userId muss mittels setter übernommen werden aus dem Login Protokoll
 
 async function initListContact() {
+  let userId = getCurrentUserId();
   await includeHTML();
   updateBackgroundColorMain(isListContactActive);
   document.getElementById("listContactContainer").style.display = "block";
   let sortedContacts = await getAllContactsFromCurrentUserSorted();
   let listChars = getListFirstChars(sortedContacts);
 
-  renderContainerList(sortedContacts, listChars, "user1");
+  renderContainerList(sortedContacts, listChars, userId);
+  console.log('Response loadAllContactsFromSingleUser: ', await loadAllContactsFromSingleUser(userId));
+}
+
+async function getGlobalUserId() {
+  let currentUserId = await getItem('currentUserId');
+
+  return currentUserId;
 }
 
 
-async function getGlobalUserId() {
+async function setGlobalUserId(currentUserId) {
+  await setItem('currentUserId', currentUserId)
+}
+
+
+async function getCurrentUser() {
+  return await getCurrentUserId();
+}
+
+
+async function getCurrentUserId() {
   return await getItem("currentUserId");
 } 
 
 
+async function getAllContactsFromAllUsers() {
+   return await loadAllContactsFromAllUsers();
+}
+
+
+async function getAllContactsFromCurrentUser() {
+  return await getAllContactsFromCurrentUserSorted();
+}
+
+
+/* TEST AUSGABE */
+let currentUserId = getGlobalUserId();
+  
+async function loadAllContactsFromSingleUser(user) {
+  let currentUserId = user;
+  let allContactsFromAllUsers = await getItem('users');
+  let users = allContactsFromAllUsers;
+  let contactArray = [];
+
+  for (let i = 0; i < users.length; i++) {
+      const user = users[i];
+      if(user.email == currentUserId) {
+          contactArray.push(user.contact);
+        }
+      }
+      return contactArray;
+      
+  }
+
+
+
+
+/* BASIC AUSGABE */ 
 async function loadAllContactsFromAllUsers() {
   let allContactsFromCurrentUser = await getItem("mockUpAllUserContacts");
 
@@ -26,7 +77,7 @@ async function loadAllContactsFromAllUsers() {
 
 async function getAllContactsFromCurrentUserSorted() {
   let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
-  let userId = await getGlobalUserId(); 
+  let userId = await getCurrentUserId(); 
   let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(
     allContactsFromAllUsers,
     userId

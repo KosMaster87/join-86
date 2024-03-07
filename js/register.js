@@ -14,6 +14,7 @@ async function registerNewUser() {
   );
   let registerBtn = document.getElementById("registerBtn");
   let colorCode = "#ff3d00";
+  let contacts = [];
 
   try {
     await loadUsers();
