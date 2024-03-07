@@ -32,7 +32,7 @@ function HtmlReturn(i) {
         <img id="PrioImageContainer${i}" />
       </div>
     </div>
-  </div>;`
+  </div>`
 }
 function awaitHtmlReturn(i) {
   return`
@@ -57,7 +57,7 @@ function awaitHtmlReturn(i) {
         <img id="PrioImageContainer${i}" />
       </div>
     </div>
-  </div>;`
+  </div>`
 }
 
 function iconReturn(signature) {
