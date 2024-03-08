@@ -68,35 +68,7 @@ function openShowSingleContactContainer(userId, contactId, name, email, phone, s
   loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
 }
 
-/* SINGLE CONTACT */
-async function goFromSingleContactToListContactContainer() {
-  await setCurrentContactId([]);
-  goToTopOfSite()
-  initListContact();
-  document.getElementById("mobileBtnSelectOptions").style.display = "none";
-  document.getElementById("mobileBtnThreePoints").style.display = "none";
-  document.getElementById("showSingleContactContainer").style.display = "none";
-  document.getElementById("addContactContainer").style.display = "none";
-  document.getElementById("listContactContainer").style.display = "block";
-  document.getElementById("mobileBtnAddContact").style.display = "block";
-  console.log('Close Single Contact Container and open list Contact Container!');
-} //Final
 
-async function goFromShowSingleContactToEditContact() {
-  initEditContact();
-  document.getElementById("mobileBtnThreePoints").style.display = "none";
-  document.getElementById("mobileBtnSelectOptions").style.display = "none";
-  document.getElementById("showSingleContactContainer").style.display = "none";
-  document.getElementById("listContactContainer").style.display = "none";
-  document.getElementById("editContactContainer").style.display = "block";
-}
-
-function closeShowSingleContactContainer() {
-  goToTopOfSite();
-  document.getElementById("showSingleContactContainer").style.display = "none";
-  document.getElementById("mobileBtnAddContact").style.display = "block";
-  console.log('Close Show Single Contact Container');
-}
 
 
 

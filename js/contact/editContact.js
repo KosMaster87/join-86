@@ -4,7 +4,7 @@
 //TODO: implement form validation
     //let globalUserId = getCurrentUserId();
     //let globalContactId = getCurrentContactId();
-
+let curren
  
 async function initEditContact() {
     let contactId = await getCurrentContactId(); 
@@ -23,18 +23,12 @@ async function setCurrentContactIdAndUpdate(contactId) {
 }
 
 
+
 async function getCurrentUserId() {
     let currentUserId = await getItem('currentUserId');
 
     return currentUserId;
 }
-    
-
-// async function getCurrentContactInfos() {
-//     let contactArrays = await getItem('currentContactInfos');
-    
-//     return contactArrays;
-// }
 
 
 async function setCurrentContactId(contactId) {

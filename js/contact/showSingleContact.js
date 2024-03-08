@@ -2,7 +2,9 @@
 
 async function loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor) {
     fillAllVariables(name, email, phone, signature, userColor);
+    let currentUserId = await getGlobalUserId();
     await setCurrentContactId(contactId);
+    await setCurrentContactInfos(currentUserId);
 }
 
 async function setCurrentContactId(contactId) {
@@ -22,22 +24,30 @@ async function getCurrentContactId() {
     return await getItem('currentContactId');
 } 
 
+async function getGlobalUserId() {
+    let currentUserId = await getItem('currentUserId');
+  
+    return currentUserId;
+  }
 
-async function setCurrentContactInfos(userId, contactId, name, email, phone, signature, userColor) {
+async function setCurrentContactInfos(contactId, name, email) {
     let contactArray = []
-    
+    let currentUserId = await getGlobalUserId()
+;    
     contactArray.push({
-        userId: userId,
+        userId: currentUserId,
         contactId: contactId,
         name: name,
         email: email,
-        phone: phone,
-        signature: signature,
-        userColor: userColor
     })
     
-    setItem('currentContactInfos', contactArray);
+    /*setItem('currentContactInfos', contactArray);*/
+    console.log('Response contactArray', contactArray);
 }
+
+
+
+
 
 async function getCurrentContactInfos() {
     return getItem('currentContactInfos');
@@ -62,4 +72,33 @@ async function openEmailProgram() {
     window.open('mailto: ' + email);
 }
 
+/* SHOW SINGLE CONTACT */
+async function goFromSingleContactToListContactContainer() {
+    await setCurrentContactId([]);
+    goToTopOfSite()
+    initListContact();
+    document.getElementById("mobileBtnSelectOptions").style.display = "none";
+    document.getElementById("mobileBtnThreePoints").style.display = "none";
+    document.getElementById("showSingleContactContainer").style.display = "none";
+    document.getElementById("addContactContainer").style.display = "none";
+    document.getElementById("listContactContainer").style.display = "block";
+    document.getElementById("mobileBtnAddContact").style.display = "block";
+    console.log('Close Single Contact Container and open list Contact Container!');
+  } //Final
+  
+  async function goFromShowSingleContactToEditContact() {
+    initEditContact();
+    document.getElementById("mobileBtnThreePoints").style.display = "none";
+    document.getElementById("mobileBtnSelectOptions").style.display = "none";
+    document.getElementById("showSingleContactContainer").style.display = "none";
+    document.getElementById("listContactContainer").style.display = "none";
+    document.getElementById("editContactContainer").style.display = "block";
+  }
+  
+  function closeShowSingleContactContainer() {
+    goToTopOfSite();
+    document.getElementById("showSingleContactContainer").style.display = "none";
+    document.getElementById("mobileBtnAddContact").style.display = "block";
+    console.log('Close Show Single Contact Container');
+  }
 
