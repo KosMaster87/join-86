@@ -1,6 +1,4 @@
 //LIST CONTACT JS
-//TODO: userId muss mittels setter übernommen werden aus dem Login Protokoll
-
 async function initListContact() {
   let userId = getGlobalUserId();
   await includeHTML();
@@ -12,8 +10,8 @@ async function initListContact() {
   let listChars = getListFirstChars(sortedContacts); 
 
   renderContainerList(sortedContacts, listChars, userId);
-
 } 
+
 
 async function getGlobalUserId() {
   let currentUserId = await getItem('currentUserId');
@@ -28,13 +26,13 @@ async function setGlobalUserId(currentUserId) {
 
 
 async function getAllContactsFromAllUsers() {
-   return await loadAllContactsFromAllUsers();
+  return await loadAllContactsFromAllUsers();
 } 
 
-
+/*
 async function getAllContactsFromCurrentUser() {
   return await getAllContactsFromCurrentUserSorted();
-}
+}*/
 
   
 async function getAllContactsFromCurrentUser() {
@@ -55,6 +53,7 @@ async function getAllContactsFromCurrentUser() {
   }
   return contactsArray; 
 }
+
 
 async function getAllContactsFromAllUsers() {
   let allContactsFromAllUsers = await getItem('users');
