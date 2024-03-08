@@ -1,9 +1,4 @@
 
-//TODO: implement getter und setterItem
-//TODO: connection to storage
-
-
-
 async function setItem(key, value) {
     const url='https://remote-storage.developerakademie.org/item';
     const payload = { key, value, token:STORAGE_TOKEN };
