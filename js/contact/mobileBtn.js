@@ -27,8 +27,9 @@ function showMobileSelectBtns() {
 
 /* DESKTOP BUTTON ADD NEW CONTACT */
 
-function openAddContactContainerDesktop() {
-  document.getElementById("desktopAddContactContainer").style.display = "block";
+function desktopBtnGoFromListContactToAddContact() {
+  document.getElementById("desktopBtnAddContact").style.display = "none";
+  document.getElementById("addContactContainer").style.display = "block";
 }
 
 
