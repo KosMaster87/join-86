@@ -37,14 +37,9 @@ async function registerNewUser() {
           prio: "Urgent",
           category: "User Story",
           subtasks: [
-            {
-              title: "Subtask 1",
-              completed: false,
-            },
-            {
-              title: "Subtask 2",
-              completed: true,
-            },
+            "subtask 1",
+            "subtask 2",
+            "subtask 3"
           ],
         },
         {
@@ -56,7 +51,11 @@ async function registerNewUser() {
           dueDate: "2024-04-15",
           prio: "Medium",
           category: "Technical Task",
-          subtasks: [],
+          subtasks: [
+            "subtask 1",
+            "subtask 2",
+            "subtask 3"
+          ],
         },
         {
           status: "done",
@@ -68,10 +67,9 @@ async function registerNewUser() {
           prio: "Low",
           category: "Technical Task",
           subtasks: [
-            {
-              title: "Subtask 1",
-              completed: true,
-            },
+            "subtask 1",
+            "subtask 2",
+            "subtask 3"
           ],
         },
         {
@@ -84,10 +82,9 @@ async function registerNewUser() {
           prio: "Low",
           category: "User Story",
           subtasks: [
-            {
-              title: "Subtask 1",
-              completed: true,
-            },
+            "subtask 1",
+            "subtask 2",
+            "subtask 3"
           ],
         },
       ],
