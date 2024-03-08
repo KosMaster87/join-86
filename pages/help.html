@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="help.css">
 
+  <link rel="stylesheet" href="./../css/help.css">
   <link rel="stylesheet" href="../css/header.css" />
   <link rel="stylesheet" href="../css/menu.css" />
   <link rel="stylesheet" href="./../style.css" />
@@ -16,18 +16,24 @@
   <script src="../js/menu.js"></script>
   <script src="../js/header.js"></script>
 
-  <script src="help.js"></script>
+  <script src="../js/help.js"></script>
 
   <title>Help</title>
 </head>
-<body onload="">
-  <div class="helpContent">
+<body onload="initHelp()">
+  <div
+  w3-include-html="../assets/templates/header.html"
+  id="mainHeader"
+  class="mainHeader"
+></div>
+
+  <div class="helpContent mainContent">
     <div class="helpArrawBox">
       <h1>Help</h1>
       <img
         onclick="includeContentHTML('summary')"
         class="cursorPonter"
-        src="./../../../assets/img/other/arrowLeftFirst.svg"
+        src="./../assets/img/other/arrowLeftFirst.svg"
       />
     </div>
   
@@ -125,6 +131,11 @@
       <h2>Enjoy using Join!</h2>
     </div>
   </div>
-  
+
+  <div
+      w3-include-html="../assets/templates/menu.html"
+      id="afterLoginMainMenu"
+      class="afterLoginMainMenu"
+    ></div>
 </body>
 </html>

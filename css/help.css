@@ -1,4 +1,4 @@
-@import url("../../../style.css");
+@import url("../style.css");
 
 html {
   scroll-behavior: smooth;
@@ -18,7 +18,7 @@ body {
 }
 
 @media only screen and (min-width: 250px) {
-  .privacyPolicyContent {
+  .helpContent {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -37,7 +37,7 @@ body {
     }
   }
 
-  .privacyPolicyBox {
+  .helpArrawBox {
     display: flex;
     flex-direction: row;
     align-items: center;

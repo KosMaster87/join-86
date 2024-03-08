@@ -3,17 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="privacy_policy.css">
+
+    <link rel="stylesheet" href="./../css/policy.css" />
+    <link rel="stylesheet" href="./../css/header.css" />
+    <link rel="stylesheet" href="./../css/menu.css" />
+    <link rel="stylesheet" href="./../style.css" />
+
+    <script src="./../includeHTML.js"></script>
+    <script src="./../script.js"></script>
+    <script src="../js/register.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/menu.js"></script>
+    <script src="../js/header.js"></script>
+
+    <script src="../js/policy.js"></script>
+
     <title>Privacy policy</title>
   </head>
-  <body>
-    <div class="privacyPolicyContent">
+  <body onload="initPolicy()">
+    <div
+      w3-include-html="../assets/templates/header.html"
+      id="mainHeader"
+      class="mainHeader"
+    ></div>
+
+    <div class="privacyPolicyContent mainContent">
       <div class="privacyPolicyBox">
         <h1>Privacy policy</h1>
         <img
           class="cursorPonter"
           onclick="includeContentHTML('summary')"
-          src="./../../../assets/img/other/arrowLeftFirst.svg"
+          src="./../assets/img/other/arrowLeftFirst.svg"
         />
       </div>
 
@@ -620,5 +640,11 @@
         >
       </p>
     </div>
+
+    <div
+      w3-include-html="../assets/templates/menu.html"
+      id="afterLoginMainMenu"
+      class="afterLoginMainMenu"
+    ></div>
   </body>
 </html>

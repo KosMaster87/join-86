@@ -21,13 +21,17 @@
         <p class="theProgrammFont">Kanban Project Management Tool</p>
       </div>
 
-      <div id="userSymbolContainerID" class="userSymbolContainer">
-        <a onclick="includeTamplatetHTML('help')">
+      <div class="userSymbolContainer" id="userSymbolContainerID">
+        <div
+          onclick="includeContentHTML('help')"
+          onmouseover="changeInfoImage(this)"
+          onmouseout="changeInfoImageBack(this)"
+        >
           <img
-            class="userSymbolContainerHelp"
-            src="../assets/img/header/help.png"
+            class="userSymbolContainerHelp headerInfoAnimateProgramm InfoImage"
+            src="../assets/img/header/help.svg"
           />
-        </a>
+        </div>
 
         <div id="headerProfile" onclick="toggleHeaderSubMenu()">
           <img

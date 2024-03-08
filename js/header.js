@@ -39,10 +39,32 @@ function userClicksOutsideOfPopup(event) {
 }
 
 /**
- * When you log out, the value of the remote key is deleted.
+ * When you log out, the value of the remote key is deleted:
+ * setGlobalUserId is intended to set the user in remote storage as logged out.
+ * And the user's greeting is removed from the storage.
  */
 async function logOut() {
   await setGlobalUserId("currentUserId", []);
-  localStorage.removeItem("showedLoginGreeting");
+  sessionStorage.removeItem("showedLoginGreeting");
   window.location.assign("../index.html");
+}
+
+/**
+ * header info animate images.
+ * @param {Image to animate whit hover} element
+ */
+function changeInfoImage(element) {
+  const img = element.querySelector(".headerInfoAnimateProgramm");
+  img.classList.contains("InfoImage");
+  img.src = "../assets/img/header/helpHover.svg";
+}
+
+/**
+ * header info animate images.
+ * @param {Image to animate whit hover} element
+ */
+function changeInfoImageBack(element) {
+  const img = element.querySelector(".headerInfoAnimateProgramm");
+  img.classList.contains("editImage");
+  img.src = "../assets/img/header/help.svg";
 }

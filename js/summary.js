@@ -29,14 +29,15 @@ async function initSummary() {
  * Show your greeting after login.
  */
 async function initGreeting() {
-  showedLoginGreeting = localStorage.getItem("showedLoginGreeting") === "true";
+  showedLoginGreeting =
+    sessionStorage.getItem("showedLoginGreeting") === "true";
 
   if (!showedLoginGreeting && window.innerWidth <= 720) {
     await showGreetScreen();
     showedLoginGreeting = true;
-    localStorage.setItem("showedLoginGreeting", showedLoginGreeting);
+    sessionStorage.setItem("showedLoginGreeting", showedLoginGreeting);
   }
-
+  sessionStorage.setItem("showedLoginGreeting", showedLoginGreeting);
   document.getElementById("summaryToDos").style.display = "flex";
 }
 

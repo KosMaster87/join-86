@@ -8,8 +8,6 @@
   display: flex;
 }
 
-/* ---------------------------------------- */
-
 @media only screen and (max-width: 319px) and (min-width: 250px) {
   .mainHeader {
     position: fixed;
@@ -54,7 +52,7 @@
   }
 
   .headerSubMenuHoverBox:hover {
-    background-color: var(--darkBlue);
+    background-color: var(--darkBlueHover);
   }
 
   .headerSubMenuHoverAnchor {
@@ -72,9 +70,6 @@
 
   .userSymbolContainerHelp {
     display: none;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
   }
 
   .theProgramm {
@@ -96,8 +91,6 @@
     cursor: pointer;
   }
 }
-
-/* ---------------------------------------- */
 
 @media only screen and (max-width: 480px) and (min-width: 320px) {
   .mainHeader {
@@ -144,7 +137,7 @@
   }
 
   .headerSubMenuHoverBox:hover {
-    background-color: var(--darkBlue);
+    background-color: var(--darkBlueHover);
   }
 
   .headerSubMenuHoverAnchor {
@@ -162,9 +155,6 @@
 
   .userSymbolContainerHelp {
     display: none;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
   }
 
   .theProgramm {
@@ -187,8 +177,6 @@
   }
 }
 
-/* ---------------------------------------- */
-
 @media only screen and (max-width: 720px) and (min-width: 481px) {
   .mainHeader {
     position: fixed;
@@ -203,8 +191,6 @@
     height: 3.5rem;
     z-index: 5;
   }
-
-  /* ---------------------------------------- */
 
   .headerSubMenu {
     display: none;
@@ -236,15 +222,13 @@
   }
 
   .headerSubMenuHoverBox:hover {
-    background-color: var(--darkBlue);
+    background-color: var(--darkBlueHover);
   }
 
   .headerSubMenuHoverAnchor {
     color: var(--fontWhite);
     text-decoration: none;
   }
-
-  /* ---------------------------------------- */
 
   .userSymbolContainer {
     display: flex;
@@ -256,9 +240,6 @@
 
   .userSymbolContainerHelp {
     display: none;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
   }
 
   .theProgramm {
@@ -281,8 +262,6 @@
   }
 }
 
-/* ---------------------------------------- */
-
 @media only screen and (max-width: 2560px) and (min-width: 721px) {
   .mainHeader {
     display: flex;
@@ -298,10 +277,7 @@
     z-index: 5;
   }
 
-  /* ---------------------------------------- */
-
   .headerSubMenu {
-    /* display: none; */
     position: absolute;
     right: 1rem;
     top: 3rem;
@@ -330,15 +306,13 @@
   }
 
   .headerSubMenuHoverBox:hover {
-    background-color: var(--darkBlue);
+    background-color: var(--darkBlueHover);
   }
 
   .headerSubMenuHoverAnchor {
     color: var(--fontWhite);
     text-decoration: none;
   }
-
-  /* ---------------------------------------- */
 
   .theProgramm {
     display: block;
@@ -349,8 +323,6 @@
     display: none;
     margin-left: 1rem;
   }
-
-  /* ---------------------------------------- */
 
   .userSymbolContainer {
     display: flex;
@@ -368,6 +340,10 @@
   }
 
   .userLogoImg {
+    display: fle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 2rem;
     height: 2rem;
     cursor: pointer;

@@ -1,7 +1,3 @@
-// let user;
-
-// --------------------------------------------------------
-
 /**
  * The current user will be logged in.
  */
@@ -43,8 +39,6 @@ async function findUserInUsersArray() {
 async function setGlobalUserId(currentUserId, globalUserId) {
   await setItem(currentUserId, globalUserId);
 }
-
-// --------------------------------------------------------
 
 /**
  * Switch back from login page to register page. (Into index.html)

@@ -1,19 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="legal_notice.css">
-    <title>legalNoticeContent</title>
+
+    <link rel="stylesheet" href="./../css/legality.css" />
+    <link rel="stylesheet" href="./../css/header.css" />
+    <link rel="stylesheet" href="./../css/menu.css" />
+    <link rel="stylesheet" href="./../style.css" />
+
+    <script src="./../includeHTML.js"></script>
+    <script src="./../script.js"></script>
+    <script src="../js/register.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/menu.js"></script>
+    <script src="../js/header.js"></script>
+
+    <script src="../js/legality.js"></script>
+
+    <title>Legal notice content</title>
   </head>
-  <body>
-    <div class="legalNoticeContent">
+  <body onload="initLegalNotice()">
+    <div
+      w3-include-html="../assets/templates/header.html"
+      id="mainHeader"
+      class="mainHeader"
+    ></div>
+
+    <div class="legalNoticeContent mainContent">
       <div class="legalNoticeBox">
         <h1>Imprint</h1>
         <img
           class="cursorPointer"
           onclick="includeContentHTML('summary')"
-          src="./../../../assets/img/other/arrowLeftFirst.svg"
+          src="./../assets/img/other/arrowLeftFirst.svg"
         />
       </div>
 
@@ -21,8 +41,7 @@
         <h2>Information according to § 5 TMG</h2>
         <table>
           <tr>
-            Konstantin Aksenov, Lukas Schornstein, Martin Hoffmann, Reinhard the
-            Rock
+            Konstantin Aksenov, Sascha Lenz, Cleen Acrivopoulos-Gutierrez
           </tr>
           <tr>
             South-America /Germany
@@ -33,7 +52,7 @@
       <div>
         <h2>Contact</h2>
         <p>Phone: <a href="015737571755">015737571755</a></p>
-        <p>Email: Gruppe-814@dev2k.net</p>
+        <p>Email: Gruppe-86@dev2k.net</p>
         <p>
           Source:
           <a href="https://www.e-recht24.de">https://www.e-recht24.de</a>
@@ -122,5 +141,11 @@
         </p>
       </div>
     </div>
+
+    <div
+      w3-include-html="../assets/templates/menu.html"
+      id="afterLoginMainMenu"
+      class="afterLoginMainMenu"
+    ></div>
   </body>
 </html>

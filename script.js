@@ -114,6 +114,8 @@ async function loadCurrentUserAlsoUsersAsObject() {
   }
 }
 
+// ------------------------------------------------------------------
+
 /**
  * Lösche einen Benutzer aus dem Array anhand der Index-Position und aktualisiere den Remote-Speicher.
  * @param {number} index - Die Position des zu löschenden Benutzers im Array.
@@ -154,8 +156,6 @@ function changeTaskStatus(taskIndex, newStatus) {
     console.error("Ungültiger Task-Index oder fehlende Benutzerdaten.");
   }
 }
-
-// ------------------------------------------------------------------
 
 /**
  * Fügt dem Kontaktarray des Benutzers einen neuen Kontakt hinzu.

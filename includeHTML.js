@@ -16,13 +16,9 @@ async function includeHTML() {
 }
 
 /**
- * Easy to change pages.
- * @param {page as stringname} page
+ * Einfaches Wechseln zwischen Seiten.
+ * @param {Seitenname als Zeichenfolge} page
  */
 function includeContentHTML(changePage) {
   window.location.assign(changePage + ".html");
-}
-
-function includeTamplatetHTML(changePage) {
-  window.location.assign("./assets/templates/help/" + changePage + ".html")
 }

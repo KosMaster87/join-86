@@ -31,11 +31,7 @@
         </div>
       </div>
 
-      <div
-        class="menuItem"
-        id="navBoard"
-        onclick="includeContentHTML('board')"
-      >
+      <div class="menuItem" id="navBoard" onclick="includeContentHTML('board')">
         <div class="menuHoverBox">
           <img src="../assets/img/menu/Vector.svg" class="menuItemImage" />
           <p class="menuFontSizing">Board</p>
@@ -72,12 +68,21 @@
     </div>
 
     <div class="desktopMenuPolicyBox hide">
-      <a onclick="includeContentHTML('policy')" class="desktopMenuPolicyFont"
-        >Privacy Policy</a
+      <div
+        id="navPrivacyPolicy"
+        onclick="includeContentHTML('policy')"
+        class="menuItemExtra menuHoverBoxExtra"
       >
-      <a onclick="includeContentHTML('legality')" class="desktopMenuPolicyFont">
-        Legal Notice
-      </a>
+        <p class="menuFontSizing">Privacy Policy</p>
+      </div>
+
+      <div
+        id="navLegalNotice"
+        onclick="includeContentHTML('legality')"
+        class="menuItemExtra menuHoverBoxExtra"
+      >
+        <p class="menuFontSizing">Legal Notice</p>
+      </div>
     </div>
   </body>
 </html>
