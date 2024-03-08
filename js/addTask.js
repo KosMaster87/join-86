@@ -23,9 +23,8 @@ async function assignTaskToUser() {
     category: selectedCategory,
     subtasks: subtasks,
   });
-  user.tasks[3].status = "done";
   await setItem("users", users);
-  includeContentHTML("board");
+  await includeContentHTML("board");
 }
 
 /**

@@ -122,7 +122,7 @@ function openTaskReturn(i) {
     </div>
     <div class="popUpFooter">
       <div class="footerBox">
-        <img src="../assets/img/board/board_delete.svg" />
+        <img onclick="deleteTaskBoard(${i})" src="../assets/img/board/board_delete.svg" />
         <p class="font16400">Delete</p>
       </div>
       <div class="popUpLine"></div>
