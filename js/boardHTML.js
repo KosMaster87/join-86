@@ -145,7 +145,7 @@ function assigned(n) {
 function popUpSubtaskReturn(s) {
   return`
     <div id="popUpSubtask${s}" class="popUpSubtaskDetail">
-      <img id="popUpSubtaskImage${s}" src="../assets/img/board/board_box.svg" />
+      <img onclick="subtaskFinish${s}" id="popUpSubtaskImage${s}" src="../assets/img/board/board_box.svg" />
       <span id="pupUpSubtaskText${s}">Test</span>
     </div>
   `

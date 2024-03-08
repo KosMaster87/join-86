@@ -276,11 +276,14 @@ function openTask(i) {
   for (let s = 0; s < user.tasks[i].subtasks.length; s++) {
     popUpSubtasksContainer.innerHTML += popUpSubtaskReturn(s);
     let subtask= document.getElementById(`pupUpSubtaskText${s}`)
-    subtask.innerHTML= user.tasks[i].subtasks[s];
+    subtask.innerHTML= user.tasks[i].subtasks[s].name;
+    if (user.tasks[i].subtasks[s].done === false) {
+      image = document.getElementById(`popUpSubtaskImage${s}`).src = "../assets/img/board/board_box.svg";
+    } else if (user.tasks[i].subtasks[s].done === true) {
+      image = document.getElementById(`popUpSubtaskImage${s}`).src = "../assets/img/board/board_box_check.svg";
+    }
   }
  
-
-
 }
 
 function extractFilename(i) {
@@ -330,4 +333,9 @@ async function deleteTaskBoard(i) {
 
 function subtaskdone(i){
   user.tasks[i].subtask[s]
+}
+
+function subtaskFinish(i){
+ imageId = document.getElementById(`popUpSubtaskImage${i}`)
+ imageId.src = "../assets/img/board/board_box_check.svg";
 }
