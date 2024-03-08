@@ -325,3 +325,9 @@ async function deleteTaskBoard(i) {
   await setItem("users", users);
   loadTasks();
 }
+
+
+
+function subtaskdone(i){
+  user.tasks[i].subtask[s]
+}

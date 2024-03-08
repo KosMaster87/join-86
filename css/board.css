@@ -26,11 +26,10 @@ h2 {
 
 .boardMainContainer {
   display: flex;
-  margin-top: 48px;
   flex-direction: column;
   width: 100%;
-  margin-left: 20px;
-  margin-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   gap: 26px;
   margin-top: 70px;
   margin-bottom: 70px;
@@ -88,6 +87,7 @@ h2 {
   gap: 10px;
   padding: 8px 16px 8px 16px;
   width: 100%;
+  margin-top:16px;
 }
 
 /*--In Progress--*/
