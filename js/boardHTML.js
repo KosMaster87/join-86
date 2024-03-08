@@ -116,16 +116,7 @@ function openTaskReturn(i) {
           Subtasks
         </p>
         <div id="popUpSubtasksContainer">
-          <div class="boardPopUpSubContainer">
-            <div class="subtaskDetail">
-              <img src="../assets/img/board/board_box.svg" />
-              <span>Test</span>
-            </div>
-            <div class="subtaskDetail">
-              <img src="../assets/img/board/board_box.svg" />
-              <span>Test</span>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
@@ -144,9 +135,18 @@ function openTaskReturn(i) {
 }
 
 function assigned(n) {
-  return`
+  return `
   <div class="popUpAssignedToContainer" id="popUpAssignedToContainer${n}">
     <div class="popUpIconstlye" id="pupUpIcon${n}"></div>
     <div class="font16400" id="popUpAssignedTo${n}"></div>
-  </div>`
+  </div>`;
+}
+
+function popUpSubtaskReturn(s) {
+  return`
+    <div id="popUpSubtask${s}" class="popUpSubtaskDetail">
+      <img id="popUpSubtaskImage${s}" src="../assets/img/board/board_box.svg" />
+      <span id="pupUpSubtaskText${s}">Test</span>
+    </div>
+  `
 }

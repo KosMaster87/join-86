@@ -219,9 +219,10 @@ function startDragging(id) {
 }
 
 function openTask(i) {
+    // render erstelle die div
   mainContentContainer = document.getElementById(`mainContent`);
   mainContentContainer.innerHTML += openTaskReturn(i);
-
+  // render die category
   let category = document.getElementById(`TaskCategory${i}`);
   let popUpCategory = document.getElementById(`popUpTaskCategory`);
   popUpCategory.innerHTML = category.textContent;
@@ -230,11 +231,12 @@ function openTask(i) {
   } else if (category.textContent === "Technical Task") {
     popUpCategory.style.backgroundColor = "#1FD7C1";
   }
-
+  // render render den title
   let title = document.getElementById(`titleId${i}`);
   let popUpTitle = document.getElementById(`popUpTitleId`);
   popUpTitle.innerHTML = title.textContent;
 
+  // render die description
   let description = document.getElementById(`titleId${i}`);
   let popUpDescription = document.getElementById(`popUpDescriptionID`);
   popUpDescription.innerHTML = description.textContent;
@@ -242,17 +244,21 @@ function openTask(i) {
   // das dueDate muss anhand des i nachgeforscht werden oder eine unsichtbare info mitgegeben werden
   let popUpDueDate = document.getElementById(`popUpDueDate`);
 
+  //render die Prio ins popup
   extractFilename(i);
   let popUpPriority = document.getElementById(`popUpPriority`);
   popUpPriority.innerHTML = pupUpPriorityName;
 
-  // infos müssen anhand der icons gefiltert werden
 
+  // render die assignedTo user name und icon
   let MainContainer = document.getElementById(`popUpAssignedToMainContainer`);
   for (let n = 0; n < user.tasks[i].assignedTo.length; n++) {
+    //div
     MainContainer.innerHTML += assigned(n);
+    //name
     namefield = document.getElementById(`popUpAssignedTo${n}`)
     namefield.innerHTML = user.tasks[i].assignedTo[n];
+    //icon // signature
     icon = document.getElementById(`pupUpIcon${n}`)
     let signature = "";
     let words = user.tasks[i].assignedTo[n].toUpperCase().split(" ");
@@ -263,9 +269,16 @@ function openTask(i) {
    
   }
 
-
   //subtasks müssen anhand der id gefiltert werden
   let popUpSubtasksContainer = document.getElementById(`popUpSubtasksContainer`);
+  for (let s = 0; s < user.tasks[i].subtasks.length; s++) {
+    popUpSubtasksContainer.innerHTML += popUpSubtaskReturn(s);
+    let subtask= document.getElementById(`pupUpSubtaskText${s}`)
+    subtask.innerHTML= user.tasks[i].subtasks[s];
+  }
+ 
+
+
 }
 
 function extractFilename(i) {
