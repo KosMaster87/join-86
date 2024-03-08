@@ -291,6 +291,10 @@ input::placeholder {
         width: 1212px; /* finale Breite */
         height: 592px; /* finale Höhe */
         flex-direction: row;
+        position: absolute;
+        top: calc(50% + 296px);
+        left: 50%;
+        
     }
            
     #closeAddContact:hover {

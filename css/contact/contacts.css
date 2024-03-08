@@ -54,13 +54,33 @@ input[type="text"],[type="email"],[type="tel"] {
     body {
         display: flex;
         flex-direction: row;
-        flex: 1;
+        /*flex: 1;*/
         height: 100vh;
     }
-    
-    #contactFlexContainer {
-        display: inline-block;
-        flex: 1;
+
+    #main {
+        float: left;
+        box-sizing: border-box;
+    }
+
+    #listContactContainer{
+        max-width: 456px;
+        order: 1;
+        margin: 0 14px;
+        display: inline;
+        background-color: white;
+        padding: 24px 24px;
+        position: absolute;
+        top: 60px;
+        overflow-y: auto;
+        float:left;
+    }
+
+    #showSingleContactContainer {
+        display: inline;
+        width: calc(100%-456px);
+        order: 2; 
+        overflow-y:auto;
     }
 
     #mobileBtnAddContact{
