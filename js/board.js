@@ -274,7 +274,7 @@ function openTask(i) {
   //render die subtasks
   let popUpSubtasksContainer = document.getElementById(`popUpSubtasksContainer`);
   for (let s = 0; s < user.tasks[i].subtasks.length; s++) {
-    popUpSubtasksContainer.innerHTML += popUpSubtaskReturn(s);
+    popUpSubtasksContainer.innerHTML += popUpSubtaskReturn(i,s);
     let subtask= document.getElementById(`pupUpSubtaskText${s}`)
     subtask.innerHTML= user.tasks[i].subtasks[s].name;
     if (user.tasks[i].subtasks[s].done === false) {
@@ -335,7 +335,42 @@ function subtaskdone(i){
   user.tasks[i].subtask[s]
 }
 
-function subtaskFinish(i){
- imageId = document.getElementById(`popUpSubtaskImage${i}`)
- imageId.src = "../assets/img/board/board_box_check.svg";
+async function subtaskFinish(i, s) {
+  const imageId = document.getElementById(`popUpSubtaskImage${i}`);
+
+  if (user.tasks[i].subtasks[s].done === false) {
+    imageId.src = "../assets/img/board/board_box_check.svg";
+    user.tasks[i].subtasks[s].done = true;
+  } else if (user.tasks[i].subtasks[s].done === true) {
+    imageId.src = "../assets/img/board/board_box.svg";
+    user.tasks[i].subtasks[s].done = false;
+  }
+
+  await setItem("users", users);
+}
+
+function updateProgressBar(i) {
+  // Get elements by their IDs
+  let howmanyTasks = document.getElementById(`counterOfTasks${i}`);
+  let progressbar = document.getElementById(`progressBar${i}`);
+  // Initialize counter and percent variables
+  let counter = 0;
+  let percent = 0;
+  // Count the number of completed subtasks
+  for (let p = 0; p < user.tasks[i].subtasks.length; p++) {
+    if (user.tasks[i].subtasks[p].done === true) {
+      counter++;
+    }
+  }
+  // Calculate the percentage of completed subtasks
+  if (user.tasks[i].subtasks.length > 0) {
+    percent = (counter / user.tasks[i].subtasks.length) * 100;
+  }
+  // Update the HTML content and style of elements
+  if (counter > 0) {
+    document.getElementById(`finishedTasks${i}`).innerHTML = counter;
+  }
+  if (percent > 0) {
+    progressbar.style.width = percent + "%";
+  }
 }

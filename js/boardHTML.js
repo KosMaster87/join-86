@@ -19,7 +19,7 @@ function HtmlReturn(i) {
     </div>
     <div class="progressMainContainer">
       <div class="progress-container">
-        <div class="progress-bar" id="ProgressBar"></div>
+        <div class="progress-bar" id="progressBar${i}"></div>
       </div>
       <p class="font12400">
         <p id="finishedTasks${i}">0</p>/<p id="counterOfTasks${i}">2</p>
@@ -79,7 +79,7 @@ function openTaskReturn(i) {
           Catergory
         </span>
         <div>
-          <img onclick="closeOpenTask()" src="../assets/img/board/board_cross.svg" />
+          <img onclick="closeOpenTask(${i})" src="../assets/img/board/board_cross.svg" />
         </div>
       </div>
 
@@ -142,11 +142,11 @@ function assigned(n) {
   </div>`;
 }
 
-function popUpSubtaskReturn(s) {
-  return`
+function popUpSubtaskReturn(i, s) {
+  return `
     <div id="popUpSubtask${s}" class="popUpSubtaskDetail">
-      <img onclick="subtaskFinish${s}" id="popUpSubtaskImage${s}" src="../assets/img/board/board_box.svg" />
+      <img onclick="subtaskFinish(${i, s})" id="popUpSubtaskImage${s}" src="../assets/img/board/board_box.svg" />
       <span id="pupUpSubtaskText${s}">Test</span>
     </div>
-  `
+  `;
 }
