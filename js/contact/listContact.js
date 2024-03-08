@@ -2,6 +2,7 @@
 async function initListContact() {
   let userId = getGlobalUserId();
   await includeHTML();
+  setActiveLink("navContacts");
   console.log(await loadAllContactsFromAllUsers());
   console.log(await getAllContactsFromCurrentUser())
   updateBackgroundColorMain(isListContactActive);
