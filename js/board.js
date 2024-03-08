@@ -219,6 +219,7 @@ function startDragging(id) {
 }
 
 function openTask(i) {
+  document.body.style.overflow = 'hidden';
     // render erstelle die div
   mainContentContainer = document.getElementById(`mainContent`);
   mainContentContainer.innerHTML += openTaskReturn(i);
@@ -241,8 +242,9 @@ function openTask(i) {
   let popUpDescription = document.getElementById(`popUpDescriptionID`);
   popUpDescription.innerHTML = description.textContent;
 
-  // das dueDate muss anhand des i nachgeforscht werden oder eine unsichtbare info mitgegeben werden
+ // render das Due date
   let popUpDueDate = document.getElementById(`popUpDueDate`);
+  popUpDueDate.innerHTML=  user.tasks[i].dueDate.split('-').reverse().join('/');
 
   //render die Prio ins popup
   extractFilename(i);
@@ -269,7 +271,7 @@ function openTask(i) {
    
   }
 
-  //subtasks müssen anhand der id gefiltert werden
+  //render die subtasks
   let popUpSubtasksContainer = document.getElementById(`popUpSubtasksContainer`);
   for (let s = 0; s < user.tasks[i].subtasks.length; s++) {
     popUpSubtasksContainer.innerHTML += popUpSubtaskReturn(s);
@@ -303,6 +305,18 @@ function popUpImage(){
 }
 
 function closeOpenTask() {
+  document.body.style.overflow = 'auto';
   let task = document.getElementById(`popUpMainContainer`);
   task.remove();
+}
+
+async function deleteTaskBoard(i) {
+  // Remove an element from the user.task array at index i
+  user.tasks.splice(i, 1);
+
+  // Call the closeOpenTask function
+  closeOpenTask();
+
+  await setItem("users", users);
+  loadTasks();
 }
