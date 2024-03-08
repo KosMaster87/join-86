@@ -29,7 +29,7 @@ async function saveContact(name, email, phone) {
     let contactId = generateRandomId();
     let userColor = getRandomColor(contactColors);
     let signature = getSignature(name);
-    let userId = await getCurrentUserId();
+    let userId = await getGlobalUserId();
 
     let contact = {
         userId: userId, 
@@ -54,7 +54,7 @@ async function getAllContactsFromCurrentUser() {
   
     
 async function getAllContactsFromCurrentUser() {
-    let currentUserId = await userId;
+    let currentUserId = await getGlobalUserId();
     let users = await getAllContactsFromAllUsers();
     const contactsArray = [];
     for (let i = 0; i < users.length; i++) {
