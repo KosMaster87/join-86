@@ -74,9 +74,18 @@ a.singleContact:hover {
 .d-none {
     display: none;
 }
+@media screen and (min-width: 356px) {
+    #listContactContainer {
+        top: 40px;
+        width: 356px;
+    }
+}
 
 @media screen and (min-width: 456px) {
-
+    #listContactContainer {
+        top: 40px;
+        width: 356px;
+    }
 }
 
 @media screen and (min-width: 721px) { 
@@ -87,5 +96,15 @@ a.singleContact:hover {
 }
 
 @media screen and (min-width: 1000px) {
+    #listContactContainer {
+        top: 155px;
+        width: 456px;
+    }
+}
 
+@media screen and (min-width: 1000px) {
+    #listContactContainer {
+        top: 155px;
+        width: 456px;
+    }
 }
