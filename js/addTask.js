@@ -44,7 +44,7 @@ async function initAddTask() {
  * @returns - return the contact in the array
  */
 async function getAllContactsFromCurrentUserSorted() {
-  let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
+  let allContactsFromAllUsers = await getAllContactsFromAllUsers();
   let userId = await getGlobalUserId();
   let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(
     allContactsFromAllUsers,
