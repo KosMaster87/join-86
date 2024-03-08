@@ -11,6 +11,7 @@ async function initListContact() {
   let listChars = getListFirstChars(sortedContacts); 
 
   renderContainerList(sortedContacts, listChars, userId);
+  setGlobalAllContactsFromCurrentUser();
 } 
 
 
@@ -71,6 +72,17 @@ async function getAllContactsFromCurrentUserSorted() {
   return sortedContacts;
 }
 
+async function setGlobalAllContactsFromCurrentUser() {
+  let globalAllContactsFromCurrentUser = await getAllContactsFromCurrentUserSorted();
+
+    setItem('globalAllContactsFromCurrentUser', JSON.stringify(globalAllContactsFromCurrentUser))
+
+    console.log('Durchlauf erfolgt');
+}
+
+async function getGlobalAllContactsFromCurrentUser() {
+  return getItem('globalAllContactsFromCurrentUser');
+}
 
 async function sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser) {
   let sortedContacts = await allContactsFromCurrentUser;

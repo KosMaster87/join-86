@@ -4,24 +4,26 @@
 //TODO: implement form validation
     //let globalUserId = getCurrentUserId();
     //let globalContactId = getCurrentContactId();
-let curren
+
  
 async function initEditContact() {
     let contactId = await getCurrentContactId(); 
-    let allContactsFromAllUsers = await loadAllContactsFromAllUsers();
-    console.log(allContactsFromAllUsers);
-    let currentContact = await getCurrentContact(contactId, allContactsFromAllUsers);//leer
-    console.log('currentContact', currentContact);
-    initializeAllVariables(currentContact);
+    /*let allContactsFromAllUsers = await loadAllContactsFromAllUsers();*/
+    let allContactsFromCurrentUser = await getGlobalAllContactsFromCurrentUser();
+   console.log('Response allContactsFromCurrentUser: ', allContactsFromCurrentUser);
+   /* console.log('Response alle Kontakte eines Users: ', allContactsFromCurrentUser);*/
+    let currentContact = await getCurrentContact(contactId, allContactsFromCurrentUser);//leer
+   console.log('currentContact', await currentContact);
+    /*initializeAllVariables(currentContact);*/
     //await searchName();
 }
+
 
 async function setCurrentContactIdAndUpdate(contactId) {
     await setCurrentContactId(contactId);
     globalContactId = contactId;
     await initEditContact();
 }
-
 
 
 async function getCurrentUserId() {
@@ -47,21 +49,8 @@ async function loadAllContactsFromAllUsers() {
     return JSON.parse(allContactsFromAllUsers);
 }
 
-
-async function getCurrentContact(selectedId, allContactsFromAllUsers) {
-    let contactId = await selectedId;
-    console.log('Response: contactId', contactId);
-    let allContacts = await allContactsFromAllUsers;
-    console.log('contactId: ', contactId);
-    let currentContact = [];
-    for (let i = 0; i < allContacts.length; i++) {
-        let contact = allContacts[i];
-        if (contact['contactId'] == contactId) {
-            currentContact = contact; 
-        }    
-    }
-
-    return await currentContact;
+async function getGlobalAllContactsFromCurrentUser() {
+    return JSON.parse(getItem('globalAllContactsFromCurrentUser'));
 }
 
 
@@ -79,13 +68,27 @@ function getAllContactsFromCurrentUser(userId, allUserContacts) {
     return allContactsFromCurrentUser;
 }
 
+async function getCurrentContact(selectedId, allContactsFromCurrentUser) {
+    let contactId = await selectedId;
+    console.log('Response: contactId', contactId);
+    let users = await allContactsFromCurrentUser;
+    console.log('contactId: ', contactId);
+    for (let i = 0; i < users.length; i++) {
+        let user = users[i];
+        if(user.contactId == contactId) {
+            console.log('Response Username', user.name);
+        }
+        
+}
 
-function initializeAllVariables(currentContactInfos) {
-    let currentContact = currentContactInfos;
-    document.getElementById('editContactInputName').value = currentContact.name;
-    document.getElementById('editContactInputEmail').value = currentContact.email;
-    document.getElementById('editContactInputPhone').value = currentContact.phone;
-    document.getElementById('editContactSignature').innerText = currentContact.signature;
+
+function initializeAllVariables(currentContact) {
+    let contact = currentContact;
+    document.getElementById('editContactInputName').value = contact.name;
+    document.getElementById('editContactInputEmail').value = contact.email;
+    document.getElementById('editContactInputPhone').value = contact.phone;
+    document.getElementById('editContactSignature').innerText = contact.signature;
+    console.log(contact.name, contact.email, contact.phone, contact.signature)
 }
 
 

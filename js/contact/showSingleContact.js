@@ -4,58 +4,47 @@ async function loadShowSingleContact(userId, contactId, name, email, phone, sign
     fillAllVariables(name, email, phone, signature, userColor);
     let currentUserId = await getGlobalUserId();
     await setCurrentContactId(contactId);
-    await setCurrentContactInfos(currentUserId);
 }
+
 
 async function setCurrentContactId(contactId) {
     await setItem('currentContactId', contactId);
 } 
 
+
+async function getCurrentContactId() {
+    return await getItem('currentContactId');
+} 
+
+
 async function setCurrentContactEmail(email) {
     await setItem('currentContactEmail', email);
 } 
+
 
 async function getCurrentContactEmail(email) {
     
     return await (getItem('currentContactEmail'));
 } 
 
+
 async function getCurrentContactId() {
     return await getItem('currentContactId');
 } 
+
 
 async function getGlobalUserId() {
     let currentUserId = await getItem('currentUserId');
   
     return currentUserId;
-  }
-
-async function setCurrentContactInfos(contactId, name, email) {
-    let contactArray = []
-    let currentUserId = await getGlobalUserId()
-;    
-    contactArray.push({
-        userId: currentUserId,
-        contactId: contactId,
-        name: name,
-        email: email,
-    })
-    
-    /*setItem('currentContactInfos', contactArray);*/
-    console.log('Response contactArray', contactArray);
 }
-
-
-
 
 
 async function getCurrentContactInfos() {
+    
     return getItem('currentContactInfos');
 }
  
-let currentContactId = getCurrentContactId();
-
-/*let currentContactInfos = getCurrentContactInfos */
 
 function fillAllVariables(name, email, phone, signature, userColor) {
     document.getElementById('singleContactName').innerText = name;
