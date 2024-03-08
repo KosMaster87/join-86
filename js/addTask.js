@@ -342,7 +342,11 @@ function changemenu() {
  */
 function addSubtask() {
   let subtasksInput = document.getElementById("subTaskInputfieldText");
-  subtasks.push(subtasksInput.value);
+  let newSubtask = {
+    name: subtasksInput.value,
+    done: false
+  };
+  subtasks.push(newSubtask);
   renderSubtasks();
   clearSubtaskInputfield();
 }
@@ -365,7 +369,7 @@ function renderSubtasks() {
  */
 function editSubtask(i) {
   let content = document.getElementById("subtask" + i);
-  content.innerHTML = editSubtaskReturn(subtasks, i);
+  content.innerHTML = editSubtaskReturn(subtasks[i].name, i);
 }
 
 /**
@@ -376,7 +380,7 @@ function editSubtask(i) {
 function editSubtaskDone(i) {
   let content = document.getElementById("editSubtask" + i).value;
   if (content.length > 0) {
-    subtasks[i] = content;
+    subtasks[i].name = content;
     renderSubtasks();
   } else {
     deleteSubtask(i);

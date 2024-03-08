@@ -37,9 +37,18 @@ async function registerNewUser() {
           prio: "Urgent",
           category: "User Story",
           subtasks: [
-            "subtask 1",
-            "subtask 2",
-            "subtask 3"
+            {
+              name: "erster sub",
+              done: false,
+            },
+            {
+              name: "2ter sub",
+              done: false,
+            },
+            {
+              name: "3ter sub",
+              done: false,
+            },
           ],
         },
         {
@@ -52,9 +61,18 @@ async function registerNewUser() {
           prio: "Medium",
           category: "Technical Task",
           subtasks: [
-            "subtask 1",
-            "subtask 2",
-            "subtask 3"
+            {
+              name: "erster sub",
+              done: false,
+            },
+            {
+              name: "2ter sub",
+              done: false,
+            },
+            {
+              name: "3ter sub",
+              done: false,
+            },
           ],
         },
         {
@@ -67,9 +85,18 @@ async function registerNewUser() {
           prio: "Low",
           category: "Technical Task",
           subtasks: [
-            "subtask 1",
-            "subtask 2",
-            "subtask 3"
+            {
+              name: "erster sub",
+              done: false,
+            },
+            {
+              name: "2ter sub",
+              done: false,
+            },
+            {
+              name: "3ter sub",
+              done: false,
+            },
           ],
         },
         {
@@ -82,9 +109,18 @@ async function registerNewUser() {
           prio: "Low",
           category: "User Story",
           subtasks: [
-            "subtask 1",
-            "subtask 2",
-            "subtask 3"
+            {
+              name: "erster sub",
+              done: false,
+            },
+            {
+              name: "2ter sub",
+              done: false,
+            },
+            {
+              name: "3ter sub",
+              done: false,
+            },
           ],
         },
       ],
