@@ -3,7 +3,7 @@ async function initListContact() {
   let userId = getGlobalUserId();
   await includeHTML();
   setActiveLink("navContacts");
-  console.log(await loadAllContactsFromAllUsers());
+  console.log(await getAllContactsFromAllUsers());
   console.log(await getAllContactsFromCurrentUser())
   updateBackgroundColorMain(isListContactActive);
   document.getElementById("listContactContainer").style.display = "block";
