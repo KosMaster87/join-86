@@ -311,9 +311,14 @@ function closeOpenTask() {
 }
 
 async function deleteTaskBoard(i) {
+
   // Remove an element from the user.task array at index i
   user.tasks.splice(i, 1);
 
+  document.getElementById("TodoMainContainer").innerHTML = "";
+  document.getElementById("progressMainContainer").innerHTML = "";
+  document.getElementById("awaitMainContainer").innerHTML = "";
+  document.getElementById("doneMainContainer").innerHTML = "";
   // Call the closeOpenTask function
   closeOpenTask();
 
