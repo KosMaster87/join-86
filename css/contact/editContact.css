@@ -63,7 +63,7 @@
     color: var(--white);
 }
 
-.editContactEmptySignature {        
+.editContactSignature {        
     width: 120px;
     height: 120px;
     border: 2px solid var(--white);
@@ -76,6 +76,15 @@
     top: 92px;
     left: calc(50% - 61px);
     background-color: var(--orangeIcons);
+}
+/*ERGÄNZEN*/
+#editContactSignature {
+
+    
+}
+/*ERGÄNZEN*/
+.editContactSignature {
+
 }
     
 .editContactBtnRow {
