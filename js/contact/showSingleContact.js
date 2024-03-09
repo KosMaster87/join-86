@@ -61,11 +61,12 @@ async function openEmailProgram() {
     window.open('mailto: ' + email);
 }
 
+
 /* SHOW SINGLE CONTACT */
 async function goFromSingleContactToListContactContainer() {
     await setCurrentContactId([]);
     goToTopOfSite()
-    initListContact();
+    await initListContact();
     document.getElementById("mobileBtnSelectOptions").style.display = "none";
     document.getElementById("mobileBtnThreePoints").style.display = "none";
     document.getElementById("showSingleContactContainer").style.display = "none";

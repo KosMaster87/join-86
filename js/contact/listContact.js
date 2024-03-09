@@ -1,19 +1,22 @@
 //LIST CONTACT JS
 async function initListContact() {
   let userId = getGlobalUserId();
+  loadCurrentUserAlsoUsersAsObject()
   await includeHTML();
   setActiveLink("navContacts");
-  console.log(await getAllContactsFromAllUsers());
-  console.log(await getAllContactsFromCurrentUser())
   updateBackgroundColorMain(isListContactActive);
   document.getElementById("listContactContainer").style.display = "block";
   let sortedContacts = await getAllContactsFromCurrentUserSorted();
+    
+  console.log('AUSGABE USER NEU: ', getAllContactsFromCurrentUser());
   let listChars = getListFirstChars(sortedContacts); 
-
   renderContainerList(sortedContacts, listChars, userId);
-  setGlobalAllContactsFromCurrentUser();
 } 
 
+
+async function setGlobalUserId(currentUserId) {
+  await setItem('currentUserId', currentUserId)
+}
 
 async function getGlobalUserId() {
   let currentUserId = await getItem('currentUserId');
@@ -22,8 +25,9 @@ async function getGlobalUserId() {
 }
 
 
-async function setGlobalUserId(currentUserId) {
-  await setItem('currentUserId', currentUserId)
+async function getAllContactsFromCurrentUser() {
+
+  return getItem('user');
 }
 
 
@@ -31,12 +35,12 @@ async function getAllContactsFromAllUsers() {
   return await loadAllContactsFromAllUsers();
 } 
 
-/*
+
 async function getAllContactsFromCurrentUser() {
   return await getAllContactsFromCurrentUserSorted();
-}*/
+}
 
-  
+ 
 async function getAllContactsFromCurrentUser() {
   let currentUserId = await getGlobalUserId();
   let users = await getAllContactsFromAllUsers();
@@ -72,17 +76,6 @@ async function getAllContactsFromCurrentUserSorted() {
   return sortedContacts;
 }
 
-async function setGlobalAllContactsFromCurrentUser() {
-  let globalAllContactsFromCurrentUser = await getAllContactsFromCurrentUserSorted();
-
-    setItem('globalAllContactsFromCurrentUser', JSON.stringify(globalAllContactsFromCurrentUser))
-
-    console.log('Durchlauf erfolgt');
-}
-
-async function getGlobalAllContactsFromCurrentUser() {
-  return getItem('globalAllContactsFromCurrentUser');
-}
 
 async function sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser) {
   let sortedContacts = await allContactsFromCurrentUser;
@@ -164,9 +157,8 @@ function renderContactCards(char, currentContacts, charRow, currentUserId) {
         </div>`;
     }
   }
-
-  
 }
+
 
 let isListContactActive = true;
 
@@ -179,6 +171,7 @@ function updateBackgroundColorMain() {
     mainContainer.classList.remove('white-background');
   }
 }
+
 
 /* FUNKTIONEN AUF LIST CONTACT */
 function goFromListContactToShowSingleContact(userId, contactId, name, email, phone, signature, userColor) {
