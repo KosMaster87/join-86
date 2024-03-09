@@ -42,6 +42,20 @@
 .editContactHeadlines {
     margin-top: 80px;  
 }
+/* ÜBERARBEITEN */
+.editContactHeaderH1  {
+    color: var(--white);
+    font-weight: 700;
+    font-size: 47px;
+    line-height: 1.2;
+}
+
+.editContactHeaderH3 {
+    color: var(--white);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.2;
+}
 
 .editContactSignature {
     font-size: 47px;
@@ -133,22 +147,23 @@
     .contactHeaderEmptySignature {
         display: none;
     }
-       
-    .addContactHeadlines {
+/* PRÜFEN - vorher add */       
+    .editContactHeadlines {
         display: flex;
         flex-direction: column;
         gap: 5px; 
         align-items: flex-start;
         margin: 0;
     }
-
+/* PRÜFEN - vorher add */ 
 /* ABWANDELN */
-    .addContactHeaderH1 {
+    .editContactHeaderH1 {
         font-size: 61px; /* Wechsel */
         line-height: 1.2;
     }
+/* PRÜFEN - vorher add */     
 /* ABWANDELN */
-    .addContactHeaderH3 {
+    .editContactHeaderH3 {
         color: var(--white);
         font-weight: 400;
         font-size: 27px; /* Wechsel */
