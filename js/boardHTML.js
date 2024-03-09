@@ -19,7 +19,7 @@ function HtmlReturn(i) {
     </div>
     <div class="progressMainContainer">
       <div class="progress-container">
-        <div class="progress-bar" id="ProgressBar"></div>
+        <div class="progress-bar" id="progressBar${i}"></div>
       </div>
       <p class="font12400">
         <p id="finishedTasks${i}">0</p>/<p id="counterOfTasks${i}">2</p>
@@ -79,7 +79,7 @@ function openTaskReturn(i) {
           Catergory
         </span>
         <div>
-          <img onclick="closeOpenTask()" src="../assets/img/board/board_cross.svg" />
+          <img onclick="closeOpenTask(${i})" src="../assets/img/board/board_cross.svg" />
         </div>
       </div>
 
@@ -127,8 +127,8 @@ function openTaskReturn(i) {
       </div>
       <div class="popUpLine"></div>
       <div class="footerBox">
-        <img src="../assets/img/board/board_edit.svg" />
-        <p class="font16400">Edit</p>
+        <img onclick="editBoardTask(${i})" src="../assets/img/board/board_edit.svg" />
+        <p class="font16400" >Edit</p>
       </div>
     </div>
   </div>`;
@@ -142,11 +142,128 @@ function assigned(n) {
   </div>`;
 }
 
-function popUpSubtaskReturn(s) {
-  return`
+function popUpSubtaskReturn(i, s) {
+  return `
     <div id="popUpSubtask${s}" class="popUpSubtaskDetail">
-      <img onclick="subtaskFinish${s}" id="popUpSubtaskImage${s}" src="../assets/img/board/board_box.svg" />
+    <img onclick="subtaskFinish(${i},${s})" id="popUpSubtaskImage${s}" src="../assets/img/board/board_box.svg" />
       <span id="pupUpSubtaskText${s}">Test</span>
     </div>
-  `
+  `;
+}
+
+
+
+
+function editBoardMobileTaskReturn(i){
+  return`
+<div class="divColumn">
+<div>
+          <img onclick="closeOpenTask(${i})" src="../assets/img/board/board_cross.svg" />
+        </div>
+  <div id="taskTitleContainer">
+        <p class="taskHeadline">
+          Title
+        </p>
+        <input
+          id="titelInputContainer"
+          type="text"
+          class="titleInputField font"
+          placeholder="Enter a title"
+          oninput="checkInputs()"
+        />
+        <p id="inputRequiredContainer" class="fildIsRequiredText"></p>
+      </div>
+      <div id="taskDescriptionContainer">
+        <p class="taskHeadline">Description</p>
+        <textarea
+          id="descriptionInput"
+          placeholder="Enter a Descripton"
+          class="descriptionInputField font"
+        ></textarea>
+        <p class="fildIsRequiredText"></p>
+      </div>
+      <div id="taskDueDateContainer">
+      <p class="taskHeadline">
+        Due date
+      </p>
+      <input
+        id="dueDateInputContainer"
+        placeholder="dd/mm/yyyy"
+        type="date"
+        class="dueDateInputField font"
+        onfocus="setMinDate()"
+        oninput="checkInputs()"
+      />
+      <p id="dueDateRequiredContainer" class="fildIsRequiredText"></p>
+    </div>
+      <div id="taskPrioContainer">
+        <p class="taskHeadline">Prio</p>
+        <div id="prioSelectContainer">
+          <div
+            id="prioUrgentContainer"
+            onclick="whatsPrio(prioUrgentContainer)"
+            class="taskSelectButton"
+          >
+            Urgent
+            <img src="../assets/img/add_task/arrow_top_red.svg" />
+          </div>
+          <div
+            id="prioMediumContainer"
+            onclick="whatsPrio(prioMediumContainer)"
+            class="taskSelectButton"
+          >
+            Medium
+            <img src="../assets/img/add_task/line_orange.svg" />
+          </div>
+          <div
+            id="prioLowContainer"
+            onclick="whatsPrio(prioLowContainer)"
+            class="taskSelectButton"
+          >
+            Low
+            <img src="../assets/img/add_task/arrow_bottom_green.svg" />
+          </div>
+        </div>
+        <p class="fildIsRequiredText"></p>
+      </div>
+      <div id="taskAssignedContainer">
+    <p class="taskHeadline">Assigned to</p>
+    <div
+      id="contactSelectContainer"
+      class="categorySelect"
+    >
+    <input class="assignToInput font" type="text" id="assignedToContainer" onclick="onclickInputBorder()" onkeyup="filterNamesforAssignedTo()" placeholder="Add a Contact">
+      <img id="openerAssignedTo" onclick="loadContacts()" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
+    </div>
+    <div id="contactList">
+    </div>
+    <div id="contactListIcons">
+      <div id="contactListIconsLine"></div>
+    </div>
+    <p id="contacRequired" class="fildIsRequiredText"></p>
+  </div>
+
+      <div id="taskSubtaskContainer">
+        <p class="taskHeadline">Subtasks</p>
+        <div class="subTaskInputcontainerClass" id="subTaskInputcontainer">
+          <input
+            id="subTaskInputfieldText"
+            placeholder="Add new subtask"
+            class="subtaskInputfield  font"
+            type="text"
+            onkeydown="if(event.key==='Enter') addSubtask()"
+            onkeyup="changemenu()"
+          />
+          <div class="subTaskInputfieldMenuClass" id="subTaskInputfieldMenu">
+            <img class="arrow"
+              src="../assets/img/add_task/task_add.svg"
+            />
+          </div>
+        </div>
+        <div class="subTaskAddContainer" id="subTasksContainer">
+        <p class="fildIsRequiredText"></p>
+        </div>
+      </div>
+      </div>
+  `;
 }

@@ -79,7 +79,14 @@ function loadProgressTasks() {
       howManyTasks = document.getElementById(`counterOfTasks${i}`);
       finishedTasks = document.getElementById(`finishedTasks${i}`);
 
-      prioContainer.src = "../assets/img/board/board_low.svg";
+      if (user.tasks[i].prio === 'Low') {
+        prioContainer.src = "../assets/img/board/board_low.svg";
+    } else if (user.tasks[i].prio === 'Medium') {
+        prioContainer.src = "../assets/img/board/board_medium.svg";
+    } else if (user.tasks[i].prio === 'Urgent') {
+        prioContainer.src = "../assets/img/board/board_urgent.svg";
+    }
+
       howManyTasks.innerHTML = `${user.tasks[i].subtasks.length}`;
       titleContainer.innerHTML = user.tasks[i].title;
       descriptionContainer.innerHTML = user.tasks[i].description;
@@ -184,6 +191,7 @@ function loadDoneTasks() {
         iconBarContainer.innerHTML += iconReturn(signature);
       }
     }
+    updateProgressBar(i);
   }
   noInner();
 }
@@ -219,8 +227,8 @@ function startDragging(id) {
 }
 
 function openTask(i) {
-  document.body.style.overflow = 'hidden';
-    // render erstelle die div
+  document.body.style.overflow = "hidden";
+  // render erstelle die div
   mainContentContainer = document.getElementById(`mainContent`);
   mainContentContainer.innerHTML += openTaskReturn(i);
   // render die category
@@ -242,15 +250,14 @@ function openTask(i) {
   let popUpDescription = document.getElementById(`popUpDescriptionID`);
   popUpDescription.innerHTML = description.textContent;
 
- // render das Due date
+  // render das Due date
   let popUpDueDate = document.getElementById(`popUpDueDate`);
-  popUpDueDate.innerHTML=  user.tasks[i].dueDate.split('-').reverse().join('/');
+  popUpDueDate.innerHTML = user.tasks[i].dueDate.split("-").reverse().join("/");
 
   //render die Prio ins popup
   extractFilename(i);
   let popUpPriority = document.getElementById(`popUpPriority`);
   popUpPriority.innerHTML = pupUpPriorityName;
-
 
   // render die assignedTo user name und icon
   let MainContainer = document.getElementById(`popUpAssignedToMainContainer`);
@@ -258,32 +265,32 @@ function openTask(i) {
     //div
     MainContainer.innerHTML += assigned(n);
     //name
-    namefield = document.getElementById(`popUpAssignedTo${n}`)
+    namefield = document.getElementById(`popUpAssignedTo${n}`);
     namefield.innerHTML = user.tasks[i].assignedTo[n];
     //icon // signature
-    icon = document.getElementById(`pupUpIcon${n}`)
+    icon = document.getElementById(`pupUpIcon${n}`);
     let signature = "";
     let words = user.tasks[i].assignedTo[n].toUpperCase().split(" ");
     for (let j = 0; j < words.length; j++) {
       signature += words[j].charAt(0);
       icon.innerHTML = signature;
-    };
-   
+    }
   }
 
   //render die subtasks
   let popUpSubtasksContainer = document.getElementById(`popUpSubtasksContainer`);
   for (let s = 0; s < user.tasks[i].subtasks.length; s++) {
-    popUpSubtasksContainer.innerHTML += popUpSubtaskReturn(s);
-    let subtask= document.getElementById(`pupUpSubtaskText${s}`)
-    subtask.innerHTML= user.tasks[i].subtasks[s].name;
+    popUpSubtasksContainer.innerHTML += popUpSubtaskReturn(i, s);
+    let subtask = document.getElementById(`pupUpSubtaskText${s}`);
+    subtask.innerHTML = user.tasks[i].subtasks[s].name;
     if (user.tasks[i].subtasks[s].done === false) {
-      image = document.getElementById(`popUpSubtaskImage${s}`).src = "../assets/img/board/board_box.svg";
+      image = document.getElementById(`popUpSubtaskImage${s}`).src =
+        "../assets/img/board/board_box.svg";
     } else if (user.tasks[i].subtasks[s].done === true) {
-      image = document.getElementById(`popUpSubtaskImage${s}`).src = "../assets/img/board/board_box_check.svg";
+      image = document.getElementById(`popUpSubtaskImage${s}`).src =
+        "../assets/img/board/board_box_check.svg";
     }
   }
- 
 }
 
 function extractFilename(i) {
@@ -293,10 +300,10 @@ function extractFilename(i) {
   let filename = filenameWithExtension.split(".")[0];
   pupUpPriorityName = filename.split("_");
   pupUpPriorityName = pupUpPriorityName[1].charAt(0).toUpperCase() + pupUpPriorityName[1].slice(1);
-  popUpImage(); 
+  popUpImage();
 }
 
-function popUpImage(){
+function popUpImage() {
   let imageContainer = document.getElementById(`popUpPrioImage`);
   if (pupUpPriorityName === "Low") {
     imageContainer.src = "../assets/img/board/board_low.svg";
@@ -307,14 +314,13 @@ function popUpImage(){
   }
 }
 
-function closeOpenTask() {
-  document.body.style.overflow = 'auto';
+async function closeOpenTask(i) {
+  document.body.style.overflow = "auto";
   let task = document.getElementById(`popUpMainContainer`);
   task.remove();
 }
 
 async function deleteTaskBoard(i) {
-
   // Remove an element from the user.task array at index i
   user.tasks.splice(i, 1);
 
@@ -323,19 +329,78 @@ async function deleteTaskBoard(i) {
   document.getElementById("awaitMainContainer").innerHTML = "";
   document.getElementById("doneMainContainer").innerHTML = "";
   // Call the closeOpenTask function
-  closeOpenTask();
+  closeOpenTask(i);
 
   await setItem("users", users);
   loadTasks();
 }
 
-
-
-function subtaskdone(i){
-  user.tasks[i].subtask[s]
+function subtaskdone(i) {
+  user.tasks[i].subtask[s];
 }
 
-function subtaskFinish(i){
- imageId = document.getElementById(`popUpSubtaskImage${i}`)
- imageId.src = "../assets/img/board/board_box_check.svg";
+async function subtaskFinish(i, s) {
+  let imageId = document.getElementById(`popUpSubtaskImage${s}`);
+  if (user.tasks[i].subtasks[s].done === false) {
+    imageId.src = "../assets/img/board/board_box_check.svg";
+    user.tasks[i].subtasks[s].done = true;
+  } else if (user.tasks[i].subtasks[s].done === true) {
+    imageId.src = "../assets/img/board/board_box.svg";
+    user.tasks[i].subtasks[s].done = false;
+  }
+  await setItem("users", users);
+  updateProgressBar(i);
+}
+
+function updateProgressBar(i) {
+  // Get elements by their IDs
+  let howmanyTasks = document.getElementById(`counterOfTasks${i}`);
+  let progressbar = document.getElementById(`progressBar${i}`);
+  // Initialize counter and percent variables
+  let counter = 0;
+  let percent = 0;
+  // Count the number of completed subtasks
+  for (let p = 0; p < user.tasks[i].subtasks.length; p++) {
+    if (user.tasks[i].subtasks[p].done === true) {
+      counter++;
+    }
+  }
+  // Calculate the percentage of completed subtasks
+  if (user.tasks[i].subtasks.length > 0) {
+    percent = (counter / user.tasks[i].subtasks.length) * 100;
+  }
+  // Update the HTML content and style of elements
+  if (counter > 0) {
+    document.getElementById(`finishedTasks${i}`).innerHTML = counter;
+  }
+  if (percent > 0) {
+    progressbar.style.width = percent + "%";
+  }
+}
+
+
+function editBoardTask(i){
+  mainContainer= document.getElementById(`popUpMainContainer`);
+  mainContainer.innerHTML="";
+  mainContainer.innerHTML= editBoardMobileTaskReturn(i);
+  document.getElementById(`titelInputContainer`).value = user.tasks[i].title;
+  document.getElementById(`descriptionInput`).value = user.tasks[i].description;
+  document.getElementById(`dueDateInputContainer`).value = user.tasks[i].dueDate;
+  for (let s = 0; s < user.tasks[i].subtasks.length; s++) {
+    document.getElementById(`subTasksContainer`).innerHTML +=
+    `<div id="subtask${s}" class="subtaskClass" ondblclick="editSubtask(${s})">
+    <div class="addedSubtask">
+      <div class="subTastText">
+        <p>&bull;</p>
+        <P>${user.tasks[i].subtasks[s].name}</P>
+      </div>
+      <div class="subMenu">
+        <img class="arrow" src="../assets/img/add_task/task_edit.svg" onclick="editSubtask(${i})" alt="edit_icon">
+        <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
+        <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="deleteSubtask(${i})" alt="delete_icon">
+      </div>
+    </div>
+  </div>`;
+    
+  }
 }
