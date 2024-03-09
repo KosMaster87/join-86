@@ -86,12 +86,38 @@
 .editContactBtnDelete:hover {
     cursor: pointer;
 } 
+/* PRÜFEN */
+#contactBodySignatureContainer{
+    display: none; /* display none evtl. extra entfernen */
+}
+/* PRÜFEN */
+.contactBodyEmptySignature {
+    display: none; /* kompletter Wechsel */
+    }
+
+.desktopAddContactGetBackFlex {
+    display: none; 
+}
+
+#editContactInputFieldName {
+    border: 1px solid var(--lighterGray);
+}
+
+#editContactInputFieldName:focus {
+    border-color: var(--lightBlue);
+}
+
+#editContactInputFieldEmail {
+    border: 1px solid var(--lighterGray);
+}
+
+#editContactInputFieldPhone {
+    border: 1px solid var(--lighterGray);
+}
 
 /* AB HIER KOMPLETT ÜBERARBEITEN VON ADD GEKLAUT */
 @media screen and (min-width: 1000px) {
-    #contactCard {
-        width: 900px;
-    } 
+
 }
 
 @media screen and (min-width: 1440px) {
