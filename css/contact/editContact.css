@@ -1,11 +1,5 @@
 /* EDIT CONTACT CSS */
 
-/*
-   #editContactContainer.show {
-    bottom: 0;
-   } Originaldatei */
-   
-/* btn mobileBtnEditContact */
 #mobileBtnEditContact {
     background-color: var(--lightGray);
     border-radius: 50%;
@@ -32,41 +26,22 @@
 /* JETZT AB HIER EDIT CONTACT */
 
 #editContactContainer {
+    background-color: rgba(0, 0, 0, 0.25);
     display: none;
-    position: fixed;
-    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
     width: 100%;
-    top: 60px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 22;
 } 
 
-        /*
-        #editContactContainer {
-            display: none;
-            position: fixed;
-            min-height: 100vh;
-            width: 100%;
-            bottom: -100%;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 22;
-            transition: bottom 1000ms ease-in;
-        } erster Versuch ein Overlay zu erstellen*/
-
-        /* #editContactContainer {
-    position: relative;
-    top: -62px;
-    background-color: rgba(0, 0, 0, 0.2);
-    transition: bottom 1000ms ease-in;
-   } */
-
-#editContactContainer.show {
-    bottom: 0;
-} 
+.editContactHeadlines {
+    margin-top: 80px;  
+}
 
 .editContactSignature {
     font-size: 47px;
@@ -87,10 +62,6 @@
     top: 92px;
     left: calc(50% - 61px);
     background-color: var(--orangeIcons);
-}
-
-.editContactHeadlines {
-    margin-top: 80px;  
 }
     
 .editContactBtnRow {
@@ -116,9 +87,69 @@
     cursor: pointer;
 } 
 
-/* EDIT CONTACT - PRÜFEN */
-/*#editContact {
-    display: none;
-}*/
+/* AB HIER KOMPLETT ÜBERARBEITEN VON ADD GEKLAUT */
+@media screen and (min-width: 1000px) {
+    #contactCard {
+        width: 900px;
+    } 
+}
 
-        
+@media screen and (min-width: 1440px) {
+    #editContactContainer {
+        position: absolute;
+        width: 100vw; 
+        height: 100vh; 
+        right: 0;
+        left: 0;
+        top: 0; 
+    }
+/* ABWANDELN */
+    .contactHeaderEmptySignature {
+        display: none;
+    }
+       
+    .addContactHeadlines {
+        display: flex;
+        flex-direction: column;
+        gap: 5px; 
+        align-items: flex-start;
+        margin: 0;
+    }
+
+/* ABWANDELN */
+    .addContactHeaderH1 {
+        font-size: 61px; /* Wechsel */
+        line-height: 1.2;
+    }
+/* ABWANDELN */
+    .addContactHeaderH3 {
+        color: var(--white);
+        font-weight: 400;
+        font-size: 27px; /* Wechsel */
+        line-height: 1.2;
+    }
+    /* PRÜFEN */   
+    #contactBodySignatureContainer {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+/* PRÜFEN */
+    .contactBodyEmptySignature { 
+        width: 120px;
+        height: 120px;
+        background-color: var(--lighterGray);
+        border: 2px solid var(--white);
+        border-radius: 50%;
+        z-index: 5; /* Wechsel */
+        display: flex; /* beim oberen Element nochmal prüfen */
+        justify-content: center;
+        align-items: center;
+        position: 0; /* Wechsel */
+        top: 0; /* Wechsel */
+        left: 0; /* Wechsel */
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+        /* Wechsel display none an der Stelle entfernt */
+    }
+}

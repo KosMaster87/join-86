@@ -1,0 +1,351 @@
+/* CONTACT CARD.CSS */
+
+#overlayFrameM {
+    /*background-color: rgba(0, 0, 0, 0.25); */
+    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 100px;
+    background-color: yellow;
+}
+
+#contactCard {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+.contactHeader {
+    background-color: var(--lightGray);
+    min-height: 352px;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px 24px;
+    margin: 1px 12px 0 12px;
+}
+
+#contactHeaderCloseIcon:hover {
+    cursor: pointer;
+}
+
+.contactHeaderNav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#contactBodyCloseIcon {
+    display: none;
+}
+
+#contactHeaderJoinLogo {
+    display: none; 
+}
+
+.contactHeaderBorder {
+    height: 2px;
+    width: 90px;
+    background-color: var(--lightBlue);
+    margin-top: 8px;
+}
+
+.contactHeaderEmptySignature {
+    width: 120px;
+    height: 120px;
+    background-color: var(--lighterGray);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 92px;
+    left: calc(50% - 61px);
+}
+
+#contactBody {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    height: 414px;/*calc(100vh - (352px+22px));*/
+    padding: 16px;
+    border-radius: 0 0 20px 20px;
+    margin: 0 12px 1px 12px;
+}
+
+#contactBodySignatureContainer{
+    display: none; /* display none evtl. extra entfernen */
+}
+
+.contactBodyEmptySignature {
+    display: none; /* kompletter Wechsel */
+    }
+
+.desktopAddContactGetBackFlex {
+    display: none; 
+}
+
+.contactBodyInputSectionCol{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nameInputField {
+    width: 100%;
+}
+
+.contactInputField {
+    background-color: transparent;
+    border-radius: 10px;
+    height: 41px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 21px
+}
+
+.contactInputField:hover {
+    cursor: pointer;
+}
+
+.contactBodytBtnRow {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactBtnSave {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--white);
+    background-color: var(--lightGray);
+    border-radius: 10px;
+    padding: 18px 10px;
+}
+
+.contactBtnSave:hover {
+    cursor: pointer;
+}
+
+#contactBtnSaveIcon {
+    margin-left: 8px;
+}
+
+input::placeholder {
+    color: var(--lighterGray);
+}
+
+#contactInputFieldName {
+    border: 1px solid var(--lighterGray);
+}
+
+#contactInputFieldName:focus {
+    border-color: var(--lightBlue);
+}
+
+#contactInputFieldEmail {
+    border: 1px solid var(--lighterGray);
+}
+
+#contactInputFieldPhone {
+    border: 1px solid var(--lighterGray);
+}
+
+.contactInputField {
+    width: 397px;
+    /* Wechsel */
+}
+
+.contactInputField:hover {
+    cursor: pointer;
+} 
+
+.contactBtnSave:hover {
+    cursor: pointer;
+}
+
+#contactBtnSaveIcon {
+    margin-left: 8px;
+}
+
+#desktopCancelBtn {
+    display: none; 
+    border: 1px solid var(--lightGray);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+    padding: 18px 10px;
+}
+
+@media screen and (min-width: 456px) {
+
+}
+
+@media screen and (min-width: 721px) { 
+    #contactCard {
+        width: 650px;
+    }    
+
+    .contactBodyInputSectionCol {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    #contactCard {
+        width: 900px;
+    } 
+}
+
+@media screen and (min-width: 1440px) {
+         
+    #contactHeaderCloseIcon {
+        display: none;
+    }
+       
+    #overlayFrame {
+        position: relative;
+        top: calc((100vh - 592px)/ 2); 
+    }
+       
+    #contactCard { /* erforderlich für den Umbruch */
+        width: 1212px; /* finale Breite */
+        height: 592px; /* finale Höhe */
+        flex-direction: row;
+        position: absolute;
+        top: calc(50% + 296px);
+        left: 50%;
+        
+    }
+       
+    .contactHeader {
+        background-color: var(--lightGray); 
+        width: 467px; /* Wechsel überarbeiten */
+        height: 100%;
+        border-radius: 20px 0 0 20px; /* Wechsel */
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 47px; /* Wechsel */
+        margin: 0; /* Wechsel */
+    }
+
+    .contactHeaderCloseIcon {
+        display: none;
+    }
+
+    .contactHeaderEmptySignature {
+        display: none;
+    }
+
+    #contactHeaderJoinLogo {
+        height:66.48px; 
+        display: block;
+        /* display-none*/
+    }
+       
+    #contactBodySignatureContainer {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contactBodyEmptySignature { 
+        width: 120px;
+        height: 120px;
+        background-color: var(--lighterGray);
+        border: 2px solid var(--white);
+        border-radius: 50%;
+        z-index: 5; /* Wechsel */
+        display: flex; /* beim oberen Element nochmal prüfen */
+        justify-content: center;
+        align-items: center;
+        position: 0; /* Wechsel */
+        top: 0; /* Wechsel */
+        left: 0; /* Wechsel */
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+        /* Wechsel display none an der Stelle entfernt */
+    }
+
+    #contactBody {
+        width: 61.5%;
+        display: flex;
+        flex-direction: column; /* Wechsel */
+        justify-content: flex-start; /* Wechsel */ 
+        align-items: flex-start; /* Wechsel */
+        background-color: var(--white);
+        height: 100%;/* Wechsel */
+        padding: 46px 46px 46px 0; /* Wechsel */
+        border-radius: 0 20px 20px 0; /* Wechsel */
+        margin: 0; /* Wechsel */
+    }
+       
+    .contactBodyFlexContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #contactBodyCloseIcon {
+        display: block;
+        position: relative;
+        top: -93px; 
+        left: 684px;
+    }
+       
+    #contactContainerFlexZwei {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .contactBodyInputSection {
+        width: 56.65%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contactBodyInputSectionCol {
+        margin-top: 10px;
+        flex-direction: column;
+        gap: 32px; /* Wechsel */
+    }
+
+    .contactBodytBtnRow {
+        margin-top: 36px;
+        display: flex;
+        justify-content: flex-start; /* Wechsel */
+        align-items: center;
+        gap: 25px /* Wechsel */
+    }
+           
+    #desktopCancelBtn {
+        display: inline; /* Wert nachträglich ändern */
+    }
+
+    .desktopCancelBtn:hover {
+        border: 1px solid var(--lightBlue);
+        color: var(--lightBlue);
+    }
+}
