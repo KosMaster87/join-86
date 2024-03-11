@@ -61,6 +61,10 @@ async function openEmailProgram() {
     window.open('mailto: ' + email);
 }
 
+async function showSingleContactInfos() {
+    document.getElementById('singleContactCol').display = "block";
+}
+
 
 /* SHOW SINGLE CONTACT */
 async function goFromSingleContactToListContactContainer() {
