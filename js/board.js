@@ -1,11 +1,6 @@
-// --------------------------------------------------------
-let pupUpPriorityName;
-// --------------------------------------------------------
 
-/*
- * include header and munu.
- * Than add navigation style as active.
- */
+let pupUpPriorityName;
+
 async function initBoard() {
   await includeHTML();
   setActiveLink("navBoard");
@@ -321,16 +316,12 @@ async function closeOpenTask(i) {
 }
 
 async function deleteTaskBoard(i) {
-  // Remove an element from the user.task array at index i
   user.tasks.splice(i, 1);
-
   document.getElementById("TodoMainContainer").innerHTML = "";
   document.getElementById("progressMainContainer").innerHTML = "";
   document.getElementById("awaitMainContainer").innerHTML = "";
   document.getElementById("doneMainContainer").innerHTML = "";
-  // Call the closeOpenTask function
   closeOpenTask(i);
-
   await setItem("users", users);
   loadTasks();
 }
@@ -353,23 +344,18 @@ async function subtaskFinish(i, s) {
 }
 
 function updateProgressBar(i) {
-  // Get elements by their IDs
   let howmanyTasks = document.getElementById(`counterOfTasks${i}`);
   let progressbar = document.getElementById(`progressBar${i}`);
-  // Initialize counter and percent variables
   let counter = 0;
   let percent = 0;
-  // Count the number of completed subtasks
   for (let p = 0; p < user.tasks[i].subtasks.length; p++) {
     if (user.tasks[i].subtasks[p].done === true) {
       counter++;
     }
   }
-  // Calculate the percentage of completed subtasks
   if (user.tasks[i].subtasks.length > 0) {
     percent = (counter / user.tasks[i].subtasks.length) * 100;
   }
-  // Update the HTML content and style of elements
   if (counter > 0) {
     document.getElementById(`finishedTasks${i}`).innerHTML = counter;
   }
@@ -377,12 +363,13 @@ function updateProgressBar(i) {
     progressbar.style.width = percent + "%";
   }
 }
-
+// -- EDIT Task in boardMenu --  //
 
 function editBoardTask(i){
   mainContainer= document.getElementById(`popUpMainContainer`);
   mainContainer.innerHTML="";
   mainContainer.innerHTML= editBoardMobileTaskReturn(i);
+  //fill the values 
   document.getElementById(`titelInputContainer`).value = user.tasks[i].title;
   document.getElementById(`descriptionInput`).value = user.tasks[i].description;
   document.getElementById(`dueDateInputContainer`).value = user.tasks[i].dueDate;
@@ -395,12 +382,71 @@ function editBoardTask(i){
         <P>${user.tasks[i].subtasks[s].name}</P>
       </div>
       <div class="subMenu">
-        <img class="arrow" src="../assets/img/add_task/task_edit.svg" onclick="editSubtask(${i})" alt="edit_icon">
+        <img class="arrow" src="../assets/img/add_task/task_edit.svg" onclick="editBoardSubtask(${i},${s})" alt="edit_icon">
         <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
         <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="deleteSubtask(${i})" alt="delete_icon">
       </div>
     </div>
   </div>`;
-    
+  //marks the currentPrio in start of edit
+  }
+  if (pupUpPriorityName === 'Low') {
+    whatsPrio(prioLowContainer);
+} else if (pupUpPriorityName === 'Medium') {
+  whatsPrio(prioMediumContainer);
+} else if (pupUpPriorityName === 'Urgent') {
+  whatsPrio(prioUrgentContainer);
+}
+}
+
+function editBoardSubtask(i,s) {
+  let content = document.getElementById("subtask" + s);
+  content.innerHTML = editBoardSubtaskReturn(user.tasks[i].subtasks[s].name, s);
+}
+
+function editBoardSubtaskReturn(subtasks, s) {
+  return `<div class="subtaskEdit" id="subtaskEdit">
+    <input type="text" id="editBoardSubtask${s}" value="${subtasks}">
+    <div class="subtastEditMenu">
+      <img class="arrow" src="../assets/img/add_task/task_bin.svg" onclick="deleteSubtask(${s})" alt="delete_icon">
+      <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
+      <img class="arrow" src="../assets/img/add_task/task_check.svg" onclick="editBoardSubtaskDone(${s},${s})" alt="done_icon">
+    </div>
+  </div>`;
+}
+
+async function editBoardSubtaskDone(i,s) {
+  let content = document.getElementById("editBoardSubtask" + s).value;
+  if (content.length > 0) {
+    user.tasks[i].subtasks[s].name = content;
+    await setItem("users", users);
+    renderBoardSubtasks(i,s);
+  } else {
+    deleteSubtask(s);
   }
 }
+
+function renderBoardSubtasks(i,s) {
+  let subtasksList = document.getElementById("subTasksContainer");
+  subtasksList.innerHTML = "";
+  for (let l = 0; l < user.tasks[i].subtasks.length; l++) {
+    subtasksList.innerHTML += renderBaordSubtasksReturn(i,l);
+  }
+}
+function renderBaordSubtasksReturn(i,l) {
+  return `<div id="subtask${l}" class="subtaskClass" ondblclick="editSubtask(${l})">
+    <div class="addedSubtask">
+      <div class="subTastText">
+        <p>&bull;</p>
+        <P>${user.tasks[i].subtasks[l].name}</P>
+      </div>
+      <div class="subMenu">
+        <img class="arrow" src="../assets/img/add_task/task_edit.svg" onclick="editBoardSubtask(${i},${l})" alt="edit_icon">
+        <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
+        <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="deleteSubtask(${l})" alt="delete_icon">
+      </div>
+    </div>
+  </div>`;
+}
+
+
