@@ -25,7 +25,8 @@
 } 
 
 .singleContactHeader {
-
+    display: flex;
+    flex-direction: column;
 }
 
 .singleContactNav {
@@ -60,7 +61,7 @@
     line-height: 1.2;
 }
 
-.singleContactCol {
+#singleContactCol {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -146,18 +147,47 @@
     #showSingleContactContainer {
         display: block;
         position: static;
-        right: 0;
+        left: 0;
         top: 0; 
         bottom: 0; 
-        width: 60%;
+        width: calc(100%-456px);
         height: 100vh;
         background-color: var(--whiteGray);
         overflow: hidden;
     }
     
+    #singleContact {
+        padding-left: 48px;
+
+    }
+
     .singleContactHeader {
-        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
     } 
+
+    .singleContactH1 {
+        order: 1;
+        font-size: 61px;
+    }
+
+    .singleContactHeaderBorder {
+        order: 2;
+        transform: rotate(90deg); 
+        width: 59px;
+    }
+    
+    .singleContactH3 {
+        order: 3;
+        font-size: 27px;
+    }
+
+
+
+    #singleContactCol {
+        display: none;
+    }
 }
 
 
