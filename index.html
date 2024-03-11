@@ -10,7 +10,7 @@
 
     <script src="./js/header.js"></script>
     <script src="./js/menu.js"></script>
-    <script src="./js/register.js"></script>
+    <script defer src="./js/register.js"></script>
     <script src="./js/login.js"></script>
     <script src="includeHTML.js"></script>
     <script src="script.js"></script>
@@ -129,7 +129,7 @@
     </div>
 
     <div class="registerMain" id="registerMain" style="display: none">
-      <div class="signedUpSuccessfully hide" id="signedUpSuccessfully">
+      <div class="signedUpSuccessfully" id="signedUpSuccessfully">
         <p class="signedUpSuccessfullyPara">You Signed Up successfully</p>
       </div>
 
@@ -162,14 +162,13 @@
               class="registerInputName"
               id="registerInputName"
               required
-              minlength="2"
+              minlength="3"
               type="text"
               placeholder="Name"
               value="Guest user"
               autocomplete="username"
               onfocus="changeBorderColor('nameRegistDevision')"
               onblur="resetBorderColor('nameRegistDevision')"
-              data-Register
             />
             <img class="inpIconStyle" src="./assets/img/register/person.svg" />
           </div>
@@ -179,14 +178,13 @@
               class="registerInputMail"
               id="registerInputEmail"
               required
-              minlength="2"
+              minlength="10"
               type="email"
               placeholder="Email"
               value="guest@mail.de"
               autocomplete="email"
               onfocus="changeBorderColor('registerEmailDevision')"
               onblur="resetBorderColor('registerEmailDevision')"
-              data-Register
             />
             <img class="inpIconStyle" src="./assets/img/login/mail.svg" />
           </div>
@@ -196,14 +194,13 @@
               class="registerInpPass"
               id="registerInputPassword"
               required
-              minlength="2"
+              minlength="12"
               type="password"
               placeholder="Password"
               value="guestPassword1234"
               autocomplete="current-password"
               onfocus="changeBorderColor('registerPasswortDevision')"
               onblur="resetBorderColor('registerPasswortDevision')"
-              data-Register
             />
             <img
               style="padding-right: 3px"
@@ -222,14 +219,13 @@
               class="confirmPasswort"
               id="registerInputPasswordConfirm"
               required
-              minlength="2"
+              minlength="12"
               type="password"
               placeholder="Confirm Password"
               value="guestPassword1234"
               autocomplete="current-password"
               onfocus="changeBorderColor('registerConfirmPasswortDevision')"
               onblur="resetBorderColor('registerConfirmPasswortDevision')"
-              data-Register
             />
             <img
               style="padding-right: 3px"
@@ -255,7 +251,7 @@
           </div>
 
           <div class="registerBtnBox">
-            <p class="registerError" id="registerError">Registration error</p>
+            <p class="registerError" id="registerError"></p>
             <button class="registerBtn" id="registerBtn">Sign up</button>
           </div>
         </form>
@@ -274,6 +270,5 @@
         </div>
       </div>
     </div>
-    <script src="./js/menu.js"></script>
   </body>
 </html>

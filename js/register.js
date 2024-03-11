@@ -1,222 +1,141 @@
-// --------------------------------------------------------
+let registerInputName = document.getElementById("registerInputName");
+let registerInputEmail = document.getElementById("registerInputEmail");
+let registerInputPassword = document.getElementById("registerInputPassword");
+let registerInputPasswordConfirm = document.getElementById(
+  "registerInputPasswordConfirm"
+);
+let errorMessage = document.getElementById("registerError");
+let registerBtn = document.getElementById("registerBtn");
+let colorCode = "#ff3d00";
+let signedUpSuccessfully = document.getElementById("signedUpSuccessfully");
 
-// --------------------------------------------------------
+let confirmedValidation = true;
+let privacyPolicyCheckedValidate = false;
+let validatePasswordConfirmation = false;
 
 /**
  * The registration of a new user.
  */
 async function registerNewUser() {
-  let registerInputName = document.getElementById("registerInputName");
-  let registerInputEmail = document.getElementById("registerInputEmail");
-  let registerInputPassword = document.getElementById("registerInputPassword");
-  let registerInputPasswordConfirm = document.getElementById("registerInputPasswordConfirm");
-  let registerBtn = document.getElementById("registerBtn");
-  let colorCode = "#ff3d00";
-  let contacts = [];
+  registerBtn.disabled = true;
 
+  privacyPolicyCheckedValidate = privacyPolicyCheckedValidateFn();
+  console.log("checkbox: " + privacyPolicyCheckedValidate);
+  if (!privacyPolicyCheckedValidate) return;
+
+  validatePasswordConfirmation = validatePasswordConfirmationFn();
+  if (!validatePasswordConfirmation) return;
+
+  let validateEmailRegister = await validateEmailRegisterFn();
+  console.log("eingabe email validierungerfolg: " + validateEmailRegister);
+  if (!validateEmailRegister) return;
+
+  await pushRegisteredUserIntoRemote();
+}
+
+/**
+ * Validate the confirmation password.
+ * @returns {boolean} Whether the confirmation password is valid or not.
+ */
+function validatePasswordConfirmationFn() {
+  let password = registerInputPassword.value;
+  let passwordConfirm = registerInputPasswordConfirm.value;
+
+  if (password !== passwordConfirm) {
+    errorMessage.innerHTML = "Passwords do not match";
+    showErrorBorder("#registerInputPassword", true);
+    showErrorBorder("#registerInputPasswordConfirm", true);
+    confirmedValidation = false;
+    return false;
+  } else {
+    confirmedValidation = true;
+    return true;
+  }
+}
+
+/**
+ * Match the email you entered for registration.
+ * @returns {boolean} The email you entered matches an already registered user. Or not.
+ */
+async function validateEmailRegisterFn() {
+  let emailTaken = await emailAlreadyTaken();
+
+  if (emailTaken) {
+    users = [];
+    errorMessage.innerHTML = "A Account with this Email already exists";
+    registerBtn.disabled = false;
+    confirmedValidation = false;
+    return false;
+  }
+  return true;
+}
+
+/**
+ * Compare the email address entered with the users array list to see whether it has not already been used for registration.
+ * @returns {boolean} The email you entered matches an already registered user. Or not.
+ */
+async function emailAlreadyTaken() {
+  await loadUsers();
+  existingUser = await users.find(
+    (searchCurrentEmail) =>
+      searchCurrentEmail.email === registerInputEmail.value
+  );
+  return !!existingUser;
+}
+
+/**
+ * Just setting or removing the checked attribute.
+ */
+function checkedPrivacy() {
+  let checkedElement = document.getElementById("privacyCheck");
+  let checkedBox = checkedElement.checked;
+
+  if (checkedBox) {
+    errorMessage.innerHTML = "";
+    confirmedValidation = true;
+    checkedElement.setAttribute("checked", "checked");
+    registerBtn.disabled = false;
+  } else {
+    errorMessage.innerHTML = "U must accept the privacy police";
+    confirmedValidation = false;
+    checkedElement.removeAttribute("checked", "");
+  }
+}
+
+/**
+ * The attribute of the checkbox is set.
+ * @returns {boolean} Whether the checkbox was clicked or not.
+ */
+function privacyPolicyCheckedValidateFn() {
+  let privacyPolicyChecked = document
+    .getElementById("privacyCheck")
+    .hasAttribute("checked");
+
+  if (!privacyPolicyChecked) {
+    errorMessage.innerHTML = "U must accept the privacy police";
+    confirmedValidation = false;
+  } else {
+    confirmedValidation = true;
+  }
+  return confirmedValidation;
+}
+
+/**
+ * After validation, the user is saved in remote storage.
+ */
+async function pushRegisteredUserIntoRemote() {
   try {
-    await loadUsers();
-
     const IndexForUser = users.length + 1;
 
-    registerBtn.disabled = true;
-
     users.push({
+      creationDate: new Date(),
       index: IndexForUser,
       name: registerInputName.value,
       email: registerInputEmail.value,
       password: registerInputPassword.value,
       colorCode,
-      tasks: [
-        {
-          status: "to-do",
-          title: "Task 1",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          assignedTo: ["John Doe", "Hohn Can", "Lika Fan"],
-          dueDate: "2024-03-31",
-          prio: "Urgent",
-          category: "User Story",
-          subtasks: [
-            {
-              name: "erster sub",
-              done: false,
-            },
-            {
-              name: "2ter sub",
-              done: false,
-            },
-            {
-              name: "3ter sub",
-              done: false,
-            },
-          ],
-        },
-        {
-          status: "progress",
-          title: "Task 2",
-          description:
-            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-          assignedTo: ["John Doe", "Hohn Can", "Lika Fan"],
-          dueDate: "2024-04-15",
-          prio: "Medium",
-          category: "Technical Task",
-          subtasks: [
-            {
-              name: "erster sub",
-              done: false,
-            },
-            {
-              name: "2ter sub",
-              done: false,
-            },
-            {
-              name: "3ter sub",
-              done: false,
-            },
-          ],
-        },
-        {
-          status: "done",
-          title: "Task 3",
-          description:
-            "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          assignedTo: ["John Doe", "Hohn Can", "Lika Fan"],
-          dueDate: "2024-04-02",
-          prio: "Low",
-          category: "Technical Task",
-          subtasks: [
-            {
-              name: "erster sub",
-              done: false,
-            },
-            {
-              name: "2ter sub",
-              done: false,
-            },
-            {
-              name: "3ter sub",
-              done: false,
-            },
-          ],
-        },
-        {
-          status: "await",
-          title: "Task 3",
-          description:
-            "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          assignedTo: ["John Doe", "Hohn Can", "Lika Fan"],
-          dueDate: "2024-04-02",
-          prio: "Low",
-          category: "User Story",
-          subtasks: [
-            {
-              name: "erster sub",
-              done: false,
-            },
-            {
-              name: "2ter sub",
-              done: false,
-            },
-            {
-              name: "3ter sub",
-              done: false,
-            },
-          ],
-        },
-      ],
-      contacts: [
-        // {
-        //   userId: 1,
-        //   contactId: 101,
-        //   name: "John Doe",
-        //   email: "john.doe@example.com",
-        //   phone: "123-456-7890",
-        //   userColor: "#ff0000",
-        //   signature: "Lorem ipsum",
-        // },
-        // {
-        //   userId: 2,
-        //   contactId: 102,
-        //   name: "Jane Doe",
-        //   email: "jane.doe@example.com",
-        //   phone: "987-654-3210",
-        //   userColor: "#00ff00",
-        //   signature: "Dolor sit amet",
-        // },
-        // {
-        //   userId: 3,
-        //   contactId: 103,
-        //   name: "Alice Johnson",
-        //   email: "alice.johnson@example.com",
-        //   phone: "555-123-4567",
-        //   userColor: "#0000ff",
-        //   signature: "Consectetur adipiscing elit",
-        // },
-        // {
-        //   userId: 4,
-        //   contactId: 104,
-        //   name: "Bob Smith",
-        //   email: "bob.smith@example.com",
-        //   phone: "111-222-3333",
-        //   userColor: "#ffcc00",
-        //   signature: "Sed do eiusmod tempor incididunt",
-        // },
-        // {
-        //   userId: 5,
-        //   contactId: 105,
-        //   name: "Eva Brown",
-        //   email: "eva.brown@example.com",
-        //   phone: "444-555-6666",
-        //   userColor: "#9900cc",
-        //   signature: "Ut labore et dolore magna aliqua",
-        // },
-        // {
-        //   userId: 6,
-        //   contactId: 106,
-        //   name: "Chris Wilson",
-        //   email: "chris.wilson@example.com",
-        //   phone: "777-888-9999",
-        //   userColor: "#33cc33",
-        //   signature: "Duis aute irure dolor in reprehenderit",
-        // },
-        // {
-        //   userId: 7,
-        //   contactId: 107,
-        //   name: "Sophie Davis",
-        //   email: "sophie.davis@example.com",
-        //   phone: "888-999-0000",
-        //   userColor: "#ff6600",
-        //   signature: "Excepteur sint occaecat cupidatat non proident",
-        // },
-        // {
-        //   userId: 8,
-        //   contactId: 108,
-        //   name: "Mike White",
-        //   email: "mike.white@example.com",
-        //   phone: "123-987-6543",
-        //   userColor: "#cc0033",
-        //   signature: "Culpa qui officia deserunt mollit anim id est laborum",
-        // },
-        // {
-        //   userId: 9,
-        //   contactId: 109,
-        //   name: "Olivia Miller",
-        //   email: "olivia.miller@example.com",
-        //   phone: "999-111-2222",
-        //   userColor: "#6699cc",
-        //   signature: "Nisi ut aliquip ex ea commodo consequat",
-        // },
-        // {
-        //   userId: 10,
-        //   contactId: 110,
-        //   name: "David Lee",
-        //   email: "david.lee@example.com",
-        //   phone: "987-654-3210",
-        //   userColor: "#ff99cc",
-        //   signature:
-        //     "In reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
-        // },
-      ],
+      tasks: [],
+      contacts: [],
     });
 
     console.log(users);
@@ -234,10 +153,8 @@ async function secondaryFunctions(IndexForUser) {
   await setItem("users", JSON.stringify(users));
   await setItem("currentIndex", IndexForUser);
   resetForm();
-  redirectToLoin();
+  await signedUpSuccessfullyFn();
 }
-
-// --------------------------------------------------------
 
 /**
  * Reset registration form values.
@@ -247,10 +164,19 @@ function resetForm() {
   registerInputEmail.value = "";
   registerInputPassword.value = "";
   registerInputPasswordConfirm.value = "";
-  registerBtn.disabled = false;
 }
 
 /**
+ * After successful registration, confirmation for the user.
+ */
+async function signedUpSuccessfullyFn() {
+  signedUpSuccessfully.style.display = "flex";
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  signedUpSuccessfully.style.display = "none";
+  redirectToLoin();
+}
+
+/**^
  * Switch back from register page to login page.
  */
 function redirectToLoin() {
@@ -259,8 +185,6 @@ function redirectToLoin() {
   loginMain.style.display = "flex";
   registerMain.style.display = "none";
 }
-
-// --------------------------------------------------------
 
 /**
  * To hide or show currentpassword in any fild.
@@ -296,4 +220,31 @@ function changeBorderColor(containerId) {
 function resetBorderColor(containerId) {
   let focusContainer = document.getElementById(containerId);
   focusContainer.classList.remove("active");
+}
+
+/**
+ * Zeigt den Fehlerrahmen für Eingabefelder an.
+ * @param {string} inputData - Der Selektor für die Eingabefelder.
+ * @param {boolean} useDivisionAsBorder - Gibt an, ob die Fehlerklasse auf das Elternelement angewendet werden soll.
+ */
+function showErrorBorder(inputData, useDivisionAsBorder) {
+  let dataElements = document.querySelectorAll(inputData);
+
+  dataElements.forEach((ele) => {
+    if (useDivisionAsBorder) {
+      let parentElement = ele.parentElement;
+
+      if (ele.value === "") {
+        parentElement.classList.add("wrong");
+      } else {
+        parentElement.classList.remove("wrong");
+      }
+    } else {
+      if (ele.value === "") {
+        ele.classList.add("wrong");
+      } else {
+        ele.classList.remove("wrong");
+      }
+    }
+  });
 }

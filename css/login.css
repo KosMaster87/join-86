@@ -1,8 +1,5 @@
 @import url("../style.css");
 
-/* ---------------------------------------- */
-/* Global style for login. */
-/* ---------------------------------------- */
 .LogInBoxShadow {
   box-shadow: 0px 0px 14px 3px #0000000a;
 }
@@ -19,9 +16,6 @@
   border-color: var(--lightBlue);
 }
 
-/* ---------------------------------------- */
-/* Just Join-logo animation mobile version. */
-/* ---------------------------------------- */
 @media only screen and (max-width: 720px) and (min-width: 250px) {
   .loginSecondImg {
     display: block;
@@ -89,7 +83,6 @@
   }
 }
 
-/* ---------------------------------------- */
 @media only screen and (max-width: 319px) and (min-width: 250px) {
   .firstLogin {
     display: flex;
@@ -130,14 +123,10 @@
     background-color: var(--lightBlue);
   }
 
-  /* ---------------------------------------- */
-
   .inpIconStyle {
     width: 1rem;
     height: 1rem;
   }
-
-  /* ---------------------------------------- */
 
   .loginEmailDevision {
     display: flex;
@@ -168,8 +157,6 @@
     color: var(--fontGray);
   }
 
-  /* ---------------------------------------- */
-
   .loginPasswortDevision {
     display: flex;
     flex-direction: row;
@@ -199,8 +186,6 @@
     color: var(--fontGray);
   }
 
-  /* ---------------------------------------- */
-
   .rememberBox {
     display: flex;
     margin-top: 1rem;
@@ -213,8 +198,6 @@
     font-weight: 400;
     margin-left: 0.4rem;
   }
-
-  /* ----------------------------------------- */
 
   .justBtn {
     display: flex;
@@ -241,8 +224,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .guestLogInBtn {
     font-weight: 700;
     font-size: 0.65rem;
@@ -259,8 +240,6 @@
     border: 1px solid var(--lightBlue);
     color: var(--lightBlue);
   }
-
-  /* ----------------------------------------- */
 
   .mobileNotUser {
     position: absolute;
@@ -292,8 +271,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ---------------------------------------- */
-
   .mobilePoliceLegal {
     margin-bottom: 0.3rem;
     position: absolute;
@@ -319,7 +296,6 @@
   }
 }
 
-/* ---------------------------------------- */
 @media only screen and (max-width: 480px) and (min-width: 320px) {
   .firstLogin {
     display: flex;
@@ -360,8 +336,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .loginEmailDevision {
     display: flex;
     flex-direction: row;
@@ -412,14 +386,10 @@
     outline: none;
   }
 
-  /* ----------------------------------------- */
-
   .inpIconStyle {
     width: 1.25rem;
     height: 1.25rem;
   }
-
-  /* ----------------------------------------- */
 
   .rememberBox {
     margin-top: 1rem;
@@ -433,8 +403,6 @@
     font-weight: 400;
     margin-left: 0.4rem;
   }
-
-  /* ----------------------------------------- */
 
   .justBtn {
     display: flex;
@@ -479,8 +447,6 @@
     color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .mobileNotUser {
     position: absolute;
     bottom: 4rem;
@@ -510,8 +476,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .mobilePoliceLegal {
     margin-bottom: 1rem;
     position: absolute;
@@ -536,8 +500,6 @@
     font-size: 1rem;
   }
 }
-
-/* ---------------------------------------- */
 
 @media only screen and (max-width: 720px) and (min-width: 481px) {
   .firstLogin {
@@ -577,8 +539,6 @@
     height: 0.15rem;
     background-color: var(--lightBlue);
   }
-
-  /* ----------------------------------------- */
 
   .loginEmailDevision {
     display: flex;
@@ -635,8 +595,6 @@
     height: 1.25rem;
   }
 
-  /* ----------------------------------------- */
-
   .rememberBox {
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -649,8 +607,6 @@
     font-weight: 400;
     margin-left: 0.4rem;
   }
-
-  /* ----------------------------------------- */
 
   .justBtn {
     display: flex;
@@ -694,8 +650,6 @@
     color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .mobileNotUser {
     position: absolute;
     bottom: 4rem;
@@ -726,8 +680,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .mobilePoliceLegal {
     display: flex;
     position: absolute;
@@ -753,11 +705,7 @@
   }
 }
 
-/* ----------------------------------------- */
-/* Just Join-logo animation desktop version. */
-/* ----------------------------------------- */
 @media only screen and (max-width: 2560px) and (min-width: 721px) {
-/* @media only screen and (max-width: 1440px) and (min-width: 721px) */
   .loginSecondImg {
     display: block;
     animation: JoinLoginSecondary 2s ease-in-out forwards;
@@ -822,10 +770,7 @@
   }
 }
 
-/* ---------------------------------------- */
-
 @media only screen and (max-width: 2560px) and (min-width: 721px) {
-/* @media only screen and (max-width: 1440px) and (min-width: 721px) { */
   .firstLogin {
     display: flex;
     flex-direction: column;
@@ -864,8 +809,6 @@
     height: 0.15rem;
     background-color: var(--lightBlue);
   }
-
-  /* ---------------------------------------- */
 
   .loginEmailDevision {
     display: flex;
@@ -917,14 +860,10 @@
     outline: none;
   }
 
-  /* ---------------------------------------- */
-
   .inpIconStyle {
     width: 1.25rem;
     height: 1.25rem;
   }
-
-  /* ---------------------------------------- */
 
   .rememberBox {
     margin-top: 2rem;
@@ -938,8 +877,6 @@
     font-weight: 400;
     margin-left: 0.4rem;
   }
-
-  /* ---------------------------------------- */
 
   .justBtn {
     display: flex;
@@ -984,8 +921,6 @@
     color: var(--lightBlue);
   }
 
-  /* ---------------------------------------- */
-
   .mobileNotUser {
     position: absolute;
     top: 2rem;
@@ -1012,8 +947,6 @@
     border: var(--lightBlue);
     background-color: var(--lightBlue);
   }
-
-  /* ---------------------------------------- */
 
   .mobilePoliceLegal {
     display: flex;

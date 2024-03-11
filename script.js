@@ -1,12 +1,7 @@
-// const STORAGE_TOKEN = "J4LQKS1ZDS5WC5NTX6XUA3MD2ROKE6VOP8A4QBBP"; // #1
-const STORAGE_TOKEN = "DXZFTQCTDMTN307RSV39G7QWLBSB9ZB6CEFWG1WB"; // #2 aktueller Gruppe
-
+const STORAGE_TOKEN = "DXZFTQCTDMTN307RSV39G7QWLBSB9ZB6CEFWG1WB";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
-
 let users;
 let user;
-
-// ------------------------------------------------------------------
 
 /**
  * The instruction to load from remote storage.
@@ -32,13 +27,10 @@ async function getItem(key) {
 
   try {
     const response = await fetch(urlKeyToken);
-    // console.log(response);
     if (response.ok) {
       const dataX = await response.json();
 
       if (dataX && dataX.data && dataX.data.value) {
-        // console.log(dataX.data);
-        // console.log(dataX.data.value);
         return dataX.data.value;
       } else {
         throw `Could not find data with key "${key}".`;
@@ -51,8 +43,6 @@ async function getItem(key) {
     throw error;
   }
 }
-
-// ------------------------------------------------------------------
 
 /**
  * Push request to backend.
@@ -94,8 +84,6 @@ async function theAnswer(payload) {
     return Promise.reject("Fetch error");
   }
 }
-
-// ------------------------------------------------------------------
 
 /**
  * Provide the user globally as an object and the other users in a separate array.
@@ -165,7 +153,6 @@ function changeTaskStatus(taskIndex, newStatus) {
 async function addContact(contactName, contactEmail) {
   await loadCurrentUserAlsoUsersAsObject();
 
-  // Füge den Kontakt dem Kontaktarray des Benutzers hinzu
   user.contacts.push({
     userId: "",
     contactId: "",
