@@ -399,34 +399,35 @@ function editBoardTask(i){
 }
 }
 
-function editBoardSubtask(i,s) {
-  let content = document.getElementById("subtask" + s);
-  content.innerHTML = editBoardSubtaskReturn(user.tasks[i].subtasks[s].name, s);
+function editBoardSubtask(i, s) {
+  let task = document.getElementById("subtask" + s);
+  task.innerHTML = "";
+  task.innerHTML = editBoardSubtaskReturn(user.tasks[i].subtasks[s].name, s,i);
 }
 
-function editBoardSubtaskReturn(subtasks, s) {
+function editBoardSubtaskReturn(subtasks, s,i) {
   return `<div class="subtaskEdit" id="subtaskEdit">
     <input type="text" id="editBoardSubtask${s}" value="${subtasks}">
     <div class="subtastEditMenu">
       <img class="arrow" src="../assets/img/add_task/task_bin.svg" onclick="deleteSubtask(${s})" alt="delete_icon">
       <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
-      <img class="arrow" src="../assets/img/add_task/task_check.svg" onclick="editBoardSubtaskDone(${s},${s})" alt="done_icon">
+      <img class="arrow" src="../assets/img/add_task/task_check.svg" onclick="editBoardSubtaskDone(${i},${s})" alt="done_icon">
     </div>
   </div>`;
 }
 
-async function editBoardSubtaskDone(i,s) {
+async function editBoardSubtaskDone(i, s) {
   let content = document.getElementById("editBoardSubtask" + s).value;
   if (content.length > 0) {
     user.tasks[i].subtasks[s].name = content;
     await setItem("users", users);
-    renderBoardSubtasks(i,s);
+    renderBoardSubtasks(i);
   } else {
     deleteSubtask(s);
   }
 }
 
-function renderBoardSubtasks(i,s) {
+function renderBoardSubtasks(i) {
   let subtasksList = document.getElementById("subTasksContainer");
   subtasksList.innerHTML = "";
   for (let l = 0; l < user.tasks[i].subtasks.length; l++) {
