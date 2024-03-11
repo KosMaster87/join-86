@@ -3,13 +3,7 @@ let confirmPasswordContainer = document.getElementById(
   "registerConfirmPasswortDevision"
 );
 let nameContainer = document.getElementById("nameRegistDevision");
-
-
-
 let emailContainer = document.getElementById("registerEmailDevision");
-
-
-
 let registerInputName = document.getElementById("registerInputName");
 let registerInputEmail = document.getElementById("registerInputEmail");
 let registerInputPassword = document.getElementById("registerInputPassword");
@@ -75,18 +69,15 @@ function validatePasswordConfirmationFn() {
  */
 async function validateEmailRegisterFn(emailContainer) {
   let emailTaken = await emailAlreadyTaken();
-  console.log(emailContainer);
 
   if (emailTaken) {
     users = [];
     errorMessage.innerHTML = "A Account with this Email already exists";
     registerBtn.disabled = false;
     confirmedValidation = false;
-    console.log(emailContainer);
     emailContainer.classList.add("wrong");
     return false;
   }
-  console.log(emailContainer);
   emailContainer.classList.remove("wrong");
   return true;
 }
