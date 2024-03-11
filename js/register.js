@@ -1,3 +1,15 @@
+let passwordContainer = document.getElementById("registerPasswortDevision");
+let confirmPasswordContainer = document.getElementById(
+  "registerConfirmPasswortDevision"
+);
+let nameContainer = document.getElementById("nameRegistDevision");
+
+
+
+let emailContainer = document.getElementById("registerEmailDevision");
+
+
+
 let registerInputName = document.getElementById("registerInputName");
 let registerInputEmail = document.getElementById("registerInputEmail");
 let registerInputPassword = document.getElementById("registerInputPassword");
@@ -26,7 +38,7 @@ async function registerNewUser() {
   validatePasswordConfirmation = validatePasswordConfirmationFn();
   if (!validatePasswordConfirmation) return;
 
-  let validateEmailRegister = await validateEmailRegisterFn();
+  let validateEmailRegister = await validateEmailRegisterFn(emailContainer);
   console.log("eingabe email validierungerfolg: " + validateEmailRegister);
   if (!validateEmailRegister) return;
 
@@ -43,11 +55,15 @@ function validatePasswordConfirmationFn() {
 
   if (password !== passwordConfirm) {
     errorMessage.innerHTML = "Passwords do not match";
-    showErrorBorder("#registerInputPassword", true);
-    showErrorBorder("#registerInputPasswordConfirm", true);
+    passwordContainer.classList.add("wrong");
+    confirmPasswordContainer.classList.add("wrong");
     confirmedValidation = false;
+    registerBtn.disabled = false;
     return false;
   } else {
+    errorMessage.innerHTML = "";
+    passwordContainer.classList.remove("wrong");
+    confirmPasswordContainer.classList.remove("wrong");
     confirmedValidation = true;
     return true;
   }
@@ -57,16 +73,21 @@ function validatePasswordConfirmationFn() {
  * Match the email you entered for registration.
  * @returns {boolean} The email you entered matches an already registered user. Or not.
  */
-async function validateEmailRegisterFn() {
+async function validateEmailRegisterFn(emailContainer) {
   let emailTaken = await emailAlreadyTaken();
+  console.log(emailContainer);
 
   if (emailTaken) {
     users = [];
     errorMessage.innerHTML = "A Account with this Email already exists";
     registerBtn.disabled = false;
     confirmedValidation = false;
+    console.log(emailContainer);
+    emailContainer.classList.add("wrong");
     return false;
   }
+  console.log(emailContainer);
+  emailContainer.classList.remove("wrong");
   return true;
 }
 
@@ -128,7 +149,6 @@ async function pushRegisteredUserIntoRemote() {
     const IndexForUser = users.length + 1;
 
     users.push({
-      creationDate: new Date(),
       index: IndexForUser,
       name: registerInputName.value,
       email: registerInputEmail.value,
@@ -220,31 +240,4 @@ function changeBorderColor(containerId) {
 function resetBorderColor(containerId) {
   let focusContainer = document.getElementById(containerId);
   focusContainer.classList.remove("active");
-}
-
-/**
- * Zeigt den Fehlerrahmen für Eingabefelder an.
- * @param {string} inputData - Der Selektor für die Eingabefelder.
- * @param {boolean} useDivisionAsBorder - Gibt an, ob die Fehlerklasse auf das Elternelement angewendet werden soll.
- */
-function showErrorBorder(inputData, useDivisionAsBorder) {
-  let dataElements = document.querySelectorAll(inputData);
-
-  dataElements.forEach((ele) => {
-    if (useDivisionAsBorder) {
-      let parentElement = ele.parentElement;
-
-      if (ele.value === "") {
-        parentElement.classList.add("wrong");
-      } else {
-        parentElement.classList.remove("wrong");
-      }
-    } else {
-      if (ele.value === "") {
-        ele.classList.add("wrong");
-      } else {
-        ele.classList.remove("wrong");
-      }
-    }
-  });
 }
