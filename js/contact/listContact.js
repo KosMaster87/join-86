@@ -7,8 +7,6 @@ async function initListContact() {
   updateBackgroundColorMain(isListContactActive);
   document.getElementById("listContactContainer").style.display = "block";
   let sortedContacts = await getAllContactsFromCurrentUserSorted();
-    
-  console.log('AUSGABE USER NEU: ', getAllContactsFromCurrentUser());
   let listChars = getListFirstChars(sortedContacts); 
   renderContainerList(sortedContacts, listChars, userId);
 } 
@@ -163,12 +161,12 @@ function renderContactCards(char, currentContacts, charRow, currentUserId) {
 let isListContactActive = true;
 
 function updateBackgroundColorMain() {
-  let mainContainer = document.getElementById('main');
+  let mainContact = document.getElementById('mainContact');
 
   if (isListContactActive) {
-    mainContainer.classList.add('white-background');
+    mainContact.classList.add('white-background');
   } else {
-    mainContainer.classList.remove('white-background');
+    mainContact.classList.remove('white-background');
   }
 }
 
