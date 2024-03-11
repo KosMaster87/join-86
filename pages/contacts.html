@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    
+    <link rel="stylesheet" href="../css/contact/mainContact.css" />
     <link rel="stylesheet" href="../css/contact/contacts.css" />
     <link rel="stylesheet" href="../css/contact/contactCard.css" /> 
     <link rel="stylesheet" href="../css/contact/mobileBtn.css" /> 
@@ -26,6 +27,7 @@
 
     <script src="../js/addTask.js"></script>
     <script src="../js/addTaskHTML.js"></script>
+    <script src="../js/contact/mainContact.js"></script>
     <script src="../js/contact/mobileBtn.js"></script>
     <script src="../js/contact/contacts.js"></script>
     <script src="../js/contact/addContact.js"></script>
@@ -37,14 +39,14 @@
   </head>
 
   <!-- initContacts() ist in der contacts.js deklariert. Da die weiteren Anweisungen initialisieren. -->
-  <body onload="initListContact()">
+  <body onload="initMainContact()">
     <div
       w3-include-html="../assets/templates/header.html"
       id="mainHeader"
       class="mainHeader"
     ></div>
 
-    <div class="mainContent" id="main">
+    <div class="mainContent" id="mainContact">
       <!-- RENDERN DER EINZELNEN ELEMENTE -->
 
 
@@ -261,7 +263,7 @@
 
 
       <!-- ANFANG EDIT CONTACT CONTAINER ORIGINAL  -->
-      <div id="editContactContainer">
+     <!-- <div id="editContactContainer">
         <div class="addContactHeader">
           <a class="addContactGetBack" onclick="closeEditContactAndGoToListContactContainer()">
             <img src="../../assets/img/addContact/close.svg" />
@@ -273,8 +275,8 @@
           <div class="editContactEmptySignature">
             <span id="editContactSignature" class="editContactSignature"></span>
           </div>
-        </div> <!-- ENDE ADD CONTACT HEADER-->
-        <div id="addContactEntry">
+        </div> ENDE ADD CONTACT HEADER-->
+       <!-- <div id="addContactEntry">
           <div class="contactInputContainer">                
             <div id="contactInputFieldName" 
                 class="contactInputField"
@@ -288,8 +290,8 @@
               onclick="addName()"
               src="../../assets/img/addContact/person-gray.svg"
               />
-            </div> <!-- ENDE KONTAKT INPUT FIELD -->
-            <div id="contactInputFieldEmail"
+            </div> ENDE KONTAKT INPUT FIELD -->
+           <!-- <div id="contactInputFieldEmail"
               class="contactInputField"
               >
               <input
@@ -302,8 +304,8 @@
               onclick="addEmail()"
               src="../../assets/img/addContact/mail.svg"
               />
-            </div> <!-- ENDE CONTACT INPUT FIELD -->
-            <div id="contactInputFieldPhone"
+            </div> ENDE CONTACT INPUT FIELD -->
+          <!--  <div id="contactInputFieldPhone"
               class="contactInputField"
             >
               <input
@@ -315,16 +317,16 @@
               <img
               onclick="addPhone()"
               src="../../assets/img/addContact/call.svg"
-              />
-            </div> <!-- ENDE CONTACT INPUT FIELD -->
-          </div>
+              /> 
+            </div>  ENDE CONTACT INPUT FIELD -->
+          <!--</div>
           <div class="editContactBtnRow">
             <a class="editContactBtnDelete" onclick="deleteContact()">Delete</a>
             <a onclick="saveChanges()" class="contactBtnSave">Save<img id="contactBtnSaveIcon" src="../../assets/img/addContact/check.svg"></a>
-          </div> <!-- ENDE CONTACT BTN ROW-->
-        </div> <!-- ENDE CONTACT ENTRY -->
-      </div><!-- ENDE EDIT CONTACT CONTAINER -->
-    </div> <!-- DIV ENDE MAIN CONTENT-->
+          </div> ENDE CONTACT BTN ROW-->
+       <!-- </div> ENDE CONTACT ENTRY -->
+      <!--</div> ENDE EDIT CONTACT CONTAINER -->
+    <!--</div> DIV ENDE MAIN CONTENT-->
    
 
 
