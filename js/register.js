@@ -2,10 +2,7 @@ let passwordContainer = document.getElementById("registerPasswortDevision");
 let confirmPasswordContainer = document.getElementById(
   "registerConfirmPasswortDevision"
 );
-
-let nameContainer = document.getElementById("nameRegistDevision");
 let emailContainer = document.getElementById("registerEmailDevision");
-
 let registerInputName = document.getElementById("registerInputName");
 let registerInputEmail = document.getElementById("registerInputEmail");
 let registerInputPassword = document.getElementById("registerInputPassword");

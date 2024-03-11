@@ -28,7 +28,7 @@
   color: var(--wrongInput);
 }
 
-.nameRegistDevision.wrong {
+.loginPasswortDevision.wrong {
   border-color: var(--wrongInputBorder);
 }
 

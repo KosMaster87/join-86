@@ -1,3 +1,5 @@
+let loginPasswortDevision = document.getElementById("loginPasswortDevision");
+
 /**
  * The current user will be logged in.
  */
@@ -6,10 +8,11 @@ async function login() {
   if (user) {
     console.log(user);
     let globalUserId = user.email;
-
+    loginPasswortDevision.classList.remove("wrong");
     await setGlobalUserId("currentUserId", globalUserId);
     window.location.assign("pages/summary.html");
   } else {
+    loginPasswortDevision.classList.add("wrong");
     console.log("Benutzer nicht gefunden");
   }
 }
@@ -66,4 +69,16 @@ function changeToShowCurrentPassword(passwordId, imageId) {
     hideThePassword.type = "password";
     hideThePasswordImage.src = "/assets/img/login/lock.svg";
   }
+}
+
+/**
+ * Guest access to test the application.
+ */
+function loginAsGuest() {
+  let loginInputMail = document.getElementById("loginInputMail");
+  let loginInputPassword = document.getElementById("loginInputPassword");
+  let loginBtn = document.getElementById("loginBtn");
+  loginInputMail.value = "guest@mail.de";
+  loginInputPassword.value = "guestPassword1234";
+  loginBtn.click();
 }
