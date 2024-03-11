@@ -142,6 +142,26 @@
     } 
 }
 
+@media screen and (min-width: 1200px) {
+    #showSingleContactContainer {
+        display: block;
+        position: static;
+        right: 0;
+        top: 0; 
+        bottom: 0; 
+        width: 60%;
+        height: 100vh;
+        background-color: var(--whiteGray);
+        overflow: hidden;
+    }
+    
+    .singleContactHeader {
+        display: flex;
+    } 
+}
+
+
 @media screen and (min-width: 1440px) {
+
 
 }

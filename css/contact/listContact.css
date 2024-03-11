@@ -1,11 +1,14 @@
 /* LIST CONTACT CONTAINER */
 #listContactContainer {
-    margin: 0 14px;
     display: none;
     background-color: white;
     padding: 24px 24px;
     position: absolute;
-    top: 60px;
+    top: 60px; 
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+
 }
 
 #alphabeticalRow {
@@ -102,9 +105,19 @@ a.singleContact:hover {
     }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1200px) {
     #listContactContainer {
-        top: 155px;
+        margin-top: 135px;
+        width: 40%;
+        flex: 1;
+        overflow-y: auto; 
+        position: static;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    #listContactContainer {
+        /* top: 155px; */
         width: 456px;
     }
 }

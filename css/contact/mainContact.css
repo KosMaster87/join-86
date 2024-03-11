@@ -1,0 +1,47 @@
+/* MAIN CONTACT */
+
+.mainContent {
+    box-sizing: border-box;
+}
+
+#mainContact {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+@media screen and (min-width: 456px) {
+
+}
+
+@media screen and (min-width: 721px) { 
+}
+
+@media screen and (min-width: 1000px){ 
+    .mainContent {
+        padding-top: 0; 
+        padding-bottom: 0; 
+        overflow-y: auto; 
+        box-sizing: border-box;
+      }
+
+}
+
+@media screen and (min-width: 1200px) {
+    #mainContact {
+        overflow: hidden;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    
+
+
+}
+
+@media screen and (min-width: 1440px) {
+      
+
+           
+}

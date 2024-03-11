@@ -24,9 +24,10 @@
     z-index: 999;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    position: absolute;
+    position: fixed;
     bottom: 80px;
     right: 30px;
+
 }
 
 
