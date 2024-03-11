@@ -1,4 +1,3 @@
-
 let pupUpPriorityName;
 
 async function initBoard() {
@@ -74,13 +73,13 @@ function loadProgressTasks() {
       howManyTasks = document.getElementById(`counterOfTasks${i}`);
       finishedTasks = document.getElementById(`finishedTasks${i}`);
 
-      if (user.tasks[i].prio === 'Low') {
+      if (user.tasks[i].prio === "Low") {
         prioContainer.src = "../assets/img/board/board_low.svg";
-    } else if (user.tasks[i].prio === 'Medium') {
+      } else if (user.tasks[i].prio === "Medium") {
         prioContainer.src = "../assets/img/board/board_medium.svg";
-    } else if (user.tasks[i].prio === 'Urgent') {
+      } else if (user.tasks[i].prio === "Urgent") {
         prioContainer.src = "../assets/img/board/board_urgent.svg";
-    }
+      }
 
       howManyTasks.innerHTML = `${user.tasks[i].subtasks.length}`;
       titleContainer.innerHTML = user.tasks[i].title;
@@ -365,17 +364,20 @@ function updateProgressBar(i) {
 }
 // -- EDIT Task in boardMenu --  //
 
-function editBoardTask(i){
-  mainContainer= document.getElementById(`popUpMainContainer`);
-  mainContainer.innerHTML="";
-  mainContainer.innerHTML= editBoardMobileTaskReturn(i);
-  //fill the values 
+function editBoardTask(i) {
+  mainContainer = document.getElementById(`popUpMainContainer`);
+  mainContainer.innerHTML = "";
+  mainContainer.innerHTML = editBoardMobileTaskReturn(i);
+  contactList.style.display = "none";
+  contactListIcons.style.display = "block";
+  //fill the values
   document.getElementById(`titelInputContainer`).value = user.tasks[i].title;
   document.getElementById(`descriptionInput`).value = user.tasks[i].description;
   document.getElementById(`dueDateInputContainer`).value = user.tasks[i].dueDate;
   for (let s = 0; s < user.tasks[i].subtasks.length; s++) {
-    document.getElementById(`subTasksContainer`).innerHTML +=
-    `<div id="subtask${s}" class="subtaskClass" ondblclick="editSubtask(${s})">
+    document.getElementById(
+      `subTasksContainer`
+    ).innerHTML += `<div id="subtask${s}" class="subtaskClass" ondblclick="editSubtask(${s})">
     <div class="addedSubtask">
       <div class="subTastText">
         <p>&bull;</p>
@@ -384,36 +386,34 @@ function editBoardTask(i){
       <div class="subMenu">
         <img class="arrow" src="../assets/img/add_task/task_edit.svg" onclick="editBoardSubtask(${i},${s})" alt="edit_icon">
         <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
-        <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="deleteSubtask(${i})" alt="delete_icon">
+        <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="deleteBoardSubtask(${i},${s})" alt="delete_icon">
       </div>
     </div>
   </div>`;
-  //marks the currentPrio in start of edit
+    //marks the currentPrio in start of edit
   }
-  if (pupUpPriorityName === 'Low') {
+  if (pupUpPriorityName === "Low") {
     whatsPrio(prioLowContainer);
-} else if (pupUpPriorityName === 'Medium') {
-  whatsPrio(prioMediumContainer);
-} else if (pupUpPriorityName === 'Urgent') {
-  whatsPrio(prioUrgentContainer);
+  } else if (pupUpPriorityName === "Medium") {
+    whatsPrio(prioMediumContainer);
+  } else if (pupUpPriorityName === "Urgent") {
+    whatsPrio(prioUrgentContainer);
+  }
+  for (let n = 0; n < user.contacts.length; n++) {
+    let contactNameElement = document.getElementById(`contactName${n}`);
+    let contactName = contactNameElement.textContent.trim(); // Textinhalt des Elements ohne führende oder nachfolgende Leerzeichen
+
+    if (user.tasks[i].assignedTo.includes(contactName)) {
+      let contactListIcons = document.getElementById("contactListIconsLine");
+      contactListIcons.innerHTML += `<div id="contactIconNumber${i}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
+    }
 }
 }
 
 function editBoardSubtask(i, s) {
   let task = document.getElementById("subtask" + s);
   task.innerHTML = "";
-  task.innerHTML = editBoardSubtaskReturn(user.tasks[i].subtasks[s].name, s,i);
-}
-
-function editBoardSubtaskReturn(subtasks, s,i) {
-  return `<div class="subtaskEdit" id="subtaskEdit">
-    <input type="text" id="editBoardSubtask${s}" value="${subtasks}">
-    <div class="subtastEditMenu">
-      <img class="arrow" src="../assets/img/add_task/task_bin.svg" onclick="deleteSubtask(${s})" alt="delete_icon">
-      <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
-      <img class="arrow" src="../assets/img/add_task/task_check.svg" onclick="editBoardSubtaskDone(${i},${s})" alt="done_icon">
-    </div>
-  </div>`;
+  task.innerHTML = editBoardSubtaskReturn(user.tasks[i].subtasks[s].name, s, i);
 }
 
 async function editBoardSubtaskDone(i, s) {
@@ -431,23 +431,142 @@ function renderBoardSubtasks(i) {
   let subtasksList = document.getElementById("subTasksContainer");
   subtasksList.innerHTML = "";
   for (let l = 0; l < user.tasks[i].subtasks.length; l++) {
-    subtasksList.innerHTML += renderBaordSubtasksReturn(i,l);
+    subtasksList.innerHTML += renderBaordSubtasksReturn(i, l);
   }
 }
-function renderBaordSubtasksReturn(i,l) {
-  return `<div id="subtask${l}" class="subtaskClass" ondblclick="editSubtask(${l})">
-    <div class="addedSubtask">
-      <div class="subTastText">
-        <p>&bull;</p>
-        <P>${user.tasks[i].subtasks[l].name}</P>
-      </div>
-      <div class="subMenu">
-        <img class="arrow" src="../assets/img/add_task/task_edit.svg" onclick="editBoardSubtask(${i},${l})" alt="edit_icon">
-        <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
-        <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="deleteSubtask(${l})" alt="delete_icon">
-      </div>
-    </div>
-  </div>`;
+
+async function addBoardSubtask(i) {
+  console.log(i);
+  let subtasksInput = document.getElementById("subTaskInputfieldText");
+  let newSubtask = {
+    name: subtasksInput.value,
+    done: false,
+  };
+  user.tasks[i].subtasks.push(newSubtask);
+  await setItem("users", users);
+  clearSubtaskInputfield();
+  renderBoardSubtasks(i);
 }
 
+function changeBoardMenu(i) {
+  container = document.getElementById(`subTaskInputfieldMenu`);
+  container.innerHTML = changeBoardMenuReturn(i);
+  let border = document.getElementById(`subTaskInputcontainer`);
+  border.classList.add("bordercolor");
+}
 
+function changeBoardMenuReturn(i) {
+  return `
+    <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="clearSubtaskInputfield()"/>
+    <img src="../assets/img/add_task/task_line.svg"/>
+    <img class="arrow" onclick="addBoardSubtask(${i})" src="../assets/img/add_task/task_check.svg"/>`;
+}
+
+async function deleteBoardSubtask(i, s) {
+  if (user.tasks[i] && user.tasks[i].subtasks) {
+    // Check if the subtask at index s exists before attempting to delete
+    if (user.tasks[i].subtasks[s]) {
+      user.tasks[i].subtasks.splice(s, 1);
+      renderBoardSubtasks(i);
+      await setItem("users", users);
+      renderBoardSubtasks(i);
+    }
+  }
+}
+
+/**
+ * This function edit the color of the clicked prio container
+ *
+ * @param {string} clickedContainerId - This is the number of the container that was clicked
+ */
+function whatsPrio(clickedContainerId) {
+  removeWhiteImg();
+  removePrio();
+  changePrioColor(clickedContainerId);
+}
+
+/**
+ * This function remove the background color of prio container
+ */
+function removePrio() {
+  let prioLowContainer = document.getElementById("prioLowContainer");
+  let prioMediumContainer = document.getElementById("prioMediumContainer");
+  let prioUrgentContainer = document.getElementById("prioUrgentContainer");
+  prioLowContainer.classList.remove("prioLow");
+  prioMediumContainer.classList.remove("prioMedium");
+  prioUrgentContainer.classList.remove("prioUrgent");
+}
+
+/**
+ * This function remove the images to images non used prio
+ */
+function removeWhiteImg() {
+  let imgUrgent = prioUrgentContainer.querySelector("img");
+  let imgMedium = prioMediumContainer.querySelector("img");
+  let imgLow = prioLowContainer.querySelector("img");
+  imgUrgent.src = "../assets/img/add_task/arrow_top_red.svg";
+  imgMedium.src = "../assets/img/add_task/line_orange.svg";
+  imgLow.src = "../assets/img/add_task/arrow_bottom_green.svg";
+}
+
+/**
+ * This function change the color of the clicked prio container
+ *
+ * @param {string} clickedContainerId - is the id from the clicken container
+ */
+
+function changePrioColor(clickedContainerId) {
+  let imgUrgent = prioUrgentContainer.querySelector("img");
+  let imgMedium = prioMediumContainer.querySelector("img");
+  let imgLow = prioLowContainer.querySelector("img");
+  if (clickedContainerId === prioLowContainer) {
+    changePrioColorLow(imgLow);
+  } else if (clickedContainerId === prioMediumContainer) {
+    changePrioColorMedium(imgMedium);
+  } else if (clickedContainerId === prioUrgentContainer) {
+    changePrioColorUrgent(imgUrgent);
+  }
+}
+
+/**
+ * This function change the background color of the low container
+ *
+ * @param {string} imgLow - - Is the id from the image
+ */
+function changePrioColorLow(imgLow) {
+  prioLowContainer.classList.add("prioLow");
+  selectedPrio = "Low";
+  imgLow.src = "../assets/img/add_task/arrow_bottom_white.svg";
+}
+
+/**
+ * This function change the background color of the medium container
+ *
+ * @param {string} imgMedium - Is the id from the image
+ */
+function changePrioColorMedium(imgMedium) {
+  prioMediumContainer.classList.add("prioMedium");
+  selectedPrio = "Medium";
+  imgMedium.src = "../assets/img/add_task/line_white.svg";
+}
+
+/**
+ * This function change the background color of the urgent container
+ *
+ * @param string imgUrgent - Is the id from the image
+ */
+function changePrioColorUrgent(imgUrgent) {
+  prioUrgentContainer.classList.add("prioUrgent");
+  selectedPrio = "Urgent";
+  imgUrgent.src = "../assets/img/add_task/arrow_top_white.svg";
+}
+
+function clearSubtaskInputfield() {
+  let input = document.getElementById(`subTaskInputfieldText`);
+  input.value = "";
+  container = document.getElementById(`subTaskInputfieldMenu`);
+  container.innerHTML = `
+  <img src="../assets/img/add_task/task_add.svg" />`;
+  let border = document.getElementById(`subTaskInputcontainer`);
+  border.classList.remove("bordercolor");
+}

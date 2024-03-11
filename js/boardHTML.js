@@ -151,11 +151,8 @@ function popUpSubtaskReturn(i, s) {
   `;
 }
 
-
-
-
-function editBoardMobileTaskReturn(i){
-  return`
+function editBoardMobileTaskReturn(i) {
+  return `
 <div class="divColumn">
 <div>
           <img onclick="closeOpenTask(${i})" src="../assets/img/board/board_cross.svg" />
@@ -233,7 +230,7 @@ function editBoardMobileTaskReturn(i){
       class="categorySelect"
     >
     <input class="assignToInput font" type="text" id="assignedToContainer" onclick="onclickInputBorder()" onkeyup="filterNamesforAssignedTo()" placeholder="Add a Contact">
-      <img id="openerAssignedTo" onclick="loadContacts()" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
+      <img id="openerAssignedTo" onclick="loadContacts(${i})" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
     </div>
     <div id="contactList">
     </div>
@@ -251,8 +248,8 @@ function editBoardMobileTaskReturn(i){
             placeholder="Add new subtask"
             class="subtaskInputfield  font"
             type="text"
-            onkeydown="if(event.key==='Enter') addSubtask()"
-            onkeyup="changemenu()"
+            onkeydown="if(event.key==='Enter') addBoardSubtask(${i})"
+            onkeyup="changeBoardMenu(${i})"
           />
           <div class="subTaskInputfieldMenuClass" id="subTaskInputfieldMenu">
             <img class="arrow"
@@ -266,4 +263,30 @@ function editBoardMobileTaskReturn(i){
       </div>
       </div>
   `;
+}
+function renderBaordSubtasksReturn(i, l) {
+  return `<div id="subtask${l}" class="subtaskClass" ondblclick="editSubtask(${l})">
+    <div class="addedSubtask">
+      <div class="subTastText">
+        <p>&bull;</p>
+        <P>${user.tasks[i].subtasks[l].name}</P>
+      </div>
+      <div class="subMenu">
+        <img class="arrow" src="../assets/img/add_task/task_edit.svg" onclick="editBoardSubtask(${i},${l})" alt="edit_icon">
+        <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
+        <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="deleteBoardSubtask(${i},${l})" alt="delete_icon">
+      </div>
+    </div>
+  </div>`;
+}
+
+function editBoardSubtaskReturn(subtasks, s, i) {
+  return `<div class="subtaskEdit" id="subtaskEdit">
+    <input type="text" id="editBoardSubtask${s}" value="${subtasks}">
+    <div class="subtastEditMenu">
+      <img class="arrow" src="../assets/img/add_task/task_bin.svg" onclick="deleteBoardSubtask(${i},${s})" alt="delete_icon">
+      <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
+      <img class="arrow" src="../assets/img/add_task/task_check.svg" onclick="editBoardSubtaskDone(${i},${s})" alt="done_icon">
+    </div>
+  </div>`;
 }
