@@ -2,9 +2,9 @@ function loadContacts(i) {
     let mainDiv = document.getElementById(`contactList`);
     let totalHeight = Math.min(user.contacts.length * 52, 260);
     mainDiv.style.height = `${totalHeight}px`;
-    for (let i = 0; i < Math.min(user.contacts.length); i++) {
-      contactSignature = user.contacts[i].signature;
-      contactName = user.contacts[i].name;
+    for (let c = 0; c < Math.min(user.contacts.length); c++) {
+      contactSignature = user.contacts[c].signature;
+      contactName = user.contacts[c].name;
       mainDiv.innerHTML += loadContactsReturn(i);
       iconid = document.getElementById(`ContactSignatureIcon${i}`);
       iconid.style.backgroundColor = user.contacts[i].userColor;
@@ -14,7 +14,6 @@ function loadContacts(i) {
     }
     openContacts(i);
   }
-
   function loadContactsReturn(i) {
     return `
     <div
@@ -48,7 +47,7 @@ function loadContacts(i) {
     };
     for (let n = 0; n < user.contacts.length; n++) {
       let contactNameElement = document.getElementById(`contactName${n}`);
-      let contactName = contactNameElement.textContent.trim(); // Textinhalt des Elements ohne führende oder nachfolgende Leerzeichen
+      let contactName = contactNameElement.textContent.trim();
   
       if (user.tasks[i].assignedTo.includes(contactName)) {
         let contactListIcons = document.getElementById("contactListIconsLine");
@@ -57,34 +56,17 @@ function loadContacts(i) {
   }
   }
 
-  async function assignedtoContactBg(i,) {
+  async function assignedtoContactBg(j,i) {
     let container = document.getElementById(`assignedContactContainer${i}`);
     let contactListIcons = document.getElementById("contactListIconsLine");
     container.classList.add("assignedContainerBlack");
     let image = document.getElementById(`assignedContactImage${i}`);
     image.src = "../assets/img/add_task/task_box_check.svg";
     let signature = document.getElementById(`ContactSignatureIcon${i}`).innerHTML;
-    let userColor = user.contacts[i].userColor;
+    let userColor = user.contacts[j].userColor;
     contactListIcons.innerHTML += `<div id="contactIconNumber${i}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
     container.onclick = function () {
       removeassignedtoContactBg(i);
     };
     await setItem("users", users);
-  }
-
-  function closeContacts(i) {
-    let mainDiv = document.getElementById(`contactList`);
-    mainDiv.innerHTML = "";
-    let border = document.getElementById(`contactSelectContainer`);
-    border.classList.remove("bordercolor");
-    let image = document.getElementById(`openerAssignedTo`);
-    image.src = "../assets/img/add_task/arrow_drop_down.svg";
-    setTimeout(function () {
-      document.body.click();
-    }, 0);
-    image.onclick = function () {
-      loadContacts(i);
-    };
-    contactList.style.display = "none";
-      contactListIcons.style.display = "block";
   }

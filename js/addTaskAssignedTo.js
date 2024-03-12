@@ -110,8 +110,12 @@ function onclickInputBorder() {
  * @param {*} i - this is the number of the seleced contact
  * @param {*} name - This is the name of the contact
  */
-function assignedtoContactBg(i, name) {
-  selectedAssignedto.push(name);
+function assignedtoContactBg(i, userName) {
+  let assignetToArray = {
+    name: userName,
+    userColor: contacts[i].userColor
+  }
+  selectedAssignedto.push(assignetToArray);
   let container = document.getElementById(`assignedContactContainer${i}`);
   let contactListIcons = document.getElementById("contactListIconsLine");
   container.classList.add("assignedContainerBlack");

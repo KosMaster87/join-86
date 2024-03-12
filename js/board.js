@@ -45,7 +45,7 @@ function loadTasks() {
 
       for (let a = 0; a < user.tasks[i].assignedTo.length; a++) {
         let signature = "";
-        let words = user.tasks[i].assignedTo[a].toUpperCase().split(" ");
+        let words = user.tasks[i].assignedTo[a].name.toUpperCase().split(" ");
 
         for (let j = 0; j < words.length; j++) {
           signature += words[j].charAt(0);
@@ -260,11 +260,11 @@ function openTask(i) {
     MainContainer.innerHTML += assigned(n);
     //name
     namefield = document.getElementById(`popUpAssignedTo${n}`);
-    namefield.innerHTML = user.tasks[i].assignedTo[n];
+    namefield.innerHTML = user.tasks[i].assignedTo[n].name;
     //icon // signature
     icon = document.getElementById(`pupUpIcon${n}`);
     let signature = "";
-    let words = user.tasks[i].assignedTo[n].toUpperCase().split(" ");
+    let words = user.tasks[i].assignedTo[n].name.toUpperCase().split(" ");
     for (let j = 0; j < words.length; j++) {
       signature += words[j].charAt(0);
       icon.innerHTML = signature;
@@ -399,15 +399,7 @@ function editBoardTask(i) {
   } else if (pupUpPriorityName === "Urgent") {
     whatsPrio(prioUrgentContainer);
   }
-  for (let n = 0; n < user.contacts.length; n++) {
-    let contactNameElement = document.getElementById(`contactName${n}`);
-    let contactName = contactNameElement.textContent.trim(); // Textinhalt des Elements ohne führende oder nachfolgende Leerzeichen
 
-    if (user.tasks[i].assignedTo.includes(contactName)) {
-      let contactListIcons = document.getElementById("contactListIconsLine");
-      contactListIcons.innerHTML += `<div id="contactIconNumber${i}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
-    }
-}
 }
 
 function editBoardSubtask(i, s) {
