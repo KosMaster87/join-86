@@ -69,13 +69,15 @@ function changeInfoImageBack(element) {
   img.src = "../assets/img/header/help.svg";
 }
 
-
-function createUserSignatureIcon(){
+/**
+ *  This function split the names and make the first letter to a uppercase and copied it in the icon ontainer
+ */
+function createUserSignatureIcon() {
   let container = document.getElementById(`userSignature`);
-  let nameParts = user.name.split(' ');
-  let initials = '';
-  for (let v = 0; v < nameParts.length; v++) {
-    initials += nameParts[v].charAt(0).toUpperCase();
+  let nameParts = user.name.split(" ");
+  let initials = "";
+  for (let i = 0; i < nameParts.length && initials.length < 2; i++) {
+    initials += nameParts[i].charAt(0).toUpperCase();
   }
   container.innerHTML = initials;
 }
