@@ -131,6 +131,7 @@ function openTaskReturn(i) {
         <p class="font16400" >Edit</p>
       </div>
     </div>
+
   </div>`;
 }
 
@@ -155,7 +156,7 @@ function editBoardMobileTaskReturn(i) {
   return `
 <div class="divColumn">
 <div>
-          <img onclick="closeOpenTask(${i})" src="../assets/img/board/board_cross.svg" />
+          <img onclick="closeEditTask(${i})" src="../assets/img/board/board_cross.svg" />
         </div>
   <div id="taskTitleContainer">
         <p class="taskHeadline">
@@ -230,7 +231,7 @@ function editBoardMobileTaskReturn(i) {
       class="categorySelect"
     >
     <input class="assignToInput font" type="text" id="assignedToContainer" onclick="onclickInputBorder()" onkeyup="filterNamesforAssignedTo()" placeholder="Add a Contact">
-      <img id="openerAssignedTo" onclick="loadContacts(${i})" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
+      <img id="openerAssignedTo" onclick="openContacts(${i})" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
     </div>
     <div id="contactList">
     </div>

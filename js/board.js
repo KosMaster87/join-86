@@ -31,8 +31,8 @@ function loadTasks() {
       prioContainer = document.getElementById(`PrioImageContainer${i}`);
       howManyTasks = document.getElementById(`counterOfTasks${i}`);
       finishedTasks = document.getElementById(`finishedTasks${i}`);
-
-      prioContainer.src = "../assets/img/board/board_low.svg";
+      pupUpPriorityName = user.tasks[i].prio;
+      prioContainer.src = `../assets/img/board/board_${user.tasks[i].prio.toLowerCase()}.svg`;
       howManyTasks.innerHTML = `${user.tasks[i].subtasks.length}`;
       titleContainer.innerHTML = user.tasks[i].title;
       descriptionContainer.innerHTML = user.tasks[i].description;
@@ -46,17 +46,19 @@ function loadTasks() {
 
       for (let a = 0; a < user.tasks[i].assignedTo.length; a++) {
         let signature = "";
-        let words = user.tasks[i].assignedTo[a].name.toUpperCase().split(" ");
+        if (user.tasks[i] && user.tasks[i].assignedTo[a] && user.tasks[i].assignedTo[a].name) {
+          let words = user.tasks[i].assignedTo[a].name.toUpperCase().split(" ");
 
-        for (let j = 0; j < words.length; j++) {
-          signature += words[j].charAt(0);
+          for (let j = 0; j < words.length; j++) {
+            signature += words[j].charAt(0);
+          }
+
+          iconBarContainer.innerHTML += iconReturn(signature);
         }
-
-        iconBarContainer.innerHTML += iconReturn(signature);
       }
     }
+    loadProgressTasks();
   }
-  loadProgressTasks();
 }
 
 function loadProgressTasks() {
@@ -241,7 +243,7 @@ function openTask(i) {
   popUpTitle.innerHTML = title.textContent;
 
   // render die description
-  let description = document.getElementById(`titleId${i}`);
+  let description = document.getElementById(`descriptionID${i}`);
   let popUpDescription = document.getElementById(`popUpDescriptionID`);
   popUpDescription.innerHTML = description.textContent;
 
@@ -250,9 +252,8 @@ function openTask(i) {
   popUpDueDate.innerHTML = user.tasks[i].dueDate.split("-").reverse().join("/");
 
   //render die Prio ins popup
-  extractFilename(i);
-  let popUpPriority = document.getElementById(`popUpPriority`);
-  popUpPriority.innerHTML = pupUpPriorityName;
+  popUpImage(i);
+  popUpPriority.innerHTML = user.tasks[i].prio;
 
   // render die assignedTo user name und icon
   let MainContainer = document.getElementById(`popUpAssignedToMainContainer`);
@@ -288,31 +289,42 @@ function openTask(i) {
   }
 }
 
-function extractFilename(i) {
-  let srcElement = document.getElementById(`PrioImageContainer${i}`).src;
-  let parts = srcElement.split("/");
-  let filenameWithExtension = parts[parts.length - 1];
-  let filename = filenameWithExtension.split(".")[0];
-  pupUpPriorityName = filename.split("_");
-  pupUpPriorityName = pupUpPriorityName[1].charAt(0).toUpperCase() + pupUpPriorityName[1].slice(1);
-  popUpImage();
-}
-
-function popUpImage() {
+function popUpImage(i) {
   let imageContainer = document.getElementById(`popUpPrioImage`);
-  if (pupUpPriorityName === "Low") {
+  if (user.tasks[i].prio === "Low") {
     imageContainer.src = "../assets/img/board/board_low.svg";
-  } else if (pupUpPriorityName === "Medium") {
+  } else if (user.tasks[i].prio === "Medium") {
     imageContainer.src = "../assets/img/board/board_medium.svg";
-  } else if (pupUpPriorityName === "Urgent") {
+  } else if (user.tasks[i].prio === "Urgent") {
     imageContainer.src = "../assets/img/board/board_urgent.svg";
   }
 }
 
 async function closeOpenTask(i) {
   document.body.style.overflow = "auto";
+  user.tasks[i].assignedTo = [];
+
+  for (let c = 0; c < user.contacts.length; c++) {
+    if (user.contacts[c].selected) {
+      // Füge die Namen der ausgewählten Kontakte zu user.tasks[i].assignedTo hinzu
+      user.tasks[i].assignedTo.push({
+        name: user.contacts[c].name,
+        userColor: user.contacts[c].userColor,
+      });
+    }
+  }
+  await setItem("users", users);
   let task = document.getElementById(`popUpMainContainer`);
   task.remove();
+  toDoMainContainer = document.getElementById(`TodoMainContainer`);
+  toDoMainContainer.innerHTML = "";
+  loadTasks();
+}
+
+function closeEditTask(i) {
+  mainContainer = document.getElementById(`popUpMainContainer`);
+  mainContainer.remove();
+  openTask(i);
 }
 
 async function deleteTaskBoard(i) {
@@ -365,7 +377,7 @@ function updateProgressBar(i) {
 }
 // -- EDIT Task in boardMenu --  //
 
-function editBoardTask(i) {
+async function editBoardTask(i) {
   mainContainer = document.getElementById(`popUpMainContainer`);
   mainContainer.innerHTML = "";
   mainContainer.innerHTML = editBoardMobileTaskReturn(i);
@@ -393,6 +405,7 @@ function editBoardTask(i) {
   </div>`;
     //marks the currentPrio in start of edit
   }
+
   if (pupUpPriorityName === "Low") {
     whatsPrio(prioLowContainer);
   } else if (pupUpPriorityName === "Medium") {
@@ -401,6 +414,19 @@ function editBoardTask(i) {
     whatsPrio(prioUrgentContainer);
   }
 
+  user.contacts.forEach((contact) => {
+    contact.selected = false;
+  });
+  let assignedTo = user.tasks[i].assignedTo;
+  for (let j = 0; j < assignedTo.length; j++) {
+    let assignedToName = assignedTo[j].name;
+    let matchingContact = user.contacts.find((contact) => contact.name === assignedToName);
+    if (matchingContact) {
+      matchingContact.selected = true;
+    }
+  }
+  await setItem("users", users);
+  loadContacts(i);
 }
 
 function editBoardSubtask(i, s) {
