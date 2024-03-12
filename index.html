@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./css/register.css" />
     <link rel="stylesheet" href="./style.css" />
 
+    <script src="./js/legality.js"></script>
+    <script src="./js/policy.js"></script>
     <script src="./js/header.js"></script>
     <script src="./js/menu.js"></script>
     <script defer src="./js/register.js"></script>
@@ -112,16 +114,10 @@
         </div>
 
         <div class="mobilePoliceLegal" id="mobilePoliceLegal">
-          <div
-            class="mobilePoliceLegalLink"
-            onclick="includeContentHTML('policy')"
-          >
+          <div class="mobilePoliceLegalLink" onclick="offlinePolicy()">
             Privacy Police
           </div>
-          <div
-            class="mobilePoliceLegalLink"
-            onclick="includeContentHTML('legality')"
-          >
+          <div class="mobilePoliceLegalLink" onclick="offlineLegality()">
             Legal notice
           </div>
         </div>
@@ -257,16 +253,10 @@
         </form>
 
         <div class="mobilePoliceLegal" id="mobilePoliceLegal">
-          <div
-            class="mobilePoliceLegalLink"
-            onclick="includeContentHTML('policy')"
-          >
+          <div class="mobilePoliceLegalLink" onclick="offlinePolicy()">
             Privacy Police
           </div>
-          <div
-            class="mobilePoliceLegalLink"
-            onclick="includeContentHTML('legality')"
-          >
+          <div class="mobilePoliceLegalLink" onclick="offlineLegality()">
             Legal notice
           </div>
         </div>
