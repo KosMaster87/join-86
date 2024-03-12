@@ -32,10 +32,11 @@ async function assignTaskToUser() {
  */
 async function initAddTask() {
   await includeHTML();
-  setActiveLink("navAddTask");
-  checkWidth();
   await loadCurrentUserAlsoUsersAsObject();
   await getAllContactsFromCurrentUserSorted();
+  createUserSignatureIcon();
+  setActiveLink("navAddTask");
+  checkWidth();
 }
 
 /**

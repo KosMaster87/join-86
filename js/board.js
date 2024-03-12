@@ -4,6 +4,7 @@ async function initBoard() {
   await includeHTML();
   setActiveLink("navBoard");
   await loadCurrentUserAlsoUsersAsObject();
+  createUserSignatureIcon();
   loadTasks();
 }
 

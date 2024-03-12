@@ -21,6 +21,7 @@ async function initSummary() {
   await initGreeting();
   setActiveLink("navSummary");
   await loadCurrentUserAlsoUsersAsObject();
+  createUserSignatureIcon();
   await TaskDisplayFields();
   preparePopupEvent(); // BOARD; ADDTASK; CONTACTS; ++
 }

@@ -68,3 +68,14 @@ function changeInfoImageBack(element) {
   img.classList.contains("editImage");
   img.src = "../assets/img/header/help.svg";
 }
+
+
+function createUserSignatureIcon(){
+  let container = document.getElementById(`userSignature`);
+  let nameParts = user.name.split(' ');
+  let initials = '';
+  for (let v = 0; v < nameParts.length; v++) {
+    initials += nameParts[v].charAt(0).toUpperCase();
+  }
+  container.innerHTML = initials;
+}
