@@ -59,7 +59,7 @@
               id="loginInputPassword"
               name="loginInputPassword"
               required
-              minlength="2"
+              minlength="3"
               type="password"
               placeholder="Password"
               value=""
@@ -78,11 +78,13 @@
 
           <div class="rememberBox">
             <input
+              class="rememberMe"
               id="rememberMe"
               type="checkbox"
               name="checkRemember"
               value="Remember me"
               onclick="handleRememberme()"
+              style="cursor: pointer;"
             />
             <label class="rememberLabel" for="rememberMe">Remember me</label>
           </div>
@@ -234,15 +236,18 @@
 
           <div class="acceptPolicyBox" onclick="checkedPrivacy()">
             <input
+              class="privacyCheck"
+              id="privacyCheck"
               type="checkbox"
               name="acceptPolicy"
               value="acceptPolicy"
-              id="privacyCheck"
+              style="cursor: pointer"
             />
             <label class="acceptPolicy" for="privacyCheck"
-              >I accept the<a href="#" class="acceptPolicyAnchor">
-                Privacy policy</a
-              ></label
+              >I accept the
+              <p class="acceptPolicyParagraf" onclick="offlinePolicy()">
+                Privacy policy
+              </p></label
             >
           </div>
 

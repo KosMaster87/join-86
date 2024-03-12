@@ -44,6 +44,70 @@
   border-color: var(--wrongInputBorder);
 }
 
+.privacyCheck {
+  cursor: pointer;
+}
+
+.registerInputName {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.registerInputName:focus {
+  outline: none;
+}
+
+.registerInputName::placeholder {
+  color: var(--fontGray);
+}
+
+.registerInputMail {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.registerInputMail:focus {
+  outline: none;
+}
+
+.registerInputMail::placeholder {
+  color: var(--fontGray);
+}
+
+.registerInpPass {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.registerInpPass:focus {
+  outline: none;
+}
+
+.registerInpPass::placeholder {
+  color: var(--fontGray);
+}
+
+.confirmPasswort {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.confirmPasswort:focus {
+  outline: none;
+}
+
+.confirmPasswort::placeholder {
+  color: var(--fontGray);
+}
+
+.backToLoginMobile {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 720px) and (min-width: 250px) {
   .signedUpSuccessfully {
     animation: popUpSignUpMobile 1.5s ease-in-out forwards;
@@ -176,19 +240,9 @@
   }
 
   .registerInputName {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .registerInputName:focus {
-    outline: none;
-  }
-
-  .registerInputName::placeholder {
-    color: var(--fontGray);
   }
 
   .registerEmailDevision {
@@ -205,19 +259,9 @@
   }
 
   .registerInputMail {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .registerInputMail:focus {
-    outline: none;
-  }
-
-  .registerInputMail::placeholder {
-    color: var(--fontGray);
   }
 
   .registerPasswortDevision {
@@ -234,19 +278,9 @@
   }
 
   .registerInpPass {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .registerInpPass:focus {
-    outline: none;
-  }
-
-  .registerInpPass::placeholder {
-    color: var(--fontGray);
   }
 
   .registerConfirmPasswortDevision {
@@ -263,19 +297,9 @@
   }
 
   .confirmPasswort {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .confirmPasswort:focus {
-    outline: none;
-  }
-
-  .confirmPasswort::placeholder {
-    color: var(--fontGray);
   }
 
   .acceptPolicyBox {
@@ -285,12 +309,15 @@
   }
 
   .acceptPolicy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.7rem;
     padding-left: 0.3rem;
+    cursor: pointer;
   }
 
-  .acceptPolicyAnchor {
-    text-decoration: none;
+  .acceptPolicyParagraf {
     color: var(--lightBlue);
   }
 
@@ -456,19 +483,9 @@
   }
 
   .registerInputName {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .registerInputName:focus {
-    outline: none;
-  }
-
-  .registerInputName::placeholder {
-    color: var(--fontGray);
   }
 
   .registerEmailDevision {
@@ -485,19 +502,9 @@
   }
 
   .registerInputMail {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .registerInputMail:focus {
-    outline: none;
-  }
-
-  .registerInputMail::placeholder {
-    color: var(--fontGray);
   }
 
   .registerPasswortDevision {
@@ -514,19 +521,9 @@
   }
 
   .registerInpPass {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .registerInpPass:focus {
-    outline: none;
-  }
-
-  .registerInpPass::placeholder {
-    color: var(--fontGray);
   }
 
   .registerConfirmPasswortDevision {
@@ -543,19 +540,9 @@
   }
 
   .confirmPasswort {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .confirmPasswort:focus {
-    outline: none;
-  }
-
-  .confirmPasswort::placeholder {
-    color: var(--fontGray);
   }
 
   .acceptPolicyBox {
@@ -565,12 +552,15 @@
   }
 
   .acceptPolicy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.8rem;
     padding-left: 0.3rem;
+    cursor: pointer;
   }
 
-  .acceptPolicyAnchor {
-    text-decoration: none;
+  .acceptPolicyParagraf {
     color: var(--lightBlue);
   }
 
@@ -736,19 +726,9 @@
   }
 
   .registerInputName {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .registerInputName:focus {
-    outline: none;
-  }
-
-  .registerInputName::placeholder {
-    color: var(--fontGray);
   }
 
   .registerEmailDevision {
@@ -765,19 +745,9 @@
   }
 
   .registerInputMail {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .registerInputMail:focus {
-    outline: none;
-  }
-
-  .registerInputMail::placeholder {
-    color: var(--fontGray);
   }
 
   .registerPasswortDevision {
@@ -794,19 +764,9 @@
   }
 
   .registerInpPass {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .registerInpPass:focus {
-    outline: none;
-  }
-
-  .registerInpPass::placeholder {
-    color: var(--fontGray);
   }
 
   .registerConfirmPasswortDevision {
@@ -823,19 +783,9 @@
   }
 
   .confirmPasswort {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .confirmPasswort:focus {
-    outline: none;
-  }
-
-  .confirmPasswort::placeholder {
-    color: var(--fontGray);
   }
 
   .acceptPolicyBox {
@@ -845,12 +795,15 @@
   }
 
   .acceptPolicy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1rem;
     padding-left: 0.3rem;
+    cursor: pointer;
   }
 
-  .acceptPolicyAnchor {
-    text-decoration: none;
+  .acceptPolicyParagraf {
     color: var(--lightBlue);
   }
 
@@ -1016,19 +969,9 @@
   }
 
   .registerInputName {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .registerInputName:focus {
-    outline: none;
-  }
-
-  .registerInputName::placeholder {
-    color: var(--fontGray);
   }
 
   .registerEmailDevision {
@@ -1045,19 +988,9 @@
   }
 
   .registerInputMail {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .registerInputMail:focus {
-    outline: none;
-  }
-
-  .registerInputMail::placeholder {
-    color: var(--fontGray);
   }
 
   .registerPasswortDevision {
@@ -1074,19 +1007,9 @@
   }
 
   .registerInpPass {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .registerInpPass:focus {
-    outline: none;
-  }
-
-  .registerInpPass::placeholder {
-    color: var(--fontGray);
   }
 
   .registerConfirmPasswortDevision {
@@ -1103,19 +1026,9 @@
   }
 
   .confirmPasswort {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
-  }
-
-  .confirmPasswort:focus {
-    outline: none;
-  }
-
-  .confirmPasswort::placeholder {
-    color: var(--fontGray);
   }
 
   .acceptPolicyBox {
@@ -1125,12 +1038,15 @@
   }
 
   .acceptPolicy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1rem;
     padding-left: 0.3rem;
+    cursor: pointer;
   }
 
-  .acceptPolicyAnchor {
-    text-decoration: none;
+  .acceptPolicyParagraf {
     color: var(--lightBlue);
   }
 
