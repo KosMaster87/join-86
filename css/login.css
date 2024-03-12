@@ -281,14 +281,14 @@
     gap: 1rem;
   }
 
-  .mobilePoliceLegal a {
+  .mobilePoliceLegalLink {
     color: var(--fontGray);
     transition: transform 0.5s ease;
     font-size: 0.6rem !important;
     text-decoration: none;
   }
 
-  .mobilePoliceLegal a:hover {
+  .mobilePoliceLegalLink:hover {
     cursor: pointer;
     color: var(--lightBlue);
     transform: scaleX(1.2);
@@ -486,14 +486,14 @@
     gap: 1rem;
   }
 
-  .mobilePoliceLegal a {
+  .mobilePoliceLegalLink {
     color: var(--fontGray);
     transition: transform 0.5s ease;
     font-size: 0.8rem !important;
     text-decoration: none;
   }
 
-  .mobilePoliceLegal a:hover {
+  .mobilePoliceLegalLink:hover {
     cursor: pointer;
     color: var(--lightBlue);
     transform: scaleX(1.2);
@@ -690,14 +690,14 @@
     gap: 2rem;
   }
 
-  .mobilePoliceLegal a {
+  .mobilePoliceLegalLink {
     color: var(--fontGray);
     transition: transform 0.5s ease;
     font-size: 0.9rem !important;
     text-decoration: none;
   }
 
-  .mobilePoliceLegal a:hover {
+  .mobilePoliceLegalLink:hover {
     cursor: pointer;
     color: var(--lightBlue);
     transform: scaleX(1.2);
@@ -958,14 +958,14 @@
     gap: 2rem;
   }
 
-  .mobilePoliceLegal a {
+  .mobilePoliceLegalLink {
     color: var(--fontGray);
     transition: transform 0.5s ease;
     font-size: 1rem !important;
     text-decoration: none;
   }
 
-  .mobilePoliceLegal a:hover {
+  .mobilePoliceLegalLink:hover {
     cursor: pointer;
     color: var(--lightBlue);
     transform: scaleX(1.2);
