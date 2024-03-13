@@ -1,15 +1,10 @@
-// --------------------------------------------------------
 let pupUpPriorityName;
-// --------------------------------------------------------
 
-/*
- * include header and munu.
- * Than add navigation style as active.
- */
 async function initBoard() {
   await includeHTML();
   setActiveLink("navBoard");
   await loadCurrentUserAlsoUsersAsObject();
+  createUserSignatureIcon();
   loadTasks();
 }
 
@@ -36,8 +31,8 @@ function loadTasks() {
       prioContainer = document.getElementById(`PrioImageContainer${i}`);
       howManyTasks = document.getElementById(`counterOfTasks${i}`);
       finishedTasks = document.getElementById(`finishedTasks${i}`);
-
-      prioContainer.src = "../assets/img/board/board_low.svg";
+      pupUpPriorityName = user.tasks[i].prio;
+      prioContainer.src = `../assets/img/board/board_${user.tasks[i].prio.toLowerCase()}.svg`;
       howManyTasks.innerHTML = `${user.tasks[i].subtasks.length}`;
       titleContainer.innerHTML = user.tasks[i].title;
       descriptionContainer.innerHTML = user.tasks[i].description;
@@ -51,17 +46,19 @@ function loadTasks() {
 
       for (let a = 0; a < user.tasks[i].assignedTo.length; a++) {
         let signature = "";
-        let words = user.tasks[i].assignedTo[a].toUpperCase().split(" ");
+        if (user.tasks[i] && user.tasks[i].assignedTo[a] && user.tasks[i].assignedTo[a].name) {
+          let words = user.tasks[i].assignedTo[a].name.toUpperCase().split(" ");
 
-        for (let j = 0; j < words.length; j++) {
-          signature += words[j].charAt(0);
+          for (let j = 0; j < words.length; j++) {
+            signature += words[j].charAt(0);
+          }
+
+          iconBarContainer.innerHTML += iconReturn(signature);
         }
-
-        iconBarContainer.innerHTML += iconReturn(signature);
       }
     }
+    loadProgressTasks();
   }
-  loadProgressTasks();
 }
 
 function loadProgressTasks() {
@@ -79,13 +76,13 @@ function loadProgressTasks() {
       howManyTasks = document.getElementById(`counterOfTasks${i}`);
       finishedTasks = document.getElementById(`finishedTasks${i}`);
 
-      if (user.tasks[i].prio === 'Low') {
+      if (user.tasks[i].prio === "Low") {
         prioContainer.src = "../assets/img/board/board_low.svg";
-    } else if (user.tasks[i].prio === 'Medium') {
+      } else if (user.tasks[i].prio === "Medium") {
         prioContainer.src = "../assets/img/board/board_medium.svg";
-    } else if (user.tasks[i].prio === 'Urgent') {
+      } else if (user.tasks[i].prio === "Urgent") {
         prioContainer.src = "../assets/img/board/board_urgent.svg";
-    }
+      }
 
       howManyTasks.innerHTML = `${user.tasks[i].subtasks.length}`;
       titleContainer.innerHTML = user.tasks[i].title;
@@ -246,7 +243,7 @@ function openTask(i) {
   popUpTitle.innerHTML = title.textContent;
 
   // render die description
-  let description = document.getElementById(`titleId${i}`);
+  let description = document.getElementById(`descriptionID${i}`);
   let popUpDescription = document.getElementById(`popUpDescriptionID`);
   popUpDescription.innerHTML = description.textContent;
 
@@ -255,9 +252,8 @@ function openTask(i) {
   popUpDueDate.innerHTML = user.tasks[i].dueDate.split("-").reverse().join("/");
 
   //render die Prio ins popup
-  extractFilename(i);
-  let popUpPriority = document.getElementById(`popUpPriority`);
-  popUpPriority.innerHTML = pupUpPriorityName;
+  popUpImage(i);
+  popUpPriority.innerHTML = user.tasks[i].prio;
 
   // render die assignedTo user name und icon
   let MainContainer = document.getElementById(`popUpAssignedToMainContainer`);
@@ -266,11 +262,11 @@ function openTask(i) {
     MainContainer.innerHTML += assigned(n);
     //name
     namefield = document.getElementById(`popUpAssignedTo${n}`);
-    namefield.innerHTML = user.tasks[i].assignedTo[n];
+    namefield.innerHTML = user.tasks[i].assignedTo[n].name;
     //icon // signature
     icon = document.getElementById(`pupUpIcon${n}`);
     let signature = "";
-    let words = user.tasks[i].assignedTo[n].toUpperCase().split(" ");
+    let words = user.tasks[i].assignedTo[n].name.toUpperCase().split(" ");
     for (let j = 0; j < words.length; j++) {
       signature += words[j].charAt(0);
       icon.innerHTML = signature;
@@ -293,44 +289,51 @@ function openTask(i) {
   }
 }
 
-function extractFilename(i) {
-  let srcElement = document.getElementById(`PrioImageContainer${i}`).src;
-  let parts = srcElement.split("/");
-  let filenameWithExtension = parts[parts.length - 1];
-  let filename = filenameWithExtension.split(".")[0];
-  pupUpPriorityName = filename.split("_");
-  pupUpPriorityName = pupUpPriorityName[1].charAt(0).toUpperCase() + pupUpPriorityName[1].slice(1);
-  popUpImage();
-}
-
-function popUpImage() {
+function popUpImage(i) {
   let imageContainer = document.getElementById(`popUpPrioImage`);
-  if (pupUpPriorityName === "Low") {
+  if (user.tasks[i].prio === "Low") {
     imageContainer.src = "../assets/img/board/board_low.svg";
-  } else if (pupUpPriorityName === "Medium") {
+  } else if (user.tasks[i].prio === "Medium") {
     imageContainer.src = "../assets/img/board/board_medium.svg";
-  } else if (pupUpPriorityName === "Urgent") {
+  } else if (user.tasks[i].prio === "Urgent") {
     imageContainer.src = "../assets/img/board/board_urgent.svg";
   }
 }
 
 async function closeOpenTask(i) {
   document.body.style.overflow = "auto";
+  user.tasks[i].assignedTo = [];
+
+  for (let c = 0; c < user.contacts.length; c++) {
+    if (user.contacts[c].selected) {
+      // Füge die Namen der ausgewählten Kontakte zu user.tasks[i].assignedTo hinzu
+      user.tasks[i].assignedTo.push({
+        name: user.contacts[c].name,
+        userColor: user.contacts[c].userColor,
+      });
+    }
+  }
+  await setItem("users", users);
   let task = document.getElementById(`popUpMainContainer`);
   task.remove();
+  toDoMainContainer = document.getElementById(`TodoMainContainer`);
+  toDoMainContainer.innerHTML = "";
+  loadTasks();
+}
+
+function closeEditTask(i) {
+  mainContainer = document.getElementById(`popUpMainContainer`);
+  mainContainer.remove();
+  openTask(i);
 }
 
 async function deleteTaskBoard(i) {
-  // Remove an element from the user.task array at index i
   user.tasks.splice(i, 1);
-
   document.getElementById("TodoMainContainer").innerHTML = "";
   document.getElementById("progressMainContainer").innerHTML = "";
   document.getElementById("awaitMainContainer").innerHTML = "";
   document.getElementById("doneMainContainer").innerHTML = "";
-  // Call the closeOpenTask function
   closeOpenTask(i);
-
   await setItem("users", users);
   loadTasks();
 }
@@ -353,23 +356,18 @@ async function subtaskFinish(i, s) {
 }
 
 function updateProgressBar(i) {
-  // Get elements by their IDs
   let howmanyTasks = document.getElementById(`counterOfTasks${i}`);
   let progressbar = document.getElementById(`progressBar${i}`);
-  // Initialize counter and percent variables
   let counter = 0;
   let percent = 0;
-  // Count the number of completed subtasks
   for (let p = 0; p < user.tasks[i].subtasks.length; p++) {
     if (user.tasks[i].subtasks[p].done === true) {
       counter++;
     }
   }
-  // Calculate the percentage of completed subtasks
   if (user.tasks[i].subtasks.length > 0) {
     percent = (counter / user.tasks[i].subtasks.length) * 100;
   }
-  // Update the HTML content and style of elements
   if (counter > 0) {
     document.getElementById(`finishedTasks${i}`).innerHTML = counter;
   }
@@ -377,30 +375,217 @@ function updateProgressBar(i) {
     progressbar.style.width = percent + "%";
   }
 }
+// -- EDIT Task in boardMenu --  //
 
-
-function editBoardTask(i){
-  mainContainer= document.getElementById(`popUpMainContainer`);
-  mainContainer.innerHTML="";
-  mainContainer.innerHTML= editBoardMobileTaskReturn(i);
+async function editBoardTask(i) {
+  mainContainer = document.getElementById(`popUpMainContainer`);
+  mainContainer.innerHTML = "";
+  mainContainer.innerHTML = editBoardMobileTaskReturn(i);
+  contactList.style.display = "none";
+  contactListIcons.style.display = "block";
+  //fill the values
   document.getElementById(`titelInputContainer`).value = user.tasks[i].title;
   document.getElementById(`descriptionInput`).value = user.tasks[i].description;
   document.getElementById(`dueDateInputContainer`).value = user.tasks[i].dueDate;
   for (let s = 0; s < user.tasks[i].subtasks.length; s++) {
-    document.getElementById(`subTasksContainer`).innerHTML +=
-    `<div id="subtask${s}" class="subtaskClass" ondblclick="editSubtask(${s})">
+    document.getElementById(
+      `subTasksContainer`
+    ).innerHTML += `<div id="subtask${s}" class="subtaskClass" ondblclick="editSubtask(${s})">
     <div class="addedSubtask">
       <div class="subTastText">
         <p>&bull;</p>
         <P>${user.tasks[i].subtasks[s].name}</P>
       </div>
       <div class="subMenu">
-        <img class="arrow" src="../assets/img/add_task/task_edit.svg" onclick="editSubtask(${i})" alt="edit_icon">
+        <img class="arrow" src="../assets/img/add_task/task_edit.svg" onclick="editBoardSubtask(${i},${s})" alt="edit_icon">
         <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
-        <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="deleteSubtask(${i})" alt="delete_icon">
+        <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="deleteBoardSubtask(${i},${s})" alt="delete_icon">
       </div>
     </div>
   </div>`;
-    
+    //marks the currentPrio in start of edit
   }
+
+  if (pupUpPriorityName === "Low") {
+    whatsPrio(prioLowContainer);
+  } else if (pupUpPriorityName === "Medium") {
+    whatsPrio(prioMediumContainer);
+  } else if (pupUpPriorityName === "Urgent") {
+    whatsPrio(prioUrgentContainer);
+  }
+
+  user.contacts.forEach((contact) => {
+    contact.selected = false;
+  });
+  let assignedTo = user.tasks[i].assignedTo;
+  for (let j = 0; j < assignedTo.length; j++) {
+    let assignedToName = assignedTo[j].name;
+    let matchingContact = user.contacts.find((contact) => contact.name === assignedToName);
+    if (matchingContact) {
+      matchingContact.selected = true;
+    }
+  }
+  await setItem("users", users);
+  loadContacts(i);
+}
+
+function editBoardSubtask(i, s) {
+  let task = document.getElementById("subtask" + s);
+  task.innerHTML = "";
+  task.innerHTML = editBoardSubtaskReturn(user.tasks[i].subtasks[s].name, s, i);
+}
+
+async function editBoardSubtaskDone(i, s) {
+  let content = document.getElementById("editBoardSubtask" + s).value;
+  if (content.length > 0) {
+    user.tasks[i].subtasks[s].name = content;
+    await setItem("users", users);
+    renderBoardSubtasks(i);
+  } else {
+    deleteSubtask(s);
+  }
+}
+
+function renderBoardSubtasks(i) {
+  let subtasksList = document.getElementById("subTasksContainer");
+  subtasksList.innerHTML = "";
+  for (let l = 0; l < user.tasks[i].subtasks.length; l++) {
+    subtasksList.innerHTML += renderBaordSubtasksReturn(i, l);
+  }
+}
+
+async function addBoardSubtask(i) {
+  console.log(i);
+  let subtasksInput = document.getElementById("subTaskInputfieldText");
+  let newSubtask = {
+    name: subtasksInput.value,
+    done: false,
+  };
+  user.tasks[i].subtasks.push(newSubtask);
+  await setItem("users", users);
+  clearSubtaskInputfield();
+  renderBoardSubtasks(i);
+}
+
+function changeBoardMenu(i) {
+  container = document.getElementById(`subTaskInputfieldMenu`);
+  container.innerHTML = changeBoardMenuReturn(i);
+  let border = document.getElementById(`subTaskInputcontainer`);
+  border.classList.add("bordercolor");
+}
+
+function changeBoardMenuReturn(i) {
+  return `
+    <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="clearSubtaskInputfield()"/>
+    <img src="../assets/img/add_task/task_line.svg"/>
+    <img class="arrow" onclick="addBoardSubtask(${i})" src="../assets/img/add_task/task_check.svg"/>`;
+}
+
+async function deleteBoardSubtask(i, s) {
+  if (user.tasks[i] && user.tasks[i].subtasks) {
+    // Check if the subtask at index s exists before attempting to delete
+    if (user.tasks[i].subtasks[s]) {
+      user.tasks[i].subtasks.splice(s, 1);
+      renderBoardSubtasks(i);
+      await setItem("users", users);
+      renderBoardSubtasks(i);
+    }
+  }
+}
+
+/**
+ * This function edit the color of the clicked prio container
+ *
+ * @param {string} clickedContainerId - This is the number of the container that was clicked
+ */
+function whatsPrio(clickedContainerId) {
+  removeWhiteImg();
+  removePrio();
+  changePrioColor(clickedContainerId);
+}
+
+/**
+ * This function remove the background color of prio container
+ */
+function removePrio() {
+  let prioLowContainer = document.getElementById("prioLowContainer");
+  let prioMediumContainer = document.getElementById("prioMediumContainer");
+  let prioUrgentContainer = document.getElementById("prioUrgentContainer");
+  prioLowContainer.classList.remove("prioLow");
+  prioMediumContainer.classList.remove("prioMedium");
+  prioUrgentContainer.classList.remove("prioUrgent");
+}
+
+/**
+ * This function remove the images to images non used prio
+ */
+function removeWhiteImg() {
+  let imgUrgent = prioUrgentContainer.querySelector("img");
+  let imgMedium = prioMediumContainer.querySelector("img");
+  let imgLow = prioLowContainer.querySelector("img");
+  imgUrgent.src = "../assets/img/add_task/arrow_top_red.svg";
+  imgMedium.src = "../assets/img/add_task/line_orange.svg";
+  imgLow.src = "../assets/img/add_task/arrow_bottom_green.svg";
+}
+
+/**
+ * This function change the color of the clicked prio container
+ *
+ * @param {string} clickedContainerId - is the id from the clicken container
+ */
+
+function changePrioColor(clickedContainerId) {
+  let imgUrgent = prioUrgentContainer.querySelector("img");
+  let imgMedium = prioMediumContainer.querySelector("img");
+  let imgLow = prioLowContainer.querySelector("img");
+  if (clickedContainerId === prioLowContainer) {
+    changePrioColorLow(imgLow);
+  } else if (clickedContainerId === prioMediumContainer) {
+    changePrioColorMedium(imgMedium);
+  } else if (clickedContainerId === prioUrgentContainer) {
+    changePrioColorUrgent(imgUrgent);
+  }
+}
+
+/**
+ * This function change the background color of the low container
+ *
+ * @param {string} imgLow - - Is the id from the image
+ */
+function changePrioColorLow(imgLow) {
+  prioLowContainer.classList.add("prioLow");
+  selectedPrio = "Low";
+  imgLow.src = "../assets/img/add_task/arrow_bottom_white.svg";
+}
+
+/**
+ * This function change the background color of the medium container
+ *
+ * @param {string} imgMedium - Is the id from the image
+ */
+function changePrioColorMedium(imgMedium) {
+  prioMediumContainer.classList.add("prioMedium");
+  selectedPrio = "Medium";
+  imgMedium.src = "../assets/img/add_task/line_white.svg";
+}
+
+/**
+ * This function change the background color of the urgent container
+ *
+ * @param string imgUrgent - Is the id from the image
+ */
+function changePrioColorUrgent(imgUrgent) {
+  prioUrgentContainer.classList.add("prioUrgent");
+  selectedPrio = "Urgent";
+  imgUrgent.src = "../assets/img/add_task/arrow_top_white.svg";
+}
+
+function clearSubtaskInputfield() {
+  let input = document.getElementById(`subTaskInputfieldText`);
+  input.value = "";
+  container = document.getElementById(`subTaskInputfieldMenu`);
+  container.innerHTML = `
+  <img src="../assets/img/add_task/task_add.svg" />`;
+  let border = document.getElementById(`subTaskInputcontainer`);
+  border.classList.remove("bordercolor");
 }

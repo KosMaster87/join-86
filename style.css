@@ -54,6 +54,10 @@ html {
   flex-direction: column;
 }
 
+button {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 720px) and (min-width: 250px) {
   body {
     display: flex;

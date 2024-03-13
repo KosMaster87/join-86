@@ -1,31 +1,5 @@
 @import url("../style.css");
 
-/* ---------------------------------------- */
-/*                                          */
-/* ---------------------------------------- */
-.descriptionInputField {
-  padding: 2rem 1.8rem;
-  border-radius: 1.2rem;
-  border: 1px solid var(--lighterGray);
-  background-color: var(--white);
-  max-height: 175px;
-  min-height: 102px;
-  height: 84px;
-  outline: none;
-  border-color: var(--lightGray);
-}
-
-.descriptionInputField:focus {
-  outline: none;
-  border-color: var(--lighBlue);
-}
-
-/* ---------------------------------------- */
-
-/* ---------------------------------------- */
-/* Global style for login.                  */
-/* ---------------------------------------- */
-
 .LogInBoxShadow {
   box-shadow: 0px 0px 14px 3px #0000000a;
 }
@@ -34,8 +8,8 @@
   box-shadow: 0px 0px 14px 3px #0000000a;
 }
 
-.loginError {
-  color: var(--wrongInput);
+.nameRegistDevision.active {
+  border-color: var(--lightBlue);
 }
 
 .registerEmailDevision.active {
@@ -46,15 +20,123 @@
   border-color: var(--lightBlue);
 }
 
-.nameRegistDevision.active {
-  border-color: var(--lightBlue);
-}
-
 .registerConfirmPasswortDevision.active {
   border-color: var(--lightBlue);
 }
 
-/* ---------------------------------------- */
+.loginError {
+  color: var(--wrongInput);
+}
+
+.loginPasswortDevision.wrong {
+  border-color: var(--wrongInputBorder);
+}
+
+.registerEmailDevision.wrong {
+  border-color: var(--wrongInputBorder);
+}
+
+.registerPasswortDevision.wrong {
+  border-color: var(--wrongInputBorder);
+}
+
+.registerConfirmPasswortDevision.wrong {
+  border-color: var(--wrongInputBorder);
+}
+
+.privacyCheck {
+  cursor: pointer;
+}
+
+.registerInputName {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.registerInputName:focus {
+  outline: none;
+}
+
+.registerInputName::placeholder {
+  color: var(--fontGray);
+}
+
+.registerInputMail {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.registerInputMail:focus {
+  outline: none;
+}
+
+.registerInputMail::placeholder {
+  color: var(--fontGray);
+}
+
+.registerInpPass {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.registerInpPass:focus {
+  outline: none;
+}
+
+.registerInpPass::placeholder {
+  color: var(--fontGray);
+}
+
+.confirmPasswort {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.confirmPasswort:focus {
+  outline: none;
+}
+
+.confirmPasswort::placeholder {
+  color: var(--fontGray);
+}
+
+.backToLoginMobile {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 720px) and (min-width: 250px) {
+  .signedUpSuccessfully {
+    animation: popUpSignUpMobile 1.5s ease-in-out forwards;
+  }
+
+  @keyframes popUpSignUpMobile {
+    0% {
+      transform: translateY(800%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+
+@media only screen and (max-width: 2560px) and (min-width: 721px) {
+  .signedUpSuccessfully {
+    animation: popUpSignUpDesktop 2s ease-in-out forwards;
+  }
+
+  @keyframes popUpSignUpDesktop {
+    0% {
+      transform: translateY(800%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
 
 @media only screen and (max-width: 319px) and (min-width: 250px) {
   .signUpJoinLogo {
@@ -64,21 +146,19 @@
     left: 1.5rem;
   }
 
-  /* ---------------------------------------- */
-
   .signedUpSuccessfully {
     display: none;
-    /* display: flex; */
+    z-index: 5;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 13rem;
     height: 2.5rem;
     border-radius: 0.6rem;
-    position: absolute;
-    left: 50%;
-    top: 50.5%;
-    transform: translate(-50%, -50%);
+    position: fixed;
+    left: 25%;
+    bottom: 10%;
+    transform: translate(0%, 800%);
     background-color: var(--lightGray);
   }
 
@@ -86,8 +166,6 @@
     font-size: 0.8rem;
     color: var(--white);
   }
-
-  /* ---------------------------------------- */
 
   .firstRegister {
     display: flex;
@@ -143,14 +221,10 @@
     width: 1rem;
   }
 
-  /* ---------------------------------------- */
-
   .inpIconStyle {
     width: 1rem;
     height: 1rem;
   }
-
-  /* ---------------------------------------- */
 
   .nameRegistDevision {
     display: flex;
@@ -166,22 +240,10 @@
   }
 
   .registerInputName {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .registerInputName:focus {
-    outline: none;
-  }
-
-  .registerInputName::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .registerEmailDevision {
     display: flex;
@@ -197,22 +259,10 @@
   }
 
   .registerInputMail {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .registerInputMail:focus {
-    outline: none;
-  }
-
-  .registerInputMail::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .registerPasswortDevision {
     display: flex;
@@ -228,22 +278,10 @@
   }
 
   .registerInpPass {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .registerInpPass:focus {
-    outline: none;
-  }
-
-  .registerInpPass::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .registerConfirmPasswortDevision {
     display: flex;
@@ -259,22 +297,10 @@
   }
 
   .confirmPasswort {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .confirmPasswort:focus {
-    outline: none;
-  }
-
-  .confirmPasswort::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .acceptPolicyBox {
     display: flex;
@@ -283,16 +309,17 @@
   }
 
   .acceptPolicy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.7rem;
     padding-left: 0.3rem;
+    cursor: pointer;
   }
 
-  .acceptPolicyAnchor {
-    text-decoration: none;
+  .acceptPolicyParagraf {
     color: var(--lightBlue);
   }
-
-  /* ---------------------------------------- */
 
   .mobilePoliceLegal {
     margin-bottom: 0.3rem;
@@ -304,21 +331,19 @@
     gap: 1rem;
   }
 
-  .mobilePoliceLegal a {
+  .mobilePoliceLegalLink {
     color: var(--fontGray);
     transition: transform 0.5s ease;
     font-size: 0.6rem !important;
     text-decoration: none;
   }
 
-  .mobilePoliceLegal a:hover {
+  .mobilePoliceLegalLink:hover {
     cursor: pointer;
     color: var(--lightBlue);
     transform: scaleX(1.2);
     font-size: 1rem;
   }
-
-  /* ---------------------------------------- */
 
   .registerBtnBox {
     display: flex;
@@ -328,10 +353,13 @@
   }
 
   .registerError {
-    display: none;
     color: var(--wrongInputText);
     font-size: smaller;
     margin-bottom: 0.5rem;
+    padding: 0 1rem 0 1rem;
+    display: flex;
+    align-items: center;
+    text-align: -webkit-center;
   }
 
   .registerBtn {
@@ -352,8 +380,6 @@
   }
 }
 
-/* ---------------------------------------- */
-
 @media only screen and (max-width: 480px) and (min-width: 320px) {
   .signUpJoinLogo {
     width: 3rem;
@@ -362,21 +388,19 @@
     left: 1.5rem;
   }
 
-  /* ---------------------------------------- */
-
   .signedUpSuccessfully {
-    /* display: none; */
-    display: flex;
+    display: none;
+    z-index: 5;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 13rem;
     height: 2.5rem;
     border-radius: 0.6rem;
-    position: absolute;
-    left: 50%;
-    top: 50.5%;
-    transform: translate(-50%, -50%);
+    position: fixed;
+    left: 25%;
+    bottom: 10%;
+    transform: translate(0%, 800%);
     background-color: var(--lightGray);
   }
 
@@ -384,8 +408,6 @@
     font-size: 0.8rem;
     color: var(--white);
   }
-
-  /* ---------------------------------------- */
 
   .firstRegister {
     display: flex;
@@ -442,14 +464,10 @@
     width: 1rem;
   }
 
-  /* ---------------------------------------- */
-
   .inpIconStyle {
     width: 1rem;
     height: 1rem;
   }
-
-  /* ---------------------------------------- */
 
   .nameRegistDevision {
     display: flex;
@@ -465,22 +483,10 @@
   }
 
   .registerInputName {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .registerInputName:focus {
-    outline: none;
-  }
-
-  .registerInputName::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .registerEmailDevision {
     display: flex;
@@ -496,22 +502,10 @@
   }
 
   .registerInputMail {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .registerInputMail:focus {
-    outline: none;
-  }
-
-  .registerInputMail::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .registerPasswortDevision {
     display: flex;
@@ -527,22 +521,10 @@
   }
 
   .registerInpPass {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .registerInpPass:focus {
-    outline: none;
-  }
-
-  .registerInpPass::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .registerConfirmPasswortDevision {
     display: flex;
@@ -558,22 +540,10 @@
   }
 
   .confirmPasswort {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .confirmPasswort:focus {
-    outline: none;
-  }
-
-  .confirmPasswort::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .acceptPolicyBox {
     display: flex;
@@ -582,16 +552,17 @@
   }
 
   .acceptPolicy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.8rem;
     padding-left: 0.3rem;
+    cursor: pointer;
   }
 
-  .acceptPolicyAnchor {
-    text-decoration: none;
+  .acceptPolicyParagraf {
     color: var(--lightBlue);
   }
-
-  /* ---------------------------------------- */
 
   .mobilePoliceLegal {
     margin-bottom: 1.2rem;
@@ -603,21 +574,19 @@
     gap: 1rem;
   }
 
-  .mobilePoliceLegal a {
+  .mobilePoliceLegalLink {
     color: var(--fontGray);
     transition: transform 0.5s ease;
     font-size: 0.6rem !important;
     text-decoration: none;
   }
 
-  .mobilePoliceLegal a:hover {
+  .mobilePoliceLegalLink:hover {
     cursor: pointer;
     color: var(--lightBlue);
     transform: scaleX(1.2);
     font-size: 1rem;
   }
-
-  /* ---------------------------------------- */
 
   .registerBtnBox {
     display: flex;
@@ -627,10 +596,13 @@
   }
 
   .registerError {
-    display: none;
+    /* display: none; */
     color: var(--wrongInputText);
     font-size: smaller;
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    text-align: -webkit-center;
   }
 
   .registerBtn {
@@ -659,21 +631,19 @@
     left: 1.5rem;
   }
 
-  /* ---------------------------------------- */
-
   .signedUpSuccessfully {
-    /* display: none; */
-    display: flex;
+    display: none;
+    z-index: 5;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 13rem;
     height: 2.5rem;
     border-radius: 0.6rem;
-    position: absolute;
-    left: 50%;
-    top: 50.5%;
-    transform: translate(-50%, -50%);
+    position: fixed;
+    left: 35%;
+    bottom: 20%;
+    transform: translate(0%, 800%);
     background-color: var(--lightGray);
   }
 
@@ -681,8 +651,6 @@
     font-size: 0.8rem;
     color: var(--white);
   }
-
-  /* ---------------------------------------- */
 
   .firstRegister {
     display: flex;
@@ -739,14 +707,10 @@
     width: 1rem;
   }
 
-  /* ---------------------------------------- */
-
   .inpIconStyle {
     width: 1rem;
     height: 1rem;
   }
-
-  /* ---------------------------------------- */
 
   .nameRegistDevision {
     display: flex;
@@ -762,22 +726,10 @@
   }
 
   .registerInputName {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .registerInputName:focus {
-    outline: none;
-  }
-
-  .registerInputName::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .registerEmailDevision {
     display: flex;
@@ -793,22 +745,10 @@
   }
 
   .registerInputMail {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .registerInputMail:focus {
-    outline: none;
-  }
-
-  .registerInputMail::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .registerPasswortDevision {
     display: flex;
@@ -824,22 +764,10 @@
   }
 
   .registerInpPass {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .registerInpPass:focus {
-    outline: none;
-  }
-
-  .registerInpPass::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .registerConfirmPasswortDevision {
     display: flex;
@@ -855,22 +783,10 @@
   }
 
   .confirmPasswort {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .confirmPasswort:focus {
-    outline: none;
-  }
-
-  .confirmPasswort::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .acceptPolicyBox {
     display: flex;
@@ -879,16 +795,17 @@
   }
 
   .acceptPolicy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1rem;
     padding-left: 0.3rem;
+    cursor: pointer;
   }
 
-  .acceptPolicyAnchor {
-    text-decoration: none;
+  .acceptPolicyParagraf {
     color: var(--lightBlue);
   }
-
-  /* ---------------------------------------- */
 
   .mobilePoliceLegal {
     margin-bottom: 1.2rem;
@@ -900,21 +817,19 @@
     gap: 1.5rem;
   }
 
-  .mobilePoliceLegal a {
+  .mobilePoliceLegalLink {
     color: var(--fontGray);
     transition: transform 0.5s ease;
     font-size: 0.9rem !important;
     text-decoration: none;
   }
 
-  .mobilePoliceLegal a:hover {
+  .mobilePoliceLegalLink:hover {
     cursor: pointer;
     color: var(--lightBlue);
     transform: scaleX(1.2);
     font-size: 1rem;
   }
-
-  /* ---------------------------------------- */
 
   .registerBtnBox {
     display: flex;
@@ -924,10 +839,13 @@
   }
 
   .registerError {
-    display: none;
+    /* display: none; */
     color: var(--wrongInputText);
     font-size: smaller;
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    text-align: -webkit-center;
   }
 
   .registerBtn {
@@ -948,10 +866,7 @@
   }
 }
 
-/* ---------------------------------------- */
-
 @media only screen and (max-width: 2560px) and (min-width: 721px) {
-  /* @media only screen and (max-width: 1440px) and (min-width: 721px) */
   .signUpJoinLogo {
     width: 4rem;
     position: absolute;
@@ -959,21 +874,19 @@
     left: 2rem;
   }
 
-  /* ---------------------------------------- */
-
   .signedUpSuccessfully {
-    /* display: none; */
-    display: flex;
+    display: none;
+    z-index: 5;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 13rem;
     height: 2.5rem;
     border-radius: 0.6rem;
-    position: absolute;
-    left: 50%;
-    top: 50.5%;
-    transform: translate(-50%, -50%);
+    position: fixed;
+    left: 40%;
+    bottom: 35%;
+    transform: translate(0%, 800%);
     background-color: var(--lightGray);
   }
 
@@ -981,8 +894,6 @@
     font-size: 0.8rem;
     color: var(--white);
   }
-
-  /* ---------------------------------------- */
 
   .firstRegister {
     display: flex;
@@ -1039,14 +950,10 @@
     width: 1rem;
   }
 
-  /* ---------------------------------------- */
-
   .inpIconStyle {
     width: 1rem;
     height: 1rem;
   }
-
-  /* ---------------------------------------- */
 
   .nameRegistDevision {
     display: flex;
@@ -1062,22 +969,10 @@
   }
 
   .registerInputName {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .registerInputName:focus {
-    outline: none;
-  }
-
-  .registerInputName::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .registerEmailDevision {
     display: flex;
@@ -1093,22 +988,10 @@
   }
 
   .registerInputMail {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .registerInputMail:focus {
-    outline: none;
-  }
-
-  .registerInputMail::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .registerPasswortDevision {
     display: flex;
@@ -1124,22 +1007,10 @@
   }
 
   .registerInpPass {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .registerInpPass:focus {
-    outline: none;
-  }
-
-  .registerInpPass::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .registerConfirmPasswortDevision {
     display: flex;
@@ -1155,22 +1026,10 @@
   }
 
   .confirmPasswort {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .confirmPasswort:focus {
-    outline: none;
-  }
-
-  .confirmPasswort::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .acceptPolicyBox {
     display: flex;
@@ -1179,16 +1038,17 @@
   }
 
   .acceptPolicy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1rem;
     padding-left: 0.3rem;
+    cursor: pointer;
   }
 
-  .acceptPolicyAnchor {
-    text-decoration: none;
+  .acceptPolicyParagraf {
     color: var(--lightBlue);
   }
-
-  /* ---------------------------------------- */
 
   .mobilePoliceLegal {
     margin-bottom: 1.2rem;
@@ -1200,21 +1060,19 @@
     gap: 2rem;
   }
 
-  .mobilePoliceLegal a {
+  .mobilePoliceLegalLink {
     color: var(--fontGray);
     transition: transform 0.5s ease;
     font-size: 1rem !important;
     text-decoration: none;
   }
 
-  .mobilePoliceLegal a:hover {
+  .mobilePoliceLegalLink:hover {
     cursor: pointer;
     color: var(--lightBlue);
     transform: scaleX(1.2);
     font-size: 1.2rem;
   }
-
-  /* ---------------------------------------- */
 
   .registerBtnBox {
     display: flex;
@@ -1224,10 +1082,12 @@
   }
 
   .registerError {
-    display: none;
     color: var(--wrongInputText);
     font-size: smaller;
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    text-align: -webkit-center;
   }
 
   .registerBtn {

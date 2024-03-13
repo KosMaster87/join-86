@@ -1,3 +1,5 @@
+let loginPasswortDevision = document.getElementById("loginPasswortDevision");
+
 /**
  * The current user will be logged in.
  */
@@ -6,10 +8,12 @@ async function login() {
   if (user) {
     console.log(user);
     let globalUserId = user.email;
-
+    loginPasswortDevision.classList.remove("wrong");
     await setGlobalUserId("currentUserId", globalUserId);
+    rememberUserFn();
     window.location.assign("pages/summary.html");
   } else {
+    loginPasswortDevision.classList.add("wrong");
     console.log("Benutzer nicht gefunden");
   }
 }
@@ -67,3 +71,44 @@ function changeToShowCurrentPassword(passwordId, imageId) {
     hideThePasswordImage.src = "/assets/img/login/lock.svg";
   }
 }
+
+/**
+ * Guest access to test the application.
+ */
+function loginAsGuest() {
+  let loginInputMail = document.getElementById("loginInputMail");
+  let loginInputPassword = document.getElementById("loginInputPassword");
+  let loginBtn = document.getElementById("loginBtn");
+  loginInputMail.value = "guest@mail.de";
+  loginInputPassword.value = "guestPassword1234";
+  loginBtn.click();
+}
+
+/**
+ * Remember checked for last / currently user.
+ */
+function handleRememberme() {
+  let dasChecketElement = document.getElementById("rememberMe");
+  let checked = dasChecketElement.hasAttribute("checked") ? true : false;
+  let handelChecked = checked
+    ? dasChecketElement.removeAttribute("checked")
+    : dasChecketElement.setAttribute("checked", "");
+}
+
+/**
+ * Whether the user should stay logged in or not.
+ */
+function rememberUserFn() {
+  let rememberMeCheckbox = document.getElementById("rememberMe");
+  if (rememberMeCheckbox.checked && user) {
+    const userData = {
+      userId: user.email,
+      password: user.password,
+    };
+
+    localStorage.setItem("rememberMe", JSON.stringify(userData));
+  } else {
+    localStorage.removeItem("rememberMe");
+  }
+}
+

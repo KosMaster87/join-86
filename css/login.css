@@ -1,8 +1,5 @@
 @import url("../style.css");
 
-/* ---------------------------------------- */
-/* Global style for login. */
-/* ---------------------------------------- */
 .LogInBoxShadow {
   box-shadow: 0px 0px 14px 3px #0000000a;
 }
@@ -19,9 +16,37 @@
   border-color: var(--lightBlue);
 }
 
-/* ---------------------------------------- */
-/* Just Join-logo animation mobile version. */
-/* ---------------------------------------- */
+.inpIconStyle {
+  cursor: pointer;
+}
+
+.loginInputMail {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.loginInputMail:focus {
+  outline: none;
+}
+
+.loginInputMail::placeholder {
+  color: var(--fontGray);
+}
+
+.loginInputPassword {
+  cursor: pointer;
+  border: none;
+}
+
+.loginInputPassword:focus {
+  outline: none;
+}
+
+.loginInputPassword::placeholder {
+  color: var(--fontGray);
+}
+
 @media only screen and (max-width: 720px) and (min-width: 250px) {
   .loginSecondImg {
     display: block;
@@ -89,7 +114,6 @@
   }
 }
 
-/* ---------------------------------------- */
 @media only screen and (max-width: 319px) and (min-width: 250px) {
   .firstLogin {
     display: flex;
@@ -130,14 +154,10 @@
     background-color: var(--lightBlue);
   }
 
-  /* ---------------------------------------- */
-
   .inpIconStyle {
     width: 1rem;
     height: 1rem;
   }
-
-  /* ---------------------------------------- */
 
   .loginEmailDevision {
     display: flex;
@@ -153,22 +173,10 @@
   }
 
   .loginInputMail {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 0.8rem;
-    background-color: transparent;
   }
-
-  .loginInputMail:focus {
-    outline: none;
-  }
-
-  .loginInputMail::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
 
   .loginPasswortDevision {
     display: flex;
@@ -191,16 +199,6 @@
     background-color: transparent;
   }
 
-  .loginInputPassword:focus {
-    outline: none;
-  }
-
-  .loginInputPassword::placeholder {
-    color: var(--fontGray);
-  }
-
-  /* ---------------------------------------- */
-
   .rememberBox {
     display: flex;
     margin-top: 1rem;
@@ -212,9 +210,8 @@
     font-size: 0.8rem !important;
     font-weight: 400;
     margin-left: 0.4rem;
+    cursor: pointer;
   }
-
-  /* ----------------------------------------- */
 
   .justBtn {
     display: flex;
@@ -241,8 +238,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .guestLogInBtn {
     font-weight: 700;
     font-size: 0.65rem;
@@ -259,8 +254,6 @@
     border: 1px solid var(--lightBlue);
     color: var(--lightBlue);
   }
-
-  /* ----------------------------------------- */
 
   .mobileNotUser {
     position: absolute;
@@ -292,8 +285,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ---------------------------------------- */
-
   .mobilePoliceLegal {
     margin-bottom: 0.3rem;
     position: absolute;
@@ -304,14 +295,14 @@
     gap: 1rem;
   }
 
-  .mobilePoliceLegal a {
+  .mobilePoliceLegalLink {
     color: var(--fontGray);
     transition: transform 0.5s ease;
     font-size: 0.6rem !important;
     text-decoration: none;
   }
 
-  .mobilePoliceLegal a:hover {
+  .mobilePoliceLegalLink:hover {
     cursor: pointer;
     color: var(--lightBlue);
     transform: scaleX(1.2);
@@ -319,7 +310,6 @@
   }
 }
 
-/* ---------------------------------------- */
 @media only screen and (max-width: 480px) and (min-width: 320px) {
   .firstLogin {
     display: flex;
@@ -360,8 +350,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .loginEmailDevision {
     display: flex;
     flex-direction: row;
@@ -376,15 +364,9 @@
   }
 
   .loginInputMail {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 1rem;
-    background-color: transparent;
-  }
-
-  .loginInputMail:focus {
-    outline: none;
   }
 
   .loginPasswortDevision {
@@ -408,18 +390,10 @@
     background-color: transparent;
   }
 
-  .loginInputPassword:focus {
-    outline: none;
-  }
-
-  /* ----------------------------------------- */
-
   .inpIconStyle {
     width: 1.25rem;
     height: 1.25rem;
   }
-
-  /* ----------------------------------------- */
 
   .rememberBox {
     margin-top: 1rem;
@@ -432,9 +406,8 @@
     font-size: 0.9rem !important;
     font-weight: 400;
     margin-left: 0.4rem;
+    cursor: pointer;
   }
-
-  /* ----------------------------------------- */
 
   .justBtn {
     display: flex;
@@ -479,8 +452,6 @@
     color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .mobileNotUser {
     position: absolute;
     bottom: 4rem;
@@ -510,8 +481,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .mobilePoliceLegal {
     margin-bottom: 1rem;
     position: absolute;
@@ -522,22 +491,20 @@
     gap: 1rem;
   }
 
-  .mobilePoliceLegal a {
+  .mobilePoliceLegalLink {
     color: var(--fontGray);
     transition: transform 0.5s ease;
     font-size: 0.8rem !important;
     text-decoration: none;
   }
 
-  .mobilePoliceLegal a:hover {
+  .mobilePoliceLegalLink:hover {
     cursor: pointer;
     color: var(--lightBlue);
     transform: scaleX(1.2);
     font-size: 1rem;
   }
 }
-
-/* ---------------------------------------- */
 
 @media only screen and (max-width: 720px) and (min-width: 481px) {
   .firstLogin {
@@ -578,8 +545,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .loginEmailDevision {
     display: flex;
     flex-direction: row;
@@ -594,15 +559,9 @@
   }
 
   .loginInputMail {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 1rem;
-    background-color: transparent;
-  }
-
-  .loginInputMail:focus {
-    outline: none;
   }
 
   .loginPasswortDevision {
@@ -626,16 +585,10 @@
     background-color: transparent;
   }
 
-  .loginInputPassword:focus {
-    outline: none;
-  }
-
   .inpIconStyle {
     width: 1.25rem;
     height: 1.25rem;
   }
-
-  /* ----------------------------------------- */
 
   .rememberBox {
     margin-top: 2rem;
@@ -648,9 +601,8 @@
     font-size: 1rem !important;
     font-weight: 400;
     margin-left: 0.4rem;
+    cursor: pointer;
   }
-
-  /* ----------------------------------------- */
 
   .justBtn {
     display: flex;
@@ -694,8 +646,6 @@
     color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .mobileNotUser {
     position: absolute;
     bottom: 4rem;
@@ -726,8 +676,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ----------------------------------------- */
-
   .mobilePoliceLegal {
     display: flex;
     position: absolute;
@@ -738,14 +686,14 @@
     gap: 2rem;
   }
 
-  .mobilePoliceLegal a {
+  .mobilePoliceLegalLink {
     color: var(--fontGray);
     transition: transform 0.5s ease;
     font-size: 0.9rem !important;
     text-decoration: none;
   }
 
-  .mobilePoliceLegal a:hover {
+  .mobilePoliceLegalLink:hover {
     cursor: pointer;
     color: var(--lightBlue);
     transform: scaleX(1.2);
@@ -753,11 +701,7 @@
   }
 }
 
-/* ----------------------------------------- */
-/* Just Join-logo animation desktop version. */
-/* ----------------------------------------- */
 @media only screen and (max-width: 2560px) and (min-width: 721px) {
-/* @media only screen and (max-width: 1440px) and (min-width: 721px) */
   .loginSecondImg {
     display: block;
     animation: JoinLoginSecondary 2s ease-in-out forwards;
@@ -822,10 +766,7 @@
   }
 }
 
-/* ---------------------------------------- */
-
 @media only screen and (max-width: 2560px) and (min-width: 721px) {
-/* @media only screen and (max-width: 1440px) and (min-width: 721px) { */
   .firstLogin {
     display: flex;
     flex-direction: column;
@@ -865,8 +806,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ---------------------------------------- */
-
   .loginEmailDevision {
     display: flex;
     flex-direction: row;
@@ -881,15 +820,9 @@
   }
 
   .loginInputMail {
-    border: none;
     width: 100%;
     height: 1.25rem;
     font-size: 1rem;
-    background-color: transparent;
-  }
-
-  .loginInputMail:focus {
-    outline: none;
   }
 
   .loginPasswortDevision {
@@ -913,18 +846,10 @@
     background-color: transparent;
   }
 
-  .loginInputPassword:focus {
-    outline: none;
-  }
-
-  /* ---------------------------------------- */
-
   .inpIconStyle {
     width: 1.25rem;
     height: 1.25rem;
   }
-
-  /* ---------------------------------------- */
 
   .rememberBox {
     margin-top: 2rem;
@@ -937,9 +862,8 @@
     font-size: 1rem !important;
     font-weight: 400;
     margin-left: 0.4rem;
+    cursor: pointer;
   }
-
-  /* ---------------------------------------- */
 
   .justBtn {
     display: flex;
@@ -984,8 +908,6 @@
     color: var(--lightBlue);
   }
 
-  /* ---------------------------------------- */
-
   .mobileNotUser {
     position: absolute;
     top: 2rem;
@@ -1013,8 +935,6 @@
     background-color: var(--lightBlue);
   }
 
-  /* ---------------------------------------- */
-
   .mobilePoliceLegal {
     display: flex;
     position: absolute;
@@ -1025,14 +945,14 @@
     gap: 2rem;
   }
 
-  .mobilePoliceLegal a {
+  .mobilePoliceLegalLink {
     color: var(--fontGray);
     transition: transform 0.5s ease;
     font-size: 1rem !important;
     text-decoration: none;
   }
 
-  .mobilePoliceLegal a:hover {
+  .mobilePoliceLegalLink:hover {
     cursor: pointer;
     color: var(--lightBlue);
     transform: scaleX(1.2);

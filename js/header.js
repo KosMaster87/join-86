@@ -46,6 +46,7 @@ function userClicksOutsideOfPopup(event) {
 async function logOut() {
   await setGlobalUserId("currentUserId", []);
   sessionStorage.removeItem("showedLoginGreeting");
+  localStorage.removeItem("rememberMe");
   window.location.assign("../index.html");
 }
 
@@ -67,4 +68,17 @@ function changeInfoImageBack(element) {
   const img = element.querySelector(".headerInfoAnimateProgramm");
   img.classList.contains("editImage");
   img.src = "../assets/img/header/help.svg";
+}
+
+/**
+ *  This function split the names and make the first letter to a uppercase and copied it in the icon ontainer
+ */
+function createUserSignatureIcon() {
+  let container = document.getElementById(`userSignature`);
+  let nameParts = user.name.split(" ");
+  let initials = "";
+  for (let i = 0; i < nameParts.length && initials.length < 2; i++) {
+    initials += nameParts[i].charAt(0).toUpperCase();
+  }
+  container.innerHTML = initials;
 }
