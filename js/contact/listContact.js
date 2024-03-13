@@ -187,12 +187,12 @@ async function goFromListContactToShowSingleContact(userId, contactId, name, ema
   document.getElementById("listContactContainer").style.display = "none";
  
   if (checkScreenWidth() === "mobileVersion") {
-    loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
+    await loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
     document.getElementById("mobileBtnThreePoints").style.display = "block";
     document.getElementById("showSingleContactContainer").style.display = "flex";
     console.log('MOBILE VERSION');
   } else {
-    await initSingleContactCol(userId, contactId, name, email, phone, signature, userColor);
+    await initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor);
     document.getElementById("singleContactCol").style.display = "flex";
     console.log('DESKTOP VERSION'); 
   }

@@ -1,6 +1,6 @@
 /* SHOW SINGLE CONTACT JS */
 
-async function initSingleContactCol(userId, contactId, name, email, phone, signature, userColor) {
+async function initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor) {
   fillAllVariables(name, email, phone, signature, userColor);
   await setCurrentContactId(contactId);
 }

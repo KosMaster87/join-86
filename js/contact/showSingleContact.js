@@ -5,6 +5,7 @@ async function loadShowSingleContact(userId, contactId, name, email, phone, sign
   fillAllVariables(name, email, phone, signature, userColor);
   let currentUserId = await getGlobalUserId();
   await setCurrentContactId(contactId);
+  console.log('Ausgabe showSingleContact: ',userId, contactId, name, email, phone, signature, userColor);
 }
 
 async function setCurrentContactId(contactId) {
@@ -60,16 +61,11 @@ async function openEmailProgram() {
   window.open('mailto: ' + email);
 }
 
-async function showSingleContactInfos() {
-  document.getElementById('singleContactCol').display = "flex";
-}
 
 /* SHOW SINGLE CONTACT */
 async function goFromSingleContactToListContactContainer() {
   await setCurrentContactId([]);
   await initListContact();
-  document.getElementById("listContactContainer").style.display = "flex";
-  document.getElementById("mobileBtnAddContact").style.display = "block";
   document.getElementById("showSingleContactContainer").style.display = "none";
   document.getElementById("addContactContainer").style.display = "none";
   document.getElementById("listContactContainer").style.display = "flex";
