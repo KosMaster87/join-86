@@ -5,6 +5,8 @@ async function initPolicy() {
   await loadCurrentUserAlsoUsersAsObject();
   await includeHTML();
   setActiveLink("navPrivacyPolicy");
+  await getAllContactsFromCurrentUserSorted();
+  createUserSignatureIcon();
 
   if (user) {
     preparePopupEvent();
