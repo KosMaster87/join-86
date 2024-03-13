@@ -53,25 +53,25 @@
   }
 }
 
-.addContactHeadlines {
+.addContactHeaderSection {
   margin-top: 56px;
 }
 
-.addContactHeaderH1 {
+.addContactHeadline {
   color: var(--white);
   font-weight: 700;
   font-size: 47px;
   line-height: 1.2;
 }
 
-.addContactHeaderH3 {
+.addContactSubtitle {
   color: var(--white);
   font-weight: 400;
   font-size: 20px;
   line-height: 1.2;
 }
 
-.contactHeaderEmptySignature {
+.addContactHeaderSignature {
   width: 120px;
   height: 120px;
   background-color: var(--lighterGray);
@@ -86,15 +86,15 @@
   left: calc(50% - 61px);
 }
 /* PRÜFEN */
-
-#contactBodySignatureContainer {
+/*
+#addContactBodySignatureContainer {
   display: none;
   /* display none evtl. extra entfernen */
-}
+/*}*/
 
-.contactBodyEmptySignature {
+.addContactBodySignature {
   display: none;
-  /* kompletter Wechsel */
+
 }
 
 .desktopAddContactGetBackFlex {
@@ -245,11 +245,11 @@
   }
 
   /* PRÜFEN */
-  .contactHeaderEmptySignature {
+  .addContactHeaderSignature {
     display: none;
   }
 
-  .addContactHeadlines {
+  .addContactHeaderSection {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -257,13 +257,13 @@
     margin: 0;
   }
 
-  .addContactHeaderH1 {
+  .addContactHeadline {
     font-size: 61px;
     /* Wechsel */
     line-height: 1.2;
   }
 
-  .addContactHeaderH3 {
+  .addContactSubtitle {
     color: var(--white);
     font-weight: 400;
     font-size: 27px;
@@ -272,7 +272,7 @@
   }
 
   /* PRÜFEN */
-  .contactBodyEmptySignature {
+  .addContactBodySignature {
     width: 120px;
     height: 120px;
     background-color: var(--lighterGray);
