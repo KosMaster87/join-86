@@ -4,6 +4,4 @@
 async function initHelp() {
   await includeHTML();
   preparePopupEvent();
-  await getAllContactsFromCurrentUserSorted();
-  createUserSignatureIcon();
 }
