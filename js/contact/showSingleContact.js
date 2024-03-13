@@ -2,7 +2,6 @@
 
 async function loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor) {
   loadCurrentUserAlsoUsersAsObject()
-  
   let currentUserId = await getGlobalUserId();
   await setCurrentContactId(contactId);
   console.log('Ausgabe showSingleContact: ',userId, contactId, name, email, phone, signature, userColor);
@@ -55,7 +54,7 @@ function fillAllVariables(name, email, phone, signature, userColor) {
   document.getElementById('singleContactSignature').style.backgroundColor = userColor;
 
   setCurrentContactEmail(email);
-  
+  return 
 }
 
 async function openEmailProgram() {
