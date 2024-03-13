@@ -185,10 +185,10 @@ async function goFromListContactToShowSingleContact(userId, contactId, name, ema
   document.getElementById("mobileBtnAddContact").style.display = "none";
  
   if (checkScreenWidth() === "mobileVersion") {
+    await loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
     document.getElementById("mobileBtnThreePoints").style.display = "block";
     document.getElementById("showSingleContactContainer").style.display = "block";
     console.log('MOBILE VERSION');
-    await loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
   } else {
     /* await initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor);
     document.getElementById("singleContactCol").style.display = "block"; */
