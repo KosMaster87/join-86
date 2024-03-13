@@ -4,4 +4,5 @@
 async function initHelp() {
   await includeHTML();
   preparePopupEvent();
+  createUserSignatureIcon();
 }
