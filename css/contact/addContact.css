@@ -4,10 +4,8 @@
   display: none;
 }
 
-#contactCard {
-  /* edit */
-  width: 100%
-}
+
+
 
 #addContactContainer {
   background-color: rgba(0, 0, 0, 0.25);
@@ -18,6 +16,13 @@
   height: 100vh;
   z-index: 500;
 }
+
+#contactCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+} /* contact */
 
 #overlayFrame {
   /* edit */
@@ -30,7 +35,6 @@
   z-index: 900;
   animation: slideUp 0.33s ease-in forwards;
   animation: slideDown 0.33s ease-out forwards;
-
 }
 
 @keyframes slideUp {
@@ -53,6 +57,52 @@
   }
 }
 
+.contactHeader {
+  background-color: var(--lightGray);
+  height: 356px;
+  /* reduziert um 40px*/
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px 24px;
+  margin: 1px 12px 0 12px;
+}
+
+#contactHeaderCloseIcon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#contactHeaderCloseIcon:hover {
+  cursor: pointer;
+  background-color: var(--lightBlue) !important;
+}
+
+#contactHeaderCloseIcon:focus {
+  background-color: var(--lightBlue) !important;
+}
+
+.contactHeaderNav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#contactBodyCloseIcon {
+  display: none;
+}
+
+#contactHeaderJoinLogo {
+  display: none;
+}
+
 .addContactHeaderSection {
   margin-top: 56px;
 }
@@ -71,6 +121,13 @@
   line-height: 1.2;
 }
 
+.contactHeaderBorder {
+  height: 2px;
+  width: 90px;
+  background-color: var(--lightBlue);
+  margin-top: 8px;
+}
+
 .addContactHeaderSignature {
   width: 120px;
   height: 120px;
@@ -85,16 +142,40 @@
   top: 92px;
   left: calc(50% - 61px);
 }
-/* PRÜFEN */
-/*
-#addContactBodySignatureContainer {
-  display: none;
-  /* display none evtl. extra entfernen */
-/*}*/
+/* prüfen */
+.contactHeaderEmptySignature {
+  width: 120px;
+  height: 120px;
+  background-color: var(--lighterGray);
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 92px;
+  left: calc(50% - 61px);
+}
+
+#contactBody {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  height: 414px;
+  padding: 16px;
+  border-radius: 0 0 20px 20px;
+  margin: 0 12px 1px 12px;
+}
 
 .addContactBodySignature {
   display: none;
+}
 
+#contactBodySignatureContainer {
+  display: none;
+  /* display none evtl. extra entfernen */
 }
 
 .desktopAddContactGetBackFlex {
@@ -164,6 +245,11 @@
   color: red;
 }
 
+#contactFlexContainer {
+  display: inline-block;
+  flex: 1;
+}
+
 /* edit */
 .contactInputContainer:hover {
   cursor: pointer;
@@ -188,6 +274,101 @@
 }
 
 
+.contactBodyEmptySignature {
+  display: none;
+  /* kompletter Wechsel */
+}
+
+.desktopAddContactGetBackFlex {
+  display: none;
+}
+
+.contactBodyInputSectionCol {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /*gap: 15px; testen, ob verzichtbar aufgrund der MessageContainer */
+}
+
+.nameInputField {
+  width: 100%;
+}
+
+
+
+
+
+
+
+.contactBtnSave:hover {
+  cursor: pointer;
+}
+
+#contactBtnSaveIcon {
+  margin-left: 8px;
+}
+
+input::placeholder {
+  color: var(--lighterGray);
+}
+
+.contactInputField {
+  width: 397px;
+}
+
+
+
+.contactInputField {
+  background-color: transparent;
+  border-radius: 10px;
+  height: 41px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 21px
+}
+
+.contactInputField:hover {
+  cursor: pointer;
+}
+
+.contactBodytBtnRow {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactBtnSave {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--white);
+  background-color: var(--lightGray);
+  border-radius: 10px;
+  padding: 18px 10px;
+}
+
+.contactBtnSave:hover {
+  cursor: pointer;
+}
+
+#contactBtnSaveIcon {
+  margin-left: 8px;
+}
+
+#desktopCancelBtn {
+  display: none;
+  border: 1px solid var(--lightGray);
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  padding: 18px 10px;
+}
+
 @media screen and (min-width: 300px) {
   .contactInputContainer {
     width: 100%;
@@ -208,6 +389,13 @@
     /* edit */
     width: 75%;
   }
+
+  .contactBodyInputSectionCol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 }
 
 @media screen and (min-width: 1000px) {
@@ -224,6 +412,12 @@
   }
 }
 
+@media screen and (min-width: 1000px) {
+  #contactCard {
+    width: 900px;
+  }
+}
+
 @media screen and (min-width: 1440px) {
   #addContactContainer {
     position: absolute;
@@ -234,9 +428,34 @@
     top: 0;
   }
 
+  #overlayFrame {
+    position: relative;
+    top: calc((100vh - 592px)/ 2);
+  }
+
   #contactCard {
-    /* edit */
     width: 1212px;
+    height: 592px;
+    flex-direction: row;
+    position: absolute;
+    top: calc(50% + 296px);
+    left: 50%;
+  }
+
+  .contactHeader {
+    background-color: var(--lightGray);
+    width: 467px;
+    height: 100%;
+    border-radius: 20px 0 0 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 47px;
+    margin: 0;
+  }
+
+  #contactHeaderCloseIcon {
+    display: none;
   }
 
   /* edit */
@@ -248,6 +467,10 @@
   .addContactHeaderSignature {
     display: none;
   }
+
+  .contactHeaderEmptySignature {
+    display: none;
+  } /* prüfen */
 
   .addContactHeaderSection {
     display: flex;
@@ -269,6 +492,42 @@
     font-size: 27px;
     /* Wechsel */
     line-height: 1.2;
+  }
+
+  #contactHeaderJoinLogo {
+    height: 66.48px;
+    display: block;
+    /* display-none*/
+  }
+
+  #contactBodySignatureContainer {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+ /* PRÜFEN */
+  .addContactBodySignature {
+    width: 120px;
+    height: 120px;
+    background-color: var(--lighterGray);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    z-index: 5;
+    /* Wechsel */
+    display: flex;
+    /* beim oberen Element nochmal prüfen */
+    justify-content: center;
+    align-items: center;
+    position: 0;
+    /* Wechsel */
+    top: 0;
+    /* Wechsel */
+    left: 0;
+    /* Wechsel */
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    /* Wechsel display none an der Stelle entfernt */
   }
 
   /* PRÜFEN */
@@ -293,5 +552,74 @@
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
     /* Wechsel display none an der Stelle entfernt */
   }
+
+  #contactBody {
+    width: 61.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: var(--white);
+    height: 100%;
+    padding: 46px 46px 46px 0;
+    border-radius: 0 20px 20px 0;
+    margin: 0;
+  }
+
+  .contactBodyFlexContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #contactBodyCloseIcon {
+    display: block;
+    position: relative;
+    top: -93px;
+    left: 684px;
+  }
+
+  #contactContainerFlexZwei {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .contactBodyInputSection {
+    width: 56.65%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contactBodyInputSectionCol {
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 32px;
+    /* Wechsel */
+  }
+
+  .contactBodytBtnRow {
+    margin-top: 36px;
+    display: flex;
+    justify-content: flex-start;
+    /* Wechsel */
+    align-items: center;
+    gap: 25px
+      /* Wechsel */
+  }
+
+  #desktopCancelBtn {
+    display: inline;
+    /* Wert nachträglich ändern */
+  }
+
+  .desktopCancelBtn:hover {
+    border: 1px solid var(--lightBlue);
+    color: var(--lightBlue);
+  }
+
+
 
 }

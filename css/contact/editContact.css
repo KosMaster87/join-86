@@ -21,8 +21,6 @@
 #mobileBtnEditContact:hover {
     cursor: pointer;
 }
-
-
 /* JETZT AB HIER EDIT CONTACT */
 
 #editContactContainer {
@@ -75,7 +73,6 @@
     left: calc(50% - 61px);
     /*background-color: var(--orangeIcons);*/
 }
-
     
 .editContactBtnRow {
     display: flex;
@@ -103,14 +100,11 @@
 #contactBodySignatureContainer{
     display: none; /* display none evtl. extra entfernen */
 }
-/* PRÜFEN */
-.contactBodyEmptySignature {
-    display: none; /* kompletter Wechsel */
-    }
 
+/*
 .desktopAddContactGetBackFlex {
     display: none; 
-}
+} */
 
 #editContactInputFieldName {
     border: 1px solid var(--lighterGray);
@@ -160,36 +154,29 @@
         font-size: 61px; /* Wechsel */
         line-height: 1.2;
     }
-/* PRÜFEN - vorher add */     
-/* ABWANDELN PRÜFEN */
+ 
     .editContactSubtitle {
         color: var(--white);
         font-weight: 400;
-        font-size: 27px; /* Wechsel */
-        line-height: 1.2;
+        font-size: 27px; 
     }
     /* PRÜFEN */   
-    #contactBodySignatureContainer {
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-/* PRÜFEN */
+ 
+ /*
     .contactBodyEmptySignature { 
         width: 120px;
         height: 120px;
         background-color: var(--lighterGray);
         border: 2px solid var(--white);
         border-radius: 50%;
-        z-index: 5; /* Wechsel */
-        display: flex; /* beim oberen Element nochmal prüfen */
+        z-index: 5; 
+        display: flex; 
         justify-content: center;
         align-items: center;
-        position: 0; /* Wechsel */
-        top: 0; /* Wechsel */
-        left: 0; /* Wechsel */
+        position: 0; 
+        top: 0; 
+        left: 0; 
         box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-        /* Wechsel display none an der Stelle entfernt */
-    }
+     
+    }*/
 }
