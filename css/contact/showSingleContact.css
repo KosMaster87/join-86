@@ -53,6 +53,48 @@
   transform: scale(1.1);
 }
 
+#singleContactDesktopButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.singleContactDestopBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  gap: 8px;
+  transition: background-color 0.3s, font-weight 0.3s;
+}
+
+.singleContactDestopBtn:hover {
+  color: var(--lightBlue);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.singleContactDestopBtn svg {
+  fill: blue;
+}
+
+.desktopBtnIcon {
+  width: 18.28px;
+  height: 18.28px;
+}
+
+#desktopBtnEdit {
+
+}
+
+#desktopBtnDelete {
+
+}
+
 .singleContactHeaderBorder {
   height: 2px;
   width: 90px;
