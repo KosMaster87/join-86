@@ -5,7 +5,6 @@ async function initLegalNotice() {
   await loadCurrentUserAlsoUsersAsObject();
   await includeHTML();
   setActiveLink("navLegalNotice");
-  await getAllContactsFromCurrentUserSorted();
   createUserSignatureIcon();
 
   if (user) {

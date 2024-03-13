@@ -33,27 +33,10 @@ async function assignTaskToUser() {
 async function initAddTask() {
   await includeHTML();
   await loadCurrentUserAlsoUsersAsObject();
-  await getAllContactsFromCurrentUserSorted();
   createUserSignatureIcon();
   setActiveLink("navAddTask");
   checkWidth();
-}
-
-/**
- * This function load the contactnames from the user in an array
- *
- * @returns - return the contact in the array
- */
-async function getAllContactsFromCurrentUserSorted() {
-  let allContactsFromAllUsers = await getAllContactsFromAllUsers();
-  let userId = await getGlobalUserId();
-  let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(
-    allContactsFromAllUsers,
-    userId
-  );
-  let testarray = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser);
-  contacts = testarray.slice();
-  return contacts;
+  contacts = user.contacts;
 }
 
 /**
