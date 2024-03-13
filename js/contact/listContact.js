@@ -1,16 +1,16 @@
 //LIST CONTACT JS
 async function initListContact() {
   let userId = getGlobalUserId();
+  let currentContactId = getCurrentContactId();
   loadCurrentUserAlsoUsersAsObject()
   await includeHTML();
   setActiveLink("navContacts");
   updateBackgroundColorMain(isListContactActive);
-  document.getElementById("listContactContainer").style.display = "block";
+  document.getElementById("listContactContainer").style.display = "flex";
   let sortedContacts = await getAllContactsFromCurrentUserSorted();
   let listChars = getListFirstChars(sortedContacts); 
   renderContainerList(sortedContacts, listChars, userId);
 } 
-
 
 async function setGlobalUserId(currentUserId) {
   await setItem('currentUserId', currentUserId)
@@ -30,7 +30,7 @@ async function getAllContactsFromCurrentUser() {
 
 
 async function getAllContactsFromAllUsers() {
-  return await loadAllContactsFromAllUsers();
+  return await getAllContactsFromAllUsers();
 } 
 
 
@@ -58,22 +58,19 @@ async function getAllContactsFromCurrentUser() {
   return contactsArray; 
 }
 
-
 async function getAllContactsFromAllUsers() {
   let allContactsFromAllUsers = await getItem('users');
 
   return JSON.parse(allContactsFromAllUsers);
 }
 
-
 async function getAllContactsFromCurrentUserSorted() {
 
-  let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(allContactsFromAllUsers); 
+  let allContactsFromCurrentUser = await getAllContactsFromCurrentUser(await getAllContactsFromAllUsers()); 
   let sortedContacts = await sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser);
 
   return sortedContacts;
 }
-
 
 async function sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrentUser) {
   let sortedContacts = await allContactsFromCurrentUser;
@@ -92,7 +89,6 @@ async function sortAllContactsFromCurrentUserAlphabetical(allContactsFromCurrent
   return sortedContacts;
 }
 
-
 function getListFirstChars(currentUserContacts) {
   let setFirstChars = new Set();
   let listFirstChars = [];
@@ -105,7 +101,6 @@ function getListFirstChars(currentUserContacts) {
 
   return listFirstChars;
 }
-
 
 function renderContainerList(sortedContacts, listChars, userId) {
   let chars = listChars;
@@ -157,7 +152,6 @@ function renderContactCards(char, currentContacts, charRow, currentUserId) {
   }
 }
 
-
 let isListContactActive = true;
 
 function updateBackgroundColorMain() {
@@ -170,13 +164,55 @@ function updateBackgroundColorMain() {
   }
 }
 
+window.addEventListener("resize", function () {
+  checkWidth();
+});
 
-/* FUNKTIONEN AUF LIST CONTACT */
-function goFromListContactToShowSingleContact(userId, contactId, name, email, phone, signature, userColor) {
-  document.getElementById("showSingleContactContainer").style.display = "block";
+function checkScreenWidth() {
+  let result = "";
+  let screenWidth =
+    window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  if (screenWidth <= 1219) {
+    result = "mobileVersion";
+  } else {
+    result = "desktopVersion";
+  }
+
+  return result; 
+}
+
+/* FUNKTIONEN AUF LIST CONTACT SEPARIEREN */
+async function goFromListContactToShowSingleContact(userId, contactId, name, email, phone, signature, userColor) {
   document.getElementById("mobileBtnAddContact").style.display = "none";
   document.getElementById("listContactContainer").style.display = "none";
-  document.getElementById("mobileBtnThreePoints").style.display = "block";
-  console.log('Open Show Single Contact Container');
-  loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
+ 
+  if (checkScreenWidth() === "mobileVersion") {
+    loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
+    document.getElementById("mobileBtnThreePoints").style.display = "block";
+    document.getElementById("showSingleContactContainer").style.display = "flex";
+    console.log('MOBILE VERSION');
+  } else {
+    await initSingleContactCol(userId, contactId, name, email, phone, signature, userColor);
+    document.getElementById("singleContactCol").style.display = "flex";
+    console.log('DESKTOP VERSION'); 
+  }
 } 
+
+
+
+/* AKTUELL HIER - FOCUS NEW CONTACT  ab 1200px berücksichtigen*/
+function focusOnNewContact(currentContactId) {
+  loadCurrentUserAlsoUsersAsObject()
+  let contacts = user.contacts;
+  for (let i = 0; i > contacts.length; i++) {
+    const contact = contacts[i];
+    if (user.contact.contactId === currentContactId) {
+      let focussedElement = document.getElementById(currentContactId).classList.add('focusNewContact');
+      if (focussedElement) {
+        focussedElement.scrollIntoView({behavior: 'smooth', block: 'center'});
+        focussedElement.focus();
+      }
+    }
+  }
+}
+

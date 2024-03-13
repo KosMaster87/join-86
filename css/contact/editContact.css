@@ -39,31 +39,29 @@
     z-index: 22;
 } 
 
-.editContactHeadlines {
+.editContactHeaderSection {
     margin-top: 80px;  
 }
 /* ÜBERARBEITEN */
-.editContactHeaderH1  {
+.editContactHeadline  {
     color: var(--white);
     font-weight: 700;
     font-size: 47px;
     line-height: 1.2;
 }
 
-.editContactHeaderH3 {
+.editContactSubtitle {
     color: var(--white);
     font-weight: 400;
     font-size: 20px;
     line-height: 1.2;
+    display: none;
 }
 
-.editContactSignature {
+#editContactHeaderSignature {   
     font-size: 47px;
     line-height: 1.2;
-    color: var(--white);
-}
-
-.editContactSignature {        
+    color: var(--white);     
     width: 120px;
     height: 120px;
     border: 2px solid var(--white);
@@ -75,17 +73,9 @@
     position: relative;
     top: 92px;
     left: calc(50% - 61px);
-    background-color: var(--orangeIcons);
+    /*background-color: var(--orangeIcons);*/
 }
-/*ERGÄNZEN*/
-#editContactSignature {
 
-    
-}
-/*ERGÄNZEN*/
-.editContactSignature {
-
-}
     
 .editContactBtnRow {
     display: flex;
@@ -153,11 +143,11 @@
         top: 0; 
     }
 /* ABWANDELN */
-    .contactHeaderEmptySignature {
+    #editContactHeaderSignature{
         display: none;
     }
 /* PRÜFEN - vorher add */       
-    .editContactHeadlines {
+    .editContactHeaderSection {
         display: flex;
         flex-direction: column;
         gap: 5px; 
@@ -166,13 +156,13 @@
     }
 /* PRÜFEN - vorher add */ 
 /* ABWANDELN */
-    .editContactHeaderH1 {
+    .editContactHeadline {
         font-size: 61px; /* Wechsel */
         line-height: 1.2;
     }
 /* PRÜFEN - vorher add */     
-/* ABWANDELN */
-    .editContactHeaderH3 {
+/* ABWANDELN PRÜFEN */
+    .editContactSubtitle {
         color: var(--white);
         font-weight: 400;
         font-size: 27px; /* Wechsel */

@@ -2,231 +2,267 @@ const contactColors = ["var(--red)", "var(--yellow)", "var(--orangeIcons)", "var
 let allContactsFromAllUsers = [];
 let userId = getGlobalUserId();
 
-async function initSaveProcess() {
-    await loadCurrentUserAlsoUsersAsObject();
-    let name = (document.getElementById('addContactInputName').value).trim();
-    let email = (document.getElementById('addContactInputEmail').value).trim();
-    let phone = (document.getElementById('addContactInputPhone').value).trim();
+async function initAddContact() {
+  resetInputFields();
+  editFocusBorder('Name', 'Email', 'Phone');
+  resetAllInputMessages();
+  resetAllAlertBorders();
 
-    if (checkAllInputFields(name, email, phone) == true) {
-        await saveContact(name, email, phone);
-        resetInputFields();   
-    } else {
-        console.log('Speichervorgang ist aufgrund eines Fehler abgebrochen worden.')
-    }   
 }
 
+
+async function initSaveProcess() {
+  await loadCurrentUserAlsoUsersAsObject();
+  let name = (document.getElementById('addContactInputName').value).trim();
+  let email = (document.getElementById('addContactInputEmail').value).trim();
+  let phone = (document.getElementById('addContactInputPhone').value).trim();
+
+  if (checkAllInputFields(name, email, phone) === true) {
+
+    await saveContact(name, email, phone);
+    resetInputFields();
+  } else {
+    console.log('Fehlerhafter Dateneintrag')
+  }
+}
 
 async function getGlobalUserId() {
-    let currentUserId = await getItem('currentUserId');
+  let currentUserId = await getItem('currentUserId');
 
-    return currentUserId;
+  return currentUserId;
 }
-
 
 async function saveContact(name, email, phone) {
-    /*let allContactsFromAllUsers = await loadAllContactsFromAllUsers();  muss überall ersetzt werden*/
-    let contactId = generateRandomId();
-    let userColor = getRandomColor(contactColors);
-    let signature = getSignature(name);
-    let userId = await getGlobalUserId();
+  let contactId = generateRandomId();
+  let userColor = getRandomColor(contactColors);
+  let signature = getSignature(name);
+  let userId = await getGlobalUserId();
 
-    let contact = {
-        userId: userId, 
-        contactId: contactId, 
-        name: name, 
-        email: email, 
-        phone: phone, 
-        userColor: userColor, 
-        signature: signature
-    };
+  let contact = {
+    userId: userId,
+    contactId: contactId,
+    name: name,
+    email: email,
+    phone: phone,
+    userColor: userColor,
+    signature: signature
+  };
 
-    user.contacts.push(contact);
-    setItem("users", users);
-    closeAddContactAndGoToShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor); 
+  user.contacts.push(contact);
+  setItem("users", users);
+  closeAddContactAndGoToShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor);
+  document.getElementById('overlayFrame').style.display = "flex";
 }
 
+async function getAllContactsFromCurrentUser() {
+
+  return await getAllContactsFromCurrentUserSorted();
+}
 
 async function getAllContactsFromCurrentUser() {
-    
-    return await getAllContactsFromCurrentUserSorted();
-}
-  
-    
-async function getAllContactsFromCurrentUser() {
-    let currentUserId = await getGlobalUserId();
-    let users = await getAllContactsFromAllUsers();
-    const contactsArray = [];
-    for (let i = 0; i < users.length; i++) {
+  let currentUserId = await getGlobalUserId();
+  let users = await getAllContactsFromAllUsers();
+  const contactsArray = [];
+  for (let i = 0; i < users.length; i++) {
     const user = users[i];
     if (user.email == currentUserId) {
-        for (let j = 0; j < user.contacts.length; j++) {
+      for (let j = 0; j < user.contacts.length; j++) {
         const contact = user.contacts[j];
         if (contact.userId == currentUserId) {
-            contactsArray.push(contact);
+          contactsArray.push(contact);
         }
+      }
+      break;
     }
-    break; 
-    }}
-    return contactsArray; 
+  }
+  return contactsArray;
 }
-
 
 function resetInputFields() {
-    document.getElementById('addContactInputName').value = '';
-    document.getElementById('addContactInputEmail').value = '';
-    document.getElementById('addContactInputPhone').value = '';
-}    
-
+  document.getElementById('addContactInputName').value = '';
+  document.getElementById('addContactInputEmail').value = '';
+  document.getElementById('addContactInputPhone').value = '';
+}
 
 function getRandomColor(userColors) {
-    let randomIndex = Math.floor(Math.random() * userColors.length);
-    let randomColor = userColors[randomIndex];
-    
-    return randomColor;
-}
+  let randomIndex = Math.floor(Math.random() * userColors.length);
+  let randomColor = userColors[randomIndex];
 
+  return randomColor;
+}
 
 function getSignature(name) {
-    let arrayName = splitName(name);
-    let signature = getFirstChars(arrayName);
-    
-    return signature;
-}
+  let arrayName = splitName(name);
+  let signature = getFirstChars(arrayName);
 
+  return signature;
+}
 
 function splitName(name) {
-    let arrayName = [];
-    let string = name;
-    arrayName = string.toUpperCase().split(" ");
-    
-    return arrayName;
-}
+  let arrayName = [];
+  let string = name;
+  arrayName = string.toUpperCase().split(" ");
 
+  return arrayName;
+}
 
 function getFirstChars(arrayName) {
-    let firstChars = '';
-    for(let i = 0; i < arrayName.length; i++) {
-        firstChars += arrayName[i][0];
-    }
-    
-    return firstChars;
-}    
+  let firstChars = '';
+  for (let i = 0; i < arrayName.length; i++) {
+    firstChars += arrayName[i][0];
+  }
 
+  return firstChars;
+}
 
 function generateRandomId() {
-    let id = '';
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!/%?';
-    for (let i = 0; i < 16; i++) {
-        const randomIndex = Math.floor(Math.random() * chars.length);
-        id += chars[randomIndex];
-    }
+  let id = '';
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!/%?';
+  for (let i = 0; i < 16; i++) {
+    const randomIndex = Math.floor(Math.random() * chars.length);
+    id += chars[randomIndex];
+  }
 
-    return id;
+  return id;
 }
- 
 
 function checkAllInputFields(name, email, phone) {
-    if (checkInputName(name) === false) {
-        return false;
-    } else if (checkInputEmail(email) === false) {
-        return false;
-    } else if (checkInputPhone(phone) === false) {
-        return false;
-    } else {
-        return true;
-    }
-}
+  if (checkInputName(name) === true && checkInputEmail(email) === true && checkInputPhone(phone)) {
+    return true
+  } else {
+    console.log('Fehlerhafte Dateneingabe')
+    return false;
+  }
 
+}
 
 function checkInputName(input) {
-    let name = input;
-    let result = checkIfInputFieldIsEmpty(name) == true ? true : false;
-    if (result == false) {
-        console.log('Fehler inputName: Name erforderlich');
-    } else {
-        return result;
-    }   
+  let name = input;
+  if (name == "") {
+    showInputMessage('addContactMessageName', 'Please enter a name');
+    showAlertBorder('addContactInputContainerName');
+  } else {
+    resetInputMessage('addContactMessageName');
+    resetAlertBorder('addContactInputContainerName');
+    return true;
+  }
 }
-
 
 function checkInputEmail(input) {
-    let email = input;
-
-    if (checkIfInputFieldIsEmpty(email) == false) {
-        console.log('Abbruch - Daten sind nicht vollständig!');
-        return false;
-    } else if (checkAtSymbolExists(email) == false) {
-        console.log('Abbruch - Daten sind nicht korrekt!');
-        return false;
-    } else {
-        console.log('Die Daten sind korrekt und vollständig!');
-        return true;
-    }
+  let email = input;
+  if (email === "") {
+    return true;
+  } else if (checkAtSymbolExists(email) === false) {
+    showInputMessage('addContactMessageEmail', 'The @ sign is missing');
+    showAlertBorder('addContactInputContainerEmail');
+    return false;
+  } else {
+    return true;
+  }
 }
-
-
-function checkIfInputFieldIsEmpty(string) {
-    let input = string;
-    if (input == '') {
-        return false;
-    } else {
-        return true;
-    }
-}
-
 
 function checkAtSymbolExists(input) {
-    let email = input;
-    if (email.indexOf('@') != -1) {
-        console.log("Der String enthält ein @-Zeichen.");
-        return true;
-    } else {
-        console.log("Der String enthält kein @-Zeichen.");
-        return false;
-    }
+  let email = input;
+  if (email.indexOf('@') != -1) {
+    return true;
+  } else {
+    return false;
+  }
 }
-
 
 function checkInputPhone(phone) {
-    let phoneNumber = phone;
-    const regex = /^[\d ()+-]+$/; 
+  let phoneNumber = phone;
+  const regex = /^[\d ()+-]+$/;
 
-    if (regex.test(phoneNumber)) {
-        console.log("Die Telefonnummer ist gültig.");
-        return true;
-    } else {
-        console.log("Die Telefonnummer ist ungültig.")
-        return false;
-    }
+  if (phoneNumber === "") {
+    return true;
+  } else if (regex.test(phoneNumber)) {
+    resetInputMessage('addContactMessagePhone');
+    resetAlertBorder('addContactInputContainerPhone');
+    return true;
+  } else {
+    showInputMessage('addContactMessagePhone', 'Phone number ist not valid');
+    showAlertBorder('addContactInputContainerPhone');
+    return false;
+  }
+}
+
+function showInputMessage(inputField, message) {
+  document.getElementById(inputField).innerText = message;
+}
+
+function resetInputMessage(inputField) {
+  document.getElementById(inputField).innerText = '';
+}
+
+function showAlertBorder(inputContainer) {
+  document.getElementById(inputContainer).classList.add('alertBorder');
+}
+
+function resetAlertBorder(inputContainer) {
+  document.getElementById(inputContainer).classList.remove('alertBorder');
+}
+
+function resetAllInputMessages() {
+  resetInputMessage('addContactMessageName');
+  resetInputMessage('addContactMessageEmail');
+  resetInputMessage('addContactMessagePhone');
+}
+
+function resetAllAlertBorders() {
+  resetAlertBorder('addContactInputContainerName');
+  resetAlertBorder('addContactInputContainerEmail');
+  resetAlertBorder('addContactInputContainerPhone');
 }
 
 
-/* ADD CONTACT BUTTONS */
+// AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES 
+function editFocusBorder(idFocus, idRemoveFocus, idDeleteFocus) {
+  addFocusBorder(idFocus);
+  removeFocusBorder(idRemoveFocus);
+  removeFocusBorder(idDeleteFocus)
+}
+
+function addFocusBorder(containerId) {
+  let input = document.getElementById('addContactInputContainer' + containerId);
+  input.classList.add('focus');
+}
+
+function removeFocusBorder(containerId) {
+  let input = document.getElementById('addContactInputContainer' + containerId);
+  input.classList.remove('focus');
+}
+
+function resetAllInputAttributes() {
+  resetAllInputMessages();
+  resetAllInputContainer();
+  resetAllInputAttributes()
+}
+
 async function closeAddContactAndGoToShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor) {
-    goToTopOfSite();
-    loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor)
-    document.getElementById("addContactContainer").style.display = "none";
-    document.getElementById("listContactContainer").style.display = "none";
-    document.getElementById("mobileBtnAddContact").style.display = "none";
-    document.getElementById("mobileBtnThreePoints").style.display = "block";
-    document.getElementById("showSingleContactContainer").style.display = "block";
-  } 
-  
+  loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor)
+  document.getElementById("addContactContainer").style.display = "none";
+  document.getElementById("listContactContainer").style.display = "none";
+  document.getElementById("mobileBtnAddContact").style.display = "none";
+  document.getElementById("mobileBtnThreePoints").style.display = "block";
+  document.getElementById("showSingleContactContainer").style.display = "block";
+}
 
-  async function closeAddContactContainerWithoutAddingNewContact() {
-    await initListContact();
-    goToTopOfSite();
-    document.getElementById("addContactContainer").style.display = "none";
-    document.getElementById("mobileBtnAddContact").style.display = "block"; 
-  }
-  
+async function closeAddContactContainerWithoutAddingNewContact() {
+  await initListContact();
+  document.getElementById("addContactContainer").style.display = "none";
+  document.getElementById("mobileBtnAddContact").style.display = "block";
+  document.getElementById("overlayFrame").style.display = 'none';
+}
 
-  async function closeAddContactContainer() {
-    await initListContact();
-    goToTopOfSite();
-    document.getElementById("addContactContainer").style.display = "none";
-    document.getElementById("mobileBtnAddContact").style.display = "block";
-  }
+async function closeAddContactContainer() {
+  await initListContact();
+  resetInputFields();
+  editFocusBorder('Name', 'Email', 'Phone');
+
+
+  document.getElementById("addContactContainer").style.display = "none";
+  document.getElementById("mobileBtnAddContact").style.display = "block";
+}
 
 

@@ -1,214 +1,218 @@
 /* MOBILE BUTTON STYLING BASICS */
 
 #mobileBtn:hover {
-    background-color: var(--lightGray);
-    cursor: pointer;
+  background-color: var(--lightGray);
+  cursor: pointer;
 }
 
 #mobileBtn.active {
-    background-color: var(--lightBlue);
+  background-color: var(--lightBlue);
 }
 
-#mobileBtn:disabled {
-   /* cursor: not-allowed; */
-}
 
 /* ROUND */
 
 .mobileBtnRound {
-    background-color: var(--lightGray);
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    justify-items: center;
-    z-index: 999;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    position: fixed;
-    bottom: 80px;
-    right: 30px;
+  background-color: var(--lightGray);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  justify-items: center;
+  z-index: 999;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+}
 
+.mobileBtnRound:active {
+  background-color: var(--lightBlue);
 }
 
 
 /** MOBILE BUTTON ADD CONTACT **/
 
 .mobileBtnAddContactItem {
-    width: 29.33px; 
-    position: relative;
-    top: 14px;
-    left: 13px; 
+  width: 29.33px;
+  position: relative;
+  top: 14px;
+  left: 13px;
 }
 
 .d-none {
-    display: none;
+  display: none;
 }
 
 
 /* MOBILE BUTTON THREE POINTS */
 
 #mobileBtnThreePoints {
-    display: none;
-    z-index: 999;
+  display: none;
+  z-index: 999;
 }
 
 .mobileBtnThreePointsIcon {
-    height: 21.33px;
-    position: absolute;
-    top: 17px;
-    left: 25px;  
+  height: 21.33px;
+  position: absolute;
+  top: 17px;
+  left: 25px;
 }
 
 /* MOBILE BUTTON SELECT OPTIONS */
 #mobileBtnSelectOptions {
-    width: 116px;
-    height: 116px;
-    display: none;
-    position: absolute;
-    bottom: 70px;
-    right: 20px;
-    
+  width: 116px;
+  height: 116px;
+  display: none;
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+
 }
 
 .mobileBtnSquare {
-    background-color: var(--white);
-    color: var(--black);
-    border-radius: 20px 20px 0 20px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    z-index: 999;
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 20px 20px 0 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 999;
 }
 
 .internBtnSquare {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    padding: 18px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
 }
 
 .mobileBtnIconDelete {
-    height: 18px;
+  height: 18px;
 }
 
 .mobileBtnIconEdit {
-    height: 18.25px;
+  height: 18.25px;
 }
 
 .internBtnSquareLink {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
-    font-size: 16px;
-    line-height: 1.2;
-    font-weight: 400;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 400;
 }
 
 /* TABLET BUTTON ADD NEW CONTACT */
 
 #tabletBtnAddContact {
-    display: none;
-    background-color: var(--lightGray);
-    position: absolute;
-    top: 100px;
-    left: 235px;
-    border-radius: 10px;
-    color: white;
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1.2;
-    width: 352px;
-    padding: 12px 0;
+  display: none;
+  background-color: var(--lightGray);
+  position: absolute;
+  top: 100px;
+  left: 235px;
+  border-radius: 10px;
+  color: white;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+  width: 352px;
+  padding: 12px 0;
 }
 
 /* DESKTOP BUTTON ADD NEW CONTACT */
 
 #desktopBtnAddContact {
-    display: none;
-    background-color: var(--lightGray);
-    position: absolute;
-    top: 100px; 
-    left: -235px;
+  display: none;
+  background-color: var(--lightGray);
+  position: absolute;
+  top: 100px;
+  left: -235px;
 
-    border-radius: 10px;
-    color: white;
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1.2;
-    width: 352px;
-    padding: 12px 0;
+  border-radius: 10px;
+  color: white;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+  width: 352px;
+  padding: 12px 0;
 }
 
 #desktopBtnAddContact:hover {
-    cursor: pointer;
-    background-color: var(--lightBlue);
+  cursor: pointer;
+  background-color: var(--lightBlue);
 }
 
 .desktopBtnIntern {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 
 }
 
-@media screen and (min-width: 300px)
-{
-    .containerContacts {
-        width: 300px;
-    }
-   
+@media screen and (min-width: 300px) {
+  .containerContacts {
+    width: 300px;
+  }
+
 }
 
 @media screen and (min-width: 456px) {
-    /* contactFlexContainer als Seitenelement für Desktop-Ansicht */
-    .containerContacts {
-        width: 400px;
-    }
+
+  /* contactFlexContainer als Seitenelement für Desktop-Ansicht */
+  .containerContacts {
+    width: 400px;
+  }
 }
 
-@media screen and (min-width: 721px) { 
-    #mobileBtnThreePoints {
-        display: none;
-    }
-    
-    #mobileBtnSelectOptions {
-        display: none;
-    }
+@media screen and (min-width: 721px) {
+  #mobileBtnThreePoints {
+    display: none;
+  }
+
+  #mobileBtnSelectOptions {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 1000px) {
-    body {
-        display: flex;
-        flex-direction: row;
-        flex: 1;
-        height: 100vh;
-    }
-    
-    #contactFlexContainer {
-        display: inline-block;
-        flex: 1;
-    }
+  body {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    height: 100vh;
+  }
 
-    #mobileBtnAddContact{
-        display: none;
-    }
+  #contactFlexContainer {
+    display: inline-block;
+    flex: 1;
+  }
 
-    #desktopBtnAddContact {
-        display: block;
-        position: fixed;
-        transition: all 300ms ease-in;
-        top: 100px;
-        left: 235px;
-    
-    }
+  #mobileBtnAddContact {
+    display: none;
+  }
+
+
+}
+
+@media screen and (min-width: 1200px) {
+  #desktopBtnAddContact {
+    display: block;
+    position: fixed;
+    transition: all 300ms ease-in;
+    top: 100px;
+    left: 235px;
+
+  }
 }
 
 @media screen and (min-width: 1440px) {
-
+  
 }

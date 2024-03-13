@@ -87,58 +87,11 @@ function initializeAllVariables(contact) {
     document.getElementById('editContactInputName').value = contact.name;
     document.getElementById('editContactInputEmail').value = contact.email;
     document.getElementById('editContactInputPhone').value = contact.phone;
-    document.getElementById('editContactSignature').innerText = contact.signature;
+    document.getElementById('editContactHeaderSignature').innerText = contact.signature;
+    document.getElementById('editContactHeaderSignature').style.backgroundColor = contact.userColor;
+
 }
 
-/*
-async function saveChanges() {
-    let updatedContact = bufferCurrentContact();
-
-
-    await loadCurrentUserAlsoUsersAsObject();
-    let currentContactId = await getCurrentContactId();
-    let currentEmail = await getGlobalUserId();
-    let users = await getItem('users');
-
-    if (currentContactId && currentEmail) {
-        for (let i = 0; i < users.length; i++) {
-            let user = users[i];
-            if (user.email === currentEmail) { 
-                console.log('User.email gefunden')
-                /* for (let j = 0; j < contacts.length; j++) {
-                    let contacts = user.conctacts; 
-                    i 
-                } else {
-                console.log('User.email is not found. User does not exist.')
-            } 
-    }}}*/
-
-    
-    /*
-    if(currentContactId && currentEmail) {
-        if (user = users.find(user => user.email === currentEmail)) {
-            contacts = user.contacts;
-            if (contact = contacts.find(contact => contact.contactId === currentContactId)) {
-                contact.name = document.getElementById('editContactInputName').value;
-                contact.email = document.getElementById('editContactInputEmail').value;
-                contact.phone = document.getElementById('editContactInputPhone').value;
-                contact.signature = document.getElementById('editContactSignature').innerText;
-                console.log('Bisher hat alles geklappt.')
-            }
-        } else {
-            console.log('User nicht gefunden.')
-        }
-
-    } else {
-        console.log('CurrentContactId or email does not exist.')
-    }
-
-
-    let contacts = await user.contacts;
-
-
-    await setItem('mockUpAllUserContacts', JSON.stringify(mockUpAllUserContacts));
-    await goToShowSingleContactAfterEditContact(currentContactId);*/
 
 function getSignature(name) {
     let arrayName = splitName(name);
@@ -182,7 +135,7 @@ async function deleteContact() {
 
     await setItem('users', JSON.stringify(users)); 
     await setItem('currentContactId', JSON.stringify(''));
-}//final 
+}
 
 
 async function saveReducedContactArrayBackend(allContactsFromAllUsers) {

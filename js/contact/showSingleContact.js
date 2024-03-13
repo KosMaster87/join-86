@@ -62,23 +62,22 @@ async function openEmailProgram() {
 }
 
 async function showSingleContactInfos() {
-    document.getElementById('singleContactCol').display = "block";
+    document.getElementById('singleContactCol').display = "flex";
 }
-
 
 /* SHOW SINGLE CONTACT */
 async function goFromSingleContactToListContactContainer() {
     await setCurrentContactId([]);
-    goToTopOfSite()
     await initListContact();
-    document.getElementById("mobileBtnSelectOptions").style.display = "none";
-    document.getElementById("mobileBtnThreePoints").style.display = "none";
+    document.getElementById("listContactContainer").style.display = "flex";
+    document.getElementById("mobileBtnAddContact").style.display = "block";
     document.getElementById("showSingleContactContainer").style.display = "none";
     document.getElementById("addContactContainer").style.display = "none";
-    document.getElementById("listContactContainer").style.display = "block";
-    document.getElementById("mobileBtnAddContact").style.display = "block";
-    console.log('Close Single Contact Container and open list Contact Container!');
-  } //Final
+    document.getElementById("listContactContainer").style.display = "flex";
+    document.getElementById("mobileBtnAddContact").style.display = "block";    
+    document.getElementById("mobileBtnSelectOptions").style.display = "none";
+    document.getElementById("mobileBtnThreePoints").style.display = "none";
+  } 
   
   async function goFromShowSingleContactToEditContact() {
     initEditContact();
@@ -86,13 +85,12 @@ async function goFromSingleContactToListContactContainer() {
     document.getElementById("mobileBtnSelectOptions").style.display = "none";
     document.getElementById("showSingleContactContainer").style.display = "none";
     document.getElementById("listContactContainer").style.display = "none";
-    document.getElementById("editContactContainer").style.display = "block";
+    document.getElementById("editContactContainer").style.display = "flex";
   }
   
   function closeShowSingleContactContainer() {
-    goToTopOfSite();
     document.getElementById("showSingleContactContainer").style.display = "none";
     document.getElementById("mobileBtnAddContact").style.display = "block";
-    console.log('Close Show Single Contact Container');
+
   }
 

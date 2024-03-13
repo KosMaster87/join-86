@@ -1,20 +1,11 @@
 /* MAIN CONTACT */
 
-.mainContent {
-    box-sizing: border-box;
-}
-
-#mainContact {
-    width: 100vw;
-    height: 100vh;
-    box-sizing: border-box;
-}
-
 @media screen and (min-width: 456px) {
 
 }
 
 @media screen and (min-width: 721px) { 
+
 }
 
 @media screen and (min-width: 1000px){ 

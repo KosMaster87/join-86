@@ -1,20 +1,21 @@
 async function setCurrentContactId(contactId) {
   await setItem('currentContactId', contactId);
-} 
+}
 
 async function getCurrentContactId() {
   return await getItem('currentContactId');
-} 
+}
 
 async function goToTopOfSite() {
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
 
 /* MOBILE BUTTON ADD CONTACT */
 function openAddContactContainer() {
-  document.getElementById("addContactContainer").style.display = "block";
+  initAddContact();
+  document.getElementById("addContactContainer").style.display = 'flex';
+  document.getElementById("overlayFrame").style.display = 'flex';
   document.getElementById("mobileBtnAddContact").style.display = "none";
-  console.log("Open Add Contact Container");
 }
 
 /* MOBILE BUTTON THREE POINTS */
@@ -28,8 +29,9 @@ function showMobileSelectBtns() {
 /* DESKTOP BUTTON ADD NEW CONTACT */
 
 function desktopBtnGoFromListContactToAddContact() {
-  document.getElementById("desktopBtnAddContact").style.display = "none";
   document.getElementById("addContactContainer").style.display = "block";
+  document.getElementById("overlayFrame").style.display = 'block';
+  document.getElementById("mobileBtnAddContact").style.display = "none";
 }
 
 
@@ -40,7 +42,7 @@ function openEditContactContainer() {
   document.getElementById("mobileBtnAddContact").style.display = "none";
   console.log("Open Edit Contact Container ist erfolgt!");
 }
-  
+
 async function closeEditContactAndGoToListContactContainer() {
   await setCurrentContactId([]);
   goToTopOfSite();
@@ -50,12 +52,12 @@ async function closeEditContactAndGoToListContactContainer() {
   document.getElementById("listContactContainer").style.display = "block";
   console.log("Open Edit Contact Container ist erfolgt!");
 }
-  
-  
+
+
 function saveEditContact() {
   document.getElementById("editContact").style.display = "none";
 }
-  
+
 
 function openShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor) {
   goToTopOfSite();
@@ -69,13 +71,6 @@ function openShowSingleContactContainer(userId, contactId, name, email, phone, s
 }
 
 
-
-
-
-
-
-
-
 /* DESKTOP ADD CONTACT BUTTONS DESKTOP */
 async function desktopCloseAddContactAndGoToShowSingleContactContainer() {
   goToTopOfSite();
@@ -84,33 +79,11 @@ async function desktopCloseAddContactAndGoToShowSingleContactContainer() {
   //document.getElementById("mobileBtnAddContact").style.display = "none";
   //document.getElementById("mobileBtnThreePoints").style.display = "block";
   document.getElementById("showSingleContactContainer").style.display = "block";
-} //final
-
-async function desktopCloseAddContactContainerWithoutAddingNewContact() {
-  await initListContact();
-  goToTopOfSite();
-  document.getElementById("addContactContainer").style.display = "none";
-  //document.getElementById("mobileBtnAddContact").style.display = "block";
-  
-} //final
-
-async function desktopCloseAddContactContainer() {
-  await initListContact();
-  goToTopOfSite();
-  document.getElementById("addContactContainer").style.display = "none";
-  //document.getElementById("mobileBtnAddContact").style.display = "block";
-  
-  console.log('Close Add Contact Container');
 }
 
-async function desktopOpenAddContactContainer() {
-  goToTopOfSite();
-  document.getElementById("desktopAddContactContainer").style.display = "block";
-  document.getElementById("test").style.display = "block";
-  document.getElementById("test").classList.add('show');
-  //document.getElementById("mobileBtnAddContact").style.display = "none";
-  //document.getElementById("mobileBtnThreePoints").style.display = "block";
-  document.getElementById("showSingleContactContainer").style.display = "none";
-} //final
+
+
+
+
 
 

@@ -1,147 +1,297 @@
 /* ADD CONTACT CONTAINER */
 
 #desktopAddContactContainer {
-    display: none; 
+  display: none;
+}
+
+#contactCard {
+  /* edit */
+  width: 100%
 }
 
 #addContactContainer {
-    background-color: rgba(0, 0, 0, 0.25);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 22;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 500;
+}
+
+#overlayFrame {
+  /* edit */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 768px;
+  transform: translate(-50%, -50%);
+  z-index: 900;
+  animation: slideUp 0.33s ease-in forwards;
+  animation: slideDown 0.33s ease-out forwards;
+
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
 }
 
 .addContactHeadlines {
-    margin-top: 56px;
+  margin-top: 56px;
 }
 
-.addContactHeaderH1  {
-    color: var(--white);
-    font-weight: 700;
-    font-size: 47px;
-    line-height: 1.2;
+.addContactHeaderH1 {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 47px;
+  line-height: 1.2;
 }
 
 .addContactHeaderH3 {
-    color: var(--white);
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.2;
+  color: var(--white);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
 }
 
 .contactHeaderEmptySignature {
+  width: 120px;
+  height: 120px;
+  background-color: var(--lighterGray);
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 92px;
+  left: calc(50% - 61px);
+}
+/* PRÜFEN */
+
+#contactBodySignatureContainer {
+  display: none;
+  /* display none evtl. extra entfernen */
+}
+
+.contactBodyEmptySignature {
+  display: none;
+  /* kompletter Wechsel */
+}
+
+.desktopAddContactGetBackFlex {
+  display: none;
+}
+
+/* CHECK */
+/* edit */
+.contactBodyInputSectionCol {
+  display: flex;
+  flex-direction: column;
+}
+
+/* edit */
+.contactInputContainer {
+  border: solid 1px var(--lighterGray);
+  padding: 12px 16px 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: var(--white);
+  flex: 1;
+  gap: 8px;
+}
+
+.focus {
+  border: solid 1px var(--lightBlue) !important;
+}
+
+.alertBorder {
+  border: solid 1px var(--wrongInputBorder) !important;
+}
+
+/* Zusammenfassen */
+#addContactInputContainerEmail {
+  border: solid 1px var(--lighterGray);
+}
+
+
+#addContactInputContainerPhone {
+  border: solid 1px var(--lighterGray);
+}
+
+
+/* Hier aktuell */
+.addContactMessageContainer {
+  padding: 0;
+  margin: 0;
+  height: 17px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#addContactMessageName {
+  font-size: 11px;
+  color: red;
+}
+
+#addContactMessageEmail {
+  font-size: 11px;
+  color: red;
+}
+
+#addContactMessagePhone {
+  font-size: 11px;
+  color: red;
+}
+
+/* edit */
+.contactInputContainer:hover {
+  cursor: pointer;
+}
+
+#addContactInputFieldName {
+  border: 1px solid var(--lighterGray);
+  width: 100%;
+}
+
+/* edit übertragen */
+#addContactInputName {
+  width: 100%;
+}
+
+#addContactInputEmail {
+  width: 100%;
+}
+
+#addContactInputPhone {
+  width: 100%;
+}
+
+
+@media screen and (min-width: 300px) {
+  .contactInputContainer {
+    width: 100%;
+    /* übertragen editContact*/
+  }
+}
+
+@media screen and (min-width: 456px) {
+  #contactCard {
+    /* edit */
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 721px) {
+
+  #contactCard {
+    /* edit */
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #contactCard {
+    /* edit */
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #contactCard {
+    /* edit */
+    width: 1000px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  #addContactContainer {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+
+  #contactCard {
+    /* edit */
+    width: 1212px;
+  }
+
+  /* edit */
+  #contactBodySignatureContainer {
+    display: flex;
+  }
+
+  /* PRÜFEN */
+  .contactHeaderEmptySignature {
+    display: none;
+  }
+
+  .addContactHeadlines {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+    margin: 0;
+  }
+
+  .addContactHeaderH1 {
+    font-size: 61px;
+    /* Wechsel */
+    line-height: 1.2;
+  }
+
+  .addContactHeaderH3 {
+    color: var(--white);
+    font-weight: 400;
+    font-size: 27px;
+    /* Wechsel */
+    line-height: 1.2;
+  }
+
+  /* PRÜFEN */
+  .contactBodyEmptySignature {
     width: 120px;
     height: 120px;
     background-color: var(--lighterGray);
     border: 2px solid var(--white);
     border-radius: 50%;
     z-index: 5;
+    /* Wechsel */
     display: flex;
+    /* beim oberen Element nochmal prüfen */
     justify-content: center;
     align-items: center;
-    position: relative;
-    top: 92px;
-    left: calc(50% - 61px);
-}
-/* PRÜFEN */
+    position: 0;
+    /* Wechsel */
+    top: 0;
+    /* Wechsel */
+    left: 0;
+    /* Wechsel */
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    /* Wechsel display none an der Stelle entfernt */
+  }
 
-#contactBodySignatureContainer{
-    display: none; /* display none evtl. extra entfernen */
-}
-
-.contactBodyEmptySignature {
-    display: none; /* kompletter Wechsel */
-    }
-
-.desktopAddContactGetBackFlex {
-    display: none; 
-}
-
-#addContactInputFieldName {
-    border: 1px solid var(--lighterGray);
-}
-
-#addContactInputFieldName:focus {
-    border-color: var(--lightBlue);
-}
-
-#addContactInputFieldEmail {
-    border: 1px solid var(--lighterGray);
-}
-
-#addContactInputFieldPhone {
-    border: 1px solid var(--lighterGray);
-}
-
-@media screen and (min-width: 456px) {
-
-}
-
-@media screen and (min-width: 721px) { 
-}
-
-@media screen and (min-width: 1000px) {
-
-}
-
-@media screen and (min-width: 1440px) {
-    #addContactContainer {
-        position: absolute;
-        width: 100vw; 
-        height: 100vh; 
-        right: 0;
-        left: 0;
-        top: 0; 
-    }
-
-    /* PRÜFEN */       
-    .contactHeaderEmptySignature {
-        display: none;
-    }
-       
-    .addContactHeadlines {
-        display: flex;
-        flex-direction: column;
-        gap: 5px; 
-        align-items: flex-start;
-        margin: 0;
-    }
-
-    .addContactHeaderH1 {
-        font-size: 61px; /* Wechsel */
-        line-height: 1.2;
-    }
-
-    .addContactHeaderH3 {
-        color: var(--white);
-        font-weight: 400;
-        font-size: 27px; /* Wechsel */
-        line-height: 1.2;
-    }
-       
-    /* PRÜFEN */
-    .contactBodyEmptySignature { 
-        width: 120px;
-        height: 120px;
-        background-color: var(--lighterGray);
-        border: 2px solid var(--white);
-        border-radius: 50%;
-        z-index: 5; /* Wechsel */
-        display: flex; /* beim oberen Element nochmal prüfen */
-        justify-content: center;
-        align-items: center;
-        position: 0; /* Wechsel */
-        top: 0; /* Wechsel */
-        left: 0; /* Wechsel */
-        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-        /* Wechsel display none an der Stelle entfernt */
-    }
-           
 }
