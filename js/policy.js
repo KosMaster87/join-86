@@ -1,4 +1,11 @@
 /**
+ * Ohne sich angemeldet zu haben, die privat-policy lesen.
+ */
+function offlinePolicy() {
+  window.location.assign("./pages/policy.html");
+}
+
+/**
  * Load the content of the privacy-policy.
  */
 async function initPolicy() {
@@ -19,11 +26,4 @@ async function initPolicy() {
     menuItemBox.style.display = "none";
     userSymbolContainerID.style.display = "none";
   }
-}
-
-/**
- * Ohne sich angemeldet zu haben, die privat-policy lesen.
- */
-function offlinePolicy() {
-  window.location.assign("pages/policy.html");
 }

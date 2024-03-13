@@ -31,9 +31,11 @@ function showMobileSelectBtns() {
 function desktopBtnGoFromListContactToAddContact() {
   document.getElementById("addContactContainer").style.display = "block";
   document.getElementById("overlayFrame").style.display = 'block';
+  setTimeout(function() {
+    document.getElementById("overlayFrame").classList.add("overlayVisible");
+  }, 50);
   document.getElementById("mobileBtnAddContact").style.display = "none";
 }
-
 
 /* EDIT CONTACT */
 
