@@ -65,15 +65,15 @@ async function fillAllVariables(userId, contactId, name, email, phone, signature
   let userIdPlaceholder = userId; /* nur als Platzhalter zum überbrücken */
   let contactIdPlaceholder = contactId; /* nur als Platzhalter zum überbrücken */
 
-  document.getElementById('singleContactName').innerText = name;
-  document.getElementById('singleContactEmail').innerText = email;
-  document.getElementById('singleContactPhone').innerText = phone;
-  document.getElementById('singleContactSignature').innerText = signature;
-  document.getElementById('singleContactSignature').style.backgroundColor = userColor;
+  document.getElementById('singleContactName').innerText = await name;
+  document.getElementById('singleContactEmail').innerText = await email;
+  document.getElementById('singleContactPhone').innerText = await phone;
+  document.getElementById('singleContactSignature').innerText = await signature;
+  document.getElementById('singleContactSignature').style.backgroundColor = await userColor;
 
-  setCurrentContactEmail(email);
+  setCurrentContactEmail(await email);
 
-  return "AUSGABE";
+  return "AUSGABE FUNKTION WIRD AUSGELÖST" + name; /* TEST ZUR AUSGABE */
 }
 
 async function openEmailProgram() {
