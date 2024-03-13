@@ -5,9 +5,10 @@ async function initLegalNotice() {
   await loadCurrentUserAlsoUsersAsObject();
   await includeHTML();
   setActiveLink("navLegalNotice");
-  createUserSignatureIcon();
+
 
   if (user) {
+    createUserSignatureIcon();
     preparePopupEvent();
   } else {
     users = [];

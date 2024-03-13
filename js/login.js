@@ -111,4 +111,3 @@ function rememberUserFn() {
     localStorage.removeItem("rememberMe");
   }
 }
-
