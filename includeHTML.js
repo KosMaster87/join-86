@@ -16,9 +16,23 @@ async function includeHTML() {
 }
 
 /**
- * Einfaches Wechseln zwischen Seiten.
+ * Easily switch between pages.
  * @param {Seitenname als Zeichenfolge} page
  */
 function includeContentHTML(changePage) {
-  window.location.assign(changePage + ".html");
+  window.location.assign("./" + changePage + ".html");
+}
+
+/**
+ * Easily switch between pages.
+ */
+function includeContentHTMLoffline(changePage) {
+  window.location.assign("./" + changePage + ".html");
+}
+
+/**
+ * Easily switch between pages.
+ */
+function includeContentHTMLindex() {
+  window.location.assign("./../index.html");
 }
