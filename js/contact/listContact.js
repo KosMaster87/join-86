@@ -2,7 +2,6 @@
 async function initListContact() {
   let userId = getGlobalUserId();
   let currentContactId = getCurrentContactId();
-  loadCurrentUserAlsoUsersAsObject()
   await includeHTML();
   setActiveLink("navContacts");
   updateBackgroundColorMain(isListContactActive);
