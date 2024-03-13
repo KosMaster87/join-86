@@ -2,8 +2,28 @@
 
 .white-background {
     background-color: var(--white) !important;
-}  
+} 
+/* slide effekt*/
+@keyframes slideInFromRight {
+    from {
+      right: -150%;
+    }
+    to {
+      right: 0;
+    }
+  }
+  
+  #singleContactCol {
+    display: none;
+    position: relative;
+    right: 0; /* Startposition rechts außerhalb des Bildschirms */
+  }
+  
+  .slide-in {
+    animation: slideInFromRight 0.5s ease;
+  }
 
+  /* slide effekt ende*/
 /* RESET INPUT FIELDS */
 input[type="text"],[type="email"],[type="tel"] {
     margin: 0;

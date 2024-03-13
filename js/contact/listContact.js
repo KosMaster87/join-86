@@ -184,7 +184,6 @@ function checkScreenWidth() {
 /* FUNKTIONEN AUF LIST CONTACT SEPARIEREN */
 async function goFromListContactToShowSingleContact(userId, contactId, name, email, phone, signature, userColor) {
   document.getElementById("mobileBtnAddContact").style.display = "none";
-  document.getElementById("listContactContainer").style.display = "none";
  
   if (checkScreenWidth() === "mobileVersion") {
     await loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
@@ -193,7 +192,11 @@ async function goFromListContactToShowSingleContact(userId, contactId, name, ema
     console.log('MOBILE VERSION');
   } else {
     await initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor);
-    document.getElementById("singleContactCol").style.display = "flex";
+    document.getElementById("singleContactCol").style.display = "block";
+    //slide effekt start function
+    let singleContactCol = document.getElementById("singleContactCol");
+    singleContactCol.classList.add("slide-in");
+
     console.log('DESKTOP VERSION'); 
   }
 } 

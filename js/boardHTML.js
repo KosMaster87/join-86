@@ -71,6 +71,7 @@ function iconReturn(signature) {
 
 function openTaskReturn(i) {
   return `
+  <div class="blurr">
   <div id="popUpMainContainer" class="openwindow">
     <div class="boxSizePopUp">
       <div class="headContainer">
@@ -131,7 +132,7 @@ function openTaskReturn(i) {
         <p class="font16400" >Edit</p>
       </div>
     </div>
-
+    </div>
   </div>`;
 }
 

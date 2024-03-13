@@ -208,6 +208,15 @@ h2 {
 }
 
 /*-- open task window popup--*/
+  .blurr {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Hintergrundfarbe und Transparenz anpassen */
+    z-index: 999; /* Sicherstellen, dass es über anderen Elementen liegt */
+}
 
 .openwindow {
   z-index: 800;
