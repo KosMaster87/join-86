@@ -165,7 +165,7 @@ function updateBackgroundColorMain() {
 }
 
 window.addEventListener("resize", function () {
-  checkWidth();
+  checkScreenWidth();
 });
 
 function checkScreenWidth() {
