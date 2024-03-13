@@ -3,10 +3,11 @@
 async function loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor) {
   loadCurrentUserAlsoUsersAsObject()
   let currentUserId = await getGlobalUserId();
+  await setCurrentContactEmail(await email);
   await setCurrentContactId(contactId);
-  console.log('Ausgabe showSingleContact: ', userId, contactId, name, email, phone, signature, userColor);
-  await fillAllVariables();
-  console.log('fillAllVariables()', fillAllVariables(name, email, phone, signature, userColor));
+  console.log('Ausgabe showSingleContact - Contact Inhalte', userId, contactId, name, email, phone, signature, userColor);
+  await fillAllVariables(userId, contactId, name, email, phone, signature, userColor);
+  console.log('fillAllVariables()', await fillAllVariables(userId, contactId, name, email, phone, signature, userColor));
 }
 
 async function setCurrentContactId(contactId) {
@@ -23,7 +24,7 @@ async function setCurrentContactEmail(email) {
 }
 
 
-async function getCurrentContactEmail(email) {
+async function getCurrentContactEmail() {
 
   return await (getItem('currentContactEmail'));
 }
@@ -40,32 +41,39 @@ async function getGlobalUserId() {
   return currentUserId;
 }
 
+/* Variante Daten auslesen aus user.contacts)
 async function getContactInfos() {
   let contacts = await user.contacts;
+  console.log('RESPONSE USER.CONTACTS:', user.contacts);
   let currentContactId = await getCurrentContactId()
+  console.log('RESPONSE currentContactId:', await currentContactId);
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
+    console.log('EINZELNER KONTAKT', contact);
+    debugger;
     if (contact.contactId === await currentContactId) {
-      return contact;
+      return user.contacts[i].contactId;
     } else {
       console.log('ContactId was not found.')
     }
   }
-}
+}*/
 
+async function fillAllVariables(userId, contactId, name, email, phone, signature, userColor) {
+ /* let contact = await getContactInfos();Alternativlösung: Kontaktinfos auslesen aus user.contacts */
+ /* let email = contact.email; */
+  let userIdPlaceholder = userId; /* nur als Platzhalter zum überbrücken */
+  let contactIdPlaceholder = contactId; /* nur als Platzhalter zum überbrücken */
 
-
-
-async function fillAllVariables() {
-  let contact = await getContactInfos();
-  let email = contact.email;
-  document.getElementById('singleContactName').innerText = contact.name;
-  document.getElementById('singleContactEmail').innerText = contact.email;
-  document.getElementById('singleContactPhone').innerText = contact.phone;
-  document.getElementById('singleContactSignature').innerText = contact.signature;
-  document.getElementById('singleContactSignature').style.backgroundColor = contact.userColor;
+  document.getElementById('singleContactName').innerText = name;
+  document.getElementById('singleContactEmail').innerText = email;
+  document.getElementById('singleContactPhone').innerText = phone;
+  document.getElementById('singleContactSignature').innerText = signature;
+  document.getElementById('singleContactSignature').style.backgroundColor = userColor;
 
   setCurrentContactEmail(email);
+
+  return "AUSGABE";
 }
 
 async function openEmailProgram() {

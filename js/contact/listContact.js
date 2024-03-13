@@ -190,8 +190,8 @@ async function goFromListContactToShowSingleContact(userId, contactId, name, ema
     console.log('MOBILE VERSION');
     await loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
   } else {
-    await initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor);
-    document.getElementById("singleContactCol").style.display = "block";
+    /* await initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor);
+    document.getElementById("singleContactCol").style.display = "block"; */
     //slide effekt start function
     let singleContactCol = document.getElementById("singleContactCol");
     singleContactCol.classList.add("slide-in");
