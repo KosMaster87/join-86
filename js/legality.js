@@ -1,11 +1,17 @@
 /**
+ * Ohne sich angemeldet zu haben, die privat-policy lesen.
+ */
+function offlineLegality() {
+  window.location.assign("./pages/legality.html");
+}
+
+/**
  * Load the content of the legal-notice.
  */
 async function initLegalNotice() {
   await loadCurrentUserAlsoUsersAsObject();
   await includeHTML();
   setActiveLink("navLegalNotice");
-
 
   if (user) {
     createUserSignatureIcon();
@@ -20,11 +26,4 @@ async function initLegalNotice() {
     menuItemBox.style.display = "none";
     userSymbolContainerID.style.display = "none";
   }
-}
-
-/**
- * Ohne sich angemeldet zu haben, die privat-policy lesen.
- */
-function offlineLegality() {
-  window.location.assign("pages/legality.html");
 }
