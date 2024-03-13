@@ -5,5 +5,6 @@ async function initMainContact() {
     setActiveLink("navContacts");
     updateBackgroundColorMain(isListContactActive);
     await initListContact();
+    createUserSignatureIcon();
     document.getElementById("listContactContainer").style.display = "block";
   } 
