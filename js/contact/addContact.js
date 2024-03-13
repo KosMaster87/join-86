@@ -7,7 +7,6 @@ async function initAddContact() {
   editFocusBorder('Name', 'Email', 'Phone');
   resetAllInputMessages();
   resetAllAlertBorders();
-
 }
 
 
