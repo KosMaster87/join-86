@@ -4,8 +4,9 @@ async function loadShowSingleContact(userId, contactId, name, email, phone, sign
   loadCurrentUserAlsoUsersAsObject()
   let currentUserId = await getGlobalUserId();
   await setCurrentContactId(contactId);
-  console.log('Ausgabe showSingleContact: ',userId, contactId, name, email, phone, signature, userColor);
-  fillAllVariables(name, email, phone, signature, userColor);
+  console.log('Ausgabe showSingleContact: ', userId, contactId, name, email, phone, signature, userColor);
+  await fillAllVariables();
+  console.log('fillAllVariables()', fillAllVariables(name, email, phone, signature, userColor));
 }
 
 async function setCurrentContactId(contactId) {
@@ -39,19 +40,30 @@ async function getGlobalUserId() {
   return currentUserId;
 }
 
-
-async function getCurrentContactInfos() {
-
-  return getItem('currentContactInfos');
+async function getContactInfos() {
+  let contacts = await user.contacts;
+  let currentContactId = await getCurrentContactId()
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+    if (contact.contactId === await currentContactId) {
+      return contact;
+    } else {
+      console.log('ContactId was not found.')
+    }
+  }
 }
 
 
-function fillAllVariables(name, email, phone, signature, userColor) {
-  document.getElementById('singleContactName').innerText = name;
-  document.getElementById('singleContactEmail').innerText = email;
-  document.getElementById('singleContactPhone').innerText = phone;
-  document.getElementById('singleContactSignature').innerText = signature;
-  document.getElementById('singleContactSignature').style.backgroundColor = userColor;
+
+
+async function fillAllVariables() {
+  let contact = await getContactInfos();
+  let email = contact.email;
+  document.getElementById('singleContactName').innerText = contact.name;
+  document.getElementById('singleContactEmail').innerText = contact.email;
+  document.getElementById('singleContactPhone').innerText = contact.phone;
+  document.getElementById('singleContactSignature').innerText = contact.signature;
+  document.getElementById('singleContactSignature').style.backgroundColor = contact.userColor;
 
   setCurrentContactEmail(email);
 }

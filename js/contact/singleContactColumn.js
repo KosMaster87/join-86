@@ -1,5 +1,5 @@
 /* SHOW SINGLE CONTACT JS */
-
+/*
 async function initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor) {
   fillAllVariables(name, email, phone, signature, userColor);
   await setCurrentContactId(contactId);
@@ -56,7 +56,7 @@ async function showSingleContactInfos() {
   document.getElementById('singleContactCol').display = "flex";
 }
 
-/* SHOW SINGLE CONTACT - evtl. RAUSWERFEN */
+/* SHOW SINGLE CONTACT - evtl. RAUSWERFEN *//*
 async function goFromSingleContactToListContactContainer() {
   await setCurrentContactId([]);
   await initListContact();
@@ -83,4 +83,4 @@ function closeShowSingleContactContainer() {
   document.getElementById("showSingleContactContainer").style.display = "none";
   document.getElementById("mobileBtnAddContact").style.display = "block";
 
-}
+}*/

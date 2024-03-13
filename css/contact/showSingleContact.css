@@ -60,14 +60,14 @@
   margin-top: 8px;
 }
 
-.singleContactH1 {
+.singleContactHeadline {
   color: var(--black);
   font-weight: 700;
   font-size: 47px;
   line-height: 1.2;
 }
 
-.singleContactH3 {
+.singleContactSubtitle {
   font-weight: 400;
   font-size: 20px;
   line-height: 1.2;
