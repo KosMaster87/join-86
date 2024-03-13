@@ -131,7 +131,7 @@
 
     <!-- NEW EDIT Contact Container -->
     <div id="editContactContainer">
-      <div id="overlayFrame">
+      <div id="editOverlayFrame">
         <div id="contactCard">
           <div class="contactHeader">
             <div class="contactHeaderNav">
@@ -159,15 +159,19 @@
               <div id="contactContainerFlexZwei">
                 <!-- Hier eventuell DIV DRUMLEGEN -->
                 <div id="contactBodySignatureContainer"><!-- ZU BEGINN AUSBLENDEN -->
-                  <div id="editContactSignature" class="editContactSignature"><!-- Ü -->
+                  <div id="editContactBodySignature" class="editContactSignature"><!-- Ü -->
                     <img src="../../assets/img/addContact/person.svg" /> <!-- Ü -->
                   </div>
                 </div><!-- ENDE FLEX CONTAINER-->
                 <div class="contactBodyInputSection"> <!-- Naming prüfen auf beiden Seiten -->
                   <div class="contactBodyInputSectionCol"> <!-- Naming gleich prüfen auf beiden Seiten -->
-                    <div id="editContactInputFieldName" class="contactInputField">
-                      <input id="editContactInputName" placeholder="Name" class="nameInputfield" type="text" />
-                      <img src="../../assets/img/addContact/person-gray.svg" />
+                    <div id="editContactInputContainerName" class="contactInputContainer"
+                      onclick="editFocusBorder('Name', 'Email', 'Phone')" autofocus
+                    >
+                      <div id="editContactInputFieldName" class="contactInputField">
+                        <input id="editContactInputName" placeholder="Name" class="nameInputfield" type="text" />
+                        <img src="../../assets/img/addContact/person-gray.svg" />
+                      </div>
                     </div>
                     <div id="editContactInputFieldEmail" class="contactInputField">
                       <input id="editContactInputEmail" placeholder="Email" class="textInputfield" type="email" />

@@ -39,8 +39,10 @@ function desktopBtnGoFromListContactToAddContact() {
 
 /* EDIT CONTACT */
 
-function openEditContactContainer() {
+async function openEditContactContainer() {
+  await initEditContact()
   document.getElementById("editContactContainer").style.display = "block";
+  document.getElementById("editOverlayFrame").style.display = "block";
   document.getElementById("mobileBtnAddContact").style.display = "none";
   console.log("Open Edit Contact Container ist erfolgt!");
 }
