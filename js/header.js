@@ -46,6 +46,7 @@ function userClicksOutsideOfPopup(event) {
 async function logOut() {
   await setGlobalUserId("currentUserId", []);
   sessionStorage.removeItem("showedLoginGreeting");
+  localStorage.removeItem("rememberMe");
   window.location.assign("../index.html");
 }
 

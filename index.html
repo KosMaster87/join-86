@@ -33,6 +33,7 @@
         >
           <div class="headerLogin">
             <h1>Log in</h1>
+
             <div class="underlineFrameMobileLogIn"></div>
           </div>
 
@@ -84,7 +85,7 @@
               name="checkRemember"
               value="Remember me"
               onclick="handleRememberme()"
-              style="cursor: pointer;"
+              style="cursor: pointer"
             />
             <label class="rememberLabel" for="rememberMe">Remember me</label>
           </div>
@@ -267,5 +268,25 @@
         </div>
       </div>
     </div>
+
+    <script>
+      /**
+       * Check userinspiriens, if he will be remember herself.
+       */
+      let rememberMeCheckbox = document.getElementById("rememberMe");
+      window.addEventListener("DOMContentLoaded", function () {
+        const userDataString = localStorage.getItem("rememberMe");
+
+        if (userDataString) {
+          const userData = JSON.parse(userDataString);
+
+          document.getElementById("loginInputMail").value = userData.userId;
+          document.getElementById("loginInputPassword").value =
+            userData.password;
+
+          rememberMeCheckbox.checked = true;
+        }
+      });
+    </script>
   </body>
 </html>
