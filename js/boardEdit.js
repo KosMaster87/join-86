@@ -88,6 +88,10 @@ async function assignedtoContactBg(i, j) {
     image.src = "../assets/img/add_task/task_box.svg";
     let iconId = document.getElementById(`contactIconNumber${i}`);
     iconId.remove();
+    let removeName = user.tasks[j].assignedTo.findIndex(item => item.name === user.contacts[i].name);
+    if (removeName !== -1) {
+      user.tasks[j].assignedTo.splice(removeName, 1);
+    }
   } else {
     user.contacts[i].selected = true;
     let container = document.getElementById(`assignedContactContainer${i}`);
@@ -98,6 +102,10 @@ async function assignedtoContactBg(i, j) {
     let signature = document.getElementById(`ContactSignatureIcon${i}`).innerHTML;
     let userColor = user.contacts[i].userColor;
     contactListIcons.innerHTML += `<div id="contactIconNumber${i}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
+    user.tasks[j].assignedTo.push({name :user.contacts[i].name,
+      userColor
+      : 
+      user.contacts[i].userColor})
   }
 
   await setItem("users", users);

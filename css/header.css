@@ -22,6 +22,12 @@
   font-weight: 700;
   color: var(--lightBlue);
 }
+
+.nameIcon:hover {
+  cursor: pointer;
+  background-color: var(--lighterGray) !important;
+}
+
 @media only screen and (max-width: 319px) and (min-width: 250px) {
   .mainHeader {
     position: fixed;

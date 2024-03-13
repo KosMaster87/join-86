@@ -444,6 +444,7 @@ async function editBoardSubtaskDone(i, s) {
   } else {
     deleteSubtask(s);
   }
+  await setItem("users", users);
 }
 
 function renderBoardSubtasks(i) {
