@@ -192,9 +192,14 @@ async function goFromListContactToShowSingleContact(userId, contactId, name, ema
   } else {
     /* await initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor);
     document.getElementById("singleContactCol").style.display = "block"; */
-    //slide effekt start function
-    let singleContactCol = document.getElementById("singleContactCol");
-    singleContactCol.classList.add("slide-in");
+    await loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
+     //slide effekt start function
+     let singleContactCol = document.getElementById("singleContactCol");
+     singleContactCol.classList.add("slide-in");
+
+   /* GEGENTEST document.getElementById("singleContactColN").style.display="block";
+    let singleContactCol = document.getElementById("singleContactColN");
+    singleContactCol.classList.add("slide-in"); */
 
     console.log('DESKTOP VERSION'); 
   }

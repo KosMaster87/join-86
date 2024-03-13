@@ -81,6 +81,10 @@
   margin-top: 36px;
 }
 
+#singleContactColN{
+  display: none;
+}
+
 .singleContactDisplayIdentidy {
   display: flex;
   gap: 16px;
@@ -216,7 +220,7 @@
     display: none; 
   }
 
-  .singleContactH1 {
+  .singleContactHeadline {
     order: 1;
     font-size: 61px;
   }
@@ -227,7 +231,7 @@
     width: 59px;
   }
 
-  .singleContactH3 {
+  .singleContactSubtitle {
     order: 3;
     font-size: 27px;
   }

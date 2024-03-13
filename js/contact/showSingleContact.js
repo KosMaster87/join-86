@@ -72,6 +72,14 @@ async function fillAllVariables(userId, contactId, name, email, phone, signature
   document.getElementById('singleContactSignature').style.backgroundColor = await userColor;
 
   setCurrentContactEmail(await email);
+/*
+  document.getElementById('singleContactNameN').innerText = await name;
+  document.getElementById('singleContactEmailN').innerText = await email;
+  document.getElementById('singleContactPhoneN').innerText = await phone;
+  document.getElementById('singleContactSignatureN').innerText = await signature;
+  document.getElementById('singleContactSignatureN').style.backgroundColor = await userColor;
+
+  setCurrentContactEmail(await email);*/
 
   return "AUSGABE FUNKTION WIRD AUSGELÖST" + name; /* TEST ZUR AUSGABE */
 }
