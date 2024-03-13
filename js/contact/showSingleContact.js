@@ -54,7 +54,6 @@ function fillAllVariables(name, email, phone, signature, userColor) {
   document.getElementById('singleContactSignature').style.backgroundColor = userColor;
 
   setCurrentContactEmail(email);
-  return 
 }
 
 async function openEmailProgram() {

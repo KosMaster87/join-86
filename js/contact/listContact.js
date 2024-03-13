@@ -193,7 +193,7 @@ async function goFromListContactToShowSingleContact(userId, contactId, name, ema
     console.log('MOBILE VERSION');
   } else {
     await initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor);
-    document.getElementById("singleContactCol").style.display = "flex";
+    document.getElementById("singleContactColumn").style.display = "flex";
     console.log('DESKTOP VERSION'); 
   }
 } 
