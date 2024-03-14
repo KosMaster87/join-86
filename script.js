@@ -10,8 +10,8 @@ async function loadUsers() {
   try {
     console.log("loadUsers: Start");
     users = JSON.parse(await getItem("users"));
-    console.log("loadUsers: Users loaded successfully");
-    console.log(users);
+    // console.log("loadUsers: Users loaded successfully");
+    // console.log(users);
   } catch (e) {
     console.error("loadUsers: Loading error:", e);
   }
@@ -95,8 +95,8 @@ async function loadCurrentUserAlsoUsersAsObject() {
   if (currentEmail) {
     // Lade den Benutzer anhand des Index aus dem `users`-Array
     user = users.find((userIndex) => userIndex.email === currentEmail);
-    console.log(users);
-    console.log(user);
+    // console.log(users);
+    // console.log(user);
   } else {
     console.log("Benutzer nicht gefunden");
   }

@@ -1,6 +1,4 @@
 const contactColors = ["var(--red)", "var(--yellow)", "var(--orangeIcons)", "var(--green)", "var(--pink)", "var(--mintGreen)"];
-let allContactsFromAllUsers = [];
-let userId = getGlobalUserId();
 
 async function initAddContact() {
   resetInputFields();
@@ -25,17 +23,12 @@ async function initSaveProcess() {
   }
 }
 
-async function getGlobalUserId() {
-  let currentUserId = await getItem('currentUserId');
 
-  return currentUserId;
-}
 
 async function saveContact(name, email, phone) {
   let contactId = generateRandomId();
   let userColor = getRandomColor(contactColors);
   let signature = getSignature(name);
-  let userId = await getGlobalUserId();
 
   let contact = {
     userId: userId,
@@ -49,7 +42,7 @@ async function saveContact(name, email, phone) {
 
   user.contacts.push(contact);
   setItem("users", users);
-  closeAddContactAndGoToShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor);
+  closeAddContactAndGoToShowSingleContactContainer(contactId, name, email, phone, signature, userColor);
   document.getElementById('overlayFrame').style.display = "flex";
 }
 
@@ -58,24 +51,24 @@ async function getAllContactsFromCurrentUser() {
   return await getAllContactsFromCurrentUserSorted();
 }
 
-async function getAllContactsFromCurrentUser() {
-  let currentUserId = await getGlobalUserId();
-  let users = await getAllContactsFromAllUsers();
-  const contactsArray = [];
-  for (let i = 0; i < users.length; i++) {
-    const user = users[i];
-    if (user.email == currentUserId) {
-      for (let j = 0; j < user.contacts.length; j++) {
-        const contact = user.contacts[j];
-        if (contact.userId == currentUserId) {
-          contactsArray.push(contact);
-        }
-      }
-      break;
-    }
-  }
-  return contactsArray;
-}
+// async function getAllContactsFromCurrentUser() {
+//   let currentUserId = await getGlobalUserId();
+//   let users = await getAllContactsFromAllUsers();
+//   const contactsArray = [];
+//   for (let i = 0; i < users.length; i++) {
+//     const user = users[i];
+//     if (user.email == currentUserId) {
+//       for (let j = 0; j < user.contacts.length; j++) {
+//         const contact = user.contacts[j];
+//         if (contact.userId == currentUserId) {
+//           contactsArray.push(contact);
+//         }
+//       }
+//       break;
+//     }
+//   }
+//   return contactsArray;
+// }
 
 function resetInputFields() {
   document.getElementById('addContactInputName').value = '';

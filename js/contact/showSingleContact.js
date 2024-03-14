@@ -1,13 +1,15 @@
 /* SHOW SINGLE CONTACT JS */
 
-async function loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor) {
+
+
+async function loadShowSingleContact(contactId, name, email, phone, signature, userColor) {
   loadCurrentUserAlsoUsersAsObject()
   let currentUserId = await getGlobalUserId();
   await setCurrentContactEmail(await email);
   await setCurrentContactId(contactId);
   console.log('Ausgabe showSingleContact - Contact Inhalte', userId, contactId, name, email, phone, signature, userColor);
-  await fillAllVariables(userId, contactId, name, email, phone, signature, userColor);
-  console.log('fillAllVariables()', await fillAllVariables(userId, contactId, name, email, phone, signature, userColor));
+  await fillAllVariables(contactId, name, email, phone, signature, userColor);
+  console.log('fillAllVariables()', await fillAllVariables(contactId, name, email, phone, signature, userColor));
 }
 
 async function setCurrentContactId(contactId) {

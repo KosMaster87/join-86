@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="../css/contact/mainContact.css" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/menu.css" />
+  <link rel="stylesheet" href="./../style.css" />
+
   <link rel="stylesheet" href="../css/contact/contacts.css" />
   <link rel="stylesheet" href="../css/contact/contactCard.css" />
   <link rel="stylesheet" href="../css/contact/mobileBtn.css" />
@@ -16,16 +20,12 @@
   <link rel="stylesheet" href="../css/contact/singleContactColumn.css" />
   <link rel="stylesheet" href="../css/contact/showSingleContact.css" />
 
-  <link rel="stylesheet" href="../css/header.css" />
-  <link rel="stylesheet" href="../css/menu.css" />
-  <link rel="stylesheet" href="./../style.css" />
-
-  <script src="../js/menu.js"></script>
-  <script src="../js/header.js"></script>
-  <script src="./../../includeHTML.js"></script>
+  <script src="./../includeHTML.js"></script>
   <script src="./../script.js"></script>
   <script src="../js/register.js"></script>
   <script src="../js/login.js"></script>
+  <script src="../js/menu.js"></script>
+  <script src="../js/header.js"></script>
 
   <script src="../js/contact/mainContact.js"></script>
   <script src="../js/contact/addContact.js"></script>
@@ -38,8 +38,6 @@
 
   <title>Contacts Page</title>
 </head>
-
-<!-- initContacts() ist in der contacts.js deklariert. Da die weiteren Anweisungen initialisieren. -->
 
 <body onload="initMainContact()">
   <div w3-include-html="../assets/templates/header.html" id="mainHeader" class="mainHeader"></div>
@@ -338,10 +336,8 @@
       <!--</div> DIV ENDE MAIN CONTENT-->
 
 
-      <!-- AFTER LOGIN MAIN MENU ANFANG -->
-      <div w3-include-html="../assets/templates/menu.html" id="afterLoginMainMenu" class="afterLoginMainMenu"></div>
-      <!-- AFTER LOGIN MAIN MENU ENDE-->
-
+     
+      
       <!-- Contact Created Overlay -->
       <div id="contactOverlay">
         <span>Contact succesfully created</span>
@@ -381,7 +377,9 @@
           <img class="desktopBtnAddContactIcon" src="../assets/img/addContact/person_add.svg" />
         </div>
       </a>
+    </div>
 
+
+ <div w3-include-html="../assets/templates/menu.html" id="afterLoginMainMenu" class="afterLoginMainMenu"></div>
 </body>
-
 </html>

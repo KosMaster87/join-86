@@ -54,19 +54,19 @@ async function getGlobalAllContactsFromCurrentUser() {
 }
     
     
-function getAllContactsFromCurrentUser(userId, allUserContacts) {
-    let currentUserId = userId;
-    let allContacts = allUserContacts;
-    let allContactsFromCurrentUser = [];
-    for (let i = 0; i < allContacts.length; i++) {
-        const contact = allContacts[i];
-        if (contact['userId'] == currentUserId) {
-            allContactsFromCurrentUser.push(contact);
-        }        
-    }
+// function getAllContactsFromCurrentUser(userId, allUserContacts) {
+//     let currentUserId = userId;
+//     let allContacts = allUserContacts;
+//     let allContactsFromCurrentUser = [];
+//     for (let i = 0; i < allContacts.length; i++) {
+//         const contact = allContacts[i];
+//         if (contact['userId'] == currentUserId) {
+//             allContactsFromCurrentUser.push(contact);
+//         }        
+//     }
     
-    return allContactsFromCurrentUser;
-}
+//     return allContactsFromCurrentUser;
+// }
 
 
 async function getCurrentContact(selectedId, allContactsFromCurrentUser) {
