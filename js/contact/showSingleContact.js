@@ -1,10 +1,10 @@
 /* SHOW SINGLE CONTACT JS */
 
 async function loadShowSingleContact(contactId) {
-  await loadCurrentUserAlsoUsersAsObject()
   await getCurrentContact(contactId);
-  await setCurrentContactEmail(await email);
+ 
   await fillAllVariables(contactId);
+  await setCurrentContactEmail(email);
 }
 
 async function setCurrentContactEmail(email) {
@@ -35,13 +35,13 @@ async function getCurrentContact(currentContactId) {
 async function fillAllVariables(contactId) {
   let contact = await getCurrentContact(contactId);
 
-  document.getElementById('singleContactName').innerText = await contact.name;
-  document.getElementById('singleContactEmail').innerText = await contact.email;
-  document.getElementById('singleContactPhone').innerText = await contact.phone;
-  document.getElementById('singleContactSignature').innerText = await contact.signature;
-  document.getElementById('singleContactSignature').style.backgroundColor = await contact.userColor;
+  document.getElementById('singleContactName').innerText =  contact.name;
+  document.getElementById('singleContactEmail').innerText = contact.email;
+  document.getElementById('singleContactPhone').innerText = contact.phone;
+  document.getElementById('singleContactSignature').innerText = contact.signature;
+  document.getElementById('singleContactSignature').style.backgroundColor = contact.userColor;
 
-  setCurrentContactEmail(await contact.email);
+  setCurrentContactEmail(contact.email);
 
   console.log("AUSGABE FUNKTION WIRD AUSGELÖST", contact.name); /* TEST ZUR AUSGABE */
 }
