@@ -2,13 +2,13 @@
 
 async function loadShowSingleContact(contactId) {
   await getCurrentContact(contactId);
- 
   await fillAllVariables(contactId);
-  await setCurrentContactEmail(email);
+  /*await setCurrentContactEmail(email);*/
 }
 
 async function setCurrentContactEmail(email) {
-  await setItem('currentContactEmail', email);
+  console.log(email);
+  await setItem("currentContactEmail", email);
 }
 
 async function getCurrentContactEmail() {
@@ -17,15 +17,12 @@ async function getCurrentContactEmail() {
 
 async function getCurrentContact(currentContactId) {
   let contacts = await user.contacts;
-  console.log('RESPONSE USER.CONTACTS:', user.contacts);
   let contactId = currentContactId;
-  console.log('RESPONSE currentContactId:', await contactId);
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
-    console.log('EINZELNER KONTAKT', contact);
-    debugger;
     if (contact.contactId === await contactId) {
-      return user.contacts[i].contactId;
+      console.log('SELEKTIERTER KONTAKT', user.contacts[i])
+      return user.contacts[i];
     } else {
       console.log('ContactId was not found.')
     }
@@ -34,8 +31,10 @@ async function getCurrentContact(currentContactId) {
 
 async function fillAllVariables(contactId) {
   let contact = await getCurrentContact(contactId);
+  console.log('Contact lesbar ?', contact)  
+  console.log('Name', contact.name);
 
-  document.getElementById('singleContactName').innerText =  contact.name;
+  document.getElementById('singleContactName').innerText = contact.name;
   document.getElementById('singleContactEmail').innerText = contact.email;
   document.getElementById('singleContactPhone').innerText = contact.phone;
   document.getElementById('singleContactSignature').innerText = contact.signature;
