@@ -111,11 +111,6 @@ async function goFromListContactToShowSingleContact(contactId) {
   if (result === "mobileVersion") {
     await loadShowSingleContact(
       contactId,
-      name,
-      email,
-      phone,
-      signature,
-      userColor
     );
     document.getElementById("mobileBtnThreePoints").style.display = "block";
     document.getElementById("showSingleContactContainer").style.display =
@@ -126,11 +121,6 @@ async function goFromListContactToShowSingleContact(contactId) {
     document.getElementById("singleContactCol").style.display = "block"; */
     await loadShowSingleContact(
       contactId,
-      name,
-      email,
-      phone,
-      signature,
-      userColor
     );
     //slide effekt start function
     let singleContactCol = document.getElementById("singleContactCol");

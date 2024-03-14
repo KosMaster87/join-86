@@ -12,27 +12,25 @@ async function setCurrentContactEmail(email) {
 }
 
 async function getCurrentContactEmail() {
-
-  return await (getItem('currentContactEmail'));
+  return await getItem('currentContactEmail');
 }
 
-async function getCurrentContact(contactId) {
+async function getCurrentContact(currentContactId) {
   let contacts = await user.contacts;
   console.log('RESPONSE USER.CONTACTS:', user.contacts);
-  let currentContactId = await getCurrentContactId()
-  console.log('RESPONSE currentContactId:', await currentContactId);
+  let contactId = currentContactId;
+  console.log('RESPONSE currentContactId:', await contactId);
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     console.log('EINZELNER KONTAKT', contact);
     debugger;
-    if (contact.contactId === await currentContactId) {
+    if (contact.contactId === await contactId) {
       return user.contacts[i].contactId;
     } else {
       console.log('ContactId was not found.')
     }
   }
 }
-
 
 async function fillAllVariables(contactId) {
   let contact = await getCurrentContact(contactId);
@@ -45,14 +43,13 @@ async function fillAllVariables(contactId) {
 
   setCurrentContactEmail(await contact.email);
 
-  return "AUSGABE FUNKTION WIRD AUSGELÖST" + contact.name; /* TEST ZUR AUSGABE */
+  console.log("AUSGABE FUNKTION WIRD AUSGELÖST", contact.name); /* TEST ZUR AUSGABE */
 }
 
 async function openEmailProgram() {
   let email = await getCurrentContactEmail();
   window.open('mailto: ' + email);
 }
-
 
 /* SHOW SINGLE CONTACT TO LIST CONTACT CONTAINER */
 async function goFromSingleContactToListContactContainer() {
