@@ -10,9 +10,12 @@ async function initMainContact() {
   // updateBackgroundColorMain(isListContactActive);
   await initListContact();
   createUserSignatureIcon();
+  /*resetUserContacts();*/
   loadContactsForExample(contactsNew);
   // document.getElementById("listContactContainer").style.display = "block";
+  console.log('AUSGABE USER.CONTACTS', user.contacts)
 }
+
 
 
 let contactsNew = [

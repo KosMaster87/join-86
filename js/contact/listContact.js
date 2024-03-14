@@ -22,7 +22,7 @@ async function initListContact() {
  * 
  */
 function sortAllContactsFromCurrentUserAlphabetical() {
-  console.log('AUSGABE USER.CONTACTS',user.contacts);
+  console.log('AUSGABE USER.CONTACTS FUNCTION ALPHABETICAL',user.contacts);
   user.contacts.sort((a, b) => {
     const nameA = a.name.toUpperCase();
     const nameB = b.name.toUpperCase();

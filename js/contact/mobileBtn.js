@@ -62,7 +62,7 @@ function saveEditContact() {
   document.getElementById("editContact").style.display = "none";
 }
 
-
+/*
 function openShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor) {
   goToTopOfSite();
   document.getElementById("showSingleContactContainer").style.display = "block";
@@ -71,8 +71,8 @@ function openShowSingleContactContainer(userId, contactId, name, email, phone, s
   document.getElementById("mobileBtnAddContact").style.display = "none";
   document.getElementById("mobileBtnThreePoints").style.display = "block";
   console.log('Open Show Single Contact Container');
-  loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor);
-}
+  loadShowSingleContact(contactId);
+}*/
 
 
 /* DESKTOP ADD CONTACT BUTTONS DESKTOP */

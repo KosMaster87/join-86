@@ -14,11 +14,15 @@ async function getCurrentContactEmail() {
 }
 
 async function getCurrentContact(currentContactId) {
+  console.log('RES',currentContactId);
   let contacts = user.contacts;
+  console.log('RES user.contacts',user.contacts);
   let contactId = currentContactId;
+  console.log('RES',contactId);
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     if (contact.contactId === contactId) {
+      console.log('RES MÖGLICHER KONTAKT ?', user.contacts[i])
       return user.contacts[i];
     } else {
       console.log('ContactId was not found.')
