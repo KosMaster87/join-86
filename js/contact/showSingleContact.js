@@ -1,50 +1,22 @@
 /* SHOW SINGLE CONTACT JS */
 
-
-
-async function loadShowSingleContact(contactId, name, email, phone, signature, userColor) {
-  loadCurrentUserAlsoUsersAsObject()
-  let currentUserId = await getGlobalUserId();
+async function loadShowSingleContact(contactId) {
+  await loadCurrentUserAlsoUsersAsObject()
+  await getCurrentContact(contactId);
   await setCurrentContactEmail(await email);
-  await setCurrentContactId(contactId);
-  console.log('Ausgabe showSingleContact - Contact Inhalte', userId, contactId, name, email, phone, signature, userColor);
-  await fillAllVariables(contactId, name, email, phone, signature, userColor);
-  console.log('fillAllVariables()', await fillAllVariables(contactId, name, email, phone, signature, userColor));
+  await fillAllVariables(contactId);
 }
-
-async function setCurrentContactId(contactId) {
-  await setItem('currentContactId', contactId);
-}
-
-async function getCurrentContactId() {
-  return await getItem('currentContactId');
-}
-
 
 async function setCurrentContactEmail(email) {
   await setItem('currentContactEmail', email);
 }
-
 
 async function getCurrentContactEmail() {
 
   return await (getItem('currentContactEmail'));
 }
 
-
-async function getCurrentContactId() {
-  return await getItem('currentContactId');
-}
-
-
-async function getGlobalUserId() {
-  let currentUserId = await getItem('currentUserId');
-
-  return currentUserId;
-}
-
-/* Variante Daten auslesen aus user.contacts)
-async function getContactInfos() {
+async function getCurrentContact(contactId) {
   let contacts = await user.contacts;
   console.log('RESPONSE USER.CONTACTS:', user.contacts);
   let currentContactId = await getCurrentContactId()
@@ -59,31 +31,21 @@ async function getContactInfos() {
       console.log('ContactId was not found.')
     }
   }
-}*/
+}
 
-async function fillAllVariables(userId, contactId, name, email, phone, signature, userColor) {
- /* let contact = await getContactInfos();Alternativlösung: Kontaktinfos auslesen aus user.contacts */
- /* let email = contact.email; */
-  let userIdPlaceholder = userId; /* nur als Platzhalter zum überbrücken */
-  let contactIdPlaceholder = contactId; /* nur als Platzhalter zum überbrücken */
 
-  document.getElementById('singleContactName').innerText = await name;
-  document.getElementById('singleContactEmail').innerText = await email;
-  document.getElementById('singleContactPhone').innerText = await phone;
-  document.getElementById('singleContactSignature').innerText = await signature;
-  document.getElementById('singleContactSignature').style.backgroundColor = await userColor;
+async function fillAllVariables(contactId) {
+  let contact = await getCurrentContact(contactId);
 
-  setCurrentContactEmail(await email);
-/*
-  document.getElementById('singleContactNameN').innerText = await name;
-  document.getElementById('singleContactEmailN').innerText = await email;
-  document.getElementById('singleContactPhoneN').innerText = await phone;
-  document.getElementById('singleContactSignatureN').innerText = await signature;
-  document.getElementById('singleContactSignatureN').style.backgroundColor = await userColor;
+  document.getElementById('singleContactName').innerText = await contact.name;
+  document.getElementById('singleContactEmail').innerText = await contact.email;
+  document.getElementById('singleContactPhone').innerText = await contact.phone;
+  document.getElementById('singleContactSignature').innerText = await contact.signature;
+  document.getElementById('singleContactSignature').style.backgroundColor = await contact.userColor;
 
-  setCurrentContactEmail(await email);*/
+  setCurrentContactEmail(await contact.email);
 
-  return "AUSGABE FUNKTION WIRD AUSGELÖST" + name; /* TEST ZUR AUSGABE */
+  return "AUSGABE FUNKTION WIRD AUSGELÖST" + contact.name; /* TEST ZUR AUSGABE */
 }
 
 async function openEmailProgram() {
@@ -92,9 +54,8 @@ async function openEmailProgram() {
 }
 
 
-/* SHOW SINGLE CONTACT */
+/* SHOW SINGLE CONTACT TO LIST CONTACT CONTAINER */
 async function goFromSingleContactToListContactContainer() {
-  await setCurrentContactId([]);
   await initListContact();
   document.getElementById("showSingleContactContainer").style.display = "none";
   document.getElementById("addContactContainer").style.display = "none";
@@ -116,6 +77,5 @@ async function goFromShowSingleContactToEditContact() {
 function closeShowSingleContactContainer() {
   document.getElementById("showSingleContactContainer").style.display = "none";
   document.getElementById("mobileBtnAddContact").style.display = "block";
-
 }
 
