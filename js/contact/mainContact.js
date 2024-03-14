@@ -11,13 +11,13 @@ async function initMainContact() {
   await initListContact();
   createUserSignatureIcon();
   /*resetUserContacts();*/
-  loadContactsForExample(contactsNew);
+  /*loadContactsForExample(contactsNew); nur vorübergehend */
   // document.getElementById("listContactContainer").style.display = "block";
   console.log('AUSGABE USER.CONTACTS', user.contacts)
 }
 
 
-
+/* nur vorrübergehend belassen bis addContact funktioniert und anschließend löschen
 let contactsNew = [
   {
   name: "eins eins",
@@ -48,5 +48,9 @@ let contactsNew = [
 }];
 
 function loadContactsForExample(contactsNew) {
-  user.contacts.push(contactsNew);
-}
+  debugger;
+  user.contacts = contactsNew;
+  debugger; 
+
+  setItem('users', users);
+} */
