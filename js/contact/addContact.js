@@ -132,7 +132,6 @@ function checkAllInputFields(name, email, phone) {
     console.log('Fehlerhafte Dateneingabe')
     return false;
   }
-
 }
 
 function checkInputName(input) {
@@ -194,18 +193,18 @@ function resetInputMessage(inputField) {
   document.getElementById(inputField).innerText = '';
 }
 
+function resetAllInputMessages() {
+  resetInputMessage('addContactMessageName');
+  resetInputMessage('addContactMessageEmail');
+  resetInputMessage('addContactMessagePhone');
+}
+
 function showAlertBorder(inputContainer) {
   document.getElementById(inputContainer).classList.add('alertBorder');
 }
 
 function resetAlertBorder(inputContainer) {
   document.getElementById(inputContainer).classList.remove('alertBorder');
-}
-
-function resetAllInputMessages() {
-  resetInputMessage('addContactMessageName');
-  resetInputMessage('addContactMessageEmail');
-  resetInputMessage('addContactMessagePhone');
 }
 
 function resetAllAlertBorders() {
@@ -230,12 +229,6 @@ function addFocusBorder(containerId) {
 function removeFocusBorder(containerId) {
   let input = document.getElementById('addContactInputContainer' + containerId);
   input.classList.remove('focus');
-}
-
-function resetAllInputAttributes() {
-  resetAllInputMessages();
-  resetAllInputContainer();
-  resetAllInputAttributes()
 }
 
 async function closeAddContactAndGoToShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor) {

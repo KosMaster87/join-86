@@ -1,182 +1,418 @@
 /* EDIT CONTACT CSS */
 
 #mobileBtnEditContact {
-    background-color: var(--lightGray);
-    border-radius: 50%;
-    position: absolute; 
-    width: 56px;
-    height: 56px;
-    position: fixed;
-    bottom: 8.5%;
-    right: 5%;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    line-height: 1.2;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: var(--lightGray);
+  border-radius: 50%;
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  position: fixed;
+  bottom: 8.5%;
+  right: 5%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  line-height: 1.2;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 #mobileBtnEditContact:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
+
 /* JETZT AB HIER EDIT CONTACT */
 
 #editContactContainer {
-    background-color: rgba(0, 0, 0, 0.25);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 22;
-} 
+  background-color: rgba(0, 0, 0, 0.25);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 22;
+}
 
 .editContactHeaderSection {
-    margin-top: 80px;  
+  margin-top: 80px;
 }
+
 /* ÜBERARBEITEN */
-.editContactHeadline  {
-    color: var(--white);
-    font-weight: 700;
-    font-size: 47px;
-    line-height: 1.2;
+.editContactHeadline {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 47px;
+  line-height: 1.2;
 }
 
 .editContactSubtitle {
-    color: var(--white);
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.2;
-    display: none;
+  color: var(--white);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  display: none;
 }
 
-#editContactHeaderSignature {   
-    font-size: 47px;
-    line-height: 1.2;
-    color: var(--white);     
-    width: 120px;
-    height: 120px;
-    border: 2px solid var(--white);
-    border-radius: 50%;
-    z-index: 5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: 92px;
-    left: calc(50% - 61px);
-    /*background-color: var(--orangeIcons);*/
+#editContactHeaderSignature {
+  font-size: 47px;
+  line-height: 1.2;
+  color: var(--white);
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 92px;
+  left: calc(50% - 61px);
+  /*background-color: var(--orangeIcons);*/
 }
-    
+
+.editContactBodySignature {
+  display: none;
+}
+
+/* kann vermutlich gelöscht werden */
+
+
 .editContactBtnRow {
-    display: flex;
-    margin-top: 36px;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
+  display: flex;
+  margin-top: 36px;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
 }
 
 .editContactBtnDelete {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.2;
-    color: var(--lightGray);
-    background-color: var(--white);
-    border-radius: 10px;
-    padding: 18px 10px; 
-    border: 1px solid var(--lightGray);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--lightGray);
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 18px 10px;
+  border: 1px solid var(--lightGray);
 }
 
 .editContactBtnDelete:hover {
-    cursor: pointer;
-} 
-/* PRÜFEN */
-#contactBodySignatureContainer{
-    display: none; /* display none evtl. extra entfernen */
+  cursor: pointer;
 }
 
-/*
-.desktopAddContactGetBackFlex {
-    display: none; 
-} */
+/* PRÜFEN */
+#contactBodySignatureContainer {
+  display: none;
+  /* display none evtl. extra entfernen */
+}
+
+.contactInputContainer {
+  border: solid 1px var(--lighterGray);
+  padding: 12px 16px 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: var(--white);
+  flex: 1;
+  gap: 8px;
+}
+
+.contactInputContainer:hover {
+  cursor: pointer;
+}
+
+/* Zusammenfassen */
+#editContactInputContainerName {
+  border: solid 1px var(--lighterGray);
+}
+
+#editContactInputContainerEmail {
+  border: solid 1px var(--lighterGray);
+}
+
+#editContactInputContainerPhone {
+  border: solid 1px var(--lighterGray);
+}
+
 
 #editContactInputFieldName {
-    border: 1px solid var(--lighterGray);
+  border: 1px solid var(--lighterGray);
+  width: 100%;
 }
 
 #editContactInputFieldName:focus {
-    border-color: var(--lightBlue);
+  border-color: var(--lightBlue);
 }
 
 #editContactInputFieldEmail {
-    border: 1px solid var(--lighterGray);
+  border: 1px solid var(--lighterGray);
 }
 
 #editContactInputFieldPhone {
-    border: 1px solid var(--lighterGray);
+  border: 1px solid var(--lighterGray);
+}
+
+/* Zusammenfassen */
+#editContactMessageName {
+  font-size: 11px;
+  color: red;
+}
+
+#editContactMessageEmail {
+  font-size: 11px;
+  color: red;
+}
+
+#editContactMessagePhone {
+  font-size: 11px;
+  color: red;
+}
+
+#contactFlexContainer {
+  display: inline-block;
+  flex: 1;
+}
+
+#editContactInputName {
+  width: 100%;
+}
+
+#editContactInputEmail {
+  width: 100%;
+}
+
+#editContactInputPhone {
+  width: 100%;
 }
 
 /* AB HIER KOMPLETT ÜBERARBEITEN VON ADD GEKLAUT */
-@media screen and (min-width: 1000px) {
-
-}
+@media screen and (min-width: 1000px) {}
 
 @media screen and (min-width: 1440px) {
-    #editContactContainer {
-        position: absolute;
-        width: 100vw; 
-        height: 100vh; 
-        right: 0;
-        left: 0;
-        top: 0; 
-    }
-/* ABWANDELN */
-    #editContactHeaderSignature{
-        display: none;
-    }
-/* PRÜFEN - vorher add */       
-    .editContactHeaderSection {
-        display: flex;
-        flex-direction: column;
-        gap: 5px; 
-        align-items: flex-start;
-        margin: 0;
-    }
-/* PRÜFEN - vorher add */ 
-/* ABWANDELN */
-    .editContactHeadline {
-        font-size: 61px; /* Wechsel */
-        line-height: 1.2;
-    }
- 
-    .editContactSubtitle {
-        color: var(--white);
-        font-weight: 400;
-        font-size: 27px; 
-    }
-    /* PRÜFEN */   
- 
- /*
-    .contactBodyEmptySignature { 
-        width: 120px;
-        height: 120px;
-        background-color: var(--lighterGray);
-        border: 2px solid var(--white);
-        border-radius: 50%;
-        z-index: 5; 
-        display: flex; 
-        justify-content: center;
-        align-items: center;
-        position: 0; 
-        top: 0; 
-        left: 0; 
-        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-     
-    }*/
+  #editContactContainer {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+
+  /* ABWANDELN */
+  #editContactHeaderSignature {
+    display: none;
+  }
+
+  /* PRÜFEN - vorher add */
+  .editContactHeaderSection {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+    margin: 0;
+  }
+
+  /* PRÜFEN - vorher add */
+  /* ABWANDELN */
+  .editContactHeadline {
+    font-size: 61px;
+    /* Wechsel */
+    line-height: 1.2;
+  }
+
+  .editContactSubtitle {
+    color: var(--white);
+    font-weight: 400;
+    font-size: 27px;
+  }
+
+  .contactBodyInputSectionCol {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /*gap: 15px; testen, ob verzichtbar aufgrund der MessageContainer */
+  }
+
+  .nameInputField {
+    width: 100%;
+  }
+  
+  .contactBtnSave:hover {
+    cursor: pointer;
+  }
+  
+  #contactBtnSaveIcon {
+    margin-left: 8px;
+  }
+  
+  input::placeholder {
+    color: var(--lighterGray);
+  }
+  
+  .contactInputField {
+    width: 397px;
+  }
+  .contactInputField {
+    background-color: transparent;
+    border-radius: 10px;
+    height: 41px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 21px;
+  }
+  
+  .contactInputField:hover {
+    cursor: pointer;
+  }
+  
+  .contactBodytBtnRow {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .contactBtnSave {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--white);
+    background-color: var(--lightGray);
+    border-radius: 10px;
+    padding: 18px 10px;
+  }
+  
+  .contactBtnSave:hover {
+    cursor: pointer;
+  }
+  
+  #contactBtnSaveIcon {
+    margin-left: 8px;
+  }
+
+  #desktopCancelBtn {
+    display: none;
+    border: 1px solid var(--lightGray);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+    padding: 18px 10px;
+  }
+
+
+@media screen and (min-width: 300px) {
+  .contactInputContainer {
+    width: 100%;
+    /* übertragen editContact*/
+  }
+  #editContactContainer {
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+}
+
+@media screen and (min-width: 456px) {
+  #contactCard {
+    /* edit */
+    width: 90%;
+  }
+  #editContactContainer {
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+}
+
+@media screen and (max-width: 721px) {
+  #editContactContainer {
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+  }
+  .contactBodyInputSectionCol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/**ab Zeile 400 nach unten weitermachen  **/
+
+
+
+/* bis hierher */
+  .editContactBodySignature {
+    width: 120px;
+    height: 120px;
+    background-color: var(--lighterGray);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    z-index: 5;
+    /* Wechsel */
+    display: flex;
+    /* beim oberen Element nochmal prüfen */
+    justify-content: center;
+    align-items: center;
+    position: 0;
+    /* Wechsel */
+    top: 0;
+    /* Wechsel */
+    left: 0;
+    /* Wechsel */
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    /* Wechsel display none an der Stelle entfernt */
+  }
+
+  #contactBodyCloseIcon {
+    display: block;
+    position: relative;
+    top: -93px;
+    left: 684px;
+  }
+
+  #contactContainerFlexZwei {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .contactBodyInputSection {
+    width: 56.65%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contactBodyInputSectionCol {
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 32px;
+    /* Wechsel */
+  }
+
+  .contactBodytBtnRow {
+    margin-top: 36px;
+    display: flex;
+    justify-content: flex-start;
+    /* Wechsel */
+    align-items: center;
+    gap: 25px;
+    /* Wechsel */
+  }
+
+  #desktopCancelBtn {
+    display: inline;
+    /* Wert nachträglich ändern */
+  }
+
+  .desktopCancelBtn:hover {
+    border: 1px solid var(--lightBlue);
+    color: var(--lightBlue);
+  }
 }

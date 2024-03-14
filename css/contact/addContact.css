@@ -172,7 +172,7 @@
 
 .addContactBodySignature {
   display: none;
-}
+} /* kann vermutlich gelöscht werden */
 
 #contactBodySignatureContainer {
   display: none;
@@ -211,6 +211,10 @@
 }
 
 /* Zusammenfassen */
+#addContactInputContainerName {
+  border: solid 1px var(--lighterGray);
+}
+
 #addContactInputContainerEmail {
   border: solid 1px var(--lighterGray);
 }
@@ -219,7 +223,7 @@
   border: solid 1px var(--lighterGray);
 }
 
-/* Hier aktuell */
+
 .addContactMessageContainer {
   padding: 0;
   margin: 0;
@@ -229,6 +233,7 @@
   align-items: center;
 }
 
+/* Zusammenfassen */
 #addContactMessageName {
   font-size: 11px;
   color: red;
@@ -249,7 +254,7 @@
   flex: 1;
 }
 
-/* edit */
+
 .contactInputContainer:hover {
   cursor: pointer;
 }
@@ -259,7 +264,6 @@
   width: 100%;
 }
 
-/* edit übertragen */
 #addContactInputName {
   width: 100%;
 }
@@ -271,12 +275,13 @@
 #addContactInputPhone {
   width: 100%;
 }
-
+/* Hier aktuell */
+/* PRÜFEN */
 .contactBodyEmptySignature {
   display: none;
   /* kompletter Wechsel */
 }
-
+/* PRÜFEN - nicht für edit benötigt */
 .desktopAddContactGetBackFlex {
   display: none;
 }
@@ -308,7 +313,7 @@ input::placeholder {
 .contactInputField {
   width: 397px;
 }
-
+/* aktuell */
 .contactInputField {
   background-color: transparent;
   border-radius: 10px;
@@ -392,6 +397,7 @@ input::placeholder {
     align-items: center;
   }
 }
+/** AB HIER WEITERMACHEN - ab Zeile 346 in editContact.CSS**/
 
 @media screen and (min-width: 1000px) {
   #contactCard {

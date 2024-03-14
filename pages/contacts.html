@@ -148,7 +148,6 @@
             </div>
 
             <div id="editContactHeaderSignature">
-              <!--<img src="../../assets/img/addContact/person.svg" /> prüfen, ob löschbar-->
             </div>
           </div> <!-- Ende editContactHeader-->
           <div id="contactBody">
@@ -157,7 +156,6 @@
                 <img src="../../assets/img/addContact/close-gray.svg" />
               </a>
               <div id="contactContainerFlexZwei">
-                <!-- Hier eventuell DIV DRUMLEGEN -->
                 <div id="contactBodySignatureContainer"><!-- ZU BEGINN AUSBLENDEN -->
                   <div id="editContactBodySignature" class="editContactSignature"><!-- Ü -->
                     <img src="../../assets/img/addContact/person.svg" /> <!-- Ü -->
@@ -165,71 +163,102 @@
                 </div><!-- ENDE FLEX CONTAINER-->
                 <div class="contactBodyInputSection"> <!-- Naming prüfen auf beiden Seiten -->
                   <div class="contactBodyInputSectionCol"> <!-- Naming gleich prüfen auf beiden Seiten -->
+                    
+
+                    <!-- NAME -->
                     <div id="editContactInputContainerName" class="contactInputContainer"
-                      onclick="editFocusBorder('Name', 'Email', 'Phone')" autofocus
-                    >
+                      onclick="editFocusBorder('Name', 'Email', 'Phone')" autofocus>
                       <div id="editContactInputFieldName" class="contactInputField">
                         <input id="editContactInputName" placeholder="Name" class="nameInputfield" type="text" />
                         <img src="../../assets/img/addContact/person-gray.svg" />
                       </div>
+                      <div class="editContactMessageContainer" id="editContactMessageContainerName">
+                        <span id="editContactMessageName"></span>
+                      </div>
                     </div>
-                    <div id="editContactInputFieldEmail" class="contactInputField">
-                      <input id="editContactInputEmail" placeholder="Email" class="textInputfield" type="email" />
-                      <img src="../../assets/img/addContact/mail.svg" />
-                    </div>
-                    <div id="editContactInputFieldPhone" class="contactInputField">
-                      <input id="editContactInputPhone" placeholder="Phone" class="textInputfield" type="tel" />
-                      <img src="../../assets/img/addContact/call.svg" />
-                    </div>
-                  </div>
-                  <div class="contactBodytBtnRow">
-                    <a onclick="desktopCancelSaveProcess()" id="desktopCancelBtn">Cancel<img id="contactBtnSaveIcon"
-                        src="../../assets/img/addContact/close-gray.svg"></a>
-                    <a onclick="saveChanges()" class="contactBtnSave">Create contact<img id="contactBtnSaveIcon"
-                        src="../../assets/img/addContact/check.svg"></a>
-                  </div>
-                </div><!-- Ende ContactInputContainer-->
-              </div> <!-- Ende Edit Field Contact -->
-            </div> <!-- ENDE CONTACT CONTAINER FLEX-->
-          </div><!-- ENDE CONTACT CONTAINER FLEX ZWEI -->
-        </div> <!-- ENDE CONTAINER-FLEX -->
-      </div><!-- ENDE TEST CONTAINER -->
-    </div> <!-- Ende addContactEntry -->
-    <!-- ENDE Add Contact Container -->
 
-    <!-- ANFANG SHOW SINGLE CONTACT CONTAINER -->
-    <div id="showSingleContactContainer">
-      <div id="singleContact">
-        <div class="singleContactHeader">
-          <h1 class="singleContactHeadline">Contacts</h1>
-          <h3 class="singleContactSubtitle">Better with a team</h3>
-          <div class="singleContactHeaderBorder"></div>
-        </div> <!-- Ende contact Header-->
-        <div id="singleContactCol">
-          <div class="singleContactDisplayIdentidy">
-            <div id="singleContactSignature" class="singleContactIconXl"></div>
-            <div>
-              <span id="singleContactName" class="singleContactName">Anton Mayer</span>
-              <div id="singleContactDesktopButtons">
-                <div id="desktopBtnEdit" class="singleContactDestopBtn"><img class="desktopBtnIcon" src="../assets/img/contact/edit.svg" /> Edit</div> 
-                <div id="desktopBtnDelete" class="singleContactDestopBtn"><img class="desktopBtnIcon" src="../assets/img/contact/delete.svg" /> Delete</div>
+
+                    <!-- EMAIL  -->
+                    <div id="editContactInputContainerEmail" class="contactInputContainer "
+                      onclick="editFocusBorder('Email', 'Phone', 'Name')">
+                      <div id="editContactInputFieldEmail" class="contactInputField">
+                        <input id="editContactInputEmail" placeholder="Email" class="textInputfield" type="email" />
+                        <img src="../../assets/img/addContact/mail.svg" />
+                      </div>
+                      <div class="editContactMessageContainer">
+                        <span id="editContactMessageEmail">messageEmail</span>
+                      </div>
+                    </div>
+
+
+                    <!-- PHONE -->
+                    <div id="editContactInputContainerPhone" class="contactInputContainer"
+                      onclick="editFocusBorder('Phone', 'Email', 'Name')">
+
+                      <div id="editContactInputFieldPhone" class="contactInputField">
+                        <input id="editContactInputPhone" placeholder="Phone" class="textInputfield" type="tel" />
+                        <img src="../../assets/img/addContact/call.svg" />
+                      </div>
+
+                      <div class="editContactMessageContainer">
+                        <span id="editContactMessagePhone"></span>
+                      </div>
+                    </div>
+
+                    <div class="contactBodytBtnRow">
+                      <a onclick="desktopCancelSaveProcess()" id="desktopCancelBtn">
+                        Cancel
+                        <img id="contactBtnSaveIcon" src="../../assets/img/addContact/close-gray.svg">
+                      </a>
+                      <a onclick="saveChanges()" class="contactBtnSave">
+                        Create contact
+                        <img id="contactBtnSaveIcon" src="../../assets/img/addContact/check.svg">
+                      </a>
+                    </div>
+                  </div><!-- Ende ContactInputContainer-->
+                </div> <!-- Ende Edit Field Contact -->
+              </div> <!-- ENDE CONTACT CONTAINER FLEX-->
+            </div><!-- ENDE CONTACT CONTAINER FLEX ZWEI -->
+          </div> <!-- ENDE CONTAINER-FLEX -->
+        </div><!-- ENDE TEST CONTAINER -->
+      </div> <!-- Ende addContactEntry -->
+      <!-- ENDE Add Contact Container -->
+
+      <!-- ANFANG SHOW SINGLE CONTACT CONTAINER -->
+      <div id="showSingleContactContainer">
+        <div id="singleContact">
+          <div class="singleContactHeader">
+            <h1 class="singleContactHeadline">Contacts</h1>
+            <h3 class="singleContactSubtitle">Better with a team</h3>
+            <div class="singleContactHeaderBorder"></div>
+          </div> <!-- Ende contact Header-->
+          <div id="singleContactCol">
+            <div class="singleContactDisplayIdentidy">
+              <div id="singleContactSignature" class="singleContactIconXl"></div>
+              <div>
+                <span id="singleContactName" class="singleContactName">Anton Mayer</span>
+                <div id="singleContactDesktopButtons">
+                  <div id="desktopBtnEdit" class="singleContactDestopBtn"><img class="desktopBtnIcon"
+                      src="../assets/img/contact/edit.svg" /> Edit</div>
+                  <div id="desktopBtnDelete" class="singleContactDestopBtn"><img class="desktopBtnIcon"
+                      src="../assets/img/contact/delete.svg" /> Delete</div>
+                </div>
               </div>
             </div>
-          </div>
-          <h4 class="singleContactDescription">Contact Information</h4>
-          <div class="singleContactLabel">Email</div>
-          <a id="singleContactEmail" class="singleContactEmailLink" onclick="openEmailProgram()"></a>
-          <div class="singleContactLabel">Phone</div>
-          <div id="singleContactPhone" class="phone"></div>
-        </div> <!-- Ende contact Display -->
-      </div> <!-- Ende mobile Show Contact -->
-      <a id="singleContactNav" onclick="goFromSingleContactToListContactContainer()">
-        <img src="../../assets/img/other/Vektor.svg" />
-      </a>
-    </div>
-    <!-- ENDE Show Single Contact Container-->
+            <h4 class="singleContactDescription">Contact Information</h4>
+            <div class="singleContactLabel">Email</div>
+            <a id="singleContactEmail" class="singleContactEmailLink" onclick="openEmailProgram()"></a>
+            <div class="singleContactLabel">Phone</div>
+            <div id="singleContactPhone" class="phone"></div>
+          </div> <!-- Ende contact Display -->
+        </div> <!-- Ende mobile Show Contact -->
+        <a id="singleContactNav" onclick="goFromSingleContactToListContactContainer()">
+          <img src="../../assets/img/other/Vektor.svg" />
+        </a>
+      </div>
+      <!-- ENDE Show Single Contact Container-->
 
-    <!-- Anfang singleContactColN
+      <!-- Anfang singleContactColN
     <div id="singleContactColN">
       <div class="singleContactDisplayIdentidy">
         <div id="singleContactSignatureN" class="singleContactIconXl"></div>
@@ -242,8 +271,8 @@
       <div id="singleContactPhoneN" class="phone"></div>
     </div>  Ende singleContactColN -->
 
-    <!-- ANFANG EDIT CONTACT CONTAINER ORIGINAL  -->
-    <!-- <div id="editContactContainer">
+      <!-- ANFANG EDIT CONTACT CONTAINER ORIGINAL  -->
+      <!-- <div id="editContactContainer">
         <div class="addContactHeader">
           <a class="addContactGetBack" onclick="closeEditContactAndGoToListContactContainer()">
             <img src="../../assets/img/addContact/close.svg" />
@@ -256,7 +285,7 @@
             <span id="editContactSignature" class="editContactSignature"></span>
           </div>
         </div> ENDE ADD CONTACT HEADER-->
-    <!-- <div id="addContactEntry">
+      <!-- <div id="addContactEntry">
           <div class="contactInputContainer">                
             <div id="contactInputFieldName" 
                 class="contactInputField"
@@ -271,7 +300,7 @@
               src="../../assets/img/addContact/person-gray.svg"
               />
             </div> ENDE KONTAKT INPUT FIELD -->
-    <!-- <div id="contactInputFieldEmail"
+      <!-- <div id="contactInputFieldEmail"
               class="contactInputField"
               >
               <input
@@ -285,7 +314,7 @@
               src="../../assets/img/addContact/mail.svg"
               />
             </div> ENDE CONTACT INPUT FIELD -->
-    <!--  <div id="contactInputFieldPhone"
+      <!--  <div id="contactInputFieldPhone"
               class="contactInputField"
             >
               <input
@@ -299,59 +328,59 @@
               src="../../assets/img/addContact/call.svg"
               /> 
             </div>  ENDE CONTACT INPUT FIELD -->
-    <!--</div>
+      <!--</div>
           <div class="editContactBtnRow">
             <a class="editContactBtnDelete" onclick="deleteContact()">Delete</a>
             <a onclick="saveChanges()" class="contactBtnSave">Save<img id="contactBtnSaveIcon" src="../../assets/img/addContact/check.svg"></a>
           </div> ENDE CONTACT BTN ROW-->
-    <!-- </div> ENDE CONTACT ENTRY -->
-    <!--</div> ENDE EDIT CONTACT CONTAINER -->
-    <!--</div> DIV ENDE MAIN CONTENT-->
+      <!-- </div> ENDE CONTACT ENTRY -->
+      <!--</div> ENDE EDIT CONTACT CONTAINER -->
+      <!--</div> DIV ENDE MAIN CONTENT-->
 
 
-    <!-- AFTER LOGIN MAIN MENU ANFANG -->
-    <div w3-include-html="../assets/templates/menu.html" id="afterLoginMainMenu" class="afterLoginMainMenu"></div>
-    <!-- AFTER LOGIN MAIN MENU ENDE-->
-    
-    <!-- Contact Created Overlay -->
-    <div id="contactOverlay">
-      <span>Contact succesfully created</span>
-    </div>
+      <!-- AFTER LOGIN MAIN MENU ANFANG -->
+      <div w3-include-html="../assets/templates/menu.html" id="afterLoginMainMenu" class="afterLoginMainMenu"></div>
+      <!-- AFTER LOGIN MAIN MENU ENDE-->
 
-    <!-- MOBILE BUTTON ADD CONTACT FINAL -->
-    <div id="mobileBtnAddContact" class="mobileBtnRound" onclick="openAddContactContainer()">
-      <img class="mobileBtnAddContactItem" src="../assets/img/addContact/person_add.svg" />
-    </div> <!-- ENDE MOBILE BUTTON ADD CONTACT-->
-
-
-    <!-- MOBILE BUTTON THREE POINTS -->
-    <div id="mobileBtnThreePoints" class="mobileBtnRound positionAbsolute" onclick="showMobileSelectBtns()">
-      <img class="mobileBtnThreePointsIcon" src="../assets/img/contact/more_vert.svg" />
-    </div> <!-- ENDE MOBILE BUTTON SELECT OPTIONS -->
-
-
-    <!-- MOBILE BUTTON SELECT OPTIONS -->
-    <div id="mobileBtnSelectOptions" class="mobileBtnSquare positionAbsolute">
-      <div class="internBtnSquare">
-        <a class="internBtnSquareLink" onclick="goFromShowSingleContactToEditContact()">
-          <img class="mobileBtnIconEdit" src="../assets/img/contact/edit.svg" />
-          <span>Edit</span>
-        </a>
-        <a class="internBtnSquareLink" onclick="goFromDeleteContactToListContact()">
-          <img class="mobileBtnIconDelete" src="../assets/img/contact/delete.svg">
-          <span>Delete</span>
-        </a>
+      <!-- Contact Created Overlay -->
+      <div id="contactOverlay">
+        <span>Contact succesfully created</span>
       </div>
 
-    </div> <!-- ENDE MOBILE BUTTON SELECT OPTIONS -->
+      <!-- MOBILE BUTTON ADD CONTACT FINAL -->
+      <div id="mobileBtnAddContact" class="mobileBtnRound" onclick="openAddContactContainer()">
+        <img class="mobileBtnAddContactItem" src="../assets/img/addContact/person_add.svg" />
+      </div> <!-- ENDE MOBILE BUTTON ADD CONTACT-->
 
-    <!-- DESKTOP BUTTON ADD NEW CONTACT -->
-    <a id="desktopBtnAddContact" onclick="desktopBtnGoFromListContactToAddContact()">
-      <div class="desktopBtnIntern">
-        <span class="desktopBtnAddContactText">Add new contact</span>
-        <img class="desktopBtnAddContactIcon" src="../assets/img/addContact/person_add.svg" />
-      </div>
-    </a>
+
+      <!-- MOBILE BUTTON THREE POINTS -->
+      <div id="mobileBtnThreePoints" class="mobileBtnRound positionAbsolute" onclick="showMobileSelectBtns()">
+        <img class="mobileBtnThreePointsIcon" src="../assets/img/contact/more_vert.svg" />
+      </div> <!-- ENDE MOBILE BUTTON SELECT OPTIONS -->
+
+
+      <!-- MOBILE BUTTON SELECT OPTIONS -->
+      <div id="mobileBtnSelectOptions" class="mobileBtnSquare positionAbsolute">
+        <div class="internBtnSquare">
+          <a class="internBtnSquareLink" onclick="goFromShowSingleContactToEditContact()">
+            <img class="mobileBtnIconEdit" src="../assets/img/contact/edit.svg" />
+            <span>Edit</span>
+          </a>
+          <a class="internBtnSquareLink" onclick="goFromDeleteContactToListContact()">
+            <img class="mobileBtnIconDelete" src="../assets/img/contact/delete.svg">
+            <span>Delete</span>
+          </a>
+        </div>
+
+      </div> <!-- ENDE MOBILE BUTTON SELECT OPTIONS -->
+
+      <!-- DESKTOP BUTTON ADD NEW CONTACT -->
+      <a id="desktopBtnAddContact" onclick="desktopBtnGoFromListContactToAddContact()">
+        <div class="desktopBtnIntern">
+          <span class="desktopBtnAddContactText">Add new contact</span>
+          <img class="desktopBtnAddContactIcon" src="../assets/img/addContact/person_add.svg" />
+        </div>
+      </a>
 
 </body>
 

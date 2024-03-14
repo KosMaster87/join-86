@@ -163,20 +163,6 @@ async function goToShowSingleContactAfterEditContact(currentContactId) {
 }
 
 
-  /* MOBILE BUTTON SELECT OPTIONS */
-
-async function goFromDeleteContactToListContact() {
-    await deleteContact();
-    await initListContact();
-
-    document.getElementById('editContactContainer').style.display = "none";
-    document.getElementById('showSingleContactContainer').style.display = "none";
-    document.getElementById('listContactContainer').style.display = "block";
-    document.getElementById('mobileBtnSelectOptions').style.display = "none";
-    document.getElementById('mobileBtnAddContact').style.display = "block";
-}
-
-
 /* Auslesen des aktuellen Kontakts über ContactId und aktuellen User */
 async function getCurrentContactNew() {
     await loadCurrentUserAlsoUsersAsObject();
@@ -220,7 +206,7 @@ async function bufferCurrentContact() {
 
     console.log('buffered contact: ', contact);
     return contact;
-}//aktuell und final
+}
   
 
 async function getCurrentIndex() {
@@ -236,10 +222,122 @@ async function getCurrentIndex() {
             console.log('contactId not found.')
         }
     }
-}//aktuell und final
+}
+
+/* ANFANG PRÜFUNG DER DATENEINGABE */
+function checkAllInputFields(name, email, phone) {
+  if (checkInputName(name) === true && checkInputEmail(email) === true && checkInputPhone(phone)) {
+    return true
+  } else {
+    console.log('Fehlerhafte Dateneingabe')
+    return false;
+  }
+}
+
+function checkInputName(input) {
+  let name = input;
+  if (name == "") {
+    showInputMessage('editContactMessageName', 'Please enter a name');
+    showAlertBorder('editContactInputContainerName');
+  } else {
+    resetInputMessage('editContactMessageName');
+    resetAlertBorder('editContactInputContainerName');
+    return true;
+  }
+}
+
+function checkInputEmail(input) {
+  let email = input;
+  if (email === "") {
+    return true;
+  } else if (checkAtSymbolExists(email) === false) {
+    showInputMessage('editContactMessageEmail', 'The @ sign is missing');
+    showAlertBorder('editContactInputContainerEmail');
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function checkAtSymbolExists(input) {
+  let email = input;
+  if (email.indexOf('@') != -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkInputPhone(phone) {
+  let phoneNumber = phone;
+  const regex = /^[\d ()+-]+$/;
+
+  if (phoneNumber === "") {
+    return true;
+  } else if (regex.test(phoneNumber)) {
+    resetInputMessage('editContactMessagePhone');
+    resetAlertBorder('editContactInputContainerPhone');
+    return true;
+  } else {
+    showInputMessage('editContactMessagePhone', 'Phone number ist not valid');
+    showAlertBorder('editContactInputContainerPhone');
+    return false;
+  }
+}
+
+/* ENDE PRÜFUNG DER DATENEINGABE */
+
+/* ANFANG - AUSGABE UND ZURÜCKSETZEN DER FEHLERMELDUNGEN */
+function showInputMessage(inputField, message) {
+  document.getElementById(inputField).innerText = message;
+}
+
+function resetInputMessage(inputField) {
+  document.getElementById(inputField).innerText = '';
+} 
+
+function resetAllInputMessages() {
+  resetInputMessage('addContactMessageName');
+  resetInputMessage('addContactMessageEmail');
+  resetInputMessage('addContactMessagePhone');
+}
+/* ENDE - AUSGABE UND ZURÜCKSETZEN DER FEHLERMELDUNGEN*/
 
 
-/* AKTUELL ARBEITE ICH HIER */
+/* ANFANG - ANZEIGEN UND ZURÜCKSETZEN DER BORDERFARBE */
+function showAlertBorder(inputContainer) {
+  document.getElementById(inputContainer).classList.add('alertBorder');
+}
+
+function resetAlertBorder(inputContainer) {
+  document.getElementById(inputContainer).classList.remove('alertBorder');
+}
+
+function resetAllAlertBorders() {
+  resetAlertBorder('addContactInputContainerName');
+  resetAlertBorder('addContactInputContainerEmail');
+  resetAlertBorder('addContactInputContainerPhone');
+}
+/* ANFANG - ANZEIGEN UND ZURÜCKSETZEN DER BORDERFARBE */
+
+/* ANFANG - AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES */ 
+function editFocusBorder(idFocus, idRemoveFocus, idDeleteFocus) {
+  addFocusBorder(idFocus);
+  removeFocusBorder(idRemoveFocus);
+  removeFocusBorder(idDeleteFocus)
+}
+
+function addFocusBorder(containerId) {
+  let input = document.getElementById('editContactInputContainer' + containerId);
+  input.classList.add('focus');
+}
+
+function removeFocusBorder(containerId) {
+  let input = document.getElementById('editContactInputContainer' + containerId);
+  input.classList.remove('focus');
+}
+/* ENDE - AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES */
+
 async function saveChanges() {
     await loadCurrentUserAlsoUsersAsObject();
     let currentContact = await getCurrentContactNew();
@@ -253,7 +351,10 @@ async function saveChanges() {
     let inputEmail = (document.getElementById('editContactInputEmail').value).trim();
     let inputSignature = getSignature(inputName); 
 
-    if (await currentContactId) {
+    /* */
+    if (checkAllInputFields(inputName, inputPhone, inputEmail) === true) {
+
+      if (await currentContactId) {
         for (let i = 0; i < contacts.length; i++) {
             const contact = contacts[i];   
             if (contact.contactId === await currentContactId) {
@@ -264,15 +365,30 @@ async function saveChanges() {
                 user.contacts[i].phone = inputPhone, 
                 user.contacts[i].signature = inputSignature;
                 user.contacts[i].userColor = inputUserColor;
+
+                await setItem('users', JSON.stringify(users));
+                console.log('Speichervorgang konnte abgeschlossen werden!');
+                await goToShowSingleContactAfterEditContact(currentContactId)
             } else {
                 console.log ('Response currentContactId: ' + await currentContactId + ' not found.')
             }
         }
-    } else {
+      } else {
         console.log('Response contact not found.')
-    } 
+      }
+    }
+  }
 
-    await setItem('users', JSON.stringify(users));
-    console.log('Speichervorgang konnte abgeschlossen werden!');
-    await goToShowSingleContactAfterEditContact(currentContactId)
+
+  /* DELETE BUTTON AUF EDIT-CONTACT */
+
+  async function goFromDeleteContactToListContact() {
+    await deleteContact();
+    await initListContact();
+
+    document.getElementById('editContactContainer').style.display = "none";
+    document.getElementById('showSingleContactContainer').style.display = "none";
+    document.getElementById('listContactContainer').style.display = "block";
+    document.getElementById('mobileBtnSelectOptions').style.display = "none";
+    document.getElementById('mobileBtnAddContact').style.display = "block";
 }
