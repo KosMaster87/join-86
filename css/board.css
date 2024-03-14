@@ -25,14 +25,14 @@ h2 {
 }
 
 .boardMainContainer {
+  overflow: auto;
   display: flex;
   flex-direction: column;
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
+  padding-top: 48px;
   gap: 26px;
-  margin-top: 70px;
-  margin-bottom: 70px;
 }
 
 .boxesContainer {
@@ -41,6 +41,7 @@ h2 {
   overflow-x: auto;
   box-sizing: border-box !important;
   margin-bottom: 16px;
+  gap: 10px;
 }
 
 .headlineFromTask {
@@ -75,6 +76,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: start;
+  margin-bottom: 16px;
 }
 
 .noTasksInThisSelection {
@@ -98,10 +100,11 @@ h2 {
   background-color: var(--white);
   padding: 16px;
   border-radius: 24px;
-  margin-right: 16px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 200px;
+  word-wrap: break-word;
 }
 
 .titleText {
@@ -180,6 +183,8 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 200px;
+  word-wrap: break-word;
 }
 
 /*--done--*/
@@ -223,13 +228,27 @@ h2 {
   z-index: 800;
   background-color: white;
   border-radius: 30px;
-  top: 9vh;
-  height: 82vh;
-  width: 100vw;
   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 32px 24px 32px 24px;
   overflow: auto;
+  word-wrap: break-word;
+  max-width: 480px;
+  max-height: 90%;
 }
+
+.divColumn{
+  padding: 32px 24px 32px 24px;
+  max-width: 450px;
+  max-height:90%;
+}
+
+.scroll{
+  overflow: auto;
+}
+
 
 .boxSizePopUp {
   flex: 0 0 250px;
@@ -353,9 +372,136 @@ h2 {
 }
 
 .drag-area-highlight {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0.4;
 }
 
 .boxSizeFeedback:active {
   transform: rotate(5deg);
 }
+
+.BoardDesktopAddTask {
+  display: none;
+}
+.mobileHead {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.boardDesktopAddTask {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+
+  .taskBox {
+    display: flex;
+    gap: 20px;
+    overflow: auto;
+  }
+  .boxesContainer {
+    flex-direction: column;
+    gap: 10px;
+    min-height: 500px;
+    border-radius: 10px;
+  }
+  .boxSizeProgress {
+    margin: 0px;
+  }
+  .headContainer {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+  }
+  h1 {
+    width: 0px !important;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  .headBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+  }
+  .boardMobilAddTask {
+    display: none;
+  }
+  .boardDesktopAddTask {
+    display: flex;
+    align-items: center;
+    background-color: var(--lightGray);
+    color: var(--white);
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .boardDesktopAddTaskText {
+    font-size: 21px;
+    font-weight: 700;
+  }
+  .boardDesktopHeadRight {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .searchTaskInputField input {
+    width: 250px;
+  }
+}
+
+@media (min-width: 1150px) {
+  .boxSizeFeedback {
+    width: 210px;
+  }
+
+  .boxSizeProgress {
+    width: 210px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .boxSizeFeedback {
+    width: 225px;
+  }
+
+  .boxSizeProgress {
+    width: 225px;
+  }
+}
+
+@media (min-width: 1250px) {
+  .boxSizeFeedback {
+    width: 240px;
+  }
+
+  .boxSizeProgress {
+    width: 240px;
+  }
+}
+@media (min-width: 1300px) {
+  .boxSizeFeedback {
+    width: 252px;
+  }
+
+  .boxSizeProgress {
+    width: 252px;
+  }
+
+  .boardMainContainer{
+    justify-content: center;
+    align-items: center;
+  }
+  .headBox{
+    width: 1100px;
+  }
+}
+
+
+@media (min-width: 720px) {
+  .openwindow{
+    margin-left:80px;
+  }
+}
+
