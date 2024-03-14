@@ -14,11 +14,11 @@ async function getCurrentContactEmail() {
 }
 
 async function getCurrentContact(currentContactId) {
-  let contacts = await user.contacts;
+  let contacts = user.contacts;
   let contactId = currentContactId;
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
-    if (contact.contactId === await contactId) {
+    if (contact.contactId === contactId) {
       console.log('SELEKTIERTER KONTAKT', user.contacts[i])
       return user.contacts[i];
     } else {
@@ -29,9 +29,6 @@ async function getCurrentContact(currentContactId) {
 
 async function fillAllVariables(contactId) {
   let contact = await getCurrentContact(contactId);
-  console.log('Contact lesbar ?', contact)  
-  console.log('Name', contact.name);
-
   document.getElementById('singleContactName').innerText = contact.name;
   document.getElementById('singleContactEmail').innerText = contact.email;
   document.getElementById('singleContactPhone').innerText = contact.phone;
