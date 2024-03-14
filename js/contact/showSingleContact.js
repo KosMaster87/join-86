@@ -19,7 +19,6 @@ async function getCurrentContact(currentContactId) {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     if (contact.contactId === contactId) {
-      console.log('SELEKTIERTER KONTAKT', user.contacts[i])
       return user.contacts[i];
     } else {
       console.log('ContactId was not found.')

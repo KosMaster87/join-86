@@ -1,6 +1,7 @@
 const contactColors = ["var(--red)", "var(--yellow)", "var(--orangeIcons)", "var(--green)", "var(--pink)", "var(--mintGreen)"];
 
 async function initAddContact() {
+  loadContactsForExample(contactsNew);
   resetInputFields();
   editFocusBorder('Name', 'Email', 'Phone');
   resetAllInputMessages();
