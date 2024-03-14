@@ -20,10 +20,12 @@ async function initLegalNotice() {
     users = [];
     user = [];
     let menuItemBox = document.getElementById("menuItemBox");
+    let menuItemBoxDummy = document.getElementById("menuItemBoxDummy");
     let userSymbolContainerID = document.getElementById(
       "userSymbolContainerID"
     );
     menuItemBox.style.display = "none";
+    menuItemBoxDummy.style.display = "block";
     userSymbolContainerID.style.display = "none";
   }
 }

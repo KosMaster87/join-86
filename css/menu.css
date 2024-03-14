@@ -214,6 +214,11 @@
     background-color: var(--lightGray);
   }
 
+  .menuItemBoxDummy {
+    display: none;
+    height: 16rem;
+  }
+
   .menuItemBox {
     display: flex;
     flex-direction: column;
