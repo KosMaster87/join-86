@@ -38,6 +38,7 @@
   position: relative;
   top: 14px;
   left: 13px;
+  display: block;
 }
 
 .d-none {
@@ -107,23 +108,6 @@
   font-size: 16px;
   line-height: 1.2;
   font-weight: 400;
-}
-
-/* TABLET BUTTON ADD NEW CONTACT */
-
-#tabletBtnAddContact {
-  display: none;
-  background-color: var(--lightGray);
-  position: absolute;
-  top: 100px;
-  left: 235px;
-  border-radius: 10px;
-  color: white;
-  font-size: 21px;
-  font-weight: 700;
-  line-height: 1.2;
-  width: 352px;
-  padding: 12px 0;
 }
 
 /* DESKTOP BUTTON ADD NEW CONTACT */

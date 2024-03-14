@@ -179,10 +179,6 @@
   /* display none evtl. extra entfernen */
 }
 
-.desktopAddContactGetBackFlex {
-  display: none;
-}
-
 /* CHECK */
 /* edit */
 .contactBodyInputSectionCol {
@@ -280,10 +276,6 @@
 .contactBodyEmptySignature {
   display: none;
   /* kompletter Wechsel */
-}
-/* PRÜFEN - nicht für edit benötigt */
-.desktopAddContactGetBackFlex {
-  display: none;
 }
 
 .contactBodyInputSectionCol {
