@@ -83,7 +83,7 @@ function renderContactCards(contactCard, char) {
     let contact = user.contacts[i];
     if (contact["name"].charAt(0).toUpperCase() === sign) {
       contactCard.innerHTML += `
-            <a class="singleContact" onclick="goFromListContactToShowSingleContact(${contact["contactId"]})">
+            <a class="singleContact" onclick="goFromListContactToShowSingleContact('${contact["contactId"]}')">
                 <div class="contactSignatureIcon" style="background-color:  ${contact["userColor"]}">
                     <span class="contactSignatureIconLetter">
                         ${contact["signature"]}
@@ -106,6 +106,7 @@ function renderContactCards(contactCard, char) {
 
 /* FUNKTIONEN AUF LIST CONTACT SEPARIEREN */
 async function goFromListContactToShowSingleContact(contactId) {
+  console.log(typeof(contactId));
   document.getElementById("mobileBtnAddContact").style.display = "none";
 
   if (result === "mobileVersion") {
