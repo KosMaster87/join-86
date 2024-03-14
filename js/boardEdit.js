@@ -88,7 +88,9 @@ async function assignedtoContactBg(i, j) {
     image.src = "../assets/img/add_task/task_box.svg";
     let iconId = document.getElementById(`contactIconNumber${i}`);
     iconId.remove();
-    let removeName = user.tasks[j].assignedTo.findIndex(item => item.name === user.contacts[i].name);
+    let removeName = user.tasks[j].assignedTo.findIndex(
+      (item) => item.name === user.contacts[i].name
+    );
     if (removeName !== -1) {
       user.tasks[j].assignedTo.splice(removeName, 1);
     }
@@ -102,10 +104,10 @@ async function assignedtoContactBg(i, j) {
     let signature = document.getElementById(`ContactSignatureIcon${i}`).innerHTML;
     let userColor = user.contacts[i].userColor;
     contactListIcons.innerHTML += `<div id="contactIconNumber${i}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
-    user.tasks[j].assignedTo.push({name :user.contacts[i].name,
-      userColor
-      : 
-      user.contacts[i].userColor})
+    user.tasks[j].assignedTo.push({
+      name: user.contacts[i].name,
+      userColor: user.contacts[i].userColor,
+    });
   }
 
   await setItem("users", users);
@@ -141,4 +143,19 @@ function filterNamesforAssignedToReturn(i) {
       <img id="assignedContactImage${i}" src="../assets/img/add_task/task_box.svg"/>
   </div>
 `;
+}
+
+async function saveCurrentBoardTask(i) {
+  let title = document.getElementById(`titelInputContainer`);
+  let description = document.getElementById(`descriptionInput`);
+  let date = document.getElementById(`dueDateInputContainer`);
+
+  user.tasks[i].title = title.value;
+  user.tasks[i].dueDate = date.value;
+  user.tasks[i].description = description.value;
+  user.tasks[i].prio= pupUpPriorityName;
+  await setItem("users", users);
+  document.getElementById(`popUpMainContainer`).remove();
+  document.getElementById(`blurrContainer`).remove();
+  openTask(i);
 }

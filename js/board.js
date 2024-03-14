@@ -229,23 +229,20 @@ function openTask(i) {
   mainContentContainer = document.getElementById(`mainContent`);
   mainContentContainer.innerHTML += openTaskReturn(i);
   // render die category
-  let category = document.getElementById(`TaskCategory${i}`);
   let popUpCategory = document.getElementById(`popUpTaskCategory`);
-  popUpCategory.innerHTML = category.textContent;
-  if (category.textContent === "User Story") {
+  popUpCategory.innerHTML = user.tasks[i].category;
+  if (popUpCategory.textContent === "User Story") {
     popUpCategory.style.backgroundColor = "#0038FF";
-  } else if (category.textContent === "Technical Task") {
+  } else if (popUpCategory.textContent === "Technical Task") {
     popUpCategory.style.backgroundColor = "#1FD7C1";
   }
   // render render den title
-  let title = document.getElementById(`titleId${i}`);
   let popUpTitle = document.getElementById(`popUpTitleId`);
-  popUpTitle.innerHTML = title.textContent;
+  popUpTitle.innerHTML = user.tasks[i].title;
 
   // render die description
-  let description = document.getElementById(`descriptionID${i}`);
   let popUpDescription = document.getElementById(`popUpDescriptionID`);
-  popUpDescription.innerHTML = description.textContent;
+  popUpDescription.innerHTML = user.tasks[i].description;
 
   // render das Due date
   let popUpDueDate = document.getElementById(`popUpDueDate`);
@@ -315,6 +312,8 @@ async function closeOpenTask(i) {
   }
   await setItem("users", users);
   let task = document.getElementById(`popUpMainContainer`);
+  let blurr = document.getElementById(`blurrContainer`);
+  blurr.remove();
   task.remove();
   toDoMainContainer = document.getElementById(`TodoMainContainer`);
   toDoMainContainer.innerHTML = "";
@@ -322,8 +321,8 @@ async function closeOpenTask(i) {
 }
 
 function closeEditTask(i) {
-  mainContainer = document.getElementById(`popUpMainContainer`);
-  mainContainer.remove();
+  document.getElementById(`popUpMainContainer`).remove();
+  document.getElementById(`blurrContainer`).remove();
   openTask(i);
 }
 
@@ -333,7 +332,7 @@ async function deleteTaskBoard(i) {
   document.getElementById("progressMainContainer").innerHTML = "";
   document.getElementById("awaitMainContainer").innerHTML = "";
   document.getElementById("doneMainContainer").innerHTML = "";
-  closeOpenTask(i);
+  await closeOpenTask(i);
   await setItem("users", users);
   loadTasks();
 }
@@ -540,10 +539,13 @@ function changePrioColor(clickedContainerId) {
   let imgMedium = prioMediumContainer.querySelector("img");
   let imgLow = prioLowContainer.querySelector("img");
   if (clickedContainerId === prioLowContainer) {
+    pupUpPriorityName = "Low";
     changePrioColorLow(imgLow);
   } else if (clickedContainerId === prioMediumContainer) {
+    pupUpPriorityName = "Medium";
     changePrioColorMedium(imgMedium);
   } else if (clickedContainerId === prioUrgentContainer) {
+    pupUpPriorityName = "Urgent";
     changePrioColorUrgent(imgUrgent);
   }
 }
@@ -589,4 +591,13 @@ function clearSubtaskInputfield() {
   <img src="../assets/img/add_task/task_add.svg" />`;
   let border = document.getElementById(`subTaskInputcontainer`);
   border.classList.remove("bordercolor");
+}
+
+function setMinDate() {
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, "0");
+  let mm = String(today.getMonth() + 1).padStart(2, "0");
+  let yyyy = today.getFullYear();
+  today = yyyy + "-" + mm + "-" + dd;
+  document.getElementById("dueDateInputContainer").min = today;
 }

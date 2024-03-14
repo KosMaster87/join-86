@@ -71,7 +71,7 @@ function iconReturn(signature) {
 
 function openTaskReturn(i) {
   return `
-  <div class="blurr">
+  <div id="blurrContainer" class="blurr">
   <div id="popUpMainContainer" class="openwindow">
     <div class="boxSizePopUp">
       <div class="headContainer">
@@ -168,7 +168,6 @@ function editBoardMobileTaskReturn(i) {
           type="text"
           class="titleInputField font"
           placeholder="Enter a title"
-          oninput="checkInputs()"
         />
         <p id="inputRequiredContainer" class="fildIsRequiredText"></p>
       </div>
@@ -191,7 +190,6 @@ function editBoardMobileTaskReturn(i) {
         type="date"
         class="dueDateInputField font"
         onfocus="setMinDate()"
-        oninput="checkInputs()"
       />
       <p id="dueDateRequiredContainer" class="fildIsRequiredText"></p>
     </div>
@@ -260,8 +258,14 @@ function editBoardMobileTaskReturn(i) {
           </div>
         </div>
         <div class="subTaskAddContainer" id="subTasksContainer">
-        <p class="fildIsRequiredText"></p>
+        
         </div>
+        <div class="boardEditButtonContainer">
+      <div onclick="saveCurrentBoardTask(${i})" class="boardEditButton">
+      <p>Ok</p>
+      <img src="../assets/img/board/board_check.svg">
+      </div>
+      </div>
       </div>
       </div>
   `;
