@@ -8,6 +8,8 @@ async function initBoard() {
   loadTasks();
 }
 
+
+
 function updateProgressBar() {
   progressBar.style.width = 50 + "%";
 }
@@ -600,7 +602,6 @@ function setMinDate() {
 let currentDragElement;
 
 function startDragging(i) {
-  
   currentDragElement = i;
 }
 
@@ -612,20 +613,22 @@ async function moveTo(newStatus) {
   user.tasks[currentDragElement].status = newStatus;
   await setItem("users", users);
   document.getElementById(`TodoMainContainer`).innerHTML = "";
-  document.getElementById(`TodoMainContainer`).classList.remove('drag-area-highlight');
+  document.getElementById(`TodoMainContainer`).classList.remove("drag-area-highlight");
   document.getElementById(`progressMainContainer`).innerHTML = "";
-  document.getElementById(`progressMainContainer`).classList.remove('drag-area-highlight');
+  document.getElementById(`progressMainContainer`).classList.remove("drag-area-highlight");
   document.getElementById(`awaitMainContainer`).innerHTML = "";
-  document.getElementById(`awaitMainContainer`).classList.remove('drag-area-highlight');
+  document.getElementById(`awaitMainContainer`).classList.remove("drag-area-highlight");
   document.getElementById(`doneMainContainer`).innerHTML = "";
-  document.getElementById(`doneMainContainer`).classList.remove('drag-area-highlight');
+  document.getElementById(`doneMainContainer`).classList.remove("drag-area-highlight");
   loadTasks();
 }
 
 function highlight(id) {
-  document.getElementById(id).classList.add('drag-area-highlight');
+  document.getElementById(id).classList.add("drag-area-highlight");
 }
 
 function removeHighlight(id) {
-  document.getElementById(id).classList.remove('drag-area-highlight');
+  document.getElementById(id).classList.remove("drag-area-highlight");
 }
+
+
