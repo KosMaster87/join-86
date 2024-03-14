@@ -3,11 +3,9 @@
 async function loadShowSingleContact(contactId) {
   await getCurrentContact(contactId);
   await fillAllVariables(contactId);
-  /*await setCurrentContactEmail(email);*/
 }
 
 async function setCurrentContactEmail(email) {
-  console.log(email);
   await setItem("currentContactEmail", email);
 }
 
@@ -41,8 +39,6 @@ async function fillAllVariables(contactId) {
   document.getElementById('singleContactSignature').style.backgroundColor = contact.userColor;
 
   setCurrentContactEmail(contact.email);
-
-  console.log("AUSGABE FUNKTION WIRD AUSGELÖST", contact.name); /* TEST ZUR AUSGABE */
 }
 
 async function openEmailProgram() {
