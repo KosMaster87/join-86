@@ -115,7 +115,7 @@ async function goFromListContactToShowSingleContact(contactId) {
     );
     document.getElementById("mobileBtnThreePoints").style.display = "block";
     document.getElementById("showSingleContactContainer").style.display =
-      "block";
+      "flex";
     console.log("MOBILE VERSION");
   } else {
     /* await initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor);
