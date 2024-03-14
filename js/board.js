@@ -8,11 +8,6 @@ async function initBoard() {
   loadTasks();
 }
 
-function loadTasks() {
-  title = document.getElementById(`titleid`);
-  titletext = user.tasks[1].title;
-  title.innerHTML = titletext;
-}
 function updateProgressBar() {
   progressBar.style.width = 50 + "%";
 }
@@ -57,8 +52,8 @@ function loadTasks() {
         }
       }
     }
-    loadProgressTasks();
   }
+  loadProgressTasks();
 }
 
 function loadProgressTasks() {
@@ -97,7 +92,7 @@ function loadProgressTasks() {
 
       for (let a = 0; a < user.tasks[i].assignedTo.length; a++) {
         let signature = "";
-        let words = user.tasks[i].assignedTo[a].toUpperCase().split(" ");
+        let words = user.tasks[i].assignedTo[a].name.toUpperCase().split(" ");
 
         for (let j = 0; j < words.length; j++) {
           signature += words[j].charAt(0);
@@ -137,7 +132,7 @@ function loadAwaitTasks() {
 
       for (let a = 0; a < user.tasks[i].assignedTo.length; a++) {
         let signature = "";
-        let words = user.tasks[i].assignedTo[a].toUpperCase().split(" ");
+        let words = user.tasks[i].assignedTo[a].name.toUpperCase().split(" ");
 
         for (let j = 0; j < words.length; j++) {
           signature += words[j].charAt(0);
@@ -179,7 +174,7 @@ function loadDoneTasks() {
 
       for (let a = 0; a < user.tasks[i].assignedTo.length; a++) {
         let signature = "";
-        let words = user.tasks[i].assignedTo[a].toUpperCase().split(" ");
+        let words = user.tasks[i].assignedTo[a].name.toUpperCase().split(" ");
 
         for (let j = 0; j < words.length; j++) {
           signature += words[j].charAt(0);
@@ -600,4 +595,37 @@ function setMinDate() {
   let yyyy = today.getFullYear();
   today = yyyy + "-" + mm + "-" + dd;
   document.getElementById("dueDateInputContainer").min = today;
+}
+
+let currentDragElement;
+
+function startDragging(i) {
+  
+  currentDragElement = i;
+}
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+async function moveTo(newStatus) {
+  user.tasks[currentDragElement].status = newStatus;
+  await setItem("users", users);
+  document.getElementById(`TodoMainContainer`).innerHTML = "";
+  document.getElementById(`TodoMainContainer`).classList.remove('drag-area-highlight');
+  document.getElementById(`progressMainContainer`).innerHTML = "";
+  document.getElementById(`progressMainContainer`).classList.remove('drag-area-highlight');
+  document.getElementById(`awaitMainContainer`).innerHTML = "";
+  document.getElementById(`awaitMainContainer`).classList.remove('drag-area-highlight');
+  document.getElementById(`doneMainContainer`).innerHTML = "";
+  document.getElementById(`doneMainContainer`).classList.remove('drag-area-highlight');
+  loadTasks();
+}
+
+function highlight(id) {
+  document.getElementById(id).classList.add('drag-area-highlight');
+}
+
+function removeHighlight(id) {
+  document.getElementById(id).classList.remove('drag-area-highlight');
 }

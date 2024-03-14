@@ -15,7 +15,6 @@
     <script src="../js/login.js"></script>
     <script src="../js/menu.js"></script>
     <script src="../js/header.js"></script>
-    
 
     <script src="./../js/board.js"></script>
     <script src="./../js/boardHTML.js"></script>
@@ -46,7 +45,7 @@
             <h2>To do</h2>
             <img src="../assets/img/board/add_mobile.svg" />
           </div>
-          <div id="TodoMainContainer" class="boxesContainer"></div>
+          <div id="TodoMainContainer" ondrop="moveTo('to-do')" ondragover="allowDrop(event); highlight('TodoMainContainer')" ondragleave="removeHighlight('TodoMainContainer')" class="boxesContainer"></div>
         </div>
 
         <div class="selectionContainer">
@@ -54,19 +53,14 @@
             <h2>In progress</h2>
             <img src="../assets/img/board/add_mobile.svg" />
           </div>
-          <div id="progressMainContainer" class="boxesContainer"></div>
+          <div id="progressMainContainer" ondrop="moveTo('progress')" ondragover="allowDrop(event); highlight('progressMainContainer')" ondragleave="removeHighlight('progressMainContainer')"  class="boxesContainer"></div>
         </div>
         <div class="selectionContainer">
           <div class="headContainer">
-            <div>
-              <h2>await for feedback</h2>
-              <img src="../assets/img/board/add_mobile.svg" />
-            </div>
-            <div class="boxesContainer">
-              
-            </div>
+            <h2>Await for feedback</h2>
+            <img src="../assets/img/board/add_mobile.svg" />
           </div>
-          <div id="awaitMainContainer" class="boxesContainer"></div>
+          <div id="awaitMainContainer" ondrop="moveTo('await')" ondragover="allowDrop(event); highlight('awaitMainContainer')" ondragleave="removeHighlight('awaitMainContainer')" class="boxesContainer"></div>
         </div>
 
         <div class="selectionContainer">
@@ -75,73 +69,9 @@
               <h2>Done</h2>
             </div>
           </div>
-          <div id="doneMainContainer" class="boxesContainer"></div>
+          <div id="doneMainContainer" ondrop="moveTo('done')" ondragover="allowDrop(event); highlight('doneMainContainer')" ondragleave="removeHighlight('doneMainContainer')" class="boxesContainer"></div>
         </div>
       </div>
-
-      <!-- Pop up window then open task  -->
-      <!-- <div id="popUpMainContainer" class="openwindow">
-        <div class="boxSizePopUp">
-          <div class="headContainer">
-            <span id="popUpTaskCategory" class="headlineFromTask font16400"> Catergory </span>
-            <div>
-              <img src="../assets/img/board/board_cross.svg" />
-            </div>
-          </div>
-
-          <div class="inProgressText">
-            <p class="bordPopUptitleText font16700" id="popUpTitleId">
-              Kochwelt Page & Recipe Recommender
-            </p>
-            <p class="font16400" id="popUpDescriptionID">
-              Build start page with recipe recommendation...
-            </p>
-          </div>
-          <div class="task-info">
-            <div>
-              <span class="label popUpHeadline">Due date:</span>
-              <span class="value" id="popUpDueDate">2024-03-01</span>
-            </div>
-            <div>
-              <span class="label popUpHeadline">Priority:</span>
-              <span class="value" Iid="popUpPriority">low</span>
-              <img id="prio-img-detail2" src="../assets/img/board/board_low.svg" />
-            </div>
-          </div>
-          <div>
-            <p class="font16400 popUpHeadline">Assigned To:</p>
-            <div id="popUpAssignedTo"></div>
-          </div>
-          <div style="display: flex; flex-direction: column">
-            <p class="font16400 popUpHeadline" style="margin-bottom: 8px">Subtasks</p>
-            <div id="popUpSubtasksContainer">
-            <div class="boardPopUpSubContainer">
-              <div class="subtaskDetail">
-                <img src="../assets/img/board/board_box.svg" />
-                <span>Test</span>
-              </div>
-              <div class="subtaskDetail">
-                <img src="../assets/img/board/board_box.svg" />
-                <span>Test</span>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-        <div class="popUpFooter">
-          <div class="footerBox">
-            <img src="../assets/img/board/board_delete.svg" />
-            <p class="font16400">Delete</p>
-          </div>
-          <div class="popUpLine"></div>
-          <div class="footerBox">
-            <img src="../assets/img/board/board_edit.svg" />
-            <p class="font16400">Edit</p>
-          </div>
-        </div>
-      </div> -->
-      
-      <!-- Pop up window then open task end -->
     </div>
     <div
       w3-include-html="../assets/templates/menu.html"

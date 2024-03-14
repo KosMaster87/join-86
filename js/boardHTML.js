@@ -1,43 +1,43 @@
 function HtmlReturn(i) {
   return `
-  <div onclick="openTask(${i})" id="toDoContainer${i}" class="boxSizeProgress">
-    <div class="headContainer">
-      <span id="TaskCategory${i}" class="headlineFromTask font16400">
-        Catergory
-      </span>
-      <div>
-        <img src="../assets/img/board/mobile_switch.svg" />
-      </div>
+  <div draggable="true" ondragstart="startDragging(${i})" onclick="openTask(${i})" id="toDoContainer${i}" class="boxSizeProgress">
+  <div class="headContainer">
+    <span id="TaskCategory${i}" class="headlineFromTask font16400">
+      Category
+    </span>
+    <div>
+      <img src="../assets/img/board/mobile_switch.svg" />
     </div>
-    <div class="inProgressText">
-      <p class="titleText font16700" id="titleId${i}">
-        Kochwelt Page & Recipe Recommender
-      </p>
-      <p class="descriptionText font16400" id="descriptionID${i}">
-        Build start page with recipe recommendation...
-      </p>
+  </div>
+  <div class="inProgressText">
+    <p class="titleText font16700" id="titleId${i}">
+    </p>
+    <p class="descriptionText font16400" id="descriptionID${i}">
+    </p>
+  </div>
+  <div class="progressMainContainer">
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar${i}"></div>
     </div>
-    <div class="progressMainContainer">
-      <div class="progress-container">
-        <div class="progress-bar" id="progressBar${i}"></div>
-      </div>
-      <p class="font12400">
-        <p id="finishedTasks${i}">0</p>/<p id="counterOfTasks${i}">2</p>
-        Subtasks
-      </p>
+    <p class="font12400">
+      <p id="finishedTasks${i}"></p>
+      /
+      <p id="counterOfTasks${i}"></p>
+      Subtasks
+    </p>
+  </div>
+  <div class="progressFooter">
+    <div class="IconBarClass" id="IconBar${i}"></div>
+    <div>
+      <img id="PrioImageContainer${i}" />
     </div>
-    <div class="progressFooter">
-      <div class="IconBarClass" id="IconBar${i}"></div>
-      <div>
-        <img id="PrioImageContainer${i}" />
-      </div>
-    </div>
-  </div>`;
+  </div>
+</div>`;
 }
 
 function awaitHtmlReturn(i) {
   return `
-  <div onclick="openTask(${i})" draggable="true" ondragstart="startDragging(waitContainer${i})" id="waitContainer${i}" class="boxSizeFeedback">
+  <div onclick="openTask(${i})" draggable="true" ondragstart="startDragging(${i})" id="waitContainer${i}" class="boxSizeFeedback">
     <div class="headContainer">
       <span id="TaskCategory${i}" class="headlineFromTask font16400">
         Catergory
@@ -54,6 +54,17 @@ function awaitHtmlReturn(i) {
         Build start page with recipe recommendation...
       </p>
     </div>
+    <div class="progressMainContainer" style="display:none;">
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar${i}"></div>
+    </div>
+    <p class="font12400">
+      <p id="finishedTasks${i}"></p>
+      /
+      <p id="counterOfTasks${i}"></p>
+      Subtasks
+    </p>
+  </div>
     <div class="progressFooter">
       <div class="IconBarClass" id="IconBar${i}"></div>
       <div>
