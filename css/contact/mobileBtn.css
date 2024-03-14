@@ -33,12 +33,16 @@
 
 /** MOBILE BUTTON ADD CONTACT **/
 
+#mobileBtnAddContact {
+  display: block; 
+}
+
 .mobileBtnAddContactItem {
   width: 29.33px;
   position: relative;
   top: 14px;
   left: 13px;
-  display: block;
+  display: flex;
 }
 
 .d-none {
