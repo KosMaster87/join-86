@@ -127,3 +127,22 @@ async function saveCurrentBoardTask(i) {
   document.getElementById(`blurrContainer`).remove();
   openTask(i);
 }
+
+function setMinDate() {
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, "0");
+  let mm = String(today.getMonth() + 1).padStart(2, "0");
+  let yyyy = today.getFullYear();
+  today = yyyy + "-" + mm + "-" + dd;
+  document.getElementById("dueDateInputContainer").min = today;
+}
+
+function clearSubtaskInputfield() {
+  let input = document.getElementById(`subTaskInputfieldText`);
+  input.value = "";
+  container = document.getElementById(`subTaskInputfieldMenu`);
+  container.innerHTML = `
+  <img src="../assets/img/add_task/task_add.svg" />`;
+  let border = document.getElementById(`subTaskInputcontainer`);
+  border.classList.remove("bordercolor");
+}

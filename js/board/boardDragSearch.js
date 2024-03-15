@@ -1,8 +1,8 @@
 let currentDragElement;
 
 async function savedUsersInBackend() {
-    await setItem("users", users);
-  }
+  await setItem("users", users);
+}
 
 function startDragging(i) {
   currentDragElement = i;
@@ -15,13 +15,10 @@ function allowDrop(ev) {
 async function moveTo(newStatus) {
   user.tasks[currentDragElement].status = newStatus;
   savedUsersInBackend();
-  document.getElementById(`TodoMainContainer`).innerHTML = "";
+  clearBoardTasksField()
   document.getElementById(`TodoMainContainer`).classList.remove("drag-area-highlight");
-  document.getElementById(`progressMainContainer`).innerHTML = "";
   document.getElementById(`progressMainContainer`).classList.remove("drag-area-highlight");
-  document.getElementById(`awaitMainContainer`).innerHTML = "";
   document.getElementById(`awaitMainContainer`).classList.remove("drag-area-highlight");
-  document.getElementById(`doneMainContainer`).innerHTML = "";
   document.getElementById(`doneMainContainer`).classList.remove("drag-area-highlight");
   loadTasks();
 }
@@ -35,17 +32,31 @@ function removeHighlight(id) {
 }
 
 /* Suchfunktion*/
-function filterNamesforAssignedTo() {
+
+async function filterTitles() {
   let search = document.getElementById("boardSearchInput").value.toLowerCase();
-  let list = document.getElementById("contactList");
-  list.innerHTML = "";
-  openContacts();
-  for (let i = 0; i < contacts.length; i++) {
+  clearBoardTasksField();
+  for (let i = 0; i < user.tasks.length; i++) {
     let name = user.tasks[i].title.toLowerCase();
     if (name.includes(search)) {
-      list.innerHTML += filterNamesforAssignedToReturn(i);
-      let iconid = document.getElementById(`ContactSignatureIcon${i}`);
-      iconid.style.backgroundColor += contacts[i].userColor;
+      if (user.tasks[i].status === "to-do") {
+        fillTodo(i);
+      } else if (user.tasks[i].status === "progress") {
+        fillProgress(i);
+      } else if (user.tasks[i].status === "await") {
+        fillAwait(i);
+      } else if (user.tasks[i].status === "done") {
+        fillDone(i);
+      }
     }
   }
+  checkNofilledTasks();
 }
+
+function clearBoardTasksField() {
+  document.getElementById(`TodoMainContainer`).innerHTML = "";
+  document.getElementById(`progressMainContainer`).innerHTML = "";
+  document.getElementById(`awaitMainContainer`).innerHTML = "";
+  document.getElementById(`doneMainContainer`).innerHTML = "";
+}
+

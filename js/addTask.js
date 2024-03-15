@@ -37,6 +37,7 @@ async function initAddTask() {
   setActiveLink("navAddTask");
   checkWidth();
   contacts = user.contacts;
+  statusInfo = "to-do";
 }
 
 /**
