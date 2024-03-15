@@ -167,7 +167,7 @@ function popUpSubtaskReturn(i, s) {
 function editBoardMobileTaskReturn(i) {
   return `
   <div class="divColumn">
-  <div>
+  <div class="closeEdit">
     <img onclick="closeEditTask(${i})" src="../assets/img/board/board_cross.svg" />
   </div>
   <div class="scroll">
@@ -280,6 +280,38 @@ function editBoardMobileTaskReturn(i) {
 
 `;
 }
+
+function loadContactsReturn(c, i) {
+  return `
+    <div
+        id="assignedContactContainer${c}"
+        onclick="assignedtoContactBg(${c},${i})"
+        class="assignedContactContainer"
+      >
+        <div class="assignedContactLeftSide">
+          <div id="ContactSignatureIcon${c}" class="assignedContactLeftSideIcon">${contactSignature}</div>
+          <p id="contactName${c}"  class="assignedContactNameClass">${contactName}</p>
+        </div>
+        <img
+          id="assignedContactImage${c}"
+          src="../assets/img/add_task/task_box.svg"
+        />
+      </div>
+    `;
+}
+
+function filterNamesforAssignedToReturn(i) {
+  return `
+  <div id="assignedContactContainer${i}" onclick="assignedtoContactBg(${i}, '${user.contacts[i].name}')" class="assignedContactContainer">
+      <div class="assignedContactLeftSide">
+          <div id="ContactSignatureIcon${i}" class="assignedContactLeftSideIcon">${user.contacts[i].signature}</div>
+          <p class="assignedContactNameClass">${user.contacts[i].name}</p>
+      </div>
+      <img id="assignedContactImage${i}" src="../assets/img/add_task/task_box.svg"/>
+  </div>
+`;
+}
+
 function renderBaordSubtasksReturn(i, l) {
   return `<div id="subtask${l}" class="subtaskClass" ondblclick="editSubtask(${l})">
     <div class="addedSubtask">

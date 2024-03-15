@@ -23,7 +23,6 @@ async function loadContacts(i) {
       contactListIcons.innerHTML += `<div id="contactIconNumber${c}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
     }
   }
-
   if (user.contacts.length > 5) {
     mainDiv.style.overflowY = "scroll";
   }
@@ -44,25 +43,6 @@ function closeContacts(i) {
   image.onclick = function () {
     openContacts(i);
   };
-}
-
-function loadContactsReturn(c, i) {
-  return `
-    <div
-        id="assignedContactContainer${c}"
-        onclick="assignedtoContactBg(${c},${i})"
-        class="assignedContactContainer"
-      >
-        <div class="assignedContactLeftSide">
-          <div id="ContactSignatureIcon${c}" class="assignedContactLeftSideIcon">${contactSignature}</div>
-          <p id="contactName${c}"  class="assignedContactNameClass">${contactName}</p>
-        </div>
-        <img
-          id="assignedContactImage${c}"
-          src="../assets/img/add_task/task_box.svg"
-        />
-      </div>
-    `;
 }
 
 function openContacts(i) {
@@ -133,18 +113,6 @@ function filterNamesforAssignedTo() {
   }
 }
 
-function filterNamesforAssignedToReturn(i) {
-  return `
-  <div id="assignedContactContainer${i}" onclick="assignedtoContactBg(${i}, '${user.contacts[i].name}')" class="assignedContactContainer">
-      <div class="assignedContactLeftSide">
-          <div id="ContactSignatureIcon${i}" class="assignedContactLeftSideIcon">${user.contacts[i].signature}</div>
-          <p class="assignedContactNameClass">${user.contacts[i].name}</p>
-      </div>
-      <img id="assignedContactImage${i}" src="../assets/img/add_task/task_box.svg"/>
-  </div>
-`;
-}
-
 async function saveCurrentBoardTask(i) {
   let title = document.getElementById(`titelInputContainer`);
   let description = document.getElementById(`descriptionInput`);
@@ -153,7 +121,7 @@ async function saveCurrentBoardTask(i) {
   user.tasks[i].title = title.value;
   user.tasks[i].dueDate = date.value;
   user.tasks[i].description = description.value;
-  user.tasks[i].prio= pupUpPriorityName;
+  user.tasks[i].prio = pupUpPriorityName;
   await setItem("users", users);
   document.getElementById(`popUpMainContainer`).remove();
   document.getElementById(`blurrContainer`).remove();

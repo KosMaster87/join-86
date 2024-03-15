@@ -231,7 +231,7 @@ h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 32px 24px 32px 24px;
+  padding: 32px 20px 32px 20px;
   overflow: auto;
   word-wrap: break-word;
   max-width: 480px;
@@ -239,15 +239,31 @@ h2 {
 }
 
 .divColumn{
-  padding: 32px 24px 32px 24px;
   max-width: 450px;
   max-height:90%;
 }
 
 .scroll{
-  overflow: auto;
+  overflow-y: auto; /* This makes the div vertically scrollable if content exceeds its height */
+  max-height: 70vh;
+  width: 310px;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
+.descriptionInputField{
+  max-width: 300px !important;
+}
+
+.closeEdit{
+  display: flex;
+  justify-content: flex-end;
+  padding:5px;
+  margin-right: 20px;
+  cursor: pointer;
+}
 
 .boxSizePopUp {
   flex: 0 0 250px;
@@ -390,6 +406,12 @@ h2 {
 
 .boardDesktopAddTask {
   display: none;
+}
+
+.taskSelectButton {
+  min-width: 31% !important;
+  padding: 14px 10px 14px 10px !important;
+  gap: 0px !important;
 }
 
 @media (min-width: 1120px) {
