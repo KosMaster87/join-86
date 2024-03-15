@@ -240,26 +240,48 @@ h2 {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Hintergrundfarbe und Transparenz anpassen */
+  background-color: rgba(0, 0, 0, 0); /* Startwert für Transparenz */
   z-index: 999; /* Sicherstellen, dass es über anderen Elementen liegt */
+  animation: blurIn 0.5s forwards; /* Name der Animation und Dauer festlegen */
 }
 
+@keyframes blurIn {
+  from {
+    background-color: rgba(0, 0, 0, 0); /* Startwert für Transparenz */
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.5); /* Endwert für Transparenz */
+  }
+}
 .openwindow {
   z-index: 800;
   background-color: white;
   border-radius: 30px;
   position: fixed;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px 20px 20px 20px;
+  right: -100%; /* Startposition außerhalb des sichtbaren Bereichs */
+  transform: translate(100%, -50%); /* Startposition außerhalb des sichtbaren Bereichs */
+  padding: 20px;
   overflow: auto;
   word-wrap: break-word;
   max-width: 480px;
   min-width: 310px;
   max-height: 90%;
+  animation: slideIn 1s forwards; /* Animation hinzufügen */
 }
 
+@keyframes slideIn {
+  from {
+    opacity: 0; /* Startwert der Opazität */
+    right: -100%; /* Startposition außerhalb des sichtbaren Bereichs */
+    transform: translate(100%, -50%); /* Startposition außerhalb des sichtbaren Bereichs */
+  }
+  to {
+    opacity: 1; /* Endwert der Opazität */
+    right: calc(50% - 80px); /* Endposition mit 80px Abstand von rechts */
+    transform: translate(50%, -50%); /* Endposition zentriert */
+  }
+}
 .divColumn {
   max-width: 450px;
   max-height: 90%;
