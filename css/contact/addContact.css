@@ -4,6 +4,18 @@
   display: none;
 }
 
+/* RESET INPUT FIELD */
+input {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  outline: none; 
+}  
+
+
 #addContactContainer {
   background-color: rgba(0, 0, 0, 0.25);
   display: none;
@@ -220,6 +232,10 @@
   border: solid 1px var(--lighterGray);
 }
 
+.textInputField {
+  width: 100%;
+  border: none;  
+}
 
 .addContactMessageContainer {
   padding: 0;
@@ -281,12 +297,10 @@
 }
 
 .contactBodyInputSectionCol {
+  margin-top: 75px; 
   width: 100%;
 }
 
-.nameInputField {
-  width: 100%;
-}
 
 .contactBtnSave:hover {
   cursor: pointer;
@@ -549,6 +563,8 @@ input::placeholder {
   }
 
   .contactBodyFlexContainer {
+    
+    margin-top: 40px;
     width: 100%;
     height: 100%;
     display: flex;
