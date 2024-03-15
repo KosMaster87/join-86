@@ -14,7 +14,7 @@ async function initMainContact() {
   /*loadContactsForExample(contactsNew); nur vorübergehend */
   // document.getElementById("listContactContainer").style.display = "block";
 
-}″
+}
 
 
 /* nur vorrübergehend belassen bis addContact funktioniert und anschließend löschen
