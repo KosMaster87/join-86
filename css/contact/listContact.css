@@ -118,7 +118,7 @@ a.singleContact:hover {
 
 @media screen and (min-width: 1200px) {
   #listContactContainer {
-    min-width: 456px;
+    max-width: 456px;
     padding-top: 75px;
     flex: 1;
     overflow-y: auto;
