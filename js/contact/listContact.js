@@ -42,6 +42,7 @@ function sortAllContactsFromCurrentUserAlphabetical() {
 /**
  * 
  */
+
 async function getListFirstChars() {
   let setFirstChars = new Set();
   listFirstChars = [];

@@ -258,7 +258,7 @@ function removeFocusBorder(containerId) {
 }
 
 async function closeAddContactAndGoToShowSingleContactContainer(contactId) {
-  loadShowSingleContact(contactId)
+  loadShowSingleContact(contactId);
   console.log('addContact Z. 231 contactId /Übertrag addC zu singleC:', contactId);
   document.getElementById("addContactContainer").style.display = "none";
   document.getElementById("listContactContainer").style.display = "none";
