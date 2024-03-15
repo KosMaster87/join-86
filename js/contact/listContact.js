@@ -6,15 +6,9 @@ let listFirstChars;
  */
 async function initListContact() {
   // await initWidthContacts();
-  await loadCurrentUserAlsoUsersAsObject();
-  console.log('AUSGABE USERS - list contact', users);
-  console.log(user);
-  sortAllContactsFromCurrentUserAlphabetical();
-  await includeHTML();
-  setActiveLink("navContacts");
   document.getElementById("listContactContainer").style.display = "flex";
+  sortAllContactsFromCurrentUserAlphabetical();
   await getListFirstChars();
-  console.log('Liste FirstChars', getListFirstChars());
   renderContainerList();
 }
 
@@ -46,17 +40,11 @@ function sortAllContactsFromCurrentUserAlphabetical() {
 async function getListFirstChars() {
   let setFirstChars = new Set();
   listFirstChars = [];
-  console.log('RESPONSE getListFirstChars()', sortedContacts);
-  if (user.contacts = []) {
-    console.log('Leere Kontaktliste des Users')
-    return listFirstChars;
-  } else {
     for (let i = 0; i < sortedContacts.length; i++) {
       let signs = sortedContacts[i]["signature"];
       setFirstChars.add(signs.charAt(0));
       return listFirstChars = Array.from(setFirstChars).sort();
     }
-  } 
 }
 
 /**
