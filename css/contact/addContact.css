@@ -223,7 +223,7 @@
 
 .addContactMessageContainer {
   padding: 0;
-  margin: 0;
+  margin: 3px 0;
   height: 17px;
   display: flex;
   width: 100%;
@@ -281,11 +281,7 @@
 }
 
 .contactBodyInputSectionCol {
-  margin-top: 80px;
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  /*gap: 15px; testen, ob verzichtbar aufgrund der MessageContainer */
 }
 
 .nameInputField {
@@ -385,11 +381,11 @@ input::placeholder {
     margin-left: 0px !important;
     margin-top: 0px !important;
   }
-  .contactBodyInputSectionCol {
+  /*.contactBodyInputSectionCol {
     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    justify-content: flex-end;
+    align-items: flex-end;
+  } vermutlich löschen */
 }
 /** AB HIER WEITERMACHEN - ab Zeile 346 in editContact.CSS**/
 
@@ -573,17 +569,16 @@ input::placeholder {
   }
 
   .contactBodyInputSection {
-    width: 56.65%;
+  /*  width: 56.65%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-start; vermutlich löschen */
   }
 
   .contactBodyInputSectionCol {
-    margin-top: 10px;
+   /*margin-top: 10px;
     flex-direction: column;
-    gap: 32px;
-    /* Wechsel */
+    Wechsel */
   }
 
   .contactBodytBtnRow {
