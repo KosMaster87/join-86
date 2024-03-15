@@ -42,6 +42,8 @@ a.singleContact:hover {
   color: var(--white);
 }
 
+
+
 /* contact signature icon */
 .contactSignatureIcon {
   border-radius: 50%;
@@ -112,10 +114,6 @@ a.singleContact:hover {
     width: 352px;
     height: 78px;
   }
-
-
-
-
 }
 
 @media screen and (min-width: 1200px) {
@@ -127,6 +125,15 @@ a.singleContact:hover {
     overflow-y: auto;
     position: static;
     border: none;
+  }
+
+  .active {
+    background-color: var(--lightGray);
+    border-radius: 10px; 
+  }
+
+  .active .contactName{
+    color: white;
   }
 }
 
