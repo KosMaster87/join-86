@@ -1,4 +1,4 @@
-let currentDraggedElement;
+let currentDragElement;
 
 async function savedUsersInBackend() {
     await setItem("users", users);
