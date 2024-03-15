@@ -307,8 +307,8 @@ function editBoardSubtaskReturn(subtasks, s, i) {
   </div>`;
 }
 
-function noTasksReturn() {
-  return `<div class="noTasksInThisSelection font16400">No tasks done</div>`;
+function noTasksReturn(text) {
+  return `<div class="noTasksInThisSelection font16400">No tasks ${text}</div>`;
 }
 
 function editBoardTaskReturn(i, s) {

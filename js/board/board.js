@@ -107,16 +107,16 @@ function updateProgressBar(i) {
 
 function checkNofilledTasks() {
   if (document.getElementById("TodoMainContainer").innerHTML.trim() === "") {
-    document.getElementById("TodoMainContainer").innerHTML = noTasksReturn();
+    document.getElementById("TodoMainContainer").innerHTML = noTasksReturn('to-do');
   }
   if (document.getElementById("progressMainContainer").innerHTML.trim() === "") {
-    document.getElementById("progressMainContainer").innerHTML = noTasksReturn();
+    document.getElementById("progressMainContainer").innerHTML = noTasksReturn('in progress');
   }
   if (document.getElementById("awaitMainContainer").innerHTML.trim() === "") {
-    document.getElementById("awaitMainContainer").innerHTML = noTasksReturn();
+    document.getElementById("awaitMainContainer").innerHTML = noTasksReturn('awaited');
   }
   if (document.getElementById("doneMainContainer").innerHTML.trim() === "") {
-    document.getElementById("doneMainContainer").innerHTML = noTasksReturn();
+    document.getElementById("doneMainContainer").innerHTML = noTasksReturn('finished');
   }
 }
 
