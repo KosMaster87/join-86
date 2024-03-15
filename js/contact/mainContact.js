@@ -13,7 +13,7 @@ async function initMainContact() {
   /*resetUserContacts();*/
   /*loadContactsForExample(contactsNew); nur vorübergehend */
   // document.getElementById("listContactContainer").style.display = "block";
-  console.log('AUSGABE USER.CONTACTS', user.contacts)
+  console.log('AUSGABE USER.CONTACTS initMainContact', user.contacts)
 }
 
 

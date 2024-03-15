@@ -1,6 +1,8 @@
 /* SHOW SINGLE CONTACT JS */
 
 async function loadShowSingleContact(contactId) {
+  console.log('singleContact Z. 4 contactId / Ankuft bei singleC', contactId);
+  await loadCurrentUserAlsoUsersAsObject();
   await getCurrentContact(contactId);
   await fillAllVariables(contactId);
 }
@@ -14,9 +16,9 @@ async function getCurrentContactEmail() {
 }
 
 async function getCurrentContact(currentContactId) {
-  console.log('RES',currentContactId);
+  console.log('RES ContactId Speicher SingleContact Z. 18',currentContactId);
   let contacts = user.contacts;
-  console.log('RES user.contacts',user.contacts);
+  console.log('RES user.contacts SingleContact Z. 18',user.contacts);
   let contactId = currentContactId;
   console.log('RES',contactId);
   for (let i = 0; i < contacts.length; i++) {
@@ -49,6 +51,7 @@ async function openEmailProgram() {
 /* SHOW SINGLE CONTACT TO LIST CONTACT CONTAINER */
 async function goFromSingleContactToListContactContainer() {
   await initListContact();
+  await setItem('currentContactId', []);
   document.getElementById("showSingleContactContainer").style.display = "none";
   document.getElementById("addContactContainer").style.display = "none";
   document.getElementById("listContactContainer").style.display = "flex";

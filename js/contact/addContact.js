@@ -1,30 +1,31 @@
 const contactColors = ["var(--red)", "var(--yellow)", "var(--orangeIcons)", "var(--green)", "var(--pink)", "var(--mintGreen)"];
 
 async function initAddContact() {
+  await loadAllContactsFromAllUsers()
   /*loadContactsForExample(contactsNew);*/
   resetInputFields();
   editFocusBorder('Name', 'Email', 'Phone');
   resetAllInputMessages();
   resetAllAlertBorders();
+  console.log('Add Contact User Zugriff:', user)
+  console.log('addContact userContacts before push', user.contacts);
 }
 
 
 async function initSaveProcess() {
-  await loadCurrentUserAlsoUsersAsObject();
+  
   let name = (document.getElementById('addContactInputName').value).trim();
   let email = (document.getElementById('addContactInputEmail').value).trim();
   let phone = (document.getElementById('addContactInputPhone').value).trim();
 
   if (checkAllInputFields(name, email, phone) === true) {
-
-    await saveContact(name, email, phone);
+    
+    await saveContactAlternativ(name, email, phone);
     resetInputFields();
   } else {
     console.log('Fehlerhafter Dateneintrag')
   }
 }
-
-
 
 async function saveContact(name, email, phone) {
   let contactId = generateRandomId();
@@ -32,7 +33,7 @@ async function saveContact(name, email, phone) {
   let signature = getSignature(name);
 
   let contact = {
-    userId: userId,
+    userId: user.email,
     contactId: contactId,
     name: name,
     email: email,
@@ -41,16 +42,47 @@ async function saveContact(name, email, phone) {
     signature: signature
   };
 
+  console.log('addContact userContacts before push', user.contacts);
   user.contacts.push(contact);
-  setItem("users", users);
-  closeAddContactAndGoToShowSingleContactContainer(contactId, name, email, phone, signature, userColor);
-  document.getElementById('overlayFrame').style.display = "flex";
+  console.log('addContact usercontacts after push', user.contacts)
+  /*setItem("users", users);*/
+  closeAddContactAndGoToShowSingleContactContainer(contactId);
+  document.getElementById('overlayFrame').style.display = "flex"; /* TODO: PRÜFEN, OB NOCH KORREKT */ 
 }
 
 async function getAllContactsFromCurrentUser() {
 
   return await getAllContactsFromCurrentUserSorted();
 }
+
+
+
+/* Alternativer Speicherprozess */
+async function saveContactAlternativ(name, email, phone) {
+  let contactId = generateRandomId();
+  let userColor = getRandomColor(contactColors);
+  let signature = getSignature(name);
+  let currentusers = users;
+  for (let i = 0; i < currentusers.length; i++) {
+    if (currentusers[i].email === user.email) {
+      let contact = {
+        userId: user.email,
+        contactId: contactId,
+        name: name,
+        email: email,
+        phone: phone,
+        userColor: userColor,
+        signature: signature
+      };
+      console.log('contact vor push in user', contact);
+      user.contacts.push(contact);
+      console.log('user.contacts nach push', user.contacts);
+    }
+  } 
+  setItem('users', users);
+  console.log('users nach saveContactAlternativ', users);
+}
+
 
 // async function getAllContactsFromCurrentUser() {
 //   let currentUserId = await getGlobalUserId();
@@ -225,8 +257,9 @@ function removeFocusBorder(containerId) {
   input.classList.remove('focus');
 }
 
-async function closeAddContactAndGoToShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor) {
-  loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor)
+async function closeAddContactAndGoToShowSingleContactContainer(contactId) {
+  loadShowSingleContact(contactId)
+  console.log('addContact Z. 231 contactId /Übertrag addC zu singleC:', contactId);
   document.getElementById("addContactContainer").style.display = "none";
   document.getElementById("listContactContainer").style.display = "none";
   document.getElementById("mobileBtnAddContact").style.display = "none";

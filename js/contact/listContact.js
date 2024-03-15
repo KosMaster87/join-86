@@ -7,7 +7,7 @@ let listFirstChars;
 async function initListContact() {
   // await initWidthContacts();
   await loadCurrentUserAlsoUsersAsObject();
-  console.log(users);
+  console.log('AUSGABE USERS - list contact', users);
   console.log(user);
   sortAllContactsFromCurrentUserAlphabetical();
   await includeHTML();
