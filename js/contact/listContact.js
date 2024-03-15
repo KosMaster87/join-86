@@ -6,6 +6,7 @@ let listFirstChars;
  */
 async function initListContact() {
   // await initWidthContacts();
+  console.log('initListContact', user);
   document.getElementById("listContactContainer").style.display = "flex";
   sortAllContactsFromCurrentUserAlphabetical();
   await getListFirstChars();
@@ -16,7 +17,6 @@ async function initListContact() {
  * 
  */
 function sortAllContactsFromCurrentUserAlphabetical() {
-  console.log('AUSGABE USER.CONTACTS FUNCTION ALPHABETICAL',user.contacts);
   user.contacts.sort((a, b) => {
     const nameA = a.name.toUpperCase();
     const nameB = b.name.toUpperCase();
@@ -30,7 +30,6 @@ function sortAllContactsFromCurrentUserAlphabetical() {
   });
 
   sortedContacts = user.contacts;
-  console.log('SORTED CONTACTS', sortedContacts);
 }
 
 /**
@@ -42,9 +41,9 @@ async function getListFirstChars() {
   listFirstChars = [];
     for (let i = 0; i < sortedContacts.length; i++) {
       let signs = sortedContacts[i]["signature"];
-      setFirstChars.add(signs.charAt(0));
-      return listFirstChars = Array.from(setFirstChars).sort();
+      setFirstChars.add(signs.charAt(0)); 
     }
+    return listFirstChars = Array.from(setFirstChars).sort();
 }
 
 /**
@@ -103,7 +102,6 @@ function renderContactCards(contactCard, char) {
 
 /* FUNKTIONEN AUF LIST CONTACT SEPARIEREN */
 async function goFromListContactToShowSingleContact(contactId) {
-  console.log(typeof(contactId));
   document.getElementById("mobileBtnAddContact").style.display = "none";
 
   if (result === "mobileVersion") {
@@ -113,7 +111,6 @@ async function goFromListContactToShowSingleContact(contactId) {
     document.getElementById("mobileBtnThreePoints").style.display = "block";
     document.getElementById("showSingleContactContainer").style.display =
       "flex";
-    console.log("MOBILE VERSION");
   } else {
     /* await initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor);
     document.getElementById("singleContactCol").style.display = "block"; */
@@ -127,8 +124,6 @@ async function goFromListContactToShowSingleContact(contactId) {
     /* GEGENTEST document.getElementById("singleContactColN").style.display="block";
     let singleContactCol = document.getElementById("singleContactColN");
     singleContactCol.classList.add("slide-in"); */
-
-    console.log("DESKTOP VERSION");
   }
 }
 

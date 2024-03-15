@@ -13,8 +13,8 @@ async function initMainContact() {
   /*resetUserContacts();*/
   /*loadContactsForExample(contactsNew); nur vorübergehend */
   // document.getElementById("listContactContainer").style.display = "block";
-  console.log('AUSGABE USER.CONTACTS initMainContact', user.contacts)
-}
+
+}″
 
 
 /* nur vorrübergehend belassen bis addContact funktioniert und anschließend löschen

@@ -1,16 +1,11 @@
 const contactColors = ["var(--red)", "var(--yellow)", "var(--orangeIcons)", "var(--green)", "var(--pink)", "var(--mintGreen)"];
 
 async function initAddContact() {
-  await loadAllContactsFromAllUsers()
-  /*loadContactsForExample(contactsNew);*/
   resetInputFields();
   editFocusBorder('Name', 'Email', 'Phone');
   resetAllInputMessages();
   resetAllAlertBorders();
-  console.log('Add Contact User Zugriff:', user)
-  console.log('addContact userContacts before push', user.contacts);
 }
-
 
 async function initSaveProcess() {
   
@@ -42,20 +37,16 @@ async function saveContact(name, email, phone) {
     signature: signature
   };
 
-  console.log('addContact userContacts before push', user.contacts);
   user.contacts.push(contact);
-  console.log('addContact usercontacts after push', user.contacts)
-  /*setItem("users", users);*/
+  setItem("users", users);
   closeAddContactAndGoToShowSingleContactContainer(contactId);
-  document.getElementById('overlayFrame').style.display = "flex"; /* TODO: PRÜFEN, OB NOCH KORREKT */ 
+  /*document.getElementById('overlayFrame').style.display = "flex";  TODO: PRÜFEN, OB NOCH KORREKT */ 
 }
 
 async function getAllContactsFromCurrentUser() {
 
   return await getAllContactsFromCurrentUserSorted();
 }
-
-
 
 /* Alternativer Speicherprozess */
 async function saveContactAlternativ(name, email, phone) {
@@ -74,34 +65,13 @@ async function saveContactAlternativ(name, email, phone) {
         userColor: userColor,
         signature: signature
       };
-      console.log('contact vor push in user', contact);
       user.contacts.push(contact);
-      console.log('user.contacts nach push', user.contacts);
     }
   } 
   setItem('users', users);
-  console.log('users nach saveContactAlternativ', users);
+  closeAddContactAndGoToShowSingleContactContainer(contactId);
+  /*document.getElementById('overlayFrame').style.display = "flex";  TODO: PRÜFEN, OB NOCH KORREKT */ 
 }
-
-
-// async function getAllContactsFromCurrentUser() {
-//   let currentUserId = await getGlobalUserId();
-//   let users = await getAllContactsFromAllUsers();
-//   const contactsArray = [];
-//   for (let i = 0; i < users.length; i++) {
-//     const user = users[i];
-//     if (user.email == currentUserId) {
-//       for (let j = 0; j < user.contacts.length; j++) {
-//         const contact = user.contacts[j];
-//         if (contact.userId == currentUserId) {
-//           contactsArray.push(contact);
-//         }
-//       }
-//       break;
-//     }
-//   }
-//   return contactsArray;
-// }
 
 function resetInputFields() {
   document.getElementById('addContactInputName').value = '';
