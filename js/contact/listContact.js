@@ -6,7 +6,6 @@ let listFirstChars;
  */
 async function initListContact() {
   // await initWidthContacts();
-  console.log('initListContact', user);
   document.getElementById("listContactContainer").style.display = "flex";
   sortAllContactsFromCurrentUserAlphabetical();
   await getListFirstChars();
