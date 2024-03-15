@@ -23,16 +23,16 @@
   justify-self: center;
 }
 
-.summaryToDoSum p {
-  font-size: 0.8rem;
-}
-
-.sammarySumNumber {
-  font-size: 2rem !important;
-  font-weight: 600;
-}
-
 @media only screen and (max-width: 480px) and (min-width: 250px) {
+  .sammarySumNumberTill480 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .summaryTextTill480 {
+    font-size: 0.7rem;
+  }
+
   .greetingGuestSummary {
     display: none;
     align-items: center;
@@ -56,12 +56,6 @@
 
   .greetingGuestSummaryParagraf {
     font-size: 2rem;
-  }
-
-  .greetingUserSummaryName {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--lightBlue);
   }
 
   .greetingBoxShow {
@@ -101,8 +95,9 @@
   .summaryHeader p {
     font-size: medium;
   }
+
   .summaryHeadline1 {
-    font-size: 2.5rem !important;
+    font-size: 2.5rem;
     font-family: Inter;
     filter: drop-shadow(2px 2px 2px gray);
   }
@@ -174,10 +169,6 @@
     height: 2.5rem;
   }
 
-  .urgentySpecial {
-    height: 4rem !important;
-  }
-
   .prioVerticalLine {
     width: 1px;
     height: 3.5rem;
@@ -195,12 +186,12 @@
   }
 
   .summaryDeadDater {
-    font-size: 1rem !important;
+    font-size: 1rem;
     font-weight: 600;
   }
 
   .summaryDeadUpcoming {
-    font-size: 0.8rem !important;
+    font-size: 0.8rem;
     font-weight: 300;
   }
 
@@ -248,8 +239,13 @@
 }
 
 @media only screen and (max-width: 720px) and (min-width: 481px) {
-  .greetingsDesktop {
-    font-size: 1rem !important;
+  .sammarySumNumberTill720 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .summaryTextTill720 {
+    font-size: 0.7rem;
   }
 
   .greetingGuestSummary {
@@ -275,12 +271,6 @@
 
   .greetingGuestSummaryParagraf {
     font-size: 2rem;
-  }
-
-  .greetingUserSummaryName {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--lightBlue);
   }
 
   .greetingBoxShow {
@@ -321,7 +311,7 @@
     font-size: medium;
   }
   .summaryHeadline1 {
-    font-size: 2.5rem !important;
+    font-size: 2.5rem;
     font-family: Inter;
     filter: drop-shadow(2px 2px 2px gray);
   }
@@ -393,10 +383,6 @@
     height: 2.5rem;
   }
 
-  .urgentySpecial {
-    height: 4rem !important;
-  }
-
   .prioVerticalLine {
     width: 1px;
     height: 3.5rem;
@@ -414,12 +400,12 @@
   }
 
   .summaryDeadDater {
-    font-size: 1rem !important;
+    font-size: 1rem;
     font-weight: 600;
   }
 
   .summaryDeadUpcoming {
-    font-size: 0.8rem !important;
+    font-size: 0.8rem;
     font-weight: 300;
   }
 
@@ -467,6 +453,25 @@
 }
 
 @media only screen and (max-width: 1028px) and (min-width: 721px) {
+  .greetingsDesktop {
+    font-size: 1.2rem;
+  }
+
+  .greetingNameDesktop {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--lightBlue);
+  }
+
+  .sammarySumNumberTill1028 {
+    font-size: 2.6rem;
+    font-weight: 600;
+  }
+
+  .summaryTextTill1028 {
+    font-size: 0.7rem;
+  }
+
   .GreetingsMobile {
     display: none;
   }
@@ -481,24 +486,6 @@
     display: flex;
     flex-direction: column;
     margin-top: 7rem;
-    min-width: 8rem;
-    justify-content: center;
-  }
-
-  .greetingBoxShow h1 {
-    font-size: 1.1rem !important;
-  }
-
-  .greetingBoxShow p {
-    font-size: 1.6rem !important;
-    font-weight: 800;
-    color: var(--lightBlue);
-  }
-
-  .greetingUserSummaryName {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--lightBlue);
   }
 
   .summaryToDos {
@@ -549,7 +536,7 @@
   }
 
   .summaryHeadline1 {
-    font-size: 2.5rem !important;
+    font-size: 2.5rem;
     font-family: Inter;
     filter: drop-shadow(2px 2px 2px gray);
   }
@@ -593,10 +580,6 @@
     height: 2.6rem;
   }
 
-  .summaryToDoSum p {
-    font-size: 0.6rem;
-  }
-
   .row2Helper {
     display: flex;
     flex-direction: row;
@@ -625,10 +608,6 @@
     height: 2.5rem;
   }
 
-  .urgentySpecial {
-    height: 4rem !important;
-  }
-
   .prioVerticalLine {
     width: 1px;
     height: 3.5rem;
@@ -646,12 +625,12 @@
   }
 
   .summaryDeadDater {
-    font-size: 1.2rem !important;
+    font-size: 1.2rem;
     font-weight: 600;
   }
 
   .summaryDeadUpcoming {
-    font-size: 0.8rem !important;
+    font-size: 0.8rem;
     font-weight: 300;
   }
 
@@ -659,7 +638,6 @@
     display: flex;
     gap: 1.1rem;
     justify-content: space-between;
-    /* flex-wrap: wrap; */
     width: 100%;
   }
 
@@ -698,6 +676,29 @@
 }
 
 @media only screen and (max-width: 1440px) and (min-width: 1029px) {
+  .greetingNameDesktop {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--lightBlue);
+  }
+
+  .greetingsDesktop {
+    font-size: 1.4rem;
+  }
+
+  .headlinePara {
+    font-size: 1.2rem;
+  }
+
+  .sammarySumNumberTill1440 {
+    font-size: 2.8rem;
+    font-weight: 600;
+  }
+
+  .summaryTextTill1440 {
+    font-size: 1rem;
+  }
+
   .GreetingsMobile {
     display: none;
   }
@@ -710,23 +711,7 @@
 
   .greetingBoxShow {
     display: block;
-    margin-top: 7rem;
-  }
-
-  .greetingBoxShow h1 {
-    font-size: 1.5rem;
-  }
-
-  .greetingBoxShow p {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--lightBlue);
-  }
-
-  .greetingUserSummaryName {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--lightBlue);
+    margin-top: 9rem;
   }
 
   .summaryToDos {
@@ -734,7 +719,7 @@
     gap: 3rem;
     align-items: center;
     justify-content: center;
-    width: 55rem;
+    width: 53rem;
   }
 
   .summaryRowContent {
@@ -778,7 +763,7 @@
   }
 
   .summaryHeadline1 {
-    font-size: 2.5rem !important;
+    font-size: 3.5rem;
     font-family: Inter;
     filter: drop-shadow(2px 2px 2px gray);
   }
@@ -822,10 +807,6 @@
     height: 2.6rem;
   }
 
-  .summaryToDoSum p {
-    font-size: 0.6rem;
-  }
-
   .row2Helper {
     display: flex;
     flex-direction: row;
@@ -855,10 +836,6 @@
     height: 2.5rem;
   }
 
-  .urgentySpecial {
-    height: 4rem !important;
-  }
-
   .prioVerticalLine {
     width: 1px;
     height: 3.5rem;
@@ -876,12 +853,12 @@
   }
 
   .summaryDeadDater {
-    font-size: 1.2rem !important;
+    font-size: 1.2rem;
     font-weight: 600;
   }
 
   .summaryDeadUpcoming {
-    font-size: 0.8rem !important;
+    font-size: 0.8rem;
     font-weight: 300;
   }
 
@@ -929,237 +906,31 @@
 }
 
 @media only screen and (max-width: 2560px) and (min-width: 1441px) {
-  .GreetingsMobile {
-    display: none;
+  .greetingNameDesktop {
+    font-size: 2.7rem;
+    font-weight: 800;
+    color: var(--lightBlue);
   }
 
-  .summaryContent {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .greetingsDesktop {
+    font-size: 1.6rem;
   }
 
   .greetingBoxShow {
     display: flex;
     flex-direction: column;
-    margin-top: 7rem;
-    min-width: 8rem;
-    justify-content: center;
+    margin-top: 11rem;
   }
 
-  .greetingBoxShow h1 {
-    font-size: 1.1rem !important;
-  }
-
-  .greetingBoxShow p {
-    font-size: 1.6rem !important;
-    font-weight: 800;
-    color: var(--lightBlue);
-  }
-
-  .greetingUserSummaryName {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--lightBlue);
-  }
-
-  .summaryToDos {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    justify-content: center;
-    width: 34rem;
-    padding-left: 2rem;
-  }
-
-  .summaryRowContent {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 20rem;
-  }
-
-  .verticalLine {
-    width: 4rem;
-    height: 1px;
-    border: 1px solid var(--lightBlue);
-    border-radius: 0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .summaryHeader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-    background-color: var(--whiteGray);
-  }
-
-  .summaryHeaderHelper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: flex-start;
-  }
-
-  .summaryHeader h1 {
-    font-size: larger;
-  }
-
-  .summaryHeader p {
-    font-size: medium;
-  }
-
-  .summaryHeadline1 {
-    font-size: 2.5rem !important;
-    font-family: Inter;
-    filter: drop-shadow(2px 2px 2px gray);
-  }
-
-  .row1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    min-width: 17rem;
-    width: 100%;
-    gap: 1rem;
-  }
-
-  .reactangle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    min-width: 8rem;
-    width: 100%;
-    height: 5rem;
-    gap: 1rem;
-    transition: transform 0.5s ease;
-    background-color: var(--lightBlue);
-  }
-
-  .reactangle:hover {
-    background-color: var(--lightGray);
-    transform: scale(1.05);
-  }
-
-  .todoSpecial {
-    height: 2.5rem;
-  }
-
-  .doneSpecial {
-    height: 2.5rem;
-  }
-
-  .reactangle img {
-    height: 2.6rem;
-  }
-
-  .summaryToDoSum p {
-    font-size: 0.6rem;
-  }
-
-  .row2Helper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    min-width: 17rem;
-    width: 100%;
-    transition: transform 0.5s ease;
-  }
-
-  .row2Helper:hover {
-    background-color: var(--lightGray);
-    transform: scale(1.05);
-  }
-
-  .row2summary {
-    display: flex;
-    flex-direction: row;
-    width: 25%;
-    height: 5.25rem;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .row2summary img {
-    height: 2.5rem;
-  }
-
-  .urgentySpecial {
-    height: 4rem !important;
-  }
-
-  .prioVerticalLine {
-    width: 1px;
-    height: 3.5rem;
-    border: 1px solid var(--lighterGray);
-    border-radius: 0.5rem;
-  }
-
-  .urgentDater {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding-right: 1rem;
-  }
-
-  .summaryDeadDater {
-    font-size: 1.2rem !important;
+  .sammarySumNumberTill2560 {
+    font-size: 2.6rem;
     font-weight: 600;
   }
 
-  .summaryDeadUpcoming {
-    font-size: 0.8rem !important;
-    font-weight: 300;
+  .summaryTextTill10282560 {
+    font-size: 0.7rem;
   }
 
-  .row3 {
-    display: flex;
-    gap: 1.1rem;
-    justify-content: space-between;
-    /* flex-wrap: wrap; */
-    width: 100%;
-  }
-
-  .squareButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.2rem;
-    min-width: 5rem;
-    width: 29%;
-    height: 5rem;
-    transition: transform 0.5s ease;
-  }
-
-  .squareButton:hover {
-    background-color: var(--lightGray);
-    transform: scale(1.05);
-  }
-
-  .squareButton img {
-    width: 100%;
-    height: 100%;
-  }
-
-  .borderRadius {
-    border-radius: 20px;
-  }
-
-  .backgroundColor {
-    background-color: var(--white);
-  }
-
-  .reactangelBoxShadow {
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-  }
-}
-
-@media only screen and (max-width: 1440px) and (min-width: 1029px) {
   .GreetingsMobile {
     display: none;
   }
@@ -1168,27 +939,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .greetingBoxShow {
-    display: block;
-    margin-top: 7rem;
-  }
-
-  .greetingBoxShow h1 {
-    font-size: 1.5rem;
-  }
-
-  .greetingBoxShow p {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--lightBlue);
-  }
-
-  .greetingUserSummaryName {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--lightBlue);
   }
 
   .summaryToDos {
@@ -1197,15 +947,14 @@
     align-items: center;
     justify-content: center;
     width: 50rem;
+    padding-left: 2rem;
   }
 
   .summaryRowContent {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    max-width: 120rem;
-    width: 70%;
+    gap: 2rem;
+    width: 40rem;
   }
 
   .verticalLine {
@@ -1240,9 +989,13 @@
   }
 
   .summaryHeadline1 {
-    font-size: 2.5rem !important;
+    font-size: 4.2rem;
     font-family: Inter;
     filter: drop-shadow(2px 2px 2px gray);
+  }
+
+  .headlinePara {
+    font-size: 1.6rem;
   }
 
   .row1 {
@@ -1259,10 +1012,9 @@
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
-    min-width: 8rem;
     width: 100%;
     height: 7rem;
-    gap: 1rem;
+    gap: 1.2rem;
     transition: transform 0.5s ease;
     background-color: var(--lightBlue);
   }
@@ -1284,10 +1036,6 @@
     height: 2.6rem;
   }
 
-  .summaryToDoSum p {
-    font-size: 0.6rem;
-  }
-
   .row2Helper {
     display: flex;
     flex-direction: row;
@@ -1295,7 +1043,6 @@
     justify-content: space-around;
     min-width: 17rem;
     width: 100%;
-    height: 7rem;
     transition: transform 0.5s ease;
   }
 
@@ -1308,17 +1055,13 @@
     display: flex;
     flex-direction: row;
     width: 25%;
-    height: 5.25rem;
+    height: 7.25rem;
     justify-content: space-between;
     align-items: center;
   }
 
   .row2summary img {
     height: 2.5rem;
-  }
-
-  .urgentySpecial {
-    height: 4rem !important;
   }
 
   .prioVerticalLine {
@@ -1338,12 +1081,12 @@
   }
 
   .summaryDeadDater {
-    font-size: 1.2rem !important;
+    font-size: 1.2rem;
     font-weight: 600;
   }
 
   .summaryDeadUpcoming {
-    font-size: 0.8rem !important;
+    font-size: 0.8rem;
     font-weight: 300;
   }
 
@@ -1351,8 +1094,6 @@
     display: flex;
     gap: 1.1rem;
     justify-content: space-between;
-    flex-wrap: wrap;
-    min-width: 10rem;
     width: 100%;
   }
 
