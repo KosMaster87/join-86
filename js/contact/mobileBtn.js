@@ -14,6 +14,7 @@ async function goToTopOfSite() {
 function openAddContactContainer() {
   initAddContact();
   document.getElementById("addContactContainer").style.display = 'flex';
+  
   document.getElementById("overlayFrame").style.display = 'flex';
   document.getElementById("mobileBtnAddContact").style.display = "none";
 }

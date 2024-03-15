@@ -224,7 +224,7 @@ async function getCurrentIndex() {
     }
 }
 
-/* ANFANG PRÜFUNG DER DATENEINGABE */
+/* ANFANG PRÜFUNG DER DATENEINGABE */ /*
 function checkAllInputFields(name, email, phone) {
   if (checkInputName(name) === true && checkInputEmail(email) === true && checkInputPhone(phone)) {
     return true
@@ -288,6 +288,7 @@ function checkInputPhone(phone) {
 /* ENDE PRÜFUNG DER DATENEINGABE */
 
 /* ANFANG - AUSGABE UND ZURÜCKSETZEN DER FEHLERMELDUNGEN */
+/*
 function showInputMessage(inputField, message) {
   document.getElementById(inputField).innerText = message;
 }
@@ -305,7 +306,7 @@ function resetAllInputMessages() {
 
 
 /* ANFANG - ANZEIGEN UND ZURÜCKSETZEN DER BORDERFARBE */
-function showAlertBorder(inputContainer) {
+/*function showAlertBorder(inputContainer) {
   document.getElementById(inputContainer).classList.add('alertBorder');
 }
 
@@ -321,7 +322,7 @@ function resetAllAlertBorders() {
 /* ANFANG - ANZEIGEN UND ZURÜCKSETZEN DER BORDERFARBE */
 
 /* ANFANG - AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES */ 
-function editFocusBorder(idFocus, idRemoveFocus, idDeleteFocus) {
+/*function editFocusBorder(idFocus, idRemoveFocus, idDeleteFocus) {
   addFocusBorder(idFocus);
   removeFocusBorder(idRemoveFocus);
   removeFocusBorder(idDeleteFocus)
