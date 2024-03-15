@@ -1,13 +1,10 @@
 function HtmlReturn(i) {
   return `
-  <div draggable="true" ondragstart="startDragging(${i})" onclick="openTask(${i})" id="toDoContainer${i}" class="boxSizeProgress">
+  <div onclick="openTask(${i})"  draggable="true" ondragstart="startDragging(${i})" id="toDoContainer${i}" class="boxSizeProgress">
   <div class="headContainer">
     <span id="TaskCategory${i}" class="headlineFromTask font16400">
       Category
     </span>
-    <div>
-      <img src="../assets/img/board/mobile_switch.svg" />
-    </div>
   </div>
   <div class="inProgressText">
     <p class="titleText font16700" id="titleId${i}">
@@ -42,16 +39,13 @@ function awaitHtmlReturn(i) {
       <span id="TaskCategory${i}" class="headlineFromTask font16400">
         Catergory
       </span>
-      <div>
-        <img src="../assets/img/board/mobile_switch.svg" />
-      </div>
     </div>
     <div class="inProgressText">
       <p class="titleText font16700" id="titleId${i}">
-        Kochwelt Page & Recipe Recommender
+  
       </p>
       <p class="descriptionText font16400" id="descriptionID${i}">
-        Build start page with recipe recommendation...
+
       </p>
     </div>
     <div class="progressMainContainer" style="display:none;">
@@ -133,13 +127,13 @@ function openTaskReturn(i) {
       </div>
     </div>
     <div class="popUpFooter">
-      <div class="footerBox">
-        <img onclick="deleteTaskBoard(${i})" src="../assets/img/board/board_delete.svg" />
+      <div onclick="deleteTaskBoard(${i})" class="footerBox deleteBlue">
+        <img src="../assets/img/board/board_delete.svg" />
         <p class="font16400">Delete</p>
       </div>
       <div class="popUpLine"></div>
-      <div class="footerBox">
-        <img onclick="editBoardTask(${i})" src="../assets/img/board/board_edit.svg" />
+      <div  onclick="editBoardTask(${i})"  class="footerBox editBlue">
+        <img  src="../assets/img/board/board_edit.svg" />
         <p class="font16400" >Edit</p>
       </div>
     </div>

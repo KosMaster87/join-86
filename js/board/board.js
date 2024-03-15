@@ -11,57 +11,77 @@ async function initBoard() {
 function loadTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
     if (user.tasks[i].status === "to-do") {
-      document.getElementById(`TodoMainContainer`).innerHTML += HtmlReturn(i);
-      fillValue(i);
-      whatsCategory(i);
-      whatsSignatures(i);
+      fillTodo(i);
     }
   }
   loadProgressTasks();
 }
 
+function fillTodo(i) {
+  document.getElementById(`TodoMainContainer`).innerHTML += HtmlReturn(i);
+  fillValue(i);
+  whatsCategory(i);
+  whatsSignatures(i);
+  updateProgressBar(i);
+}
+
 function loadProgressTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
     if (user.tasks[i].status === "progress") {
-      document.getElementById(`progressMainContainer`).innerHTML += HtmlReturn(i);
-      fillValue(i);
-      whatsCategory(i);
-      whatsSignatures(i);
+      fillProgress(i);
     }
   }
   loadAwaitTasks();
+}
+function fillProgress(i) {
+  document.getElementById(`progressMainContainer`).innerHTML += HtmlReturn(i);
+  fillValue(i);
+  whatsCategory(i);
+  whatsSignatures(i);
+  updateProgressBar(i);
 }
 
 function loadAwaitTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
     if (user.tasks[i].status === "await") {
-      document.getElementById(`awaitMainContainer`).innerHTML += awaitHtmlReturn(i);
-      fillValue(i);
-      whatsCategory(i);
-      whatsSignatures(i);
+      fillAwait(i);
     }
   }
   loadDoneTasks();
 }
 
+function fillAwait(i) {
+  document.getElementById(`awaitMainContainer`).innerHTML += awaitHtmlReturn(i);
+  fillValue(i);
+  whatsCategory(i);
+  whatsSignatures(i);
+  updateProgressBar(i);
+}
+
 function loadDoneTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
     if (user.tasks[i].status === "done") {
-      document.getElementById(`doneMainContainer`).innerHTML += HtmlReturn(i);
-      fillValue(i);
-      whatsCategory(i);
-      whatsSignatures(i);
+      fillDone(i);
     }
-    updateProgressBar(i);
   }
   checkNofilledTasks();
+}
+
+function fillDone(i) {
+  document.getElementById(`doneMainContainer`).innerHTML += HtmlReturn(i);
+  fillValue(i);
+  whatsCategory(i);
+  whatsSignatures(i);
+  updateProgressBar(i);
 }
 
 function fillValue(i) {
   document.getElementById(`TaskCategory${i}`).textContent = user.tasks[i].category;
   document.getElementById(`titleId${i}`).textContent = user.tasks[i].title;
   document.getElementById(`descriptionID${i}`).textContent = user.tasks[i].description;
-  document.getElementById(`PrioImageContainer${i}`).src = `../assets/img/board/board_${user.tasks[i].prio.toLowerCase()}.svg`;
+  document.getElementById(`PrioImageContainer${i}`).src = `../assets/img/board/board_${user.tasks[
+    i
+  ].prio.toLowerCase()}.svg`;
   document.getElementById(`counterOfTasks${i}`).innerHTML = `${user.tasks[i].subtasks.length}`;
   pupUpPriorityName = user.tasks[i].prio;
 }
@@ -100,23 +120,23 @@ function updateProgressBar(i) {
   if (counter >= 0) {
     document.getElementById(`finishedTasks${i}`).innerHTML = counter;
   }
-  if (percent > 0) {
+  if (percent >= 0) {
     document.getElementById(`progressBar${i}`).style.width = percent + "%";
   }
 }
 
 function checkNofilledTasks() {
   if (document.getElementById("TodoMainContainer").innerHTML.trim() === "") {
-    document.getElementById("TodoMainContainer").innerHTML = noTasksReturn('to-do');
+    document.getElementById("TodoMainContainer").innerHTML = noTasksReturn("to-do");
   }
   if (document.getElementById("progressMainContainer").innerHTML.trim() === "") {
-    document.getElementById("progressMainContainer").innerHTML = noTasksReturn('in progress');
+    document.getElementById("progressMainContainer").innerHTML = noTasksReturn("in progress");
   }
   if (document.getElementById("awaitMainContainer").innerHTML.trim() === "") {
-    document.getElementById("awaitMainContainer").innerHTML = noTasksReturn('awaited');
+    document.getElementById("awaitMainContainer").innerHTML = noTasksReturn("awaited");
   }
   if (document.getElementById("doneMainContainer").innerHTML.trim() === "") {
-    document.getElementById("doneMainContainer").innerHTML = noTasksReturn('finished');
+    document.getElementById("doneMainContainer").innerHTML = noTasksReturn("finished");
   }
 }
 
@@ -143,7 +163,10 @@ function renderTaskCategory(i) {
 function renderTaskValues(i) {
   document.getElementById(`popUpTitleId`).innerHTML = user.tasks[i].title;
   document.getElementById(`popUpDescriptionID`).innerHTML = user.tasks[i].description;
-  document.getElementById(`popUpDueDate`).innerHTML = user.tasks[i].dueDate.split("-").reverse().join("/");
+  document.getElementById(`popUpDueDate`).innerHTML = user.tasks[i].dueDate
+    .split("-")
+    .reverse()
+    .join("/");
   if (user.tasks[i].prio === "Low") {
     document.getElementById(`popUpPrioImage`).src = "../assets/img/board/board_low.svg";
   } else if (user.tasks[i].prio === "Medium") {
@@ -186,16 +209,10 @@ function renderTaskSubtasks(i) {
 
 async function closeOpenTask(i) {
   document.body.style.overflow = "auto";
-  user.tasks[i].assignedTo = [];
-  for (let c = 0; c < user.contacts.length; c++) {
-    if (user.contacts[c].selected) {
-      user.tasks[i].assignedTo.push({
-        name: user.contacts[c].name,
-        userColor: user.contacts[c].userColor,
-      });
-    }
-  }
-  savedUsersInBackend();
+  let task = document.getElementById(`popUpMainContainer`);
+  let blurr = document.getElementById(`blurrContainer`);
+  blurr.remove();
+  task.remove();
 }
 
 function removeOpenedTask(i) {
@@ -360,9 +377,6 @@ function removeWhiteImg() {
 }
 
 function changePrioColor(clickedContainerId) {
-  let imgUrgent = document.querySelector("#prioUrgentContainer img");
-  let imgMedium = document.querySelector("#prioMediumContainer img");
-  let imgLow = document.querySelector("#prioLowContainer img");
   if (clickedContainerId === "prioLowContainer") {
     document.getElementById("prioLowContainer").classList.add("prioLow");
     document.querySelector("#prioLowContainer img").src =
@@ -376,23 +390,4 @@ function changePrioColor(clickedContainerId) {
     document.querySelector("#prioUrgentContainer img").src =
       "../assets/img/add_task/arrow_top_white.svg";
   }
-}
-
-function clearSubtaskInputfield() {
-  let input = document.getElementById(`subTaskInputfieldText`);
-  input.value = "";
-  container = document.getElementById(`subTaskInputfieldMenu`);
-  container.innerHTML = `
-  <img src="../assets/img/add_task/task_add.svg" />`;
-  let border = document.getElementById(`subTaskInputcontainer`);
-  border.classList.remove("bordercolor");
-}
-
-function setMinDate() {
-  let today = new Date();
-  let dd = String(today.getDate()).padStart(2, "0");
-  let mm = String(today.getMonth() + 1).padStart(2, "0");
-  let yyyy = today.getFullYear();
-  today = yyyy + "-" + mm + "-" + dd;
-  document.getElementById("dueDateInputContainer").min = today;
 }

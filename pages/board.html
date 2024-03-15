@@ -35,10 +35,10 @@
         </div>
           <div class="boardDesktopHeadRight">
             <div class="searchTaskInputField">
-              <input id="boardSearchInput" placeholder="Find Task" />
+              <input onkeyup="filterTitles()" id="boardSearchInput" placeholder="Find Task" />
               <img src="../assets/img/board/search.svg" />
             </div>
-            <div class="boardDesktopAddTask">
+            <div onclick="includeContentHTML('addTask')" class="boardDesktopAddTask">
               <p class="boardDesktopAddTaskText">Add Task</p>
               <img src="../assets/img/board/add_white.svg" />
             </div>
@@ -49,7 +49,7 @@
           <div class="selectionContainer">
             <div class="headContainer">
               <h2>To do</h2>
-              <img src="../assets/img/board/add_mobile.svg" />
+              <img onclick="includeContentHTML('addTask')" src="../assets/img/board/add_mobile.svg" />
             </div>
             <div
               id="TodoMainContainer"
@@ -63,7 +63,7 @@
           <div class="selectionContainer">
             <div class="headContainer">
               <h2>In progress</h2>
-              <img src="../assets/img/board/add_mobile.svg" />
+              <img onclick="includeContentHTML('addTask')" src="../assets/img/board/add_mobile.svg" />
             </div>
             <div
               id="progressMainContainer"
@@ -76,7 +76,7 @@
           <div class="selectionContainer">
             <div class="headContainer">
               <h2>Await for feedback</h2>
-              <img src="../assets/img/board/add_mobile.svg" />
+              <img onclick="includeContentHTML('addTask')" src="../assets/img/board/add_mobile.svg" />
             </div>
             <div
               id="awaitMainContainer"
