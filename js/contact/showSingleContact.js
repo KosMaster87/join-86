@@ -27,7 +27,6 @@ async function getCurrentContact(currentContactId) {
       console.log('RES MÖGLICHER KONTAKT ?', user.contacts[i])
       return user.contacts[i];
     } else {
-      console.log('ContactId was not found.')
     }
   }
 }

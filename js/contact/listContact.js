@@ -5,7 +5,7 @@ let listFirstChars;
  *
  */
 async function initListContact() {
-  // await initWidthContacts();
+  await initWidthContacts();
   document.getElementById("listContactContainer").style.display = "flex";
   sortAllContactsFromCurrentUserAlphabetical();
   await getListFirstChars();
@@ -108,21 +108,15 @@ async function goFromListContactToShowSingleContact(contactId) {
       contactId,
     );
     document.getElementById("mobileBtnThreePoints").style.display = "block";
-    document.getElementById("showSingleContactContainer").style.display =
-      "flex";
+    document.getElementById("showSingleContactContainer").style.display = "block";
+    document.getElementById("listContactContainer").style.display = "none";
   } else {
     /* await initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor);
     document.getElementById("singleContactCol").style.display = "block"; */
-    await loadShowSingleContact(
-      contactId,
-    );
+    await loadShowSingleContact(contactId);
     //slide effekt start function
     let singleContactCol = document.getElementById("singleContactCol");
     singleContactCol.classList.add("slide-in");
-
-    /* GEGENTEST document.getElementById("singleContactColN").style.display="block";
-    let singleContactCol = document.getElementById("singleContactColN");
-    singleContactCol.classList.add("slide-in"); */
   }
 }
 
