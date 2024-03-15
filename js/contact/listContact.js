@@ -78,14 +78,14 @@ function renderContactCards(contactCard, char) {
     let contact = user.contacts[i];
     if (contact["name"].charAt(0).toUpperCase() === sign) {
       contactCard.innerHTML += `
-            <a class="singleContact" onclick="goFromListContactToShowSingleContact('${contact["contactId"]}')">
+            <a id="singleContactBtn${contact["contactId"]}" class="singleContact" onclick="goFromListContactToShowSingleContact('${contact["contactId"]}')">
                 <div class="contactSignatureIcon" style="background-color:  ${contact["userColor"]}">
                     <span class="contactSignatureIconLetter">
                         ${contact["signature"]}
                     </span>
                 </div>
                 <div id="contactData">
-                <div class="contactName">
+                  <div class="contactName">
                     ${contact["name"]}
                 </div>
                 <div class="contactEmail">
@@ -100,17 +100,23 @@ function renderContactCards(contactCard, char) {
 /* FUNKTIONEN AUF LIST CONTACT SEPARIEREN */
 async function goFromListContactToShowSingleContact(contactId) {
   document.getElementById("mobileBtnAddContact").style.display = "none";
+  const allButtons = document.querySelectorAll('.singleContact');
+  allButtons.forEach(button => {
+    button.classList.remove('active');
+  });
+  let id = "singleContactBtn" + contactId;
+  document.getElementById(id).classList.add('active');
 
   if (result === "mobileVersion") {
     await loadShowSingleContact(contactId);
     document.getElementById("mobileBtnThreePoints").style.display = "block";
+
     let singleContactCol = document.getElementById("singleContactCol");
     singleContactCol.classList.remove("slide-in");
+
     document.getElementById("showSingleContactContainer").style.display = "block";
     document.getElementById("listContactContainer").style.display = "none";
   } else {
-    /* await initSingleContactColumn(userId, contactId, name, email, phone, signature, userColor);
-    document.getElementById("singleContactCol").style.display = "block"; */
     await loadShowSingleContact(contactId);
     //slide effekt start function
     let singleContactCol = document.getElementById("singleContactCol");
@@ -158,28 +164,3 @@ function focusOnNewContact(currentContactId) {
     }
   }
 }
-
-
-
-// /**
-//  *
-//  * @returns
-//  */
-// async function getAllContactsFromCurrentUser() {
-//   let currentUserId = await getGlobalUserId();
-//   let users = await getAllContactsFromAllUsers();
-//   const contactsArray = [];
-//   for (let i = 0; i < users.length; i++) {
-//     const user = users[i];
-//     if (user.email == currentUserId) {
-//       for (let j = 0; j < user.contacts.length; j++) {
-//         const contact = user.contacts[j];
-//         if (contact.userId == currentUserId) {
-//           contactsArray.push(contact);
-//         }
-//       }
-//       break;
-//     }
-//   }
-//   return contactsArray;
-// }
