@@ -16,9 +16,10 @@
     <script src="../js/menu.js"></script>
     <script src="../js/header.js"></script>
 
-    <script src="./../js/board.js"></script>
-    <script src="./../js/boardHTML.js"></script>
-    <script src="./../js/boardEdit.js"></script>
+    <script src="./../js/board/board.js"></script>
+    <script src="./../js/board/boardHTML.js"></script>
+    <script src="./../js/board/boardEdit.js"></script>
+    <script src="./../js/board/boardDragSearch.js"></script>
 
     <title>Board Kanban</title>
   </head>
@@ -34,7 +35,7 @@
         </div>
           <div class="boardDesktopHeadRight">
             <div class="searchTaskInputField">
-              <input placeholder="Find Task" />
+              <input id="boardSearchInput" placeholder="Find Task" />
               <img src="../assets/img/board/search.svg" />
             </div>
             <div class="boardDesktopAddTask">

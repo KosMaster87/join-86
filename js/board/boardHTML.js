@@ -278,7 +278,7 @@ function editBoardMobileTaskReturn(i) {
   </div>
 </div>
 
-`
+`;
 }
 function renderBaordSubtasksReturn(i, l) {
   return `<div id="subtask${l}" class="subtaskClass" ondblclick="editSubtask(${l})">
@@ -303,6 +303,26 @@ function editBoardSubtaskReturn(subtasks, s, i) {
       <img class="arrow" src="../assets/img/add_task/task_bin.svg" onclick="deleteBoardSubtask(${i},${s})" alt="delete_icon">
       <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
       <img class="arrow" src="../assets/img/add_task/task_check.svg" onclick="editBoardSubtaskDone(${i},${s})" alt="done_icon">
+    </div>
+  </div>`;
+}
+
+function noTasksReturn() {
+  return `<div class="noTasksInThisSelection font16400">No tasks done</div>`;
+}
+
+function editBoardTaskReturn(i, s) {
+  return `<div id="subtask${s}" class="subtaskClass" ondblclick="editSubtask(${s})">
+    <div class="addedSubtask">
+      <div class="subTastText">
+        <p>&bull;</p>
+        <P>${user.tasks[i].subtasks[s].name}</P>
+      </div>
+      <div class="subMenu">
+        <img class="arrow" src="../assets/img/add_task/task_edit.svg" onclick="editBoardSubtask(${i},${s})" alt="edit_icon">
+        <img src="../assets/img/add_task/task_line.svg" alt="subtasks_seperator">
+        <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="deleteBoardSubtask(${i},${s})" alt="delete_icon">
+      </div>
     </div>
   </div>`;
 }

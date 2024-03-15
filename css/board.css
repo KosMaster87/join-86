@@ -179,7 +179,6 @@ h2 {
   background-color: var(--white);
   padding: 16px;
   border-radius: 24px;
-  margin-right: 16px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -393,8 +392,10 @@ h2 {
   display: none;
 }
 
-@media (min-width: 1100px) {
-
+@media (min-width: 1120px) {
+  .selectionContainer{
+    width: 225px;
+  }
   .taskBox {
     display: flex;
     gap: 20px;
@@ -452,6 +453,9 @@ h2 {
 }
 
 @media (min-width: 1150px) {
+  .selectionContainer{
+    width: 225px;
+  }
   .boxSizeFeedback {
     width: 210px;
   }
@@ -462,6 +466,9 @@ h2 {
 }
 
 @media (min-width: 1200px) {
+  .selectionContainer{
+    width: 240px;
+  }
   .boxSizeFeedback {
     width: 225px;
   }
@@ -472,6 +479,9 @@ h2 {
 }
 
 @media (min-width: 1250px) {
+  .selectionContainer{
+    width: 255px;
+  }
   .boxSizeFeedback {
     width: 240px;
   }
