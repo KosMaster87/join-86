@@ -1,8 +1,10 @@
+body{
+  background-color: var(--whiteGray) !important;
+}
+
 #showSingleContactContainer {
   display: none;
   position: absolute;
-  width: 100vw;
-  height: 100vh;
   left: 0;
   right: 0;
   bottom: 0;
@@ -235,7 +237,6 @@
     top: 0;
     bottom: 0;
     width: calc(100%-456px);
-    height: 100vh;
     background-color: var(--whiteGray);
     overflow: hidden;
   }
