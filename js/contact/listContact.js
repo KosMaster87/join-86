@@ -97,17 +97,15 @@ function renderContactCards(contactCard, char) {
   }
 }
 
-
-
 /* FUNKTIONEN AUF LIST CONTACT SEPARIEREN */
 async function goFromListContactToShowSingleContact(contactId) {
   document.getElementById("mobileBtnAddContact").style.display = "none";
 
   if (result === "mobileVersion") {
-    await loadShowSingleContact(
-      contactId,
-    );
+    await loadShowSingleContact(contactId);
     document.getElementById("mobileBtnThreePoints").style.display = "block";
+    let singleContactCol = document.getElementById("singleContactCol");
+    singleContactCol.classList.remove("slide-in");
     document.getElementById("showSingleContactContainer").style.display = "block";
     document.getElementById("listContactContainer").style.display = "none";
   } else {
@@ -116,10 +114,10 @@ async function goFromListContactToShowSingleContact(contactId) {
     await loadShowSingleContact(contactId);
     //slide effekt start function
     let singleContactCol = document.getElementById("singleContactCol");
-    singleContactCol.classList.add("slide-in");
+    singleContactCol.classList.add("slide-in"); 
+    singleContactCol.style.display = "flex";
   }
 }
-
 
 let result = "";
 
