@@ -42,6 +42,14 @@ async function openEmailProgram() {
   window.open('mailto: ' + email);
 }
 
+async function deleteContact() {
+  for (let i = 0; i < user.contacts.length; i++) {
+    if (user.contacts.contactId === contactId) {
+      console.log('delete Contact', contactId);
+    }
+  }
+}
+
 /* SHOW SINGLE CONTACT TO LIST CONTACT CONTAINER */
 async function goFromSingleContactToListContactContainer() {
   await initListContact();
