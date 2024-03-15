@@ -17,12 +17,41 @@ body {
   }
 }
 
-@media only screen and (min-width: 250px) {
+@media only screen and (max-width: 720px) and (min-width: 250px) {
   .legalNoticeContent {
     display: flex;
     flex-direction: column;
     height: 100vh;
     padding: 1rem;
+
+    p {
+      text-align: justify;
+    }
+
+    h2 {
+      margin-top: 2rem;
+    }
+
+    h3 {
+      margin-top: 1rem;
+    }
+  }
+
+  .legalNoticeBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 2560px) and (min-width: 721px) {
+  .legalNoticeContent {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    padding: 2rem;
 
     p {
       text-align: justify;
