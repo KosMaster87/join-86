@@ -125,8 +125,8 @@
 
 
 .singleContactName {
-  font-size: 36px;
-  font-weight: 700;
+  font-size: 47px;
+  font-weight: 500;
   line-height: 1.2;
 
 }
@@ -164,6 +164,8 @@
   line-height: 1.2;
   font-weight: 700;
 }
+
+
 
 .singleContactEmailLink {
   color: var(--intenseBlue)
@@ -267,6 +269,11 @@
   .singleContactSubtitle {
     order: 3;
     font-size: 27px;
+  }
+
+  .singleContactDescription {
+    margin: 24px 0;
+    
   }
 
   .singleContactDestopBtn {
