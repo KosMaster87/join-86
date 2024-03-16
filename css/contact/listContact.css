@@ -121,7 +121,6 @@ a.singleContact:hover {
   #listContactContainer {
     max-width: 456px;
     max-width: 456px;
-    padding-top: 75px;
     flex: 1;
     overflow-y: auto;
     position: static;

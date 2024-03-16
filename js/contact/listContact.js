@@ -51,6 +51,16 @@ async function getListFirstChars() {
 function renderContainerList() {
   let charRow = document.getElementById("listContactContainer");
   charRow.innerHTML = "";
+  charRow.innerHTML = `
+  <div class="centerDesktopAdd">
+  <a id="desktopBtnAddContact" onclick="desktopOpenAddContactContainer()">
+        <div class="desktopBtnIntern">
+          <span class="desktopBtnAddContactText">Add new contact</span>
+          <img class="desktopBtnAddContactIcon" src="../assets/img/addContact/person_add.svg">
+        </div>
+      </a>
+      </div>
+  `;
 
   for (let i = 0; i < listFirstChars.length; i++) {
     let char = listFirstChars[i];
@@ -109,7 +119,8 @@ async function goFromListContactToShowSingleContact(contactId) {
 
   if (result === "mobileVersion") {
     await loadShowSingleContact(contactId);
-    document.getElementById("mobileBtnThreePoints").style.display = "block";
+    mobileBtnThreePoints
+    document.getElementById(`mobileBtnThreePoints`).style.display = "block";
 
     let singleContactCol = document.getElementById("singleContactCol");
     singleContactCol.classList.remove("slide-in");

@@ -2,6 +2,14 @@ body {
   background-color: var(--whiteGray) !important;
 }
 
+.head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rightSideHead{
+
+}
 #showSingleContactContainer {
   z-index: 2;
   display: none;
@@ -31,12 +39,10 @@ body {
 }
 
 #singleContactNav {
-  display: flex;
+  margin-top:-40px;
+  display: none;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  right: 16px;
-  top: 82px;
   background-color: transparent;
   width: 35px;
   height: 35px;
@@ -46,11 +52,11 @@ body {
 
 #singleContactNav:hover {
   cursor: pointer;
+  background-color: #eeeeee;
+  border-radius: 50px;
 }
 
 #singleContactNav:active {
-  background-color: #eeeeee;
-  border-radius: 50px;
   transform: scale(1.1);
 }
 
@@ -205,9 +211,10 @@ body {
   }
 }
 @media (max-width: 720px) {
-#singleContact {
-  top: 56px;
-}}
+  #singleContact {
+    top: 56px;
+  }
+}
 
 @media screen and (min-width: 721px) {
   #singleContact {
@@ -229,20 +236,15 @@ body {
     transform: rotate(90deg);
     width: 59px;
   }
-  
-  #singleContact {
-    padding-left: 48px;
-  }
 
-  #singleContactNav {
-    display: none;
+  #singleContact {
+    padding-left: 32px;
   }
 
   .singleContactHeadline {
     order: 1;
     font-size: 61px;
   }
-
 
   .singleContactSubtitle {
     order: 3;
@@ -266,6 +268,9 @@ body {
     width: 100%;
     padding-left: 0px !important;
   }
+  #singleContactNav{
+    display: flex;
+  }
 }
 @media screen and (min-width: 1200px) {
   #contactOverlay {
@@ -274,7 +279,8 @@ body {
 
   #singleContact {
     position: relative;
-    top: 80px; }
+    top: 80px;
+  }
 
   #showSingleContactContainer {
     display: flex;
@@ -286,7 +292,6 @@ body {
     background-color: var(--whiteGray);
     overflow: hidden;
   }
-
 }
 
 @media screen and (min-width: 1440px) {
