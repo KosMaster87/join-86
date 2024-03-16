@@ -154,9 +154,7 @@ function desktopOpenAddContactContainer(){
   document.getElementById("mobileBtnAddContact").style.display = "none";
   document.getElementById("addContactContainer").style.display = "block";
   document.getElementById("addOverlayFrame").style.display = "flex";
-
 }
-
 
 /* AKTUELL HIER - FOCUS NEW CONTACT  ab 1200px berücksichtigen*/
 function focusOnNewContact(currentContactId) {

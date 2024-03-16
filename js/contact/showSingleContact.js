@@ -115,6 +115,7 @@ async function openEditContactAtSingleContactDesktop() {
 async function deleteContactAtShowSingleContactMobile() {
   await getContactId();
   await deleteContact();
+  startPageUpdate();
   await initListContact();
   document.getElementById("mobileBtnThreePoints").style.display = "none";
   document.getElementById("mobileBtnSelectOptions").style.display = "none";
