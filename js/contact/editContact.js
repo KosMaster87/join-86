@@ -289,12 +289,9 @@ async function deleteAtEditContactDesktop() {
 
 async function saveChangesAtEditContactMobile() {
   let contactId = await getContactId();
-  debugger;
   await saveChangesAtEditContact();
-  debugger;
   startPageUpdate();
   await loadShowSingleContact(contactId);
-  debugger;
   document.getElementById('editContactContainer').style.display = "none";
   document.getElementById('showSingleContactContainer').style.display = "block";
   document.getElementById('listContactContainer').style.display = "none";
