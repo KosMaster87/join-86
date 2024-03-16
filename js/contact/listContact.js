@@ -142,7 +142,6 @@ async function initWidthContacts() {
   } else {
     result = "desktopVersion";
   }
-  console.log('Ausgabe result', result)
 }
 
 async function openAddContactContainer() {

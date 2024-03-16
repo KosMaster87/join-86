@@ -1,34 +1,9 @@
 //Edit Contact JS
 
 async function initEditContact() {
-  /* await loadCurrentUserAlsoUsersAsObject();*/
-  /*let currentContact = await getCurrentContactNew();*/
-
-  console.log('Ausgabe aktuelle KontaktID: editContact ', await getContactId());
   await getCurrentContactNew();
-
-
-  /*let allContactsFromAllUsers = await loadAllContactsFromAllUsers();*/
-  /*let allContactsFromCurrentUser = await getGlobalAllContactsFromCurrentUser();*/
-  /*let currentContact = await getCurrentContact(contactId, allContactsFromCurrentUser);//leer*/
   await initializeAllVariables()
 }
-/*
-async function setCurrentContactIdAndUpdate(contactId) {
-    await setCurrentContactId(contactId);
-    globalContactId = contactId;
-    await initEditContact();
-}*/
-
-/* async function getCurrentUserId() {
-    let currentUserId = await getItem('currentUserId');
-
-    return currentUserId;
-}
-       
-async function setCurrentContactId(contactId) {
-    await setItem('currentContactId', contactId);
-} */
 
 async function getContactId() {
   return await getItem('contactId');
@@ -36,7 +11,6 @@ async function getContactId() {
 
 async function initializeAllVariables() {
   let contact = await getCurrentContactNew();
-  console.log('Ausgabe Kontakt', contact);
   let signature = (contact.signature).toString();
   document.getElementById('editContactInputName').value = contact.name;
   document.getElementById('editContactInputEmail').value = contact.email;
@@ -71,13 +45,10 @@ function getFirstChars(arrayName) {
 
 async function deleteContact() {
   let contactId = await getContactId();
-  console.log('RES aktuelle contactId: ', contactId);
   let contacts = await user.contacts;
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     if (contact['contactId'] === contactId) {
-      console.log('RES NAME DES KONTAKTS:', contact['name']);
-      console.log('RES KONTAKTID DES KONTAKTS:', contact['contactId']);
       contacts.splice(i, 1);
     }
   }
@@ -104,13 +75,6 @@ async function getCurrentContactNew() {
 
 /* ANFANG PRÜFUNG DER DATENEINGABE */
 function checkAllInputFieldsForEditContact(name, phone, email) {
-  console.log('Ausgabe name, email, phone', phone);
-  console.log(checkInputNameForEditContact(name));
-  debugger;
-  console.log(checkInputEmailForEditContact(email));
-  debugger;
-  console.log(checkInputPhoneForEditContact(phone));
-  debugger;
   if (checkInputNameForEditContact(name) === true && checkInputEmailForEditContact(email) === true && checkInputPhoneForEditContact(phone)) {
     return true
   } else {
@@ -251,8 +215,6 @@ async function saveChangesAtEditContact() {
           user.contacts[i].userColor = inputUserColor;
 
           await setItem('users', JSON.stringify(users));
-          console.log('Speichervorgang konnte abgeschlossen werden!');
-          /*await goToShowSingleContactAfterEditContact(currentContactId)*/
         } else {
           console.log('Response currentContactId: ' + inputContactId + ' not found.')
         }

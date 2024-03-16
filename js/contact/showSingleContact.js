@@ -1,12 +1,9 @@
 /* SHOW SINGLE CONTACT JS */
-
 async function loadShowSingleContact(contactId) {
-  await loadCurrentUserAlsoUsersAsObject();
   await getCurrentContact(contactId);
   await fillAllVariables(contactId);
   await setContactId(contactId);
   await getContactId();
-  console.log('Ausgabe in der Initialisierung', await getContactId())
 }
 
 async function setCurrentContactEmail(email) {
@@ -52,16 +49,6 @@ async function openEmailProgram() {
   let email = await getCurrentContactEmail();
   window.open('mailto: ' + email);
 }
-/*
-async function deleteContact() {
-  let contactId = await getContactId();
-  console.log('deleteContact - contactId');
-  for (let i = 0; i < user.contacts.length; i++) {
-    if (user.contacts[i].contactId === contactId) {
-      console.log('delete Contact 2. Abruf', contactId);
-    }
-  }
-}*/
 
 /* SHOW SINGLE CONTACT TO LIST CONTACT CONTAINER */
 async function goFromSingleContactToListContactContainer() {
@@ -97,7 +84,6 @@ function closeShowSingleContactContainer() {
 function showMobileSelectBtns() {
   document.getElementById("mobileBtnThreePoints").style.display = "none";
   document.getElementById("mobileBtnSelectOptions").style.display = "block";
-  console.log('Change Button To Select Button');
 }
 
 /* OPEN EDIT CONTACT  */
@@ -107,7 +93,6 @@ async function openEditContactContainer() {
   document.getElementById("editContactContainer").style.display = "block";
   document.getElementById("editOverlayFrame").style.display = "block";
   document.getElementById("mobileBtnAddContact").style.display = "none";
-  console.log("Open Edit Contact Container ist erfolgt!");
 }
 
 async function deleteContactAtSingleContactDestkop() {
@@ -125,5 +110,15 @@ async function openEditContactAtSingleContactDesktop() {
   document.getElementById("editContactContainer").style.display = "block";
   document.getElementById("editOverlayFrame").style.display = "block";
   document.getElementById("mobileBtnAddContact").style.display = "none";
+}
 
+async function deleteContactAtShowSingleContactMobile() {
+  await getContactId();
+  await deleteContact();
+  await initListContact();
+  document.getElementById("mobileBtnThreePoints").style.display = "none";
+  document.getElementById("mobileBtnSelectOptions").style.display = "none";
+  document.getElementById("showSingleContactContainer").style.display = "none";
+  document.getElementById("listContactContainer").style.display = "flex";
+  document.getElementById("singleContactCol").style.display = "none";
 }

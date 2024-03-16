@@ -9,8 +9,6 @@ async function getCurrentContactId() {
 async function goToTopOfSite() {
   window.scrollTo(0, 0);
 }
-
-
 /* DESKTOP BUTTON ADD NEW CONTACT */
 
 function desktopBtnGoFromListContactToAddContact() {
@@ -24,8 +22,6 @@ function desktopBtnGoFromListContactToAddContact() {
 
 /* EDIT CONTACT */
 
-
-
 async function closeEditContactAndGoToListContactContainer() {
   await setCurrentContactId([]);
   goToTopOfSite();
@@ -33,34 +29,17 @@ async function closeEditContactAndGoToListContactContainer() {
   document.getElementById("editContactContainer").style.display = "none";
   document.getElementById("mobileBtnAddContact").style.display = "block";
   document.getElementById("listContactContainer").style.display = "block";
-  console.log("Open Edit Contact Container ist erfolgt!");
 }
-
 
 function saveEditContact() {
   document.getElementById("editContact").style.display = "none";
 }
-
-/*
-function openShowSingleContactContainer(userId, contactId, name, email, phone, signature, userColor) {
-  goToTopOfSite();
-  document.getElementById("showSingleContactContainer").style.display = "block";
-  document.getElementById("listContactContainer").style.display = "none";
-  document.getElementById("listContactContainer").style.display = "none";
-  document.getElementById("mobileBtnAddContact").style.display = "none";
-  document.getElementById("mobileBtnThreePoints").style.display = "block";
-  console.log('Open Show Single Contact Container');
-  loadShowSingleContact(contactId);
-}*/
-
 
 /* DESKTOP ADD CONTACT BUTTONS DESKTOP */
 async function desktopCloseAddContactAndGoToShowSingleContactContainer() {
   goToTopOfSite();
   document.getElementById("desktopAddContactContainer").style.display = "none";
   document.getElementById("listContactContainer").style.display = "none";
-  //document.getElementById("mobileBtnAddContact").style.display = "none";
-  //document.getElementById("mobileBtnThreePoints").style.display = "block";
   document.getElementById("showSingleContactContainer").style.display = "block";
 }
 

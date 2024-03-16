@@ -208,7 +208,6 @@ function removeFocusBorder(containerId) {
 
 async function closeAddContactAndGoToShowSingleContactContainer(contactId) {
   loadShowSingleContact(contactId);
-  console.log('addContact Z. 231 contactId /Übertrag addC zu singleC:', contactId);
   document.getElementById("addContactContainer").style.display = "none";
   document.getElementById("listContactContainer").style.display = "none";
   document.getElementById("mobileBtnAddContact").style.display = "none";
@@ -247,7 +246,6 @@ async function closeAddContactContainer() {
 
 async function saveContactAtAddContactDesktop() {
   let contactId = await getContactId();
-  console.log('Ausgabe contactID Z. 271', contactId)
   await initSaveProcess();
   await initListContact();
   await loadShowSingleContact(contactId);
@@ -259,7 +257,6 @@ async function saveContactAtAddContactDesktop() {
 async function saveContactAtAddContactMobile() {
   await initSaveProcess();
   let contactId = await getContactId();
-  console.log('Ausgabe contactID Z. 271', contactId)
   await initListContact();
   await loadShowSingleContact(contactId);
   document.getElementById("listContactContainer").style.display = "none";
