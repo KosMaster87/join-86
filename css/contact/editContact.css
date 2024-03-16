@@ -50,7 +50,6 @@
   right: 0 !important; /* Zielposition für das Hereinsliden */
 }
 
-
 .editContactHeaderSection {
   margin-top: 80px;
 }
@@ -178,7 +177,6 @@
   color: red;
 }
 
-
 #editContactInputName {
   width: 100%;
 }
@@ -210,11 +208,13 @@
 }
 
 @media screen and (min-width: 1000px) {
-
 }
 
 
 @media screen and (min-width: 1200px) {
+  #editContactBtnSaveMobile {
+    display: none; 
+  }
 
   #editContactBtnSaveDesktop {
     font-size: 21px;
@@ -241,8 +241,7 @@
   #editContactCancelBtnDesktop {
     display: flex; 
   }
-
-
+}
 
 @media screen and (min-width: 1440px) {
   #editContactBtnSaveMobile {

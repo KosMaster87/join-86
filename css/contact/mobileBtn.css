@@ -177,6 +177,10 @@
     left: 215px;
 
   }
+
+  #mobileBtnAddContact {
+    display: none; 
+  }
 }
 
 @media screen and (min-width: 1440px) {
