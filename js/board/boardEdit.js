@@ -1,26 +1,17 @@
+/**
+ *
+ * load the assignedTo contacts
+ *
+ * @param {string} i - is the number of the task
+ */
 async function loadContacts(i) {
   let mainDiv = document.getElementById(`contactList`);
   let totalHeight = Math.min(user.contacts.length * 52, 260);
   mainDiv.style.height = `${totalHeight}px`;
   for (let c = 0; c < user.contacts.length; c++) {
-    contactSignature = user.contacts[c].signature;
-    contactName = user.contacts[c].name;
-    mainDiv.innerHTML += loadContactsReturn(c, i);
-    iconid = document.getElementById(`ContactSignatureIcon${c}`);
-    iconid.style.backgroundColor = user.contacts[c].userColor;
-
+    signatureAndIcon(c);
     if (user.contacts[c].selected) {
-      let container = document.getElementById(`assignedContactContainer${c}`);
-      let contactListIcons = document.getElementById("contactListIconsLine");
-      container.classList.add("assignedContainerBlack");
-      container.onclick = function () {
-        removeassignedtoContactBg(i);
-      };
-      let image = document.getElementById(`assignedContactImage${c}`);
-      image.src = "../assets/img/add_task/task_box_check.svg";
-      let signature = document.getElementById(`ContactSignatureIcon${c}`).innerHTML;
-      let userColor = user.contacts[c].userColor;
-      contactListIcons.innerHTML += `<div id="contactIconNumber${c}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
+      loadContactsIfSelected(c);
     }
   }
   if (user.contacts.length > 5) {
@@ -28,6 +19,47 @@ async function loadContacts(i) {
   }
 }
 
+/**
+ *
+ * load the icon/signature and name of the contact
+ *
+ * @param {*} c - is the number of the contact
+ */
+function signatureAndIcon(c) {
+  let mainDiv = document.getElementById(`contactList`);
+  contactSignature = user.contacts[c].signature;
+  contactName = user.contacts[c].name;
+  mainDiv.innerHTML += loadContactsReturn(c, i);
+  iconid = document.getElementById(`ContactSignatureIcon${c}`);
+  iconid.style.backgroundColor = user.contacts[c].userColor;
+}
+
+/**
+ *
+ * type the contact selected when open the contacts
+ *
+ * @param {*} c - is the number of the contact
+ */
+function loadContactsIfSelected(c) {
+  let container = document.getElementById(`assignedContactContainer${c}`);
+  let contactListIcons = document.getElementById("contactListIconsLine");
+  container.classList.add("assignedContainerBlack");
+  container.onclick = function () {
+    removeassignedtoContactBg(i);
+  };
+  let image = document.getElementById(`assignedContactImage${c}`);
+  image.src = "../assets/img/add_task/task_box_check.svg";
+  let signature = document.getElementById(`ContactSignatureIcon${c}`).innerHTML;
+  let userColor = user.contacts[c].userColor;
+  contactListIcons.innerHTML += `<div id="contactIconNumber${c}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
+}
+
+/**
+ *
+ * close the contacts
+ *
+ * @param {string} i - is the number of the task
+ */
 function closeContacts(i) {
   let contactList = document.getElementById(`contactList`);
   contactList.style.display = "none";
@@ -45,6 +77,12 @@ function closeContacts(i) {
   };
 }
 
+/**
+ *
+ * open the contactslist from currentuser
+ *
+ * @param {string} i - is the number of the task
+ */
 function openContacts(i) {
   let contactList = document.getElementById("contactList");
   let contactListIcons = document.getElementById("contactListIcons");
@@ -59,45 +97,78 @@ function openContacts(i) {
   };
 }
 
+/**
+ *
+ * change backgroundcolor and the image to selcted
+ *
+ * @param {*} i -is the number of the contact
+ * @param {*} j - is the number of the task
+ */
 async function assignedtoContactBg(i, j) {
   if (user.contacts[i].selected) {
-    user.contacts[i].selected = false;
-    let container = document.getElementById(`assignedContactContainer${i}`);
-    container.classList.remove("assignedContainerBlack");
-    let image = document.getElementById(`assignedContactImage${i}`);
-    image.src = "../assets/img/add_task/task_box.svg";
-    let iconId = document.getElementById(`contactIconNumber${i}`);
-    iconId.remove();
-    let removeName = user.tasks[j].assignedTo.findIndex(
-      (item) => item.name === user.contacts[i].name
-    );
-    if (removeName !== -1) {
-      user.tasks[j].assignedTo.splice(removeName, 1);
-    }
+    assignedtoContactBgIf(i, j);
   } else {
-    user.contacts[i].selected = true;
-    let container = document.getElementById(`assignedContactContainer${i}`);
-    let contactListIcons = document.getElementById("contactListIconsLine");
-    container.classList.add("assignedContainerBlack");
-    let image = document.getElementById(`assignedContactImage${i}`);
-    image.src = "../assets/img/add_task/task_box_check.svg";
-    let signature = document.getElementById(`ContactSignatureIcon${i}`).innerHTML;
-    let userColor = user.contacts[i].userColor;
-    contactListIcons.innerHTML += `<div id="contactIconNumber${i}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
-    user.tasks[j].assignedTo.push({
-      name: user.contacts[i].name,
-      userColor: user.contacts[i].userColor,
-    });
+    assignedtoContactbgElse(i, j);
   }
-
-  await setItem("users", users);
+  savedUsersInBackend();
 }
 
+/**
+ *
+ * if the contact is selected true change it to not selected
+ *
+ * @param {*} i -is the number of the contact
+ * @param {*} j - is the number of the task
+ */
+function assignedtoContactBgIf(i, j) {
+  user.contacts[i].selected = false;
+  let container = document.getElementById(`assignedContactContainer${i}`);
+  container.classList.remove("assignedContainerBlack");
+  let image = document.getElementById(`assignedContactImage${i}`);
+  image.src = "../assets/img/add_task/task_box.svg";
+  let iconId = document.getElementById(`contactIconNumber${i}`);
+  iconId.remove();
+  let removeName = user.tasks[j].assignedTo.findIndex(
+    (item) => item.name === user.contacts[i].name
+  );
+  if (removeName !== -1) {
+    user.tasks[j].assignedTo.splice(removeName, 1);
+  }
+}
+
+/**
+ * if the contact is selected true change it to selected
+ *
+ * @param {*} i -is the number of the contact
+ * @param {*} j - is the number of the task
+ */
+function assignedtoContactbgElse(i, j) {
+  user.contacts[i].selected = true;
+  let container = document.getElementById(`assignedContactContainer${i}`);
+  let contactListIcons = document.getElementById("contactListIconsLine");
+  container.classList.add("assignedContainerBlack");
+  let image = document.getElementById(`assignedContactImage${i}`);
+  image.src = "../assets/img/add_task/task_box_check.svg";
+  let signature = document.getElementById(`ContactSignatureIcon${i}`).innerHTML;
+  let userColor = user.contacts[i].userColor;
+  contactListIcons.innerHTML += `<div id="contactIconNumber${i}" style="background-color: ${userColor};" class="assignedContactLeftSideIcon">${signature}</div>`;
+  user.tasks[j].assignedTo.push({
+    name: user.contacts[i].name,
+    userColor: user.contacts[i].userColor,
+  });
+}
+
+/**
+ * change the border of the clicked field
+ */
 function onclickInputBorder() {
   let border = document.getElementById(`contactSelectContainer`);
   border.classList.add("bordercolor");
 }
 
+/**
+ * filter letters in the inputfield and search in contacts for an include
+ */
 function filterNamesforAssignedTo() {
   let search = document.getElementById("assignedToContainer").value.toLowerCase();
   let list = document.getElementById("contactList");
@@ -113,6 +184,12 @@ function filterNamesforAssignedTo() {
   }
 }
 
+/**
+ *
+ * save the changes when press the ok button
+ *
+ * @param {*} i - is the number of the task
+ */
 async function saveCurrentBoardTask(i) {
   let title = document.getElementById(`titelInputContainer`);
   let description = document.getElementById(`descriptionInput`);
@@ -128,6 +205,9 @@ async function saveCurrentBoardTask(i) {
   openTask(i);
 }
 
+/**
+ * cant take date in the future
+ */
 function setMinDate() {
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, "0");
@@ -137,6 +217,9 @@ function setMinDate() {
   document.getElementById("dueDateInputContainer").min = today;
 }
 
+/**
+ * clear the inputfields in the subtask
+ */
 function clearSubtaskInputfield() {
   let input = document.getElementById(`subTaskInputfieldText`);
   input.value = "";

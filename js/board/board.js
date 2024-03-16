@@ -7,8 +7,9 @@ async function initBoard() {
   createUserSignatureIcon();
   loadTasks();
 }
+
 /**
- * Render tasks with status to-do
+ *  Render tasks with status to-do
  */
 function loadTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
@@ -32,6 +33,7 @@ function fillTodo(i) {
   whatsSignatures(i);
   updateProgressBar(i);
 }
+
 /**
  * Render tasks with status progress
  */
@@ -44,6 +46,7 @@ function loadProgressTasks() {
   }
   loadAwaitTasks();
 }
+
 /**
  *
  * if i status progress render the informations
@@ -95,6 +98,7 @@ function loadDoneTasks() {
   }
   checkNofilledTasks();
 }
+
 /**
  *
  * if i status done render the informations
@@ -108,6 +112,7 @@ function fillDone(i) {
   whatsSignatures(i);
   updateProgressBar(i);
 }
+
 /**
  * fill values with array informations
  *
@@ -123,6 +128,7 @@ function fillValue(i) {
   document.getElementById(`counterOfTasks${i}`).innerHTML = `${user.tasks[i].subtasks.length}`;
   pupUpPriorityName = user.tasks[i].prio;
 }
+
 /**
  *
  * change the backgroundcolor for the right category
@@ -137,6 +143,7 @@ function whatsCategory(i) {
     document.getElementById(`TaskCategory${i}`).style.backgroundColor = "#1FD7C1";
   }
 }
+
 /**
  *
  * render icons and render the signatures
@@ -156,6 +163,7 @@ function whatsSignatures(i) {
     }
   }
 }
+
 /**
  *
  * render the finished subtasks in a bar
@@ -196,6 +204,7 @@ function checkNofilledTasks() {
     document.getElementById("doneMainContainer").innerHTML = noTasksReturn("finished");
   }
 }
+
 /**
  *
  * open the task when double click the mouse
@@ -211,6 +220,7 @@ function openTask(i) {
   renderTaskAssigneds(i);
   renderTaskSubtasks(i);
 }
+
 /**
  *
  * render the category with the right background color in the task
@@ -226,6 +236,7 @@ function renderTaskCategory(i) {
     popUpCategory.style.backgroundColor = "#1FD7C1";
   }
 }
+
 /**
  *
  * fill the container with values of title and more
@@ -248,6 +259,7 @@ function renderTaskValues(i) {
   }
   popUpPriority.innerHTML = user.tasks[i].prio;
 }
+
 /**
  *
  * render the assigned contacts
@@ -267,6 +279,7 @@ function renderTaskAssigneds(i) {
     }
   }
 }
+
 /**
  *
  * render the subtask from the opened task
@@ -288,6 +301,7 @@ function renderTaskSubtasks(i) {
     }
   }
 }
+
 /**
  *
  * close the opened task
@@ -301,6 +315,7 @@ async function closeOpenTask(i) {
   blurr.remove();
   task.remove();
 }
+
 /**
  *
  * close the opened task
@@ -315,6 +330,7 @@ function removeOpenedTask(i) {
   document.getElementById(`TodoMainContainer`).innerHTML = "";
   loadTasks();
 }
+
 /**
  *
  * close the editTask
@@ -326,6 +342,7 @@ function closeEditTask(i) {
   document.getElementById(`blurrContainer`).remove();
   openTask(i);
 }
+
 /**
  *
  * clear the containers
@@ -342,6 +359,7 @@ async function deleteTaskBoard(i) {
   savedUsersInBackend();
   loadTasks();
 }
+
 /**
  *
  * change from inputfield to div field after change the text
@@ -404,6 +422,7 @@ function editBoardSubtask(i, s) {
   task.innerHTML = "";
   task.innerHTML = editBoardSubtaskReturn(user.tasks[i].subtasks[s].name, s, i);
 }
+
 /**
  *
  * change from inputfield to div field after change the text
@@ -422,10 +441,11 @@ async function editBoardSubtaskDone(i, s) {
   }
   savedUsersInBackend();
 }
+
 /**
- * 
+ *
  * render the subtasks
- * 
+ *
  * @param {*} i - is the number of the task
  */
 function renderBoardSubtasks(i) {
@@ -435,11 +455,12 @@ function renderBoardSubtasks(i) {
     subtasksList.innerHTML += renderBaordSubtasksReturn(i, l);
   }
 }
+
 /**
- * 
+ *
  * create a new subtaks in the tasks and safe it in the backend
- * 
- * @param {*} i - is the number of the task 
+ *
+ * @param {*} i - is the number of the task
  */
 async function addBoardSubtask(i) {
   console.log(i);
@@ -454,6 +475,12 @@ async function addBoardSubtask(i) {
   renderBoardSubtasks(i);
 }
 
+/**
+ * 
+ * change the subtask menubar when edit the subtask
+ * 
+ * @param {*} i - is the number of the task
+ */
 function changeBoardMenu(i) {
   container = document.getElementById(`subTaskInputfieldMenu`);
   container.innerHTML = changeBoardMenuReturn(i);
@@ -461,13 +488,13 @@ function changeBoardMenu(i) {
   border.classList.add("bordercolor");
 }
 
-function changeBoardMenuReturn(i) {
-  return `
-    <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="clearSubtaskInputfield()"/>
-    <img src="../assets/img/add_task/task_line.svg"/>
-    <img class="arrow" onclick="addBoardSubtask(${i})" src="../assets/img/add_task/task_check.svg"/>`;
-}
-
+/**
+ * 
+ * delete the subtask
+ * 
+ * @param {*} i - is the number of the task
+ * @param {*} s - is the number of the subtasks
+ */
 async function deleteBoardSubtask(i, s) {
   if (user.tasks[i] && user.tasks[i].subtasks) {
     if (user.tasks[i].subtasks[s]) {
@@ -479,6 +506,9 @@ async function deleteBoardSubtask(i, s) {
   }
 }
 
+/**
+ * change the backgroundcolor of the priority
+ */
 function whatsPrio() {
   removeWhiteImg();
   removePrio();
@@ -491,6 +521,12 @@ function whatsPrio() {
   }
 }
 
+/**
+ * 
+ * give the contact that assignedTo an selected true information
+ * 
+ * @param {*} i - is the number of the task
+ */
 function selectContacts(i) {
   user.contacts.forEach((contact) => {
     contact.selected = false;
@@ -505,12 +541,18 @@ function selectContacts(i) {
   }
 }
 
+/**
+ * remove the backgroundcolors of selected priority
+ */
 function removePrio() {
   document.getElementById("prioLowContainer").classList.remove("prioLow");
   document.getElementById("prioMediumContainer").classList.remove("prioMedium");
   document.getElementById("prioUrgentContainer").classList.remove("prioUrgent");
 }
 
+/**
+ * remove the image of selected priority
+ */
 function removeWhiteImg() {
   let imgUrgent = prioUrgentContainer.querySelector("img");
   let imgMedium = prioMediumContainer.querySelector("img");
@@ -520,6 +562,12 @@ function removeWhiteImg() {
   imgLow.src = "../assets/img/add_task/arrow_bottom_green.svg";
 }
 
+/**
+ * 
+ * change the backgroundcolor of selected priority
+ * 
+ * @param {*} clickedContainerId - clicked priorityContainer
+ */
 function changePrioColor(clickedContainerId) {
   if (clickedContainerId === "prioLowContainer") {
     document.getElementById("prioLowContainer").classList.add("prioLow");

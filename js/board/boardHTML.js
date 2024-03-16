@@ -149,6 +149,13 @@ function assigned(n) {
   </div>`;
 }
 
+function changeBoardMenuReturn(i) {
+  return `
+    <img class="arrow" src="../assets/img/add_task/task_cross.svg" onclick="clearSubtaskInputfield()"/>
+    <img src="../assets/img/add_task/task_line.svg"/>
+    <img class="arrow" onclick="addBoardSubtask(${i})" src="../assets/img/add_task/task_check.svg"/>`;
+}
+
 function popUpSubtaskReturn(i, s) {
   return `
     <div id="popUpSubtask${s}" class="popUpSubtaskDetail">
