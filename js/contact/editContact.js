@@ -274,15 +274,15 @@ async function saveChangesMobile() {
   document.getElementById('mobileBtnAddContact').style.display = "none";
 }
 
-async function cancelSaveProcessAtEditContactDesktop() {
-  resetAllAlertBorders()
-  resetAllInputMessages()
-  startPageUpdate()
+async function deleteAtEditContactDesktop() {
+  let contactId = await getContactId();
+  await deleteContact();
   await initListContact();
+  await setContactId([]);
   document.getElementById('editContactContainer').style.display = "none";
-  document.getElementById('showSingleContactContainer').style.display = "flex";
+  document.getElementById('showSingleContactContainer').style.display = "none";
   document.getElementById('listContactContainer').style.display = "flex";
   document.getElementById('mobileBtnSelectOptions').style.display = "none";
-  document.getElementById('mobileBtnAddContact').style.display = "none";
-  document.getElementById('singleContactCol').style.display = "none";
+  document.getElementById('mobileBtnAddContact').style.display = "block";
 }
+
