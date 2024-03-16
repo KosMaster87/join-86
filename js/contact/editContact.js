@@ -226,8 +226,6 @@ async function saveChangesAtEditContact() {
 }
 
 
-/* DELETE BUTTON AUF EDIT-CONTACT */
-
 async function goFromDeleteContactToListContact() {
   await setContactId([]);
   await deleteContact();
@@ -238,7 +236,6 @@ async function goFromDeleteContactToListContact() {
   document.getElementById('mobileBtnSelectOptions').style.display = "none";
   document.getElementById('mobileBtnAddContact').style.display = "block";
 }
-
 
 async function desktopCloseAddContactContainerWithoutAddingNewContact() {
   /* alles ggf. zurücksetzen */

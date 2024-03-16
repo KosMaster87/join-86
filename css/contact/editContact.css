@@ -72,13 +72,13 @@
 }
 
 .editContactHeaderSignature {
+  display:none;
   width: 120px;
   height: 120px;
   background-color: orange;
   border: 2px solid var(--white);
   border-radius: 50%;
   z-index: 5;
-  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -134,7 +134,6 @@
 #editContactInputContainerPhone {
   border: solid 1px var(--lighterGray);
 }
-
 
 #editContactInputFieldName {
   border: 1px solid var(--lighterGray);
@@ -192,10 +191,64 @@
   width: 100%;
 }
 
-/* AB HIER KOMPLETT ÜBERARBEITEN VON ADD GEKLAUT */
-@media screen and (min-width: 1000px) {}
+#editContactBtnSaveMobile {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--white);
+  background-color: var(--lightGray);
+  border-radius: 10px;
+  padding: 18px 10px;
+}
+
+#editContactBtnSaveMobile:hover {
+  cursor: pointer;
+}
+
+#editContactCancelBtnDesktop {
+  display: none; 
+}
+
+@media screen and (min-width: 1000px) {
+
+}
+
+
+@media screen and (min-width: 1200px) {
+
+  #editContactBtnSaveDesktop {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--white);
+    background-color: var(--lightGray);
+    border-radius: 10px;
+    padding: 18px 10px;
+  }
+
+  #editContactBtnSaveDesktop:hover {
+    cursor: pointer;
+  }
+
+  #editContactBodyBtnRowDesktop {
+    display: flex;
+    margin-top: 36px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+  }
+
+  #editContactCancelBtnDesktop {
+    display: flex; 
+  }
+
+
 
 @media screen and (min-width: 1440px) {
+  #editContactBtnSaveMobile {
+    display: none;
+  }
+
   #editContactContainer {
     position: absolute;
     width: 100vw;
@@ -275,12 +328,14 @@
 }
 
 @media screen and (min-width: 1200px) {
-  
+  #contactBodytBtnRowMobile{
+    display: none; 
+  }
 }
 
 @media screen and (min-width: 1440px) {
 
-  #editContactBtnSave {
+  #editContactBtnSaveMobile {
     display: none; 
   }
 
