@@ -225,7 +225,9 @@ async function saveChangesAtEditContact() {
   }
 }
 
-
+function startPageUpdate() {
+  location.reload();
+}
 async function goFromDeleteContactToListContact() {
   await setContactId([]);
   await deleteContact();
@@ -272,6 +274,15 @@ async function saveChangesMobile() {
   document.getElementById('mobileBtnAddContact').style.display = "none";
 }
 
-function startPageUpdate() {
-  location.reload();
+async function cancelSaveProcessAtEditContactDesktop() {
+  resetAllAlertBorders()
+  resetAllInputMessages()
+  startPageUpdate()
+  await initListContact();
+  document.getElementById('editContactContainer').style.display = "none";
+  document.getElementById('showSingleContactContainer').style.display = "flex";
+  document.getElementById('listContactContainer').style.display = "flex";
+  document.getElementById('mobileBtnSelectOptions').style.display = "none";
+  document.getElementById('mobileBtnAddContact').style.display = "none";
+  document.getElementById('singleContactCol').style.display = "none";
 }
