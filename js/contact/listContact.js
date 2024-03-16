@@ -119,6 +119,7 @@ async function goFromListContactToShowSingleContact(contactId) {
   } else {
     await loadShowSingleContact(contactId);
     //slide effekt start function
+    document.getElementById("showSingleContactContainer").style.display = "block";
     let singleContactCol = document.getElementById("singleContactCol");
     singleContactCol.classList.add("slide-in"); 
     singleContactCol.style.display = "flex";

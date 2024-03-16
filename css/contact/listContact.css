@@ -1,6 +1,7 @@
 /* LIST CONTACT CONTAINER */
 
 #listContactContainer {
+  max-width: 456px;
   display: none;
   flex-direction: column;
   background-color: white;
@@ -87,6 +88,7 @@ a.singleContact:hover {
 
 @media screen and (min-width: 456px) {
   #listContactContainer {
+    max-width: 456px;
     top: 40px;
     width: 80%;
   }
@@ -94,6 +96,7 @@ a.singleContact:hover {
 
 @media screen and (min-width: 721px) {
   #listContactContainer {
+    max-width: 456px;
     top: 40px;
     width: 70%;
   }
@@ -101,6 +104,7 @@ a.singleContact:hover {
 
 @media screen and (min-width: 1000px) {
   #listContactContainer {
+    max-width: 456px;
     top: 40px;
     width: 50%;
   }
@@ -115,6 +119,7 @@ a.singleContact:hover {
 
 @media screen and (min-width: 1200px) {
   #listContactContainer {
+    max-width: 456px;
     max-width: 456px;
     padding-top: 75px;
     flex: 1;
@@ -135,7 +140,14 @@ a.singleContact:hover {
 
 @media screen and (min-width: 1440px) {
   #listContactContainer {
+    max-width: 456px;
     /* top: 155px; */
     width: 456px;
   }
+}
+@media (max-width: 1200px) {
+.mainContent{
+  background-color: var(--white) !important;
+}
+
 }

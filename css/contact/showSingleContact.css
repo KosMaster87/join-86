@@ -1,8 +1,9 @@
-body{
+body {
   background-color: var(--whiteGray) !important;
 }
 
 #showSingleContactContainer {
+  z-index: 2;
   display: none;
   left: 0;
   right: 0;
@@ -12,7 +13,6 @@ body{
 
 #singleContact {
   position: relative;
-  top: 80px;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -123,13 +123,10 @@ body{
   align-items: center;
 }
 
-
-
 .singleContactName {
   font-size: 47px;
   font-weight: 500;
   line-height: 1.2;
-
 }
 
 .singleContactIconXl {
@@ -157,7 +154,6 @@ body{
   font-size: 20px;
   font-weight: 400;
   line-height: 1.2;
-
 }
 
 .singleContactLabel {
@@ -166,10 +162,8 @@ body{
   font-weight: 700;
 }
 
-
-
 .singleContactEmailLink {
-  color: var(--intenseBlue)
+  color: var(--intenseBlue);
 }
 
 .singleContactEmailLink:hover {
@@ -197,7 +191,7 @@ body{
   }
 
   100% {
-    transform: translate(-50%, calc(33.33vh -50px))
+    transform: translate(-50%, calc(33.33vh -50px));
   }
 }
 
@@ -207,27 +201,80 @@ body{
   }
 
   100% {
-    transform: translate(-50%, 100%)
+    transform: translate(-50%, 100%);
   }
 }
-
+@media (max-width: 720px) {
+#singleContact {
+  top: 56px;
+}}
 
 @media screen and (min-width: 721px) {
   #singleContact {
-    padding-left: 195px;
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 800px) {
   .singleContactHeader {
     display: flex;
   }
-}
+  .singleContactHeader {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
+  .singleContactHeaderBorder {
+    order: 2;
+    transform: rotate(90deg);
+    width: 59px;
+  }
+  
+  #singleContact {
+    padding-left: 48px;
+  }
+
+  #singleContactNav {
+    display: none;
+  }
+
+  .singleContactHeadline {
+    order: 1;
+    font-size: 61px;
+  }
+
+
+  .singleContactSubtitle {
+    order: 3;
+    font-size: 27px;
+  }
+
+  .singleContactDescription {
+    margin: 24px 0;
+  }
+
+  .singleContactDestopBtn {
+    display: flex;
+  }
+
+  #singleContactCol {
+    display: none;
+  }
+}
+@media (max-width: 1199px) {
+  #showSingleContactContainer {
+    width: 100%;
+    padding-left: 0px !important;
+  }
+}
 @media screen and (min-width: 1200px) {
   #contactOverlay {
     display: none;
   }
+
+  #singleContact {
+    position: relative;
+    top: 80px; }
 
   #showSingleContactContainer {
     display: flex;
@@ -240,50 +287,7 @@ body{
     overflow: hidden;
   }
 
-  #singleContact {
-    padding-left: 48px;
-
-  }
-
-  .singleContactHeader {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
-  #singleContactNav{
-    display: none; 
-  }
-
-  .singleContactHeadline {
-    order: 1;
-    font-size: 61px;
-  }
-
-  .singleContactHeaderBorder {
-    order: 2;
-    transform: rotate(90deg);
-    width: 59px;
-  }
-
-  .singleContactSubtitle {
-    order: 3;
-    font-size: 27px;
-  }
-
-  .singleContactDescription {
-    margin: 24px 0;
-    
-  }
-
-  .singleContactDestopBtn {
-    display: flex;
-  }
-
-  #singleContactCol {
-    display: none;
-  }
 }
 
-
-@media screen and (min-width: 1440px) {}
+@media screen and (min-width: 1440px) {
+}
