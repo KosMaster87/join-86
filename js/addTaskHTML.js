@@ -267,8 +267,6 @@ function renderAddTaskHTML() {
   </div>
 </div>
 </div>
-</div>
-<div>
 `;
 }
 

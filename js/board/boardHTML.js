@@ -274,6 +274,125 @@ function editBoardMobileTaskReturn(i) {
 
 `;
 }
+function editBoardDesktopTaskReturn(i) {
+  return `
+  <div class="divColumn">
+  <span class="edith1">Add Task</span>
+  <div class="leftAndRightMainContainer">
+  <div id="leftTaskContainer">
+  <div id="taskTitleContainer">
+    <p class="taskHeadline">
+      Title
+      <span class="requiredStar">*</span>
+    </p>
+    <input
+      id="titelInputContainer"
+      type="text"
+      class="titleInputField font"
+      placeholder="Enter a title"
+    />
+    <p id="inputRequiredContainer" class="fildIsRequiredText"></p>
+  </div>
+  <div id="taskDescriptionContainer">
+    <p class="taskHeadline">Description</p>
+    <textarea
+      id="descriptionInput"
+      placeholder="Enter a Descripton"
+      class="descriptionInputField font"
+    ></textarea>
+    <p class="fildIsRequiredText"></p>
+  </div>
+  <div id="taskAssignedContainer">
+    <p class="taskHeadline">Assigned to</p>
+    <div
+      id="contactSelectContainer"
+      class="categorySelect"
+    >
+    <input class="assignToInput font" type="text" id="assignedToContainer" onclick="onclickInputBorder()" onkeyup="filterNamesforAssignedTo()" placeholder="Add a Contact">
+      <img id="openerAssignedTo" onclick="openContacts(${i})" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
+    </div>
+    <div id="contactList">
+    </div>
+    <div id="contactListIcons">
+      <div id="contactListIconsLine"></div>
+    </div>
+    <p id="contacRequired" class="fildIsRequiredText"></p>
+  </div>
+</div>
+<div class="seperatorContainer"></div>
+<div id="rightTaskContainer">
+  <div id="taskDueDateContainer">
+    <p class="taskHeadline">
+      Due date
+      <span class="requiredStar">*</span>
+    </p>
+    <input
+      id="dueDateInputContainer"
+      placeholder="dd/mm/yyyy"
+      type="date"
+      class="dueDateInputField font"
+      onfocus="setMinDate()"
+      oninput="checkInputs()"
+    />
+    <p id="dueDateRequiredContainer" class="fildIsRequiredText"></p>
+  </div>
+  <div id="taskPrioContainer">
+    <p class="taskHeadline">Prio</p>
+    <div id="prioSelectContainer">
+      <div
+        id="prioUrgentContainer"
+        onclick="whatsPrio(prioUrgentContainer)"
+        class="taskSelectButton"
+      >
+        Urgent
+        <img src="../assets/img/add_task/arrow_top_red.svg" />
+      </div>
+      <div
+        id="prioMediumContainer"
+        onclick="whatsPrio(prioMediumContainer)"
+        class="taskSelectButton"
+      >
+        Medium
+        <img src="../assets/img/add_task/line_orange.svg" />
+      </div>
+      <div
+        id="prioLowContainer"
+        onclick="whatsPrio(prioLowContainer)"
+        class="taskSelectButton"
+      >
+        Low
+        <img src="../assets/img/add_task/arrow_bottom_green.svg" />
+      </div>
+    </div>
+    <p class="fildIsRequiredText"></p>
+  </div>
+   <div id="taskSubtaskContainer">
+    <p class="taskHeadline">Subtasks</p>
+    <div class="subTaskInputcontainerClass" id="subTaskInputcontainer">
+      <input
+        id="subTaskInputfieldText"
+        placeholder="Add new subtask"
+        class="subtaskInputfield font"
+        type="text"
+        onkeydown="if(event.key==='Enter') addBoardSubtask(${i})"
+        onkeyup="changeBoardMenu(${i})"
+      />
+      <div class="subTaskInputfieldMenuClass" id="subTaskInputfieldMenu">
+        <img class="arrow" src="../assets/img/add_task/task_add.svg" />
+      </div>
+    </div>
+    <div class="subTaskAddContainer" id="subTasksContainer"></div>
+  </div>
+  </div>
+</div>
+<div class="boardEditButtonContainer">
+<div onclick="saveCurrentBoardTask(${i})" class="boardEditButton">
+  <p>Ok</p>
+  <img src="../assets/img/board/board_check.svg" />
+</div>
+</div>
+  `
+}
 
 function loadContactsReturn(c, i) {
   return `

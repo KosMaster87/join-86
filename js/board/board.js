@@ -7,7 +7,9 @@ async function initBoard() {
   createUserSignatureIcon();
   loadTasks();
 }
-
+/**
+ * Render tasks with status to-do
+ */
 function loadTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
     if (user.tasks[i].status === "to-do") {
@@ -17,6 +19,12 @@ function loadTasks() {
   loadProgressTasks();
 }
 
+/**
+ *
+ * if i status to-do render the informations
+ *
+ * @param {string} i - is the number of the task
+ */
 function fillTodo(i) {
   document.getElementById(`TodoMainContainer`).innerHTML += HtmlReturn(i);
   fillValue(i);
@@ -24,6 +32,9 @@ function fillTodo(i) {
   whatsSignatures(i);
   updateProgressBar(i);
 }
+/**
+ * Render tasks with status progress
+ */
 
 function loadProgressTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
@@ -33,6 +44,12 @@ function loadProgressTasks() {
   }
   loadAwaitTasks();
 }
+/**
+ *
+ * if i status progress render the informations
+ *
+ * @param {string} i
+ */
 function fillProgress(i) {
   document.getElementById(`progressMainContainer`).innerHTML += HtmlReturn(i);
   fillValue(i);
@@ -41,6 +58,9 @@ function fillProgress(i) {
   updateProgressBar(i);
 }
 
+/**
+ * Render tasks with status await
+ */
 function loadAwaitTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
     if (user.tasks[i].status === "await") {
@@ -50,6 +70,12 @@ function loadAwaitTasks() {
   loadDoneTasks();
 }
 
+/**
+ *
+ * if i status progress render the informations
+ *
+ * @param {*} i - is the number of the task
+ */
 function fillAwait(i) {
   document.getElementById(`awaitMainContainer`).innerHTML += awaitHtmlReturn(i);
   fillValue(i);
@@ -58,6 +84,9 @@ function fillAwait(i) {
   updateProgressBar(i);
 }
 
+/**
+ * Render tasks with status done
+ */
 function loadDoneTasks() {
   for (let i = 0; i < user.tasks.length; i++) {
     if (user.tasks[i].status === "done") {
@@ -66,7 +95,12 @@ function loadDoneTasks() {
   }
   checkNofilledTasks();
 }
-
+/**
+ *
+ * if i status done render the informations
+ *
+ * @param {*} i - is the number of the task
+ */
 function fillDone(i) {
   document.getElementById(`doneMainContainer`).innerHTML += HtmlReturn(i);
   fillValue(i);
@@ -74,7 +108,11 @@ function fillDone(i) {
   whatsSignatures(i);
   updateProgressBar(i);
 }
-
+/**
+ * fill values with array informations
+ *
+ * @param {*} i - is the number of the task
+ */
 function fillValue(i) {
   document.getElementById(`TaskCategory${i}`).textContent = user.tasks[i].category;
   document.getElementById(`titleId${i}`).textContent = user.tasks[i].title;
@@ -85,6 +123,12 @@ function fillValue(i) {
   document.getElementById(`counterOfTasks${i}`).innerHTML = `${user.tasks[i].subtasks.length}`;
   pupUpPriorityName = user.tasks[i].prio;
 }
+/**
+ *
+ * change the backgroundcolor for the right category
+ *
+ * @param {*} i - is the number of the task
+ */
 
 function whatsCategory(i) {
   if (user.tasks[i].category === "User Story") {
@@ -93,7 +137,12 @@ function whatsCategory(i) {
     document.getElementById(`TaskCategory${i}`).style.backgroundColor = "#1FD7C1";
   }
 }
-
+/**
+ *
+ * render icons and render the signatures
+ *
+ * @param {*} i - is the number of the task
+ */
 function whatsSignatures(i) {
   iconBarContainer = document.getElementById(`IconBar${i}`);
   for (let a = 0; a < user.tasks[i].assignedTo.length; a++) {
@@ -107,7 +156,12 @@ function whatsSignatures(i) {
     }
   }
 }
-
+/**
+ *
+ * render the finished subtasks in a bar
+ *
+ * @param {*} i - is the number of the task
+ */
 function updateProgressBar(i) {
   let counter = 0;
   let percent = 0;
@@ -125,6 +179,9 @@ function updateProgressBar(i) {
   }
 }
 
+/**
+ * when no task in the container X is fill a div with text no tasks
+ */
 function checkNofilledTasks() {
   if (document.getElementById("TodoMainContainer").innerHTML.trim() === "") {
     document.getElementById("TodoMainContainer").innerHTML = noTasksReturn("to-do");
@@ -139,7 +196,12 @@ function checkNofilledTasks() {
     document.getElementById("doneMainContainer").innerHTML = noTasksReturn("finished");
   }
 }
-
+/**
+ *
+ * open the task when double click the mouse
+ *
+ * @param {*} i - is the number of the task
+ */
 function openTask(i) {
   document.body.style.overflow = "hidden";
   mainContentContainer = document.getElementById(`mainContent`);
@@ -149,7 +211,12 @@ function openTask(i) {
   renderTaskAssigneds(i);
   renderTaskSubtasks(i);
 }
-
+/**
+ *
+ * render the category with the right background color in the task
+ *
+ * @param {*} i - is the number of the task
+ */
 function renderTaskCategory(i) {
   let popUpCategory = document.getElementById(`popUpTaskCategory`);
   popUpCategory.innerHTML = user.tasks[i].category;
@@ -159,7 +226,12 @@ function renderTaskCategory(i) {
     popUpCategory.style.backgroundColor = "#1FD7C1";
   }
 }
-
+/**
+ *
+ * fill the container with values of title and more
+ *
+ * @param {*} i - is the number of the task
+ */
 function renderTaskValues(i) {
   document.getElementById(`popUpTitleId`).innerHTML = user.tasks[i].title;
   document.getElementById(`popUpDescriptionID`).innerHTML = user.tasks[i].description;
@@ -176,7 +248,12 @@ function renderTaskValues(i) {
   }
   popUpPriority.innerHTML = user.tasks[i].prio;
 }
-
+/**
+ *
+ * render the assigned contacts
+ *
+ * @param {*} i - is the number of the task
+ */
 function renderTaskAssigneds(i) {
   let MainContainer = document.getElementById(`popUpAssignedToMainContainer`);
   for (let n = 0; n < user.tasks[i].assignedTo.length; n++) {
@@ -190,7 +267,12 @@ function renderTaskAssigneds(i) {
     }
   }
 }
-
+/**
+ *
+ * render the subtask from the opened task
+ *
+ * @param {*} i - is the number of the task
+ */
 function renderTaskSubtasks(i) {
   let popUpSubtasksContainer = document.getElementById(`popUpSubtasksContainer`);
   for (let s = 0; s < user.tasks[i].subtasks.length; s++) {
@@ -206,7 +288,12 @@ function renderTaskSubtasks(i) {
     }
   }
 }
-
+/**
+ *
+ * close the opened task
+ *
+ * @param {*} i - is the number of the task
+ */
 async function closeOpenTask(i) {
   document.body.style.overflow = "auto";
   let task = document.getElementById(`popUpMainContainer`);
@@ -214,7 +301,12 @@ async function closeOpenTask(i) {
   blurr.remove();
   task.remove();
 }
-
+/**
+ *
+ * close the opened task
+ *
+ * @param {*} i - is the number of the task
+ */
 function removeOpenedTask(i) {
   let task = document.getElementById(`popUpMainContainer`);
   let blurr = document.getElementById(`blurrContainer`);
@@ -223,13 +315,23 @@ function removeOpenedTask(i) {
   document.getElementById(`TodoMainContainer`).innerHTML = "";
   loadTasks();
 }
-
+/**
+ *
+ * close the editTask
+ *
+ * @param {*} i - is the number of the task
+ */
 function closeEditTask(i) {
   document.getElementById(`popUpMainContainer`).remove();
   document.getElementById(`blurrContainer`).remove();
   openTask(i);
 }
-
+/**
+ *
+ * clear the containers
+ *
+ * @param {*} i - is the number of the task
+ */
 async function deleteTaskBoard(i) {
   user.tasks.splice(i, 1);
   document.getElementById("TodoMainContainer").innerHTML = "";
@@ -240,7 +342,13 @@ async function deleteTaskBoard(i) {
   savedUsersInBackend();
   loadTasks();
 }
-
+/**
+ *
+ * change from inputfield to div field after change the text
+ *
+ * @param {*} i - is the number of the task
+ * @param {*} s - is the number of the subtask
+ */
 async function subtaskFinish(i, s) {
   let imageId = document.getElementById(`popUpSubtaskImage${s}`);
   if (user.tasks[i].subtasks[s].done === false) {
@@ -254,9 +362,22 @@ async function subtaskFinish(i, s) {
   updateProgressBar(i);
 }
 
+/**
+ *
+ * open the edit fields when change the task
+ *
+ * @param {*} i - is the number of the task
+ */
 async function editBoardTask(i) {
   document.getElementById(`popUpMainContainer`).innerHTML = "";
-  document.getElementById(`popUpMainContainer`).innerHTML = editBoardMobileTaskReturn(i);
+
+  if (window.innerWidth > 1200) {
+    document.getElementById(`popUpMainContainer`).innerHTML = editBoardDesktopTaskReturn(i);
+    document.getElementById(`popUpMainContainer`).classList.remove("openwindow");
+  } else {
+    document.getElementById(`popUpMainContainer`).innerHTML = editBoardMobileTaskReturn(i);
+  }
+
   contactList.style.display = "none";
   contactListIcons.style.display = "block";
   document.getElementById(`titelInputContainer`).value = user.tasks[i].title;
@@ -271,12 +392,25 @@ async function editBoardTask(i) {
   loadContacts(i);
 }
 
+/**
+ *
+ * Change the subtask from fiv to a inputfield
+ *
+ * @param {*} i - is the number of the task
+ * @param {*} s - is the number of the subtask
+ */
 function editBoardSubtask(i, s) {
   let task = document.getElementById("subtask" + s);
   task.innerHTML = "";
   task.innerHTML = editBoardSubtaskReturn(user.tasks[i].subtasks[s].name, s, i);
 }
-
+/**
+ *
+ * change from inputfield to div field after change the text
+ *
+ * @param {*} i - is the number of the task
+ * @param {*} s - is the number of the subtask
+ */
 async function editBoardSubtaskDone(i, s) {
   let content = document.getElementById("editBoardSubtask" + s).value;
   if (content.length > 0) {
@@ -288,7 +422,12 @@ async function editBoardSubtaskDone(i, s) {
   }
   savedUsersInBackend();
 }
-
+/**
+ * 
+ * render the subtasks
+ * 
+ * @param {*} i - is the number of the task
+ */
 function renderBoardSubtasks(i) {
   let subtasksList = document.getElementById("subTasksContainer");
   subtasksList.innerHTML = "";
@@ -296,7 +435,12 @@ function renderBoardSubtasks(i) {
     subtasksList.innerHTML += renderBaordSubtasksReturn(i, l);
   }
 }
-
+/**
+ * 
+ * create a new subtaks in the tasks and safe it in the backend
+ * 
+ * @param {*} i - is the number of the task 
+ */
 async function addBoardSubtask(i) {
   console.log(i);
   let subtasksInput = document.getElementById("subTaskInputfieldText");
