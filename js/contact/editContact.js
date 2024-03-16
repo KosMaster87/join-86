@@ -1,232 +1,117 @@
 //Edit Contact JS
-//TODO:form einbinden
-//TODO: implement form validation
-    //let globalUserId = getCurrentUserId();
-    //let globalContactId = getCurrentContactId();
 
- 
 async function initEditContact() {
-    await loadCurrentUserAlsoUsersAsObject();
-    let currentContact = await getCurrentContactNew();
-    let currentContactId = await getCurrentContactId();
-    await getCurrentContactId();
-    console.log('Ausgabe aktuelle KontaktID: ',getCurrentContactId);
-    /*let allContactsFromAllUsers = await loadAllContactsFromAllUsers();*/
-    let allContactsFromCurrentUser = await getGlobalAllContactsFromCurrentUser();
-    /*let currentContact = await getCurrentContact(contactId, allContactsFromCurrentUser);//leer*/
-    initializeAllVariables(await currentContact)
+  /* await loadCurrentUserAlsoUsersAsObject();*/
+  /*let currentContact = await getCurrentContactNew();*/
+
+  console.log('Ausgabe aktuelle KontaktID: editContact ', await getContactId());
+  await getCurrentContactNew();
+
+
+  /*let allContactsFromAllUsers = await loadAllContactsFromAllUsers();*/
+  /*let allContactsFromCurrentUser = await getGlobalAllContactsFromCurrentUser();*/
+  /*let currentContact = await getCurrentContact(contactId, allContactsFromCurrentUser);//leer*/
+  await initializeAllVariables()
 }
-
-
+/*
 async function setCurrentContactIdAndUpdate(contactId) {
     await setCurrentContactId(contactId);
     globalContactId = contactId;
     await initEditContact();
-}
+}*/
 
-
-async function getCurrentUserId() {
+/* async function getCurrentUserId() {
     let currentUserId = await getItem('currentUserId');
 
     return currentUserId;
 }
-    
-    
+       
 async function setCurrentContactId(contactId) {
     await setItem('currentContactId', contactId);
-} 
+} */
 
-
-async function getCurrentContactId() {
-    return await getItem('currentContactId');
-} 
-
-
-async function loadAllContactsFromAllUsers() {
-    let allContactsFromAllUsers = await getItem('mockUpAllUserContacts');
-
-    return JSON.parse(allContactsFromAllUsers);
+async function getContactId() {
+  return await getItem('contactId');
 }
 
-
-async function getGlobalAllContactsFromCurrentUser() {
-    return getItem('globalAllContactsFromCurrentUser');
+async function initializeAllVariables() {
+  let contact = await getCurrentContactNew();
+  console.log('Ausgabe Kontakt', contact);
+  let signature = (contact.signature).toString();
+  document.getElementById('editContactInputName').value = contact.name;
+  document.getElementById('editContactInputEmail').value = contact.email;
+  document.getElementById('editContactInputPhone').value = contact.phone;
+  /*document.getElementById('editContactSignature').innerText = signature;*/
+  /*document.getElementById('editContactSignature').style.backgroundColor = contact.userColor;*/
 }
-    
-    
-// function getAllContactsFromCurrentUser(userId, allUserContacts) {
-//     let currentUserId = userId;
-//     let allContacts = allUserContacts;
-//     let allContactsFromCurrentUser = [];
-//     for (let i = 0; i < allContacts.length; i++) {
-//         const contact = allContacts[i];
-//         if (contact['userId'] == currentUserId) {
-//             allContactsFromCurrentUser.push(contact);
-//         }        
-//     }
-    
-//     return allContactsFromCurrentUser;
-// }
-
-
-async function getCurrentContact(selectedId, allContactsFromCurrentUser) {
-    let contactId = await selectedId;
-    console.log('Response: contactId', contactId);
-    let users = await allContactsFromCurrentUser;
-    console.log('contactId: ', contactId);
-    for (let i = 0; i < users.length; i++) {
-        let user = users[i];
-        if(user.contactId == contactId) {
-            console.log('Response Username', user.name);
-        }
-    } 
-}   
-    
-
-function initializeAllVariables(contact) {
-    document.getElementById('editContactInputName').value = contact.name;
-    document.getElementById('editContactInputEmail').value = contact.email;
-    document.getElementById('editContactInputPhone').value = contact.phone;
-    document.getElementById('editContactHeaderSignature').innerText = contact.signature;
-    document.getElementById('editContactHeaderSignature').style.backgroundColor = contact.userColor;
-
-}
-
 
 function getSignature(name) {
-    let arrayName = splitName(name);
-    let signature = getFirstChars(arrayName);
-    
-    return signature;
-}
-    
-    
-function splitName(name) {
-    let arrayName = [];
-    let string = name;
-    arrayName = string.toUpperCase().split(" ");
-    
-    return arrayName;
+  let arrayName = splitName(name);
+  let signature = getFirstChars(arrayName);
+
+  return signature;
 }
 
+function splitName(name) {
+  let arrayName = [];
+  let string = name;
+  arrayName = string.toUpperCase().split(" ");
+
+  return arrayName;
+}
 
 function getFirstChars(arrayName) {
-    let firstChars = '';
-    for(let i = 0; i < arrayName.length; i++) {
-        firstChars += arrayName[i][0];
-    }
-    
-    return firstChars;
-}  
+  let firstChars = '';
+  for (let i = 0; i < arrayName.length; i++) {
+    firstChars += arrayName[i][0];
+  }
 
+  return firstChars;
+}
 
 async function deleteContact() {
-    let contactId = await getCurrentContactId();
-    console.log('RES aktuelle contactId: ', contactId);
-    let contacts = await user.contacts;
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        if (contact['contactId'] === contactId) {
-            console.log('RES NAME DES KONTAKTS:', contact['name']);
-            console.log('RES KONTAKTID DES KONTAKTS:', contact['contactId']);
-            contacts.splice(i, 1);
-        }
+  let contactId = await getContactId();
+  console.log('RES aktuelle contactId: ', contactId);
+  let contacts = await user.contacts;
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+    if (contact['contactId'] === contactId) {
+      console.log('RES NAME DES KONTAKTS:', contact['name']);
+      console.log('RES KONTAKTID DES KONTAKTS:', contact['contactId']);
+      contacts.splice(i, 1);
     }
+  }
 
-    await setItem('users', JSON.stringify(users)); 
-    await setItem('currentContactId', JSON.stringify(''));
+  await setItem('users', JSON.stringify(users));
+  await setContactId([]);
 }
-
-
-async function saveReducedContactArrayBackend(allContactsFromAllUsers) {
-    await setItem('mockUpAllUserContacts', JSON.stringify(allContactsFromAllUsers));
-}
-
-
-async function goToShowSingleContactAfterEditContact(currentContactId) {
-    let allContactsFromAllUsers = await getAllContactsFromAllUsers();
-    let contactId = await getCurrentContactId();
-    let userId = await getGlobalUserId();
-    let currentContact = await getCurrentContactNew();
-    let name = currentContact.name;
-    let email = currentContact.email;
-    let phone = currentContact.phone;
-    let signature = currentContact.signature;
-    let userColor = currentContact.userColor;
-    
-    await loadShowSingleContact(userId, contactId, name, email, phone, signature, userColor )
-    
-    document.getElementById('editContactContainer').style.display = "none";
-    document.getElementById("showSingleContactContainer").style.display = "block";
-    document.getElementById("mobileBtnSelectOptions").style.display = "none";
-    document.getElementById("mobileBtnThreePoints").style.display = "block"; 
-}
-
 
 /* Auslesen des aktuellen Kontakts über ContactId und aktuellen User */
 async function getCurrentContactNew() {
-    await loadCurrentUserAlsoUsersAsObject();
-    let currentContactId = await getCurrentContactId();
-    let contacts = await user.contacts;
-    if (currentContactId) {
-        let contact = contacts.find(contact => contact.contactId === currentContactId);
-        if(contact) {
-            return contact;           
-        } else {
-            console.log('Kontakt nicht gefunden Eins');
-        }
+  let contactId = await getContactId();
+  let contacts = await user.contacts;
+  if (contactId) {
+    let contact = contacts.find(contact => contact.contactId === contactId);
+    if (contact) {
+      return contact;
     } else {
-        console.log('CurrentContactId existiert nicht');
-    }          
-}
-
-
-async function bufferCurrentContact() {
-    await loadCurrentUserAlsoUsersAsObject();
-    let currentContact = await getCurrentContactNew();
-    let inputUserId = await getGlobalUserId();
-    let inputContactId = await getCurrentContactId();
-    let inputUserColor = await currentContact.userColor;
-    let inputName = (document.getElementById('editContactInputName').value).trim();
-    let inputPhone = (document.getElementById('editContactInputPhone').value).trim();
-    let inputEmail = (document.getElementById('editContactInputEmail').value).trim();
-    let inputSignature = getSignature(inputName); 
-
-    let contact = (
-        {
-            userId: inputUserId,
-            contactId: inputContactId,
-            name: inputName,
-            email: inputEmail,
-            phone: inputPhone,
-            userColor: inputUserColor,
-            signature: inputSignature,
-
-    });
-
-    console.log('buffered contact: ', contact);
-    return contact;
-}
-  
-
-async function getCurrentIndex() {
-    await loadCurrentUserAlsoUsersAsObject();
-    let currentContactId = await getCurrentContactId();
-    let contacts = await user.contacts
-
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        if (contact.contactId === currentContactId) {
-            return i;
-        } else {
-            console.log('contactId not found.')
-        }
+      console.log('Kontakt nicht gefunden');
     }
+  } else {
+    console.log('CurrentContactId existiert nicht');
+  }
 }
 
-/* ANFANG PRÜFUNG DER DATENEINGABE */ /*
-function checkAllInputFields(name, email, phone) {
-  if (checkInputName(name) === true && checkInputEmail(email) === true && checkInputPhone(phone)) {
+/* ANFANG PRÜFUNG DER DATENEINGABE */
+function checkAllInputFieldsForEditContact(name, phone, email) {
+  console.log('Ausgabe name, email, phone', phone);
+  console.log(checkInputNameForEditContact(name));
+  debugger;
+  console.log(checkInputEmailForEditContact(email));
+  debugger;
+  console.log(checkInputPhoneForEditContact(phone));
+  debugger;
+  if (checkInputNameForEditContact(name) === true && checkInputEmailForEditContact(email) === true && checkInputPhoneForEditContact(phone)) {
     return true
   } else {
     console.log('Fehlerhafte Dateneingabe')
@@ -234,7 +119,7 @@ function checkAllInputFields(name, email, phone) {
   }
 }
 
-function checkInputName(input) {
+function checkInputNameForEditContact(input) {
   let name = input;
   if (name == "") {
     showInputMessage('editContactMessageName', 'Please enter a name');
@@ -246,11 +131,11 @@ function checkInputName(input) {
   }
 }
 
-function checkInputEmail(input) {
+function checkInputEmailForEditContact(input) {
   let email = input;
   if (email === "") {
     return true;
-  } else if (checkAtSymbolExists(email) === false) {
+  } else if (checkAtSymbolExistsForEditContact(email) === false) {
     showInputMessage('editContactMessageEmail', 'The @ sign is missing');
     showAlertBorder('editContactInputContainerEmail');
     return false;
@@ -259,7 +144,7 @@ function checkInputEmail(input) {
   }
 }
 
-function checkAtSymbolExists(input) {
+function checkAtSymbolExistsForEditContact(input) {
   let email = input;
   if (email.indexOf('@') != -1) {
     return true;
@@ -268,7 +153,7 @@ function checkAtSymbolExists(input) {
   }
 }
 
-function checkInputPhone(phone) {
+function checkInputPhoneForEditContact(phone) {
   let phoneNumber = phone;
   const regex = /^[\d ()+-]+$/;
 
@@ -288,25 +173,25 @@ function checkInputPhone(phone) {
 /* ENDE PRÜFUNG DER DATENEINGABE */
 
 /* ANFANG - AUSGABE UND ZURÜCKSETZEN DER FEHLERMELDUNGEN */
-/*
+
 function showInputMessage(inputField, message) {
   document.getElementById(inputField).innerText = message;
 }
 
 function resetInputMessage(inputField) {
   document.getElementById(inputField).innerText = '';
-} 
+}
 
 function resetAllInputMessages() {
-  resetInputMessage('addContactMessageName');
-  resetInputMessage('addContactMessageEmail');
-  resetInputMessage('addContactMessagePhone');
+  resetInputMessage('editContactMessageName');
+  resetInputMessage('editContactMessageEmail');
+  resetInputMessage('editContactMessagePhone');
 }
 /* ENDE - AUSGABE UND ZURÜCKSETZEN DER FEHLERMELDUNGEN*/
 
 
 /* ANFANG - ANZEIGEN UND ZURÜCKSETZEN DER BORDERFARBE */
-/*function showAlertBorder(inputContainer) {
+function showAlertBorder(inputContainer) {
   document.getElementById(inputContainer).classList.add('alertBorder');
 }
 
@@ -315,17 +200,17 @@ function resetAlertBorder(inputContainer) {
 }
 
 function resetAllAlertBorders() {
-  resetAlertBorder('addContactInputContainerName');
-  resetAlertBorder('addContactInputContainerEmail');
-  resetAlertBorder('addContactInputContainerPhone');
+  resetAlertBorder('editContactInputContainerName');
+  resetAlertBorder('editContactInputContainerEmail');
+  resetAlertBorder('editContactInputContainerPhone');
 }
 /* ANFANG - ANZEIGEN UND ZURÜCKSETZEN DER BORDERFARBE */
 
-/* ANFANG - AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES */ 
-/*function editFocusBorder(idFocus, idRemoveFocus, idDeleteFocus) {
+/* ANFANG - AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES */
+function editFocusBorder(idFocus, idRemoveFocus, idDeleteFocus) {
   addFocusBorder(idFocus);
   removeFocusBorder(idRemoveFocus);
-  removeFocusBorder(idDeleteFocus)
+  removeFocusBorder(idDeleteFocus);
 }
 
 function addFocusBorder(containerId) {
@@ -339,57 +224,95 @@ function removeFocusBorder(containerId) {
 }
 /* ENDE - AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES */
 
-async function saveChanges() {
-    await loadCurrentUserAlsoUsersAsObject();
-    let currentContact = await getCurrentContactNew();
-    let currentContactId = await getCurrentContactId();
-    let contacts = await user.contacts;
-    let inputUserId = await getGlobalUserId();
-    let inputContactId = await getCurrentContactId();
-    let inputUserColor = await currentContact.userColor;
-    let inputName = (document.getElementById('editContactInputName').value).trim();
-    let inputPhone = (document.getElementById('editContactInputPhone').value).trim();
-    let inputEmail = (document.getElementById('editContactInputEmail').value).trim();
-    let inputSignature = getSignature(inputName); 
+async function saveChangesAtEditContact() {
+  let currentContact = await getCurrentContactNew();
+  let inputContactId = await getContactId();
+  let inputUserId = await user.email;
+  let contacts = await user.contacts;
+  let inputUserColor = await currentContact.userColor;
+  let inputName = (document.getElementById('editContactInputName').value).trim();
+  let inputPhone = (document.getElementById('editContactInputPhone').value).trim();
+  let inputEmail = (document.getElementById('editContactInputEmail').value).trim();
+  let inputSignature = getSignature(inputName);
 
-    /* */
-    if (checkAllInputFields(inputName, inputPhone, inputEmail) === true) {
+  /* */
+  if (checkAllInputFieldsForEditContact(inputName, inputPhone, inputEmail) === true) {
 
-      if (await currentContactId) {
-        for (let i = 0; i < contacts.length; i++) {
-            const contact = contacts[i];   
-            if (contact.contactId === await currentContactId) {
-                user.contacts[i].contactId = inputContactId,
-                user.contacts[i].userId = inputUserId, 
-                user.contacts[i].name = inputName,
-                user.contacts[i].email = inputEmail,
-                user.contacts[i].phone = inputPhone, 
-                user.contacts[i].signature = inputSignature;
-                user.contacts[i].userColor = inputUserColor;
+    if (inputContactId) {
+      for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        if (contact.contactId === inputContactId) {
+          user.contacts[i].contactId = inputContactId,
+            user.contacts[i].userId = inputUserId,
+            user.contacts[i].name = inputName,
+            user.contacts[i].email = inputEmail,
+            user.contacts[i].phone = inputPhone,
+            user.contacts[i].signature = inputSignature;
+          user.contacts[i].userColor = inputUserColor;
 
-                await setItem('users', JSON.stringify(users));
-                console.log('Speichervorgang konnte abgeschlossen werden!');
-                await goToShowSingleContactAfterEditContact(currentContactId)
-            } else {
-                console.log ('Response currentContactId: ' + await currentContactId + ' not found.')
-            }
+          await setItem('users', JSON.stringify(users));
+          console.log('Speichervorgang konnte abgeschlossen werden!');
+          /*await goToShowSingleContactAfterEditContact(currentContactId)*/
+        } else {
+          console.log('Response currentContactId: ' + inputContactId + ' not found.')
         }
-      } else {
-        console.log('Response contact not found.')
       }
+    } else {
+      console.log('Response contact not found.')
     }
   }
+}
 
 
-  /* DELETE BUTTON AUF EDIT-CONTACT */
+/* DELETE BUTTON AUF EDIT-CONTACT */
 
-  async function goFromDeleteContactToListContact() {
-    await deleteContact();
-    await initListContact();
+async function goFromDeleteContactToListContact() {
+  await setContactId([]);
+  await deleteContact();
+  await initListContact();
+  document.getElementById('editContactContainer').style.display = "none";
+  document.getElementById('showSingleContactContainer').style.display = "none";
+  document.getElementById('listContactContainer').style.display = "flex";
+  document.getElementById('mobileBtnSelectOptions').style.display = "none";
+  document.getElementById('mobileBtnAddContact').style.display = "block";
+}
 
-    document.getElementById('editContactContainer').style.display = "none";
-    document.getElementById('showSingleContactContainer').style.display = "none";
-    document.getElementById('listContactContainer').style.display = "block";
-    document.getElementById('mobileBtnSelectOptions').style.display = "none";
-    document.getElementById('mobileBtnAddContact').style.display = "block";
+
+async function desktopCloseAddContactContainerWithoutAddingNewContact() {
+  /* alles ggf. zurücksetzen */
+  document.getElementById('editContactContainer').style.display = "none";
+  document.getElementById('showSingleContactContainer').style.display = "flex";
+  document.getElementById('mobileBtnSelectOptions').style.display = "none";
+  document.getElementById('mobileBtnAddContact').style.display = "none";
+}
+
+async function saveChangesDesktop() {
+  let contactId = await getContactId();
+  await saveChangesAtEditContact();
+  startPageUpdate();
+  await initListContact();
+  await loadShowSingleContact(contactId);
+  document.getElementById('editContactContainer').style.display = "none";
+  document.getElementById('showSingleContactContainer').style.display = "none";
+  document.getElementById('listContactContainer').style.display = "flex";
+  document.getElementById('mobileBtnSelectOptions').style.display = "none";
+  document.getElementById('singleContactCol').style.display = "block";
+  document.getElementById('mobileBtnAddContact').style.display = "none";
+}
+
+async function saveChangesMobile() {
+  let contactId = await getContactId();
+  await saveChangesAtEditContact();
+  await initListContact();
+  await loadShowSingleContact(contactId);
+  document.getElementById('editContactContainer').style.display = "none";
+  document.getElementById('showSingleContactContainer').style.display = "flex";
+  document.getElementById('listContactContainer').style.display = "none";
+  document.getElementById('mobileBtnSelectOptions').style.display = "none";
+  document.getElementById('singleContactCol').style.display = "none";
+  document.getElementById('mobileBtnAddContact').style.display = "none";
+}
+
+function startPageUpdate() {
+  location.reload();
 }

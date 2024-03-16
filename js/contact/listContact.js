@@ -125,27 +125,39 @@ async function goFromListContactToShowSingleContact(contactId) {
   }
 }
 
+function getWindowWidth() {
+  return window.innerWidth || documentElement.clientWidth || document.body.clientWidth;
+}
+
 let result = "";
 
 /**
  *
  */
 async function initWidthContacts() {
-  window.addEventListener("resize", function () {
+  let screenWidth = getWindowWidth()
 
-    let screenWidth =
-      window.innerWidth ||
-      document.documentElement.clientWidth ||
-      document.body.clientWidth;
-    if (screenWidth <= 1219) {
-      result = "mobileVersion";
-    } else {
-      result = "desktopVersion";
-    }
-
-    return result;
-  });
+  if (screenWidth <= 1219) {
+    result = "mobileVersion";
+  } else {
+    result = "desktopVersion";
+  }
+  console.log('Ausgabe result', result)
 }
+
+async function openAddContactContainer() {
+  document.getElementById("mobileBtnAddContact").style.display = "none";
+  document.getElementById("addContactContainer").style.display = "block";
+  document.getElementById("addOverlayFrame").style.display = "flex";
+}
+
+function desktopOpenAddContactContainer(){
+  document.getElementById("mobileBtnAddContact").style.display = "none";
+  document.getElementById("addContactContainer").style.display = "block";
+  document.getElementById("addOverlayFrame").style.display = "flex";
+
+}
+
 
 /* AKTUELL HIER - FOCUS NEW CONTACT  ab 1200px berücksichtigen*/
 function focusOnNewContact(currentContactId) {

@@ -10,22 +10,6 @@ async function goToTopOfSite() {
   window.scrollTo(0, 0);
 }
 
-/* MOBILE BUTTON ADD CONTACT */
-function openAddContactContainer() {
-  initAddContact();
-  document.getElementById("addContactContainer").style.display = 'flex';
-  
-  document.getElementById("overlayFrame").style.display = 'flex';
-  document.getElementById("mobileBtnAddContact").style.display = "none";
-}
-
-/* MOBILE BUTTON THREE POINTS */
-
-function showMobileSelectBtns() {
-  document.getElementById("mobileBtnThreePoints").style.display = "none";
-  document.getElementById("mobileBtnSelectOptions").style.display = "block";
-  console.log('Change Button To Select Button');
-}
 
 /* DESKTOP BUTTON ADD NEW CONTACT */
 
@@ -40,13 +24,7 @@ function desktopBtnGoFromListContactToAddContact() {
 
 /* EDIT CONTACT */
 
-async function openEditContactContainer() {
-  await initEditContact()
-  document.getElementById("editContactContainer").style.display = "block";
-  document.getElementById("editOverlayFrame").style.display = "block";
-  document.getElementById("mobileBtnAddContact").style.display = "none";
-  console.log("Open Edit Contact Container ist erfolgt!");
-}
+
 
 async function closeEditContactAndGoToListContactContainer() {
   await setCurrentContactId([]);

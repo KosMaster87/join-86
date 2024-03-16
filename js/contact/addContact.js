@@ -8,39 +8,17 @@ async function initAddContact() {
 }
 
 async function initSaveProcess() {
-  
   let name = (document.getElementById('addContactInputName').value).trim();
   let email = (document.getElementById('addContactInputEmail').value).trim();
   let phone = (document.getElementById('addContactInputPhone').value).trim();
 
   if (checkAllInputFields(name, email, phone) === true) {
     
-    await saveContactAlternativ(name, email, phone);
+    await saveContactAddContact(name, email, phone);
     resetInputFields();
   } else {
     console.log('Fehlerhafter Dateneintrag')
   }
-}
-
-async function saveContact(name, email, phone) {
-  let contactId = generateRandomId();
-  let userColor = getRandomColor(contactColors);
-  let signature = getSignature(name);
-
-  let contact = {
-    userId: user.email,
-    contactId: contactId,
-    name: name,
-    email: email,
-    phone: phone,
-    userColor: userColor,
-    signature: signature
-  };
-
-  user.contacts.push(contact);
-  setItem("users", users);
-  closeAddContactAndGoToShowSingleContactContainer(contactId);
-  /*document.getElementById('overlayFrame').style.display = "flex";  TODO: PRÜFEN, OB NOCH KORREKT */ 
 }
 
 async function getAllContactsFromCurrentUser() {
@@ -49,7 +27,7 @@ async function getAllContactsFromCurrentUser() {
 }
 
 /* Alternativer Speicherprozess */
-async function saveContactAlternativ(name, email, phone) {
+async function saveContactAddContact(name, email, phone) {
   let contactId = generateRandomId();
   let userColor = getRandomColor(contactColors);
   let signature = getSignature(name);
@@ -68,8 +46,9 @@ async function saveContactAlternativ(name, email, phone) {
       user.contacts.push(contact);
     }
   } 
-  setItem('users', users);
-  closeAddContactAndGoToShowSingleContactContainer(contactId);
+  await setItem('users', users);
+  await setContactId(contactId);
+  /*closeAddContactAndGoToShowSingleContactContainer(contactId);*/
   /*document.getElementById('overlayFrame').style.display = "flex";  TODO: PRÜFEN, OB NOCH KORREKT */ 
 }
 
@@ -244,14 +223,49 @@ async function closeAddContactContainerWithoutAddingNewContact() {
   document.getElementById("overlayFrame").style.display = 'none';
 }
 
-async function closeAddContactContainer() {
-  await initListContact();
+async function closeAddContactContainerDesktop() {
   resetInputFields();
   editFocusBorder('Name', 'Email', 'Phone');
+  resetAllInputMessages();
+  resetAllAlertBorders();
+  await initListContact();
+  document.getElementById("addContactContainer").style.display = "none";
+  document.getElementById("mobileBtnAddContact").style.display = "none"; 
+  document.getElementById("showSingleContactContainer").style.display = "flex";
+  document.getElementById("singleContactCol").style.display = "none";
+}
 
-
+async function closeAddContactContainer() {
+  resetInputFields();
+  editFocusBorder('Name', 'Email', 'Phone');
+  resetAllInputMessages();
+  resetAllAlertBorders();
+  await initListContact();
   document.getElementById("addContactContainer").style.display = "none";
   document.getElementById("mobileBtnAddContact").style.display = "block";
+}
+
+async function saveContactAtAddContactDesktop() {
+  let contactId = await getContactId();
+  console.log('Ausgabe contactID Z. 271', contactId)
+  await initSaveProcess();
+  await initListContact();
+  await loadShowSingleContact(contactId);
+  document.getElementById("addContactContainer").style.display = "none";
+  document.getElementById("mobileBtnAddContact").style.display = "none"; 
+  document.getElementById("singleContactCol").style.display = "block";
+}
+
+async function saveContactAtAddContactMobile() {
+  await initSaveProcess();
+  let contactId = await getContactId();
+  console.log('Ausgabe contactID Z. 271', contactId)
+  await initListContact();
+  await loadShowSingleContact(contactId);
+  document.getElementById("listContactContainer").style.display = "none";
+  document.getElementById("addContactContainer").style.display = "none";
+  document.getElementById("mobileBtnAddContact").style.display = "none"; 
+  document.getElementById("showSingleContactContainer").style.display = "block";
 }
 
 

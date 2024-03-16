@@ -22,8 +22,6 @@
   cursor: pointer;
 }
 
-/* JETZT AB HIER EDIT CONTACT */
-
 #editContactContainer {
   background-color: rgba(0, 0, 0, 0.25);
   display: none;
@@ -37,6 +35,21 @@
   bottom: 0;
   z-index: 22;
 }
+
+#editOverlayFrame {
+  display: none;
+  position: fixed;
+  top: 0;
+  /*right: -100%; Startposition außerhalb des sichtbaren Bereichs - vorübergehend ausgeschaltet */
+  width: 100%;
+  height: 100%;
+  transition: right 1.0s ease; /* Transition für die Animation: 0.5 Sekunden, einfacher Übergangseffekt */
+}
+
+.overlayVisible {
+  right: 0 !important; /* Zielposition für das Hereinsliden */
+}
+
 
 .editContactHeaderSection {
   margin-top: 80px;
@@ -58,12 +71,10 @@
   display: none;
 }
 
-#editContactHeaderSignature {
-  font-size: 47px;
-  line-height: 1.2;
-  color: var(--white);
+.editContactHeaderSignature {
   width: 120px;
   height: 120px;
+  background-color: orange;
   border: 2px solid var(--white);
   border-radius: 50%;
   z-index: 5;
@@ -72,16 +83,22 @@
   align-items: center;
   position: relative;
   top: 92px;
-  left: calc(50% - 61px);
-  /*background-color: var(--orangeIcons);*/
+  left: calc(50%-61px); 
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.editContactSignature {
+  color: var(--white); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 27px;
+  font-weight: 500;
 }
 
 .editContactBodySignature {
   display: none;
 }
-
-/* kann vermutlich gelöscht werden */
-
 
 .editContactBtnRow {
   display: flex;
@@ -106,8 +123,6 @@
   cursor: pointer;
 }
 
-/* PRÜFEN */
-/* Zusammenfassen */
 #editContactInputContainerName {
   border: solid 1px var(--lighterGray);
 }
@@ -136,6 +151,16 @@
 
 #editContactInputFieldPhone {
   border: 1px solid var(--lighterGray);
+}
+
+.editContactMessageContainer {
+  padding: 0;
+  margin: 3px 0;
+  height: 17px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 /* Zusammenfassen */
@@ -181,7 +206,7 @@
   }
 
   /* ABWANDELN */
-  #editContactHeaderSignature {
+  .editContactHeaderSignature {
     display: none;
   }
 
@@ -216,16 +241,11 @@
     color: var(--lighterGray);
   }
   
-  #desktopCancelBtn {
-    display: none;
-    border: 1px solid var(--lightGray);
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.2;
-    padding: 18px 10px;
+  #contactBodytBtnRow {
+    display: flex; 
   }
 
+}
 
 @media screen and (min-width: 300px) {
   #editContactContainer {
@@ -250,38 +270,79 @@
 
 /**ab Zeile 400 nach unten weitermachen  **/
 
+@media screen and (min-width: 1000px) {
 
+}
 
-/* bis hierher */
+@media screen and (min-width: 1200px) {
+  
+}
+
+@media screen and (min-width: 1440px) {
+
+  #editContactBtnSave {
+    display: none; 
+  }
+
+  .editContactHeaderSignature {
+    display: none;
+  }
+
   .editContactBodySignature {
-    width: 120px;
-    height: 120px;
-    background-color: var(--lighterGray);
-    border: 2px solid var(--white);
-    border-radius: 50%;
-    z-index: 5;
-    /* Wechsel */
+    flex-grow: 1;
     display: flex;
-    /* beim oberen Element nochmal prüfen */
     justify-content: center;
     align-items: center;
-    position: 0;
-    /* Wechsel */
-    top: 0;
-    /* Wechsel */
-    left: 0;
-    /* Wechsel */
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-    /* Wechsel display none an der Stelle entfernt */
   }
 
-  #desktopCancelBtn {
-    display: inline;
-    /* Wert nachträglich ändern */
+  .editContactHeaderSection {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+    margin: 0;
   }
 
-  .desktopCancelBtn:hover {
+  .editContactHeadline {
+    font-size: 61px;
+    /* Wechsel */
+    line-height: 1.2;
+  }
+
+  .editContactSubtitle {
+    color: var(--white);
+    font-weight: 400;
+    font-size: 27px;
+    /* Wechsel */
+    line-height: 1.2;
+  }
+
+  #contactBodyCloseIcon {
+    display: block;
+    position: relative;
+    top: -93px;
+    left: 684px;
+  }
+
+  #contactBodytBtnRowDesktop {
+    display:flex; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+  }
+
+  .contactCancelBtn {
+    display: flex;
+    border: 1px solid var(--lightGray);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+    padding: 18px 10px;
+  }
+
+  .contactCancelBtn:hover {
     border: 1px solid var(--lightBlue);
     color: var(--lightBlue);
   }
-}
+}}
