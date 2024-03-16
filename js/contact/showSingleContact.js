@@ -41,7 +41,6 @@ async function fillAllVariables(contactId) {
   document.getElementById('singleContactPhone').innerText = contact.phone;
   document.getElementById('singleContactSignature').innerText = contact.signature;
   document.getElementById('singleContactSignature').style.backgroundColor = contact.userColor;
-
   setCurrentContactEmail(contact.email);
 }
 

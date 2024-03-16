@@ -253,8 +253,9 @@ async function saveChangesDesktop() {
   startPageUpdate();
   await initListContact();
   await loadShowSingleContact(contactId);
+  console.log(contactId);
   document.getElementById('editContactContainer').style.display = "none";
-  document.getElementById('showSingleContactContainer').style.display = "none";
+  document.getElementById('showSingleContactContainer').style.display = "flex";
   document.getElementById('listContactContainer').style.display = "flex";
   document.getElementById('mobileBtnSelectOptions').style.display = "none";
   document.getElementById('singleContactCol').style.display = "block";
@@ -284,5 +285,21 @@ async function deleteAtEditContactDesktop() {
   document.getElementById('listContactContainer').style.display = "flex";
   document.getElementById('mobileBtnSelectOptions').style.display = "none";
   document.getElementById('mobileBtnAddContact').style.display = "block";
+}
+
+async function saveChangesAtEditContactMobile() {
+  let contactId = await getContactId();
+  debugger;
+  await saveChangesAtEditContact();
+  debugger;
+  startPageUpdate();
+  await loadShowSingleContact(contactId);
+  debugger;
+  document.getElementById('editContactContainer').style.display = "none";
+  document.getElementById('showSingleContactContainer').style.display = "block";
+  document.getElementById('listContactContainer').style.display = "none";
+  document.getElementById('mobileBtnSelectOptions').style.display = "none";
+  document.getElementById('mobileBtnThreePoints').style.display = "block";
+  document.getElementById('mobileBtnAddContact').style.display = "none";
 }
 

@@ -246,6 +246,7 @@ async function closeAddContactContainer() {
 
 async function saveContactAtAddContactDesktop() {
   let contactId = await getContactId();
+  console.log('Ausgabe contactId',contactId);
   await initSaveProcess();
   await initListContact();
   await loadShowSingleContact(contactId);
