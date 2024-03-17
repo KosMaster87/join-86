@@ -173,17 +173,23 @@ function whatsSignatures(i) {
 function updateProgressBar(i) {
   let counter = 0;
   let percent = 0;
-  for (let p = 0; p < user.tasks[i].subtasks.length; p++) {
-    if (user.tasks[i].subtasks[p].done === true) {
-      counter++;
+
+  if (user.tasks[i].subtasks.length === 0) {
+    document.getElementById("progressMainContainerId").style.display = "none";
+  } else {
+    document.getElementById("progressMainContainerId").style.display = "flex";
+    for (let p = 0; p < user.tasks[i].subtasks.length; p++) {
+      if (user.tasks[i].subtasks[p].done === true) {
+        counter++;
+      }
     }
-  }
-  percent = (counter / user.tasks[i].subtasks.length) * 100;
-  if (counter >= 0) {
-    document.getElementById(`finishedTasks${i}`).innerHTML = counter;
-  }
-  if (percent >= 0) {
-    document.getElementById(`progressBar${i}`).style.width = percent + "%";
+    percent = (counter / user.tasks[i].subtasks.length) * 100;
+    if (percent >= 0) {
+      document.getElementById(`finishedTasks${i}`).innerHTML = counter;
+    }
+    if (percent >= 0) {
+      document.getElementById(`progressBar${i}`).style.width = percent + "%";
+    }
   }
 }
 
@@ -212,13 +218,17 @@ function checkNofilledTasks() {
  * @param {*} i - is the number of the task
  */
 function openTask(i) {
-  document.body.style.overflow = "hidden";
-  mainContentContainer = document.getElementById(`mainContent`);
-  mainContentContainer.innerHTML += openTaskReturn(i);
-  renderTaskCategory(i);
-  renderTaskValues(i);
-  renderTaskAssigneds(i);
-  renderTaskSubtasks(i);
+  if (!switchTaskTriggered) {
+    document.body.style.overflow = "hidden";
+    mainContentContainer = document.getElementById(`mainContent`);
+    mainContentContainer.innerHTML += openTaskReturn(i);
+    renderTaskCategory(i);
+    renderTaskValues(i);
+    renderTaskAssigneds(i);
+    renderTaskSubtasks(i);
+  } else {
+    switchTaskTriggered = false;
+  }
 }
 
 /**
@@ -287,17 +297,22 @@ function renderTaskAssigneds(i) {
  * @param {*} i - is the number of the task
  */
 function renderTaskSubtasks(i) {
-  let popUpSubtasksContainer = document.getElementById(`popUpSubtasksContainer`);
-  for (let s = 0; s < user.tasks[i].subtasks.length; s++) {
-    popUpSubtasksContainer.innerHTML += popUpSubtaskReturn(i, s);
-    let subtask = document.getElementById(`pupUpSubtaskText${s}`);
-    subtask.innerHTML = user.tasks[i].subtasks[s].name;
-    if (user.tasks[i].subtasks[s].done === false) {
-      image = document.getElementById(`popUpSubtaskImage${s}`).src =
-        "../assets/img/board/board_box.svg";
-    } else if (user.tasks[i].subtasks[s].done === true) {
-      image = document.getElementById(`popUpSubtaskImage${s}`).src =
-        "../assets/img/board/board_box_check.svg";
+  if (user.tasks[i].subtasks.length === 0) {
+    document.getElementById(`boardTaskSubtaskMainContainer`).style.display = "none";
+  } else {
+    document.getElementById(`boardTaskSubtaskMainContainer`).style.display = "flex";
+    let popUpSubtasksContainer = document.getElementById(`popUpSubtasksContainer`);
+    for (let s = 0; s < user.tasks[i].subtasks.length; s++) {
+      popUpSubtasksContainer.innerHTML += popUpSubtaskReturn(i, s);
+      let subtask = document.getElementById(`pupUpSubtaskText${s}`);
+      subtask.innerHTML = user.tasks[i].subtasks[s].name;
+      if (user.tasks[i].subtasks[s].done === false) {
+        image = document.getElementById(`popUpSubtaskImage${s}`).src =
+          "../assets/img/board/board_box.svg";
+      } else if (user.tasks[i].subtasks[s].done === true) {
+        image = document.getElementById(`popUpSubtaskImage${s}`).src =
+          "../assets/img/board/board_box_check.svg";
+      }
     }
   }
 }
@@ -309,11 +324,14 @@ function renderTaskSubtasks(i) {
  * @param {*} i - is the number of the task
  */
 async function closeOpenTask(i) {
+  renderTaskSubtasks(i);
   document.body.style.overflow = "auto";
   let task = document.getElementById(`popUpMainContainer`);
   let blurr = document.getElementById(`blurrContainer`);
   blurr.remove();
   task.remove();
+  document.getElementById(`TodoMainContainer`).innerHTML = "";
+  loadTasks();
 }
 
 /**
