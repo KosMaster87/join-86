@@ -9,7 +9,7 @@ async function loadContacts(i) {
   let totalHeight = Math.min(user.contacts.length * 52, 260);
   mainDiv.style.height = `${totalHeight}px`;
   for (let c = 0; c < user.contacts.length; c++) {
-    signatureAndIcon(c);
+    signatureAndIcon(c, i);
     if (user.contacts[c].selected) {
       loadContactsIfSelected(c);
     }
@@ -25,7 +25,7 @@ async function loadContacts(i) {
  *
  * @param {*} c - is the number of the contact
  */
-function signatureAndIcon(c) {
+function signatureAndIcon(c,i) {
   let mainDiv = document.getElementById(`contactList`);
   contactSignature = user.contacts[c].signature;
   contactName = user.contacts[c].name;
@@ -44,9 +44,6 @@ function loadContactsIfSelected(c) {
   let container = document.getElementById(`assignedContactContainer${c}`);
   let contactListIcons = document.getElementById("contactListIconsLine");
   container.classList.add("assignedContainerBlack");
-  container.onclick = function () {
-    removeassignedtoContactBg(i);
-  };
   let image = document.getElementById(`assignedContactImage${c}`);
   image.src = "../assets/img/add_task/task_box_check.svg";
   let signature = document.getElementById(`ContactSignatureIcon${c}`).innerHTML;
@@ -198,7 +195,6 @@ async function saveCurrentBoardTask(i) {
   user.tasks[i].title = title.value;
   user.tasks[i].dueDate = date.value;
   user.tasks[i].description = description.value;
-  user.tasks[i].prio = pupUpPriorityName;
   await setItem("users", users);
   document.getElementById(`popUpMainContainer`).remove();
   document.getElementById(`blurrContainer`).remove();

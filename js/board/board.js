@@ -404,7 +404,7 @@ async function editBoardTask(i) {
   for (let s = 0; s < user.tasks[i].subtasks.length; s++) {
     document.getElementById(`subTasksContainer`).innerHTML += editBoardTaskReturn(i, s);
   }
-  whatsPrio();
+  whatsPrio(i, user.tasks[i].prio);
   selectContacts(i);
   savedUsersInBackend();
   loadContacts(i);
@@ -476,9 +476,9 @@ async function addBoardSubtask(i) {
 }
 
 /**
- * 
+ *
  * change the subtask menubar when edit the subtask
- * 
+ *
  * @param {*} i - is the number of the task
  */
 function changeBoardMenu(i) {
@@ -489,9 +489,9 @@ function changeBoardMenu(i) {
 }
 
 /**
- * 
+ *
  * delete the subtask
- * 
+ *
  * @param {*} i - is the number of the task
  * @param {*} s - is the number of the subtasks
  */
@@ -509,22 +509,22 @@ async function deleteBoardSubtask(i, s) {
 /**
  * change the backgroundcolor of the priority
  */
-function whatsPrio() {
+function whatsPrio(i, pupUpPriorityName) {
   removeWhiteImg();
   removePrio();
   if (pupUpPriorityName === "Low") {
-    changePrioColor(prioLowContainer);
+    changePrioColor(i, pupUpPriorityName);
   } else if (pupUpPriorityName === "Medium") {
-    changePrioColor(prioMediumContainer);
+    changePrioColor(i, pupUpPriorityName);
   } else if (pupUpPriorityName === "Urgent") {
-    changePrioColor(prioUrgentContainer);
+    changePrioColor(i, pupUpPriorityName);
   }
 }
 
 /**
- * 
+ *
  * give the contact that assignedTo an selected true information
- * 
+ *
  * @param {*} i - is the number of the task
  */
 function selectContacts(i) {
@@ -563,23 +563,25 @@ function removeWhiteImg() {
 }
 
 /**
- * 
+ *
  * change the backgroundcolor of selected priority
- * 
+ *
  * @param {*} clickedContainerId - clicked priorityContainer
  */
-function changePrioColor(clickedContainerId) {
-  if (clickedContainerId === "prioLowContainer") {
-    document.getElementById("prioLowContainer").classList.add("prioLow");
+function changePrioColor(i, pupUpPriorityName) {
+  if (pupUpPriorityName === "Low") {
+    document.getElementById(`prioLowContainer`).classList.add("prioLow");
     document.querySelector("#prioLowContainer img").src =
       "../assets/img/add_task/arrow_bottom_white.svg";
-  } else if (clickedContainerId === "prioMediumContainer") {
-    document.getElementById("prioMediumContainer").classList.add("prioMedium");
+  } else if (pupUpPriorityName === "Medium") {
+    document.getElementById(`prioMediumContainer`).classList.add("prioMedium");
     document.querySelector("#prioMediumContainer img").src =
       "../assets/img/add_task/line_white.svg";
-  } else if (clickedContainerId === "prioUrgentContainer") {
-    document.getElementById("prioUrgentContainer").classList.add("prioUrgent");
+  } else if (pupUpPriorityName === "Urgent") {
+    document.getElementById(`prioUrgentContainer`).classList.add("prioUrgent");
     document.querySelector("#prioUrgentContainer img").src =
       "../assets/img/add_task/arrow_top_white.svg";
   }
+  user.tasks[i].prio = pupUpPriorityName;
+  savedUsersInBackend();
 }

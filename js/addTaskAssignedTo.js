@@ -115,6 +115,7 @@ function assignedtoContactBg(i, userName) {
     name: userName,
     userColor: contacts[i].userColor
   }
+  user.contacts[i].selected = true;
   selectedAssignedto.push(assignetToArray);
   let container = document.getElementById(`assignedContactContainer${i}`);
   let contactListIcons = document.getElementById("contactListIconsLine");

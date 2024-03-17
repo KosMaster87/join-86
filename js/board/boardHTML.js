@@ -207,7 +207,7 @@ function editBoardMobileTaskReturn(i) {
       <div id="prioSelectContainer">
         <div
           id="prioUrgentContainer"
-          onclick="whatsPrio(prioUrgentContainer)"
+          onclick="whatsPrio(${i},'Urgent')"
           class="taskSelectButton"
         >
           Urgent
@@ -215,13 +215,13 @@ function editBoardMobileTaskReturn(i) {
         </div>
         <div
           id="prioMediumContainer"
-          onclick="whatsPrio(prioMediumContainer)"
+          onclick="whatsPrio(${i},'Medium')"
           class="taskSelectButton"
         >
           Medium
           <img src="../assets/img/add_task/line_orange.svg" />
         </div>
-        <div id="prioLowContainer" onclick="whatsPrio(prioLowContainer)" class="taskSelectButton">
+        <div id="prioLowContainer" onclick="whatsPrio(${i},'Low')" class="taskSelectButton">
           Low
           <img src="../assets/img/add_task/arrow_bottom_green.svg" />
         </div>
@@ -348,7 +348,7 @@ function editBoardDesktopTaskReturn(i) {
     <div id="prioSelectContainer">
       <div
         id="prioUrgentContainer"
-        onclick="whatsPrio(prioUrgentContainer)"
+        onclick="whatsPrio(${i},'Urgent')"
         class="taskSelectButton"
       >
         Urgent
@@ -356,7 +356,7 @@ function editBoardDesktopTaskReturn(i) {
       </div>
       <div
         id="prioMediumContainer"
-        onclick="whatsPrio(prioMediumContainer)"
+        onclick="whatsPrio(${i},'Medium')"
         class="taskSelectButton"
       >
         Medium
@@ -364,7 +364,7 @@ function editBoardDesktopTaskReturn(i) {
       </div>
       <div
         id="prioLowContainer"
-        onclick="whatsPrio(prioLowContainer)"
+        onclick="whatsPrio(${i},'Low')"
         class="taskSelectButton"
       >
         Low
