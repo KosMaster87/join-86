@@ -422,7 +422,7 @@ function loadContactsReturn(c, i) {
 
 function filterNamesforAssignedToReturn(i) {
   return `
-  <div id="assignedContactContainer${i}" onclick="assignedtoContactBg(${i}, '${user.contacts[i].name}')" class="assignedContactContainer">
+  <div id="assignedContactContainer${i}" onclick="assignedtoContactBg(${i},${i})" class="assignedContactContainer">
       <div class="assignedContactLeftSide">
           <div id="ContactSignatureIcon${i}" class="assignedContactLeftSideIcon">${user.contacts[i].signature}</div>
           <p class="assignedContactNameClass">${user.contacts[i].name}</p>
