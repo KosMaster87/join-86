@@ -369,7 +369,7 @@ input::placeholder {
   margin-top: 24px;
 }
 
-#cancelBtnDesktop {
+#addCancelBtnDesktop {
   display: none; /* ergänzen edit */
   border: 1px solid var(--lightGray);
   border-radius: 10px;
@@ -392,7 +392,6 @@ input::placeholder {
 
 @media screen and (min-width: 456px) {
   #contactCard {
-    /* edit */
     width: 90%;
   }
   #addContactContainer {
@@ -401,7 +400,7 @@ input::placeholder {
   }
 }
 
-@media screen and (max-width: 721px) {
+@media screen and (min-width: 721px) {
   /*#addContactContainer {
     margin-left: 0px !important;
     margin-top: 0px !important;
@@ -428,21 +427,17 @@ input::placeholder {
   #addContactContainer {
     margin-left: -160px;
     margin-top: -56px;
-  }   
+  } 
+  
 }
 
 
 
 @media screen and (min-width: 1200px) {
-  /*#contactCard {
-    width: 1000px;
-  }*/
 
-  .contactBodyBtnRowDesktop {
-    display: flex;
+  #addContactBodytBtnRowDesktop {
     margin-top: 36px;
-    justify-content: flex-start;
-    align-items: center;
+    display: flex;
     gap: 25px;
   }
 
@@ -595,11 +590,12 @@ input::placeholder {
     align-items: center; 
   }
 
-  #cancelBtnDesktop {
-    display: flex;
+  #addCancelBtnDesktop {
+    display: flex; 
+    /* width: 1 */
   }
 
-  #cancelBtnDesktop:hover {
+  #addCancelBtnDesktop:hover {
     border: 1px solid var(--lightBlue);
     color: var(--lightBlue);
     cursor: pointer;
@@ -608,12 +604,10 @@ input::placeholder {
 
 @media screen and (min-width: 1440px) {
 
-  .contactBodyBtnRowDesktop {
-    display: flex;
-    margin-top: 36px;
-    justify-content: flex-start;
+  #addContactBodytBtnRowDesktop {
+    /*justify-content: flex-start;
     align-items: center;
-    gap: 25px;
+    gap: 25px;*/
   }
 
 
@@ -792,13 +786,4 @@ input::placeholder {
     display: none; 
   }
 
-  #cancelBtnDesktop {
-    display: inline;
-    /* Wert nachträglich ändern */
-  }
-
-  .cancelBtnDesktop:hover {
-    border: 1px solid var(--lightBlue);
-    color: var(--lightBlue);
-  }
 }
