@@ -412,6 +412,12 @@ input::placeholder {
     width: 80%;
   }
 }
+@media screen and (max-width: 999px){
+
+  #addContactContainer {
+    left:0px;
+  }
+}
 
 @media screen and (min-width: 1000px) {
   #contactCard {
