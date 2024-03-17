@@ -284,7 +284,10 @@ function editBoardMobileTaskReturn(i) {
 function editBoardDesktopTaskReturn(i) {
   return `
   <div class="divColumn">
+  <div class="closeEdit">
   <span class="edith1">Add Task</span>
+    <img class="editImg" onclick="closeEditTask(${i})" src="../assets/img/board/board_cross.svg" />
+  </div>
   <div class="leftAndRightMainContainer">
   <div id="leftTaskContainer">
   <div id="taskTitleContainer">

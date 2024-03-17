@@ -561,6 +561,14 @@ h2 {
 }
 
 @media (min-width: 1200px) {
+  .closeEdit {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+
   .selectionContainer {
     width: 240px;
   }
@@ -568,6 +576,9 @@ h2 {
     width: 225px;
   }
 
+  .descriptionInputField {
+    max-width: 100% !important;
+  }
   .boxSizeProgress {
     width: 225px;
   }
@@ -589,16 +600,22 @@ h2 {
     height: 670px;
   }
 
-  .edith1{
+  .edith1 {
     font-size: 61px;
     font-weight: 700;
     margin-bottom: 20px;
     margin-left: 66px;
-    margin-top:20px;
+    margin-top: 20px;
   }
-
-  .boardEditButtonContainer{
-    margin-right:60px;
+  .editImg {
+    height: 24px;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 15px;
+    margin-right: 15px;
+  }
+  .boardEditButtonContainer {
+    margin-right: 60px;
   }
 }
 
