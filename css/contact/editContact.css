@@ -71,21 +71,20 @@
 }
 
 .editContactHeaderSignature {
-  display: none;
   width: 120px;
   height: 120px;
-  background-color: orange;
+  background-color: var(--red);
   border: 2px solid var(--white);
   border-radius: 50%;
   z-index: 5;
+  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   top: 92px;
-  left: calc(50%-61px);
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  left: calc(50% - 61px);
 }
-
+/*
 .editContactSignature {
   color: var(--white);
   display: flex;
@@ -93,11 +92,11 @@
   align-items: center;
   font-size: 27px;
   font-weight: 500;
-}
-
+}*/
+/*
 .editContactBodySignature {
   display: none;
-}
+}*/
 
 .editContactBtnRow {
   display: flex;
@@ -214,27 +213,55 @@
 }
 
 @media screen and (min-width: 1200px) {
+
+
+  .editContactHeaderSignature {
+    display: none;
+  }
+
+  .contactContainerFlexZwei {
+    display: flex;
+    background-color:blue; 
+  }
+  
+  #editContactBodySignature {
+    display: flex;
+    width: 120px;
+    height: 120px;
+    background-color: var(--lighterGray);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    z-index: 5;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  }
+
   #editContactBtnSaveMobile {
     display: none;
   }
 
   #editContactCancelBtnDesktop {
     display: flex;
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--white);
-    background-color: var(--lightGray);
+    border: 1px solid var(--lightGray);
     border-radius: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
     padding: 18px 10px;
   }
 
   #editContactCancelBtnDesktop:hover {
+    border: 1px solid var(--lightBlue);
+    color: var(--lightBlue);
     cursor: pointer;
   }
 
   #editContactSaveBtnDesktop {
     display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 18px 10px;
     font-size: 21px;
     font-weight: 700;
     line-height: 1.2;
@@ -256,9 +283,7 @@
     gap: 25px;
   }
 
-  #editContactCancelBtnDesktop {
-    display: flex;
-  }
+
 }
 
 @media screen and (min-width: 1440px) {
@@ -273,11 +298,6 @@
     right: 0;
     left: 0;
     top: 0;
-  }
-
-  /* ABWANDELN */
-  .editContactHeaderSignature {
-    display: none;
   }
 
   /* PRÜFEN - vorher add */
@@ -351,17 +371,17 @@
     #editContactBtnSaveMobile {
       display: none;
     }
-
+/*
     .editContactHeaderSignature {
       display: none;
-    }
-
+    }*/
+/*
     .editContactBodySignature {
       flex-grow: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-    }
+    }*/
 
     .editContactHeaderSection {
       display: flex;

@@ -68,7 +68,7 @@
                   <img src="../../assets/img/addContact/close-gray.svg" />
                 </a>
                 <div id="contactContainerFlexZwei">
-                  <div id="contactBodySignatureContainer">
+                  <div class="contactBodySignatureContainer">
                     <div id="contactBodyEmptySignature">
                       <img src="../assets/img/addContact/person.svg">
                     </div>
@@ -131,14 +131,15 @@
                         id="contactBtnSave"
                         class="contactBtnSave"
                         >Create contact mobil<img
-                          id="contactBtnSaveIcon"
+                          class="contactBtnIcon"
                           src="../../assets/img/addContact/check.svg"
                       /></a>
                     </div>
-                    <div id="addContactBodytBtnRowDesktop">
+                    <div class="contactBodytBtnRowDesktop">
                       <a onclick="closeAddContactContainerDesktop()" id="addCancelBtnDesktop"
+                        class="contactCancelBtnDesktop"
                         >Cancel<img
-                          id="contactBtnSaveIcon"
+                          class="contactBtnIcon"
                           src="../../assets/img/addContact/close-gray.svg"
                       /></a>
                       <a
@@ -146,7 +147,7 @@
                         id="contactBtnSaveDesktop"
                         class="contactBtnSave"
                         >Create contact<img
-                          id="contactBtnSaveIcon"
+                          class="contactBtnIcon"
                           src="../../assets/img/addContact/check.svg"
                       /></a>
                     </div>
@@ -198,9 +199,10 @@
                 </a>
                 <div id="contactContainerFlexZwei">
                   <!-- Hier eventuell DIV DRUMLEGEN -->
-                  <div class="editContactBodySignature">
-                    <!-- ZU BEGINN AUSBLENDEN -->
-                    <div class="editContactSignature"></div>
+                  <div class="contactBodySignatureContainer">
+                    <div id="editContactBodySignature" >
+                      <div id="editContactSignature"></div>
+                    </div>
                   </div>
                   <!-- ENDE FLEX CONTAINER-->
                   <div class="contactBodyInputSection">
@@ -255,27 +257,31 @@
                     <div class="editContactMessageContainer">
                       <span id="editContactMessagePhone"></span>
                     </div>
-                    <div id="contactBodytBtnRowMobile">
+                    <div class="contactBodytBtnRow">
                       <a onclick="saveChangesAtEditContactMobile()" id="editContactBtnSaveMobile"
                         >Save contact mobil<img
-                          id="contactBtnSaveIcon"
+                          class="contactBtnIcon"
                           src="../../assets/img/addContact/check.svg"
                         />
                       </a>
                     </div>
-                    <div id="contactBodytBtnRowDesktop">
+                    <div class="contactBodytBtnRowDesktop">
                       <a onclick="deleteAtEditContactDesktop()" id="editContactCancelBtnDesktop"
                         >Delete<img
-                          id="contactBtnSaveIcon"
+                          class="contactBtnIcon"
                           src="../../assets/img/addContact/close.svg"
                       /></a>
                       <a onclick="saveChangesDesktop()" id="editContactSaveBtnDesktop"
                         >Save contact<img
-                          id="contactBtnSaveIcon"
+                          class="contactBtnIcon"
                           src="../../assets/img/addContact/check.svg"
                       /></a>
                     </div>
                   </div>
+                  </div>
+                  </div>
+                  </div>
+                </div>
                   <!-- Ende ContactInputContainer-->
                 </div>
                 <!-- Ende Edit Field Contact -->

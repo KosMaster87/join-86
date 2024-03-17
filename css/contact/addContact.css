@@ -4,7 +4,6 @@
   display: none;
 }
 
-/* RESET INPUT FIELD */
 input {
   margin: 0;
   padding: 0;
@@ -49,7 +48,7 @@ input {
   transform: translate(-50%, -50%);
   width: 100%;
   z-index: 900;
-} /* contact */
+} 
 
 @keyframes slideUp {
   from {
@@ -156,21 +155,6 @@ input {
   top: 92px;
   left: calc(50% - 61px);
 }
-/*
-#contactHeaderEmptySignature {
-  width: 120px;
-  height: 120px;
-  background-color: var(--lighterGray);
-  border: 2px solid var(--white);
-  border-radius: 50%;
-  z-index: 5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: 92px;
-  left: calc(50% - 61px);
-}*/
 
 #contactBody {
   flex-grow: 1;
@@ -183,7 +167,7 @@ input {
   margin: 0 12px 1px 12px;
 }
 
-#contactBodySignatureContainer {
+.contactBodySignatureContainer {
   display: none;
 }
 
@@ -297,9 +281,10 @@ input {
   cursor: pointer;
 }
 
-#contactBtnSaveIcon {
+.contactBtnIcon {
   margin-left: 8px;
 }
+
 
 input::placeholder {
   color: var(--lighterGray);
@@ -308,7 +293,7 @@ input::placeholder {
 .contactInputField {
   width: 397px;
 }
-/* aktuell */
+
 .contactInputField {
   background-color: transparent;
   border-radius: 10px;
@@ -345,9 +330,7 @@ input::placeholder {
   cursor: pointer;
 }
 
-#contactBtnSaveIcon {
-  margin-left: 8px;
-}
+
 
 #contactBodytBtnRowDesktop {
   display: flex; /* ergänzen edit */
@@ -356,7 +339,7 @@ input::placeholder {
 }
 
 #addCancelBtnDesktop {
-  display: none; /* ergänzen edit */
+  display: none;
   border: 1px solid var(--lightGray);
   border-radius: 10px;
   font-size: 20px;
@@ -368,8 +351,8 @@ input::placeholder {
 @media screen and (min-width: 300px) {
   .contactInputContainer {
     width: 100%;
-    /* übertragen editContact*/
   }
+
   #addContactContainer {
     margin-left: 0px;
     margin-top: 0px;
@@ -417,11 +400,16 @@ input::placeholder {
   
 }
 
-
-
 @media screen and (min-width: 1200px) {
+  .contactBodySignatureContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: pink;
+    width: 43.35%; 
+  }
 
-  #addContactBodytBtnRowDesktop {
+  .contactBodytBtnRowDesktop {
     margin-top: 36px;
     display: flex;
     gap: 25px;
@@ -449,7 +437,6 @@ input::placeholder {
     padding: 47px;
     margin: 0;
   }
-  /* übertrag bis hierher */
 
   #contactHeaderCloseIcon {
     display: none;
@@ -483,14 +470,6 @@ input::placeholder {
   #contactHeaderJoinLogo {
     height: 66.48px;
     display: block;
-  }
-
-  #contactBodySignatureContainer {
-    background-color: pink;
-    display: flex;
-    width: 43.35%;
-    justify-content: center;
-    align-items: center;
   }
 
   #contactBodyEmptySignature {
@@ -549,12 +528,6 @@ input::placeholder {
     align-items: flex-start;
   }
 
-  .contactBodyInputSectionCol {
-   /*margin-top: 10px;
-    flex-direction: column;
-    Wechsel */
-  }
-
   .contactBodytBtnRow {
     display: none; 
   }
@@ -577,12 +550,6 @@ input::placeholder {
 }
 
 @media screen and (min-width: 1440px) {
-
-  #addContactBodytBtnRowDesktop {
-    /*justify-content: flex-start;
-    align-items: center;
-    gap: 25px;*/
-  }
 
 
   #contactCard {
