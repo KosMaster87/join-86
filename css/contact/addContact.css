@@ -156,8 +156,8 @@ input {
   top: 92px;
   left: calc(50% - 61px);
 }
-/* prüfen */
-.contactHeaderEmptySignature {
+/*
+#contactHeaderEmptySignature {
   width: 120px;
   height: 120px;
   background-color: var(--lighterGray);
@@ -170,7 +170,7 @@ input {
   position: relative;
   top: 92px;
   left: calc(50% - 61px);
-}
+}*/
 
 #contactBody {
   flex-grow: 1;
@@ -183,17 +183,10 @@ input {
   margin: 0 12px 1px 12px;
 }
 
-.addContactBodySignature {
-  display: none;
-} /* kann vermutlich gelöscht werden */
-
 #contactBodySignatureContainer {
   display: none;
-  /* display none evtl. extra entfernen */
 }
 
-/* CHECK */
-/* edit */
 .contactBodyInputSectionCol {
   display: flex;
   flex-direction: column;
@@ -202,7 +195,6 @@ input {
   align-items: center; 
 }
 
-/* edit */
 .contactInputContainer {
   border: solid 1px var(--lighterGray);
   padding: 12px 16px 12px 16px;
@@ -290,12 +282,6 @@ input {
 
 #addContactInputPhone {
   width: 100%;
-}
-/* Hier aktuell */
-/* PRÜFEN */
-.contactBodyEmptySignature {
-  display: none;
-  /* kompletter Wechsel */
 }
 
 .contactBodyInputSectionCol { 
@@ -469,19 +455,9 @@ input::placeholder {
     display: none;
   }
 
-  /* edit */
-  #contactBodySignatureContainer {
-    display: flex;
-  }
-
-  /* PRÜFEN */
   .addContactHeaderSignature {
     display: none;
   }
-
-  .contactHeaderEmptySignature {
-    display: flex;
-  } /* prüfen */
 
   .addContactHeaderSection {
     display: flex;
@@ -510,26 +486,23 @@ input::placeholder {
   }
 
   #contactBodySignatureContainer {
-    flex-grow: 1;
+    background-color: pink;
     display: flex;
+    width: 43.35%;
     justify-content: center;
     align-items: center;
   }
 
-  /* PRÜFEN */
-  .addContactBodySignature {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  #contactBodyEmptySignature {
     width: 120px;
     height: 120px;
     background-color: var(--lighterGray);
     border: 2px solid var(--white);
     border-radius: 50%;
-    z-index: 800;
-    position: 0;
-    top: 0;
-    left: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
   }
 
@@ -558,7 +531,7 @@ input::placeholder {
   #contactBodyCloseIcon {
     display: block;
     position: relative;
-    top: -108px;
+    top: -93px;
     left: 590px;
   }
 
@@ -566,6 +539,7 @@ input::placeholder {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    background-color: green;
   }
 
   .contactBodyInputSection {
@@ -639,19 +613,6 @@ input::placeholder {
     display: none;
   }
 
-  /* edit */
-  #contactBodySignatureContainer {
-    display: flex;
-  }
-
-  /* PRÜFEN */
-  .addContactHeaderSignature {
-    display: none;
-  }
-
-  .contactHeaderEmptySignature {
-    display: none;
-  } /* prüfen */
 
   .addContactHeaderSection {
     display: flex;
@@ -681,58 +642,43 @@ input::placeholder {
     /* display-none*/
   }
 
-  #contactBodySignatureContainer {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
-  /* PRÜFEN */
-  .addContactBodySignature {
+
+  /* PRÜFEN *//*
+  #addContactBodySignature {
     width: 120px;
     height: 120px;
     background-color: var(--lighterGray);
     border: 2px solid var(--white);
     border-radius: 50%;
     z-index: 5;
-    /* Wechsel */
     display: flex;
-    /* beim oberen Element nochmal prüfen */
     justify-content: center;
     align-items: center;
     position: 0;
-    /* Wechsel */
     top: 0;
-    /* Wechsel */
     left: 0;
-    /* Wechsel */
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-    /* Wechsel display none an der Stelle entfernt */
-  }
+  }*/
 
-  /* PRÜFEN */
-  .addContactBodySignature {
+  /* PRÜFEN *//*
+  #addContactSignature {
     width: 120px;
     height: 120px;
     background-color: var(--lighterGray);
     border: 2px solid var(--white);
     border-radius: 50%;
     z-index: 5;
-    /* Wechsel */
+
     display: flex;
-    /* beim oberen Element nochmal prüfen */
     justify-content: center;
     align-items: center;
     position: 0;
-    /* Wechsel */
     top: 0;
-    /* Wechsel */
     left: 0;
-    /* Wechsel */
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-    /* Wechsel display none an der Stelle entfernt */
-  }
+    /* Wechsel display none an der Stelle entfernt 
+  } */
 
   #contactBody {
     width: 61.5%;
@@ -764,10 +710,7 @@ input::placeholder {
     left: 684px;
   }
 
-  #contactContainerFlexZwei {
-    display: flex;
-    flex-direction: row;
-  }
+ 
 
   .contactBodyInputSection {
     width: 56.65%;
