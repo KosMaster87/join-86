@@ -11,17 +11,25 @@ function userClicksOutsideOfInputField(event, containerId) {
   let container = document.getElementById(containerId);
   return !container.contains(event.target);
 }
-
 function closeContactWindow() {
   let contactList = document.getElementById("contactList");
   let contactListIcons = document.getElementById("contactListIcons");
-  let border = document.getElementById("contactSelectContainer");
+  let contactBorder = document.getElementById("contactSelectContainer");
+  let categoryMenu = document.getElementById("categoryMenu");
+  let categoryBorder = document.getElementById("categorySelectContainer");
   let image = document.getElementById("openerAssignedTo");
-  closeCategoryMenu();
-  contactList.style.display = "none";
-  contactListIcons.style.display = "block";
-  border.classList.remove("bordercolor");
-  image.src = "../assets/img/add_task/arrow_drop_down.svg";
+
+  if (contactList.style.display !== "none") {
+    contactList.style.display = "none";
+    contactListIcons.style.display = "block";
+    contactBorder.classList.remove("bordercolor");
+    image.src = "../assets/img/add_task/arrow_drop_down.svg";
+  }
+
+  if (categoryMenu.style.display !== "none") {
+    categoryMenu.style.display = "none";
+    categoryBorder.classList.remove("bordercolor");
+  }
 }
 
 /**
