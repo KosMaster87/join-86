@@ -1,6 +1,7 @@
 const contactColors = ["var(--red)", "var(--yellow)", "var(--orangeIcons)", "var(--green)", "var(--pink)", "var(--mintGreen)"];
 
 async function initAddContact() {
+  await setContactId([]);
   resetInputFields();
   editFocusBorder('Name', 'Email', 'Phone');
   resetAllInputMessages();
@@ -18,6 +19,7 @@ async function initSaveProcess() {
     resetInputFields();
   } else {
     console.log('Fehlerhafter Dateneintrag')
+    disableSaveProcess();
   }
 }
 
@@ -101,10 +103,10 @@ function generateRandomId() {
 }
 
 function checkAllInputFields(name, email, phone) {
-  if (checkInputName(name) === true && checkInputEmail(email) === true && checkInputPhone(phone)) {
+  if (checkInputName(name) === true && checkInputEmail(email) === true && checkInputPhone(phone) === true) {
     return true
   } else {
-    console.log('Fehlerhafte Dateneingabe')
+    console.log('Ein Element ist auf false gesetzt')
     return false;
   }
 }
@@ -206,6 +208,12 @@ function removeFocusBorder(containerId) {
   input.classList.remove('focus');
 }
 
+function disableSaveProcess() {
+  document.getElementById("addContactContainer").style.display = "block";
+  document.getElementById("listContactContainer").style.display = "none";
+  document.getElementById("mobileBtnAddContact").style.display = "none";
+}
+
 async function closeAddContactAndGoToShowSingleContactContainer(contactId) {
   loadShowSingleContact(contactId);
   document.getElementById("addContactContainer").style.display = "none";
@@ -266,5 +274,6 @@ async function saveContactAtAddContactMobile() {
   document.getElementById("mobileBtnAddContact").style.display = "none"; 
   document.getElementById("showSingleContactContainer").style.display = "block";
 }
+
 
 
