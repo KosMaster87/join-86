@@ -1,26 +1,27 @@
-/**
- * This eventlistener close the contactwindow when click with the mouse outside of this window
- */
 document.addEventListener("click", function (event) {
-  if (userClicksOutsideOfInputField(event)) {
-    let contactList = document.getElementById("contactList");
-    let contactListIcons = document.getElementById("contactListIcons");
-    let border = document.getElementById(`contactSelectContainer`);
-    let image = document.getElementById(`openerAssignedTo`);
-    if (event.target != contactList && event.target.parentNode != contactList) {
-      contactList.style.display = "none";
-      contactListIcons.style.display = "block";
-      border.classList.remove("bordercolor");
-      image.src = "../assets/img/add_task/arrow_drop_down.svg";
-    }
+  if (userClicksOutsideOfInputField(event, "contactSelectContainer") && userClicksOutsideOfInputField(event, "categorySelectContainer")) {
+    closeContactWindow();
   }
 });
 
 /**
- * This function close the contactwindow when click with the mouse outside of this window
+ * This function close the contact window when click with the mouse outside of this window
  */
-function userClicksOutsideOfInputField(event) {
-  return !contactSelectContainer.contains(event.target) && !contactList.contains(event.target);
+function userClicksOutsideOfInputField(event, containerId) {
+  let container = document.getElementById(containerId);
+  return !container.contains(event.target);
+}
+
+function closeContactWindow() {
+  let contactList = document.getElementById("contactList");
+  let contactListIcons = document.getElementById("contactListIcons");
+  let border = document.getElementById("contactSelectContainer");
+  let image = document.getElementById("openerAssignedTo");
+  closeCategoryMenu();
+  contactList.style.display = "none";
+  contactListIcons.style.display = "block";
+  border.classList.remove("bordercolor");
+  image.src = "../assets/img/add_task/arrow_drop_down.svg";
 }
 
 /**
@@ -28,6 +29,7 @@ function userClicksOutsideOfInputField(event) {
  */
 function openContacts() {
   let contactList = document.getElementById("contactList");
+  closeCategoryMenu();
   let contactListIcons = document.getElementById("contactListIcons");
   let border = document.getElementById(`contactSelectContainer`);
   let image = document.getElementById(`openerAssignedTo`);
@@ -39,6 +41,7 @@ function openContacts() {
     closeContacts();
   };
 }
+
 
 /**
  * This function close the contact list

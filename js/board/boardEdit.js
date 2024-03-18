@@ -1,3 +1,5 @@
+let switchTaskTriggered = false;
+
 /**
  *
  * load the assignedTo contacts
@@ -224,4 +226,66 @@ function clearSubtaskInputfield() {
   <img src="../assets/img/add_task/task_add.svg" />`;
   let border = document.getElementById(`subTaskInputcontainer`);
   border.classList.remove("bordercolor");
+}
+
+function switchTask(i){
+  switchTaskTriggered = true;
+  var menu = document.getElementById(`menuForSwitchTask`);
+  if (!menu) {
+    document.getElementById(`switchTaskImage${i}`).innerHTML +=`
+      <ul id="menuForSwitchTask" class="menu-options">
+        <li onclick="switchTaskTodo(${i})">To Do</li>
+        <li class="font16400" onclick="switchTaskProgress(${i})">In progress</li>
+        <li class="font16400" onclick="switchTaskAwait(${i})">Await for Feedback</li>
+        <li class="font16400" onclick="switchTaskDone(${i})">Done</li>
+      </ul>
+    `;
+    document.querySelector('.boardMainContainer').style.overflow = 'hidden';
+    document.getElementById(`switchTaskImage${i}`).querySelector('img').setAttribute('onclick', `closeMenu(${i})`);
+  }
+}
+
+function switchTaskTodo(i){
+  switchTaskTriggered = true;
+  user.tasks[i].status = 'to-do';
+  savedUsersInBackend();
+  clearBoardTasksField();
+  loadTasks();
+}
+
+function switchTaskProgress(i){
+  switchTaskTriggered = true;
+  user.tasks[i].status = 'progress';
+  savedUsersInBackend();
+  clearBoardTasksField();
+  loadTasks();
+}
+
+function switchTaskAwait(i){
+  switchTaskTriggered = true;
+  user.tasks[i].status = 'await';
+  savedUsersInBackend();
+  clearBoardTasksField();
+  loadTasks();
+}
+
+function switchTaskDone(i){
+  switchTaskTriggered = true;
+  user.tasks[i].status = 'done';
+  savedUsersInBackend();
+  clearBoardTasksField();
+  loadTasks();
+}
+
+function closeMenu(i) {
+  switchTaskTriggered = true;
+  var menu = document.getElementById('menuForSwitchTask');
+  if (menu) {
+    // Entferne das Dropdown-Menü
+    menu.remove();
+
+    // Aktiviere das Scrollen auf der Seite
+    document.querySelector('.boardMainContainer').style.overflow = 'auto';
+    document.getElementById(`switchTaskImage${i}`).querySelector('img').setAttribute('onclick', `switchTask(${i})`);
+  }
 }

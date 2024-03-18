@@ -38,6 +38,7 @@ async function initAddTask() {
   checkWidth();
   contacts = user.contacts;
   statusInfo = "to-do";
+  whatsPrio(prioMediumContainer);
 }
 
 /**
@@ -260,6 +261,9 @@ function setMinDate() {
  */
 function openCategorySelect() {
   content = document.getElementById(`categoryMenu`);
+  document.getElementById("contactList").style.display = "block";
+  document.getElementById("contactListIcons").style.display = "none";
+  document.getElementById(`contactSelectContainer`).classList.remove("bordercolor");
   content.innerHTML += openCategorySelectReturn();
   border = document.getElementById(`categorySelectContainer`);
   border.classList.add("bordercolor");
@@ -329,7 +333,7 @@ function addSubtask() {
   let subtasksInput = document.getElementById("subTaskInputfieldText");
   let newSubtask = {
     name: subtasksInput.value,
-    done: false
+    done: false,
   };
   subtasks.push(newSubtask);
   renderSubtasks();

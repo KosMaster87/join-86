@@ -5,14 +5,17 @@ function HtmlReturn(i) {
     <span id="TaskCategory${i}" class="headlineFromTask font16400">
       Category
     </span>
-  </div>
+    <div id="switchTaskImage${i}">
+    <img onclick="switchTask(${i})" src="../assets/img/board/mobile_switch.svg">
+    </div>
+    </div>
   <div class="inProgressText">
     <p class="titleText font16700" id="titleId${i}">
     </p>
     <p class="descriptionText font16400" id="descriptionID${i}">
     </p>
   </div>
-  <div class="progressMainContainer">
+  <div id="progressMainContainerId" class="progressMainContainer">
     <div class="progress-container">
       <div class="progress-bar" id="progressBar${i}"></div>
     </div>
@@ -39,6 +42,9 @@ function awaitHtmlReturn(i) {
       <span id="TaskCategory${i}" class="headlineFromTask font16400">
         Catergory
       </span>
+      <div id="switchTaskImage${i}">
+      <img onclick="switchTask(${i})" src="../assets/img/board/mobile_switch.svg">
+      </div>
     </div>
     <div class="inProgressText">
       <p class="titleText font16700" id="titleId${i}">
@@ -48,7 +54,7 @@ function awaitHtmlReturn(i) {
 
       </p>
     </div>
-    <div class="progressMainContainer" style="display:none;">
+    <div id="progressMainContainerId" class="progressMainContainer">
     <div class="progress-container">
       <div class="progress-bar" id="progressBar${i}"></div>
     </div>
@@ -117,7 +123,7 @@ function openTaskReturn(i) {
         <div id="popUpAssignedToMainContainer">
         </div>
       </div>
-      <div style="display: flex; flex-direction: column">
+      <div id="boardTaskSubtaskMainContainer" style="display: flex; flex-direction: column">
         <p class="font16400 popUpHeadline" style="margin-bottom: 8px">
           Subtasks
         </p>
@@ -401,7 +407,7 @@ function editBoardDesktopTaskReturn(i) {
   <img src="../assets/img/board/board_check.svg" />
 </div>
 </div>
-  `
+  `;
 }
 
 function loadContactsReturn(c, i) {

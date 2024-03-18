@@ -16,10 +16,6 @@ async function moveTo(newStatus) {
   user.tasks[currentDragElement].status = newStatus;
   savedUsersInBackend();
   clearBoardTasksField()
-  document.getElementById(`TodoMainContainer`).classList.remove("drag-area-highlight");
-  document.getElementById(`progressMainContainer`).classList.remove("drag-area-highlight");
-  document.getElementById(`awaitMainContainer`).classList.remove("drag-area-highlight");
-  document.getElementById(`doneMainContainer`).classList.remove("drag-area-highlight");
   loadTasks();
 }
 
@@ -37,8 +33,9 @@ async function filterTitles() {
   let search = document.getElementById("boardSearchInput").value.toLowerCase();
   clearBoardTasksField();
   for (let i = 0; i < user.tasks.length; i++) {
-    let name = user.tasks[i].title.toLowerCase();
-    if (name.includes(search)) {
+    let inTitle = user.tasks[i].title.toLowerCase();
+    let inDesc = user.tasks[i].description.toLowerCase();
+    if (inTitle.includes(search) || inDesc.includes(search)) {
       if (user.tasks[i].status === "to-do") {
         fillTodo(i);
       } else if (user.tasks[i].status === "progress") {
@@ -54,6 +51,10 @@ async function filterTitles() {
 }
 
 function clearBoardTasksField() {
+  document.getElementById(`TodoMainContainer`).classList.remove("drag-area-highlight");
+  document.getElementById(`progressMainContainer`).classList.remove("drag-area-highlight");
+  document.getElementById(`awaitMainContainer`).classList.remove("drag-area-highlight");
+  document.getElementById(`doneMainContainer`).classList.remove("drag-area-highlight");
   document.getElementById(`TodoMainContainer`).innerHTML = "";
   document.getElementById(`progressMainContainer`).innerHTML = "";
   document.getElementById(`awaitMainContainer`).innerHTML = "";
