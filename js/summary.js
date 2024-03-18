@@ -140,15 +140,15 @@ function adjustDate() {
 
   let formattedDate = `${year}-${month}-${day}`;
   datecounterdate = formattedDate;
-  howManyUrgent(datecounterdate);
+  howManyUrgent();
 }
 
 /**
  * Just urgent counter.
  */
-function howManyUrgent(upcomingDate) {
+function howManyUrgent() {
   for (let i = 0; i < user.tasks.length; i++) {
-    if (datecounterdate == user.tasks[i].dueDate) {
+    if (user.tasks[i].prio === "Urgent") {
       urgentCounter++;
     }
   }
