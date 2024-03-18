@@ -404,7 +404,6 @@ input::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: pink;
     width: 43.35%; 
   }
 
@@ -517,7 +516,6 @@ input::placeholder {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: green;
   }
 
   .contactBodyInputSection {

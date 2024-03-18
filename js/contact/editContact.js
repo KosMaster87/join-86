@@ -1,8 +1,7 @@
 //Edit Contact JS
-
 async function initEditContact() {
   await getCurrentContactNew();
-  await initializeAllVariables()
+  await initializeAllVariables();
 }
 
 async function getContactId() {
@@ -11,12 +10,14 @@ async function getContactId() {
 
 async function initializeAllVariables() {
   let contact = await getCurrentContactNew();
-  let signature = (contact.signature).toString();
+  let signature = contact.signature
   document.getElementById('editContactInputName').value = contact.name;
   document.getElementById('editContactInputEmail').value = contact.email;
   document.getElementById('editContactInputPhone').value = contact.phone;
-  /*document.getElementById('editContactSignature').innerText = signature;*/
-  /*document.getElementById('editContactSignature').style.backgroundColor = contact.userColor;*/
+  document.getElementById('editContactHeaderSignature').innerText = signature;
+  document.getElementById('editContactHeaderSignature').style.backgroundColor = contact.userColor;
+  document.getElementById('editContactBodySignature').innerText = signature;
+  document.getElementById('editContactBodySignature').style.backgroundColor = contact.userColor;
 }
 
 function getSignature(name) {
@@ -73,122 +74,6 @@ async function getCurrentContactNew() {
   }
 }
 
-/* ANFANG PRÜFUNG DER DATENEINGABE */
-function checkAllInputFieldsForEditContact(name, phone, email) {
-  if (checkInputNameForEditContact(name) === true && checkInputEmailForEditContact(email) === true && checkInputPhoneForEditContact(phone)) {
-    return true
-  } else {
-    console.log('Fehlerhafte Dateneingabe')
-    return false;
-  }
-}
-
-function checkInputNameForEditContact(input) {
-  let name = input;
-  if (name == "") {
-    showInputMessage('editContactMessageName', 'Please enter a name');
-    showAlertBorder('editContactInputContainerName');
-  } else {
-    resetInputMessage('editContactMessageName');
-    resetAlertBorder('editContactInputContainerName');
-    return true;
-  }
-}
-
-function checkInputEmailForEditContact(input) {
-  let email = input;
-  if (email === "") {
-    return true;
-  } else if (checkAtSymbolExistsForEditContact(email) === false) {
-    showInputMessage('editContactMessageEmail', 'The @ sign is missing');
-    showAlertBorder('editContactInputContainerEmail');
-    return false;
-  } else {
-    return true;
-  }
-}
-
-function checkAtSymbolExistsForEditContact(input) {
-  let email = input;
-  if (email.indexOf('@') != -1) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function checkInputPhoneForEditContact(phone) {
-  let phoneNumber = phone;
-  const regex = /^[\d ()+-]+$/;
-
-  if (phoneNumber === "") {
-    return true;
-  } else if (regex.test(phoneNumber)) {
-    resetInputMessage('editContactMessagePhone');
-    resetAlertBorder('editContactInputContainerPhone');
-    return true;
-  } else {
-    showInputMessage('editContactMessagePhone', 'Phone number ist not valid');
-    showAlertBorder('editContactInputContainerPhone');
-    return false;
-  }
-}
-
-/* ENDE PRÜFUNG DER DATENEINGABE */
-
-/* ANFANG - AUSGABE UND ZURÜCKSETZEN DER FEHLERMELDUNGEN */
-
-function showInputMessage(inputField, message) {
-  document.getElementById(inputField).innerText = message;
-}
-
-function resetInputMessage(inputField) {
-  document.getElementById(inputField).innerText = '';
-}
-
-function resetAllInputMessages() {
-  resetInputMessage('editContactMessageName');
-  resetInputMessage('editContactMessageEmail');
-  resetInputMessage('editContactMessagePhone');
-}
-/* ENDE - AUSGABE UND ZURÜCKSETZEN DER FEHLERMELDUNGEN*/
-
-
-/* ANFANG - ANZEIGEN UND ZURÜCKSETZEN DER BORDERFARBE */
-function showAlertBorder(inputContainer) {
-  document.getElementById(inputContainer).classList.add('alertBorder');
-}
-
-function resetAlertBorder(inputContainer) {
-  document.getElementById(inputContainer).classList.remove('alertBorder');
-}
-
-function resetAllAlertBorders() {
-  resetAlertBorder('editContactInputContainerName');
-  resetAlertBorder('editContactInputContainerEmail');
-  resetAlertBorder('editContactInputContainerPhone');
-}
-/* ANFANG - ANZEIGEN UND ZURÜCKSETZEN DER BORDERFARBE */
-
-/* ANFANG - AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES */
-/*
-function editFocusBorder(idFocus, idRemoveFocus, idDeleteFocus) {
-  addFocusBorder(idFocus);
-  removeFocusBorder(idRemoveFocus);
-  removeFocusBorder(idDeleteFocus);
-}
-
-function addFocusBorder(containerId) {
-  let input = document.getElementById('editContactInputContainer' + containerId);
-  input.classList.add('focus');
-}
-
-function removeFocusBorder(containerId) {
-  let input = document.getElementById('editContactInputContainer' + containerId);
-  input.classList.remove('focus');
-}
-/* ENDE - AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES */
-
 async function saveChangesAtEditContact() {
   let currentContact = await getCurrentContactNew();
   let inputContactId = await getContactId();
@@ -200,22 +85,22 @@ async function saveChangesAtEditContact() {
   let inputEmail = (document.getElementById('editContactInputEmail').value).trim();
   let inputSignature = getSignature(inputName);
 
-  /* */
-  if (checkAllInputFieldsForEditContact(inputName, inputPhone, inputEmail) === true) {
-
+  if (checkAllInputFields('edit', inputName, inputEmail, inputPhone) === true) {
     if (inputContactId) {
       for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         if (contact.contactId === inputContactId) {
           user.contacts[i].contactId = inputContactId,
-            user.contacts[i].userId = inputUserId,
-            user.contacts[i].name = inputName,
-            user.contacts[i].email = inputEmail,
-            user.contacts[i].phone = inputPhone,
-            user.contacts[i].signature = inputSignature;
+          user.contacts[i].userId = inputUserId,
+          user.contacts[i].name = inputName,
+          user.contacts[i].email = inputEmail,
+          user.contacts[i].phone = inputPhone,
+          user.contacts[i].signature = inputSignature;
           user.contacts[i].userColor = inputUserColor;
 
           await setItem('users', JSON.stringify(users));
+          await editContactIsSavedGoToSingleContact(); 
+          console.log('SPEICHERN ABGESCHLOSSEN');
         } else {
           console.log('Response currentContactId: ' + inputContactId + ' not found.')
         }
@@ -223,6 +108,26 @@ async function saveChangesAtEditContact() {
     } else {
       console.log('Response contact not found.')
     }
+  }
+}
+
+
+async function editContactIsSavedGoToSingleContact() {
+  let contactId = await getContactId();
+  let result = getWindowWidth(); 
+  await loadShowSingleContact(contactId);
+  if (result < 1200) {
+    document.getElementById("listContactContainer").style.display = "none";
+    document.getElementById("editContactContainer").style.display = "none";
+    document.getElementById("mobileBtnAddContact").style.display = "none"; 
+    document.getElementById("mobileBtnThreePoints").style.display = "block";
+    document.getElementById("showSingleContactContainer").style.display = "block";
+  } else {
+    await initListContact();
+    document.getElementById("showSingleContactContainer").style.display = "flex";
+    document.getElementById("editContactContainer").style.display = "none";
+    document.getElementById("listContactContainer").style.display = "none"; 
+    document.getElementById("singleContactCol").style.display = "block";
   }
 }
 
@@ -262,7 +167,7 @@ async function saveChangesDesktop() {
   document.getElementById('singleContactCol').style.display = "block";
   document.getElementById('mobileBtnAddContact').style.display = "none";
 }
-
+/*
 async function saveChangesMobile() {
   let contactId = await getContactId();
   await saveChangesAtEditContact();
@@ -274,7 +179,7 @@ async function saveChangesMobile() {
   document.getElementById('mobileBtnSelectOptions').style.display = "none";
   document.getElementById('singleContactCol').style.display = "none";
   document.getElementById('mobileBtnAddContact').style.display = "none";
-}
+}*/
 
 async function deleteAtEditContactDesktop() {
   let contactId = await getContactId();
@@ -289,15 +194,6 @@ async function deleteAtEditContactDesktop() {
 }
 
 async function saveChangesAtEditContactMobile() {
-  let contactId = await getContactId();
   await saveChangesAtEditContact();
-  startPageUpdate();
-  await loadShowSingleContact(contactId);
-  document.getElementById('editContactContainer').style.display = "none";
-  document.getElementById('showSingleContactContainer').style.display = "block";
-  document.getElementById('listContactContainer').style.display = "none";
-  document.getElementById('mobileBtnSelectOptions').style.display = "none";
-  document.getElementById('mobileBtnThreePoints').style.display = "block";
-  document.getElementById('mobileBtnAddContact').style.display = "none";
 }
 

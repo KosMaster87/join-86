@@ -130,7 +130,7 @@ async function closeAddContactContainerDesktop() {
 }
 
 async function closeAddContactContainer() {
-  resetInputFields();
+  resetInputFields('add');
   editFocusBorder('add', 'Name', 'Email', 'Phone');
   resetAllInputMessages('add');
   resetAllAlertBorders('add');
@@ -140,20 +140,14 @@ async function closeAddContactContainer() {
 }
 
 async function saveContactAtAddContactDesktop() {
+  console.log('Start Speicherprozess - Desktop')
   await initSaveProcess();
-  await initListContact();
-  let contactId = await getContactId();
-  await loadShowSingleContact(contactId);
-  document.getElementById("showSingleContactContainer").style.display = "flex";
-  document.getElementById("addContactContainer").style.display = "none";
-  document.getElementById("mobileBtnAddContact").style.display = "none"; 
-  document.getElementById("singleContactCol").style.display = "block";
 }
 
 async function saveContactAtAddContactMobile() {
-  console.log('Start Speicherprozess')
+  console.log('Start Speicherprozess - Mobil')
   await initSaveProcess();
-  let contactId = await getContactId();
+
 }
 
 async function addContactIsSavedGoToSingleContact() {

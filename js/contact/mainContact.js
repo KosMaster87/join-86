@@ -17,7 +17,7 @@ let result = "";
 /**
  *
  */
-async function initWidthContacts() {
+function initWidthContacts() {
   let screenWidth = getWindowWidth()
 
   if (screenWidth <= 1219) {
@@ -57,6 +57,7 @@ function checkInputEmail(siteInitial, input) {
     showInputMessage(siteInitial + 'ContactMessageEmail', 'Please enter a valid e-mail address');
     removeFocusBorder(siteInitial, 'Email');
     showAlertBorder(siteInitial + 'ContactInputContainerEmail');
+    console.log('Email ist falsch');
     return false;
   } else {
     resetInputMessage(siteInitial + 'ContactMessageEmail');

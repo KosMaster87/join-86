@@ -12,7 +12,7 @@ async function initListContact() {
   renderContainerList();
 }
 
-/**
+/**0
  * 
  */
 function sortAllContactsFromCurrentUserAlphabetical() {
@@ -38,11 +38,11 @@ function sortAllContactsFromCurrentUserAlphabetical() {
 async function getListFirstChars() {
   let setFirstChars = new Set();
   listFirstChars = [];
-    for (let i = 0; i < sortedContacts.length; i++) {
-      let signs = sortedContacts[i]["signature"];
-      setFirstChars.add(signs.charAt(0)); 
-    }
-    return listFirstChars = Array.from(setFirstChars).sort();
+  for (let i = 0; i < sortedContacts.length; i++) {
+    let signs = sortedContacts[i]["signature"];
+    setFirstChars.add(signs.charAt(0));
+  }
+  return listFirstChars = Array.from(setFirstChars).sort();
 }
 
 /**
@@ -132,7 +132,7 @@ async function goFromListContactToShowSingleContact(contactId) {
     //slide effekt start function
     document.getElementById("showSingleContactContainer").style.display = "block";
     let singleContactCol = document.getElementById("singleContactCol");
-    singleContactCol.classList.add("slide-in"); 
+    singleContactCol.classList.add("slide-in");
     singleContactCol.style.display = "flex";
   }
 }
@@ -143,7 +143,7 @@ async function openAddContactContainer() {
   document.getElementById("addOverlayFrame").style.display = "flex";
 }
 
-function desktopOpenAddContactContainer(){
+function desktopOpenAddContactContainer() {
   document.getElementById("mobileBtnAddContact").style.display = "none";
   document.getElementById("addContactContainer").style.display = "block";
   document.getElementById("addOverlayFrame").style.display = "flex";

@@ -72,7 +72,7 @@ async function goFromSingleContactToListContactContainer() {
 }
 
 async function goFromShowSingleContactToEditContact() {
-  let contactId = await getContactId()
+  let contactId = await getContactId();
   initEditContact(contactId);
   document.getElementById("mobileBtnThreePoints").style.display = "none";
   document.getElementById("mobileBtnSelectOptions").style.display = "none";
