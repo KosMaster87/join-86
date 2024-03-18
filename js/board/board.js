@@ -159,8 +159,10 @@ function whatsSignatures(i) {
       let words = user.tasks[i].assignedTo[a].name.toUpperCase().split(" ");
       for (let j = 0; j < words.length; j++) {
         signature += words[j].charAt(0);
+        color= user.tasks[i].assignedTo[a].userColor
       }
-      iconBarContainer.innerHTML += iconReturn(signature);
+      iconBarContainer.innerHTML += iconReturn(color, signature);
+
     }
   }
 }

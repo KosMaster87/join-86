@@ -74,9 +74,9 @@ function awaitHtmlReturn(i) {
   </div>`;
 }
 
-function iconReturn(signature) {
+function iconReturn(color, signature) {
   return `
-    <div class="iconstlye" style="background-color: red; margin-left: -10px">${signature}</div>
+    <div class="iconstlye" style="background-color: ${color}; margin-left: -10px">${signature}</div>
     `;
 }
 
