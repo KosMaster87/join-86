@@ -22,9 +22,8 @@ async function getContactId() {
   await getItem('contactId');
 }
 
-async function getCurrentContact(currentContactId) {
+async function getCurrentContact(contactId) {
   let contacts = user.contacts;
-  let contactId = currentContactId;
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     if (contact.contactId === contactId) {
@@ -37,16 +36,26 @@ async function getCurrentContact(currentContactId) {
 async function fillAllVariables(contactId) {
   let contact = await getCurrentContact(contactId);
   document.getElementById('singleContactName').innerText = contact.name;
-  document.getElementById('singleContactEmail').innerText = contact.email;
-  document.getElementById('singleContactPhone').innerText = contact.phone;
+  
+  importExistentVariable('singleContactPhone', 'innerText', contact.phone);
+  importExistentVariable('singleContactEmail', 'innerText', contact.email);
   document.getElementById('singleContactSignature').innerText = contact.signature;
   document.getElementById('singleContactSignature').style.backgroundColor = contact.userColor;
-  setCurrentContactEmail(contact.email);
+
+  if (contact.email) {
+    setCurrentContactEmail(contact.email);
+  }
 }
 
 async function openEmailProgram() {
   let email = await getCurrentContactEmail();
   window.open('mailto: ' + email);
+}
+
+async function importExistentVariable(id, variableHtml, input) {
+  if (input) {
+    document.getElementById(id)[variableHtml] = input;
+  }
 }
 
 /* SHOW SINGLE CONTACT TO LIST CONTACT CONTAINER */

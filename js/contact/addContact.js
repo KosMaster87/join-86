@@ -245,17 +245,18 @@ async function closeAddContactContainer() {
 }
 
 async function saveContactAtAddContactDesktop() {
-  let contactId = await getContactId();
-  console.log('Ausgabe contactId',contactId);
   await initSaveProcess();
   await initListContact();
+  let contactId = await getContactId();
   await loadShowSingleContact(contactId);
+  document.getElementById("showSingleContactContainer").style.display = "flex";
   document.getElementById("addContactContainer").style.display = "none";
   document.getElementById("mobileBtnAddContact").style.display = "none"; 
   document.getElementById("singleContactCol").style.display = "block";
 }
 
 async function saveContactAtAddContactMobile() {
+  console.log('Speicherprozess')
   await initSaveProcess();
   let contactId = await getContactId();
   await initListContact();
