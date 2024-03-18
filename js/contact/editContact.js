@@ -171,6 +171,7 @@ function resetAllAlertBorders() {
 /* ANFANG - ANZEIGEN UND ZURÜCKSETZEN DER BORDERFARBE */
 
 /* ANFANG - AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES */
+/*
 function editFocusBorder(idFocus, idRemoveFocus, idDeleteFocus) {
   addFocusBorder(idFocus);
   removeFocusBorder(idRemoveFocus);

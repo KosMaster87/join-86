@@ -3,9 +3,9 @@ const contactColors = ["var(--red)", "var(--yellow)", "var(--orangeIcons)", "var
 async function initAddContact() {
   await setContactId([]);
   resetInputFields();
-  editFocusBorder('Name', 'Email', 'Phone');
   resetAllInputMessages();
   resetAllAlertBorders();
+  editFocusBorder('add','Name', 'Email', 'Phone');
 }
 
 async function initSaveProcess() {
@@ -14,11 +14,12 @@ async function initSaveProcess() {
   let phone = (document.getElementById('addContactInputPhone').value).trim();
 
   if (checkAllInputFields(name, email, phone) === true) {
-    
     await saveContactAddContact(name, email, phone);
+    await addContactIsSavedGoToSingleContact()
     resetInputFields();
+    console.log('Abschluss Datenspeicherung')
   } else {
-    console.log('Fehlerhafter Dateneintrag')
+    console.log('Fehlerhafter Dateneintrag - Abbruch Datenspeicherung')
     disableSaveProcess();
   }
 }
@@ -118,6 +119,7 @@ function checkInputName(input) {
     showAlertBorder('addContactInputContainerName');
   } else {
     resetInputMessage('addContactMessageName');
+    removeFocusBorder('add', 'Name');
     resetAlertBorder('addContactInputContainerName');
     return true;
   }
@@ -127,18 +129,22 @@ function checkInputEmail(input) {
   let email = input;
   if (email === "") {
     return true;
-  } else if (checkAtSymbolExists(email) === false) {
-    showInputMessage('addContactMessageEmail', 'The @ sign is missing');
+  } else if (validateEmail(email) === false) {
+    showInputMessage('addContactMessageEmail', 'Please enter a valid e-mail address');
     showAlertBorder('addContactInputContainerEmail');
     return false;
   } else {
+    resetInputMessage('addContactMessageEmail');
+    removeFocusBorder('add', 'Email');
+    resetAlertBorder('addContactInputContainerEmail');
     return true;
   }
 }
 
-function checkAtSymbolExists(input) {
+function validateEmail(input) {
   let email = input;
-  if (email.indexOf('@') != -1) {
+  let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (regex.test(email)) {
     return true;
   } else {
     return false;
@@ -156,6 +162,7 @@ function checkInputPhone(phone) {
     resetAlertBorder('addContactInputContainerPhone');
     return true;
   } else {
+    removeFocusBorder('add', 'Phone');
     showInputMessage('addContactMessagePhone', 'Phone number ist not valid');
     showAlertBorder('addContactInputContainerPhone');
     return false;
@@ -192,26 +199,31 @@ function resetAllAlertBorders() {
 
 
 // AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES 
-function editFocusBorder(idFocus, idRemoveFocus, idDeleteFocus) {
-  addFocusBorder(idFocus);
-  removeFocusBorder(idRemoveFocus);
-  removeFocusBorder(idDeleteFocus)
+function editFocusBorder(siteInitial, idFocus, idRemoveFocus, idDeleteFocus) {
+  addFocusBorder(siteInitial,idFocus);
+  removeFocusBorder(siteInitial, idRemoveFocus);
+  removeFocusBorder(siteInitial, idDeleteFocus)
 }
 
-function addFocusBorder(containerId) {
-  let input = document.getElementById('addContactInputContainer' + containerId);
-  input.classList.add('focus');
+function addFocusBorder(siteInitial, containerId) {
+  let input = document.getElementById(siteInitial + 'ContactInputContainer' + containerId);
+  if (input) {
+    console.log('input', input);
+    input.classList.add('focus');
+  } else {
+    console.error('Input element not found!');
+  }
 }
 
-function removeFocusBorder(containerId) {
-  let input = document.getElementById('addContactInputContainer' + containerId);
-  input.classList.remove('focus');
+function removeFocusBorder(siteInitial, containerId) {
+  let input = document.getElementById(siteInitial +'ContactInputContainer' + containerId);
+  if (input.classList.contains('focus')) {
+    input.classList.remove('focus');
+  }
 }
 
 function disableSaveProcess() {
   document.getElementById("addContactContainer").style.display = "block";
-  document.getElementById("listContactContainer").style.display = "none";
-  document.getElementById("mobileBtnAddContact").style.display = "none";
 }
 
 async function closeAddContactAndGoToShowSingleContactContainer(contactId) {
@@ -232,7 +244,7 @@ async function closeAddContactContainerWithoutAddingNewContact() {
 
 async function closeAddContactContainerDesktop() {
   resetInputFields();
-  editFocusBorder('Name', 'Email', 'Phone');
+  editFocusBorder('add', 'Name', 'Email', 'Phone');
   resetAllInputMessages();
   resetAllAlertBorders();
   await initListContact();
@@ -244,7 +256,7 @@ async function closeAddContactContainerDesktop() {
 
 async function closeAddContactContainer() {
   resetInputFields();
-  editFocusBorder('Name', 'Email', 'Phone');
+  editFocusBorder('add', 'Name', 'Email', 'Phone');
   resetAllInputMessages();
   resetAllAlertBorders();
   await initListContact();
@@ -264,15 +276,27 @@ async function saveContactAtAddContactDesktop() {
 }
 
 async function saveContactAtAddContactMobile() {
-  console.log('Speicherprozess')
+  console.log('Start Speicherprozess')
   await initSaveProcess();
   let contactId = await getContactId();
-  await initListContact();
-  await loadShowSingleContact(contactId);
-  document.getElementById("listContactContainer").style.display = "none";
-  document.getElementById("addContactContainer").style.display = "none";
-  document.getElementById("mobileBtnAddContact").style.display = "none"; 
-  document.getElementById("showSingleContactContainer").style.display = "block";
+}
+
+async function addContactIsSavedGoToSingleContact() {
+  let contactId = await getContactId();
+  await loadShowSingleContact(contactId); 
+  if (result === "mobileVersion") { 
+    document.getElementById("listContactContainer").style.display = "none";
+    document.getElementById("addContactContainer").style.display = "none";
+    document.getElementById("mobileBtnAddContact").style.display = "none"; 
+    document.getElementById("mobileBtnThreePoints").style.display = "block";
+    document.getElementById("showSingleContactContainer").style.display = "block";
+  } else {
+    await initListContact();
+    document.getElementById("showSingleContactContainer").style.display = "flex";
+    document.getElementById("addContactContainer").style.display = "none";
+    document.getElementById("mobileBtnAddContact").style.display = "none"; 
+    document.getElementById("singleContactCol").style.display = "block";
+  }
 }
 
 

@@ -179,7 +179,6 @@ input {
 }
 
 .contactInputContainer {
-  border: solid 1px var(--lighterGray);
   padding: 12px 16px 12px 16px;
   display: flex;
   justify-content: space-between;
@@ -187,10 +186,6 @@ input {
   background-color: var(--white);
   flex: 1;
   gap: 8px;
-}
-
-.focus {
-  border: solid 1px var(--lightBlue) !important;
 }
 
 .alertBorder {
@@ -208,6 +203,14 @@ input {
 
 #addContactInputContainerPhone {
   border: solid 1px var(--lighterGray);
+}
+
+.alertBorder {
+  border: solid 1px var(--wrongInputBorder) !important;
+}
+
+.focus {
+  border: solid 1px var(--lightBlue) !important;
 }
 
 .textInputField {
