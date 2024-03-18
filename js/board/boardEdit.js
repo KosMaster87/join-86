@@ -311,3 +311,14 @@ function closeMenu(i) {
     document.getElementById(`switchTaskImage${i}`).querySelector('img').setAttribute('onclick', `switchTask(${i})`);
   }
 }
+
+function closeListener() {
+  document.addEventListener("click", function (event) {
+    if (userClicksOutsideOfInputField(event, "categorySelectContainer")) {
+      closeCategoryWindow();
+    }
+    if (userClicksOutsideOfInputField(event, "fullContactContainers")) {
+      closeContactWindow();
+    }
+  });
+}
