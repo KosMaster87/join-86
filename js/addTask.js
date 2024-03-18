@@ -39,6 +39,7 @@ async function initAddTask() {
   contacts = user.contacts;
   statusInfo = "to-do";
   whatsPrio(prioMediumContainer);
+  preparePopupEvent();
 }
 
 /**
@@ -357,8 +358,10 @@ function renderSubtasks() {
  * @param {int} i - This is the number of subtask
  */
 function editSubtask(i) {
+  let text = document.getElementById("subTastTextfield" + i).innerText;
   let content = document.getElementById("subtask" + i);
   content.innerHTML = editSubtaskReturn(subtasks[i].name, i);
+  document.getElementById(`editSubtask${i}`).value = text;
 }
 
 /**

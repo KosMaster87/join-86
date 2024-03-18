@@ -6,6 +6,7 @@ async function initBoard() {
   await loadCurrentUserAlsoUsersAsObject();
   createUserSignatureIcon();
   loadTasks();
+  preparePopupEvent();
 }
 
 /**
@@ -324,7 +325,7 @@ function renderTaskSubtasks(i) {
  * @param {*} i - is the number of the task
  */
 async function closeOpenTask(i) {
-  renderTaskSubtasks(i);
+  clearBoardTasksField();
   document.body.style.overflow = "auto";
   let task = document.getElementById(`popUpMainContainer`);
   let blurr = document.getElementById(`blurrContainer`);

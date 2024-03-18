@@ -292,7 +292,7 @@ function renderSubtasksReturn(subtasks, i) {
     <div class="addedSubtask">
       <div class="subTastText">
         <p>&bull;</p>
-        <P>${subtasks[i].name}</P>
+        <P id="subTastTextfield${i}">${subtasks[i].name}</P>
       </div>
       <div class="subMenu">
         <img class="arrow" src="../assets/img/add_task/task_edit.svg" onclick="editSubtask(${i})" alt="edit_icon">
