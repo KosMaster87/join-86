@@ -93,6 +93,7 @@ function renderAddTaskMobileHTML() {
       </div>
       <div id="taskAssignedContainer">
     <p class="taskHeadline">Assigned to</p>
+    <div id="fullContactContainers">
     <div
       id="contactSelectContainer"
       class="categorySelect"
@@ -101,7 +102,7 @@ function renderAddTaskMobileHTML() {
       <img id="openerAssignedTo" onclick="openContacts()" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
     </div>
     <div id="contactList">
-    </div>
+    </div></div>
     <div id="contactListIcons">
       <div id="contactListIconsLine"></div>
     </div>
@@ -164,6 +165,7 @@ function renderAddTaskHTML() {
   </div>
   <div id="taskAssignedContainer">
     <p class="taskHeadline">Assigned to</p>
+    <div id="fullContactContainers">
     <div
       id="contactSelectContainer"
       class="categorySelect"
@@ -172,7 +174,7 @@ function renderAddTaskHTML() {
       <img id="openerAssignedTo" onclick="loadContacts()" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
     </div>
     <div id="contactList">
-    </div>
+    </div></div>
     <div id="contactListIcons">
       <div id="contactListIconsLine"></div>
     </div>

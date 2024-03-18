@@ -2,7 +2,7 @@ document.addEventListener("click", function (event) {
   if (userClicksOutsideOfInputField(event, "categorySelectContainer")) {
     closeCategoryWindow();
   }
-  if (userClicksOutsideOfInputField(event, "contactSelectContainer")) {
+  if (userClicksOutsideOfInputField(event, "fullContactContainers")) {
     closeContactWindow();
   }
 });

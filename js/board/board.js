@@ -302,7 +302,6 @@ function renderTaskSubtasks(i) {
     document.getElementById(`boardTaskSubtaskMainContainer`).style.display = "none";
     document.getElementById(`progressMainContainerId`).style.display = "none";
     document.getElementById(`progressMainContainerId`).style.display = "none";
-
   } else {
     document.getElementById(`boardTaskSubtaskMainContainer`).style.display = "flex";
     let popUpSubtasksContainer = document.getElementById(`popUpSubtasksContainer`);
@@ -485,16 +484,18 @@ function renderBoardSubtasks(i) {
  * @param {*} i - is the number of the task
  */
 async function addBoardSubtask(i) {
-  console.log(i);
-  let subtasksInput = document.getElementById("subTaskInputfieldText");
-  let newSubtask = {
-    name: subtasksInput.value,
-    done: false,
-  };
-  user.tasks[i].subtasks.push(newSubtask);
-  savedUsersInBackend();
-  clearSubtaskInputfield();
-  renderBoardSubtasks(i);
+  if (document.getElementById("subTaskInputfieldText").value) {
+    console.log(i);
+    let subtasksInput = document.getElementById("subTaskInputfieldText");
+    let newSubtask = {
+      name: subtasksInput.value,
+      done: false,
+    };
+    user.tasks[i].subtasks.push(newSubtask);
+    savedUsersInBackend();
+    clearSubtaskInputfield();
+    renderBoardSubtasks(i);
+  }
 }
 
 /**
