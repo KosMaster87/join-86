@@ -137,25 +137,6 @@ async function goFromListContactToShowSingleContact(contactId) {
   }
 }
 
-function getWindowWidth() {
-  return window.innerWidth || documentElement.clientWidth || document.body.clientWidth;
-}
-
-let result = "";
-
-/**
- *
- */
-async function initWidthContacts() {
-  let screenWidth = getWindowWidth()
-
-  if (screenWidth <= 1219) {
-    result = "mobileVersion";
-  } else {
-    result = "desktopVersion";
-  }
-}
-
 async function openAddContactContainer() {
   document.getElementById("mobileBtnAddContact").style.display = "none";
   document.getElementById("addContactContainer").style.display = "block";
