@@ -234,21 +234,40 @@ function switchTask(i){
   if (!menu) {
     document.getElementById(`switchTaskImage${i}`).innerHTML +=`
       <ul id="menuForSwitchTask" class="menu-options">
-        <li onclick="switchTaskTodo(${i})">To Do</li>
-        <li class="font16400" onclick="switchTaskProgress(${i})">In progress</li>
-        <li class="font16400" onclick="switchTaskAwait(${i})">Await for Feedback</li>
-        <li class="font16400" onclick="switchTaskDone(${i})">Done</li>
+        <li class="menuForSwitchTaskMenuHead"> Switch to:</li>
+        <li class="menuForSwitchTaskMenu" id="menuForSwitchTaskTodo" onclick="switchTaskTodo(${i})">To Do</li>
+        <li class="menuForSwitchTaskMenu" id="menuForSwitchTaskProgress" class="font16400" onclick="switchTaskProgress(${i})">In progress</li>
+        <li class="menuForSwitchTaskMenu" id="menuForSwitchTaskAwait" class="font16400" onclick="switchTaskAwait(${i})">Await for Feedback</li>
+        <li class="menuForSwitchTaskMenu" id="menuForSwitchTaskDone" class="font16400" onclick="switchTaskDone(${i})">Done</li>
       </ul>
     `;
+    cheackCurrentStatus(i);
     document.querySelector('.boardMainContainer').style.overflow = 'hidden';
     document.getElementById(`switchTaskImage${i}`).querySelector('img').setAttribute('onclick', `closeMenu(${i})`);
   }
 }
 
+function cheackCurrentStatus(i){
+  if(user.tasks[i].status === "to-do"){
+    document.getElementById(`menuForSwitchTaskTodo`).remove();
+  }
+  if(user.tasks[i].status === "progress"){
+    document.getElementById(`menuForSwitchTaskProgress`).remove();
+  }
+  if(user.tasks[i].status === "await"){
+    document.getElementById(`menuForSwitchTaskAwait`).remove();
+  }
+  if(user.tasks[i].status === "done"){
+    document.getElementById(`menuForSwitchTaskDone`).remove();
+  }
+}
+
+
 function switchTaskTodo(i){
   switchTaskTriggered = true;
   user.tasks[i].status = 'to-do';
   savedUsersInBackend();
+  closeMenu(i);
   clearBoardTasksField();
   loadTasks();
 }
@@ -257,6 +276,7 @@ function switchTaskProgress(i){
   switchTaskTriggered = true;
   user.tasks[i].status = 'progress';
   savedUsersInBackend();
+  closeMenu(i);
   clearBoardTasksField();
   loadTasks();
 }
@@ -265,6 +285,7 @@ function switchTaskAwait(i){
   switchTaskTriggered = true;
   user.tasks[i].status = 'await';
   savedUsersInBackend();
+  closeMenu(i);
   clearBoardTasksField();
   loadTasks();
 }
@@ -273,6 +294,7 @@ function switchTaskDone(i){
   switchTaskTriggered = true;
   user.tasks[i].status = 'done';
   savedUsersInBackend();
+  closeMenu(i);
   clearBoardTasksField();
   loadTasks();
 }

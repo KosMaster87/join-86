@@ -91,7 +91,7 @@ function openTaskReturn(i) {
           Catergory
         </span>
         <div>
-          <img onclick="closeOpenTask(${i})" src="../assets/img/board/board_cross.svg" />
+          <img class="closeTask" onclick="closeOpenTask(${i})" src="../assets/img/board/board_cross.svg" />
         </div>
       </div>
 

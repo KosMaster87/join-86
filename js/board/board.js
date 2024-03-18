@@ -324,7 +324,7 @@ function renderTaskSubtasks(i) {
  * @param {*} i - is the number of the task
  */
 async function closeOpenTask(i) {
-  renderTaskSubtasks(i);
+  
   document.body.style.overflow = "auto";
   let task = document.getElementById(`popUpMainContainer`);
   let blurr = document.getElementById(`blurrContainer`);

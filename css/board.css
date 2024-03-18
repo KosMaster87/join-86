@@ -277,6 +277,10 @@ h2 {
   gap: 16px;
 }
 
+.closeTask{
+  display: block !important;
+}
+
 .descriptionInputField {
   max-width: 300px !important;
 }
@@ -299,7 +303,6 @@ h2 {
 }
 
 .boxSizePopUp {
-  min-width: 310px;
   flex: 0 0 250px;
   background-color: var(--white);
   padding: 16px;
@@ -495,7 +498,7 @@ h2 {
     gap: 10px;
     min-height: 500px;
     border-radius: 10px;
-    align-items: center;
+    align-items: flex-start;
   }
   .boxSizeProgress {
     margin: 0px;
@@ -553,10 +556,12 @@ h2 {
   }
   .boxSizeFeedback {
     width: 210px;
+    flex: 0;
   }
 
   .boxSizeProgress {
     width: 200px;
+    flex: 0;
   }
   .headContainer img {
     display: none;
@@ -719,21 +724,6 @@ h2 {
 
 /**/
 
-.burger-icon {
-  width: 30px;
-  height: 20px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.line_board {
-  width: 100%;
-  height: 3px;
-  background-color: black;
-}
-
 .menu-options {
   display: block;
   background-color: var(--lightGray);
@@ -756,8 +746,11 @@ h2 {
   margin-bottom: 10px;
   color: var(--white);
 }
-.menu-options li:hover {
+.menuForSwitchTaskMenu:hover {
   background-color: var(--lighterGray);
   cursor: pointer;
   color: var(--lightGray);
+}
+.menuForSwitchTaskMenuHead{
+  border-bottom: 1px solid white;
 }
