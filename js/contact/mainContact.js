@@ -5,4 +5,5 @@ async function initMainContact() {
   setActiveLink("navContacts");
   await initListContact();
   createUserSignatureIcon();
+  preparePopupEvent();
 }

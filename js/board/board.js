@@ -6,6 +6,7 @@ async function initBoard() {
   await loadCurrentUserAlsoUsersAsObject();
   createUserSignatureIcon();
   loadTasks();
+  preparePopupEvent();
 }
 
 /**

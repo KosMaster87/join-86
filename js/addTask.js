@@ -39,6 +39,7 @@ async function initAddTask() {
   contacts = user.contacts;
   statusInfo = "to-do";
   whatsPrio(prioMediumContainer);
+  preparePopupEvent();
 }
 
 /**
