@@ -99,7 +99,7 @@ function renderAddTaskMobileHTML() {
       class="categorySelect"
     >
     <input class="assignToInput font" type="text" id="assignedToContainer" onclick="onclickInputBorder()" onkeyup="filterNamesforAssignedTo()" placeholder="Add a Contact">
-      <img id="openerAssignedTo" onclick="openContacts()" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
+      <img id="openerAssignedTo" onclick="loadContacts()" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
     </div>
     <div id="contactList">
     </div></div>
