@@ -40,6 +40,7 @@ async function initAddTask() {
   statusInfo = "to-do";
   whatsPrio(prioMediumContainer);
   preparePopupEvent();
+  closeListener();
 }
 
 /**

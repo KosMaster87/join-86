@@ -7,6 +7,7 @@ async function initBoard() {
   createUserSignatureIcon();
   loadTasks();
   preparePopupEvent();
+  closeListener();
 }
 
 /**

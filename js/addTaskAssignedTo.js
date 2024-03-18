@@ -1,12 +1,13 @@
-document.addEventListener("click", function (event) {
-  if (userClicksOutsideOfInputField(event, "categorySelectContainer")) {
-    closeCategoryWindow();
-  }
-  if (userClicksOutsideOfInputField(event, "fullContactContainers")) {
-    closeContactWindow();
-  }
-});
-
+function closeListener() {
+  document.addEventListener("click", function (event) {
+    if (userClicksOutsideOfInputField(event, "categorySelectContainer")) {
+      closeCategoryWindow();
+    }
+    if (userClicksOutsideOfInputField(event, "fullContactContainers")) {
+      closeContactWindow();
+    }
+  });
+}
 function closeCategoryWindow() {
   let categoryMenu = document.getElementById("categoryMenu");
   let border = document.getElementById("categorySelectContainer");
@@ -57,6 +58,7 @@ function openContacts() {
 function closeContacts() {
   let mainDiv = document.getElementById(`contactList`);
   mainDiv.innerHTML = "";
+  mainDiv.style.display = "none";
   let border = document.getElementById(`contactSelectContainer`);
   border.classList.remove("bordercolor");
   let image = document.getElementById(`openerAssignedTo`);
