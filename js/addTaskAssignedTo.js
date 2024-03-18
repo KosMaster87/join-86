@@ -1,8 +1,19 @@
 document.addEventListener("click", function (event) {
-  if (userClicksOutsideOfInputField(event, "contactSelectContainer") && userClicksOutsideOfInputField(event, "categorySelectContainer")) {
+  if (userClicksOutsideOfInputField(event, "categorySelectContainer")) {
+    closeCategoryWindow();
+  }
+  if (userClicksOutsideOfInputField(event, "contactSelectContainer")) {
     closeContactWindow();
   }
 });
+
+function closeCategoryWindow() {
+  let categoryMenu = document.getElementById("categoryMenu");
+  let border = document.getElementById("categorySelectContainer");
+
+  categoryMenu.style.display = "none";
+  border.classList.remove("bordercolor");
+}
 
 /**
  * This function close the contact window when click with the mouse outside of this window
@@ -11,25 +22,16 @@ function userClicksOutsideOfInputField(event, containerId) {
   let container = document.getElementById(containerId);
   return !container.contains(event.target);
 }
+
 function closeContactWindow() {
   let contactList = document.getElementById("contactList");
   let contactListIcons = document.getElementById("contactListIcons");
-  let contactBorder = document.getElementById("contactSelectContainer");
-  let categoryMenu = document.getElementById("categoryMenu");
-  let categoryBorder = document.getElementById("categorySelectContainer");
+  let border = document.getElementById("contactSelectContainer");
   let image = document.getElementById("openerAssignedTo");
-
-  if (contactList.style.display !== "none") {
-    contactList.style.display = "none";
-    contactListIcons.style.display = "block";
-    contactBorder.classList.remove("bordercolor");
-    image.src = "../assets/img/add_task/arrow_drop_down.svg";
-  }
-
-  if (categoryMenu.style.display !== "none") {
-    categoryMenu.style.display = "none";
-    categoryBorder.classList.remove("bordercolor");
-  }
+  contactList.style.display = "none";
+  contactListIcons.style.display = "block";
+  border.classList.remove("bordercolor");
+  image.src = "../assets/img/add_task/arrow_drop_down.svg";
 }
 
 /**
@@ -37,7 +39,6 @@ function closeContactWindow() {
  */
 function openContacts() {
   let contactList = document.getElementById("contactList");
-  closeCategoryMenu();
   let contactListIcons = document.getElementById("contactListIcons");
   let border = document.getElementById(`contactSelectContainer`);
   let image = document.getElementById(`openerAssignedTo`);
@@ -50,7 +51,6 @@ function openContacts() {
   };
 }
 
-
 /**
  * This function close the contact list
  */
@@ -61,9 +61,6 @@ function closeContacts() {
   border.classList.remove("bordercolor");
   let image = document.getElementById(`openerAssignedTo`);
   image.src = "../assets/img/add_task/arrow_drop_down.svg";
-  setTimeout(function () {
-    document.body.click();
-  }, 0);
   image.onclick = function () {
     loadContacts();
   };
@@ -73,6 +70,7 @@ function closeContacts() {
  * This function load the Assigned to Contacts when click on arrow
  */
 function loadContacts() {
+  closeCategoryMenu();
   let mainDiv = document.getElementById(`contactList`);
   let totalHeight = Math.min(contacts.length * 52, 260);
   mainDiv.style.height = `${totalHeight}px`;
@@ -124,8 +122,8 @@ function onclickInputBorder() {
 function assignedtoContactBg(i, userName) {
   let assignetToArray = {
     name: userName,
-    userColor: contacts[i].userColor
-  }
+    userColor: contacts[i].userColor,
+  };
   user.contacts[i].selected = true;
   selectedAssignedto.push(assignetToArray);
   let container = document.getElementById(`assignedContactContainer${i}`);

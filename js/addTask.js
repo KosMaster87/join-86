@@ -261,11 +261,13 @@ function setMinDate() {
  * This function open the category
  */
 function openCategorySelect() {
+  closeContacts();
   content = document.getElementById(`categoryMenu`);
   document.getElementById("contactList").style.display = "block";
   document.getElementById("contactListIcons").style.display = "none";
   document.getElementById(`contactSelectContainer`).classList.remove("bordercolor");
   content.innerHTML += openCategorySelectReturn();
+  document.getElementById(`categoryMenu`).style.display="block";
   border = document.getElementById(`categorySelectContainer`);
   border.classList.add("bordercolor");
   categoryImageUp();
@@ -300,6 +302,7 @@ function selectCategory(selectedOption) {
  * This function close the category menu
  */
 function closeCategoryMenu() {
+  
   div = document.getElementById(`categoryMenu`);
   div.innerHTML = "";
   border = document.getElementById(`categorySelectContainer`);
