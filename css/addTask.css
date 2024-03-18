@@ -475,6 +475,7 @@ span {
   #taskMainContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-left: 96px;
     margin-top: 110px;
     margin-right: 0px;
