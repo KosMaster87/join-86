@@ -334,6 +334,7 @@ function changemenu() {
  * This function creat a subtask
  */
 function addSubtask() {
+  if(document.getElementById(`subTaskInputfieldText`).value){
   let subtasksInput = document.getElementById("subTaskInputfieldText");
   let newSubtask = {
     name: subtasksInput.value,
@@ -342,6 +343,7 @@ function addSubtask() {
   subtasks.push(newSubtask);
   renderSubtasks();
   clearSubtaskInputfield();
+}
 }
 
 /**
