@@ -13,10 +13,10 @@ async function initSaveProcess() {
   let email = (document.getElementById('addContactInputEmail').value).trim();
   let phone = (document.getElementById('addContactInputPhone').value).trim();
 
-  if (checkAllInputFields(name, email, phone) === true) {
+  if (checkAllInputFields('add', name, email, phone) === true) {
     await saveContactAddContact(name, email, phone);
     await addContactIsSavedGoToSingleContact()
-    resetInputFields();
+    resetInputFields('add');
     console.log('Abschluss Datenspeicherung')
   } else {
     console.log('Fehlerhafter Dateneintrag - Abbruch Datenspeicherung')
@@ -53,12 +53,6 @@ async function saveContactAddContact(name, email, phone) {
   await setContactId(contactId);
   /*closeAddContactAndGoToShowSingleContactContainer(contactId);*/
   /*document.getElementById('overlayFrame').style.display = "flex";  TODO: PRÜFEN, OB NOCH KORREKT */ 
-}
-
-function resetInputFields() {
-  document.getElementById('addContactInputName').value = '';
-  document.getElementById('addContactInputEmail').value = '';
-  document.getElementById('addContactInputPhone').value = '';
 }
 
 function getRandomColor(userColors) {
@@ -103,125 +97,6 @@ function generateRandomId() {
   return id;
 }
 
-function checkAllInputFields(name, email, phone) {
-  if (checkInputName(name) === true && checkInputEmail(email) === true && checkInputPhone(phone) === true) {
-    return true
-  } else {
-    console.log('Ein Element ist auf false gesetzt')
-    return false;
-  }
-}
-
-function checkInputName(input) {
-  let name = input;
-  if (name == "") {
-    showInputMessage('addContactMessageName', 'Please enter a name');
-    showAlertBorder('addContactInputContainerName');
-  } else {
-    resetInputMessage('addContactMessageName');
-    removeFocusBorder('add', 'Name');
-    resetAlertBorder('addContactInputContainerName');
-    return true;
-  }
-}
-
-function checkInputEmail(input) {
-  let email = input;
-  if (email === "") {
-    return true;
-  } else if (validateEmail(email) === false) {
-    showInputMessage('addContactMessageEmail', 'Please enter a valid e-mail address');
-    showAlertBorder('addContactInputContainerEmail');
-    return false;
-  } else {
-    resetInputMessage('addContactMessageEmail');
-    removeFocusBorder('add', 'Email');
-    resetAlertBorder('addContactInputContainerEmail');
-    return true;
-  }
-}
-
-function validateEmail(input) {
-  let email = input;
-  let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (regex.test(email)) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function checkInputPhone(phone) {
-  let phoneNumber = phone;
-  const regex = /^[\d ()+-]+$/;
-
-  if (phoneNumber === "") {
-    return true;
-  } else if (regex.test(phoneNumber)) {
-    resetInputMessage('addContactMessagePhone');
-    resetAlertBorder('addContactInputContainerPhone');
-    return true;
-  } else {
-    removeFocusBorder('add', 'Phone');
-    showInputMessage('addContactMessagePhone', 'Phone number ist not valid');
-    showAlertBorder('addContactInputContainerPhone');
-    return false;
-  }
-}
-
-function showInputMessage(inputField, message) {
-  document.getElementById(inputField).innerText = message;
-}
-
-function resetInputMessage(inputField) {
-  document.getElementById(inputField).innerText = '';
-}
-
-function resetAllInputMessages() {
-  resetInputMessage('addContactMessageName');
-  resetInputMessage('addContactMessageEmail');
-  resetInputMessage('addContactMessagePhone');
-}
-
-function showAlertBorder(inputContainer) {
-  document.getElementById(inputContainer).classList.add('alertBorder');
-}
-
-function resetAlertBorder(inputContainer) {
-  document.getElementById(inputContainer).classList.remove('alertBorder');
-}
-
-function resetAllAlertBorders() {
-  resetAlertBorder('addContactInputContainerName');
-  resetAlertBorder('addContactInputContainerEmail');
-  resetAlertBorder('addContactInputContainerPhone');
-}
-
-
-// AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES 
-function editFocusBorder(siteInitial, idFocus, idRemoveFocus, idDeleteFocus) {
-  addFocusBorder(siteInitial,idFocus);
-  removeFocusBorder(siteInitial, idRemoveFocus);
-  removeFocusBorder(siteInitial, idDeleteFocus)
-}
-
-function addFocusBorder(siteInitial, containerId) {
-  let input = document.getElementById(siteInitial + 'ContactInputContainer' + containerId);
-  if (input) {
-    console.log('input', input);
-    input.classList.add('focus');
-  } else {
-    console.error('Input element not found!');
-  }
-}
-
-function removeFocusBorder(siteInitial, containerId) {
-  let input = document.getElementById(siteInitial +'ContactInputContainer' + containerId);
-  if (input.classList.contains('focus')) {
-    input.classList.remove('focus');
-  }
-}
-
 function disableSaveProcess() {
   document.getElementById("addContactContainer").style.display = "block";
 }
@@ -243,10 +118,10 @@ async function closeAddContactContainerWithoutAddingNewContact() {
 }
 
 async function closeAddContactContainerDesktop() {
-  resetInputFields();
+  resetInputFields('add');
   editFocusBorder('add', 'Name', 'Email', 'Phone');
-  resetAllInputMessages();
-  resetAllAlertBorders();
+  resetAllInputMessages('add');
+  resetAllAlertBorders('add');
   await initListContact();
   document.getElementById("addContactContainer").style.display = "none";
   document.getElementById("mobileBtnAddContact").style.display = "none"; 
@@ -257,8 +132,8 @@ async function closeAddContactContainerDesktop() {
 async function closeAddContactContainer() {
   resetInputFields();
   editFocusBorder('add', 'Name', 'Email', 'Phone');
-  resetAllInputMessages();
-  resetAllAlertBorders();
+  resetAllInputMessages('add');
+  resetAllAlertBorders('add');
   await initListContact();
   document.getElementById("addContactContainer").style.display = "none";
   document.getElementById("mobileBtnAddContact").style.display = "block";
