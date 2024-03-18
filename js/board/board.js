@@ -300,6 +300,9 @@ function renderTaskAssigneds(i) {
 function renderTaskSubtasks(i) {
   if (user.tasks[i].subtasks.length === 0) {
     document.getElementById(`boardTaskSubtaskMainContainer`).style.display = "none";
+    document.getElementById(`progressMainContainerId`).style.display = "none";
+    document.getElementById(`progressMainContainerId`).style.display = "none";
+
   } else {
     document.getElementById(`boardTaskSubtaskMainContainer`).style.display = "flex";
     let popUpSubtasksContainer = document.getElementById(`popUpSubtasksContainer`);

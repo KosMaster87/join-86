@@ -94,7 +94,8 @@ span {
 .taskSelectButton {
   font-size: 16px;
   font-weight: 400;
-  min-width: 33%;
+  min-width: 30%;
+  max-width: 33%;
   padding: 18px 10px 18px 10px;
   justify-content: center;
   display: flex;
@@ -314,8 +315,10 @@ span {
 
 .subTaskInputfieldMenuClass {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   gap: 4px;
+  width: 60px;
 }
 
 .subtaskClass {
@@ -472,6 +475,7 @@ span {
   #taskMainContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-left: 96px;
     margin-top: 110px;
     margin-right: 0px;
