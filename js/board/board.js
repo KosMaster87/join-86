@@ -7,7 +7,6 @@ async function initBoard() {
   createUserSignatureIcon();
   loadTasks();
   preparePopupEvent();
-  closeListener();
 }
 
 /**
@@ -432,6 +431,7 @@ async function editBoardTask(i) {
   selectContacts(i);
   savedUsersInBackend();
   loadContacts(i);
+  closeListener();
 }
 
 /**

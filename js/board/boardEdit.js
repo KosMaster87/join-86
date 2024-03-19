@@ -27,7 +27,7 @@ async function loadContacts(i) {
  *
  * @param {*} c - is the number of the contact
  */
-function signatureAndIcon(c,i) {
+function signatureAndIcon(c, i) {
   let mainDiv = document.getElementById(`contactList`);
   contactSignature = user.contacts[c].signature;
   contactName = user.contacts[c].name;
@@ -228,11 +228,11 @@ function clearSubtaskInputfield() {
   border.classList.remove("bordercolor");
 }
 
-function switchTask(i){
+function switchTask(i) {
   switchTaskTriggered = true;
   var menu = document.getElementById(`menuForSwitchTask`);
   if (!menu) {
-    document.getElementById(`switchTaskImage${i}`).innerHTML +=`
+    document.getElementById(`switchTaskImage${i}`).innerHTML += `
       <ul id="menuForSwitchTask" class="menu-options">
         <li class="menuForSwitchTaskMenuHead"> Switch to:</li>
         <li class="menuForSwitchTaskMenu" id="menuForSwitchTaskTodo" onclick="switchTaskTodo(${i})">To Do</li>
@@ -242,57 +242,59 @@ function switchTask(i){
       </ul>
     `;
     cheackCurrentStatus(i);
-    document.querySelector('.boardMainContainer').style.overflow = 'hidden';
-    document.getElementById(`switchTaskImage${i}`).querySelector('img').setAttribute('onclick', `closeMenu(${i})`);
+    document.querySelector(".boardMainContainer").style.overflow = "hidden";
+    document
+      .getElementById(`switchTaskImage${i}`)
+      .querySelector("img")
+      .setAttribute("onclick", `closeMenu(${i})`);
   }
 }
 
-function cheackCurrentStatus(i){
-  if(user.tasks[i].status === "to-do"){
+function cheackCurrentStatus(i) {
+  if (user.tasks[i].status === "to-do") {
     document.getElementById(`menuForSwitchTaskTodo`).remove();
   }
-  if(user.tasks[i].status === "progress"){
+  if (user.tasks[i].status === "progress") {
     document.getElementById(`menuForSwitchTaskProgress`).remove();
   }
-  if(user.tasks[i].status === "await"){
+  if (user.tasks[i].status === "await") {
     document.getElementById(`menuForSwitchTaskAwait`).remove();
   }
-  if(user.tasks[i].status === "done"){
+  if (user.tasks[i].status === "done") {
     document.getElementById(`menuForSwitchTaskDone`).remove();
   }
 }
 
-
-function switchTaskTodo(i){
+function switchTaskTodo(i) {
   switchTaskTriggered = true;
-  user.tasks[i].status = 'to-do';
+  user.tasks[i].status = "to-do";
   savedUsersInBackend();
   closeMenu(i);
   clearBoardTasksField();
   loadTasks();
 }
 
-function switchTaskProgress(i){
+function switchTaskProgress(i) {
   switchTaskTriggered = true;
-  user.tasks[i].status = 'progress';
+  user.tasks[i].status = "progress";
   savedUsersInBackend();
   closeMenu(i);
   clearBoardTasksField();
   loadTasks();
 }
 
-function switchTaskAwait(i){
+function switchTaskAwait(i) {
   switchTaskTriggered = true;
-  user.tasks[i].status = 'await';
+  user.tasks[i].status = "await";
   savedUsersInBackend();
   closeMenu(i);
   clearBoardTasksField();
   loadTasks();
 }
 
-function switchTaskDone(i){
+function switchTaskDone(i) {
   switchTaskTriggered = true;
-  user.tasks[i].status = 'done';
+  user.tasks[i].status = "done";
   savedUsersInBackend();
   closeMenu(i);
   clearBoardTasksField();
@@ -301,14 +303,17 @@ function switchTaskDone(i){
 
 function closeMenu(i) {
   switchTaskTriggered = true;
-  var menu = document.getElementById('menuForSwitchTask');
+  var menu = document.getElementById("menuForSwitchTask");
   if (menu) {
     // Entferne das Dropdown-Menü
     menu.remove();
 
     // Aktiviere das Scrollen auf der Seite
-    document.querySelector('.boardMainContainer').style.overflow = 'auto';
-    document.getElementById(`switchTaskImage${i}`).querySelector('img').setAttribute('onclick', `switchTask(${i})`);
+    document.querySelector(".boardMainContainer").style.overflow = "auto";
+    document
+      .getElementById(`switchTaskImage${i}`)
+      .querySelector("img")
+      .setAttribute("onclick", `switchTask(${i})`);
   }
 }
 
@@ -321,4 +326,28 @@ function closeListener() {
       closeContactWindow();
     }
   });
+}
+
+function userClicksOutsideOfInputField(event, containerId) {
+  let container = document.getElementById(containerId);
+  return !container.contains(event.target);
+}
+
+function closeContactWindow() {
+  let contactList = document.getElementById("contactList");
+  let contactListIcons = document.getElementById("contactListIcons");
+  let border = document.getElementById("contactSelectContainer");
+  let image = document.getElementById("openerAssignedTo");
+  contactList.style.display = "none";
+  contactListIcons.style.display = "block";
+  border.classList.remove("bordercolor");
+  image.src = "../assets/img/add_task/arrow_drop_down.svg";
+}
+
+function closeCategoryWindow() {
+  let categoryMenu = document.getElementById("categoryMenu");
+  let border = document.getElementById("categorySelectContainer");
+
+  categoryMenu.style.display = "none";
+  border.classList.remove("bordercolor");
 }
