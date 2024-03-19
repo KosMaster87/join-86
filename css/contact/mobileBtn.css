@@ -86,8 +86,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  padding: 18px;
+  gap: 4px;
+  padding: 0 8px;
 }
 
 .mobileBtnIconDelete {
@@ -108,7 +108,39 @@
   font-size: 16px;
   line-height: 1.2;
   font-weight: 400;
+  background-color: transparent;
+  padding: 12px 8px;
+  border-radius: 10px;
+  width: 96px; 
+
 }
+
+#mobileBtnSquareEdit:hover {
+  color: var(--lightBlue);
+  background-color: var(--lighterGray);
+  border-radius: 10px;
+  width: ;
+
+}
+
+#mobileBtnSquareDelete:hover img {
+  color: var(--lightBlue);
+  content: url('../../assets/img/contact/deleteBlue.svg');
+}
+
+#mobileBtnSquareDelete:hover {
+  color: var(--lightBlue);
+  background-color: var(--lighterGray);
+  border-radius: 10px;
+  width: 100%;
+
+}
+
+#mobileBtnSquareEdit:hover img {
+  color: var(--lightBlue);
+  content: url('../../assets/img/contact/editBlue.svg');
+}
+
 
 /* DESKTOP BUTTON ADD NEW CONTACT */
 
