@@ -46,6 +46,25 @@
   transition: right 1s ease; /* Transition für die Animation: 0.5 Sekunden, einfacher Übergangseffekt */
 }
 
+#contactHeaderCloseIcon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#contactHeaderCloseIcon:hover {
+  cursor: pointer;
+  background-color: var(--lightBlue) !important;
+}
+
+#contactHeaderCloseIcon:focus {
+  background-color: var(--lightBlue) !important;
+}
+
 .overlayVisible {
   right: 0 !important; /* Zielposition für das Hereinsliden */
 }
