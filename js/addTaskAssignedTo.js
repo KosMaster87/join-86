@@ -62,6 +62,7 @@ function closeContacts() {
   let border = document.getElementById(`contactSelectContainer`);
   border.classList.remove("bordercolor");
   let image = document.getElementById(`openerAssignedTo`);
+  document.getElementById(`contactListIcons`).style.display = "block";
   image.src = "../assets/img/add_task/arrow_drop_down.svg";
   image.onclick = function () {
     loadContacts();
@@ -80,13 +81,29 @@ function loadContacts() {
     contactSignature = contacts[i].signature;
     contactName = contacts[i].name;
     mainDiv.innerHTML += loadContactsReturn(i);
-    iconid = document.getElementById(`ContactSignatureIcon${i}`);
-    iconid.style.backgroundColor = contacts[i].userColor;
+    let assignedToUser = selectedAssignedto.find((user) => user.name === contactName);
+    if (assignedToUser) {
+      giveOnlyAssignedBg(i);
+    } else {
+      iconid = document.getElementById(`ContactSignatureIcon${i}`);
+      iconid.style.backgroundColor = contacts[i].userColor;
+    }
   }
   if (contacts.length > 5) {
     mainDiv.style.overflowY = "scroll";
   }
   openContacts();
+}
+
+function giveOnlyAssignedBg(i) {
+  let container = document.getElementById(`assignedContactContainer${i}`);
+  container.classList.add("assignedContainerBlack");
+  let image = document.getElementById(`assignedContactImage${i}`);
+  image.src = "../assets/img/add_task/task_box_check.svg";
+
+  container.onclick = function () {
+    removeassignedtoContactBg(i);
+  };
 }
 
 /**
@@ -153,6 +170,10 @@ function removeassignedtoContactBg(i) {
   image.src = "../assets/img/add_task/task_box.svg";
   let iconId = document.getElementById(`contactIconNumber${i}`);
   iconId.remove();
+  let index = selectedAssignedto.findIndex((user) => user.name === contacts[i].name);
+  if (index !== -1) {
+    selectedAssignedto.splice(index, 1);
+  }
   container.onclick = function () {
     assignedtoContactBg(i);
   };
