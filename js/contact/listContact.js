@@ -2,7 +2,7 @@ let sortedContacts;
 let listFirstChars;
 
 /**
- *
+ *This function is the first function when page is open
  */
 async function initListContact() {
   await initWidthContacts();
@@ -13,7 +13,7 @@ async function initListContact() {
 }
 
 /**
- *
+ *This function sorts all contacts from current user alphabetical
  */
 function sortAllContactsFromCurrentUserAlphabetical() {
   user.contacts.sort((a, b) => {
@@ -32,7 +32,7 @@ function sortAllContactsFromCurrentUserAlphabetical() {
 }
 
 /**
- *
+ *This function creates a list from the first chars of all names
  */
 
 async function getListFirstChars() {
@@ -46,7 +46,7 @@ async function getListFirstChars() {
 }
 
 /**
- *
+ *This function renders elements of list container including desktop button
  */
 function renderContainerList() {
   let charRow = document.getElementById("listContactContainer");
@@ -77,9 +77,9 @@ function renderContainerList() {
 }
 
 /**
- *
- * @param {*} contactCard
- * @param {*} char
+ *This function renders single contact cards
+ * @param {string} contactCard - This is a single contact element with all informations
+ * @param {string} char - This is a single letter and serves as indicator
  */
 async function renderContactCards(contactCard, char) {
   let sign = char;
@@ -106,7 +106,10 @@ async function renderContactCards(contactCard, char) {
   }
 }
 
-/* FUNKTIONEN AUF LIST CONTACT SEPARIEREN */
+/**
+ *This function initializes the loading process for single contact container
+  * @param {string} contactId - This id defines the shown contact data 
+ */
 async function goFromListContactToShowSingleContact(contactId) {
   document.getElementById("mobileBtnAddContact").style.display = "none";
   const allButtons = document.querySelectorAll(".singleContact");
@@ -133,12 +136,18 @@ async function goFromListContactToShowSingleContact(contactId) {
   }
 }
 
+/**
+ *This function initializes the shown templates after opening add contact container
+ */
 async function openAddContactContainer() {
   document.getElementById("mobileBtnAddContact").style.display = "none";
   document.getElementById("addContactContainer").style.display = "block";
   document.getElementById("addOverlayFrame").style.display = "flex";
 }
 
+/**
+ *This function initializes the shown templates after opening add contact container from the desktop button
+ */
 function desktopOpenAddContactContainer() {
   document.getElementById("mobileBtnAddContact").style.display = "none";
   document.getElementById("addContactContainer").style.display = "block";
