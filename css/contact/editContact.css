@@ -204,8 +204,16 @@
 
 @media screen and (min-width: 1200px) {
 
+  .editContactHeaderSection {
+    margin-top: 0;
+  }
+
   #editContactHeaderSignature {
     display: none;
+  }
+
+  .editContactHeadline {
+    margin-top: 16px;
   }
 
   .contactContainerFlexZwei {
@@ -278,8 +286,6 @@
     align-items: center;
     gap: 25px;
   }
-
-
 }
 
 @media screen and (min-width: 1440px) {
@@ -296,7 +302,6 @@
     top: 0;
   }
 
-  /* PRÜFEN - vorher add */
   .editContactHeaderSection {
     display: flex;
     flex-direction: column;
@@ -305,11 +310,9 @@
     margin: 0;
   }
 
-  /* PRÜFEN - vorher add */
-  /* ABWANDELN */
   .editContactHeadline {
     font-size: 61px;
-    /* Wechsel */
+    margin-top: 0;
     line-height: 1.2;
   }
 
@@ -352,8 +355,6 @@
     margin-top: 0px !important;
   }
 
-  /**ab Zeile 400 nach unten weitermachen  **/
-
   @media screen and (min-width: 1000px) {
   }
 
@@ -367,17 +368,6 @@
     #editContactBtnSaveMobile {
       display: none;
     }
-/*
-    .editContactHeaderSignature {
-      display: none;
-    }*/
-/*
-    .editContactBodySignature {
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }*/
 
     .editContactHeaderSection {
       display: flex;

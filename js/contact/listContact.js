@@ -12,7 +12,7 @@ async function initListContact() {
   renderContainerList();
 }
 
-/**0
+/**
  * 
  */
 function sortAllContactsFromCurrentUserAlphabetical() {
@@ -83,7 +83,6 @@ function renderContainerList() {
  */
 function renderContactCards(contactCard, char) {
   let sign = char;
-
   for (let i = 0; i < user.contacts.length; i++) {
     let contact = user.contacts[i];
     if (contact["name"].charAt(0).toUpperCase() === sign) {
@@ -107,6 +106,7 @@ function renderContactCards(contactCard, char) {
   }
 }
 
+
 /* FUNKTIONEN AUF LIST CONTACT SEPARIEREN */
 async function goFromListContactToShowSingleContact(contactId) {
   document.getElementById("mobileBtnAddContact").style.display = "none";
@@ -116,8 +116,9 @@ async function goFromListContactToShowSingleContact(contactId) {
   });
   let id = "singleContactBtn" + contactId;
   document.getElementById(id).classList.add('active');
+  let width = getWindowWidth();
 
-  if (result === "mobileVersion") {
+  if (width < 1200) {
     await loadShowSingleContact(contactId);
     mobileBtnThreePoints
     document.getElementById(`mobileBtnThreePoints`).style.display = "block";
@@ -130,7 +131,7 @@ async function goFromListContactToShowSingleContact(contactId) {
   } else {
     await loadShowSingleContact(contactId);
     //slide effekt start function
-    document.getElementById("showSingleContactContainer").style.display = "block";
+    document.getElementById("showSingleContactContainer").style.display = "flex";
     let singleContactCol = document.getElementById("singleContactCol");
     singleContactCol.classList.add("slide-in");
     singleContactCol.style.display = "flex";
@@ -149,20 +150,29 @@ function desktopOpenAddContactContainer() {
   document.getElementById("addOverlayFrame").style.display = "flex";
 }
 
+async function setFocussedContactId(focussedContactId) {
+  await setItem('focussedContactId', focussedContactId);
+}
+
+async function getFocussedContactId() {
+  await getItem('focussedContactId');
+}
+
 /* AKTUELL HIER - FOCUS NEW CONTACT  ab 1200px berücksichtigen*/
-function focusOnNewContact(currentContactId) {
-  loadCurrentUserAlsoUsersAsObject();
-  let contacts = user.contacts;
-  for (let i = 0; i > contacts.length; i++) {
-    const contact = contacts[i];
-    if (user.contact.contactId === currentContactId) {
-      let focussedElement = document
-        .getElementById(currentContactId)
-        .classList.add("focusNewContact");
-      if (focussedElement) {
-        focussedElement.scrollIntoView({ behavior: "smooth", block: "center" });
-        focussedElement.focus();
+/*async function focusSavedContact() {
+  let currentContact = await getFocussedContactId();
+  if (currentContact) {
+    console.log('IST AM LAUFEN');
+    let contacts = user.contacts;
+    for (let i = 0; i > contacts.length; i++) {
+      const contact = contacts[i];
+      if (user.contact.contactId === currentContactId) {
+        let focussedElement = document.getElementById(currentContactId).classList.add("focusNewContact");
+        if (focussedElement) {
+          focussedElement.scrollIntoView({ behavior: "smooth", block: "center" });
+          focussedElement.focus();
+        }
       }
     }
   }
-}
+}*/

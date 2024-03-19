@@ -115,6 +115,7 @@ async function saveChangesAtEditContact() {
 async function editContactIsSavedGoToSingleContact() {
   let contactId = await getContactId();
   let result = getWindowWidth(); 
+  console.log(getWindowWidth());
   await loadShowSingleContact(contactId);
   if (result < 1200) {
     document.getElementById("listContactContainer").style.display = "none";
@@ -123,11 +124,11 @@ async function editContactIsSavedGoToSingleContact() {
     document.getElementById("mobileBtnThreePoints").style.display = "block";
     document.getElementById("showSingleContactContainer").style.display = "block";
   } else {
+    await setFocussedContactId(contactId);
     await initListContact();
     document.getElementById("showSingleContactContainer").style.display = "flex";
     document.getElementById("editContactContainer").style.display = "none";
-    document.getElementById("listContactContainer").style.display = "none"; 
-    document.getElementById("singleContactCol").style.display = "block";
+    document.getElementById("singleContactCol").style.display = "flex";
   }
 }
 
@@ -156,16 +157,6 @@ async function desktopCloseAddContactContainerWithoutAddingNewContact() {
 async function saveChangesDesktop() {
   let contactId = await getContactId();
   await saveChangesAtEditContact();
-  startPageUpdate();
-  await initListContact();
-  await loadShowSingleContact(contactId);
-  console.log(contactId);
-  document.getElementById('editContactContainer').style.display = "none";
-  document.getElementById('showSingleContactContainer').style.display = "flex";
-  document.getElementById('listContactContainer').style.display = "flex";
-  document.getElementById('mobileBtnSelectOptions').style.display = "none";
-  document.getElementById('singleContactCol').style.display = "block";
-  document.getElementById('mobileBtnAddContact').style.display = "none";
 }
 /*
 async function saveChangesMobile() {
@@ -182,7 +173,6 @@ async function saveChangesMobile() {
 }*/
 
 async function deleteAtEditContactDesktop() {
-  let contactId = await getContactId();
   await deleteContact();
   await initListContact();
   await setContactId([]);

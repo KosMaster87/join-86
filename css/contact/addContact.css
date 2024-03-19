@@ -281,6 +281,8 @@ input {
 
 .contactBtnSave:hover {
   cursor: pointer;
+  background-color: var(--lightBlue);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .contactBtnIcon {
@@ -346,6 +348,16 @@ input::placeholder {
   font-weight: 400;
   line-height: 1.2;
   padding: 18px 10px;
+}
+
+#addCancelBtnDesktop:hover {
+  border-color: var(--lightBlue);
+  color: var(--lightBlue);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+#addCancelBtnDesktop:hover img {
+content: url('../../assets/img/contact/vectorBlue.svg');
 }
 
 @media screen and (min-width: 300px) {
@@ -453,17 +465,20 @@ input::placeholder {
   }
 
   .addContactHeadline {
-    font-size: 61px;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 55px;
     line-height: 1.2;
   }
-
+  
   .addContactSubtitle {
     color: var(--white);
     font-weight: 400;
-    font-size: 27px;
-    /* Wechsel */
+    font-size: 22px;
     line-height: 1.2;
   }
+
+  
 
   #contactHeaderJoinLogo {
     height: 66.48px;
@@ -591,53 +606,14 @@ input::placeholder {
     color: var(--white);
     font-weight: 400;
     font-size: 27px;
-    /* Wechsel */
+
     line-height: 1.2;
   }
 
   #contactHeaderJoinLogo {
     height: 66.48px;
     display: block;
-    /* display-none*/
   }
-
-
-
-  /* PRÜFEN *//*
-  #addContactBodySignature {
-    width: 120px;
-    height: 120px;
-    background-color: var(--lighterGray);
-    border: 2px solid var(--white);
-    border-radius: 50%;
-    z-index: 5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: 0;
-    top: 0;
-    left: 0;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-  }*/
-
-  /* PRÜFEN *//*
-  #addContactSignature {
-    width: 120px;
-    height: 120px;
-    background-color: var(--lighterGray);
-    border: 2px solid var(--white);
-    border-radius: 50%;
-    z-index: 5;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: 0;
-    top: 0;
-    left: 0;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-    /* Wechsel display none an der Stelle entfernt 
-  } */
 
   #contactBody {
     width: 61.5%;

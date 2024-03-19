@@ -117,7 +117,7 @@
 
 #mobileBtnSquareEdit:hover {
   color: var(--lightBlue);
-  background-color: var(--lighterGray);
+  background-color: var(--whiteGray);
   border-radius: 10px;
 }
 
@@ -128,7 +128,7 @@
 
 #mobileBtnSquareDelete:hover {
   color: var(--lightBlue);
-  background-color: var(--lighterGray);
+  background-color: var(--whiteGray);
   border-radius: 10px;
   width: 100%;
 

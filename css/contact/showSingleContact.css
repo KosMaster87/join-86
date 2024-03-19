@@ -122,13 +122,13 @@ body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 21px;
+  gap: 15px;
   margin-top: 36px;
 }
 
 .singleContactDisplayIdentidy {
   display: flex;
-  gap: 16px;
+  gap: 42px;
   align-items: center;
 }
 
@@ -216,6 +216,7 @@ body {
 @media (max-width: 720px) {
   #singleContact {
     top: 56px;
+    padding-left: 10px;
   }
 }
 
@@ -236,7 +237,7 @@ body {
   }
 
   #singleContact {
-    padding-left: 32px;
+    padding-left: 55px;
   }
 
   .singleContactHeadline {
@@ -259,6 +260,12 @@ body {
 
   #singleContactCol {
     display: none;
+  }
+
+  .singleContactDisplayIdentidy {
+    display: flex;
+    gap: 36px;
+    align-items: center;
   }
 }
 
@@ -299,6 +306,12 @@ body {
     align-items: center;
     justify-content: space-between;
     margin-top: 0;
+  }
+
+  .singleContactDisplayIdentidy {
+    display: flex;
+    gap: 42px;
+    align-items: center;
   }
 
   .singleContactName {
