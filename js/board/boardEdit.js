@@ -1,5 +1,6 @@
 let switchTaskTriggered = false;
 
+
 /**
  *
  * load the assignedTo contacts
@@ -190,6 +191,7 @@ function filterNamesforAssignedTo() {
  * @param {*} i - is the number of the task
  */
 async function saveCurrentBoardTask(i) {
+  removeClickListener();
   let title = document.getElementById(`titelInputContainer`);
   let description = document.getElementById(`descriptionInput`);
   let date = document.getElementById(`dueDateInputContainer`);
@@ -318,16 +320,24 @@ function closeMenu(i) {
 }
 
 function closeListener(i) {
-  document.addEventListener("click", function (event) {
+  function clickHandler(event) {
     if (userClicksOutsideOfInputField(event, "fullContactContainers")) {
       closeContactWindow(i);
+      removeClickListener();
     }
-  });
+  }
+
+  document.addEventListener("click", clickHandler);
 }
 
 function userClicksOutsideOfInputField(event, containerId) {
   let container = document.getElementById(containerId);
-  return !container.contains(event.target);
+  // Überprüfe, ob das Container-Element vorhanden ist, bevor du darauf zugreifst
+  if (container) {
+    return !container.contains(event.target);
+  }
+  // Falls das Container-Element nicht vorhanden ist, gebe einfach true zurück
+  return true;
 }
 
 function closeContactWindow(i) {
@@ -335,11 +345,17 @@ function closeContactWindow(i) {
   let contactListIcons = document.getElementById("contactListIcons");
   let border = document.getElementById("contactSelectContainer");
   let image = document.getElementById("openerAssignedTo");
-  contactList.style.display = "none";
-  contactListIcons.style.display = "block";
-  border.classList.remove("bordercolor");
-  image.src = "../assets/img/add_task/arrow_drop_down.svg";
-  image.onclick = function () {
-    openContacts(i);
-  };
+  if (contactList && contactListIcons && border && image) {
+    contactList.style.display = "none";
+    contactListIcons.style.display = "block";
+    border.classList.remove("bordercolor");
+    image.src = "../assets/img/add_task/arrow_drop_down.svg";
+    image.onclick = function () {
+      openContacts(i);
+    };
+  }
+}
+
+function removeClickListener() {
+  document.removeEventListener("click", removeClickListener);
 }

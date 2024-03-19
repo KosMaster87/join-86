@@ -15,7 +15,7 @@ function HtmlReturn(i) {
     <p class="descriptionText font16400" id="descriptionID${i}">
     </p>
   </div>
-  <div id="progressMainContainerId" class="progressMainContainer">
+  <div id="progressMainContainerId${i}" class="progressMainContainer">
     <div class="progress-container">
       <div class="progress-bar" id="progressBar${i}"></div>
     </div>
@@ -54,7 +54,7 @@ function awaitHtmlReturn(i) {
 
       </p>
     </div>
-    <div id="progressMainContainerId" class="progressMainContainer">
+    <div id="progressMainContainerId${i}" class="progressMainContainer">
     <div class="progress-container">
       <div class="progress-bar" id="progressBar${i}"></div>
     </div>
