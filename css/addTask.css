@@ -454,6 +454,10 @@ span {
   #taskMainContainer {
     align-items: center;
   }
+
+  #taskSubtaskContainer{
+    max-width: 350px;
+  }
 }
 
 @media (min-width: 1220px) {
