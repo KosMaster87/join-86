@@ -1,8 +1,6 @@
 
 /**
- * This function creates signature for icon
- * 
- *  * @param {string} name - This is name of the contact
+ * This function is the first function when open site
  */
 async function initEditContact() {
   await getCurrentContactNew();
@@ -10,7 +8,7 @@ async function initEditContact() {
 }
 
 /**
- * This function creates signature for icon
+ * This function creates signature for icon″
  */
 async function getContactId() {
   return await getItem("contactId");
