@@ -189,27 +189,20 @@ body {
   font-size: 20px;
   background-color: var(--lightGray);
   color: var(--white);
-  animation: slideBanner 2s forwards, hideBanner 2s 2s forwards;
-  z-index: 900;
+  animation: slideInSuccesfully 1s forwards;
+  z-index: 1000;
+  position: fixed; 
+  top: 80%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
 }
 
-@keyframes slideOverlay {
-  0% {
-    transform: translate(-50%, 100%);
+@keyframes slideInSuccesfully {
+  from {
+    left: 150%; /* Startposition rechts außerhalb des Bildschirms */
   }
-
-  100% {
-    transform: translate(-50%, calc(33.33vh -50px));
-  }
-}
-
-@keyframes hideOverlay {
-  0% {
-    transform: translate(-50%, calc(33.33vh-50px));
-  }
-
-  100% {
-    transform: translate(-50%, 100%);
+  to {
+    left: 50%; /* Endposition in der Mitte des Bildschirms */
   }
 }
 

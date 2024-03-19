@@ -29,7 +29,6 @@ async function getAllContactsFromCurrentUser() {
   return await getAllContactsFromCurrentUserSorted();
 }
 
-/* Alternativer Speicherprozess */
 async function saveContactAddContact(name, email, phone) {
   let contactId = generateRandomId();
   let userColor = getRandomColor(contactColors);
@@ -51,7 +50,9 @@ async function saveContactAddContact(name, email, phone) {
   } 
   await setItem('users', users);
   await setContactId(contactId);
-  /*closeAddContactAndGoToShowSingleContactContainer(contactId);*/
+  let overlay = document.getElementById("overlayContactIsCreated");
+  overlay.style.display = "flex";
+  overlay.classList.add("slideInAnimation");
   document.getElementById('overlayContactIsCreated').style.display = "flex";
 }
 
