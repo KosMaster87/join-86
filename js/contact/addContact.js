@@ -29,7 +29,6 @@ async function getAllContactsFromCurrentUser() {
   return await getAllContactsFromCurrentUserSorted();
 }
 
-/* Alternativer Speicherprozess */
 async function saveContactAddContact(name, email, phone) {
   let contactId = generateRandomId();
   let userColor = getRandomColor(contactColors);
