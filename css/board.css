@@ -661,6 +661,7 @@ h2 {
 
 @media (min-width: 720px) {
   .openwindow {
+    
     margin-left: 80px;
     z-index: 800;
     position: fixed;
@@ -684,6 +685,7 @@ h2 {
     padding-top: 0px !important;
   }
   .openwindow {
+    max-height: 600px;
     word-wrap: break-word;
     overflow: auto;
     padding: 20px;

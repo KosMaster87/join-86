@@ -106,9 +106,9 @@ function loadContacts() {
 }
 
 /**
- * 
+ *
  * This function add the Background when the conntact is assigned to
- * 
+ *
  * @param {*} i - this is the number of the seleced contact
  */
 function giveOnlyAssignedBg(i) {
@@ -116,7 +116,8 @@ function giveOnlyAssignedBg(i) {
   container.classList.add("assignedContainerBlack");
   let image = document.getElementById(`assignedContactImage${i}`);
   image.src = "../assets/img/add_task/task_box_check.svg";
-
+  iconid = document.getElementById(`ContactSignatureIcon${i}`);
+  iconid.style.backgroundColor = contacts[i].userColor;
   container.onclick = function () {
     removeassignedtoContactBg(i);
   };
