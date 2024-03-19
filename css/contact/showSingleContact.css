@@ -136,8 +136,6 @@ body {
   line-height: 1.2;
 }
 
-
-
 .singleContactIconName {
   font-weight: 700;
   font-size: 36px;
@@ -156,6 +154,7 @@ body {
   font-size: 27px;
   line-height: 1.2;
   box-shadow: 0, 0, 4, 0, rgba(0, 0, 0, 0.1);
+}
 
 .singleContactDescription {
   font-size: 20px;
@@ -211,14 +210,10 @@ body {
     transform: translate(-50%, 100%);
   }
 }
+
 @media (max-width: 720px) {
   #singleContact {
     top: 56px;
-  }
-}
-
-@media screen and (min-width: 721px) {
-  #singleContact {
   }
 }
 
@@ -269,10 +264,12 @@ body {
     width: 100%;
     padding-left: 0px !important;
   }
+
   #singleContactNav{
     display: flex;
   }
 }
+
 @media screen and (min-width: 1200px) {
   #contactOverlay {
     display: none;

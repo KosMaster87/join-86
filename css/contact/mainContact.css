@@ -1,3 +1,7 @@
+#body {
+    display: flex;
+  }
+
 /* #mainContact {
     display:flex;
     flex-direction: column;
