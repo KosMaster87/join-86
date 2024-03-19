@@ -13,7 +13,7 @@ async function initListContact() {
 }
 
 /**
- * 
+ *
  */
 function sortAllContactsFromCurrentUserAlphabetical() {
   user.contacts.sort((a, b) => {
@@ -32,7 +32,7 @@ function sortAllContactsFromCurrentUserAlphabetical() {
 }
 
 /**
- * 
+ *
  */
 
 async function getListFirstChars() {
@@ -42,11 +42,11 @@ async function getListFirstChars() {
     let signs = sortedContacts[i]["signature"];
     setFirstChars.add(signs.charAt(0));
   }
-  return listFirstChars = Array.from(setFirstChars).sort();
+  return (listFirstChars = Array.from(setFirstChars).sort());
 }
 
 /**
- * 
+ *
  */
 function renderContainerList() {
   let charRow = document.getElementById("listContactContainer");
@@ -77,9 +77,9 @@ function renderContainerList() {
 }
 
 /**
- * 
- * @param {*} contactCard 
- * @param {*} char 
+ *
+ * @param {*} contactCard
+ * @param {*} char
  */
 async function renderContactCards(contactCard, char) {
   let sign = char;
@@ -101,26 +101,24 @@ async function renderContactCards(contactCard, char) {
                     ${contact["email"]}
                 </div>
             </div>
-        </div>`;  
+        </div>`;
     }
   }
 }
 
-
 /* FUNKTIONEN AUF LIST CONTACT SEPARIEREN */
 async function goFromListContactToShowSingleContact(contactId) {
   document.getElementById("mobileBtnAddContact").style.display = "none";
-  const allButtons = document.querySelectorAll('.singleContact');
-  allButtons.forEach(button => {
-    button.classList.remove('active');
+  const allButtons = document.querySelectorAll(".singleContact");
+  allButtons.forEach((button) => {
+    button.classList.remove("active");
   });
   let id = "singleContactBtn" + contactId;
-  document.getElementById(id).classList.add('active');
+  document.getElementById(id).classList.add("active");
   let width = getWindowWidth();
-
   if (width < 1200) {
     await loadShowSingleContact(contactId);
-    mobileBtnThreePoints
+    mobileBtnThreePoints;
     document.getElementById(`mobileBtnThreePoints`).style.display = "block";
     document.getElementById("singleContactCol").classList.remove("slide-in");
     document.getElementById("singleContactCol").style.display = "flex";
@@ -146,4 +144,3 @@ function desktopOpenAddContactContainer() {
   document.getElementById("addContactContainer").style.display = "block";
   document.getElementById("addOverlayFrame").style.display = "flex";
 }
-

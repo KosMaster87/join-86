@@ -154,8 +154,11 @@ async function desktopCloseAddContactContainerWithoutAddingNewContact() {
 }
 
 async function saveChangesDesktop() {
+  
   let contactId = await getContactId();
   await saveChangesAtEditContact();
+  let finalId = "singleContactBtn" + contactId;
+  document.getElementById(finalId).classList.add('active');
 }
 /*
 async function saveChangesMobile() {
