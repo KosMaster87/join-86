@@ -20,6 +20,12 @@ async function initializeAllVariables() {
   document.getElementById("editContactBodySignature").style.backgroundColor = contact.userColor;
 }
 
+
+/**
+ * This function creates
+ * 
+ *  * @param {string} name - This is name of the contact
+ */
 function getSignature(name) {
   let arrayName = splitName(name);
   let signature = getFirstChars(arrayName);
@@ -35,6 +41,9 @@ function splitName(name) {
   return arrayName;
 }
 
+/**
+ * This function get the first letters from fullname
+ */
 function getFirstChars(arrayName) {
   let firstChars = "";
   for (let i = 0; i < arrayName.length; i++) {
@@ -44,6 +53,9 @@ function getFirstChars(arrayName) {
   return firstChars;
 }
 
+/**
+ * This function deletes contact
+ */
 async function deleteContact() {
   let contactId = await getContactId();
   let contacts = await user.contacts;
@@ -58,7 +70,10 @@ async function deleteContact() {
   await setContactId([]);
 }
 
-/* Auslesen des aktuellen Kontakts über ContactId und aktuellen User */
+
+/**
+ * This function generates all necessary contact infos from current contact
+ */
 async function getCurrentContactNew() {
   let contactId = await getContactId();
   let contacts = await user.contacts;
@@ -72,6 +87,9 @@ async function getCurrentContactNew() {
   }
 }
 
+/**
+ * This function saves changed contact
+ */
 async function saveChangesAtEditContact() {
   let currentContact = await getCurrentContactNew();
   let inputContactId = await getContactId();
@@ -106,6 +124,9 @@ async function saveChangesAtEditContact() {
   }
 }
 
+/**
+ * This function initializes single contact considering screenwidth 
+ */
 async function editContactIsSavedGoToSingleContact() {
   let contactId = await getContactId();
   let result = getWindowWidth();
@@ -124,10 +145,16 @@ async function editContactIsSavedGoToSingleContact() {
   }
 }
 
+/**
+ * This function initializes reload
+ */
 function startPageUpdate() {
   location.reload();
 }
 
+/**
+ * This function initialize delete contact and renders necessary templates to display
+ */
 async function goFromDeleteContactToListContact() {
   await setContactId([]);
   await deleteContact();
@@ -139,14 +166,19 @@ async function goFromDeleteContactToListContact() {
   document.getElementById("mobileBtnAddContact").style.display = "block";
 }
 
+/**
+ * This function closes add contact form without saving
+ */
 async function desktopCloseAddContactContainerWithoutAddingNewContact() {
-  /* alles ggf. zurücksetzen */
   document.getElementById("editContactContainer").style.display = "none";
   document.getElementById("showSingleContactContainer").style.display = "flex";
   document.getElementById("mobileBtnSelectOptions").style.display = "none";
   document.getElementById("mobileBtnAddContact").style.display = "none";
 }
 
+/**
+ * This function initializes save process from desktop button
+ */
 async function saveChangesDesktop() {
   let contactId = await getContactId();
   await saveChangesAtEditContact();
@@ -154,6 +186,9 @@ async function saveChangesDesktop() {
   document.getElementById(finalId).classList.add("active");
 }
 
+/**
+ * This function initializes delete process and prepares the necessary templates to display
+ */
 async function deleteAtEditContactDesktop() {
   await deleteContact();
   await initListContact();
@@ -165,6 +200,9 @@ async function deleteAtEditContactDesktop() {
   document.getElementById("mobileBtnAddContact").style.display = "block";
 }
 
+/**
+ * This function initializes save process from mobile button
+ */
 async function saveChangesAtEditContactMobile() {
   await saveChangesAtEditContact();
 }
