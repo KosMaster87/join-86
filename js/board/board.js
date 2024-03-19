@@ -136,7 +136,6 @@ function fillValue(i) {
  *
  * @param {*} i - is the number of the task
  */
-
 function whatsCategory(i) {
   if (user.tasks[i].category === "User Story") {
     document.getElementById(`TaskCategory${i}`).style.backgroundColor = "#0038FF";
@@ -159,10 +158,9 @@ function whatsSignatures(i) {
       let words = user.tasks[i].assignedTo[a].name.toUpperCase().split(" ");
       for (let j = 0; j < words.length; j++) {
         signature += words[j].charAt(0);
-        color= user.tasks[i].assignedTo[a].userColor
+        color = user.tasks[i].assignedTo[a].userColor;
       }
       iconBarContainer.innerHTML += iconReturn(color, signature);
-
     }
   }
 }
@@ -178,9 +176,9 @@ function updateProgressBar(i) {
   let percent = 0;
 
   if (user.tasks[i].subtasks.length === 0) {
-    document.getElementById("progressMainContainerId").style.display = "none";
+    document.getElementById("progressMainContainerId" + i).style.display = "none";
   } else {
-    document.getElementById("progressMainContainerId").style.display = "flex";
+    document.getElementById("progressMainContainerId" + i).style.display = "flex";
     for (let p = 0; p < user.tasks[i].subtasks.length; p++) {
       if (user.tasks[i].subtasks[p].done === true) {
         counter++;
@@ -302,8 +300,8 @@ function renderTaskAssigneds(i) {
 function renderTaskSubtasks(i) {
   if (user.tasks[i].subtasks.length === 0) {
     document.getElementById(`boardTaskSubtaskMainContainer`).style.display = "none";
-    document.getElementById(`progressMainContainerId`).style.display = "none";
-    document.getElementById(`progressMainContainerId`).style.display = "none";
+    document.getElementById(`awaitMainContainerId`).style.display = "none";
+    document.getElementById(`progressMainContainerId` + i).style.display = "none";
   } else {
     document.getElementById(`boardTaskSubtaskMainContainer`).style.display = "flex";
     let popUpSubtasksContainer = document.getElementById(`popUpSubtasksContainer`);
@@ -361,6 +359,7 @@ function removeOpenedTask(i) {
  * @param {*} i - is the number of the task
  */
 function closeEditTask(i) {
+  removeClickListener();
   document.getElementById(`popUpMainContainer`).remove();
   document.getElementById(`blurrContainer`).remove();
   openTask(i);
@@ -411,14 +410,12 @@ async function subtaskFinish(i, s) {
  */
 async function editBoardTask(i) {
   document.getElementById(`popUpMainContainer`).innerHTML = "";
-
   if (window.innerWidth > 1200) {
     document.getElementById(`popUpMainContainer`).innerHTML = editBoardDesktopTaskReturn(i);
     document.getElementById(`popUpMainContainer`).classList.remove("openwindow");
   } else {
     document.getElementById(`popUpMainContainer`).innerHTML = editBoardMobileTaskReturn(i);
   }
-
   contactList.style.display = "none";
   contactListIcons.style.display = "block";
   document.getElementById(`titelInputContainer`).value = user.tasks[i].title;

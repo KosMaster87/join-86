@@ -1,5 +1,6 @@
 let switchTaskTriggered = false;
 
+
 /**
  *
  * load the assignedTo contacts
@@ -190,6 +191,7 @@ function filterNamesforAssignedTo() {
  * @param {*} i - is the number of the task
  */
 async function saveCurrentBoardTask(i) {
+  removeClickListener();
   let title = document.getElementById(`titelInputContainer`);
   let description = document.getElementById(`descriptionInput`);
   let date = document.getElementById(`dueDateInputContainer`);
@@ -228,6 +230,12 @@ function clearSubtaskInputfield() {
   border.classList.remove("bordercolor");
 }
 
+/**
+ * 
+ * This function create a menu for switching the task Status in the MobileVersion.
+ * 
+ * @param {*} i -number of the Task
+ */
 function switchTask(i) {
   switchTaskTriggered = true;
   var menu = document.getElementById(`menuForSwitchTask`);
@@ -250,6 +258,12 @@ function switchTask(i) {
   }
 }
 
+/**
+ * 
+ * Remove the menufield of the current status.
+ * 
+ * @param {*} i -number of the Task
+ */
 function cheackCurrentStatus(i) {
   if (user.tasks[i].status === "to-do") {
     document.getElementById(`menuForSwitchTaskTodo`).remove();
@@ -265,6 +279,12 @@ function cheackCurrentStatus(i) {
   }
 }
 
+/**
+ * 
+ *switch the task to status to-do
+ * 
+ * @param {*} i -number of the Task
+ */
 function switchTaskTodo(i) {
   switchTaskTriggered = true;
   user.tasks[i].status = "to-do";
@@ -274,6 +294,12 @@ function switchTaskTodo(i) {
   loadTasks();
 }
 
+/**
+ * 
+ *switch the task to status progress
+ * 
+ * @param {*} i -number of the Task
+ */
 function switchTaskProgress(i) {
   switchTaskTriggered = true;
   user.tasks[i].status = "progress";
@@ -283,6 +309,12 @@ function switchTaskProgress(i) {
   loadTasks();
 }
 
+/**
+ * 
+ *switch the task to status await
+ * 
+ * @param {*} i -number of the Task
+ */
 function switchTaskAwait(i) {
   switchTaskTriggered = true;
   user.tasks[i].status = "await";
@@ -292,6 +324,12 @@ function switchTaskAwait(i) {
   loadTasks();
 }
 
+/**
+ * 
+ *switch the task to status done
+ * 
+ * @param {*} i -number of the Task
+ */
 function switchTaskDone(i) {
   switchTaskTriggered = true;
   user.tasks[i].status = "done";
@@ -301,6 +339,12 @@ function switchTaskDone(i) {
   loadTasks();
 }
 
+/**
+ * 
+ * Close the Status-Switch menu in mobilVersion
+ * 
+ * @param {*} i -number of the Task
+ */
 function closeMenu(i) {
   switchTaskTriggered = true;
   var menu = document.getElementById("menuForSwitchTask");
@@ -317,29 +361,49 @@ function closeMenu(i) {
   }
 }
 
+/**
+ * add an Eventlistener for close die lists when clicked outside of container Contact´s or category
+ */
 function closeListener(i) {
-  document.addEventListener("click", function (event) {
+  function clickHandler(event) {
     if (userClicksOutsideOfInputField(event, "fullContactContainers")) {
       closeContactWindow(i);
+      removeClickListener();
     }
-  });
+  }
+  document.addEventListener("click", clickHandler);
 }
 
 function userClicksOutsideOfInputField(event, containerId) {
   let container = document.getElementById(containerId);
-  return !container.contains(event.target);
+  if (container) {
+    return !container.contains(event.target);
+  }
+  return true;
 }
 
+/**
+ * this function close the contact list window
+ */
 function closeContactWindow(i) {
   let contactList = document.getElementById("contactList");
   let contactListIcons = document.getElementById("contactListIcons");
   let border = document.getElementById("contactSelectContainer");
   let image = document.getElementById("openerAssignedTo");
-  contactList.style.display = "none";
-  contactListIcons.style.display = "block";
-  border.classList.remove("bordercolor");
-  image.src = "../assets/img/add_task/arrow_drop_down.svg";
-  image.onclick = function () {
-    openContacts(i);
-  };
+  if (contactList && contactListIcons && border && image) {
+    contactList.style.display = "none";
+    contactListIcons.style.display = "block";
+    border.classList.remove("bordercolor");
+    image.src = "../assets/img/add_task/arrow_drop_down.svg";
+    image.onclick = function () {
+      openContacts(i);
+    };
+  }
+}
+
+/**
+ * remove the eventlistener
+ */
+function removeClickListener() {
+  document.removeEventListener("click", removeClickListener);
 }
