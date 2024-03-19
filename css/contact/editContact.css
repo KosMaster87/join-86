@@ -185,7 +185,7 @@
   color: var(--white);
   background-color: var(--lightGray);
   border-radius: 10px;
-  padding: 18px 10px;
+  padding: 16px;
 }
 
 #editContactBtnSaveMobile:hover {
@@ -240,13 +240,15 @@
     font-size: 20px;
     font-weight: 400;
     line-height: 1.2;
-    padding: 18px 10px;
+    padding: 15px 24px;
   }
 
   #editContactCancelBtnDesktop:hover {
     border: 1px solid var(--lightBlue);
     color: var(--lightBlue);
     cursor: pointer;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
   }
 
   #editContactSaveBtnDesktop {
@@ -260,11 +262,13 @@
     color: var(--white);
     background-color: var(--lightGray);
     border-radius: 10px;
-    padding: 18px 10px;
+    padding: 16px;
   }
 
   #editContactSaveBtnDesktop:hover {
     cursor: pointer;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background-color: var(--lightBlue);
   }
 
   #editContactBodyBtnRowDesktop {
@@ -418,5 +422,6 @@
       border: 1px solid var(--lightBlue);
       color: var(--lightBlue);
     }
+
   }
 }
