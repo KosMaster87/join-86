@@ -1,13 +1,22 @@
 
+/**
+ * This function is the first function when open site
+ */
 async function initEditContact() {
   await getCurrentContactNew();
   await initializeAllVariables();
 }
 
+/**
+ * This function creates signature for icon″
+ */
 async function getContactId() {
   return await getItem("contactId");
 }
 
+/**
+ * This function initializes all variables
+ */
 async function initializeAllVariables() {
   let contact = await getCurrentContactNew();
   let signature = contact.signature;
@@ -20,9 +29,8 @@ async function initializeAllVariables() {
   document.getElementById("editContactBodySignature").style.backgroundColor = contact.userColor;
 }
 
-
 /**
- * This function creates
+ * This function creates signature for icon
  * 
  *  * @param {string} name - This is name of the contact
  */
@@ -33,6 +41,11 @@ function getSignature(name) {
   return signature;
 }
 
+/**
+ * This function takes the first letter of the name
+ * 
+ *  * @param {string} name - This is name of the contact
+ */
 function splitName(name) {
   let arrayName = [];
   let string = name;
