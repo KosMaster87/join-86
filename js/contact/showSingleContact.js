@@ -58,6 +58,10 @@ async function importExistentVariable(id, variableHtml, input) {
   }
 }
 
+async function showOverlayContactIsCreated () {
+
+}
+
 /* SHOW SINGLE CONTACT TO LIST CONTACT CONTAINER */
 async function goFromSingleContactToListContactContainer() {
   
@@ -104,6 +108,7 @@ async function openEditContactContainer() {
 }
 
 async function deleteContactAtSingleContactDestkop() {
+
   await deleteContact();
   await initListContact();
   document.getElementById("mobileBtnThreePoints").style.display = "none";

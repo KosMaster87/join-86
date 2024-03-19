@@ -86,8 +86,12 @@ body {
   font-weight: 600;
 }
 
-.singleContactDestopBtn svg {
-  fill: blue;
+#desktopBtnDelete:hover img {
+  content: url('../../assets/img/contact/deleteBlue.svg')
+}
+
+#desktopBtnEdit:hover img {
+  content: url('../../assets/img/contact/editBlue.svg')
 }
 
 .desktopBtnIcon {
@@ -177,7 +181,7 @@ body {
 }
 
 /* */
-#contactOverlay {
+#overlayContactIsCreated {
   display: none;
   justify-content: center;
   align-items: center;

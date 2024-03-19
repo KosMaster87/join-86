@@ -159,6 +159,7 @@ async function addContactIsSavedGoToSingleContact() {
     document.getElementById("mobileBtnAddContact").style.display = "none"; 
     document.getElementById("mobileBtnThreePoints").style.display = "block";
     document.getElementById("showSingleContactContainer").style.display = "block";
+    /*document.getElementById("overlayContactIsCreated").style.display = "flex";*/
   } else {
     await initListContact();
     document.getElementById("showSingleContactContainer").style.display = "flex";
