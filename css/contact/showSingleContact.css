@@ -193,7 +193,7 @@ body {
   z-index: 900;
 }
 
-@keyframes slideOverlay {
+@keyframes  slideBanner {
   0% {
     transform: translate(-50%, 100%);
   }
@@ -203,7 +203,7 @@ body {
   }
 }
 
-@keyframes hideOverlay {
+@keyframes hideBanner {
   0% {
     transform: translate(-50%, calc(33.33vh-50px));
   }
