@@ -5,7 +5,7 @@ function HtmlReturn(i) {
     <span id="TaskCategory${i}" class="headlineFromTask font16400">
       Category
     </span>
-    <div id="switchTaskImage${i}">
+    <div class="switchTasksContainer" id="switchTaskImage${i}">
     <img onclick="switchTask(${i})" src="../assets/img/board/mobile_switch.svg">
     </div>
     </div>
@@ -42,7 +42,7 @@ function awaitHtmlReturn(i) {
       <span id="TaskCategory${i}" class="headlineFromTask font16400">
         Catergory
       </span>
-      <div id="switchTaskImage${i}">
+      <div class="switchTasksContainer" id="switchTaskImage${i}">
       <img onclick="switchTask(${i})" src="../assets/img/board/mobile_switch.svg">
       </div>
     </div>

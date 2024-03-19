@@ -268,6 +268,7 @@ function footer() {
   footer.remove;
   content.innerHTML += footerReturn();
 }
+
 /**
  * This function is create the footer for mobileversion
  */

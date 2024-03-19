@@ -3,6 +3,9 @@
 body {
   background-color: var(--whiteGray);
 }
+.switchTasksContainer{
+  display:none;
+}
 
 h1 {
   font-size: 47px;
@@ -703,6 +706,10 @@ h2 {
   }
 }
 @media (max-width: 1125px) {
+  .switchTasksContainer{
+    display:block;
+  }
+
   .boxSizeFeedback {
     flex: 0 0 250px;
   }
