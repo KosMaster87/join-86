@@ -46,27 +46,17 @@ input {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation: slideUp 1s forwards;
   width: 100%;
   z-index: 900;
 } 
 
 @keyframes slideUp {
   from {
-    transform: translateY(100%);
+    left: 150%; /* Startposition rechts außerhalb des Bildschirms */
   }
-
   to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(100%);
-  }
-
-  to {
-    transform: translateY(0);
+    left: 50%; /* Endposition in der Mitte des Bildschirms */
   }
 }
 
