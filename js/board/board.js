@@ -136,7 +136,6 @@ function fillValue(i) {
  *
  * @param {*} i - is the number of the task
  */
-
 function whatsCategory(i) {
   if (user.tasks[i].category === "User Story") {
     document.getElementById(`TaskCategory${i}`).style.backgroundColor = "#0038FF";
@@ -411,14 +410,12 @@ async function subtaskFinish(i, s) {
  */
 async function editBoardTask(i) {
   document.getElementById(`popUpMainContainer`).innerHTML = "";
-
   if (window.innerWidth > 1200) {
     document.getElementById(`popUpMainContainer`).innerHTML = editBoardDesktopTaskReturn(i);
     document.getElementById(`popUpMainContainer`).classList.remove("openwindow");
   } else {
     document.getElementById(`popUpMainContainer`).innerHTML = editBoardMobileTaskReturn(i);
   }
-
   contactList.style.display = "none";
   contactListIcons.style.display = "block";
   document.getElementById(`titelInputContainer`).value = user.tasks[i].title;

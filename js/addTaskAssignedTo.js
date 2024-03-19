@@ -1,3 +1,6 @@
+/**
+ * add an Eventlistener for close die lists when clicked outside of container Contact´s or category
+ */
 function closeListener() {
   document.addEventListener("click", function (event) {
     if (userClicksOutsideOfInputField(event, "categorySelectContainer")) {
@@ -8,13 +11,6 @@ function closeListener() {
     }
   });
 }
-function closeCategoryWindow() {
-  let categoryMenu = document.getElementById("categoryMenu");
-  let border = document.getElementById("categorySelectContainer");
-
-  categoryMenu.style.display = "none";
-  border.classList.remove("bordercolor");
-}
 
 /**
  * This function close the contact window when click with the mouse outside of this window
@@ -24,6 +20,20 @@ function userClicksOutsideOfInputField(event, containerId) {
   return !container.contains(event.target);
 }
 
+/**
+ * this function close the Category Window
+ */
+function closeCategoryWindow() {
+  let categoryMenu = document.getElementById("categoryMenu");
+  let border = document.getElementById("categorySelectContainer");
+
+  categoryMenu.style.display = "none";
+  border.classList.remove("bordercolor");
+}
+
+/**
+ * this function close the contact list window
+ */
 function closeContactWindow() {
   let contactList = document.getElementById("contactList");
   let contactListIcons = document.getElementById("contactListIcons");
@@ -95,6 +105,12 @@ function loadContacts() {
   openContacts();
 }
 
+/**
+ * 
+ * This function add the Background when the conntact is assigned to
+ * 
+ * @param {*} i - this is the number of the seleced contact
+ */
 function giveOnlyAssignedBg(i) {
   let container = document.getElementById(`assignedContactContainer${i}`);
   container.classList.add("assignedContainerBlack");
@@ -178,6 +194,7 @@ function removeassignedtoContactBg(i) {
     assignedtoContactBg(i);
   };
 }
+
 /**
  * Clear the inputfields
  */
