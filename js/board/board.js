@@ -329,12 +329,7 @@ function renderTaskSubtasks(i) {
 async function closeOpenTask(i) {
   clearBoardTasksField();
   document.body.style.overflow = "auto";
-  let task = document.getElementById(`popUpMainContainer`);
-  let blurr = document.getElementById(`blurrContainer`);
-  blurr.remove();
-  task.remove();
-  document.getElementById(`TodoMainContainer`).innerHTML = "";
-  loadTasks();
+  removeOpenedTask(i);
 }
 
 /**
