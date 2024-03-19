@@ -1,4 +1,4 @@
-//Edit Contact JS
+
 async function initEditContact() {
   await getCurrentContactNew();
   await initializeAllVariables();
@@ -111,7 +111,6 @@ async function saveChangesAtEditContact() {
   }
 }
 
-
 async function editContactIsSavedGoToSingleContact() {
   let contactId = await getContactId();
   let result = getWindowWidth(); 
@@ -134,6 +133,7 @@ async function editContactIsSavedGoToSingleContact() {
 function startPageUpdate() {
   location.reload();
 }
+
 async function goFromDeleteContactToListContact() {
   await setContactId([]);
   await deleteContact();
@@ -154,25 +154,11 @@ async function desktopCloseAddContactContainerWithoutAddingNewContact() {
 }
 
 async function saveChangesDesktop() {
-  
   let contactId = await getContactId();
   await saveChangesAtEditContact();
   let finalId = "singleContactBtn" + contactId;
   document.getElementById(finalId).classList.add('active');
 }
-/*
-async function saveChangesMobile() {
-  let contactId = await getContactId();
-  await saveChangesAtEditContact();
-  await initListContact();
-  await loadShowSingleContact(contactId);
-  document.getElementById('editContactContainer').style.display = "none";
-  document.getElementById('showSingleContactContainer').style.display = "flex";
-  document.getElementById('listContactContainer').style.display = "none";
-  document.getElementById('mobileBtnSelectOptions').style.display = "none";
-  document.getElementById('singleContactCol').style.display = "none";
-  document.getElementById('mobileBtnAddContact').style.display = "none";
-}*/
 
 async function deleteAtEditContactDesktop() {
   await deleteContact();

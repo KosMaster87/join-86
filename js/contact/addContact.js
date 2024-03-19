@@ -7,14 +7,20 @@ const contactColors = [
   "var(--mintGreen)",
 ];
 
+/**
+ * This function is the first function when you open the page
+ */
 async function initAddContact() {
   await setContactId([]);
   resetInputFields();
   resetAllInputMessages();
   resetAllAlertBorders();
   editFocusBorder("add", "Name", "Email", "Phone");
-}
+} 
 
+/**
+ * This function initialize the saving Process
+ */
 async function initSaveProcess() {
   let name = document.getElementById("addContactInputName").value.trim();
   let email = document.getElementById("addContactInputEmail").value.trim();
@@ -24,17 +30,21 @@ async function initSaveProcess() {
     await saveContactAddContact(name, email, phone);
     await addContactIsSavedGoToSingleContact();
     resetInputFields("add");
-    console.log("Abschluss Datenspeicherung");
   } else {
-    console.log("Fehlerhafter Dateneintrag - Abbruch Datenspeicherung");
     disableSaveProcess();
   }
 }
 
+/**
+ * This function provides all contacts from current User
+ */
 async function getAllContactsFromCurrentUser() {
   return await getAllContactsFromCurrentUserSorted();
 }
 
+/**
+ * This function saves the new added contact at the backend
+ */
 async function saveContactAddContact(name, email, phone) {
   let contactId = generateRandomId();
   let userColor = getRandomColor(contactColors);
@@ -65,6 +75,9 @@ async function saveContactAddContact(name, email, phone) {
   }, 3000);
 }
 
+/**
+ * This function creates a random color
+ */
 function getRandomColor(userColors) {
   let randomIndex = Math.floor(Math.random() * userColors.length);
   let randomColor = userColors[randomIndex];
@@ -72,6 +85,9 @@ function getRandomColor(userColors) {
   return randomColor;
 }
 
+/**
+ * This function creates the signature from the fullname
+ */
 function getSignature(name) {
   let arrayName = splitName(name);
   let signature = getFirstChars(arrayName);
@@ -79,6 +95,9 @@ function getSignature(name) {
   return signature;
 }
 
+/**
+ * This function takes the first letter from the fullname
+ */
 function splitName(name) {
   let arrayName = [];
   let string = name;
@@ -87,6 +106,9 @@ function splitName(name) {
   return arrayName;
 }
 
+/**
+ * This function creates an array from all single letters
+ */
 function getFirstChars(arrayName) {
   let firstChars = "";
   for (let i = 0; i < arrayName.length; i++) {
@@ -96,6 +118,9 @@ function getFirstChars(arrayName) {
   return firstChars;
 }
 
+/**
+ * This function creates an randomId for contacts
+ */
 function generateRandomId() {
   let id = "";
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!/%?";
@@ -107,10 +132,16 @@ function generateRandomId() {
   return id;
 }
 
+/**
+ * This function shows the form, if saving process is disabled
+ */
 function disableSaveProcess() {
   document.getElementById("addContactContainer").style.display = "block";
 }
 
+/**
+ * This function generates all necessary templates for display
+ */
 async function closeAddContactAndGoToShowSingleContactContainer(contactId) {
   loadShowSingleContact(contactId);
   document.getElementById("addContactContainer").style.display = "none";
@@ -120,6 +151,9 @@ async function closeAddContactAndGoToShowSingleContactContainer(contactId) {
   document.getElementById("showSingleContactContainer").style.display = "block";
 }
 
+/**
+ * This function generates all necessary templates for display after close addContactContainer without saving
+ */
 async function closeAddContactContainerWithoutAddingNewContact() {
   await initListContact();
   document.getElementById("addContactContainer").style.display = "none";
@@ -127,6 +161,11 @@ async function closeAddContactContainerWithoutAddingNewContact() {
   document.getElementById("overlayFrame").style.display = "none";
 }
 
+/**
+ * This function generates all necessary 
+ * templates for display after close addContactContainer without saving
+ * from the desktop button
+ */
 async function closeAddContactContainerDesktop() {
   resetInputFields("add");
   editFocusBorder("add", "Name", "Email", "Phone");
@@ -139,6 +178,11 @@ async function closeAddContactContainerDesktop() {
   document.getElementById("singleContactCol").style.display = "none";
 }
 
+/**
+ * This function generates all necessary 
+ * templates for display after close addContactContainer without saving
+ * from the desktop button
+ */
 async function closeAddContactContainer() {
   resetInputFields("add");
   editFocusBorder("add", "Name", "Email", "Phone");
@@ -149,16 +193,24 @@ async function closeAddContactContainer() {
   document.getElementById("mobileBtnAddContact").style.display = "block";
 }
 
+/**
+ * This function initializes saving process from the desktop button
+ */
 async function saveContactAtAddContactDesktop() {
-  console.log("Start Speicherprozess - Desktop");
   await initSaveProcess();
 }
 
+/**
+ * This function initialize saving process from the mobile button
+ */
 async function saveContactAtAddContactMobile() {
-  console.log("Start Speicherprozess - Mobil");
   await initSaveProcess();
 }
 
+/**
+ * This function generates all necessary 
+ * templates for display after saving contact and initialising next template function
+ */
 async function addContactIsSavedGoToSingleContact() {
   let contactId = await getContactId();
   await loadShowSingleContact(contactId);
@@ -168,7 +220,7 @@ async function addContactIsSavedGoToSingleContact() {
     document.getElementById("mobileBtnAddContact").style.display = "none";
     document.getElementById("mobileBtnThreePoints").style.display = "block";
     document.getElementById("showSingleContactContainer").style.display = "flex";
-    /*document.getElementById("overlayContactIsCreated").style.display = "flex";*/
+
   } else {
     await initListContact();
     document.getElementById("listContactContainer").style.display = "flex";
