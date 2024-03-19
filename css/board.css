@@ -694,6 +694,10 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  #boardMainContainerId{
+    padding-top: 60px;
+    padding-bottom: 42px;
+  }
 }
 @media (max-width: 1125px) {
   .boxSizeFeedback {
