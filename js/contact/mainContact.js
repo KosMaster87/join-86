@@ -31,7 +31,6 @@ function checkAllInputFields(siteInitial, name, email, phone) {
   if (checkInputName(siteInitial, name) === true && checkInputEmail(siteInitial, email) === true && checkInputPhone(siteInitial, phone) === true) {
     return true
   } else {
-    console.log('Ein Element ist auf false gesetzt')
     return false;
   }
 }
@@ -57,7 +56,6 @@ function checkInputEmail(siteInitial, input) {
     showInputMessage(siteInitial + 'ContactMessageEmail', 'Please enter a valid e-mail address');
     removeFocusBorder(siteInitial, 'Email');
     showAlertBorder(siteInitial + 'ContactInputContainerEmail');
-    console.log('Email ist falsch');
     return false;
   } else {
     resetInputMessage(siteInitial + 'ContactMessageEmail');
@@ -129,7 +127,6 @@ function resetAllAlertBorders(siteInitial) {
   resetAlertBorder(siteInitial + 'ContactInputContainerPhone');
 }
 
-// AUTOFOKUS BEIM ANKLICKEN DES INPUTFELDES 
 function editFocusBorder(siteInitial, idFocus, idRemoveFocus, idDeleteFocus) {
   addFocusBorder(siteInitial,idFocus);
   removeFocusBorder(siteInitial, idRemoveFocus);
@@ -139,7 +136,6 @@ function editFocusBorder(siteInitial, idFocus, idRemoveFocus, idDeleteFocus) {
 function addFocusBorder(siteInitial, containerId) {
   let input = document.getElementById(siteInitial + 'ContactInputContainer' + containerId);
   if (input) {
-    console.log('input', input);
     input.classList.add('focus');
   } else {
     console.error('Input element not found!');
