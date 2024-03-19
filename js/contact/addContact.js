@@ -52,7 +52,7 @@ async function saveContactAddContact(name, email, phone) {
   await setItem('users', users);
   await setContactId(contactId);
   /*closeAddContactAndGoToShowSingleContactContainer(contactId);*/
-  /*document.getElementById('overlayFrame').style.display = "flex";  TODO: PRÜFEN, OB NOCH KORREKT */ 
+  document.getElementById('overlayContactIsCreated').style.display = "flex";
 }
 
 function getRandomColor(userColors) {
