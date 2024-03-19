@@ -268,7 +268,7 @@ function openCategorySelect() {
   document.getElementById("contactListIcons").style.display = "none";
   document.getElementById(`contactSelectContainer`).classList.remove("bordercolor");
   content.innerHTML += openCategorySelectReturn();
-  document.getElementById(`categoryMenu`).style.display="block";
+  document.getElementById(`categoryMenu`).style.display = "block";
   border = document.getElementById(`categorySelectContainer`);
   border.classList.add("bordercolor");
   categoryImageUp();
@@ -303,7 +303,6 @@ function selectCategory(selectedOption) {
  * This function close the category menu
  */
 function closeCategoryMenu() {
-  
   div = document.getElementById(`categoryMenu`);
   div.innerHTML = "";
   border = document.getElementById(`categorySelectContainer`);
@@ -335,16 +334,16 @@ function changemenu() {
  * This function creat a subtask
  */
 function addSubtask() {
-  if(document.getElementById(`subTaskInputfieldText`).value){
-  let subtasksInput = document.getElementById("subTaskInputfieldText");
-  let newSubtask = {
-    name: subtasksInput.value,
-    done: false,
-  };
-  subtasks.push(newSubtask);
-  renderSubtasks();
-  clearSubtaskInputfield();
-}
+  if (document.getElementById(`subTaskInputfieldText`).value) {
+    let subtasksInput = document.getElementById("subTaskInputfieldText");
+    let newSubtask = {
+      name: subtasksInput.value,
+      done: false,
+    };
+    subtasks.push(newSubtask);
+    renderSubtasks();
+    clearSubtaskInputfield();
+  }
 }
 
 /**
@@ -393,55 +392,4 @@ function editSubtaskDone(i) {
 function deleteSubtask(i) {
   subtasks.splice(i, 1);
   renderSubtasks();
-}
-
-/**
- * This function clear the value from the subtask input field
- */
-function clearSubtaskInputfield() {
-  let input = document.getElementById(`subTaskInputfieldText`);
-  input.value = "";
-  container = document.getElementById(`subTaskInputfieldMenu`);
-  container.innerHTML = `
-  <img src="../assets/img/add_task/task_add.svg" />`;
-  let border = document.getElementById(`subTaskInputcontainer`);
-  border.classList.remove("bordercolor");
-}
-
-/**
- * This function checked if the required field have a value
- * after this the create task butten is showed
- */
-function checkInputs() {
-  if (mobilVersion == false) {
-    let dueDateValue = document.getElementById("dueDateInputContainer").value;
-    let titleValue = document.getElementById("titelInputContainer").value;
-    let isCategoryValid = checkCategory();
-    let createTaskButton = document.getElementById("createTaskButton");
-    let placeholder = document.getElementById(`placeholder`);
-    if (dueDateValue.trim() !== "" && titleValue.trim() !== "" && isCategoryValid) {
-      createTaskButton.style.display = "block";
-      placeholder.style.display = "none";
-    } else {
-      createTaskButton.style.display = "none";
-      placeholder.style.display = "block";
-    }
-  }
-}
-
-/**
- * This function is create the footer for desktopversion
- */
-function footer() {
-  let content = document.getElementById(`taskMainContainer`);
-  footer.remove;
-  content.innerHTML += footerReturn();
-}
-/**
- * This function is create the footer for mobileversion
- */
-function footerMobile() {
-  let content = document.getElementById(`taskMainContainer`);
-  footer.remove;
-  content.innerHTML += footerMobileReturn();
 }
