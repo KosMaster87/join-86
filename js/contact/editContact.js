@@ -124,7 +124,6 @@ async function editContactIsSavedGoToSingleContact() {
     document.getElementById("mobileBtnThreePoints").style.display = "block";
     document.getElementById("showSingleContactContainer").style.display = "block";
   } else {
-    await setFocussedContactId(contactId);
     await initListContact();
     document.getElementById("showSingleContactContainer").style.display = "flex";
     document.getElementById("editContactContainer").style.display = "none";

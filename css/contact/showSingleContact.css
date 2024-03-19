@@ -232,6 +232,10 @@ body {
     padding-left: 55px;
   }
 
+  #singleContactCol {
+    display: none;
+  }
+
   .singleContactHeadline {
     order: 1;
     font-size: 61px;

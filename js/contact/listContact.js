@@ -81,7 +81,7 @@ function renderContainerList() {
  * @param {*} contactCard 
  * @param {*} char 
  */
-function renderContactCards(contactCard, char) {
+async function renderContactCards(contactCard, char) {
   let sign = char;
   for (let i = 0; i < user.contacts.length; i++) {
     let contact = user.contacts[i];
@@ -101,7 +101,7 @@ function renderContactCards(contactCard, char) {
                     ${contact["email"]}
                 </div>
             </div>
-        </div>`;
+        </div>`;  
     }
   }
 }
@@ -122,15 +122,12 @@ async function goFromListContactToShowSingleContact(contactId) {
     await loadShowSingleContact(contactId);
     mobileBtnThreePoints
     document.getElementById(`mobileBtnThreePoints`).style.display = "block";
-
-    let singleContactCol = document.getElementById("singleContactCol");
-    singleContactCol.classList.remove("slide-in");
-
-    document.getElementById("showSingleContactContainer").style.display = "block";
+    document.getElementById("singleContactCol").classList.remove("slide-in");
+    document.getElementById("singleContactCol").style.display = "flex";
+    document.getElementById("showSingleContactContainer").style.display = "flex";
     document.getElementById("listContactContainer").style.display = "none";
   } else {
     await loadShowSingleContact(contactId);
-    //slide effekt start function
     document.getElementById("showSingleContactContainer").style.display = "flex";
     let singleContactCol = document.getElementById("singleContactCol");
     singleContactCol.classList.add("slide-in");
@@ -150,29 +147,3 @@ function desktopOpenAddContactContainer() {
   document.getElementById("addOverlayFrame").style.display = "flex";
 }
 
-async function setFocussedContactId(focussedContactId) {
-  await setItem('focussedContactId', focussedContactId);
-}
-
-async function getFocussedContactId() {
-  await getItem('focussedContactId');
-}
-
-/* AKTUELL HIER - FOCUS NEW CONTACT  ab 1200px berücksichtigen*/
-/*async function focusSavedContact() {
-  let currentContact = await getFocussedContactId();
-  if (currentContact) {
-    console.log('IST AM LAUFEN');
-    let contacts = user.contacts;
-    for (let i = 0; i > contacts.length; i++) {
-      const contact = contacts[i];
-      if (user.contact.contactId === currentContactId) {
-        let focussedElement = document.getElementById(currentContactId).classList.add("focusNewContact");
-        if (focussedElement) {
-          focussedElement.scrollIntoView({ behavior: "smooth", block: "center" });
-          focussedElement.focus();
-        }
-      }
-    }
-  }
-}*/
