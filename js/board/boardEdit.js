@@ -317,13 +317,10 @@ function closeMenu(i) {
   }
 }
 
-function closeListener() {
+function closeListener(i) {
   document.addEventListener("click", function (event) {
-    if (userClicksOutsideOfInputField(event, "categorySelectContainer")) {
-      closeCategoryWindow();
-    }
     if (userClicksOutsideOfInputField(event, "fullContactContainers")) {
-      closeContactWindow();
+      closeContactWindow(i);
     }
   });
 }
@@ -333,7 +330,7 @@ function userClicksOutsideOfInputField(event, containerId) {
   return !container.contains(event.target);
 }
 
-function closeContactWindow() {
+function closeContactWindow(i) {
   let contactList = document.getElementById("contactList");
   let contactListIcons = document.getElementById("contactListIcons");
   let border = document.getElementById("contactSelectContainer");
@@ -342,12 +339,7 @@ function closeContactWindow() {
   contactListIcons.style.display = "block";
   border.classList.remove("bordercolor");
   image.src = "../assets/img/add_task/arrow_drop_down.svg";
-}
-
-function closeCategoryWindow() {
-  let categoryMenu = document.getElementById("categoryMenu");
-  let border = document.getElementById("categorySelectContainer");
-
-  categoryMenu.style.display = "none";
-  border.classList.remove("bordercolor");
+  image.onclick = function () {
+    openContacts(i);
+  };
 }

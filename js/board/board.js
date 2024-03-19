@@ -431,7 +431,7 @@ async function editBoardTask(i) {
   selectContacts(i);
   savedUsersInBackend();
   loadContacts(i);
-  closeListener();
+  closeListener(i);
 }
 
 /**

@@ -236,6 +236,7 @@ function editBoardMobileTaskReturn(i) {
     </div>
     <div id="taskAssignedContainer">
       <p class="taskHeadline">Assigned to</p>
+      <div id="fullContactContainers">
       <div id="contactSelectContainer" class="categorySelect">
         <input
           class="assignToInput font"
@@ -252,7 +253,7 @@ function editBoardMobileTaskReturn(i) {
           src="../assets/img/add_task/arrow_drop_down.svg"
         />
       </div>
-      <div id="contactList"></div>
+      <div id="contactList"></div></div>
       <div id="contactListIcons">
         <div id="contactListIconsLine"></div>
       </div>
@@ -320,6 +321,7 @@ function editBoardDesktopTaskReturn(i) {
   </div>
   <div id="taskAssignedContainer">
     <p class="taskHeadline">Assigned to</p>
+    <div id="fullContactContainers">
     <div
       id="contactSelectContainer"
       class="categorySelect"
@@ -328,7 +330,7 @@ function editBoardDesktopTaskReturn(i) {
       <img id="openerAssignedTo" onclick="openContacts(${i})" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
     </div>
     <div id="contactList">
-    </div>
+    </div></div>
     <div id="contactListIcons">
       <div id="contactListIconsLine"></div>
     </div>
