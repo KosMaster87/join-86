@@ -24,9 +24,7 @@ async function initSaveProcess() {
     await saveContactAddContact(name, email, phone);
     await addContactIsSavedGoToSingleContact();
     resetInputFields("add");
-    console.log("Abschluss Datenspeicherung");
   } else {
-    console.log("Fehlerhafter Dateneintrag - Abbruch Datenspeicherung");
     disableSaveProcess();
   }
 }
@@ -150,12 +148,10 @@ async function closeAddContactContainer() {
 }
 
 async function saveContactAtAddContactDesktop() {
-  console.log("Start Speicherprozess - Desktop");
   await initSaveProcess();
 }
 
 async function saveContactAtAddContactMobile() {
-  console.log("Start Speicherprozess - Mobil");
   await initSaveProcess();
 }
 
