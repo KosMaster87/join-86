@@ -8,9 +8,6 @@ body {
   justify-content: space-between;
 }
 
-.rightSideHead{
-
-}
 #showSingleContactContainer {
   z-index: 2;
   display: none;
@@ -135,14 +132,14 @@ body {
 }
 
 .singleContactName {
-  font-size: 47px;
-  font-weight: 500;
+  font-size: 36px;
+  font-weight: 700;
   line-height: 1.2;
 }
 
 .singleContactIconName {
-  font-weight: 700;
-  font-size: 36px;
+  font-weight: 400;
+  font-size: 27px;
   line-height: 1.2;
 }
 
@@ -263,6 +260,7 @@ body {
     display: none;
   }
 }
+
 @media (max-width: 1199px) {
   #showSingleContactContainer {
     width: 100%;
@@ -294,6 +292,19 @@ body {
     background-color: var(--whiteGray);
     overflow: hidden;
   }
+
+  .singleContactName {
+    font-size: 47px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .singleContactIconName {
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 1.2;
+  }
+
 }
 
 @media screen and (min-width: 1440px) {
