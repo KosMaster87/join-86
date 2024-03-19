@@ -382,14 +382,13 @@
     .editContactHeaderSection {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 18px;
       align-items: flex-start;
       margin: 0;
     }
 
     .editContactHeadline {
       font-size: 61px;
-      /* Wechsel */
       line-height: 1.2;
     }
 
@@ -397,7 +396,6 @@
       color: var(--white);
       font-weight: 400;
       font-size: 27px;
-      /* Wechsel */
       line-height: 1.2;
     }
 
