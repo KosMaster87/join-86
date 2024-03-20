@@ -139,6 +139,7 @@ span {
 }
 
 .dueDateInputField {
+  cursor: pointer;
   padding: 8px 21px 8px 21px;
   border-radius: 10px;
   border: solid 1px var(--lighterGray);

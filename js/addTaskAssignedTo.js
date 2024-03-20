@@ -90,11 +90,12 @@ function loadContacts() {
   for (let i = 0; i < Math.min(contacts.length); i++) {
     contactSignature = contacts[i].signature;
     contactName = contacts[i].name;
-    mainDiv.innerHTML += loadContactsReturn(i);
     let assignedToUser = selectedAssignedto.find((user) => user.name === contactName);
     if (assignedToUser) {
+      mainDiv.innerHTML += loadContactsAssignedReturn(i);
       giveOnlyAssignedBg(i);
     } else {
+      mainDiv.innerHTML += loadContactsReturn(i);
       iconid = document.getElementById(`ContactSignatureIcon${i}`);
       iconid.style.backgroundColor = contacts[i].userColor;
     }
@@ -106,9 +107,9 @@ function loadContacts() {
 }
 
 /**
- * 
+ *
  * This function add the Background when the conntact is assigned to
- * 
+ *
  * @param {*} i - this is the number of the seleced contact
  */
 function giveOnlyAssignedBg(i) {
@@ -116,7 +117,8 @@ function giveOnlyAssignedBg(i) {
   container.classList.add("assignedContainerBlack");
   let image = document.getElementById(`assignedContactImage${i}`);
   image.src = "../assets/img/add_task/task_box_check.svg";
-
+  iconid = document.getElementById(`ContactSignatureIcon${i}`);
+  iconid.style.backgroundColor = contacts[i].userColor;
   container.onclick = function () {
     removeassignedtoContactBg(i);
   };
@@ -222,4 +224,56 @@ function clearVariables() {
   subtasks = [];
   removePrio();
   removeWhiteImg();
+}
+
+/**
+ * This function clear the value from the subtask input field
+ */
+function clearSubtaskInputfield() {
+  let input = document.getElementById(`subTaskInputfieldText`);
+  input.value = "";
+  container = document.getElementById(`subTaskInputfieldMenu`);
+  container.innerHTML = `
+  <img src="../assets/img/add_task/task_add.svg" />`;
+  let border = document.getElementById(`subTaskInputcontainer`);
+  border.classList.remove("bordercolor");
+}
+
+/**
+ * This function checked if the required field have a value
+ * after this the create task butten is showed
+ */
+function checkInputs() {
+  if (mobilVersion == false) {
+    let dueDateValue = document.getElementById("dueDateInputContainer").value;
+    let titleValue = document.getElementById("titelInputContainer").value;
+    let isCategoryValid = checkCategory();
+    let createTaskButton = document.getElementById("createTaskButton");
+    let placeholder = document.getElementById(`placeholder`);
+    if (dueDateValue.trim() !== "" && titleValue.trim() !== "" && isCategoryValid) {
+      createTaskButton.style.display = "block";
+      placeholder.style.display = "none";
+    } else {
+      createTaskButton.style.display = "none";
+      placeholder.style.display = "block";
+    }
+  }
+}
+
+/**
+ * This function is create the footer for desktopversion
+ */
+function footer() {
+  let content = document.getElementById(`taskMainContainer`);
+  footer.remove;
+  content.innerHTML += footerReturn();
+}
+
+/**
+ * This function is create the footer for mobileversion
+ */
+function footerMobile() {
+  let content = document.getElementById(`taskMainContainer`);
+  footer.remove;
+  content.innerHTML += footerMobileReturn();
 }

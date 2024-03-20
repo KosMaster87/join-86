@@ -100,7 +100,7 @@ function renderAddTaskMobileHTML() {
     >
     <input class="assignToInput font" type="text" id="assignedToContainer" onclick="onclickInputBorder()" onkeyup="filterNamesforAssignedTo()" placeholder="Add a Contact">
       <img id="openerAssignedTo" onclick="loadContacts()" class="arrow" src="../assets/img/add_task/arrow_drop_down.svg" />
-    </div></div>
+    </div>
     <div id="contactList">
     </div></div>
     <div id="contactListIcons">
@@ -321,6 +321,25 @@ function loadContactsReturn(i) {
   <div
       id="assignedContactContainer${i}"
       onclick="assignedtoContactBg(${i}, '${contactName}')"
+      class="assignedContactContainer"
+    >
+      <div class="assignedContactLeftSide">
+        <div id="ContactSignatureIcon${i}" class="assignedContactLeftSideIcon">${contactSignature}</div>
+        <p class="assignedContactNameClass">${contactName}</p>
+      </div>
+      <img
+        id="assignedContactImage${i}"
+        src="../assets/img/add_task/task_box.svg"
+      />
+    </div>
+  `;
+}
+
+function loadContactsAssignedReturn(i) {
+  return `
+  <div
+      id="assignedContactContainer${i}"
+      onclick="removeassignedtoContactBg(${i}, '${contactName}')"
       class="assignedContactContainer"
     >
       <div class="assignedContactLeftSide">
