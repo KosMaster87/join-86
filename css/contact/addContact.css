@@ -365,10 +365,11 @@ content: url('../../assets/img/contact/vectorBlue.svg');
   #contactCard {
     width: 90%;
   }
+  /*
   #addContactContainer {
     margin-left: 0px;
     margin-top: 0px;
-  }
+  }*/
 }
 
 @media screen and (min-width: 721px) {
@@ -427,13 +428,13 @@ content: url('../../assets/img/contact/vectorBlue.svg');
   }
 
   .contactHeader {
-    background-color: var(--lightGray);
+    /*background-color: var(--lightGray);*/
     width: 467px;
     height: 100%;
     border-radius: 20px 0 0 20px;
-    flex-direction: column;
+    /*flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start;*/
     padding: 47px;
     margin: 0;
   }
@@ -467,8 +468,6 @@ content: url('../../assets/img/contact/vectorBlue.svg');
     font-size: 22px;
     line-height: 1.2;
   }
-
-  
 
   #contactHeaderJoinLogo {
     height: 66.48px;
@@ -563,6 +562,7 @@ content: url('../../assets/img/contact/vectorBlue.svg');
     transform: translate(-50%, -50%); 
   }
 
+  /*
   .contactHeader {
     background-color: var(--lightGray);
     width: 467px;
@@ -573,7 +573,7 @@ content: url('../../assets/img/contact/vectorBlue.svg');
     align-items: flex-start;
     padding: 47px;
     margin: 0;
-  }
+  }*/
 
   #contactHeaderCloseIcon {
     display: none;
