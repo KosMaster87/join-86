@@ -148,7 +148,6 @@ function changePrioColor(i, pupUpPriorityName) {
   savedUsersInBackend();
 }
 
-
 /**
  *
  * render the finished subtasks in a bar
@@ -156,63 +155,68 @@ function changePrioColor(i, pupUpPriorityName) {
  * @param {*} i - is the number of the task
  */
 function updateProgressBar(i) {
-    let counter = 0;
-    let percent = 0;
-  
-    if (user.tasks[i].subtasks.length === 0) {
-      document.getElementById("progressMainContainerId" + i).style.display = "none";
-    } else {
-      document.getElementById("progressMainContainerId" + i).style.display = "flex";
-      for (let p = 0; p < user.tasks[i].subtasks.length; p++) {
-        if (user.tasks[i].subtasks[p].done === true) {
-          counter++;
-        }
-      }
-      percent = (counter / user.tasks[i].subtasks.length) * 100;
-      if (percent >= 0) {
-        document.getElementById(`finishedTasks${i}`).innerHTML = counter;
-      }
-      if (percent >= 0) {
-        document.getElementById(`progressBar${i}`).style.width = percent + "%";
+  let counter = 0;
+  let percent = 0;
+
+  if (user.tasks[i].subtasks.length === 0) {
+    document.getElementById("progressMainContainerId" + i).style.display = "none";
+  } else {
+    document.getElementById("progressMainContainerId" + i).style.display = "flex";
+    for (let p = 0; p < user.tasks[i].subtasks.length; p++) {
+      if (user.tasks[i].subtasks[p].done === true) {
+        counter++;
       }
     }
+    percent = (counter / user.tasks[i].subtasks.length) * 100;
+    if (percent >= 0) {
+      document.getElementById(`finishedTasks${i}`).innerHTML = counter;
+    }
+    if (percent >= 0) {
+      document.getElementById(`progressBar${i}`).style.width = percent + "%";
+    }
   }
-  
-  /**
+}
+
+/**
  *
  * change the backgroundcolor for the right category
  *
  * @param {*} i - is the number of the task
  */
 function whatsCategory(i) {
-    if (user.tasks[i].category === "User Story") {
-      document.getElementById(`TaskCategory${i}`).style.backgroundColor = "#0038FF";
-    } else if (user.tasks[i].category === "Technical Task") {
-      document.getElementById(`TaskCategory${i}`).style.backgroundColor = "#1FD7C1";
-    }
+  if (user.tasks[i].category === "User Story") {
+    document.getElementById(`TaskCategory${i}`).style.backgroundColor = "#0038FF";
+  } else if (user.tasks[i].category === "Technical Task") {
+    document.getElementById(`TaskCategory${i}`).style.backgroundColor = "#1FD7C1";
   }
-  
-  /**
-   *
-   * render icons and render the signatures
-   *
-   * @param {*} i - is the number of the task
-   */
-  function whatsSignatures(i) {
-    iconBarContainer = document.getElementById(`IconBar${i}`);
-    for (let a = 0; a < user.tasks[i].assignedTo.length; a++) {
-      let signature = "";
-      if (user.tasks[i] && user.tasks[i].assignedTo[a] && user.tasks[i].assignedTo[a].name) {
-        let words = user.tasks[i].assignedTo[a].name.toUpperCase().split(" ");
-        for (let j = 0; j < words.length; j++) {
-          signature += words[j].charAt(0);
-          color = user.tasks[i].assignedTo[a].userColor;
-        }
-        iconBarContainer.innerHTML += iconReturn(color, signature);
+}
+
+/**
+ *
+ * render icons and render the signatures
+ *
+ * @param {*} i - is the number of the task
+ */
+function whatsSignatures(i) {
+  iconBarContainer = document.getElementById(`IconBar${i}`);
+  for (let a = 0; a < 3; a++) {
+    let signature = "";
+    if (user.tasks[i] && user.tasks[i].assignedTo[a] && user.tasks[i].assignedTo[a].name) {
+      let words = user.tasks[i].assignedTo[a].name.toUpperCase().split(" ");
+      for (let j = 0; j < words.length; j++) {
+        signature += words[j].charAt(0);
+        color = user.tasks[i].assignedTo[a].userColor;
       }
+      iconBarContainer.innerHTML += iconReturn(color, signature);
     }
   }
-  
+  if (user.tasks[i].assignedTo.length > 3) {
+    let number = "+" + (user.tasks[i].assignedTo.length - 3);
+    let numberColow = "var(--lightGray)";
+    iconBarContainer.innerHTML += iconReturn(numberColow, number);
+  }
+}
+
 /**
  * add an Eventlistener for close die lists when clicked outside of container Contact´s or category
  */
@@ -258,4 +262,20 @@ function closeContactWindow(i) {
  */
 function removeClickListener() {
   document.removeEventListener("click", removeClickListener);
+}
+
+function fillrenderTaskAssigneds(i, n) {
+  let bgColor = user.tasks[i].assignedTo[n].userColor;
+  document.getElementById(`pupUpIcon${n}`).style.backgroundColor = bgColor;
+  document.getElementById(`popUpAssignedTo${n}`).innerHTML = user.tasks[i].assignedTo[n].name;
+  let signature = "";
+  let words = user.tasks[i].assignedTo[n].name.toUpperCase().split(" ");
+  fillSignature(words);
+}
+
+function fillSignature(words) {
+  for (let j = 0; j < words.length; j++) {
+    signature += words[j].charAt(0);
+    document.getElementById(`pupUpIcon${n}`).innerHTML = signature;
+  }
 }

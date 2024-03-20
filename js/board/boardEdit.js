@@ -1,6 +1,5 @@
 let switchTaskTriggered = false;
 
-
 /**
  *
  * load the assignedTo contacts
@@ -231,9 +230,9 @@ function clearSubtaskInputfield() {
 }
 
 /**
- * 
+ *
  * This function create a menu for switching the task Status in the MobileVersion.
- * 
+ *
  * @param {*} i -number of the Task
  */
 function switchTask(i) {
@@ -259,9 +258,9 @@ function switchTask(i) {
 }
 
 /**
- * 
+ *
  * Remove the menufield of the current status.
- * 
+ *
  * @param {*} i -number of the Task
  */
 function cheackCurrentStatus(i) {
@@ -280,9 +279,9 @@ function cheackCurrentStatus(i) {
 }
 
 /**
- * 
+ *
  *switch the task to status to-do
- * 
+ *
  * @param {*} i -number of the Task
  */
 function switchTaskTodo(i) {
@@ -295,9 +294,9 @@ function switchTaskTodo(i) {
 }
 
 /**
- * 
+ *
  *switch the task to status progress
- * 
+ *
  * @param {*} i -number of the Task
  */
 function switchTaskProgress(i) {
@@ -310,9 +309,9 @@ function switchTaskProgress(i) {
 }
 
 /**
- * 
+ *
  *switch the task to status await
- * 
+ *
  * @param {*} i -number of the Task
  */
 function switchTaskAwait(i) {
@@ -325,9 +324,9 @@ function switchTaskAwait(i) {
 }
 
 /**
- * 
+ *
  *switch the task to status done
- * 
+ *
  * @param {*} i -number of the Task
  */
 function switchTaskDone(i) {
@@ -340,9 +339,9 @@ function switchTaskDone(i) {
 }
 
 /**
- * 
+ *
  * Close the Status-Switch menu in mobilVersion
- * 
+ *
  * @param {*} i -number of the Task
  */
 function closeMenu(i) {
@@ -360,4 +359,3 @@ function closeMenu(i) {
       .setAttribute("onclick", `switchTask(${i})`);
   }
 }
-
