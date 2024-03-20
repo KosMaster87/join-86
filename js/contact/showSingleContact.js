@@ -25,20 +25,6 @@ async function getCurrentContactEmail() {
 }
 
 /**
- * This function makes the contact id all available
- */
-async function setContactId(contactId) {
-  await setItem('contactId', contactId)
-}
-
-/**
- * This function calls up the available contact id 
- */
-async function getContactId() {
-  await getItem('contactId');
-}
-
-/**
  * This function renders all contact infos from current contact 
  * @param {string} contactId - is the id from current contact
  */
@@ -95,7 +81,6 @@ async function importExistentVariable(id, variableHtml, input) {
  * This function initializes list contact after closing single contact
  */
 async function goFromSingleContactToListContactContainer() {
-  
   await initListContact();
   await setContactId([]);
   document.getElementById("showSingleContactContainer").style.display = "none";
