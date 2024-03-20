@@ -7,7 +7,7 @@ async function initEditContact() {
 }
 
 /**
- * This function creates signature for icon″
+ * This function retrieves available contactId
  */
 async function getContactId() {
   return await getItem("contactId");
