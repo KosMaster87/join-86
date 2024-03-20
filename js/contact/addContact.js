@@ -43,6 +43,19 @@ async function getAllContactsFromCurrentUser() {
 }
 
 /**
+ * This function initializes the template 'overlayContactIsCreated'
+ */
+function initializeOverlayContactIsCreated() {
+  let overlay = document.getElementById("overlayContactIsCreated");
+  overlay.style.display = "flex";
+  overlay.classList.add("slideInAnimation");
+  document.getElementById("overlayContactIsCreated").style.display = "flex";
+  setTimeout(function () {
+    overlay.style.display = "none";
+  }, 3000);
+}
+
+/**
  * This function saves the new added contact at the backend
  */
 async function saveContactAddContact(name, email, phone) {
@@ -66,13 +79,7 @@ async function saveContactAddContact(name, email, phone) {
   }
   await setItem("users", users);
   await setContactId(contactId);
-  let overlay = document.getElementById("overlayContactIsCreated");
-  overlay.style.display = "flex";
-  overlay.classList.add("slideInAnimation");
-  document.getElementById("overlayContactIsCreated").style.display = "flex";
-  setTimeout(function () {
-    overlay.style.display = "none";
-  }, 3000);
+  initializeOverlayContactIsCreated();
 }
 
 /**
