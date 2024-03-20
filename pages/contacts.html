@@ -36,12 +36,8 @@
   <div w3-include-html="../assets/templates/header.html" id="mainHeader" class="mainHeader"></div>
 
   <div class="mainContent" id="mainContact">
-    <!-- RENDERN DER EINZELNEN ELEMENTE -->
-    <!-- CONTAINER LIST CONTACTS ANFANG -->
     <div id="listContactContainer"></div>
-    <!-- CONTAINER LIST CONTACTS ENDE -->
 
-    <!-- Add Contact Container -->
     <div id="addContactContainer">
       <div id="addOverlayFrame">
         <div id="contactCard">
@@ -53,7 +49,6 @@
             </div>
             <div class="addContactHeaderSection">
               <img id="contactHeaderJoinLogo" src="../assets/img/menu/desktopFooterLogo.svg" />
-              <!-- Zu Beginn display: none -->
               <h1 class="addContactHeadline">Add contact</h1>
               <h3 class="addContactSubtitle">Tasks are better with a team!</h3>
             </div>
@@ -62,7 +57,6 @@
               <img src="../../assets/img/addContact/person.svg" />
             </div>
           </div>
-          <!-- Ende addContactHeader-->
           <div id="contactBody">
             <div class="contactBodyFlexContainer">
               <a id="contactBodyCloseIcon" onclick="closeAddContactContainerDesktop()">
@@ -116,19 +110,11 @@
                 </div>
               </div>
             </div>
-            <!-- Ende Edit Field Contact -->
           </div>
-          <!-- ENDE CONTACT CONTAINER FLEX-->
         </div>
-        <!-- ENDE CONTACT CONTAINER FLEX ZWEI -->
       </div>
-      <!-- ENDE CONTAINER-FLEX -->
     </div>
-    <!-- ENDE ADD CONTAINER -->
 
-
-
-    <!-- Edit Contact Container -->
     <div id="editContactContainer">
       <div id="editOverlayFrame">
         <div id="contactCard">
@@ -140,7 +126,6 @@
             </div>
             <div class="editContactHeaderSection">
               <img id="contactHeaderJoinLogo" src="../assets/img/menu/desktopFooterLogo.svg" />
-              <!-- Zu Beginn display: none -->
               <h1 class="editContactHeadline">Edit contact</h1>
               <h3 class="editContactSubtitle">Tasks are better with a team!</h3>
             </div>
@@ -149,20 +134,17 @@
               <div id="editContactHeaderSignature"></div>
             </div>
           </div>
-          <!-- Ende addContactHeader-->
           <div id="contactBody">
             <div class="contactBodyFlexContainer">
               <a id="contactBodyCloseIcon" onclick="desktopCloseAddContactContainerWithoutAddingNewContact()">
                 <img src="../../assets/img/addContact/close-gray.svg" />
               </a>
               <div id="contactContainerFlexZwei">
-                <!-- Hier eventuell DIV DRUMLEGEN -->
                 <div class="contactBodySignatureContainer">
                   <div id="editContactBodySignature">
                     <div id="editContactBodySignature"></div>
                   </div>
                 </div>
-                <!-- ENDE FLEX CONTAINER-->
                 <div class="contactBodyInputSection">
                   <div class="contactBodyInputSectionCol">
                     <div id="editContactInputContainerName" class="contactInputContainer"
@@ -202,19 +184,12 @@
                   </div>
                 </div>
               </div>
-              <!-- Ende ContactInputContainer-->
             </div>
-            <!-- Ende Edit Field Contact -->
           </div>
-          <!-- ENDE CONTACT CONTAINER FLEX-->
         </div>
-        <!-- ENDE CONTACT CONTAINER FLEX ZWEI -->
       </div>
-      <!-- ENDE CONTAINER-FLEX -->
     </div>
-    <!-- ENDE TEST CONTAINER -->
 
-    <!-- ANFANG SHOW SINGLE CONTACT CONTAINER -->
     <div id="showSingleContactContainer">
       <div id="singleContact">
         <div class="head">
@@ -224,13 +199,11 @@
             <div class="singleContactHeaderBorder"></div>
           </div>
           <div class="rightSideHead">
-            <!-- Ende mobile Show Contact -->
             <a id="singleContactNav" onclick="goFromSingleContactToListContactContainer()">
               <img src="../../assets/img/other/Vektor.svg" />
             </a>
           </div>
         </div>
-        <!-- Ende contact Header-->
         <div id="singleContactCol">
           <div class="singleContactDisplayIdentidy">
             <div id="singleContactSignature"></div>
@@ -254,30 +227,21 @@
           <div class="singleContactLabel">Phone</div>
           <div id="singleContactPhone" class="phone"></div>
         </div>
-        <!-- Ende contact Display -->
       </div>
-      <!-- Contact Created Overlay -->
+   
       <div id="overlayContactIsCreated">
         <span>Contact succesfully created</span>
       </div>
     </div>
-    <!-- ENDE Show Single Contact Container-->
-    <!-- MOBILE BUTTON ADD CONTACT FINAL -->
+
     <div id="mobileBtnAddContact" class="mobileBtnRound" onclick="openAddContactContainer()">
       <img class="mobileBtnAddContactItem" src="../assets/img/addContact/person_add.svg" />
     </div>
-    <!-- ENDE MOBILE BUTTON ADD CONTACT-->
 
-    <!-- MOBILE BUTTON THREE POINTS -->
     <div id="mobileBtnThreePoints" class="mobileBtnRound positionAbsolute" onclick="showMobileSelectBtns()">
       <img class="mobileBtnThreePointsIcon" src="../assets/img/contact/more_vert.svg" />
     </div>
-    <!-- ENDE MOBILE BUTTON SELECT OPTIONS -->
 
-    <!--
-    </div> -->
-    <!-- Ende editContactEntry -->
-    <!-- ENDE Edit Contact Container --> <!-- MOBILE BUTTON SELECT OPTIONS -->
     <div id="mobileBtnSelectOptions" class="mobileBtnSquare positionAbsolute">
       <div class="internBtnSquare">
         <a id="mobileBtnSquareEdit" class="internBtnSquareLink" onclick="goFromShowSingleContactToEditContact()">
@@ -290,10 +254,7 @@
         </a>
       </div>
     </div>
-    <!-- ENDE MOBILE BUTTON SELECT OPTIONS -->
-
   </div>
-  <!-- Ende MAIN CONTAINER -->
   <div w3-include-html="../assets/templates/menu.html" id="afterLoginMainMenu" class="afterLoginMainMenu"></div>
 </body>
 
