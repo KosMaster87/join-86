@@ -93,39 +93,6 @@ function getRandomColor(userColors) {
 }
 
 /**
- * This function creates the signature from the fullname
- */
-function getSignature(name) {
-  let arrayName = splitName(name);
-  let signature = getFirstChars(arrayName);
-
-  return signature;
-}
-
-/**
- * This function takes the first letter from the fullname
- */
-function splitName(name) {
-  let arrayName = [];
-  let string = name;
-  arrayName = string.toUpperCase().split(" ");
-
-  return arrayName;
-}
-
-/**
- * This function creates an array from all single letters
- */
-function getFirstChars(arrayName) {
-  let firstChars = "";
-  for (let i = 0; i < arrayName.length; i++) {
-    firstChars += arrayName[i][0];
-  }
-
-  return firstChars;
-}
-
-/**
  * This function creates an randomId for contacts
  */
 function generateRandomId() {
@@ -140,7 +107,7 @@ function generateRandomId() {
 }
 
 /**
- * This function shows the form, if saving process is disabled
+ * This function shows the form add contact, if saving process is disabled
  */
 function disableSaveProcess() {
   document.getElementById("addContactContainer").style.display = "block";
