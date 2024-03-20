@@ -1,5 +1,4 @@
 /* ADD CONTACT CONTAINER */
-
 #desktopAddContactContainer {
   display: none;
 }
@@ -365,19 +364,9 @@ content: url('../../assets/img/contact/vectorBlue.svg');
   #contactCard {
     width: 90%;
   }
-  /*
-  #addContactContainer {
-    margin-left: 0px;
-    margin-top: 0px;
-  }*/
 }
 
 @media screen and (min-width: 721px) {
-  /*#addContactContainer {
-    margin-left: 0px !important;
-    margin-top: 0px !important;
-  }*/ 
-
   #contactCard {
     width: 80%;
   }
@@ -428,13 +417,9 @@ content: url('../../assets/img/contact/vectorBlue.svg');
   }
 
   .contactHeader {
-    /*background-color: var(--lightGray);*/
     width: 467px;
     height: 100%;
     border-radius: 20px 0 0 20px;
-    /*flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;*/
     padding: 47px;
     margin: 0;
   }
@@ -540,7 +525,6 @@ content: url('../../assets/img/contact/vectorBlue.svg');
 
   #addCancelBtnDesktop {
     display: flex; 
-    /* width: 1 */
   }
 
   #addCancelBtnDesktop:hover {
@@ -561,19 +545,6 @@ content: url('../../assets/img/contact/vectorBlue.svg');
     left: 50%;
     transform: translate(-50%, -50%); 
   }
-
-  /*
-  .contactHeader {
-    background-color: var(--lightGray);
-    width: 467px;
-    height: 100%;
-    border-radius: 20px 0 0 20px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 47px;
-    margin: 0;
-  }*/
 
   #contactHeaderCloseIcon {
     display: none;
