@@ -11,6 +11,9 @@ async function login() {
     loginPasswortDevision.classList.remove("wrong");
     await setGlobalUserId("currentUserId", globalUserId);
     rememberUserFn();
+    if (user.name === "guest user") {
+      await saveBackupContactsToStorage();
+    }
     window.location.assign("pages/summary.html");
   } else {
     loginPasswortDevision.classList.add("wrong");
@@ -29,8 +32,7 @@ async function findUserInUsersArray() {
 
   user = users.find(
     (userIndex) =>
-      userIndex.email === loginInputMail.value &&
-      userIndex.password === loginInputPassword.value
+      userIndex.email === loginInputMail.value && userIndex.password === loginInputPassword.value
   );
 }
 
@@ -82,6 +84,15 @@ function loginAsGuest() {
   loginInputMail.value = "guest@mail.de";
   loginInputPassword.value = "guestPassword1234";
   loginBtn.click();
+}
+
+/**
+ * Stores the `backup Contacts` array in remote storage.
+ */
+async function saveBackupContactsToStorage() {
+  user.contacts = backupContacts;
+  user.tasks = backupTasks;
+  await setItem("users", users);
 }
 
 /**
