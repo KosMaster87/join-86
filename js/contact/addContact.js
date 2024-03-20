@@ -213,8 +213,9 @@ async function saveContactAtAddContactMobile() {
  */
 async function addContactIsSavedGoToSingleContact() {
   let contactId = await getContactId();
+  let screenwidth = window.innerWidth;
   await loadShowSingleContact(contactId);
-  if (result === "mobileVersion") {
+  if (screenwidth < 1200) {
     document.getElementById("listContactContainer").style.display = "none";
     document.getElementById("addContactContainer").style.display = "none";
     document.getElementById("mobileBtnAddContact").style.display = "none";

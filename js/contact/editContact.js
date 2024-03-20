@@ -1,4 +1,3 @@
-
 /**
  * This function is the first function when open site
  */
@@ -141,9 +140,9 @@ async function saveChangesAtEditContact() {
  */
 async function editContactIsSavedGoToSingleContact() {
   let contactId = await getContactId();
-  let result = getWindowWidth();
+  let screenWidth = window.innerWidth;
   await loadShowSingleContact(contactId);
-  if (result < 1200) {
+  if (screenWidth < 1200) {
     document.getElementById("listContactContainer").style.display = "none";
     document.getElementById("editContactContainer").style.display = "none";
     document.getElementById("mobileBtnAddContact").style.display = "none";

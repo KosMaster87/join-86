@@ -5,7 +5,6 @@ let listFirstChars;
  *This function is the first function when page is open
  */
 async function initListContact() {
-  await initWidthContacts();
   document.getElementById("listContactContainer").style.display = "flex";
   sortAllContactsFromCurrentUserAlphabetical();
   await getListFirstChars();
@@ -118,8 +117,8 @@ async function goFromListContactToShowSingleContact(contactId) {
   });
   let id = "singleContactBtn" + contactId;
   document.getElementById(id).classList.add("active");
-  let width = getWindowWidth();
-  if (width < 1200) {
+  let screenwidth = window.innerWidth;
+  if (screenwidth < 1200) {
     await loadShowSingleContact(contactId);
     mobileBtnThreePoints;
     document.getElementById(`mobileBtnThreePoints`).style.display = "block";

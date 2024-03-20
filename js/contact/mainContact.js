@@ -1,4 +1,6 @@
-
+/**
+ * This function is the first function when open contact and initializes first templates
+ */
 async function initMainContact() {
   await loadCurrentUserAlsoUsersAsObject();
   await includeHTML();
@@ -8,25 +10,14 @@ async function initMainContact() {
   preparePopupEvent();
 }
 
-function getWindowWidth() {
-  return window.innerWidth || documentElement.clientWidth || document.body.clientWidth;
-}
-
-let result = "";
-
 /**
+ * This function checks all data for the specified completeness
  *
+ * @param {string} siteInitial - defines the used template
+ * @param {string} name - is the name of the current contact
+ * @param {string} email - is the email of the current contact
+ * @param {string} phone - is the phone number of the current contact
  */
-function initWidthContacts() {
-  let screenWidth = getWindowWidth()
-
-  if (screenWidth <= 1219) {
-    result = "mobileVersion";
-  } else {
-    result = "desktopVersion";
-  }
-}
-
 function checkAllInputFields(siteInitial, name, email, phone) {
   if (checkInputName(siteInitial, name) === true && checkInputEmail(siteInitial, email) === true && checkInputPhone(siteInitial, phone) === true) {
     return true
@@ -35,10 +26,15 @@ function checkAllInputFields(siteInitial, name, email, phone) {
   }
 }
 
-function checkInputName(siteInitial, input) {
-  let name = input;
+/**
+ * This function checks the name for existence an initializes feedback on the form
+ *
+ * @param {string} siteInitial - defines the used template
+ * @param {string} name - is the name of the current contact
+ */
+function checkInputName(siteInitial, name) {
   if (name == "") {
-    showInputMessage(siteInitial+ 'ContactMessageName', 'Please enter a name');
+    showInputMessage(siteInitial + 'ContactMessageName', 'Please enter a name');
     removeFocusBorder(siteInitial, 'Name');
     showAlertBorder(siteInitial + 'ContactInputContainerName');
   } else {
@@ -48,8 +44,13 @@ function checkInputName(siteInitial, input) {
   }
 }
 
-function checkInputEmail(siteInitial, input) {
-  let email = input;
+/**
+ * This function checks the email for existence and initializes email validation and feedback on the form
+ *
+ * @param {string} siteInitial - defines the used template
+ * @param {string} email - is the email of the current contact
+ */
+function checkInputEmail(siteInitial, email) {
   if (email === "") {
     return true;
   } else if (validateEmail(email) === false) {
@@ -64,8 +65,12 @@ function checkInputEmail(siteInitial, input) {
   }
 }
 
-function validateEmail(input) {
-  let email = input;
+/**
+ * This function valides email for valid parameters
+ *
+ * @param {string} email - is the email of the current contact
+ */
+function validateEmail(email) {
   let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (regex.test(email)) {
     return true;
@@ -74,13 +79,18 @@ function validateEmail(input) {
   }
 }
 
+/**
+ * This function valides phone number for existence and valid parameters and initializes form feedback
+ *
+ * @param {string} siteInitial - defines the used template
+ * @param {string} phone - is the phone number of the current contact
+ */
 function checkInputPhone(siteInitial, phone) {
-  let phoneNumber = phone;
   const regex = /^[\d ()+-]+$/;
 
-  if (phoneNumber === "") {
+  if (phone === "") {
     return true;
-  } else if (regex.test(phoneNumber)) {
+  } else if (regex.test(phone)) {
     resetInputMessage(siteInitial + 'ContactMessagePhone');
     resetAlertBorder(siteInitial + 'ContactInputContainerPhone');
     return true;
@@ -92,47 +102,96 @@ function checkInputPhone(siteInitial, phone) {
   }
 }
 
+/**
+ * This function resets values entered in the form
+ *
+ * @param {string} siteInitial - defines the used template
+ */
 function resetInputFields(siteInitial) {
   document.getElementById(siteInitial + 'ContactInputName').value = '';
   document.getElementById(siteInitial + 'ContactInputEmail').value = '';
   document.getElementById(siteInitial + 'ContactInputPhone').value = '';
 }
 
-
+/**
+ * This function valides phone number for existence and valid parameters and initializes form feedback
+ *
+ * @param {string} inputField - is the shortcut for the addressed message field
+ * @param {string} message - defines the shown feedback
+ */
 function showInputMessage(inputField, message) {
   document.getElementById(inputField).innerText = message;
 }
 
+/**
+ * This function resets the shown form feedback
+ *
+ * @param {string} inputField - defines the addressed message field
+ */
 function resetInputMessage(inputField) {
   document.getElementById(inputField).innerText = '';
 }
 
+/**
+ * This function initializes the reset of all feedback messages on the form
+ *
+ * @param {string} siteInitial - defines the used template
+ */
 function resetAllInputMessages(siteInitial) {
   resetInputMessage(siteInitial + 'ContactMessageName');
   resetInputMessage(siteInitial + 'ContactMessageEmail');
   resetInputMessage(siteInitial + 'ContactMessagePhone');
 }
 
+/**
+ * This function initializes alert border on the checked input field
+ *
+ * @param {string} inputContainer - defines the adressed input field
+ */
 function showAlertBorder(inputContainer) {
   document.getElementById(inputContainer).classList.add('alertBorder');
 }
 
+/**
+ * This function initializes the reset of a single alert border
+ *
+ * @param {string} inputContainer - defines the adressed input field
+ */
 function resetAlertBorder(inputContainer) {
   document.getElementById(inputContainer).classList.remove('alertBorder');
 }
 
+/**
+ * This function initializes the reset of a single alert border
+ *
+ * @param {string} inputContainer - defines the adressed input field
+ */
 function resetAllAlertBorders(siteInitial) {
   resetAlertBorder(siteInitial + 'ContactInputContainerName');
   resetAlertBorder(siteInitial + 'ContactInputContainerEmail');
   resetAlertBorder(siteInitial + 'ContactInputContainerPhone');
 }
 
+/**
+ * This function initializes the focus and reset of focus border on the input fields
+ *
+ * @param {string} siteInitial - defines the addressed template
+ * @param {string} idFocus - defines the focussed input field border
+ * @param {string} idRemoveFocus - defines the set back input field border
+ * @param {string} idDeleteFocus - defines the set back input field border
+ */
 function editFocusBorder(siteInitial, idFocus, idRemoveFocus, idDeleteFocus) {
-  addFocusBorder(siteInitial,idFocus);
+  addFocusBorder(siteInitial, idFocus);
   removeFocusBorder(siteInitial, idRemoveFocus);
   removeFocusBorder(siteInitial, idDeleteFocus)
 }
 
+/**
+ * This function adds focus border on the current used input field
+ *
+ * @param {string} siteInitial - defines the adressed template
+ * @param {string} containerId - defines the adressed input field
+ */
 function addFocusBorder(siteInitial, containerId) {
   let input = document.getElementById(siteInitial + 'ContactInputContainer' + containerId);
   if (input) {
@@ -142,8 +201,15 @@ function addFocusBorder(siteInitial, containerId) {
   }
 }
 
+/**
+ * This function removes the focus border on the form
+ *
+ * @param {string} siteInitial - defines the addressed template
+ * @param {string} containerId - defines the adressed input field
+ * 
+ */
 function removeFocusBorder(siteInitial, containerId) {
-  let input = document.getElementById(siteInitial +'ContactInputContainer' + containerId);
+  let input = document.getElementById(siteInitial + 'ContactInputContainer' + containerId);
   if (input.classList.contains('focus')) {
     input.classList.remove('focus');
   }
