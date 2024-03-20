@@ -7,13 +7,6 @@ async function initEditContact() {
 }
 
 /**
- * This function retrieves available contactId
- */
-async function getContactId() {
-  return await getItem("contactId");
-}
-
-/**
  * This function initializes all variables
  */
 async function initializeAllVariables() {
@@ -28,42 +21,7 @@ async function initializeAllVariables() {
   document.getElementById("editContactBodySignature").style.backgroundColor = contact.userColor;
 }
 
-/**
- * This function creates signature for icon
- * 
- *  * @param {string} name - This is name of the contact
- */
-function getSignature(name) {
-  let arrayName = splitName(name);
-  let signature = getFirstChars(arrayName);
 
-  return signature;
-}
-
-/**
- * This function takes the first letter of the name
- * 
- *  * @param {string} name - This is name of the contact
- */
-function splitName(name) {
-  let arrayName = [];
-  let string = name;
-  arrayName = string.toUpperCase().split(" ");
-
-  return arrayName;
-}
-
-/**
- * This function get the first letters from fullname
- */
-function getFirstChars(arrayName) {
-  let firstChars = "";
-  for (let i = 0; i < arrayName.length; i++) {
-    firstChars += arrayName[i][0];
-  }
-
-  return firstChars;
-}
 
 /**
  * This function deletes contact
@@ -154,13 +112,6 @@ async function editContactIsSavedGoToSingleContact() {
     document.getElementById("editContactContainer").style.display = "none";
     document.getElementById("singleContactCol").style.display = "flex";
   }
-}
-
-/**
- * This function initializes reload
- */
-function startPageUpdate() {
-  location.reload();
 }
 
 /**
