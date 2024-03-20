@@ -199,7 +199,7 @@ function whatsCategory(i) {
  */
 function whatsSignatures(i) {
   iconBarContainer = document.getElementById(`IconBar${i}`);
-  for (let a = 0; a < 3; a++) {
+  for (let a = 0; a < 4; a++) {
     let signature = "";
     if (user.tasks[i] && user.tasks[i].assignedTo[a] && user.tasks[i].assignedTo[a].name) {
       let words = user.tasks[i].assignedTo[a].name.toUpperCase().split(" ");
@@ -210,11 +210,36 @@ function whatsSignatures(i) {
       iconBarContainer.innerHTML += iconReturn(color, signature);
     }
   }
-  if (user.tasks[i].assignedTo.length > 3) {
-    let number = "+" + (user.tasks[i].assignedTo.length - 3);
-    let numberColow = "var(--lightGray)";
-    iconBarContainer.innerHTML += iconReturn(numberColow, number);
+  if (user.tasks[i].assignedTo.length > 4) {
+    removeLastIcon(i)
+    moreAssignedTo(i);
   }
+}
+
+/**
+ * 
+ * remve the last icon in the bar.
+ * 
+ * @param {*} i - is the number of the iconbar
+ */
+function removeLastIcon(i) {
+let iconBar = document.getElementById(`IconBar${i}`);
+let icons = iconBar.getElementsByClassName("iconstlye");
+      let lastIcon = icons[icons.length - 1];
+      iconBar.removeChild(lastIcon);
+}
+
+/**
+ * 
+ * fill a iconbar with the number of more than 3 assigneds
+ * 
+ * @param {} i -is the number of the task 
+ */
+function moreAssignedTo(i){
+  iconBarContainer = document.getElementById(`IconBar${i}`);
+  let number = "+" + (user.tasks[i].assignedTo.length - 3);
+  let numberColow = "var(--lightGray)";
+  iconBarContainer.innerHTML += iconReturn(numberColow, number);
 }
 
 /**
