@@ -83,7 +83,6 @@ async function deleteContact() {
   await setContactId([]);
 }
 
-
 /**
  * This function generates all necessary contact infos from current contact
  */
